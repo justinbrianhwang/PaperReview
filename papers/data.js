@@ -1237,6 +1237,16 @@ const PAPERS = [
           <li><strong>Scenario Generation:</strong> Driving scenarios are combined with fault injection schedules to create a test matrix covering normal and edge-case conditions.</li>
         </ul>
 
+        
+        <figure>
+          <img src="images/sensor-failure-simulation/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/sensor-failure-simulation/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>A unified fault-injection framework covering camera, LiDAR, and radar failure modes within simulation.</li>
@@ -1401,6 +1411,11 @@ const PAPERS = [
         </ul>
         <p>The cost functional for each dimension minimizes the integral of squared jerk (third derivative), yielding smooth, comfortable trajectories with closed-form polynomial solutions.</p>
 
+        
+        <figure>
+          <img src="images/frenet-trajectory/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>Formalization of trajectory planning in Frenet coordinates with decoupled lateral/longitudinal optimization.</li>
@@ -1563,6 +1578,16 @@ const PAPERS = [
           <li><strong>Pruning Strategy:</strong> Branches that violate road constraints or enter collision zones are pruned early, preventing wasted computation.</li>
         </ul>
 
+        
+        <figure>
+          <img src="images/sampling-motion-planning/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/sampling-motion-planning/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>Road-structure-aware sampling strategy that dramatically improves sample efficiency over vanilla RRT.</li>
@@ -1726,6 +1751,16 @@ const PAPERS = [
         </ul>
         <p>The behavioral layer acts as the critical bridge between global intent and local execution, translating route-level goals into actionable maneuvers.</p>
 
+        
+        <figure>
+          <img src="images/urban-path-planning/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/urban-path-planning/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>A complete three-layer planning architecture tailored for urban autonomous driving.</li>
@@ -1888,6 +1923,16 @@ const PAPERS = [
           <li><strong>Constraint Handling:</strong> Physical limits on steering angle, steering rate, and acceleration are directly encoded as inequality constraints in the QP. Road boundary constraints can be included as state constraints.</li>
         </ul>
 
+        
+        <figure>
+          <img src="images/mpc-autonomous-driving/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/mpc-autonomous-driving/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>Complete MPC formulation for autonomous vehicle trajectory tracking with kinematic bicycle model.</li>
@@ -2051,6 +2096,16 @@ const PAPERS = [
         <p>Two Cardioid CBFs are defined: h1(x) (zero contour) and h2(x) = h1(x) - c (positive contour, c > 0). The positive contour provides extra clearance during the approach phase, steering the Slider to a <strong>deadlock point</strong> near the docking port. When the Slider's configuration satisfies switching conditions (proximity, heading alignment, lateral alignment), the CBF switches from h2 to h1, expanding the safe zone to include the docking port and initiating contact.</p>
         <p>Key deadlock analysis: Two deadlock points exist on the r_x axis where the CBF filter returns u* = 0 despite u_nom != 0. One is asymptotically stable (near the docking port) and one is unstable (diametrically opposite). The stable deadlock point serves as the natural waiting position before docking contact.</p>
 
+        
+        <figure>
+          <img src="images/switched-cbf-docking/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/switched-cbf-docking/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>First <strong>experimental validation</strong> of a CBF-based autonomous docking strategy on a hardware-in-the-loop planar floating platform</li>
@@ -2127,6 +2182,61 @@ const PAPERS = [
         </ul>
         <p>두 개의 심장형 CBF가 정의됩니다: h1(x)(영 등고선)과 h2(x) = h1(x) - c(양 등고선, c > 0). 양 등고선은 접근 단계에서 추가 이격을 제공하여 Slider를 도킹 포트 근처의 <strong>교착점</strong>으로 유도합니다. Slider의 구성이 전환 조건(근접도, 방향 정렬, 측면 정렬)을 만족하면 CBF가 h2에서 h1로 전환되어 안전 영역을 확장하고 도킹 접촉을 시작합니다.</p>
 
+        
+        <figure>
+          <img src="images/sensor-failure-simulation/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/sensor-failure-simulation/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        
+        <figure>
+          <img src="images/frenet-trajectory/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        
+        <figure>
+          <img src="images/sampling-motion-planning/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/sampling-motion-planning/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        
+        <figure>
+          <img src="images/urban-path-planning/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/urban-path-planning/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        
+        <figure>
+          <img src="images/mpc-autonomous-driving/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/mpc-autonomous-driving/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        
+        <figure>
+          <img src="images/switched-cbf-docking/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/switched-cbf-docking/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>하드웨어 인 더 루프 평면 부유 플랫폼에서의 CBF 기반 자율 도킹 전략의 최초 <strong>실험적 검증</strong></li>
@@ -2220,6 +2330,16 @@ const PAPERS = [
         </ul>
         <p>The <strong>k-stabilization</strong> concept bounds shield deviation: after a property violation, the shield may deviate for at most k consecutive steps. A second violation during recovery triggers fail-safe mode (correctness only, no minimality).</p>
 
+        
+        <figure>
+          <img src="images/shield-synthesis/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/shield-synthesis/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>First formal framework for <strong>shield synthesis for reactive hardware systems</strong> with instantaneous correction requirement</li>
@@ -2299,6 +2419,16 @@ const PAPERS = [
         </ul>
         <p><strong>k-안정화</strong> 개념은 실드 편차를 제한합니다: 속성 위반 후 실드는 최대 k 연속 스텝 동안만 편차를 보일 수 있습니다.</p>
 
+        
+        <figure>
+          <img src="images/shield-synthesis/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/shield-synthesis/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>즉각적 수정 요구가 있는 <strong>반응형 하드웨어 시스템용 실드 합성</strong>의 최초 공식 프레임워크</li>
@@ -2389,6 +2519,11 @@ const PAPERS = [
           <li><strong>Nixtla-CP:</strong> Cross-validation-based conformal wrapper from statsforecast library</li>
         </ul>
 
+        
+        <figure>
+          <img src="images/conformal-prediction-timeseries/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>Comprehensive benchmarking of 7 CP methods + 1 baseline on a common large-scale real-world dataset</li>
@@ -2460,6 +2595,11 @@ const PAPERS = [
         <h2>아키텍처 / 방법론</h2>
         <p>AutoARIMA를 기본 예측기로, H=12개월 수평선으로 7개 방법과 파라메트릭 기준선을 벤치마킹합니다: MSCP, EnbPI, SPCI, Global-CP, ACI, AcMCP, Parametric-PI, Nixtla-CP.</p>
 
+        
+        <figure>
+          <img src="images/conformal-prediction-timeseries/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>공통 대규모 실세계 데이터셋에서 7개 CP 방법 + 1개 기준선의 포괄적 벤치마킹</li>
@@ -2546,6 +2686,11 @@ const PAPERS = [
           <li><strong>Simplified Architecture:</strong> Combines the H3 SSM block with the Transformer's MLP block into a single homogeneous Mamba block (Conv -> SSM -> gated output), eliminating the need for separate attention and MLP layers.</li>
         </ul>
 
+        
+        <figure>
+          <img src="images/mamba/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>First SSM to achieve <strong>Transformer-quality language modeling</strong> — Mamba-3B matches Pythia-7B on downstream tasks</li>
@@ -2621,6 +2766,11 @@ const PAPERS = [
           <li><strong>단순화된 아키텍처:</strong> H3 SSM 블록과 트랜스포머의 MLP 블록을 단일 균질 Mamba 블록으로 결합.</li>
         </ul>
 
+        
+        <figure>
+          <img src="images/mamba/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li><strong>트랜스포머 수준 언어 모델링</strong>을 달성한 최초의 SSM — Mamba-3B가 다운스트림 작업에서 Pythia-7B에 부합</li>
@@ -2705,6 +2855,11 @@ const PAPERS = [
         </ul>
         <p>The CCM effective Lagrangian (Eq. 5) contains integrals I1, I2 that diverge at a_cr because the mode becomes non-normalizable — signaling the breakdown of the effective model and the presence of the spectral wall.</p>
 
+        
+        <figure>
+          <img src="images/soliton-spectral-walls/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>Discovery of <strong>spectral walls</strong> as a universal phenomenon surrounding solitons with internal modes</li>
@@ -2770,6 +2925,11 @@ const PAPERS = [
         <h2>아키텍처 / 방법론</h2>
         <p>불순물 sigma = alpha/cosh^2(x)을 가진 BPS-불순물 phi^4 모델은 모듈리 공간에서 위치 a로 매개변수화된 정적 BPS 안티킹크 해 1매개변수 족을 허용합니다. alpha = 0.3(모드 항상 존재)과 alpha = 3.0(임계 분리 a_cr = 1.68에서 모드가 연속체 진입) 두 경우를 연구합니다.</p>
 
+        
+        <figure>
+          <img src="images/soliton-spectral-walls/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>내부 모드를 가진 솔리톤을 둘러싸는 보편적 현상으로서의 <strong>스펙트럼 벽</strong> 발견</li>
@@ -2844,6 +3004,16 @@ const PAPERS = [
         <h2>Architecture / Methodology</h2>
         <p>Fisher information matrix analysis with: tree-level SPT for power spectrum and bispectrum in redshift space with Gaussian FoG damping; Eulerian non-linear and non-local bias model (b1, b2, b_s2); 14 redshift bins from z=0.7 to z=2.0; three cosmological models (LCDM, wCDM, w0waCDM); cross-covariance C_PB between P and B computed for the first time with angular binning of triangle orientations; Planck priors from MCMC chains. Key advance: generalized cross-covariance formula (Eq. 42) accounting for triangle orientation binning relative to the line of sight.</p>
 
+        
+        <figure>
+          <img src="images/cosmo-bispectrum/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/cosmo-bispectrum/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>First derivation of the <strong>P-B cross-covariance with angular binning</strong> of triangle orientations (Eq. 42)</li>
@@ -2911,6 +3081,16 @@ const PAPERS = [
         <h2>아키텍처 / 방법론</h2>
         <p>트리 수준 SPT의 적색편이 공간 파워 스펙트럼 및 바이스펙트럼, 오일러 비선형 비국소 편향 모델, z=0.7-2.0의 14개 적색편이 빈, 세 우주론적 모델(LCDM, wCDM, w0waCDM)에 대한 Fisher 정보 행렬 분석. 삼각형 방향의 각도 비닝을 고려한 P-B 교차 공분산의 최초 도출(Eq. 42)이 핵심 진전입니다.</p>
 
+        
+        <figure>
+          <img src="images/cosmo-bispectrum/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/cosmo-bispectrum/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>삼각형 방향의 <strong>각도 비닝을 포함한 P-B 교차 공분산</strong>의 최초 도출</li>
@@ -2992,6 +3172,16 @@ const PAPERS = [
         </ul>
         <p>Training loss combines Feynman-Kac regression (global path consistency), local one-step consistency, and a Kantorovich dual boundary loss. Generation proceeds by integrating the time-reversed controlled diffusion with the learned grad(W).</p>
 
+        
+        <figure>
+          <img src="images/optimal-transport-hjb/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/optimal-transport-hjb/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>Forward-backward HJB duality theorem resolving the circular dependency in generative optimal control</li>
@@ -3056,6 +3246,16 @@ const PAPERS = [
           <li><strong>Feynman-Kac 추정:</strong> Cole-Hopf 변환으로 HJB를 선형화, Z를 순방향 궤적 위의 경로 적분으로 계산</li>
         </ul>
 
+        
+        <figure>
+          <img src="images/optimal-transport-hjb/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/optimal-transport-hjb/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>생성적 최적 제어의 순환 의존성을 해결하는 순방향-역방향 HJB 이중성 정리</li>
@@ -3132,6 +3332,16 @@ const PAPERS = [
           <li><strong>Architecture:</strong> MLP for N=3; Point-Edge Transformer (PET) for N=10, with permutation equivariance.</li>
         </ul>
 
+        
+        <figure>
+          <img src="images/generative-phase-space/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/generative-phase-space/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>First generative framework with <strong>exact energy-momentum conservation by construction</strong> at every sampling step</li>
@@ -3204,6 +3414,16 @@ const PAPERS = [
           <li><strong>데이터 증강:</strong> P-to-Q 맵이 부스트 b와 재스케일링 x 선택을 요구. 다양한 전략의 성능 절충 탐색.</li>
         </ul>
 
+        
+        <figure>
+          <img src="images/generative-phase-space/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/generative-phase-space/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>모든 샘플링 단계에서 <strong>구성에 의한 정확한 에너지-운동량 보존</strong>을 가진 최초의 생성 프레임워크</li>
@@ -3288,6 +3508,16 @@ const PAPERS = [
         </ul>
         <p>The paper explicitly separates the paradigm from specific algorithmic families: diffusion models, neural ODEs, flow matching, and score models all qualify as flow learners only when used as transport models over solution distributions.</p>
 
+        
+        <figure>
+          <img src="images/flow-learners-pde/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/flow-learners-pde/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li>Articulates the <strong>abstraction mismatch</strong> in learned PDE solving: state regression vs. transport law</li>
@@ -3357,6 +3587,16 @@ const PAPERS = [
         <h2>아키텍처 / 방법론</h2>
         <p><strong>흐름 학습자</strong>를 주요 학습 객체가 수송 벡터 장인 모델로 정의합니다: z_dot = v_theta(z_tau, tau, c). PDE 진화와 공유하는 4가지 구조적 원시 요소를 통해 "물리-대-물리" 정렬을 정의합니다: 벡터 장, 적분, 제약된 상태 공간, 측도의 수송.</p>
 
+        
+        <figure>
+          <img src="images/flow-learners-pde/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/flow-learners-pde/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>학습된 PDE 솔빙의 <strong>추상화 불일치</strong> 명확화: 상태 회귀 vs. 수송 법칙</li>
@@ -3398,5 +3638,5705 @@ const PAPERS = [
         <p>학습된 PDE 솔빙의 근본적 문제를 정확히 식별하는 잘 논증된 입장 논문입니다: 지배적 패러다임이 과학적 객체(허용 가능한 미래에 대한 수송)가 아닌 편리한 대리(상태 회귀)를 최적화합니다. 이 논문의 가치는 미래를 예측하는 데가 아니라 <strong>질문을 선명하게 하는 데</strong> 있습니다.</p>
       `
     }
-  }
+  },
+// ====================================================================
+  // 1. FBAO Backdoor Attack
+  // ====================================================================
+  {
+    id: "fbao-backdoor",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Wang, Q., Shen, H., Wang, L., et al.",
+    venue: "Applied Intelligence 2026",
+    image: "images/fbao-backdoor/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "Backdoor Attack", "Object Detection", "Frequency"],
+    en: {
+      title: "FBAO: Backdoor Attack Against Object Detection via Frequency Noise Injection",
+      summary: "Proposes a frequency-domain backdoor attack on object detectors that injects imperceptible high-frequency triggers via DCT, achieving high attack success while evading spatial-domain defenses.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper introduces <strong>FBAO</strong>, a novel backdoor attack paradigm that operates in the frequency domain rather than the spatial domain, injecting imperceptible high-frequency noise patterns via Discrete Cosine Transform (DCT) to compromise object detection models while evading existing spatial-domain defenses.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can backdoor attacks on object detection models be made more stealthy and defense-resistant by embedding triggers in the frequency domain rather than the spatial domain, and how should such frequency-based triggers be designed to maximize attack effectiveness while minimizing visual detectability?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Backdoor attacks on deep neural networks have been extensively studied for image classification, but object detection presents unique challenges: the model must simultaneously localize and classify multiple objects, and attackers may want to suppress detections, create phantom objects, or alter class labels. Most existing backdoor attacks embed spatial-domain triggers (patches, blending patterns) that are detectable by visual inspection or spectral analysis.</p>
+        <p>Frequency-domain analysis has been used defensively to detect backdoor triggers, since spatial patches often create distinctive frequency signatures. FBAO turns this insight on its head: by designing triggers that are native to the frequency domain, the attack produces perturbations that are naturally distributed across the spatial image, making them imperceptible to both human observers and spatial-domain defenses. The DCT basis provides a principled framework for controlling which frequency bands carry the trigger signal.</p>
+        <p>Object detection models like YOLO and Faster R-CNN are deployed in safety-critical applications (autonomous driving, surveillance), making the security implications of such stealthy attacks particularly concerning.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <figure>
+          <img src="images/fbao-backdoor/fig1.png" alt="FBAO attack framework overview">
+          <figcaption>Figure 1: FBAO attack pipeline — frequency-domain trigger injection via DCT.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>DCT-based trigger generation:</strong> Input images are transformed to the frequency domain via DCT. Trigger patterns are injected into selected high-frequency coefficients, then inverse-DCT reconstructs the poisoned image. The high-frequency injection ensures minimal visual distortion.</li>
+          <li><strong>Frequency band selection:</strong> The attack strategically targets specific frequency bands that are less perceptible to human vision but effectively learned by the neural network, exploiting the gap between human and machine perception.</li>
+          <li><strong>Poisoning strategy:</strong> A subset of training images is poisoned with frequency triggers and relabeled (e.g., target class substitution or detection suppression). The model learns to associate the frequency pattern with the attacker's desired output.</li>
+          <li><strong>Attack modes:</strong> Supports multiple attack objectives including targeted misclassification (changing detected class), detection suppression (making objects invisible), and phantom generation (creating false detections).</li>
+          <li><strong>Trigger optimization:</strong> The trigger magnitude and frequency band selection are optimized to balance attack success rate against visual imperceptibility, measured via PSNR and SSIM between clean and poisoned images.</li>
+        </ul>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Frequency-domain attack paradigm:</strong> First backdoor attack on object detection that operates entirely in the frequency domain via DCT, establishing a new attack surface.</li>
+          <li><strong>Defense evasion:</strong> Demonstrates that frequency-native triggers bypass spatial-domain defenses (Neural Cleanse, STRIP, Activation Clustering) that assume spatially localized triggers.</li>
+          <li><strong>Multi-mode attack:</strong> Supports targeted misclassification, detection suppression, and phantom generation within a unified framework.</li>
+          <li><strong>Imperceptibility analysis:</strong> Provides quantitative evaluation showing high PSNR/SSIM scores between clean and poisoned images, confirming visual imperceptibility.</li>
+          <li><strong>Cross-architecture effectiveness:</strong> Validates the attack across multiple object detection architectures (YOLO variants, Faster R-CNN) and datasets.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>Target models:</strong> YOLOv3, YOLOv5, Faster R-CNN with various backbone networks (ResNet-50, Darknet-53).</li>
+          <li><strong>Datasets:</strong> PASCAL VOC and MS-COCO for training and evaluation of object detection models.</li>
+          <li><strong>Poisoning rate:</strong> Experiments with varying poisoning ratios (typically 5-10% of training data) to study the trade-off between attack success and stealth.</li>
+          <li><strong>DCT parameters:</strong> 8x8 block DCT following JPEG conventions; trigger energy concentrated in mid-to-high frequency coefficients.</li>
+          <li><strong>Evaluation metrics:</strong> Attack Success Rate (ASR), Clean Data Accuracy (CDA), mAP on clean data, PSNR and SSIM for imperceptibility.</li>
+          <li><strong>Defense evaluation:</strong> Tested against Neural Cleanse, STRIP, Spectral Signatures, Activation Clustering, and Fine-Pruning.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Model</th><th>Attack Mode</th><th>ASR (%)</th><th>Clean mAP (%)</th><th>PSNR (dB)</th><th>Defense Bypass</th></tr></thead>
+          <tbody>
+            <tr><td>YOLOv5</td><td>Misclassification</td><td>>90</td><td>Minimal drop</td><td>>38</td><td>All tested</td></tr>
+            <tr><td>YOLOv3</td><td>Suppression</td><td>>85</td><td>Minimal drop</td><td>>37</td><td>All tested</td></tr>
+            <tr><td>Faster R-CNN</td><td>Misclassification</td><td>>88</td><td>Minimal drop</td><td>>38</td><td>All tested</td></tr>
+            <tr><td>YOLOv5</td><td>Phantom</td><td>>82</td><td>Minimal drop</td><td>>37</td><td>All tested</td></tr>
+          </tbody>
+        </table>
+        <p>FBAO achieves consistently high attack success rates across all target models and attack modes while maintaining clean data performance. The PSNR values above 37 dB indicate that poisoned images are visually indistinguishable from clean ones. Critically, all tested spatial-domain defenses fail to detect the frequency triggers, with anomaly index scores remaining below detection thresholds.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Novel frequency-domain attack paradigm that fundamentally challenges the assumption underlying most existing defenses.</li>
+          <li>High imperceptibility with PSNR consistently above 37 dB, making poisoned samples indistinguishable from clean ones.</li>
+          <li>Comprehensive evaluation across multiple architectures, datasets, and attack modes.</li>
+          <li>Successfully evades five different defense mechanisms, highlighting a significant blind spot in current defenses.</li>
+          <li>Practical relevance for safety-critical object detection deployments in autonomous driving and surveillance.</li>
+          <li>Clean and well-motivated methodology with clear connections to signal processing fundamentals.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Defense evasion is demonstrated against spatial-domain defenses; frequency-aware defenses (e.g., analyzing DCT coefficients directly) could potentially detect these triggers.</li>
+          <li>JPEG compression, which operates in DCT domain, could inadvertently remove or distort the trigger at inference time.</li>
+          <li>The attack assumes white-box access to the training pipeline; transferability to black-box settings is unclear.</li>
+          <li>Limited analysis of how different DCT block sizes and frequency band choices affect robustness across varying image resolutions.</li>
+          <li>No discussion of adaptive defenses that could be specifically designed to counter frequency-domain attacks.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Could a simple defense of applying random JPEG compression at inference time neutralize frequency-domain triggers without significantly degrading detection performance?</li>
+          <li>How does the attack transfer across different image preprocessing pipelines that may apply various frequency-domain transformations?</li>
+          <li>Can the frequency trigger design be made adaptive to survive common image augmentations during training (crop, resize, color jitter)?</li>
+          <li>What would a frequency-aware version of Neural Cleanse look like, and would it be effective against FBAO?</li>
+          <li>Could this attack paradigm be extended to other modalities such as LiDAR point clouds or audio, where frequency representations are also natural?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>FBAO represents an important evolution in backdoor attack methodology by moving to the frequency domain, exposing a fundamental blind spot in current defense mechanisms that assume spatial-domain triggers. The paper serves as both a new attack tool and a wake-up call for the defense community.</p>
+        <p>For practitioners deploying object detectors in safety-critical settings, this work underscores the need for <strong>frequency-aware defense mechanisms</strong> and input preprocessing pipelines that can detect or neutralize spectral anomalies. The broader lesson is that as defenses mature in one domain, attacks will migrate to alternative representations, necessitating multi-domain defense strategies.</p>
+      `
+    },
+    ko: {
+      title: "FBAO: 주파수 노이즈 주입을 통한 객체 탐지 백도어 공격",
+      summary: "DCT를 통해 감지 불가능한 고주파 트리거를 주입하여 객체 탐지 모델을 공격하는 주파수 도메인 백도어 공격을 제안하며, 공간 도메인 방어를 회피합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 공간 도메인이 아닌 <strong>주파수 도메인</strong>에서 작동하는 새로운 백도어 공격 패러다임 FBAO를 도입하여, 이산 코사인 변환(DCT)을 통해 감지 불가능한 고주파 노이즈 패턴을 주입함으로써 기존 공간 도메인 방어를 회피하면서 객체 탐지 모델을 손상시킵니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>공간 도메인 대신 주파수 도메인에 트리거를 임베딩함으로써 객체 탐지 모델에 대한 백도어 공격을 더 은밀하고 방어 저항적으로 만들 수 있는가, 그리고 시각적 감지 가능성을 최소화하면서 공격 효과를 극대화하려면 주파수 기반 트리거를 어떻게 설계해야 하는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>심층 신경망에 대한 백도어 공격은 이미지 분류에서 광범위하게 연구되었지만, 객체 탐지는 고유한 도전을 제시합니다: 모델이 여러 객체를 동시에 위치 파악하고 분류해야 하며, 공격자는 탐지 억제, 가짜 객체 생성, 또는 클래스 레이블 변경을 원할 수 있습니다. 기존 대부분의 백도어 공격은 시각적 검사나 스펙트럼 분석으로 감지 가능한 공간 도메인 트리거(패치, 블렌딩 패턴)를 임베딩합니다.</p>
+        <p>주파수 도메인 분석은 백도어 트리거 감지에 방어적으로 사용되어 왔는데, 공간 패치가 종종 특징적인 주파수 서명을 생성하기 때문입니다. FBAO는 이 통찰을 역이용합니다: 주파수 도메인에 고유한 트리거를 설계함으로써 공간 이미지 전체에 자연스럽게 분산되는 섭동을 생성하여 인간 관찰자와 공간 도메인 방어 모두에 감지 불가능하게 만듭니다.</p>
+        <p>YOLO와 Faster R-CNN 같은 객체 탐지 모델이 자율주행, 감시 등 안전 중요 애플리케이션에 배포되므로, 이러한 은밀한 공격의 보안 함의는 특히 우려됩니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <figure>
+          <img src="images/fbao-backdoor/fig1.png" alt="FBAO 공격 프레임워크 개요">
+          <figcaption>Figure 1: DCT를 통한 주파수 도메인 트리거 주입 — FBAO 공격 파이프라인.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>DCT 기반 트리거 생성:</strong> 입력 이미지를 DCT로 주파수 도메인으로 변환하고, 선택된 고주파 계수에 트리거 패턴을 주입한 후, 역 DCT로 오염된 이미지를 재구성합니다.</li>
+          <li><strong>주파수 대역 선택:</strong> 인간 시각에는 덜 인식되지만 신경망이 효과적으로 학습하는 특정 주파수 대역을 전략적으로 대상으로 합니다.</li>
+          <li><strong>오염 전략:</strong> 훈련 이미지의 일부를 주파수 트리거로 오염시키고 재라벨링하여 모델이 주파수 패턴을 공격자의 원하는 출력과 연관하도록 학습시킵니다.</li>
+          <li><strong>공격 모드:</strong> 표적 오분류, 탐지 억제, 가짜 탐지 생성을 포함한 여러 공격 목표를 지원합니다.</li>
+          <li><strong>트리거 최적화:</strong> PSNR과 SSIM으로 측정되는 시각적 감지 불가능성과 공격 성공률 간의 균형을 최적화합니다.</li>
+        </ul>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>주파수 도메인 공격 패러다임:</strong> DCT를 통해 주파수 도메인에서 작동하는 최초의 객체 탐지 백도어 공격으로 새로운 공격 표면을 확립.</li>
+          <li><strong>방어 회피:</strong> 공간적으로 국소화된 트리거를 가정하는 공간 도메인 방어(Neural Cleanse, STRIP 등)를 우회함을 실증.</li>
+          <li><strong>다중 모드 공격:</strong> 표적 오분류, 탐지 억제, 가짜 생성을 통합 프레임워크 내에서 지원.</li>
+          <li><strong>교차 아키텍처 효과:</strong> 여러 객체 탐지 아키텍처와 데이터셋에서 공격을 검증.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>대상 모델:</strong> YOLOv3, YOLOv5, Faster R-CNN (ResNet-50, Darknet-53 백본).</li>
+          <li><strong>데이터셋:</strong> PASCAL VOC 및 MS-COCO.</li>
+          <li><strong>오염율:</strong> 일반적으로 훈련 데이터의 5-10%로 공격 성공과 은밀성 간 트레이드오프 연구.</li>
+          <li><strong>DCT 매개변수:</strong> JPEG 관례를 따르는 8x8 블록 DCT; 중-고주파 계수에 트리거 에너지 집중.</li>
+          <li><strong>평가 지표:</strong> 공격 성공률(ASR), 정상 데이터 정확도(CDA), mAP, PSNR, SSIM.</li>
+        </ul>
+
+        <h2>결과</h2>
+        <table>
+          <thead><tr><th>모델</th><th>공격 모드</th><th>ASR (%)</th><th>정상 mAP</th><th>PSNR (dB)</th><th>방어 우회</th></tr></thead>
+          <tbody>
+            <tr><td>YOLOv5</td><td>오분류</td><td>>90</td><td>최소 하락</td><td>>38</td><td>전체 통과</td></tr>
+            <tr><td>YOLOv3</td><td>억제</td><td>>85</td><td>최소 하락</td><td>>37</td><td>전체 통과</td></tr>
+            <tr><td>Faster R-CNN</td><td>오분류</td><td>>88</td><td>최소 하락</td><td>>38</td><td>전체 통과</td></tr>
+            <tr><td>YOLOv5</td><td>가짜 생성</td><td>>82</td><td>최소 하락</td><td>>37</td><td>전체 통과</td></tr>
+          </tbody>
+        </table>
+        <p>FBAO는 모든 대상 모델과 공격 모드에서 일관되게 높은 공격 성공률을 달성하면서 정상 데이터 성능을 유지합니다. 37 dB 이상의 PSNR 값은 오염된 이미지가 정상 이미지와 시각적으로 구별 불가능함을 나타냅니다. 테스트된 모든 공간 도메인 방어가 주파수 트리거를 감지하지 못합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>대부분의 기존 방어의 기본 가정에 근본적으로 도전하는 새로운 주파수 도메인 공격 패러다임.</li>
+          <li>37 dB 이상의 PSNR로 높은 감지 불가능성, 오염 샘플이 정상과 구별 불가.</li>
+          <li>여러 아키텍처, 데이터셋, 공격 모드에 걸친 포괄적 평가.</li>
+          <li>5개의 다른 방어 메커니즘을 성공적으로 회피하여 현재 방어의 사각지대를 부각.</li>
+          <li>신호 처리 기초와의 명확한 연결로 깔끔하고 잘 동기 부여된 방법론.</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>공간 도메인 방어에 대한 회피만 실증; DCT 계수를 직접 분석하는 주파수 인식 방어가 트리거를 감지할 가능성.</li>
+          <li>DCT 도메인에서 작동하는 JPEG 압축이 추론 시 트리거를 의도치 않게 제거하거나 왜곡할 수 있음.</li>
+          <li>훈련 파이프라인에 대한 화이트박스 접근을 가정; 블랙박스 설정으로의 전이 가능성 불명확.</li>
+          <li>주파수 도메인 공격에 특화된 적응형 방어에 대한 논의 부재.</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>추론 시 랜덤 JPEG 압축을 적용하는 간단한 방어가 탐지 성능을 크게 저하시키지 않으면서 주파수 도메인 트리거를 무력화할 수 있을까?</li>
+          <li>다양한 주파수 도메인 변환을 적용하는 다른 이미지 전처리 파이프라인에서 공격이 어떻게 전이되는가?</li>
+          <li>Neural Cleanse의 주파수 인식 버전은 어떤 형태이며, FBAO에 효과적일까?</li>
+          <li>이 공격 패러다임이 LiDAR 포인트 클라우드나 오디오 같은 주파수 표현이 자연스러운 다른 모달리티로 확장될 수 있을까?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>FBAO는 주파수 도메인으로 이동함으로써 백도어 공격 방법론의 중요한 진화를 나타내며, 공간 도메인 트리거를 가정하는 현재 방어 메커니즘의 근본적 사각지대를 노출합니다.</p>
+        <p>안전 중요 환경에서 객체 탐지기를 배포하는 실무자에게 이 연구는 <strong>주파수 인식 방어 메커니즘</strong>과 스펙트럼 이상을 감지하거나 무력화할 수 있는 입력 전처리 파이프라인의 필요성을 강조합니다. 방어가 한 도메인에서 성숙함에 따라 공격이 대안적 표현으로 이동할 것이므로, 다중 도메인 방어 전략이 필요합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 2. Backdoor Detection via Active Paths
+  // ====================================================================
+  {
+    id: "backdoor-active-paths",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Høyheim, E., Eckhoff, M. W., Grov, G., et al.",
+    venue: "MILCOM 2024",
+    image: "images/backdoor-active-paths/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "Backdoor Detection", "Neural Network", "Intrusion Detection"],
+    en: {
+      title: "Detecting and Eliminating Neural Network Backdoors Through Active Paths with Application to Intrusion Detection",
+      summary: "Proposes an active-path-based method for detecting and eliminating backdoor neurons in neural networks, validated on intrusion detection systems in military network environments.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper introduces an <strong>active-path analysis</strong> technique that identifies backdoor-compromised neurons by tracing which network pathways are disproportionately activated by triggered inputs versus clean inputs, enabling targeted neuron pruning to eliminate backdoors without significant accuracy loss on clean data.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can we detect and eliminate neural network backdoors by analyzing the differential activation patterns (active paths) between clean and triggered inputs, and does this approach generalize to intrusion detection systems where backdoor attacks pose critical security risks?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Neural network backdoor attacks are a growing concern in security-critical applications. In military and defense contexts, intrusion detection systems (IDS) based on deep learning are increasingly deployed to monitor network traffic. If an adversary can implant a backdoor during training, they could cause the IDS to misclassify malicious traffic as benign when the trigger is present, creating a catastrophic security vulnerability.</p>
+        <p>Existing backdoor detection methods fall into several categories: input-level inspection (examining inputs for trigger patterns), model-level analysis (examining weights and activations), and output-level monitoring (detecting anomalous predictions). However, many methods are computationally expensive, require access to clean reference data, or make specific assumptions about trigger types that may not hold in practice.</p>
+        <p>The active-path approach offers a principled alternative: by tracing which neurons and connections are activated along the forward pass for triggered versus clean inputs, one can identify neurons that are uniquely or disproportionately active for triggered inputs. These neurons likely encode the backdoor behavior and can be pruned or fine-tuned to eliminate the backdoor.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <figure>
+          <img src="images/backdoor-active-paths/fig1.png" alt="Active path analysis methodology">
+          <figcaption>Figure 1: Active path analysis for backdoor detection and elimination.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Active path extraction:</strong> For each input, the method traces the set of neurons with non-zero activations through the network layers, forming a path signature. ReLU-based networks naturally produce sparse activation patterns where many neurons are inactive.</li>
+          <li><strong>Path divergence analysis:</strong> The method compares active path distributions between clean inputs and suspected triggered inputs. Neurons that appear in active paths for triggered inputs but rarely for clean inputs are flagged as backdoor candidates.</li>
+          <li><strong>Backdoor neuron identification:</strong> Statistical tests quantify the divergence in activation frequency per neuron across clean and triggered datasets. Neurons exceeding a divergence threshold are identified as backdoor-compromised.</li>
+          <li><strong>Targeted pruning:</strong> Identified backdoor neurons are pruned (weights zeroed or removed) while preserving the rest of the network, minimizing impact on clean-data performance.</li>
+          <li><strong>Fine-tuning recovery:</strong> After pruning, optional fine-tuning on clean data recovers any residual accuracy loss from the pruning step.</li>
+        </ul>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Active path framework:</strong> Formalizes the notion of active paths as a tool for backdoor forensics, providing a neuron-level diagnostic that is model-agnostic for ReLU-based architectures.</li>
+          <li><strong>Detection + elimination pipeline:</strong> Combines detection and mitigation in a single framework rather than treating them as separate problems.</li>
+          <li><strong>IDS application:</strong> First application of active-path backdoor analysis to intrusion detection systems, addressing a critical gap in military network security.</li>
+          <li><strong>Low clean-data impact:</strong> Demonstrates that targeted pruning of backdoor neurons preserves the vast majority of clean-data accuracy, unlike full network retraining.</li>
+          <li><strong>Empirical validation:</strong> Evaluates against multiple backdoor attack types and poisoning rates on both standard benchmarks and IDS-specific datasets.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>Network architectures:</strong> Fully-connected and convolutional networks with ReLU activations for IDS classification tasks.</li>
+          <li><strong>IDS datasets:</strong> Network traffic datasets representative of military communication environments, with both normal and attack traffic classes.</li>
+          <li><strong>Backdoor attacks tested:</strong> BadNets-style patch triggers, blended triggers, and label-flipping attacks at various poisoning rates (1-10%).</li>
+          <li><strong>Path extraction:</strong> Forward pass recording of neuron activation states (active/inactive) for each input, aggregated into per-neuron activation frequency statistics.</li>
+          <li><strong>Divergence threshold:</strong> Empirically tuned to balance detection sensitivity against false positives; the paper provides guidelines for threshold selection.</li>
+          <li><strong>Hardware:</strong> Standard GPU-based training and evaluation setup.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Attack Type</th><th>Poison Rate</th><th>Detection Rate</th><th>ASR After Pruning</th><th>Clean Acc. Retention</th></tr></thead>
+          <tbody>
+            <tr><td>BadNets (patch)</td><td>5%</td><td>>95%</td><td><5%</td><td>>97%</td></tr>
+            <tr><td>Blended trigger</td><td>5%</td><td>>90%</td><td><8%</td><td>>96%</td></tr>
+            <tr><td>Label-flip</td><td>10%</td><td>>85%</td><td><10%</td><td>>95%</td></tr>
+            <tr><td>BadNets (IDS)</td><td>5%</td><td>>93%</td><td><6%</td><td>>96%</td></tr>
+          </tbody>
+        </table>
+        <p>Active path analysis successfully identifies and eliminates backdoors across all tested attack types, reducing attack success rates to single digits while retaining over 95% clean accuracy. Performance on IDS-specific datasets is comparable to standard benchmarks, confirming the approach generalizes to the intrusion detection domain. Detection is more challenging for blended triggers (which produce more distributed activation changes) and at lower poisoning rates.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Intuitive and principled approach grounded in network activation analysis, easy to understand and implement.</li>
+          <li>Combined detection and elimination in a unified pipeline reduces operational complexity.</li>
+          <li>Novel and timely application to military IDS, where backdoor attacks have particularly severe consequences.</li>
+          <li>Targeted pruning preserves clean-data accuracy far better than wholesale retraining or model rejection.</li>
+          <li>Works without requiring knowledge of the specific trigger pattern used by the attacker.</li>
+          <li>Applicable to any ReLU-based architecture without architectural modifications.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Relies on ReLU activation sparsity; applicability to networks using smooth activations (GELU, Swish, SiLU) is unclear.</li>
+          <li>Requires a set of suspected triggered inputs for path comparison, which may not always be available in practice.</li>
+          <li>Blended and distributed triggers that activate overlapping neuron sets with clean inputs are harder to detect.</li>
+          <li>Scalability to very large models (transformer-based IDS) with millions of neurons is not demonstrated.</li>
+          <li>The divergence threshold requires empirical tuning per deployment scenario, limiting plug-and-play applicability.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How would the active-path method perform against frequency-domain backdoor attacks (like FBAO) where triggers do not produce localized spatial activation changes?</li>
+          <li>Could adversaries design triggers that deliberately distribute activation changes across many neurons to mimic clean-input patterns and evade active-path detection?</li>
+          <li>Is there a theoretical bound on the minimum poisoning rate needed for active-path analysis to reliably detect a backdoor?</li>
+          <li>How could this approach be adapted for transformer architectures with attention mechanisms rather than ReLU activations?</li>
+          <li>Could active-path analysis be applied proactively during training to prevent backdoor formation rather than detecting it post-hoc?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper provides a practical and intuitive framework for backdoor detection and elimination that leverages the fundamental sparsity of ReLU network activations. Its application to intrusion detection systems fills an important gap in military cybersecurity research.</p>
+        <p>The active-path concept is compelling because it reduces the backdoor problem to a <strong>differential activation analysis</strong>, which is computationally tractable and interpretable. For practitioners defending deployed neural networks, this work offers a viable tool for post-deployment backdoor auditing, particularly in security-critical domains where model provenance cannot be fully trusted.</p>
+      `
+    },
+    ko: {
+      title: "활성 경로를 통한 신경망 백도어 탐지 및 제거: 침입 탐지 적용",
+      summary: "트리거 입력과 정상 입력 간의 차별적 활성화 패턴을 분석하는 활성 경로 기반 백도어 탐지 및 제거 방법을 제안하고, 군사 네트워크 침입 탐지 시스템에서 검증합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 트리거 입력에 의해 불균형적으로 활성화되는 네트워크 경로를 추적하여 백도어 손상 뉴런을 식별하는 <strong>활성 경로 분석</strong> 기법을 도입하며, 표적 뉴런 가지치기를 통해 정상 데이터 정확도 손실 없이 백도어를 제거합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>정상 입력과 트리거 입력 간의 차별적 활성화 패턴(활성 경로)을 분석하여 신경망 백도어를 탐지하고 제거할 수 있는가, 그리고 이 접근법이 백도어 공격이 심각한 보안 위험을 초래하는 침입 탐지 시스템에 일반화되는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>신경망 백도어 공격은 보안 중요 애플리케이션에서 증가하는 우려 사항입니다. 군사 및 방어 환경에서 딥러닝 기반 침입 탐지 시스템(IDS)이 네트워크 트래픽 모니터링에 점점 더 배포되고 있습니다. 적대자가 훈련 중 백도어를 삽입할 수 있다면, 트리거가 존재할 때 IDS가 악성 트래픽을 양성으로 오분류하게 하여 치명적 보안 취약점을 만들 수 있습니다.</p>
+        <p>기존 백도어 탐지 방법은 입력 수준 검사, 모델 수준 분석, 출력 수준 모니터링 등 여러 범주로 나뉩니다. 그러나 많은 방법이 계산 비용이 높거나, 정상 참조 데이터에 대한 접근이 필요하거나, 실제로 성립하지 않을 수 있는 트리거 유형에 대한 특정 가정을 합니다.</p>
+        <p>활성 경로 접근법은 원칙적 대안을 제공합니다: 트리거 입력 대 정상 입력에 대해 순전파 경로를 따라 어떤 뉴런과 연결이 활성화되는지 추적하여, 트리거 입력에 고유하게 활성화되는 뉴런을 식별하고 가지치기하여 백도어를 제거할 수 있습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <figure>
+          <img src="images/backdoor-active-paths/fig1.png" alt="활성 경로 분석 방법론">
+          <figcaption>Figure 1: 백도어 탐지 및 제거를 위한 활성 경로 분석.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>활성 경로 추출:</strong> 각 입력에 대해 네트워크 계층을 통해 비영 활성화를 가진 뉴런 집합을 추적하여 경로 서명을 형성합니다.</li>
+          <li><strong>경로 발산 분석:</strong> 정상 입력과 의심되는 트리거 입력 간의 활성 경로 분포를 비교하여 백도어 후보 뉴런을 표시합니다.</li>
+          <li><strong>백도어 뉴런 식별:</strong> 통계적 검정으로 정상 및 트리거 데이터셋 간 뉴런별 활성화 빈도 발산을 정량화합니다.</li>
+          <li><strong>표적 가지치기:</strong> 식별된 백도어 뉴런을 가지치기하면서 나머지 네트워크를 보존하여 정상 데이터 성능 영향을 최소화합니다.</li>
+          <li><strong>미세 조정 복구:</strong> 가지치기 후 정상 데이터에 대한 선택적 미세 조정으로 잔여 정확도 손실을 복구합니다.</li>
+        </ul>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>활성 경로 프레임워크:</strong> ReLU 기반 아키텍처에 모델 불가지론적인 뉴런 수준 진단 도구로서 활성 경로 개념을 공식화.</li>
+          <li><strong>탐지 + 제거 파이프라인:</strong> 탐지와 완화를 별개 문제가 아닌 단일 프레임워크에서 결합.</li>
+          <li><strong>IDS 적용:</strong> 군사 네트워크 보안의 중요한 격차를 해결하는 활성 경로 백도어 분석의 최초 IDS 적용.</li>
+          <li><strong>낮은 정상 데이터 영향:</strong> 전체 재훈련 대비 표적 가지치기가 정상 데이터 정확도의 대부분을 보존함을 실증.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>네트워크 아키텍처:</strong> IDS 분류 작업을 위한 ReLU 활성화 완전연결 및 합성곱 네트워크.</li>
+          <li><strong>IDS 데이터셋:</strong> 군사 통신 환경을 대표하는 네트워크 트래픽 데이터셋.</li>
+          <li><strong>테스트된 백도어 공격:</strong> BadNets 패치 트리거, 블렌딩 트리거, 레이블 플리핑 공격 (오염율 1-10%).</li>
+          <li><strong>경로 추출:</strong> 각 입력에 대한 뉴런 활성화 상태의 순전파 기록, 뉴런별 활성화 빈도 통계로 집계.</li>
+          <li><strong>발산 임계값:</strong> 탐지 민감도와 오탐 간 균형을 위해 경험적으로 조정.</li>
+        </ul>
+
+        <h2>결과</h2>
+        <table>
+          <thead><tr><th>공격 유형</th><th>오염율</th><th>탐지율</th><th>가지치기 후 ASR</th><th>정상 정확도 유지</th></tr></thead>
+          <tbody>
+            <tr><td>BadNets (패치)</td><td>5%</td><td>>95%</td><td><5%</td><td>>97%</td></tr>
+            <tr><td>블렌딩 트리거</td><td>5%</td><td>>90%</td><td><8%</td><td>>96%</td></tr>
+            <tr><td>레이블 플립</td><td>10%</td><td>>85%</td><td><10%</td><td>>95%</td></tr>
+            <tr><td>BadNets (IDS)</td><td>5%</td><td>>93%</td><td><6%</td><td>>96%</td></tr>
+          </tbody>
+        </table>
+        <p>활성 경로 분석은 모든 테스트된 공격 유형에서 백도어를 성공적으로 식별하고 제거하여, 공격 성공률을 한 자릿수로 줄이면서 95% 이상의 정상 정확도를 유지합니다. IDS 특화 데이터셋에서의 성능은 표준 벤치마크와 유사하여 침입 탐지 도메인으로의 일반화를 확인합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>네트워크 활성화 분석에 기반한 직관적이고 원칙적인 접근법으로 이해 및 구현 용이.</li>
+          <li>단일 파이프라인에서 탐지와 제거를 결합하여 운영 복잡성 감소.</li>
+          <li>백도어 공격이 특히 심각한 결과를 초래하는 군사 IDS에 대한 시의적절한 적용.</li>
+          <li>표적 가지치기가 전면 재훈련보다 정상 데이터 정확도를 훨씬 잘 보존.</li>
+          <li>공격자가 사용한 특정 트리거 패턴에 대한 지식 없이 작동.</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>ReLU 활성화 희소성에 의존; 매끄러운 활성화(GELU, Swish, SiLU)를 사용하는 네트워크에 대한 적용 가능성 불명확.</li>
+          <li>경로 비교를 위해 의심되는 트리거 입력 집합이 필요하며, 실제로 항상 이용 가능하지 않을 수 있음.</li>
+          <li>정상 입력과 겹치는 뉴런 집합을 활성화하는 블렌딩 및 분산 트리거 탐지가 더 어려움.</li>
+          <li>수백만 뉴런을 가진 매우 큰 모델(트랜스포머 기반 IDS)로의 확장성 미실증.</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>활성 경로 방법이 국소화된 공간 활성화 변화를 생성하지 않는 주파수 도메인 백도어 공격에 대해 어떻게 수행될까?</li>
+          <li>적대자가 활성 경로 탐지를 회피하기 위해 의도적으로 많은 뉴런에 활성화 변화를 분산시키는 트리거를 설계할 수 있을까?</li>
+          <li>활성 경로 분석이 백도어를 신뢰성 있게 탐지하는 데 필요한 최소 오염율에 대한 이론적 한계가 있을까?</li>
+          <li>이 접근법을 사후 탐지가 아닌 훈련 중 백도어 형성을 방지하기 위해 적극적으로 적용할 수 있을까?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>본 논문은 ReLU 네트워크 활성화의 근본적 희소성을 활용한 실용적이고 직관적인 백도어 탐지 및 제거 프레임워크를 제공합니다. 침입 탐지 시스템에 대한 적용은 군사 사이버 보안 연구의 중요한 격차를 메웁니다.</p>
+        <p>활성 경로 개념은 백도어 문제를 계산적으로 다루기 쉽고 해석 가능한 <strong>차별적 활성화 분석</strong>으로 환원하기 때문에 매력적입니다. 배포된 신경망을 방어하는 실무자에게 이 연구는 모델 출처를 완전히 신뢰할 수 없는 보안 중요 도메인에서 배포 후 백도어 감사를 위한 실행 가능한 도구를 제공합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 3. CBF via Reduced-Order Models
+  // ====================================================================
+  {
+    id: "cbf-reduced-order",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Cohen, M. H., Molnar, T. G., Ames, A. D.",
+    venue: "ARCRAS 2024",
+    image: "images/cbf-reduced-order/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "CBF", "Safety", "Reduced-Order Models"],
+    en: {
+      title: "Safety-Critical Control for Autonomous Systems: Control Barrier Functions via Reduced-Order Models",
+      summary: "A comprehensive review of how control barrier functions can be designed using reduced-order models to enable safety guarantees for complex high-dimensional autonomous systems.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper provides a <strong>unified tutorial and survey</strong> on bridging the gap between the elegant theory of Control Barrier Functions (CBFs) and the messy reality of high-dimensional autonomous systems, showing how reduced-order models serve as the critical abstraction layer that makes CBF-based safety guarantees tractable for real robots.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can Control Barrier Functions be systematically designed and applied to complex, high-dimensional autonomous systems by leveraging reduced-order models, and what are the theoretical guarantees, practical trade-offs, and open challenges of this approach?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Control Barrier Functions have emerged as a powerful tool for enforcing safety constraints in dynamical systems. The core idea is elegant: define a function h(x) whose zero-superlevel set represents the safe region, then enforce a constraint on the time derivative of h along system trajectories to ensure the system never leaves the safe set. This constraint can be formulated as a Quadratic Program (QP) that minimally modifies a nominal controller to guarantee safety.</p>
+        <p>However, applying CBFs to real autonomous systems faces a fundamental challenge: the full-order dynamics of robots, vehicles, and aircraft are high-dimensional, nonlinear, and often partially unknown. Designing a CBF directly for a 20+ state system is mathematically intractable. Reduced-order models (ROMs) — simplified representations that capture essential safety-relevant dynamics — offer a pathway to practical CBF design.</p>
+        <p>This paper systematically addresses the question of how to design CBFs on ROMs while maintaining safety guarantees for the full-order system, covering the theoretical foundations, model reduction strategies, robustness margins, and experimental validation across multiple robotic platforms.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <figure>
+          <img src="images/cbf-reduced-order/fig1.png" alt="CBF via reduced-order model framework">
+          <figcaption>Figure 1: CBF design pipeline via reduced-order models for full-order systems.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Full-order to reduced-order mapping:</strong> The high-dimensional system state is projected onto a lower-dimensional space that captures safety-relevant degrees of freedom (e.g., position and velocity of the robot's center of mass, ignoring internal joint dynamics).</li>
+          <li><strong>CBF design on ROM:</strong> A barrier function is designed for the reduced-order model where the dynamics are simple enough for analytical CBF construction. Standard approaches include distance-based barriers, velocity-constrained barriers, and input-output linearization-based barriers.</li>
+          <li><strong>Model mismatch quantification:</strong> The discrepancy between the ROM and the full-order system is bounded, typically as a disturbance term in the CBF derivative condition. This bound must account for unmodeled dynamics, parameter uncertainty, and ROM approximation error.</li>
+          <li><strong>Robust CBF formulation:</strong> The CBF constraint is tightened by the model mismatch bound, ensuring that safety holds for the full-order system despite the ROM approximation. This introduces conservatism but provides formal guarantees.</li>
+          <li><strong>QP-based safety filter:</strong> The robust CBF constraint is incorporated into a real-time QP that filters the nominal controller's commands, minimally modifying them to ensure safety.</li>
+        </ul>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Unified framework:</strong> Provides a systematic pipeline from full-order system to ROM to CBF design to robust safety filter, applicable across different robotic platforms.</li>
+          <li><strong>Model mismatch theory:</strong> Rigorously characterizes how ROM approximation error propagates through the CBF safety guarantee, with explicit robustness margins.</li>
+          <li><strong>Multi-platform validation:</strong> Demonstrates the approach on ground robots, legged locomotion, aerial vehicles, and automotive systems, showing broad applicability.</li>
+          <li><strong>Practical guidelines:</strong> Offers concrete guidance on ROM selection, CBF design choices, and parameter tuning for practitioners.</li>
+          <li><strong>Open problems:</strong> Identifies key challenges including learning-based ROM construction, adaptive robustness margins, and CBF composition for multi-constraint scenarios.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>Platforms covered:</strong> Segway-type robots (single integrator ROM), bipedal walkers (LIPM ROM), quadrotors (point-mass ROM), autonomous vehicles (bicycle model ROM).</li>
+          <li><strong>CBF solver:</strong> QP solved via OSQP or similar at rates of 100-1000 Hz depending on platform.</li>
+          <li><strong>Model mismatch bounds:</strong> Derived analytically for each platform using Lyapunov-based tracking error analysis or empirical worst-case estimation.</li>
+          <li><strong>Software:</strong> MATLAB for theoretical analysis, ROS/C++ for real-time implementation on hardware platforms.</li>
+          <li><strong>Safety metrics:</strong> Minimum distance to constraint boundary, CBF value trajectories, intervention frequency of the safety filter.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Platform</th><th>ROM Type</th><th>State Reduction</th><th>Safety Maintained</th><th>Conservatism</th></tr></thead>
+          <tbody>
+            <tr><td>Segway</td><td>Single integrator</td><td>4D to 2D</td><td>Yes</td><td>Low</td></tr>
+            <tr><td>Bipedal walker</td><td>LIPM</td><td>14D to 4D</td><td>Yes</td><td>Moderate</td></tr>
+            <tr><td>Quadrotor</td><td>Point mass</td><td>12D to 6D</td><td>Yes</td><td>Low-moderate</td></tr>
+            <tr><td>Autonomous vehicle</td><td>Bicycle model</td><td>6D to 4D</td><td>Yes</td><td>Low</td></tr>
+          </tbody>
+        </table>
+        <p>Across all platforms, the ROM-based CBF approach maintains safety for the full-order system. Conservatism (the degree to which the safety filter restricts performance beyond what is strictly necessary) varies with the ROM fidelity: higher-fidelity ROMs produce tighter bounds and less conservatism, but are more complex to design CBFs for. The key insight is that even simple ROMs with robust margins provide reliable safety guarantees when the model mismatch bounds are properly characterized.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Comprehensive and well-organized survey that serves as both a tutorial for newcomers and a reference for experts.</li>
+          <li>Rigorous theoretical treatment of model mismatch with explicit robustness margins and formal guarantees.</li>
+          <li>Multi-platform validation demonstrates that the framework is not tied to a single application domain.</li>
+          <li>Practical orientation with concrete guidelines for ROM selection and CBF parameter tuning.</li>
+          <li>Honest discussion of limitations and open problems, providing a research roadmap for the community.</li>
+          <li>Bridges the gap between CBF theory papers and hardware implementation papers effectively.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Robustness margins can be overly conservative when worst-case model mismatch bounds are loose, leading to unnecessary performance degradation.</li>
+          <li>ROM selection remains somewhat ad hoc and platform-specific; no principled automated ROM selection method is presented.</li>
+          <li>Does not deeply address learning-based approaches where the ROM or CBF is learned from data rather than derived analytically.</li>
+          <li>Multi-agent and compositional safety scenarios are acknowledged but not fully developed.</li>
+          <li>Computational aspects of real-time QP solving for high-rate control loops receive limited attention.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Could neural network-based ROMs provide better fidelity than hand-crafted models while still being amenable to CBF design?</li>
+          <li>How should robustness margins be adapted online as the system learns more about its dynamics during operation?</li>
+          <li>Is there a principled way to compose multiple ROM-based CBFs for systems with many simultaneous safety constraints?</li>
+          <li>What is the fundamental limit on state reduction ratio before safety guarantees become vacuously conservative?</li>
+          <li>Could the ROM-based CBF framework be combined with reachability analysis to provide stronger guarantees for non-convex safe sets?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper is an essential reference for anyone working on safety-critical control of autonomous systems. Its central message — that <strong>reduced-order models are the practical bridge between CBF theory and real-world deployment</strong> — is well-supported by both rigorous theory and multi-platform experiments.</p>
+        <p>The key practical insight is that one need not model every degree of freedom to guarantee safety; a well-chosen ROM with properly quantified mismatch bounds is sufficient. For researchers entering the CBF field, this paper provides the clearest available roadmap from theory to hardware implementation.</p>
+      `
+    },
+    ko: {
+      title: "자율 시스템을 위한 안전 임계 제어: 축소 차수 모델을 통한 제어 장벽 함수",
+      summary: "복잡한 고차원 자율 시스템에 대한 안전 보장을 가능하게 하기 위해 축소 차수 모델을 사용한 제어 장벽 함수 설계 방법에 대한 포괄적 리뷰를 제공합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 제어 장벽 함수(CBF)의 우아한 이론과 고차원 자율 시스템의 복잡한 현실 사이의 격차를 <strong>축소 차수 모델(ROM)</strong>이라는 핵심 추상화 계층을 통해 연결하는 방법에 대한 통합 튜토리얼 및 서베이를 제공합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>축소 차수 모델을 활용하여 복잡한 고차원 자율 시스템에 제어 장벽 함수를 어떻게 체계적으로 설계하고 적용할 수 있으며, 이 접근법의 이론적 보장, 실용적 트레이드오프, 그리고 미해결 과제는 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>제어 장벽 함수는 동적 시스템에서 안전 제약을 강제하는 강력한 도구로 부상했습니다. 핵심 아이디어는 우아합니다: 영 상위 수준 집합이 안전 영역을 나타내는 함수 h(x)를 정의하고, 시스템 궤적을 따른 h의 시간 미분에 대한 제약을 강제하여 시스템이 안전 집합을 절대 벗어나지 않도록 합니다. 이 제약은 명목 제어기를 최소한으로 수정하여 안전을 보장하는 이차 프로그래밍(QP)으로 공식화할 수 있습니다.</p>
+        <p>그러나 실제 자율 시스템에 CBF를 적용하는 것은 근본적 도전에 직면합니다: 로봇, 차량, 항공기의 전체 차수 동역학은 고차원, 비선형이며 종종 부분적으로 미지입니다. 20개 이상의 상태를 가진 시스템에 직접 CBF를 설계하는 것은 수학적으로 다루기 어렵습니다. 축소 차수 모델(ROM) — 필수적인 안전 관련 동역학을 포착하는 단순화된 표현 — 은 실용적 CBF 설계의 경로를 제공합니다.</p>
+        <p>본 논문은 전체 차수 시스템에 대한 안전 보장을 유지하면서 ROM에서 CBF를 설계하는 방법을 이론적 기초, 모델 축소 전략, 강건성 마진, 실험적 검증을 포함하여 체계적으로 다룹니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <figure>
+          <img src="images/cbf-reduced-order/fig1.png" alt="축소 차수 모델을 통한 CBF 프레임워크">
+          <figcaption>Figure 1: 전체 차수 시스템을 위한 축소 차수 모델 기반 CBF 설계 파이프라인.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>전체 차수에서 축소 차수로의 매핑:</strong> 고차원 시스템 상태를 안전 관련 자유도를 포착하는 저차원 공간으로 투영합니다.</li>
+          <li><strong>ROM에서의 CBF 설계:</strong> 동역학이 분석적 CBF 구성에 충분히 간단한 축소 차수 모델에 대해 장벽 함수를 설계합니다.</li>
+          <li><strong>모델 불일치 정량화:</strong> ROM과 전체 차수 시스템 간의 불일치를 CBF 미분 조건의 교란 항으로 한정합니다.</li>
+          <li><strong>강건 CBF 공식화:</strong> 모델 불일치 한계만큼 CBF 제약을 강화하여 ROM 근사에도 불구하고 전체 차수 시스템의 안전을 보장합니다.</li>
+          <li><strong>QP 기반 안전 필터:</strong> 강건 CBF 제약을 실시간 QP에 통합하여 명목 제어기의 명령을 최소한으로 수정하여 안전을 보장합니다.</li>
+        </ul>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>통합 프레임워크:</strong> 전체 차수 시스템에서 ROM, CBF 설계, 강건 안전 필터까지의 체계적 파이프라인을 제공.</li>
+          <li><strong>모델 불일치 이론:</strong> ROM 근사 오차가 CBF 안전 보장을 통해 어떻게 전파되는지 명시적 강건성 마진과 함께 엄밀하게 특성화.</li>
+          <li><strong>다중 플랫폼 검증:</strong> 지상 로봇, 보행 로봇, 항공 차량, 자동차 시스템에서 접근법을 시연하여 광범위한 적용 가능성을 보여줌.</li>
+          <li><strong>실용적 가이드라인:</strong> ROM 선택, CBF 설계 선택, 매개변수 튜닝에 대한 구체적 지침 제공.</li>
+          <li><strong>미해결 문제:</strong> 학습 기반 ROM 구성, 적응형 강건성 마진, 다중 제약 시나리오에 대한 CBF 합성을 포함한 핵심 과제 식별.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>다루는 플랫폼:</strong> 세그웨이형 로봇(단일 적분기 ROM), 이족 보행 로봇(LIPM ROM), 쿼드로터(점질량 ROM), 자율주행 차량(자전거 모델 ROM).</li>
+          <li><strong>CBF 솔버:</strong> 플랫폼에 따라 100-1000 Hz 속도로 OSQP 등을 통해 QP 해결.</li>
+          <li><strong>모델 불일치 한계:</strong> 각 플랫폼에 대해 리아푸노프 기반 추적 오차 분석 또는 경험적 최악의 경우 추정으로 해석적으로 도출.</li>
+          <li><strong>소프트웨어:</strong> 이론적 분석을 위한 MATLAB, 하드웨어 플랫폼에서의 실시간 구현을 위한 ROS/C++.</li>
+        </ul>
+
+        <h2>결과</h2>
+        <table>
+          <thead><tr><th>플랫폼</th><th>ROM 유형</th><th>상태 축소</th><th>안전 유지</th><th>보수성</th></tr></thead>
+          <tbody>
+            <tr><td>세그웨이</td><td>단일 적분기</td><td>4D→2D</td><td>예</td><td>낮음</td></tr>
+            <tr><td>이족 보행</td><td>LIPM</td><td>14D→4D</td><td>예</td><td>중간</td></tr>
+            <tr><td>쿼드로터</td><td>점질량</td><td>12D→6D</td><td>예</td><td>낮음-중간</td></tr>
+            <tr><td>자율주행차</td><td>자전거 모델</td><td>6D→4D</td><td>예</td><td>낮음</td></tr>
+          </tbody>
+        </table>
+        <p>모든 플랫폼에서 ROM 기반 CBF 접근법이 전체 차수 시스템의 안전을 유지합니다. 보수성은 ROM 충실도에 따라 다양합니다: 높은 충실도 ROM은 더 tight한 한계와 적은 보수성을 생성하지만, CBF 설계가 더 복잡합니다. 핵심 통찰은 모델 불일치 한계가 적절히 특성화되면 강건 마진이 있는 간단한 ROM도 신뢰할 수 있는 안전 보장을 제공한다는 것입니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>초보자를 위한 튜토리얼과 전문가를 위한 참조 역할을 모두 하는 포괄적이고 잘 구성된 서베이.</li>
+          <li>명시적 강건성 마진과 공식적 보장이 있는 모델 불일치의 엄밀한 이론적 처리.</li>
+          <li>프레임워크가 단일 응용 도메인에 국한되지 않음을 보여주는 다중 플랫폼 검증.</li>
+          <li>ROM 선택과 CBF 매개변수 튜닝에 대한 구체적 가이드라인이 있는 실용적 지향.</li>
+          <li>한계와 미해결 문제에 대한 솔직한 논의로 커뮤니티를 위한 연구 로드맵 제공.</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>최악의 경우 모델 불일치 한계가 느슨할 때 강건성 마진이 과도하게 보수적이어서 불필요한 성능 저하 초래 가능.</li>
+          <li>ROM 선택이 다소 임시적이고 플랫폼 특화적; 원칙적 자동 ROM 선택 방법 미제시.</li>
+          <li>ROM이나 CBF를 해석적으로 도출하지 않고 데이터에서 학습하는 학습 기반 접근법을 깊이 다루지 않음.</li>
+          <li>다중 에이전트 및 구성적 안전 시나리오가 인정되지만 완전히 개발되지 않음.</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>신경망 기반 ROM이 CBF 설계에 적합하면서도 수작업 모델보다 더 나은 충실도를 제공할 수 있을까?</li>
+          <li>시스템이 운용 중 동역학에 대해 더 많이 학습함에 따라 강건성 마진을 온라인으로 어떻게 적응시켜야 할까?</li>
+          <li>많은 동시 안전 제약이 있는 시스템을 위해 여러 ROM 기반 CBF를 합성하는 원칙적 방법이 있을까?</li>
+          <li>안전 보장이 공허하게 보수적이 되기 전의 상태 축소 비율의 근본적 한계는 무엇인가?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>본 논문은 자율 시스템의 안전 임계 제어에 관심 있는 모든 사람에게 필수적인 참고 자료입니다. <strong>축소 차수 모델이 CBF 이론과 실세계 배포 사이의 실용적 다리</strong>라는 중심 메시지는 엄밀한 이론과 다중 플랫폼 실험으로 잘 뒷받침됩니다.</p>
+        <p>핵심 실용적 통찰은 안전을 보장하기 위해 모든 자유도를 모델링할 필요가 없다는 것입니다; 적절히 정량화된 불일치 한계가 있는 잘 선택된 ROM이면 충분합니다. CBF 분야에 입문하는 연구자에게 이 논문은 이론에서 하드웨어 구현까지의 가장 명확한 로드맵을 제공합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 4. Policy CBF at Runtime
+  // ====================================================================
+  {
+    id: "policy-cbf-runtime",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Knoedler, L., So, O., Yin, J., et al.",
+    venue: "RA-L 2025",
+    image: "images/policy-cbf-runtime/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "CBF", "Safety Filter", "Runtime"],
+    en: {
+      title: "Safety on the Fly: Constructing Robust Safety Filters via Policy Control Barrier Functions at Runtime",
+      summary: "Introduces Policy CBFs (PoCBFs) that construct safety filters at runtime without requiring an explicit system dynamics model, using the learned policy itself to define barrier certificates.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper introduces <strong>Policy Control Barrier Functions (PoCBFs)</strong>, a runtime safety filter construction that eliminates the need for an explicit dynamics model by leveraging the closed-loop behavior of the learned policy itself to define and enforce safety constraints on the fly.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we construct provably safe runtime safety filters for autonomous systems when an accurate dynamics model is unavailable, by using the policy's own predicted behavior to define control barrier function certificates at deployment time?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Traditional CBF-based safety filters require an accurate dynamics model f(x) + g(x)u to evaluate the Lie derivative condition. In practice, obtaining such a model is difficult for complex systems like legged robots, dexterous manipulators, or systems operating in unstructured environments. Model errors can cause the CBF filter to either be overly conservative or, worse, fail to maintain safety.</p>
+        <p>Learning-based controllers (RL policies, imitation learning) have shown impressive performance but lack formal safety guarantees. Existing approaches to combining learning with safety either train with CBF constraints (requiring a model during training) or learn the CBF itself (requiring extensive safety-labeled data). Both assume some form of dynamics knowledge.</p>
+        <p>PoCBFs offer a fundamentally different approach: instead of requiring a physics-based dynamics model, they use the policy's own action predictions to construct a local barrier certificate at each timestep. The key insight is that the policy's rollout behavior implicitly encodes the system dynamics, and this implicit encoding can be used to verify safety without an explicit model.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <figure>
+          <img src="images/policy-cbf-runtime/fig1.png" alt="PoCBF runtime safety filter architecture">
+          <figcaption>Figure 1: Policy CBF architecture — runtime safety filter construction without explicit dynamics.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Policy rollout prediction:</strong> At each timestep, the current policy is rolled out for a short horizon to predict future states. This creates a local trajectory prediction that implicitly captures the system dynamics through the policy's learned behavior.</li>
+          <li><strong>Runtime barrier construction:</strong> Using the predicted trajectory and the safety constraint (e.g., obstacle distance), a local barrier function is constructed that certifies whether the current action will lead to future safety violations within the prediction horizon.</li>
+          <li><strong>Safety intervention:</strong> If the barrier certificate indicates potential violation, the system modifies the action to satisfy the barrier condition. This modification is minimally invasive, preserving the policy's intended behavior as much as possible.</li>
+          <li><strong>Robustness margin:</strong> To account for prediction errors and model uncertainty, a configurable robustness margin is added to the barrier condition, trading off conservatism against safety guarantees.</li>
+          <li><strong>Computational efficiency:</strong> The short-horizon rollout and local barrier construction are designed to run in real-time, making the approach suitable for high-frequency control loops.</li>
+        </ul>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Model-free safety filter:</strong> First CBF-based safety filter that operates without an explicit dynamics model, using only the policy's rollout predictions.</li>
+          <li><strong>Runtime construction:</strong> Barrier certificates are constructed on-the-fly rather than pre-computed, adapting to the current state and policy behavior.</li>
+          <li><strong>Formal safety analysis:</strong> Provides theoretical conditions under which PoCBFs guarantee safety, including bounds on prediction horizon and robustness margins.</li>
+          <li><strong>Policy-agnostic design:</strong> Works with any black-box policy (RL, imitation learning, classical control) without requiring modifications to the policy itself.</li>
+          <li><strong>Hardware validation:</strong> Demonstrates the approach on real robotic systems with learned policies, confirming real-time feasibility and safety enforcement.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>Policy types tested:</strong> RL policies trained with PPO and SAC, imitation learning policies, and classical PID controllers as baselines.</li>
+          <li><strong>Environments:</strong> Navigation tasks with obstacles, robotic manipulation with workspace constraints, and locomotion over uneven terrain.</li>
+          <li><strong>Prediction horizon:</strong> Typically 10-50 steps, tuned based on task dynamics and computational budget.</li>
+          <li><strong>Safety constraints:</strong> Obstacle avoidance (minimum distance), workspace boundaries (joint limits, Cartesian bounds), and velocity limits.</li>
+          <li><strong>Solver:</strong> Lightweight QP for action modification; total runtime overhead typically under 2ms per timestep.</li>
+          <li><strong>Comparison baselines:</strong> Standard CBF with learned dynamics model, Hamilton-Jacobi reachability, and unconstrained policy execution.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Method</th><th>Safety Violations</th><th>Task Performance</th><th>Compute Time</th><th>Model Required</th></tr></thead>
+          <tbody>
+            <tr><td>Unconstrained policy</td><td>Frequent</td><td>Highest</td><td>Minimal</td><td>No</td></tr>
+            <tr><td>CBF + learned dynamics</td><td>Occasional (model error)</td><td>Good</td><td>Moderate</td><td>Yes</td></tr>
+            <tr><td>HJ Reachability</td><td>None</td><td>Conservative</td><td>High (offline)</td><td>Yes</td></tr>
+            <tr><td><strong>PoCBF (proposed)</strong></td><td><strong>None/rare</strong></td><td><strong>Good</strong></td><td><strong>Low</strong></td><td><strong>No</strong></td></tr>
+          </tbody>
+        </table>
+        <p>PoCBFs achieve comparable safety to model-based CBFs while eliminating the need for a dynamics model. Task performance is only slightly degraded compared to unconstrained policies, indicating that the safety filter intervenes minimally. The approach is significantly more computationally efficient than Hamilton-Jacobi reachability while providing comparable safety guarantees within the prediction horizon. Safety violations, when they occur, are limited to edge cases where the prediction horizon is too short to anticipate danger.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Eliminates the critical requirement for an accurate dynamics model, making CBF-based safety accessible to a much wider range of systems.</li>
+          <li>Runtime construction adapts to changing conditions and policy behavior, unlike pre-computed barriers.</li>
+          <li>Policy-agnostic design means any existing controller can be retrofitted with safety guarantees.</li>
+          <li>Low computational overhead enables real-time deployment at control frequencies of 100+ Hz.</li>
+          <li>Clean theoretical framework with explicit conditions for safety guarantees.</li>
+          <li>Practical hardware demonstrations confirm real-world applicability beyond simulation.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Safety guarantees are bounded by the prediction horizon; threats beyond the horizon cannot be anticipated.</li>
+          <li>Relies on the policy being a reasonable predictor of future behavior, which may not hold during distribution shift or adversarial perturbation.</li>
+          <li>The robustness margin must be manually tuned; too small risks safety violations, too large causes excessive conservatism.</li>
+          <li>Stochastic policies require sampling-based rollouts, increasing computational cost and introducing variance in barrier estimates.</li>
+          <li>No formal guarantees for systems with discontinuous dynamics or contact-rich interactions.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How does PoCBF performance degrade when the policy is operating far from its training distribution, where rollout predictions become unreliable?</li>
+          <li>Could an ensemble of policies be used for rollout to provide more robust barrier estimates and uncertainty quantification?</li>
+          <li>Is there a principled way to automatically adapt the prediction horizon and robustness margin based on the current state's proximity to constraints?</li>
+          <li>How would PoCBFs interact with sim-to-real transfer, where the policy's implicit dynamics knowledge may not match the real system?</li>
+          <li>Could PoCBFs be used during training (not just deployment) to guide exploration toward safe regions?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>PoCBFs represent a significant practical advance in safety-critical control by removing the dynamics model bottleneck that has limited CBF deployment. The key insight — that a policy's own rollout implicitly encodes sufficient dynamics information for safety verification — is both elegant and practically impactful.</p>
+        <p>For practitioners deploying learned controllers on real robots, PoCBFs offer a <strong>plug-and-play safety layer</strong> that requires no dynamics modeling, no safety-labeled data, and no modification to the underlying policy. The main caveat is the finite prediction horizon, which limits the approach to reactive rather than anticipatory safety. Combining PoCBFs with longer-horizon planning could address this limitation.</p>
+      `
+    },
+    ko: {
+      title: "비행 중 안전: 런타임에서 정책 제어 장벽 함수를 통한 강건한 안전 필터 구축",
+      summary: "명시적 시스템 동역학 모델 없이 학습된 정책 자체의 롤아웃 예측을 활용하여 런타임에서 안전 필터를 구축하는 정책 제어 장벽 함수(PoCBF)를 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 명시적 동역학 모델의 필요성을 제거하고, 학습된 정책 자체의 폐루프 동작을 활용하여 즉석에서 안전 제약을 정의하고 강제하는 <strong>정책 제어 장벽 함수(PoCBF)</strong>를 소개합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>정확한 동역학 모델이 없을 때, 정책 자체의 예측된 동작을 사용하여 배포 시점에 제어 장벽 함수 인증서를 정의함으로써 자율 시스템을 위한 증명 가능하게 안전한 런타임 안전 필터를 어떻게 구축할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>전통적 CBF 기반 안전 필터는 리 미분 조건을 평가하기 위해 정확한 동역학 모델 f(x) + g(x)u를 필요로 합니다. 실제로 보행 로봇, 기민한 매니퓰레이터, 비구조화 환경에서 작동하는 시스템과 같은 복잡한 시스템에 대해 이러한 모델을 얻기 어렵습니다.</p>
+        <p>학습 기반 제어기(RL 정책, 모방 학습)는 인상적인 성능을 보여주었지만 공식적 안전 보장이 부족합니다. 학습과 안전을 결합하는 기존 접근법은 CBF 제약으로 훈련하거나(훈련 중 모델 필요) CBF 자체를 학습하는(광범위한 안전 레이블 데이터 필요) 것으로, 둘 다 어떤 형태의 동역학 지식을 가정합니다.</p>
+        <p>PoCBF는 근본적으로 다른 접근법을 제공합니다: 물리 기반 동역학 모델 대신 정책 자체의 행동 예측을 사용하여 각 시간 단계에서 지역 장벽 인증서를 구성합니다. 핵심 통찰은 정책의 롤아웃 동작이 시스템 동역학을 암묵적으로 인코딩하며, 이 암묵적 인코딩을 명시적 모델 없이 안전을 검증하는 데 사용할 수 있다는 것입니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <figure>
+          <img src="images/policy-cbf-runtime/fig1.png" alt="PoCBF 런타임 안전 필터 아키텍처">
+          <figcaption>Figure 1: 명시적 동역학 없이 런타임 안전 필터를 구축하는 정책 CBF 아키텍처.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>정책 롤아웃 예측:</strong> 각 시간 단계에서 현재 정책을 짧은 수평선으로 롤아웃하여 미래 상태를 예측합니다.</li>
+          <li><strong>런타임 장벽 구성:</strong> 예측된 궤적과 안전 제약을 사용하여 현재 행동이 예측 수평선 내에서 안전 위반으로 이어질지 인증하는 지역 장벽 함수를 구성합니다.</li>
+          <li><strong>안전 개입:</strong> 장벽 인증서가 잠재적 위반을 나타내면 시스템이 장벽 조건을 만족하도록 행동을 수정합니다. 이 수정은 최소 침습적입니다.</li>
+          <li><strong>강건성 마진:</strong> 예측 오차와 모델 불확실성을 설명하기 위해 구성 가능한 강건성 마진을 장벽 조건에 추가합니다.</li>
+          <li><strong>계산 효율성:</strong> 짧은 수평선 롤아웃과 지역 장벽 구성은 실시간으로 실행되도록 설계되어 고주파 제어 루프에 적합합니다.</li>
+        </ul>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>모델 불요 안전 필터:</strong> 명시적 동역학 모델 없이 정책의 롤아웃 예측만 사용하는 최초의 CBF 기반 안전 필터.</li>
+          <li><strong>런타임 구성:</strong> 장벽 인증서가 사전 계산이 아닌 즉석에서 구성되어 현재 상태와 정책 동작에 적응.</li>
+          <li><strong>공식적 안전 분석:</strong> PoCBF가 안전을 보장하는 이론적 조건을 예측 수평선 및 강건성 마진 한계와 함께 제공.</li>
+          <li><strong>정책 불가지론 설계:</strong> 정책 자체의 수정 없이 모든 블랙박스 정책과 함께 작동.</li>
+          <li><strong>하드웨어 검증:</strong> 학습된 정책이 있는 실제 로봇 시스템에서 실시간 실현 가능성과 안전 강제를 확인.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>테스트된 정책 유형:</strong> PPO 및 SAC로 훈련된 RL 정책, 모방 학습 정책, 기준선으로서 고전적 PID 제어기.</li>
+          <li><strong>환경:</strong> 장애물이 있는 내비게이션 작업, 작업 공간 제약이 있는 로봇 매니퓰레이션, 불균일 지형 위 보행.</li>
+          <li><strong>예측 수평선:</strong> 작업 동역학과 계산 예산에 따라 조정되는 일반적으로 10-50 단계.</li>
+          <li><strong>솔버:</strong> 행동 수정을 위한 경량 QP; 시간 단계당 총 런타임 오버헤드 일반적으로 2ms 미만.</li>
+          <li><strong>비교 기준선:</strong> 학습된 동역학 모델을 가진 표준 CBF, 해밀턴-야코비 도달 가능성, 비제약 정책 실행.</li>
+        </ul>
+
+        <h2>결과</h2>
+        <table>
+          <thead><tr><th>방법</th><th>안전 위반</th><th>작업 성능</th><th>계산 시간</th><th>모델 필요</th></tr></thead>
+          <tbody>
+            <tr><td>비제약 정책</td><td>빈번</td><td>최고</td><td>최소</td><td>아니오</td></tr>
+            <tr><td>CBF + 학습 동역학</td><td>가끔 (모델 오차)</td><td>양호</td><td>중간</td><td>예</td></tr>
+            <tr><td>HJ 도달 가능성</td><td>없음</td><td>보수적</td><td>높음 (오프라인)</td><td>예</td></tr>
+            <tr><td><strong>PoCBF (제안)</strong></td><td><strong>없음/드묾</strong></td><td><strong>양호</strong></td><td><strong>낮음</strong></td><td><strong>아니오</strong></td></tr>
+          </tbody>
+        </table>
+        <p>PoCBF는 동역학 모델 필요성을 제거하면서 모델 기반 CBF와 동등한 안전을 달성합니다. 작업 성능은 비제약 정책 대비 약간만 저하되어 안전 필터가 최소한으로 개입함을 나타냅니다. 해밀턴-야코비 도달 가능성보다 계산적으로 훨씬 효율적이면서 예측 수평선 내에서 동등한 안전 보장을 제공합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>정확한 동역학 모델이라는 핵심 요구사항을 제거하여 CBF 기반 안전을 훨씬 넓은 범위의 시스템에 접근 가능하게 함.</li>
+          <li>런타임 구성이 사전 계산된 장벽과 달리 변화하는 조건과 정책 동작에 적응.</li>
+          <li>정책 불가지론 설계로 모든 기존 제어기에 안전 보장을 장착 가능.</li>
+          <li>100+ Hz 제어 주파수에서 실시간 배포를 가능하게 하는 낮은 계산 오버헤드.</li>
+          <li>안전 보장을 위한 명시적 조건이 있는 깔끔한 이론적 프레임워크.</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>안전 보장이 예측 수평선에 의해 한정; 수평선 너머의 위협을 예상할 수 없음.</li>
+          <li>정책이 미래 동작의 합리적 예측자라는 가정에 의존하며, 분포 이동 시 성립하지 않을 수 있음.</li>
+          <li>강건성 마진의 수동 조정 필요; 너무 작으면 안전 위반, 너무 크면 과도한 보수성.</li>
+          <li>확률적 정책은 샘플링 기반 롤아웃이 필요하여 계산 비용 증가 및 장벽 추정 분산 발생.</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>정책이 훈련 분포에서 멀리 벗어나 롤아웃 예측이 불안정해질 때 PoCBF 성능은 어떻게 저하되는가?</li>
+          <li>더 강건한 장벽 추정과 불확실성 정량화를 위해 정책 앙상블을 롤아웃에 사용할 수 있을까?</li>
+          <li>현재 상태의 제약 근접도에 따라 예측 수평선과 강건성 마진을 자동으로 적응시키는 원칙적 방법이 있을까?</li>
+          <li>PoCBF가 배포뿐 아니라 훈련 중에도 안전한 영역으로의 탐색을 유도하는 데 사용될 수 있을까?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>PoCBF는 CBF 배포를 제한해 온 동역학 모델 병목 현상을 제거함으로써 안전 임계 제어에서 중요한 실용적 진보를 나타냅니다. 정책의 자체 롤아웃이 안전 검증에 충분한 동역학 정보를 암묵적으로 인코딩한다는 핵심 통찰은 우아하고 실용적으로 영향력 있습니다.</p>
+        <p>실제 로봇에 학습된 제어기를 배포하는 실무자에게 PoCBF는 동역학 모델링, 안전 레이블 데이터, 기저 정책 수정이 필요 없는 <strong>플러그 앤 플레이 안전 계층</strong>을 제공합니다. 주요 주의점은 유한 예측 수평선으로, 접근법이 예측적이 아닌 반응적 안전에 제한된다는 것입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 5. Safety-Aware Shared Autonomy
+  // ====================================================================
+  {
+    id: "safety-aware-shared-autonomy",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Guler, B., Pompetzki, K., Sun, Y., et al.",
+    venue: "Preprint 2025",
+    image: "images/safety-aware-shared-autonomy/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "Shared Autonomy", "CBF", "Manipulation"],
+    en: {
+      title: "A Safety-Aware Shared Autonomy Framework with Barrier Functions for Robotic Manipulation",
+      summary: "Proposes a shared autonomy framework that blends human teleoperator commands with CBF-based safety filters for robotic manipulation, ensuring collision avoidance and workspace constraints during shared control.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper presents a <strong>safety-aware shared autonomy framework</strong> that integrates Control Barrier Functions into the shared control loop between a human teleoperator and a robotic manipulator, ensuring that human commands are minimally modified to prevent collisions and constraint violations while preserving operator intent.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we design a shared autonomy system for robotic manipulation that guarantees safety constraints (collision avoidance, joint limits, workspace boundaries) are never violated, regardless of human operator commands, while minimally interfering with the operator's intended motion?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Shared autonomy systems combine human decision-making with robotic execution, leveraging human intelligence for high-level task planning while the robot handles low-level execution. In manipulation tasks — surgical robotics, teleoperated assembly, remote handling of hazardous materials — safety is paramount, as collisions can damage the robot, the environment, or harm humans in the workspace.</p>
+        <p>Traditional shared autonomy approaches use virtual fixtures, potential fields, or impedance modulation to guide operators away from dangerous configurations. However, these methods often lack formal safety guarantees: they make constraint violations unlikely but not impossible, especially under aggressive operator commands or unexpected situations.</p>
+        <p>CBFs provide mathematically rigorous safety guarantees through set invariance, ensuring the system state never leaves a defined safe set. Applying CBFs to shared autonomy is natural: the human command serves as the nominal input, and the CBF filter modifies it minimally to maintain safety. The challenge lies in designing appropriate barrier functions for the complex geometry of manipulation workspaces and ensuring smooth, intuitive behavior that does not frustrate the human operator.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <figure>
+          <img src="images/safety-aware-shared-autonomy/fig1.png" alt="Shared autonomy framework with CBF">
+          <figcaption>Figure 1: Safety-aware shared autonomy framework integrating CBF safety filters with human teleoperation.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Human input interface:</strong> The operator provides velocity or position commands through a haptic device or joystick, representing their desired end-effector motion.</li>
+          <li><strong>CBF safety filter:</strong> A QP-based filter takes the human command as the nominal input and modifies it minimally to satisfy all active barrier function constraints. Multiple CBFs can be active simultaneously for different safety requirements.</li>
+          <li><strong>Barrier function design:</strong> CBFs are defined for collision avoidance (minimum distance between robot links and obstacles), joint limit avoidance (keeping joint angles within safe ranges), and workspace boundary enforcement (constraining end-effector to a defined region).</li>
+          <li><strong>Haptic feedback:</strong> The safety filter's modifications are communicated back to the operator through force feedback on the haptic device, providing intuitive awareness of constraint proximity.</li>
+          <li><strong>Blending authority:</strong> A configurable blending parameter adjusts the trade-off between operator authority and safety system intervention, allowing task-specific tuning of the shared control behavior.</li>
+        </ul>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Formal safety in shared autonomy:</strong> First integration of CBF-based formal safety guarantees into a shared autonomy manipulation framework.</li>
+          <li><strong>Multi-constraint CBF composition:</strong> Handles simultaneous collision avoidance, joint limits, and workspace boundaries through multiple concurrent barrier functions in a single QP.</li>
+          <li><strong>Haptic-CBF coupling:</strong> Closes the human-in-the-loop by rendering CBF constraint proximity as haptic force feedback, improving operator situational awareness.</li>
+          <li><strong>Minimal intervention principle:</strong> The QP formulation ensures the human's command is modified as little as possible, preserving operator intent and reducing frustration.</li>
+          <li><strong>User study validation:</strong> Evaluates the framework with human operators performing manipulation tasks, measuring both objective safety metrics and subjective usability.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>Robot platform:</strong> Multi-DOF robotic manipulator (e.g., Franka Emika Panda or similar 7-DOF arm) with position/velocity control interface.</li>
+          <li><strong>Haptic device:</strong> Force-feedback enabled input device for human teleoperator commands.</li>
+          <li><strong>CBF solver:</strong> Real-time QP solved at 1 kHz control rate using OSQP or similar solver.</li>
+          <li><strong>Collision geometry:</strong> Robot links modeled as capsules or convex primitives; obstacle distances computed via GJK or analytical formulas.</li>
+          <li><strong>Safety margins:</strong> Configurable minimum distances for each obstacle-link pair, with separate margins for collision avoidance and workspace boundaries.</li>
+          <li><strong>User study:</strong> Multiple operators with varying experience levels perform pick-and-place, insertion, and constrained-path tasks with and without CBF filtering.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Condition</th><th>Collision Events</th><th>Task Completion Time</th><th>Operator Satisfaction</th><th>Constraint Violations</th></tr></thead>
+          <tbody>
+            <tr><td>No safety filter</td><td>Multiple per trial</td><td>Fastest</td><td>Moderate</td><td>Frequent</td></tr>
+            <tr><td>Potential field</td><td>Reduced but nonzero</td><td>Moderate</td><td>Moderate</td><td>Occasional</td></tr>
+            <tr><td><strong>CBF filter (proposed)</strong></td><td><strong>Zero</strong></td><td><strong>Slight increase</strong></td><td><strong>High</strong></td><td><strong>Zero</strong></td></tr>
+          </tbody>
+        </table>
+        <p>The CBF-based framework eliminates all constraint violations across all trials and operators, confirming formal safety guarantees in practice. Task completion time increases slightly (10-20%) compared to unconstrained operation, reflecting the safety filter's minimal intervention near constraint boundaries. Operator satisfaction is highest with the CBF filter, as operators report feeling confident that the system will prevent mistakes, reducing cognitive load and anxiety during delicate manipulation tasks.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Formal safety guarantee that eliminates all constraint violations, a significant improvement over soft-constraint approaches.</li>
+          <li>Minimal intervention design preserves operator intent and results in high user satisfaction scores.</li>
+          <li>Haptic feedback integration closes the human-in-the-loop, providing intuitive constraint awareness.</li>
+          <li>Multi-constraint composition handles the complex geometry of manipulation tasks naturally via QP.</li>
+          <li>Real-time performance at 1 kHz enables smooth, responsive shared control.</li>
+          <li>User study with multiple operators provides evidence beyond simulation-only evaluation.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Static obstacle assumption; dynamic obstacles require real-time geometry updates and may introduce CBF feasibility issues.</li>
+          <li>Collision geometry approximations (capsules) may be overly conservative for complex-shaped objects, causing unnecessary intervention.</li>
+          <li>Haptic rendering of CBF constraints may feel unintuitive for operators unfamiliar with the system.</li>
+          <li>The framework does not learn from operator behavior over time to reduce intervention frequency for experienced users.</li>
+          <li>Scalability to dual-arm or multi-robot shared autonomy scenarios is not addressed.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Could the system learn personalized safety margins per operator based on their skill level and past behavior?</li>
+          <li>How should the blending authority be adapted when the human's intent conflicts with the optimal safe action?</li>
+          <li>Can the framework handle deformable objects where collision geometry changes during manipulation?</li>
+          <li>What is the impact of communication latency in teleoperation scenarios on CBF filter effectiveness?</li>
+          <li>Could the CBF framework be extended to enforce task-specific constraints (e.g., maintaining tool orientation during surgery)?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper demonstrates a compelling integration of CBF theory into shared autonomy for robotic manipulation. The key achievement is providing <strong>hard safety guarantees without sacrificing operator authority</strong>, addressing a fundamental tension in human-robot shared control.</p>
+        <p>For the surgical robotics and teleoperation communities, this framework offers a principled alternative to virtual fixtures and potential fields, with the critical advantage of formal safety certificates. The haptic feedback integration is particularly noteworthy as it addresses the human factors dimension that is often neglected in control-theoretic safety approaches.</p>
+      `
+    },
+    ko: {
+      title: "장벽 함수를 사용한 로봇 매니퓰레이션을 위한 안전 인식 공유 자율성 프레임워크",
+      summary: "인간 원격조작 명령과 CBF 기반 안전 필터를 결합한 공유 자율성 프레임워크를 제안하여, 공유 제어 중 충돌 회피와 작업 공간 제약을 보장합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 인간 원격조작자와 로봇 매니퓰레이터 사이의 공유 제어 루프에 제어 장벽 함수를 통합하여, 조작자의 의도를 보존하면서 충돌과 제약 위반을 방지하기 위해 인간 명령을 최소한으로 수정하는 <strong>안전 인식 공유 자율성 프레임워크</strong>를 제시합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>인간 조작자 명령에 관계없이 안전 제약(충돌 회피, 관절 한계, 작업 공간 경계)이 절대 위반되지 않도록 보장하면서, 조작자의 의도된 움직임에 최소한으로 간섭하는 로봇 매니퓰레이션용 공유 자율성 시스템을 어떻게 설계할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>공유 자율성 시스템은 인간의 의사결정과 로봇의 실행을 결합하여 고수준 작업 계획에는 인간의 지능을, 저수준 실행에는 로봇을 활용합니다. 매니퓰레이션 작업(수술 로봇, 원격 조립, 위험 물질 원격 처리)에서 안전은 최우선이며, 충돌은 로봇, 환경을 손상시키거나 작업 공간의 인간을 위험에 빠뜨릴 수 있습니다.</p>
+        <p>전통적 공유 자율성 접근법은 가상 고정물, 포텐셜 필드, 임피던스 조절을 사용하여 조작자를 위험한 구성에서 유도합니다. 그러나 이러한 방법은 공식적 안전 보장이 부족합니다: 제약 위반을 불가능하게 만드는 것이 아니라 가능성만 낮춥니다.</p>
+        <p>CBF는 집합 불변성을 통해 수학적으로 엄밀한 안전 보장을 제공합니다. CBF를 공유 자율성에 적용하는 것은 자연스럽습니다: 인간 명령이 명목 입력 역할을 하고, CBF 필터가 안전 유지를 위해 최소한으로 수정합니다. 도전은 매니퓰레이션 작업 공간의 복잡한 기하학에 적절한 장벽 함수를 설계하고 인간 조작자를 좌절시키지 않는 매끄럽고 직관적인 동작을 보장하는 데 있습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <figure>
+          <img src="images/safety-aware-shared-autonomy/fig1.png" alt="CBF를 통합한 공유 자율성 프레임워크">
+          <figcaption>Figure 1: 인간 원격조작과 CBF 안전 필터를 통합한 안전 인식 공유 자율성 프레임워크.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>인간 입력 인터페이스:</strong> 조작자가 햅틱 장치나 조이스틱을 통해 속도 또는 위치 명령을 제공합니다.</li>
+          <li><strong>CBF 안전 필터:</strong> QP 기반 필터가 인간 명령을 명목 입력으로 받아 모든 활성 장벽 함수 제약을 만족하도록 최소한으로 수정합니다.</li>
+          <li><strong>장벽 함수 설계:</strong> 충돌 회피(로봇 링크와 장애물 간 최소 거리), 관절 한계 회피, 작업 공간 경계 강제를 위한 CBF를 정의합니다.</li>
+          <li><strong>햅틱 피드백:</strong> 안전 필터의 수정이 햅틱 장치의 힘 피드백을 통해 조작자에게 전달되어 제약 근접성에 대한 직관적 인식을 제공합니다.</li>
+          <li><strong>블렌딩 권한:</strong> 조작자 권한과 안전 시스템 개입 간의 트레이드오프를 조정하는 구성 가능한 블렌딩 매개변수.</li>
+        </ul>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>공유 자율성에서의 공식적 안전:</strong> CBF 기반 공식적 안전 보장을 공유 자율성 매니퓰레이션 프레임워크에 최초 통합.</li>
+          <li><strong>다중 제약 CBF 합성:</strong> 단일 QP에서 여러 동시 장벽 함수를 통해 충돌 회피, 관절 한계, 작업 공간 경계를 동시 처리.</li>
+          <li><strong>햅틱-CBF 결합:</strong> CBF 제약 근접성을 햅틱 힘 피드백으로 렌더링하여 인간-인-더-루프를 폐쇄.</li>
+          <li><strong>최소 개입 원칙:</strong> QP 공식화가 인간 명령을 최소한으로만 수정하여 조작자 의도를 보존.</li>
+          <li><strong>사용자 연구 검증:</strong> 인간 조작자가 매니퓰레이션 작업을 수행하며 객관적 안전 지표와 주관적 사용성을 모두 측정.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>로봇 플랫폼:</strong> 위치/속도 제어 인터페이스를 가진 다자유도 로봇 매니퓰레이터 (예: 7-DOF 암).</li>
+          <li><strong>햅틱 장치:</strong> 인간 원격조작 명령을 위한 힘 피드백 지원 입력 장치.</li>
+          <li><strong>CBF 솔버:</strong> OSQP 등을 사용한 1 kHz 제어율의 실시간 QP.</li>
+          <li><strong>충돌 기하학:</strong> 로봇 링크를 캡슐 또는 볼록 프리미티브로 모델링; GJK 또는 해석적 공식으로 장애물 거리 계산.</li>
+          <li><strong>사용자 연구:</strong> 다양한 경험 수준의 여러 조작자가 CBF 필터링 유무에 따라 픽앤플레이스, 삽입, 제약 경로 작업 수행.</li>
+        </ul>
+
+        <h2>결과</h2>
+        <table>
+          <thead><tr><th>조건</th><th>충돌 이벤트</th><th>작업 완료 시간</th><th>조작자 만족도</th><th>제약 위반</th></tr></thead>
+          <tbody>
+            <tr><td>안전 필터 없음</td><td>시행당 복수</td><td>가장 빠름</td><td>보통</td><td>빈번</td></tr>
+            <tr><td>포텐셜 필드</td><td>감소했으나 비영</td><td>보통</td><td>보통</td><td>가끔</td></tr>
+            <tr><td><strong>CBF 필터 (제안)</strong></td><td><strong>영</strong></td><td><strong>약간 증가</strong></td><td><strong>높음</strong></td><td><strong>영</strong></td></tr>
+          </tbody>
+        </table>
+        <p>CBF 기반 프레임워크는 모든 시행과 조작자에 걸쳐 모든 제약 위반을 제거하여 실제로 공식적 안전 보장을 확인합니다. 작업 완료 시간은 비제약 운전 대비 약간(10-20%) 증가합니다. 조작자 만족도는 CBF 필터에서 가장 높으며, 조작자들은 시스템이 실수를 방지할 것이라는 확신으로 인지 부하와 불안이 감소했다고 보고합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>모든 제약 위반을 제거하는 공식적 안전 보장으로 소프트 제약 접근법 대비 중요한 개선.</li>
+          <li>최소 개입 설계가 조작자 의도를 보존하고 높은 사용자 만족도 점수를 결과.</li>
+          <li>햅틱 피드백 통합이 인간-인-더-루프를 폐쇄하여 직관적 제약 인식 제공.</li>
+          <li>다중 제약 합성이 QP를 통해 매니퓰레이션 작업의 복잡한 기하학을 자연스럽게 처리.</li>
+          <li>1 kHz의 실시간 성능으로 매끄러운 반응형 공유 제어 가능.</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>정적 장애물 가정; 동적 장애물은 실시간 기하학 업데이트가 필요하며 CBF 실현 가능성 문제 유발 가능.</li>
+          <li>충돌 기하학 근사(캡슐)가 복잡한 형상의 객체에 과도하게 보수적이어서 불필요한 개입 유발 가능.</li>
+          <li>시스템에 익숙하지 않은 조작자에게 CBF 제약의 햅틱 렌더링이 직관적이지 않을 수 있음.</li>
+          <li>프레임워크가 시간에 따라 조작자 행동에서 학습하여 숙련 사용자의 개입 빈도를 줄이지 않음.</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>시스템이 조작자의 기술 수준과 과거 행동에 따라 개인화된 안전 마진을 학습할 수 있을까?</li>
+          <li>인간의 의도가 최적 안전 행동과 충돌할 때 블렌딩 권한을 어떻게 적응시켜야 하는가?</li>
+          <li>매니퓰레이션 중 충돌 기하학이 변하는 변형 가능 객체를 프레임워크가 처리할 수 있을까?</li>
+          <li>원격조작 시나리오에서 통신 지연이 CBF 필터 효과에 미치는 영향은 무엇인가?</li>
+          <li>CBF 프레임워크를 작업 특화 제약(예: 수술 중 도구 방향 유지) 강제로 확장할 수 있을까?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>본 논문은 CBF 이론을 로봇 매니퓰레이션을 위한 공유 자율성에 통합하는 설득력 있는 연구입니다. 핵심 성과는 <strong>조작자 권한을 희생하지 않으면서 강한 안전 보장</strong>을 제공하여 인간-로봇 공유 제어의 근본적 긴장을 해결하는 것입니다.</p>
+        <p>수술 로봇 및 원격조작 커뮤니티에게 이 프레임워크는 가상 고정물과 포텐셜 필드에 대한 원칙적 대안을 제공하며, 공식적 안전 인증서의 결정적 이점을 갖습니다. 제어 이론적 안전 접근법에서 종종 간과되는 인간 요소 차원을 다루는 햅틱 피드백 통합이 특히 주목할 만합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 6. CBF-RL
+  // ====================================================================
+  {
+    id: "cbf-rl",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Yang, L., Werner, B., de Sa, M., Ames, A. D.",
+    venue: "Preprint 2025",
+    image: "images/cbf-rl/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "CBF", "Reinforcement Learning", "Safety Filter"],
+    en: {
+      title: "CBF-RL: Safety Filtering Reinforcement Learning in Training with Control Barrier Functions",
+      summary: "Integrates CBF safety filters into the RL training loop so agents learn high-performance policies while never violating safety constraints during training, not just at deployment.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper proposes <strong>CBF-RL</strong>, a framework that embeds Control Barrier Function safety filters directly into the reinforcement learning training loop, ensuring that safety constraints are respected during both training exploration and deployment, while still enabling the RL agent to discover high-performance policies.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we integrate Control Barrier Function safety filters into the reinforcement learning training process so that agents never violate safety constraints during training exploration, without sacrificing the quality of the learned policy?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Safe reinforcement learning is a critical challenge for deploying RL in the physical world. Standard RL algorithms explore by trial and error, which inevitably leads to unsafe states during training. In robotics and autonomous systems, even training-time safety violations can cause hardware damage, endanger nearby humans, or accumulate wear that degrades the system.</p>
+        <p>Two dominant approaches to safe RL exist: constrained RL (adding safety penalties or Lagrangian constraints to the reward function) and shielding (applying a safety filter at deployment). Constrained RL does not guarantee zero violations during training — it only optimizes for safety in expectation. Shielding guarantees safety at deployment but typically ignores the filter during training, leading to policies that fight against the filter or fail to account for its intervention.</p>
+        <p>CBF-RL takes a third path: by inserting the CBF safety filter into the training loop itself, the agent experiences the filtered action space from the start. This means the agent learns to work with the safety filter rather than against it, producing policies that are both safe and high-performing. The key challenge is that the CBF filter modifies the policy's actions, which complicates the RL gradient computation and can destabilize training.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <figure>
+          <img src="images/cbf-rl/fig1.png" alt="CBF-RL training architecture">
+          <figcaption>Figure 1: CBF-RL architecture — CBF safety filter integrated into the RL training loop.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>CBF safety layer:</strong> A differentiable CBF-QP layer is inserted between the policy network output and the environment. The policy proposes an action, the CBF layer projects it to the nearest safe action if necessary, and the projected action is applied to the environment.</li>
+          <li><strong>Gradient propagation:</strong> Gradients from the RL loss are backpropagated through the CBF-QP layer using implicit differentiation of the KKT conditions. This allows the policy to learn from the safety filter's corrections rather than ignoring them.</li>
+          <li><strong>Exploration within safe set:</strong> The policy's exploration noise is applied before the CBF filter, so all exploratory actions are projected into the safe set. This enables meaningful exploration without safety violations.</li>
+          <li><strong>Reward shaping interaction:</strong> The framework is compatible with standard reward functions; no safety penalty terms are needed since the CBF filter enforces hard constraints. The agent optimizes purely for task performance within the safe action space.</li>
+          <li><strong>Multiple barrier functions:</strong> The QP can accommodate multiple CBF constraints simultaneously, handling complex safety specifications with multiple obstacles, velocity limits, and workspace boundaries.</li>
+        </ul>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Training-time safety:</strong> Guarantees zero safety violations during the entire RL training process, not just deployment — critical for real-world robot learning.</li>
+          <li><strong>Differentiable CBF layer:</strong> Enables end-to-end gradient-based policy optimization through the safety filter via KKT implicit differentiation.</li>
+          <li><strong>Filter-aware policy:</strong> The agent learns to anticipate and cooperate with the CBF filter, producing smoother and more efficient policies than post-hoc shielding.</li>
+          <li><strong>No reward engineering:</strong> Safety is decoupled from the reward function, eliminating the need for careful safety penalty tuning that plagues constrained RL approaches.</li>
+          <li><strong>Empirical demonstration:</strong> Validates on multiple continuous control tasks with safety constraints, showing competitive task performance with zero training-time violations.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>RL algorithms:</strong> Compatible with PPO and SAC; experiments use both to demonstrate generality.</li>
+          <li><strong>CBF-QP solver:</strong> Differentiable QP layer using OptNet or cvxpylayers for GPU-accelerated implicit differentiation.</li>
+          <li><strong>Environments:</strong> Safety Gym tasks (point robot, car, doggo with obstacle avoidance), custom manipulation tasks with joint limit and collision constraints.</li>
+          <li><strong>Barrier functions:</strong> Distance-based CBFs for obstacle avoidance, box constraints for workspace limits, and velocity-limiting CBFs.</li>
+          <li><strong>Training budget:</strong> Standard RL training budgets (1-10M environment steps); CBF overhead adds approximately 20-30% wall-clock time due to QP solving.</li>
+          <li><strong>Baselines:</strong> Unconstrained RL, Lagrangian constrained RL (CPO, RCPO), post-hoc CBF shielding (no training-time filter), and reward penalty methods.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Method</th><th>Training Violations</th><th>Deployment Violations</th><th>Task Reward</th><th>Training Stability</th></tr></thead>
+          <tbody>
+            <tr><td>Unconstrained RL</td><td>Many</td><td>Many</td><td>Highest</td><td>Stable</td></tr>
+            <tr><td>Lagrangian RL (CPO)</td><td>Moderate</td><td>Low</td><td>Good</td><td>Moderate</td></tr>
+            <tr><td>Post-hoc CBF shield</td><td>Many</td><td>Zero</td><td>Degraded</td><td>Stable</td></tr>
+            <tr><td><strong>CBF-RL (proposed)</strong></td><td><strong>Zero</strong></td><td><strong>Zero</strong></td><td><strong>Good</strong></td><td><strong>Stable</strong></td></tr>
+          </tbody>
+        </table>
+        <p>CBF-RL is the only method that achieves zero safety violations during both training and deployment. Task performance is comparable to Lagrangian RL and slightly below unconstrained RL (which ignores safety entirely). Crucially, CBF-RL significantly outperforms post-hoc CBF shielding on task reward, because the policy learns to cooperate with the filter rather than being surprised by it at deployment. Training stability is maintained despite the QP layer, with the differentiable formulation providing smooth gradients.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Zero training-time safety violations is a unique and practically critical property for real-world robot learning.</li>
+          <li>Differentiable CBF layer enables seamless integration with standard RL algorithms without architectural overhaul.</li>
+          <li>Policy learns to cooperate with the safety filter, producing smoother trajectories than post-hoc shielding.</li>
+          <li>Clean separation of safety (CBF constraints) and performance (reward function) simplifies system design.</li>
+          <li>Compatible with multiple RL algorithms (PPO, SAC) demonstrating generality of the approach.</li>
+          <li>Modest computational overhead (20-30%) makes the approach practical for real training budgets.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Requires a known CBF and dynamics model for the safety filter, which may not be available for all systems.</li>
+          <li>The differentiable QP layer can introduce numerical instabilities when constraints are nearly active (degenerate KKT conditions).</li>
+          <li>Limited to safety constraints expressible as CBFs; complex specifications (temporal logic, conditional constraints) are not directly supported.</li>
+          <li>Scalability to very high-dimensional action spaces with many simultaneous constraints is not fully explored.</li>
+          <li>The approach assumes a fixed CBF throughout training; adaptive or learned CBFs are not considered.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Could CBF-RL be combined with learned dynamics models to remove the requirement for a known system model?</li>
+          <li>How does the differentiable QP layer interact with off-policy RL algorithms that use replay buffers with historically filtered actions?</li>
+          <li>Can the framework support time-varying or state-dependent safety constraints that change during an episode?</li>
+          <li>What is the impact of CBF conservatism on exploration efficiency — does the restricted action space slow down learning significantly?</li>
+          <li>Could the CBF constraint tightness be annealed during training, starting conservative and relaxing as the policy improves?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>CBF-RL addresses a critical gap in safe reinforcement learning by providing <strong>hard safety guarantees during training, not just deployment</strong>. The differentiable CBF layer is the key technical innovation, enabling the policy to learn from safety filter corrections rather than treating them as external disturbances.</p>
+        <p>For the robotics RL community, this work provides a principled path to training on real hardware where even a single safety violation during training is unacceptable. The clean decoupling of safety constraints from the reward function is particularly appealing, as it eliminates the reward shaping problem that plagues constrained RL. The main barrier to adoption is the requirement for a known CBF, motivating future work on learning CBFs jointly with the policy.</p>
+      `
+    },
+    ko: {
+      title: "CBF-RL: 제어 장벽 함수를 사용한 훈련 중 안전 필터링 강화학습",
+      summary: "CBF 안전 필터를 RL 훈련 루프에 직접 통합하여 에이전트가 훈련 중에도 안전 제약을 위반하지 않으면서 고성능 정책을 학습하도록 합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 제어 장벽 함수 안전 필터를 강화학습 훈련 루프에 직접 내장하여, 훈련 탐색과 배포 모두에서 안전 제약이 준수되면서도 RL 에이전트가 고성능 정책을 발견할 수 있도록 하는 <strong>CBF-RL</strong> 프레임워크를 제안합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>학습된 정책의 품질을 희생하지 않으면서 에이전트가 훈련 탐색 중 안전 제약을 절대 위반하지 않도록 제어 장벽 함수 안전 필터를 강화학습 훈련 과정에 어떻게 통합할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>안전한 강화학습은 물리적 세계에서 RL을 배포하기 위한 핵심 과제입니다. 표준 RL 알고리즘은 시행착오로 탐색하며, 이는 불가피하게 훈련 중 안전하지 않은 상태로 이어집니다. 로봇공학과 자율 시스템에서 훈련 중 안전 위반조차 하드웨어 손상을 일으키거나 인근 인간을 위험에 빠뜨릴 수 있습니다.</p>
+        <p>안전 RL에 대한 두 가지 지배적 접근법이 있습니다: 제약 RL(보상 함수에 안전 페널티 또는 라그랑지안 제약 추가)과 차폐(배포 시 안전 필터 적용). 제약 RL은 훈련 중 영 위반을 보장하지 않으며, 차폐는 배포 시 안전을 보장하지만 일반적으로 훈련 중 필터를 무시하여 필터와 싸우는 정책을 초래합니다.</p>
+        <p>CBF-RL은 제3의 길을 택합니다: CBF 안전 필터를 훈련 루프 자체에 삽입함으로써 에이전트가 처음부터 필터링된 행동 공간을 경험합니다. 이는 에이전트가 안전 필터에 대항하기보다 함께 작동하도록 학습하여 안전하고 고성능인 정책을 생산합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <figure>
+          <img src="images/cbf-rl/fig1.png" alt="CBF-RL 훈련 아키텍처">
+          <figcaption>Figure 1: CBF-RL 아키텍처 — RL 훈련 루프에 통합된 CBF 안전 필터.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>CBF 안전 계층:</strong> 정책 네트워크 출력과 환경 사이에 미분 가능한 CBF-QP 계층을 삽입합니다. 정책이 행동을 제안하고, CBF 계층이 필요시 가장 가까운 안전 행동으로 투영하며, 투영된 행동이 환경에 적용됩니다.</li>
+          <li><strong>그래디언트 전파:</strong> KKT 조건의 암묵적 미분을 사용하여 RL 손실의 그래디언트가 CBF-QP 계층을 통해 역전파됩니다. 이를 통해 정책이 안전 필터의 수정에서 학습합니다.</li>
+          <li><strong>안전 집합 내 탐색:</strong> 정책의 탐색 노이즈가 CBF 필터 전에 적용되므로 모든 탐색 행동이 안전 집합으로 투영됩니다.</li>
+          <li><strong>보상 형성 상호작용:</strong> CBF 필터가 하드 제약을 강제하므로 안전 페널티 항이 불필요합니다. 에이전트는 안전 행동 공간 내에서 순수하게 작업 성능을 최적화합니다.</li>
+          <li><strong>다중 장벽 함수:</strong> QP가 여러 CBF 제약을 동시에 수용하여 여러 장애물, 속도 한계, 작업 공간 경계를 처리합니다.</li>
+        </ul>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>훈련 중 안전:</strong> 배포뿐 아니라 전체 RL 훈련 과정에서 영 안전 위반을 보장 — 실세계 로봇 학습에 필수적.</li>
+          <li><strong>미분 가능 CBF 계층:</strong> KKT 암묵적 미분을 통해 안전 필터를 관통하는 종단간 그래디언트 기반 정책 최적화 가능.</li>
+          <li><strong>필터 인식 정책:</strong> 에이전트가 CBF 필터를 예상하고 협력하도록 학습하여 사후 차폐보다 매끄럽고 효율적인 정책 생산.</li>
+          <li><strong>보상 공학 불필요:</strong> 안전이 보상 함수에서 분리되어 제약 RL의 안전 페널티 튜닝 문제 제거.</li>
+          <li><strong>실증적 검증:</strong> 안전 제약이 있는 여러 연속 제어 작업에서 경쟁력 있는 작업 성능과 영 훈련 중 위반을 달성.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>RL 알고리즘:</strong> PPO와 SAC에 호환; 일반성을 실증하기 위해 둘 다 사용.</li>
+          <li><strong>CBF-QP 솔버:</strong> GPU 가속 암묵적 미분을 위한 OptNet 또는 cvxpylayers를 사용하는 미분 가능 QP 계층.</li>
+          <li><strong>환경:</strong> Safety Gym 작업(포인트 로봇, 자동차, 도고의 장애물 회피), 관절 한계 및 충돌 제약이 있는 커스텀 매니퓰레이션 작업.</li>
+          <li><strong>장벽 함수:</strong> 장애물 회피를 위한 거리 기반 CBF, 작업 공간 한계를 위한 박스 제약, 속도 제한 CBF.</li>
+          <li><strong>훈련 예산:</strong> 표준 RL 훈련 예산(1-10M 환경 단계); QP 해결로 인해 약 20-30% 벽시계 시간 추가.</li>
+          <li><strong>기준선:</strong> 비제약 RL, 라그랑지안 제약 RL(CPO, RCPO), 사후 CBF 차폐, 보상 페널티 방법.</li>
+        </ul>
+
+        <h2>결과</h2>
+        <table>
+          <thead><tr><th>방법</th><th>훈련 중 위반</th><th>배포 중 위반</th><th>작업 보상</th><th>훈련 안정성</th></tr></thead>
+          <tbody>
+            <tr><td>비제약 RL</td><td>다수</td><td>다수</td><td>최고</td><td>안정</td></tr>
+            <tr><td>라그랑지안 RL (CPO)</td><td>중간</td><td>낮음</td><td>양호</td><td>보통</td></tr>
+            <tr><td>사후 CBF 차폐</td><td>다수</td><td>영</td><td>저하</td><td>안정</td></tr>
+            <tr><td><strong>CBF-RL (제안)</strong></td><td><strong>영</strong></td><td><strong>영</strong></td><td><strong>양호</strong></td><td><strong>안정</strong></td></tr>
+          </tbody>
+        </table>
+        <p>CBF-RL은 훈련과 배포 모두에서 영 안전 위반을 달성하는 유일한 방법입니다. 작업 성능은 라그랑지안 RL과 동등하고 비제약 RL보다 약간 낮습니다. 중요하게도 CBF-RL은 사후 CBF 차폐보다 작업 보상에서 크게 우수한데, 정책이 배포 시 필터에 놀라지 않고 협력하도록 학습하기 때문입니다. 미분 가능 공식화가 매끄러운 그래디언트를 제공하여 QP 계층에도 불구하고 훈련 안정성이 유지됩니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>실세계 로봇 학습에 실용적으로 중요한 고유 속성인 영 훈련 중 안전 위반.</li>
+          <li>미분 가능 CBF 계층으로 아키텍처 대대적 변경 없이 표준 RL 알고리즘과 원활한 통합.</li>
+          <li>정책이 안전 필터와 협력하도록 학습하여 사후 차폐보다 매끄러운 궤적 생산.</li>
+          <li>안전(CBF 제약)과 성능(보상 함수)의 깔끔한 분리로 시스템 설계 단순화.</li>
+          <li>여러 RL 알고리즘(PPO, SAC)과 호환되어 접근법의 일반성 실증.</li>
+          <li>적당한 계산 오버헤드(20-30%)로 실제 훈련 예산에 실용적.</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>안전 필터를 위한 알려진 CBF와 동역학 모델이 필요하며, 모든 시스템에 이용 가능하지 않을 수 있음.</li>
+          <li>미분 가능 QP 계층이 제약이 거의 활성인 경우(퇴화 KKT 조건) 수치적 불안정성 도입 가능.</li>
+          <li>CBF로 표현 가능한 안전 제약에 국한; 복잡한 명세(시간 논리, 조건부 제약)는 직접 지원 안 됨.</li>
+          <li>많은 동시 제약이 있는 매우 고차원 행동 공간으로의 확장성 미완전 탐구.</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>CBF-RL을 학습된 동역학 모델과 결합하여 알려진 시스템 모델 요구사항을 제거할 수 있을까?</li>
+          <li>미분 가능 QP 계층이 역사적으로 필터링된 행동이 있는 리플레이 버퍼를 사용하는 오프폴리시 RL 알고리즘과 어떻게 상호작용하는가?</li>
+          <li>프레임워크가 에피소드 중 변하는 시변 또는 상태 의존 안전 제약을 지원할 수 있을까?</li>
+          <li>CBF 보수성이 탐색 효율에 미치는 영향은 무엇인가 — 제한된 행동 공간이 학습을 크게 느리게 하는가?</li>
+          <li>정책이 향상됨에 따라 보수적으로 시작하여 완화하는 방식으로 CBF 제약 강도를 훈련 중 서서히 조정할 수 있을까?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>CBF-RL은 배포뿐 아니라 <strong>훈련 중에도 강한 안전 보장</strong>을 제공함으로써 안전 강화학습의 핵심 격차를 해결합니다. 미분 가능 CBF 계층이 핵심 기술적 혁신으로, 정책이 안전 필터 수정을 외부 교란으로 취급하지 않고 학습할 수 있게 합니다.</p>
+        <p>로봇공학 RL 커뮤니티에게 이 연구는 훈련 중 단 한 번의 안전 위반도 허용할 수 없는 실제 하드웨어에서의 훈련을 위한 원칙적 경로를 제공합니다. 안전 제약과 보상 함수의 깔끔한 분리가 특히 매력적이며, 제약 RL을 괴롭히는 보상 형성 문제를 제거합니다. 채택의 주요 장벽은 알려진 CBF의 요구사항이며, 정책과 함께 CBF를 공동 학습하는 향후 연구의 동기를 부여합니다.</p>
+      `
+    }
+  },
+// ====================================================================
+  // 1. V-OCBF
+  // ====================================================================
+  {
+    id: "v-ocbf",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Tayal, M., Tayal, M., Prakash, R.",
+    venue: "Preprint 2025",
+    image: "images/v-ocbf/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "CBF", "Offline Learning", "Safety Filter"],
+    en: {
+      title: "V-OCBF: Learning Safety Filters from Offline Data via Value-Guided Offline Control Barrier Functions",
+      summary: "Proposes a value-guided approach for learning Control Barrier Functions from offline datasets, enabling safety filter construction without online environment interaction by leveraging value functions to guide CBF synthesis.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper bridges the gap between <strong>offline reinforcement learning and safety-critical control</strong> by proposing Value-guided Offline Control Barrier Functions (V-OCBF), which learn valid CBF safety filters entirely from pre-collected offline data using value function estimates to overcome the distribution shift problem inherent in offline CBF learning.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we learn valid Control Barrier Functions from offline datasets without any online interaction with the environment, and can value functions from offline RL guide the CBF synthesis to produce effective safety filters for deployment?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Control Barrier Functions have emerged as a principled framework for guaranteeing safety in dynamical systems by defining forward-invariant safe sets. However, constructing valid CBFs typically requires either hand-crafted design by domain experts or online learning through environment interaction. In many safety-critical domains (autonomous driving, medical robotics, industrial control), online learning is infeasible because failures during training can be catastrophic.</p>
+        <p>Offline reinforcement learning has shown promise for learning policies from pre-collected datasets, but directly applying offline RL to CBF synthesis faces the distribution shift problem: the learned CBF must certify safety for states that may not appear in the offline data. The paper addresses this challenge by using value functions as a guiding signal to extrapolate safety information beyond the data support.</p>
+        <p>The key motivation is practical: many real-world systems already have large datasets of operational data (e.g., driving logs, flight recorders) that could be leveraged to construct safety filters without additional risky data collection.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The V-OCBF framework consists of three main components:</p>
+        <ul>
+          <li><strong>Offline value function learning:</strong> A conservative value function is learned from the offline dataset using techniques from offline RL (e.g., Conservative Q-Learning). This value function captures the long-term safety cost of states and actions.</li>
+          <li><strong>Value-guided CBF synthesis:</strong> The learned value function is used to guide the CBF training process. States with low value (high future safety cost) are treated as unsafe, providing supervisory signal beyond the explicit safe/unsafe labels in the data.</li>
+          <li><strong>Safety filter construction:</strong> The learned CBF is deployed as a QP-based safety filter that modifies a nominal controller's actions minimally to maintain forward invariance of the safe set defined by h(x) &ge; 0.</li>
+          <li><strong>Distribution shift mitigation:</strong> Pessimistic value estimates ensure that out-of-distribution states are treated conservatively, preventing the CBF from falsely certifying unsafe states as safe.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/v-ocbf/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/v-ocbf/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>First value-guided offline CBF learning framework</strong> that eliminates the need for online environment interaction during CBF synthesis</li>
+          <li>Novel integration of <strong>conservative value estimation</strong> with CBF training to handle distribution shift in safety certification</li>
+          <li>Theoretical analysis showing that pessimistic value guidance provides a valid lower bound on the true safe set</li>
+          <li>Demonstration that offline data can yield CBFs competitive with online-learned alternatives across multiple control benchmarks</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <p>The offline datasets are collected from mixed-quality policies (including both safe and unsafe trajectories) to ensure coverage of the state space near safety boundaries. The value function is parameterized as a neural network trained with conservative Q-learning objectives. The CBF is a separate neural network trained to satisfy the CBF decrease condition using the value function as a guide. Both networks use standard MLP architectures. Experiments are conducted on continuous control benchmarks including inverted pendulum, obstacle avoidance, and navigation tasks.</p>
+
+        <h2>Results</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>Environment</th><th>Method</th><th>Safety Rate (%)</th><th>Task Performance</th></tr>
+          <tr><td>Inverted Pendulum</td><td>V-OCBF</td><td>98.5</td><td>High</td></tr>
+          <tr><td>Inverted Pendulum</td><td>Naive Offline CBF</td><td>82.3</td><td>High</td></tr>
+          <tr><td>Navigation</td><td>V-OCBF</td><td>96.2</td><td>Moderate</td></tr>
+          <tr><td>Navigation</td><td>Online CBF (Oracle)</td><td>99.1</td><td>High</td></tr>
+        </table>
+        <p>V-OCBF significantly outperforms naive offline CBF baselines that do not use value guidance, achieving safety rates close to online-learned CBFs. The value-guided approach is particularly effective in regions near the safety boundary where the offline data is sparse, confirming that value functions provide meaningful extrapolation of safety information.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Addresses a critical practical need: learning safety filters without dangerous online exploration</li>
+          <li>The value-function guidance is a principled way to handle distribution shift, grounded in offline RL theory</li>
+          <li>Conservative value estimates provide a safety-aware inductive bias that prevents overconfident CBF certification</li>
+          <li>Modular design allows plugging in different offline RL algorithms for the value function component</li>
+          <li>Achieves near-online performance from purely offline data, demonstrating the viability of the approach</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Performance depends heavily on the quality and coverage of the offline dataset, particularly near safety boundaries</li>
+          <li>Conservative value estimates may lead to overly restrictive safe sets, reducing task performance in benign regions</li>
+          <li>Theoretical guarantees assume access to a good dynamics model for the CBF decrease condition</li>
+          <li>Scalability to high-dimensional state spaces (e.g., image observations) remains unaddressed</li>
+          <li>No comparison with other offline safe RL methods such as constrained offline policy optimization</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How does the ratio of safe vs. unsafe trajectories in the offline dataset affect the quality of the learned CBF?</li>
+          <li>Could active data selection or prioritized replay improve data efficiency in the offline setting?</li>
+          <li>How would V-OCBF handle environments where the dynamics change between data collection and deployment?</li>
+          <li>Can the framework be extended to multi-agent settings where each agent learns a CBF from shared offline data?</li>
+          <li>What is the minimum dataset size needed for V-OCBF to match online CBF performance within a given tolerance?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>V-OCBF presents a compelling solution to one of the key practical barriers in deploying CBF-based safety filters: the need for online data collection. By leveraging value functions from offline RL as a guiding signal, the method achieves robust CBF learning from static datasets. This opens the door to constructing safety filters from existing operational logs in domains where online experimentation is prohibitive.</p>
+        <p>For practitioners with access to historical operational data, V-OCBF provides a principled pipeline to extract safety guarantees without additional deployment risk. The key limitation to watch is dataset quality -- garbage in, garbage out remains a fundamental constraint of any offline learning approach.</p>
+      `
+    },
+    ko: {
+      title: "V-OCBF: 가치 함수 기반 오프라인 데이터로부터의 안전 필터 학습",
+      summary: "오프라인 데이터셋에서 가치 함수를 활용하여 제어 장벽 함수를 학습하는 프레임워크를 제안하며, 온라인 환경 상호작용 없이 안전 필터를 구축할 수 있게 합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 가치 함수 추정치를 활용하여 오프라인 CBF 학습에 내재된 분포 이동 문제를 극복함으로써, 사전 수집된 오프라인 데이터만으로 유효한 CBF 안전 필터를 학습하는 <strong>가치 기반 오프라인 제어 장벽 함수(V-OCBF)</strong>를 제안하여 오프라인 강화학습과 안전 임계 제어 사이의 간극을 연결합니다.</p>
+
+        <h2>연구 질문</h2>
+        <blockquote>환경과의 온라인 상호작용 없이 오프라인 데이터셋에서 유효한 제어 장벽 함수를 학습할 수 있으며, 오프라인 RL의 가치 함수가 배포를 위한 효과적인 안전 필터를 생성하도록 CBF 합성을 안내할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>제어 장벽 함수(CBF)는 순방향 불변 안전 집합을 정의하여 동적 시스템의 안전을 보장하는 원칙적 프레임워크로 부상했습니다. 그러나 유효한 CBF를 구성하려면 일반적으로 도메인 전문가의 수작업 설계 또는 환경 상호작용을 통한 온라인 학습이 필요합니다. 자율주행, 의료 로봇, 산업 제어 등 많은 안전 임계 분야에서는 훈련 중 실패가 치명적일 수 있어 온라인 학습이 불가능합니다.</p>
+        <p>오프라인 강화학습은 사전 수집된 데이터셋에서 정책을 학습하는 데 가능성을 보여주었지만, 오프라인 RL을 CBF 합성에 직접 적용하면 분포 이동 문제에 직면합니다. 본 논문은 가치 함수를 안내 신호로 사용하여 데이터 지원 범위를 넘어 안전 정보를 외삽하는 방식으로 이 문제를 해결합니다.</p>
+        <p>핵심 동기는 실용적입니다: 많은 실제 시스템에는 추가적인 위험한 데이터 수집 없이 안전 필터를 구축하는 데 활용할 수 있는 대규모 운영 데이터(예: 주행 로그, 비행 기록기)가 이미 존재합니다.</p>
+
+        <h2>아키텍처 / 방법론</h2>
+        <p>V-OCBF 프레임워크는 세 가지 주요 구성요소로 이루어집니다:</p>
+        <ul>
+          <li><strong>오프라인 가치 함수 학습:</strong> 오프라인 RL 기법(예: Conservative Q-Learning)을 사용하여 보수적 가치 함수를 학습합니다. 이 가치 함수는 상태와 행동의 장기 안전 비용을 포착합니다.</li>
+          <li><strong>가치 기반 CBF 합성:</strong> 학습된 가치 함수가 CBF 훈련 과정을 안내합니다. 낮은 가치(높은 미래 안전 비용)를 가진 상태는 안전하지 않은 것으로 처리됩니다.</li>
+          <li><strong>안전 필터 구축:</strong> 학습된 CBF는 h(x) &ge; 0으로 정의된 안전 집합의 순방향 불변성을 유지하기 위해 명목 제어기의 행동을 최소한으로 수정하는 QP 기반 안전 필터로 배포됩니다.</li>
+          <li><strong>분포 이동 완화:</strong> 비관적 가치 추정은 분포 외 상태를 보수적으로 처리하여 CBF가 안전하지 않은 상태를 안전하다고 잘못 인증하는 것을 방지합니다.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/v-ocbf/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/v-ocbf/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>주요 기여</h2>
+        <ul>
+          <li>CBF 합성 중 온라인 환경 상호작용의 필요성을 제거하는 <strong>최초의 가치 기반 오프라인 CBF 학습 프레임워크</strong></li>
+          <li>안전 인증에서 분포 이동을 처리하기 위한 <strong>보수적 가치 추정</strong>과 CBF 훈련의 새로운 통합</li>
+          <li>비관적 가치 안내가 실제 안전 집합의 유효한 하한을 제공한다는 이론적 분석</li>
+          <li>오프라인 데이터가 여러 제어 벤치마크에서 온라인 학습 대안과 경쟁력 있는 CBF를 생성할 수 있음을 실증</li>
+        </ul>
+
+        <h2>훈련 및 구현 세부사항</h2>
+        <p>오프라인 데이터셋은 안전 경계 근처의 상태 공간 커버리지를 보장하기 위해 혼합 품질 정책(안전 및 비안전 궤적 모두 포함)에서 수집됩니다. 가치 함수는 보수적 Q-학습 목적으로 훈련된 신경망으로 매개변수화됩니다. CBF는 가치 함수를 안내로 사용하여 CBF 감소 조건을 만족하도록 훈련된 별도의 신경망입니다. 역진자, 장애물 회피, 내비게이션 작업 등 연속 제어 벤치마크에서 실험을 수행합니다.</p>
+
+        <h2>결과</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>환경</th><th>방법</th><th>안전률 (%)</th><th>작업 성능</th></tr>
+          <tr><td>역진자</td><td>V-OCBF</td><td>98.5</td><td>높음</td></tr>
+          <tr><td>역진자</td><td>순수 오프라인 CBF</td><td>82.3</td><td>높음</td></tr>
+          <tr><td>내비게이션</td><td>V-OCBF</td><td>96.2</td><td>보통</td></tr>
+          <tr><td>내비게이션</td><td>온라인 CBF (오라클)</td><td>99.1</td><td>높음</td></tr>
+        </table>
+        <p>V-OCBF는 가치 안내를 사용하지 않는 순수 오프라인 CBF 기준선을 크게 능가하며, 온라인 학습 CBF에 근접한 안전률을 달성합니다. 가치 기반 접근법은 오프라인 데이터가 희소한 안전 경계 근처 영역에서 특히 효과적입니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>위험한 온라인 탐색 없이 안전 필터를 학습하는 핵심 실용적 필요를 해결</li>
+          <li>가치 함수 안내는 오프라인 RL 이론에 기반한 분포 이동 처리의 원칙적 방법</li>
+          <li>보수적 가치 추정이 과도하게 확신하는 CBF 인증을 방지하는 안전 인식 귀납적 편향 제공</li>
+          <li>모듈식 설계로 가치 함수 구성요소에 다양한 오프라인 RL 알고리즘 적용 가능</li>
+          <li>순수 오프라인 데이터에서 온라인 수준에 근접한 성능 달성으로 접근법의 실행 가능성 입증</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>성능이 오프라인 데이터셋의 품질과 커버리지, 특히 안전 경계 근처에 크게 의존</li>
+          <li>보수적 가치 추정이 과도하게 제한적인 안전 집합으로 이어져 양성 영역에서 작업 성능 저하 가능</li>
+          <li>이론적 보장이 CBF 감소 조건을 위한 좋은 동역학 모델 접근을 가정</li>
+          <li>고차원 상태 공간(예: 이미지 관측)으로의 확장성이 미해결</li>
+          <li>제약 오프라인 정책 최적화 같은 다른 오프라인 안전 RL 방법과의 비교 부재</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>오프라인 데이터셋에서 안전 vs. 비안전 궤적의 비율이 학습된 CBF의 품질에 어떤 영향을 미치는가?</li>
+          <li>능동적 데이터 선택 또는 우선순위 리플레이가 오프라인 설정에서 데이터 효율성을 향상시킬 수 있는가?</li>
+          <li>데이터 수집과 배포 사이에 동역학이 변경되는 환경에서 V-OCBF는 어떻게 처리하는가?</li>
+          <li>공유 오프라인 데이터에서 각 에이전트가 CBF를 학습하는 다중 에이전트 설정으로 확장 가능한가?</li>
+          <li>V-OCBF가 주어진 허용 범위 내에서 온라인 CBF 성능에 근접하기 위해 필요한 최소 데이터셋 크기는?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>V-OCBF는 CBF 기반 안전 필터 배포의 핵심 실용적 장벽인 온라인 데이터 수집 필요성에 대한 설득력 있는 해결책을 제시합니다. 오프라인 RL의 가치 함수를 안내 신호로 활용하여 정적 데이터셋에서 강건한 CBF 학습을 달성합니다.</p>
+        <p>기존 운영 데이터에 접근할 수 있는 실무자에게 V-OCBF는 추가 배포 위험 없이 안전 보장을 추출하는 원칙적 파이프라인을 제공합니다. 주의할 핵심 한계는 데이터 품질입니다 -- 모든 오프라인 학습 접근법의 근본적 제약인 "쓰레기 입력, 쓰레기 출력"이 여전히 적용됩니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 2. CN-CBF
+  // ====================================================================
+  {
+    id: "cn-cbf",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Derajic, B., Bernhard, S., Hoenig, W.",
+    venue: "Preprint 2025",
+    image: "images/cn-cbf/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "Neural CBF", "Robot Navigation", "Dynamic Environment"],
+    en: {
+      title: "CN-CBF: Composite Neural Control Barrier Function for Safe Robot Navigation in Dynamic Environments",
+      summary: "Introduces Composite Neural CBFs that decompose complex dynamic environments into individual obstacle-level neural barrier functions, composing them for scalable, safe robot navigation without retraining when obstacles change.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper proposes <strong>Composite Neural Control Barrier Functions (CN-CBF)</strong> that achieve scalable safe navigation in dynamic environments by learning individual neural CBFs per obstacle type and composing them at runtime, avoiding the need to retrain a monolithic CBF whenever the environment configuration changes.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we construct neural Control Barrier Functions that scale to dynamic environments with varying numbers and types of obstacles, without requiring retraining when the environment configuration changes?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Neural Control Barrier Functions (NCBFs) have shown promise for learning safe sets in complex systems where analytical CBF construction is difficult. However, standard NCBFs are trained for a specific environment configuration — a fixed number and arrangement of obstacles. When new obstacles appear or existing ones move, the entire NCBF must be retrained, which is computationally expensive and impractical for real-time deployment in dynamic environments.</p>
+        <p>The composition of multiple CBFs is a well-studied problem in the analytical setting (e.g., taking the minimum of individual CBFs), but composing neural CBFs introduces additional challenges: individual neural CBFs may have incompatible safe sets, the composed CBF may lose differentiability, and the QP-based safety filter may become infeasible when multiple CBF constraints conflict.</p>
+        <p>This paper addresses these challenges by training individual neural CBFs in a standardized, obstacle-centric coordinate frame and composing them using principled operations that preserve CBF validity. This modular approach enables plug-and-play safety for dynamic environments.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The CN-CBF framework operates in three stages:</p>
+        <ul>
+          <li><strong>Individual NCBF training:</strong> For each obstacle type (e.g., circular, rectangular, moving), a neural CBF is trained in a canonical coordinate frame centered on the obstacle. The training uses a self-supervised loss combining the CBF decrease condition, boundary condition, and safe/unsafe classification.</li>
+          <li><strong>Coordinate transformation:</strong> At runtime, each obstacle's neural CBF is evaluated by transforming the robot's state into the obstacle-centric coordinate frame, enabling the same trained network to handle obstacles at any position and orientation.</li>
+          <li><strong>Composition:</strong> The individual CBF values are composed using a smooth minimum operation (log-sum-exp approximation) to produce a single composite barrier value. This preserves differentiability while approximating the conservative intersection of safe sets.</li>
+          <li><strong>QP-based safety filter:</strong> The composite CBF is used in a standard QP safety filter that minimally modifies a nominal controller to satisfy the composite CBF decrease condition.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/cn-cbf/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/cn-cbf/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Modular neural CBF architecture</strong> that trains per-obstacle-type networks and composes them at runtime for arbitrary environment configurations</li>
+          <li><strong>Coordinate-frame canonicalization</strong> enabling a single network to handle obstacles at any pose without retraining</li>
+          <li><strong>Smooth composition operator</strong> (log-sum-exp) that preserves differentiability and CBF validity of the composed function</li>
+          <li>Demonstrated scalability to environments with varying numbers of static and dynamic obstacles</li>
+          <li>Zero-shot generalization to unseen environment configurations without any fine-tuning</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <p>Individual NCBFs are parameterized as 3-layer MLPs with 256 hidden units and tanh activations. Training uses a dataset of sampled states labeled as safe/unsafe based on distance to the obstacle. The CBF decrease condition is enforced via a penalty term in the loss. Training uses Adam optimizer with learning rate 1e-3 for 500 epochs per obstacle type. The QP safety filter is solved using OSQP at 100 Hz. Experiments use a unicycle robot model and a double-integrator model in 2D environments with up to 20 obstacles.</p>
+
+        <h2>Results</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>Method</th><th># Obstacles</th><th>Safety Rate (%)</th><th>Goal Reach (%)</th><th>Retrain?</th></tr>
+          <tr><td>CN-CBF (Ours)</td><td>5</td><td>99.2</td><td>95.8</td><td>No</td></tr>
+          <tr><td>CN-CBF (Ours)</td><td>15</td><td>97.8</td><td>89.3</td><td>No</td></tr>
+          <tr><td>Monolithic NCBF</td><td>5</td><td>99.5</td><td>96.1</td><td>Yes</td></tr>
+          <tr><td>Monolithic NCBF</td><td>15</td><td>N/A (retrain)</td><td>N/A</td><td>Yes</td></tr>
+          <tr><td>APF Baseline</td><td>5</td><td>91.2</td><td>88.5</td><td>No</td></tr>
+        </table>
+        <p>CN-CBF achieves safety rates comparable to monolithic NCBFs trained specifically for each configuration, while generalizing to unseen obstacle counts without retraining. Performance degrades gracefully as the number of obstacles increases, with the smooth composition maintaining feasibility of the QP filter in most scenarios. The approach significantly outperforms Artificial Potential Field baselines, especially in cluttered dynamic environments.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Modular design provides true scalability: train once per obstacle type, deploy in any configuration</li>
+          <li>Coordinate-frame canonicalization is elegant and eliminates the need for position-specific training</li>
+          <li>The smooth minimum composition preserves differentiability, avoiding gradient issues in the QP filter</li>
+          <li>Naturally handles dynamic obstacles by re-evaluating transformed states at each timestep</li>
+          <li>Practical and deployable: no online retraining required when the environment changes</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>The smooth minimum composition is conservative: the composed safe set is smaller than necessary, potentially causing unnecessary detours</li>
+          <li>Composition of many CBF constraints may lead to QP infeasibility in highly cluttered environments</li>
+          <li>Individual NCBFs assume known obstacle geometry; uncertain or partially observed obstacles are not handled</li>
+          <li>Dynamic obstacles require accurate velocity estimation, which is assumed but not addressed</li>
+          <li>Limited to 2D environments; extension to 3D with complex obstacle shapes would increase network complexity</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How does the choice of smooth minimum temperature parameter affect the tradeoff between conservatism and safety?</li>
+          <li>Could attention mechanisms be used to prioritize nearby obstacles and ignore distant ones for computational efficiency?</li>
+          <li>How would CN-CBF perform with uncertain obstacle shapes, e.g., when only partial point cloud observations are available?</li>
+          <li>Can the framework handle cooperative multi-robot scenarios where each robot is an obstacle to the others?</li>
+          <li>What theoretical guarantees can be provided for the safety of the composed CBF beyond empirical validation?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>CN-CBF offers a practical and principled approach to scaling neural CBFs for dynamic environments. The key insight — decomposing the safety problem into per-obstacle modules and composing them at runtime — mirrors the modularity that has proven successful in other areas of robotics (e.g., modular perception pipelines). This work makes neural CBFs viable for real-world deployment where the environment is not known a priori.</p>
+        <p>The main open challenge is tightening the conservatism of the composition operator without sacrificing safety guarantees. For readers interested in safe robot navigation, this paper provides an excellent template for building scalable, modular safety systems.</p>
+      `
+    },
+    ko: {
+      title: "CN-CBF: 동적 환경에서의 안전한 로봇 내비게이션을 위한 복합 신경 제어 장벽 함수",
+      summary: "복잡한 동적 환경을 개별 장애물 수준의 신경 장벽 함수로 분해하고 이를 합성하여, 장애물이 변경될 때 재훈련 없이 확장 가능한 안전 로봇 내비게이션을 달성하는 복합 신경 CBF를 소개합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 장애물 유형별 개별 신경 CBF를 학습하고 런타임에 합성하여, 환경 구성이 변경될 때마다 단일체 CBF를 재훈련할 필요 없이 동적 환경에서 확장 가능한 안전 내비게이션을 달성하는 <strong>복합 신경 제어 장벽 함수(CN-CBF)</strong>를 제안합니다.</p>
+
+        <h2>연구 질문</h2>
+        <blockquote>환경 구성이 변경될 때 재훈련 없이 다양한 수와 유형의 장애물이 있는 동적 환경으로 확장되는 신경 제어 장벽 함수를 어떻게 구성할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>신경 제어 장벽 함수(NCBF)는 분석적 CBF 구성이 어려운 복잡한 시스템에서 안전 집합을 학습하는 데 가능성을 보여주었습니다. 그러나 표준 NCBF는 특정 환경 구성(고정된 수와 배치의 장애물)에 대해 훈련됩니다. 새로운 장애물이 나타나거나 기존 장애물이 이동하면 전체 NCBF를 재훈련해야 하며, 이는 동적 환경에서의 실시간 배포에 비실용적입니다.</p>
+        <p>여러 CBF의 합성은 분석적 설정에서 잘 연구된 문제이지만, 신경 CBF의 합성은 추가적인 도전을 제기합니다. 본 논문은 표준화된 장애물 중심 좌표계에서 개별 신경 CBF를 훈련하고 CBF 유효성을 보존하는 원칙적 연산으로 합성하여 이러한 도전을 해결합니다.</p>
+        <p>이 모듈식 접근법은 동적 환경을 위한 플러그 앤 플레이 안전을 가능하게 합니다.</p>
+
+        <h2>아키텍처 / 방법론</h2>
+        <p>CN-CBF 프레임워크는 세 단계로 작동합니다:</p>
+        <ul>
+          <li><strong>개별 NCBF 훈련:</strong> 각 장애물 유형(원형, 직사각형, 이동형)에 대해 장애물 중심의 정준 좌표계에서 신경 CBF를 훈련합니다.</li>
+          <li><strong>좌표 변환:</strong> 런타임에 로봇의 상태를 장애물 중심 좌표계로 변환하여 각 장애물의 신경 CBF를 평가합니다.</li>
+          <li><strong>합성:</strong> 개별 CBF 값을 부드러운 최소 연산(log-sum-exp 근사)으로 합성하여 단일 복합 장벽 값을 생성합니다.</li>
+          <li><strong>QP 기반 안전 필터:</strong> 복합 CBF를 표준 QP 안전 필터에 사용하여 명목 제어기를 최소한으로 수정합니다.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/cn-cbf/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/cn-cbf/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>주요 기여</h2>
+        <ul>
+          <li>장애물 유형별 네트워크를 훈련하고 런타임에 임의 환경 구성을 위해 합성하는 <strong>모듈식 신경 CBF 아키텍처</strong></li>
+          <li>재훈련 없이 임의 위치의 장애물을 처리할 수 있는 <strong>좌표계 정준화</strong></li>
+          <li>미분 가능성과 CBF 유효성을 보존하는 <strong>부드러운 합성 연산자</strong>(log-sum-exp)</li>
+          <li>다양한 수의 정적 및 동적 장애물이 있는 환경으로의 확장성 실증</li>
+          <li>미세 조정 없이 보지 못한 환경 구성에 대한 제로샷 일반화</li>
+        </ul>
+
+        <h2>훈련 및 구현 세부사항</h2>
+        <p>개별 NCBF는 256개 은닉 유닛과 tanh 활성화를 가진 3층 MLP로 매개변수화됩니다. 장애물까지의 거리를 기반으로 안전/비안전으로 레이블링된 샘플링 상태 데이터셋으로 훈련합니다. CBF 감소 조건은 손실의 페널티 항으로 적용됩니다. Adam 옵티마이저, 학습률 1e-3, 장애물 유형당 500 에포크 훈련. QP 안전 필터는 OSQP로 100 Hz에서 풉니다. 최대 20개 장애물이 있는 2D 환경에서 유니사이클 및 이중 적분기 모델로 실험합니다.</p>
+
+        <h2>결과</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>방법</th><th>장애물 수</th><th>안전률 (%)</th><th>목표 도달 (%)</th><th>재훈련?</th></tr>
+          <tr><td>CN-CBF (제안)</td><td>5</td><td>99.2</td><td>95.8</td><td>아니오</td></tr>
+          <tr><td>CN-CBF (제안)</td><td>15</td><td>97.8</td><td>89.3</td><td>아니오</td></tr>
+          <tr><td>단일체 NCBF</td><td>5</td><td>99.5</td><td>96.1</td><td>예</td></tr>
+          <tr><td>APF 기준선</td><td>5</td><td>91.2</td><td>88.5</td><td>아니오</td></tr>
+        </table>
+        <p>CN-CBF는 각 구성에 특화되어 훈련된 단일체 NCBF와 비슷한 안전률을 달성하면서, 재훈련 없이 보지 못한 장애물 수에 일반화합니다. 장애물 수가 증가함에 따라 성능이 우아하게 저하되며, 인공 포텐셜 필드 기준선을 상당히 능가합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>모듈식 설계가 진정한 확장성 제공: 장애물 유형당 한 번 훈련, 임의 구성에 배포</li>
+          <li>좌표계 정준화가 위치별 훈련의 필요성을 우아하게 제거</li>
+          <li>부드러운 최소 합성이 미분 가능성을 보존하여 QP 필터의 기울기 문제 방지</li>
+          <li>각 타임스텝에서 변환된 상태를 재평가하여 동적 장애물을 자연스럽게 처리</li>
+          <li>실용적이고 배포 가능: 환경 변경 시 온라인 재훈련 불필요</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>부드러운 최소 합성이 보수적: 합성된 안전 집합이 필요 이상으로 작아 불필요한 우회 유발 가능</li>
+          <li>많은 CBF 제약의 합성이 고밀도 환경에서 QP 비실행 가능성으로 이어질 수 있음</li>
+          <li>개별 NCBF가 알려진 장애물 기하학을 가정; 불확실하거나 부분 관측 장애물 미처리</li>
+          <li>동적 장애물은 정확한 속도 추정 필요, 이는 가정되지만 다루지 않음</li>
+          <li>2D 환경으로 제한; 복잡한 장애물 형상의 3D 확장은 네트워크 복잡도 증가</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>부드러운 최소 온도 매개변수의 선택이 보수성과 안전 사이의 절충에 어떤 영향을 미치는가?</li>
+          <li>계산 효율성을 위해 가까운 장애물을 우선하고 먼 장애물을 무시하는 어텐션 메커니즘을 사용할 수 있는가?</li>
+          <li>부분 포인트 클라우드 관측만 가능한 불확실한 장애물 형상에서 CN-CBF는 어떻게 동작하는가?</li>
+          <li>각 로봇이 다른 로봇의 장애물인 협력적 다중 로봇 시나리오를 처리할 수 있는가?</li>
+          <li>합성된 CBF의 안전에 대해 경험적 검증을 넘어 어떤 이론적 보장을 제공할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>CN-CBF는 동적 환경을 위한 신경 CBF 확장에 대한 실용적이고 원칙적인 접근법을 제공합니다. 핵심 통찰인 안전 문제를 장애물별 모듈로 분해하고 런타임에 합성하는 것은 로봇공학의 다른 영역에서 성공적임이 입증된 모듈성을 반영합니다.</p>
+        <p>주요 미해결 과제는 안전 보장을 희생하지 않고 합성 연산자의 보수성을 줄이는 것입니다. 안전한 로봇 내비게이션에 관심 있는 독자에게 이 논문은 확장 가능하고 모듈식인 안전 시스템 구축을 위한 훌륭한 템플릿을 제공합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 3. CBF Obstacle Avoidance
+  // ====================================================================
+  {
+    id: "cbf-obstacle-avoidance",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Liu, S., Huang, Z., Belta, C. A.",
+    venue: "Preprint 2025",
+    image: "images/cbf-obstacle-avoidance/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "CBF", "Obstacle Avoidance", "SDF"],
+    en: {
+      title: "Learning Safety for Obstacle Avoidance via Control Barrier Functions",
+      summary: "Proposes using Signed Distance Functions (SDFs) as Control Barrier Functions for obstacle avoidance, enabling safety guarantees for robots navigating around obstacles with complex geometries without manual CBF design.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper demonstrates that <strong>Signed Distance Functions (SDFs) can serve directly as Control Barrier Functions</strong> for obstacle avoidance, unifying geometric distance computation with safety-critical control theory to provide provable collision avoidance for robots navigating complex obstacle geometries.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can Signed Distance Functions be used as valid Control Barrier Functions for obstacle avoidance, and how can we learn SDFs from data to enable CBF-based safety for obstacles with arbitrary geometries?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Designing Control Barrier Functions for obstacle avoidance is traditionally a manual process that requires significant domain expertise. For simple obstacles (circles, ellipses), analytical CBFs can be derived from distance functions, but real-world obstacles have complex, non-convex geometries that defy simple analytical descriptions.</p>
+        <p>Signed Distance Functions (SDFs) provide a natural geometric description of obstacle boundaries: they return positive values outside the obstacle, zero on the boundary, and negative values inside. This property aligns perfectly with the CBF requirement that h(x) > 0 for safe states. However, using SDFs as CBFs requires careful analysis of their gradient properties and the satisfaction of the CBF decrease condition.</p>
+        <p>The paper bridges these two fields by establishing formal conditions under which learned SDFs serve as valid CBFs, and proposes a learning pipeline for constructing SDF-based CBFs from obstacle point cloud data.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The methodology combines SDF learning with CBF-based safety filtering:</p>
+        <ul>
+          <li><strong>SDF representation:</strong> The obstacle geometry is encoded via a neural network that maps spatial coordinates to signed distance values. The network is trained on point samples with known distance labels (computed from mesh data or point clouds).</li>
+          <li><strong>CBF validity analysis:</strong> The paper establishes conditions under which the SDF satisfies the CBF decrease condition. Key requirement: the SDF gradient must have unit norm (the Eikonal equation |nabla h| = 1), which is naturally satisfied by true SDFs but must be enforced during neural network training.</li>
+          <li><strong>Eikonal regularization:</strong> A penalty term is added to the training loss to enforce the Eikonal equation, ensuring the learned SDF has valid gradient properties for CBF usage.</li>
+          <li><strong>QP-based safety filter:</strong> The learned SDF-CBF is deployed in a quadratic program that minimally modifies a nominal controller to maintain h(x) &ge; 0, using the analytically computed gradient of the neural SDF.</li>
+          <li><strong>Multi-obstacle handling:</strong> For environments with multiple obstacles, individual SDF-CBFs are constructed per obstacle and composed via minimum operations or multiple QP constraints.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/cbf-obstacle-avoidance/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/cbf-obstacle-avoidance/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Formal bridge between SDFs and CBFs:</strong> Establishes necessary and sufficient conditions for SDFs to serve as valid CBFs, grounded in the Eikonal equation</li>
+          <li><strong>Neural SDF learning pipeline</strong> with Eikonal regularization that produces CBF-ready distance functions from point cloud data</li>
+          <li>Elimination of manual CBF design for obstacle avoidance, enabling safety for <strong>arbitrary obstacle geometries</strong></li>
+          <li>Theoretical analysis of the relative degree condition between the SDF-CBF and common robot dynamics models</li>
+          <li>Demonstration on both simple (2D) and complex (3D mesh) obstacle geometries with various robot dynamics</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <p>The neural SDF is a 4-layer MLP with 128 hidden units and sine activations (SIREN architecture), trained on 50K point samples per obstacle with Adam optimizer (lr=1e-4, 2000 epochs). The Eikonal loss weight is set to 0.1. The QP safety filter uses OSQP with a warm-start strategy for real-time performance. Experiments include a planar robot navigating around 2D polygonal obstacles and a 3D manipulator avoiding mesh obstacles. The CBF class-K function alpha(h) = h is used throughout.</p>
+
+        <h2>Results</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>Scenario</th><th>Obstacle Type</th><th>CBF Method</th><th>Min Distance (m)</th><th>Collision?</th></tr>
+          <tr><td>2D Navigation</td><td>Convex polygon</td><td>SDF-CBF</td><td>0.02</td><td>No</td></tr>
+          <tr><td>2D Navigation</td><td>Non-convex shape</td><td>SDF-CBF</td><td>0.01</td><td>No</td></tr>
+          <tr><td>2D Navigation</td><td>Non-convex shape</td><td>Ellipse CBF</td><td>-0.03</td><td>Yes</td></tr>
+          <tr><td>3D Manipulation</td><td>Mesh object</td><td>SDF-CBF</td><td>0.005</td><td>No</td></tr>
+        </table>
+        <p>The SDF-CBF consistently maintains positive distances to obstacles across all tested scenarios, while traditional ellipsoidal CBF approximations fail for non-convex geometries. The Eikonal regularization is critical: without it, the learned SDF has non-unit gradients that cause the CBF filter to either over-constrain (far from obstacles) or under-constrain (near concavities). The QP solver runs within 1ms per step, enabling real-time deployment.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Elegant theoretical connection between SDFs and CBFs through the Eikonal equation, providing solid mathematical foundations</li>
+          <li>Practical pipeline from point cloud data to deployable safety filter, requiring minimal human intervention</li>
+          <li>Handles non-convex obstacles where traditional CBF approaches fail or require overly conservative approximations</li>
+          <li>SIREN architecture with sine activations naturally produces smooth, differentiable SDFs suitable for gradient-based QP</li>
+          <li>Computationally efficient: neural SDF evaluation and gradient computation are fast forward passes</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>The Eikonal equation |nabla h| = 1 is only approximately enforced by the regularization, leading to small gradient errors near obstacle concavities</li>
+          <li>Does not handle deformable or articulated obstacles whose SDF changes over time</li>
+          <li>The neural SDF requires offline training per obstacle; online SDF learning from streaming data is not addressed</li>
+          <li>Relative degree analysis assumes specific robot dynamics models; extending to general nonlinear systems requires case-by-case analysis</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Could DeepSDF-style latent codes enable a single network to represent SDFs for a family of obstacle shapes?</li>
+          <li>How does SDF approximation error propagate through the CBF filter, and can we bound the resulting safety margin?</li>
+          <li>Can the Eikonal regularization be replaced with hard constraints during training (e.g., via spectral normalization)?</li>
+          <li>How would this approach integrate with real-time SLAM systems that reconstruct obstacle geometry on-the-fly?</li>
+          <li>What is the minimum point cloud density required for the learned SDF to produce a valid CBF?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper establishes a clean and practically useful connection between two previously separate fields: neural implicit representations (SDFs) and safety-critical control (CBFs). The Eikonal equation serves as the mathematical glue, ensuring that geometric distance information translates directly into control-theoretic safety guarantees.</p>
+        <p>For roboticists working on obstacle avoidance in complex environments, this paper provides an actionable recipe: learn an SDF from obstacle data, regularize with the Eikonal loss, and plug into a standard QP safety filter. The approach is particularly compelling for manipulation tasks where obstacle geometries are complex and non-convex.</p>
+      `
+    },
+    ko: {
+      title: "제어 장벽 함수를 통한 장애물 회피 안전 학습",
+      summary: "부호 거리 함수(SDF)를 제어 장벽 함수로 직접 사용하여 복잡한 기하학적 형상을 가진 장애물에 대해 수동 CBF 설계 없이 안전 보장을 가능하게 하는 장애물 회피 방법을 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 <strong>부호 거리 함수(SDF)가 장애물 회피를 위한 제어 장벽 함수로 직접 사용</strong>될 수 있음을 보여주며, 기하학적 거리 계산과 안전 임계 제어 이론을 통합하여 복잡한 장애물 기하학을 탐색하는 로봇에 대한 증명 가능한 충돌 회피를 제공합니다.</p>
+
+        <h2>연구 질문</h2>
+        <blockquote>부호 거리 함수를 장애물 회피를 위한 유효한 제어 장벽 함수로 사용할 수 있으며, 임의 기하학의 장애물에 대해 CBF 기반 안전을 가능하게 하기 위해 데이터에서 SDF를 학습할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>장애물 회피를 위한 제어 장벽 함수 설계는 전통적으로 상당한 도메인 전문성을 요구하는 수작업 과정입니다. 단순한 장애물(원, 타원)의 경우 거리 함수에서 분석적 CBF를 유도할 수 있지만, 실세계 장애물은 단순한 분석적 기술을 허용하지 않는 복잡하고 비볼록한 기하학을 가집니다.</p>
+        <p>부호 거리 함수(SDF)는 장애물 경계의 자연스러운 기하학적 기술을 제공합니다: 장애물 외부에서 양수, 경계에서 0, 내부에서 음수 값을 반환합니다. 이 속성은 안전 상태에서 h(x) > 0이라는 CBF 요구사항과 완벽하게 일치합니다.</p>
+        <p>본 논문은 학습된 SDF가 유효한 CBF로 작용하는 형식적 조건을 수립하고, 장애물 포인트 클라우드 데이터에서 SDF 기반 CBF를 구성하는 학습 파이프라인을 제안하여 이 두 분야를 연결합니다.</p>
+
+        <h2>아키텍처 / 방법론</h2>
+        <p>방법론은 SDF 학습과 CBF 기반 안전 필터링을 결합합니다:</p>
+        <ul>
+          <li><strong>SDF 표현:</strong> 장애물 기하학이 공간 좌표를 부호 거리 값으로 매핑하는 신경망으로 인코딩됩니다.</li>
+          <li><strong>CBF 유효성 분석:</strong> SDF가 CBF 감소 조건을 만족하는 조건을 수립합니다. 핵심 요구사항: SDF 기울기가 단위 노름을 가져야 합니다(아이코날 방정식 |nabla h| = 1).</li>
+          <li><strong>아이코날 정규화:</strong> 아이코날 방정식을 적용하여 학습된 SDF가 CBF 사용에 유효한 기울기 속성을 갖도록 훈련 손실에 페널티 항을 추가합니다.</li>
+          <li><strong>QP 기반 안전 필터:</strong> 학습된 SDF-CBF를 사용하여 h(x) &ge; 0을 유지하도록 명목 제어기를 최소한으로 수정하는 이차 프로그램에 배포합니다.</li>
+          <li><strong>다중 장애물 처리:</strong> 여러 장애물이 있는 환경에서 개별 SDF-CBF를 장애물별로 구성하고 최소 연산 또는 다중 QP 제약으로 합성합니다.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/cbf-obstacle-avoidance/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/cbf-obstacle-avoidance/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>주요 기여</h2>
+        <ul>
+          <li>아이코날 방정식을 통한 <strong>SDF와 CBF 사이의 형식적 연결</strong> 수립</li>
+          <li>포인트 클라우드 데이터에서 CBF 준비된 거리 함수를 생성하는 아이코날 정규화 포함 <strong>신경 SDF 학습 파이프라인</strong></li>
+          <li>장애물 회피를 위한 수동 CBF 설계 제거, <strong>임의 장애물 기하학</strong>에 대한 안전 보장</li>
+          <li>SDF-CBF와 일반적인 로봇 동역학 모델 사이의 상대 차수 조건에 대한 이론적 분석</li>
+          <li>단순(2D)부터 복잡(3D 메쉬) 장애물 기하학까지 다양한 로봇 동역학으로 실증</li>
+        </ul>
+
+        <h2>훈련 및 구현 세부사항</h2>
+        <p>신경 SDF는 128개 은닉 유닛과 사인 활성화(SIREN 아키텍처)를 가진 4층 MLP로, 장애물당 5만 개 포인트 샘플로 Adam 옵티마이저(lr=1e-4, 2000 에포크) 사용하여 훈련합니다. 아이코날 손실 가중치는 0.1로 설정합니다. QP 안전 필터는 실시간 성능을 위한 웜스타트 전략으로 OSQP를 사용합니다. 2D 다각형 장애물 주변의 평면 로봇과 메쉬 장애물을 회피하는 3D 매니퓰레이터를 포함하는 실험을 수행합니다.</p>
+
+        <h2>결과</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>시나리오</th><th>장애물 유형</th><th>CBF 방법</th><th>최소 거리 (m)</th><th>충돌?</th></tr>
+          <tr><td>2D 내비게이션</td><td>볼록 다각형</td><td>SDF-CBF</td><td>0.02</td><td>아니오</td></tr>
+          <tr><td>2D 내비게이션</td><td>비볼록 형상</td><td>SDF-CBF</td><td>0.01</td><td>아니오</td></tr>
+          <tr><td>2D 내비게이션</td><td>비볼록 형상</td><td>타원 CBF</td><td>-0.03</td><td>예</td></tr>
+          <tr><td>3D 매니퓰레이션</td><td>메쉬 객체</td><td>SDF-CBF</td><td>0.005</td><td>아니오</td></tr>
+        </table>
+        <p>SDF-CBF는 모든 테스트 시나리오에서 장애물까지의 양의 거리를 일관되게 유지하는 반면, 전통적인 타원체 CBF 근사는 비볼록 기하학에서 실패합니다. 아이코날 정규화가 핵심적입니다: 이것이 없으면 학습된 SDF가 비단위 기울기를 가져 CBF 필터가 과도하게 제약하거나 과소하게 제약합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>아이코날 방정식을 통한 SDF와 CBF 사이의 우아한 이론적 연결, 견고한 수학적 기초 제공</li>
+          <li>포인트 클라우드 데이터에서 배포 가능한 안전 필터까지의 실용적 파이프라인</li>
+          <li>전통적 CBF 접근법이 실패하는 비볼록 장애물 처리</li>
+          <li>사인 활성화의 SIREN 아키텍처가 기울기 기반 QP에 적합한 매끄럽고 미분 가능한 SDF를 자연스럽게 생성</li>
+          <li>계산 효율적: 신경 SDF 평가와 기울기 계산이 빠른 순전파</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>아이코날 방정식이 정규화로만 근사적으로 적용되어 장애물 오목부 근처에서 작은 기울기 오류 발생</li>
+          <li>SDF가 시간에 따라 변하는 변형 가능하거나 관절형 장애물 미처리</li>
+          <li>신경 SDF가 장애물당 오프라인 훈련 필요; 스트리밍 데이터에서의 온라인 SDF 학습 미해결</li>
+          <li>상대 차수 분석이 특정 로봇 동역학 모델 가정; 일반 비선형 시스템 확장에 사례별 분석 필요</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>DeepSDF 스타일의 잠재 코드가 단일 네트워크로 장애물 형상 계열의 SDF를 표현할 수 있게 할 수 있는가?</li>
+          <li>SDF 근사 오류가 CBF 필터를 통해 어떻게 전파되며, 결과적인 안전 마진을 한정할 수 있는가?</li>
+          <li>아이코날 정규화를 훈련 중 경성 제약(예: 스펙트럴 정규화)으로 대체할 수 있는가?</li>
+          <li>이 접근법을 장애물 기하학을 실시간으로 재구성하는 SLAM 시스템과 어떻게 통합하는가?</li>
+          <li>학습된 SDF가 유효한 CBF를 생성하기 위해 필요한 최소 포인트 클라우드 밀도는?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>본 논문은 이전에 별개였던 두 분야인 신경 암시적 표현(SDF)과 안전 임계 제어(CBF) 사이의 깔끔하고 실용적으로 유용한 연결을 수립합니다. 아이코날 방정식이 수학적 접착제 역할을 하여 기하학적 거리 정보가 제어 이론적 안전 보장으로 직접 변환되도록 합니다.</p>
+        <p>복잡한 환경에서 장애물 회피를 연구하는 로봇공학자에게 이 논문은 실행 가능한 레시피를 제공합니다: 장애물 데이터에서 SDF를 학습하고, 아이코날 손실로 정규화하고, 표준 QP 안전 필터에 연결합니다. 이 접근법은 장애물 기하학이 복잡하고 비볼록한 매니퓰레이션 작업에 특히 매력적입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 4. Point Cloud CBF-MPC
+  // ====================================================================
+  {
+    id: "pointcloud-cbf-mpc",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Liang, F., Yang, Y., Dai, S.-L.",
+    venue: "Preprint 2025",
+    image: "images/pointcloud-cbf-mpc/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "CBF", "MPC", "Point Cloud", "Mobile Robot"],
+    en: {
+      title: "Point Cloud-Based Control Barrier Functions for Model Predictive Control in Safety-Critical Navigation of Autonomous Mobile Robots",
+      summary: "Integrates point cloud perception directly into a CBF-MPC framework for mobile robot navigation, constructing barrier functions from raw sensor data without pre-built obstacle maps.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper proposes a <strong>perception-to-control pipeline</strong> that constructs Control Barrier Functions directly from point cloud sensor data and integrates them into a Model Predictive Control framework, enabling safety-critical mobile robot navigation in unmapped environments without the need for explicit obstacle reconstruction.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we construct valid Control Barrier Functions directly from raw point cloud data (e.g., LiDAR) and integrate them into an MPC framework for real-time safety-critical navigation of autonomous mobile robots?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Traditional CBF-based safety filters assume that obstacle locations and geometries are known a priori, allowing analytical CBF construction. In practice, mobile robots perceive their environment through sensors (LiDAR, depth cameras) that produce point clouds — raw 3D coordinates with no explicit geometric model. The gap between sensor data and CBF construction is typically bridged by first building an occupancy map or reconstructing obstacle meshes, introducing computational overhead and potential reconstruction errors.</p>
+        <p>Model Predictive Control (MPC) offers a natural integration point for safety constraints through its optimization-based formulation. However, incorporating CBF constraints into MPC requires the barrier function to be defined over the prediction horizon, where future obstacle positions must be estimated.</p>
+        <p>This paper eliminates the intermediate mapping step by constructing CBFs directly from point cloud data, and integrates these perception-derived CBFs into an MPC framework that jointly optimizes trajectory tracking and safety over a finite horizon.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The framework consists of three integrated modules:</p>
+        <ul>
+          <li><strong>Point cloud processing:</strong> Raw LiDAR scans are downsampled and clustered to identify obstacle regions. For each cluster, a local convex hull or bounding region is computed to define the obstacle boundary.</li>
+          <li><strong>CBF construction from point clouds:</strong> For each obstacle cluster, a CBF is constructed based on the minimum distance from the robot to the convex hull boundary. The distance function is formulated as a differentiable operation over the point set, enabling gradient computation for the MPC optimizer.</li>
+          <li><strong>CBF-MPC integration:</strong> The MPC problem is formulated with CBF decrease conditions as inequality constraints at each prediction step. The cost function balances trajectory tracking performance with control effort, while CBF constraints ensure safety throughout the prediction horizon.</li>
+          <li><strong>Prediction with persistence:</strong> Since future point clouds are unavailable during the prediction horizon, the current point cloud is propagated forward using simple velocity estimates of detected obstacles, providing conservative safety constraints over the planning window.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Direct point-cloud-to-CBF pipeline</strong> that eliminates the need for explicit obstacle mapping or mesh reconstruction</li>
+          <li><strong>Differentiable distance formulation</strong> from point sets that enables gradient-based optimization in the MPC framework</li>
+          <li>Integration of perception-derived CBFs into a <strong>finite-horizon MPC</strong> with safety guarantees over the planning window</li>
+          <li>Point cloud persistence model for propagating safety constraints through the MPC prediction horizon</li>
+          <li>Real-time capable implementation demonstrated on a mobile robot with LiDAR sensing</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <p>The system uses a 2D LiDAR scanner with 360-degree coverage and 0.5-degree angular resolution. Point cloud downsampling reduces each scan to ~500 points. Obstacle clustering uses DBSCAN with eps=0.3m and min_samples=5. The MPC prediction horizon is N=20 steps at 0.1s intervals (2s lookahead). The optimization problem is solved using CasADi with IPOPT as the nonlinear solver. The mobile robot is modeled as a unicycle with maximum linear velocity 1.0 m/s and maximum angular velocity 1.5 rad/s. Experiments are conducted both in Gazebo simulation and on a TurtleBot3 platform.</p>
+
+        <h2>Results</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>Method</th><th>Static Obstacles</th><th>Dynamic Obstacles</th><th>Min Clearance (m)</th><th>Avg. Solve Time (ms)</th></tr>
+          <tr><td>PC-CBF-MPC (Ours)</td><td>0/50 collisions</td><td>0/50 collisions</td><td>0.12</td><td>18.3</td></tr>
+          <tr><td>Standard MPC</td><td>0/50 collisions</td><td>3/50 collisions</td><td>0.05</td><td>15.1</td></tr>
+          <tr><td>DWA</td><td>0/50 collisions</td><td>7/50 collisions</td><td>0.03</td><td>2.1</td></tr>
+          <tr><td>Reactive CBF-QP</td><td>0/50 collisions</td><td>1/50 collisions</td><td>0.15</td><td>1.2</td></tr>
+        </table>
+        <p>The PC-CBF-MPC achieves zero collisions across all test scenarios while maintaining reasonable computational overhead. The MPC lookahead provides significant advantage in dynamic obstacle scenarios, where reactive methods (DWA, CBF-QP) occasionally fail due to delayed response. The minimum clearance of 0.12m demonstrates that the point-cloud-derived CBFs provide a practical safety margin without excessive conservatism. The 18.3ms average solve time is within the 100ms real-time budget for the 10 Hz control loop.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Eliminates the mapping/reconstruction bottleneck, enabling direct perception-to-control safety</li>
+          <li>MPC integration provides anticipatory behavior that purely reactive CBF-QP filters lack</li>
+          <li>Point cloud persistence model is simple yet effective for short prediction horizons</li>
+          <li>Demonstrated on real hardware (TurtleBot3), not just simulation</li>
+          <li>Differentiable distance formulation is compatible with modern automatic differentiation frameworks</li>
+          <li>Computational cost is practical for real-time deployment on modest hardware</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Point cloud persistence assumes constant obstacle velocity, which fails for accelerating or turning obstacles</li>
+          <li>Convex hull approximation of obstacle clusters can be overly conservative for concave obstacles</li>
+          <li>2D LiDAR limits the approach to planar navigation; 3D point clouds would significantly increase computational cost</li>
+          <li>DBSCAN clustering may merge nearby obstacles or split a single obstacle, affecting CBF construction</li>
+          <li>No formal recursive feasibility guarantee for the MPC with time-varying CBF constraints</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How would the approach scale to 3D point clouds from depth cameras, and what compression techniques could maintain real-time performance?</li>
+          <li>Could learned obstacle motion prediction replace the constant-velocity persistence model for better dynamic obstacle handling?</li>
+          <li>What happens when the LiDAR has occlusions — can the framework handle partially observed obstacles safely?</li>
+          <li>How does clustering quality affect safety, and could a learned clustering method improve robustness?</li>
+          <li>Can recursive feasibility be guaranteed by restricting the terminal set of the MPC to a known safe configuration?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper addresses a genuine practical gap: most CBF literature assumes known obstacle models, while most robot perception produces point clouds. By directly constructing CBFs from point cloud data and integrating them into MPC, the work provides an end-to-end pipeline from perception to safety-critical control.</p>
+        <p>The approach is particularly relevant for mobile robots operating in unknown or changing environments where pre-built maps are unavailable. The key challenge going forward is improving the point cloud prediction model for dynamic environments, where simple persistence assumptions break down over longer horizons.</p>
+      `
+    },
+    ko: {
+      title: "자율 이동 로봇의 안전 임계 내비게이션을 위한 포인트 클라우드 기반 제어 장벽 함수-모델 예측 제어",
+      summary: "포인트 클라우드 인식을 CBF-MPC 프레임워크에 직접 통합하여, 사전 구축된 장애물 맵 없이 원시 센서 데이터에서 장벽 함수를 구성하는 이동 로봇 내비게이션 방법을 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 포인트 클라우드 센서 데이터에서 직접 제어 장벽 함수를 구성하고 이를 모델 예측 제어 프레임워크에 통합하는 <strong>인식-제어 파이프라인</strong>을 제안하여, 명시적 장애물 재구성 없이 매핑되지 않은 환경에서의 안전 임계 이동 로봇 내비게이션을 가능하게 합니다.</p>
+
+        <h2>연구 질문</h2>
+        <blockquote>원시 포인트 클라우드 데이터(예: LiDAR)에서 직접 유효한 제어 장벽 함수를 구성하고, 자율 이동 로봇의 실시간 안전 임계 내비게이션을 위한 MPC 프레임워크에 통합할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>전통적인 CBF 기반 안전 필터는 장애물 위치와 기하학이 사전에 알려져 있다고 가정하여 분석적 CBF 구성을 허용합니다. 실제로 이동 로봇은 포인트 클라우드를 생성하는 센서(LiDAR, 깊이 카메라)를 통해 환경을 인식합니다. 센서 데이터와 CBF 구성 사이의 간극은 일반적으로 먼저 점유 맵을 구축하거나 장애물 메쉬를 재구성하여 연결되며, 이는 계산 오버헤드와 잠재적 재구성 오류를 유발합니다.</p>
+        <p>모델 예측 제어(MPC)는 최적화 기반 공식을 통해 안전 제약의 자연스러운 통합 지점을 제공합니다. 그러나 CBF 제약을 MPC에 통합하려면 예측 구간 동안 장벽 함수가 정의되어야 합니다.</p>
+        <p>본 논문은 포인트 클라우드 데이터에서 직접 CBF를 구성하여 중간 매핑 단계를 제거하고, 유한 구간에 걸쳐 궤적 추적과 안전을 공동 최적화하는 MPC 프레임워크에 이러한 인식 유래 CBF를 통합합니다.</p>
+
+        <h2>아키텍처 / 방법론</h2>
+        <p>프레임워크는 세 가지 통합 모듈로 구성됩니다:</p>
+        <ul>
+          <li><strong>포인트 클라우드 처리:</strong> 원시 LiDAR 스캔을 다운샘플링하고 클러스터링하여 장애물 영역을 식별합니다. 각 클러스터에 대해 지역 볼록 껍질 또는 바운딩 영역을 계산합니다.</li>
+          <li><strong>포인트 클라우드에서 CBF 구성:</strong> 각 장애물 클러스터에 대해 로봇에서 볼록 껍질 경계까지의 최소 거리를 기반으로 CBF를 구성합니다.</li>
+          <li><strong>CBF-MPC 통합:</strong> 각 예측 단계에서 CBF 감소 조건을 부등식 제약으로 하는 MPC 문제를 공식화합니다.</li>
+          <li><strong>지속성 기반 예측:</strong> 예측 구간 동안 미래 포인트 클라우드를 사용할 수 없으므로, 현재 포인트 클라우드를 간단한 속도 추정을 사용하여 전방으로 전파합니다.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>주요 기여</h2>
+        <ul>
+          <li>명시적 장애물 매핑이나 메쉬 재구성의 필요성을 제거하는 <strong>포인트 클라우드-CBF 직접 파이프라인</strong></li>
+          <li>MPC 프레임워크에서 기울기 기반 최적화를 가능하게 하는 포인트 집합의 <strong>미분 가능한 거리 공식</strong></li>
+          <li>계획 창에 걸쳐 안전 보장이 있는 <strong>유한 구간 MPC</strong>에 인식 유래 CBF 통합</li>
+          <li>MPC 예측 구간을 통한 안전 제약 전파를 위한 포인트 클라우드 지속성 모델</li>
+          <li>LiDAR 센싱이 있는 이동 로봇에서 실시간 가능한 구현 실증</li>
+        </ul>
+
+        <h2>훈련 및 구현 세부사항</h2>
+        <p>시스템은 360도 커버리지와 0.5도 각도 해상도의 2D LiDAR 스캐너를 사용합니다. 포인트 클라우드 다운샘플링은 각 스캔을 ~500 포인트로 줄입니다. 장애물 클러스터링은 eps=0.3m, min_samples=5의 DBSCAN을 사용합니다. MPC 예측 구간은 0.1초 간격의 N=20 단계(2초 미리보기)입니다. CasADi와 IPOPT를 비선형 솔버로 사용하여 최적화 문제를 풉니다. 유니사이클 모델, 최대 선속도 1.0 m/s, 최대 각속도 1.5 rad/s. Gazebo 시뮬레이션과 TurtleBot3 플랫폼에서 실험을 수행합니다.</p>
+
+        <h2>결과</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>방법</th><th>정적 장애물</th><th>동적 장애물</th><th>최소 간격 (m)</th><th>평균 풀이 시간 (ms)</th></tr>
+          <tr><td>PC-CBF-MPC (제안)</td><td>0/50 충돌</td><td>0/50 충돌</td><td>0.12</td><td>18.3</td></tr>
+          <tr><td>표준 MPC</td><td>0/50 충돌</td><td>3/50 충돌</td><td>0.05</td><td>15.1</td></tr>
+          <tr><td>DWA</td><td>0/50 충돌</td><td>7/50 충돌</td><td>0.03</td><td>2.1</td></tr>
+          <tr><td>반응형 CBF-QP</td><td>0/50 충돌</td><td>1/50 충돌</td><td>0.15</td><td>1.2</td></tr>
+        </table>
+        <p>PC-CBF-MPC는 모든 테스트 시나리오에서 충돌 없이 합리적인 계산 오버헤드를 유지합니다. MPC 미리보기는 동적 장애물 시나리오에서 상당한 이점을 제공하며, 반응형 방법(DWA, CBF-QP)은 지연된 응답으로 간혹 실패합니다. 18.3ms 평균 풀이 시간은 10 Hz 제어 루프의 100ms 실시간 예산 이내입니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>매핑/재구성 병목을 제거하여 직접적인 인식-제어 안전 실현</li>
+          <li>MPC 통합이 순수 반응형 CBF-QP 필터에 부족한 예측적 행동 제공</li>
+          <li>포인트 클라우드 지속성 모델이 짧은 예측 구간에서 단순하지만 효과적</li>
+          <li>시뮬레이션뿐만 아니라 실제 하드웨어(TurtleBot3)에서 실증</li>
+          <li>미분 가능한 거리 공식이 현대 자동 미분 프레임워크와 호환</li>
+          <li>실시간 배포에 실용적인 계산 비용</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>포인트 클라우드 지속성이 일정 장애물 속도를 가정, 가속하거나 회전하는 장애물에서 실패</li>
+          <li>장애물 클러스터의 볼록 껍질 근사가 오목 장애물에 대해 과도하게 보수적</li>
+          <li>2D LiDAR가 접근법을 평면 내비게이션으로 제한; 3D 포인트 클라우드는 계산 비용 크게 증가</li>
+          <li>DBSCAN 클러스터링이 인접 장애물을 병합하거나 단일 장애물을 분할할 수 있어 CBF 구성에 영향</li>
+          <li>시변 CBF 제약이 있는 MPC의 공식적 재귀적 실행 가능성 보장 부재</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>깊이 카메라의 3D 포인트 클라우드로 접근법이 어떻게 확장되며, 실시간 성능을 유지할 수 있는 압축 기법은?</li>
+          <li>학습된 장애물 운동 예측이 더 나은 동적 장애물 처리를 위해 일정 속도 지속성 모델을 대체할 수 있는가?</li>
+          <li>LiDAR에 가림이 있을 때 프레임워크가 부분 관측 장애물을 안전하게 처리할 수 있는가?</li>
+          <li>클러스터링 품질이 안전에 어떤 영향을 미치며, 학습된 클러스터링 방법이 강건성을 향상시킬 수 있는가?</li>
+          <li>MPC의 종단 집합을 알려진 안전 구성으로 제한하여 재귀적 실행 가능성을 보장할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>본 논문은 실질적인 실용적 간극을 해결합니다: 대부분의 CBF 문헌은 알려진 장애물 모델을 가정하는 반면, 대부분의 로봇 인식은 포인트 클라우드를 생성합니다. 포인트 클라우드 데이터에서 직접 CBF를 구성하고 MPC에 통합하여 인식에서 안전 임계 제어까지의 종단간 파이프라인을 제공합니다.</p>
+        <p>이 접근법은 사전 구축 맵이 불가능한 미지의 또는 변화하는 환경에서 작동하는 이동 로봇에 특히 관련이 있습니다. 향후 핵심 과제는 더 긴 구간에서 단순 지속성 가정이 실패하는 동적 환경을 위한 포인트 클라우드 예측 모델 개선입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 5. Log-GP-CBF
+  // ====================================================================
+  {
+    id: "log-gp-cbf",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Yin, X., Liang, C., Guo, Y., Mei, J.",
+    venue: "Preprint 2025",
+    image: "images/log-gp-cbf/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "CBF", "Gaussian Process", "Dynamic Environment"],
+    en: {
+      title: "Dynamic Log-Gaussian Process Control Barrier Function for Safe Robotic Navigation in Dynamic Environments",
+      summary: "Combines logarithmic barrier functions with Gaussian Process models to create adaptive CBFs that account for obstacle motion uncertainty, providing probabilistic safety guarantees in dynamic environments.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper introduces <strong>Log-Gaussian Process CBFs (Log-GP-CBFs)</strong> that combine logarithmic barrier function formulations with Gaussian Process regression to model obstacle motion uncertainty, providing probabilistic safety guarantees that adapt in real-time to observed dynamic obstacle behavior.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we design Control Barrier Functions that provide probabilistic safety guarantees in dynamic environments where obstacle motion is uncertain, by combining logarithmic barrier formulations with Gaussian Process models of obstacle dynamics?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Standard CBFs assume deterministic knowledge of obstacle positions and dynamics. In real dynamic environments, obstacle motion is inherently uncertain — pedestrians may change direction unpredictably, vehicles may accelerate or brake, and sensor measurements are noisy. Ignoring this uncertainty can lead to either unsafe behavior (underestimating risk) or overly conservative behavior (treating worst-case bounds as certain).</p>
+        <p>Gaussian Processes (GPs) provide a principled Bayesian framework for modeling uncertainty: they produce not just point predictions of obstacle positions but also confidence intervals that quantify prediction uncertainty. However, integrating GP uncertainty into CBF frameworks is non-trivial because the CBF decrease condition must hold probabilistically, and the GP posterior changes as new observations arrive.</p>
+        <p>Logarithmic barrier functions offer an advantage over standard polynomial barriers: they provide infinite penalty as the system approaches the unsafe boundary, creating a natural "soft wall" effect. The log formulation also interacts favorably with GP uncertainty bounds, enabling tractable probabilistic safety conditions.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The Log-GP-CBF framework operates as follows:</p>
+        <ul>
+          <li><strong>Gaussian Process obstacle model:</strong> A GP is trained online to model the obstacle's trajectory. The GP posterior provides mean predictions (expected obstacle position) and variance estimates (uncertainty around the prediction) at future time steps.</li>
+          <li><strong>Logarithmic CBF formulation:</strong> Instead of the standard h(x) = distance - safety_margin, the barrier is formulated as h(x) = log(distance - safety_margin), which goes to negative infinity as the distance approaches the margin. This provides stronger repulsion near the boundary.</li>
+          <li><strong>Probabilistic safety condition:</strong> The CBF decrease condition is reformulated as a chance constraint: P(h_dot + alpha(h) &ge; 0) &ge; 1 - delta, where delta is a user-specified risk tolerance. The GP uncertainty is propagated through the barrier function to compute this probability.</li>
+          <li><strong>Online GP updates:</strong> As new obstacle observations arrive, the GP posterior is updated incrementally using sparse GP approximations (inducing points) to maintain computational tractability.</li>
+          <li><strong>QP safety filter:</strong> The probabilistic CBF constraint is converted to a deterministic constraint using GP mean and variance, then solved as a standard QP.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/log-gp-cbf/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/log-gp-cbf/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Novel Log-GP-CBF formulation</strong> that naturally combines logarithmic barriers with GP uncertainty for stronger safety near boundaries</li>
+          <li><strong>Probabilistic safety guarantees</strong> with user-tunable risk tolerance parameter delta</li>
+          <li><strong>Online GP adaptation</strong> using sparse approximations that update the obstacle model in real-time as new observations arrive</li>
+          <li>Theoretical analysis showing that the log formulation reduces conservatism compared to standard GP-CBF approaches</li>
+          <li>Demonstration in multi-obstacle dynamic environments with heterogeneous obstacle behaviors</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <p>The GP uses a squared exponential kernel with automatic relevance determination (ARD). Hyperparameters are initialized from a short observation window (2 seconds) and updated every 10 observations using marginal likelihood optimization. Sparse GP with M=50 inducing points is used for computational efficiency. The risk tolerance delta is set to 0.05 (95% safety probability). The robot is modeled as a double integrator with state [x, y, vx, vy]. The QP is solved using qpOASES at 50 Hz. Experiments use a simulated environment with 3-8 dynamic obstacles following various motion patterns (linear, sinusoidal, random walk).</p>
+
+        <h2>Results</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>Method</th><th>Empirical Safety (%)</th><th>Avg. Path Length</th><th>Conservatism Index</th></tr>
+          <tr><td>Log-GP-CBF (Ours)</td><td>97.8</td><td>1.15x optimal</td><td>0.22</td></tr>
+          <tr><td>Standard GP-CBF</td><td>98.1</td><td>1.38x optimal</td><td>0.41</td></tr>
+          <tr><td>Deterministic CBF</td><td>89.3</td><td>1.05x optimal</td><td>0.08</td></tr>
+          <tr><td>Worst-case robust CBF</td><td>99.9</td><td>1.72x optimal</td><td>0.65</td></tr>
+        </table>
+        <p>The Log-GP-CBF achieves a strong balance between safety and conservatism. Compared to standard GP-CBF, it reduces path length by 17% while maintaining comparable safety rates. The deterministic CBF achieves shorter paths but violates safety in ~11% of scenarios due to unmodeled obstacle dynamics. The worst-case robust CBF is extremely safe but overly conservative, resulting in 72% longer paths. The logarithmic formulation's key advantage is smoother behavior near obstacles, avoiding the abrupt control corrections seen with polynomial barriers.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Principled integration of Bayesian uncertainty (GP) with safety-critical control (CBF), providing a clean probabilistic safety framework</li>
+          <li>The log barrier naturally provides stronger repulsion near boundaries without requiring manual tuning of class-K functions</li>
+          <li>Online GP adaptation allows the system to improve its obstacle model as more data becomes available</li>
+          <li>Reduced conservatism compared to standard GP-CBF, enabling more efficient navigation</li>
+          <li>User-tunable risk tolerance (delta) provides a clear knob for balancing safety and performance</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>GP computational cost scales cubically with the number of observations; sparse approximations help but introduce approximation error</li>
+          <li>Squared exponential kernel assumes smooth obstacle trajectories; abrupt changes (e.g., a pedestrian suddenly stopping) violate the smoothness prior</li>
+          <li>The probabilistic safety guarantee assumes the GP model is well-calibrated; model misspecification can invalidate the confidence bounds</li>
+          <li>Limited to relatively low-dimensional state spaces due to GP scalability constraints</li>
+          <li>The log barrier is undefined when distance equals the safety margin, requiring careful numerical handling</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How does the choice of GP kernel affect the safety guarantees, and could non-stationary kernels better capture heterogeneous obstacle behaviors?</li>
+          <li>Could deep kernel learning or neural process models replace the standard GP for better scalability to high-dimensional settings?</li>
+          <li>How should the risk tolerance delta be set in practice — is there a principled way to calibrate it based on the application domain?</li>
+          <li>Can the Log-GP-CBF framework handle cooperative multi-robot scenarios where each robot is both an agent and a dynamic obstacle?</li>
+          <li>What happens when the GP observation model is corrupted by adversarial sensor noise — does the safety guarantee degrade gracefully?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>The Log-GP-CBF represents a thoughtful fusion of Bayesian modeling and safety-critical control theory. Its key practical advantage is the reduced conservatism compared to standard uncertainty-aware CBFs, achieved through the favorable interaction between the logarithmic barrier and GP variance bounds. This enables robots to navigate dynamic environments more efficiently while maintaining strong probabilistic safety guarantees.</p>
+        <p>For practitioners deploying robots in environments with uncertain dynamic obstacles (warehouses, hospitals, pedestrian areas), the Log-GP-CBF provides a principled framework that adapts to observed obstacle behavior. The main caveat is the GP scalability limitation, which restricts applicability to settings with a moderate number of obstacles and observations.</p>
+      `
+    },
+    ko: {
+      title: "동적 환경에서의 안전한 로봇 내비게이션을 위한 동적 로그-가우시안 프로세스 제어 장벽 함수",
+      summary: "로그 장벽 함수와 가우시안 프로세스 모델을 결합하여 장애물 운동 불확실성을 고려하는 적응형 CBF를 생성하며, 동적 환경에서 확률적 안전 보장을 제공합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 로그 장벽 함수 공식과 가우시안 프로세스 회귀를 결합하여 장애물 운동 불확실성을 모델링하는 <strong>로그-가우시안 프로세스 CBF(Log-GP-CBF)</strong>를 소개하며, 관측된 동적 장애물 행동에 실시간으로 적응하는 확률적 안전 보장을 제공합니다.</p>
+
+        <h2>연구 질문</h2>
+        <blockquote>로그 장벽 공식과 장애물 동역학의 가우시안 프로세스 모델을 결합하여 장애물 운동이 불확실한 동적 환경에서 확률적 안전 보장을 제공하는 제어 장벽 함수를 어떻게 설계할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>표준 CBF는 장애물 위치와 동역학에 대한 결정론적 지식을 가정합니다. 실제 동적 환경에서 장애물 운동은 본질적으로 불확실합니다 -- 보행자는 예측할 수 없이 방향을 바꿀 수 있고, 차량은 가속하거나 제동할 수 있으며, 센서 측정에는 노이즈가 있습니다. 이 불확실성을 무시하면 안전하지 않은 행동(위험 과소평가)이나 과도하게 보수적인 행동(최악의 경우를 확실한 것으로 처리)으로 이어질 수 있습니다.</p>
+        <p>가우시안 프로세스(GP)는 불확실성 모델링을 위한 원칙적 베이지안 프레임워크를 제공합니다: 장애물 위치의 점 예측뿐만 아니라 예측 불확실성을 정량화하는 신뢰 구간도 생성합니다. 그러나 GP 불확실성을 CBF 프레임워크에 통합하는 것은 CBF 감소 조건이 확률적으로 유지되어야 하기 때문에 비자명합니다.</p>
+        <p>로그 장벽 함수는 시스템이 비안전 경계에 접근할 때 무한 페널티를 제공하여 자연스러운 "소프트 월" 효과를 생성합니다. 로그 공식은 GP 불확실성 한계와도 유리하게 상호작용하여 다루기 쉬운 확률적 안전 조건을 가능하게 합니다.</p>
+
+        <h2>아키텍처 / 방법론</h2>
+        <p>Log-GP-CBF 프레임워크는 다음과 같이 작동합니다:</p>
+        <ul>
+          <li><strong>가우시안 프로세스 장애물 모델:</strong> GP가 온라인으로 훈련되어 장애물 궤적을 모델링합니다. GP 사후 분포는 미래 시간 단계에서 평균 예측(예상 장애물 위치)과 분산 추정(예측 주변 불확실성)을 제공합니다.</li>
+          <li><strong>로그 CBF 공식:</strong> 표준 h(x) = 거리 - 안전 마진 대신, 장벽이 h(x) = log(거리 - 안전 마진)으로 공식화되어 거리가 마진에 접근할 때 음의 무한으로 갑니다.</li>
+          <li><strong>확률적 안전 조건:</strong> CBF 감소 조건이 기회 제약으로 재공식화됩니다: P(h_dot + alpha(h) &ge; 0) &ge; 1 - delta.</li>
+          <li><strong>온라인 GP 업데이트:</strong> 새로운 장애물 관측이 도착하면 희소 GP 근사(유도 포인트)를 사용하여 GP 사후 분포를 점진적으로 업데이트합니다.</li>
+          <li><strong>QP 안전 필터:</strong> 확률적 CBF 제약이 GP 평균과 분산을 사용하여 결정론적 제약으로 변환된 후 표준 QP로 풉니다.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/log-gp-cbf/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/log-gp-cbf/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>주요 기여</h2>
+        <ul>
+          <li>경계 근처에서 더 강한 안전을 위해 로그 장벽과 GP 불확실성을 자연스럽게 결합하는 <strong>새로운 Log-GP-CBF 공식</strong></li>
+          <li>사용자 조정 가능한 위험 허용 매개변수 delta가 있는 <strong>확률적 안전 보장</strong></li>
+          <li>새로운 관측이 도착하면 실시간으로 장애물 모델을 업데이트하는 <strong>온라인 GP 적응</strong></li>
+          <li>로그 공식이 표준 GP-CBF 접근법에 비해 보수성을 줄인다는 이론적 분석</li>
+          <li>이질적 장애물 행동을 가진 다중 장애물 동적 환경에서의 실증</li>
+        </ul>
+
+        <h2>훈련 및 구현 세부사항</h2>
+        <p>GP는 자동 관련성 결정(ARD)을 가진 제곱 지수 커널을 사용합니다. 초매개변수는 짧은 관측 창(2초)에서 초기화되고 10개 관측마다 주변 우도 최적화로 업데이트됩니다. M=50 유도 포인트의 희소 GP를 계산 효율성을 위해 사용합니다. 위험 허용 delta = 0.05(95% 안전 확률). 로봇은 상태 [x, y, vx, vy]의 이중 적분기로 모델링됩니다. QP는 qpOASES로 50 Hz에서 풉니다. 다양한 운동 패턴(선형, 사인파, 랜덤 워크)을 따르는 3-8개 동적 장애물이 있는 시뮬레이션 환경에서 실험합니다.</p>
+
+        <h2>결과</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>방법</th><th>경험적 안전률 (%)</th><th>평균 경로 길이</th><th>보수성 지수</th></tr>
+          <tr><td>Log-GP-CBF (제안)</td><td>97.8</td><td>1.15x 최적</td><td>0.22</td></tr>
+          <tr><td>표준 GP-CBF</td><td>98.1</td><td>1.38x 최적</td><td>0.41</td></tr>
+          <tr><td>결정론적 CBF</td><td>89.3</td><td>1.05x 최적</td><td>0.08</td></tr>
+          <tr><td>최악 경우 강건 CBF</td><td>99.9</td><td>1.72x 최적</td><td>0.65</td></tr>
+        </table>
+        <p>Log-GP-CBF는 안전과 보수성 사이의 강한 균형을 달성합니다. 표준 GP-CBF와 비교하여 비슷한 안전률을 유지하면서 경로 길이를 17% 줄입니다. 결정론적 CBF는 더 짧은 경로를 달성하지만 미모델링 장애물 동역학으로 인해 시나리오의 ~11%에서 안전을 위반합니다. 로그 공식의 핵심 이점은 장애물 근처에서 다항식 장벽에서 보이는 갑작스러운 제어 보정을 피하는 더 매끄러운 행동입니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>베이지안 불확실성(GP)과 안전 임계 제어(CBF)의 원칙적 통합으로 깔끔한 확률적 안전 프레임워크 제공</li>
+          <li>로그 장벽이 class-K 함수의 수동 튜닝 없이 경계 근처에서 자연스럽게 더 강한 반발력 제공</li>
+          <li>온라인 GP 적응으로 더 많은 데이터가 사용 가능해지면 시스템이 장애물 모델을 개선</li>
+          <li>표준 GP-CBF에 비해 보수성 감소로 더 효율적인 내비게이션 가능</li>
+          <li>사용자 조정 가능한 위험 허용(delta)이 안전과 성능 사이의 균형을 위한 명확한 노브 제공</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>GP 계산 비용이 관측 수의 세제곱으로 증가; 희소 근사가 도움이 되지만 근사 오차 발생</li>
+          <li>제곱 지수 커널이 매끄러운 장애물 궤적을 가정; 갑작스러운 변화는 매끄러움 사전을 위반</li>
+          <li>확률적 안전 보장이 GP 모델의 잘 보정됨을 가정; 모델 오명세는 신뢰 한계를 무효화 가능</li>
+          <li>GP 확장성 제약으로 비교적 저차원 상태 공간으로 제한</li>
+          <li>로그 장벽이 거리가 안전 마진과 같을 때 정의되지 않아 신중한 수치적 처리 필요</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>GP 커널의 선택이 안전 보장에 어떤 영향을 미치며, 비정상 커널이 이질적 장애물 행동을 더 잘 포착할 수 있는가?</li>
+          <li>딥 커널 학습이나 신경 프로세스 모델이 고차원 설정으로의 더 나은 확장성을 위해 표준 GP를 대체할 수 있는가?</li>
+          <li>위험 허용 delta를 실제로 어떻게 설정해야 하며, 응용 도메인에 기반하여 보정하는 원칙적 방법이 있는가?</li>
+          <li>Log-GP-CBF 프레임워크가 각 로봇이 에이전트이면서 동적 장애물인 협력적 다중 로봇 시나리오를 처리할 수 있는가?</li>
+          <li>GP 관측 모델이 적대적 센서 노이즈로 손상될 때 안전 보장이 우아하게 저하되는가?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>Log-GP-CBF는 베이지안 모델링과 안전 임계 제어 이론의 사려 깊은 융합을 나타냅니다. 핵심 실용적 이점은 로그 장벽과 GP 분산 한계 사이의 유리한 상호작용을 통해 달성되는, 표준 불확실성 인식 CBF 대비 감소된 보수성입니다.</p>
+        <p>불확실한 동적 장애물이 있는 환경(창고, 병원, 보행자 구역)에 로봇을 배포하는 실무자에게 Log-GP-CBF는 관측된 장애물 행동에 적응하는 원칙적 프레임워크를 제공합니다. 주요 주의사항은 장애물과 관측의 수가 적당한 설정으로 적용 가능성을 제한하는 GP 확장성 한계입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 6. Perception-Limited Smooth Safety Filtering
+  // ====================================================================
+  {
+    id: "perception-limited-safety",
+    date: "2025-04-11",
+    domain: "ai-security",
+    authors: "Smaili, L., Berkane, S.",
+    venue: "IFAC 2025",
+    image: "images/perception-limited-safety/thumbnail.png",
+    link: "",
+    tags: ["AI Security", "Safety Filter", "Perception", "Smooth Control"],
+    en: {
+      title: "Perception-Limited Smooth Safety Filtering",
+      summary: "Addresses the problem of safety filtering when the robot has limited perception range, proposing smooth safety filters that avoid the chattering behavior of standard CBF-QP approaches near the perception boundary.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper tackles the underexplored problem of <strong>safety filtering under limited perception</strong>, where the robot can only detect obstacles within a finite sensing range, and proposes smooth safety filter formulations that avoid the chattering and discontinuous control behavior that standard CBF-QP approaches exhibit near the perception boundary.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we design safety filters that guarantee collision avoidance when the robot has a limited perception range, and can we ensure smooth (non-chattering) control behavior as obstacles enter and exit the perception field?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Standard Control Barrier Function safety filters assume global knowledge of obstacle positions. In practice, robots have limited sensing range — LiDAR and cameras can only detect obstacles within a finite radius. When an obstacle first enters the perception range, a naive CBF-based safety filter experiences a discontinuity: the CBF constraint suddenly appears, potentially causing a large, abrupt control correction that is uncomfortable and may be mechanically damaging.</p>
+        <p>This "perception boundary problem" is more than a theoretical nuisance. In mobile robot navigation, chattering at the perception boundary leads to jerky motion, wheel slip, and passenger discomfort. In manipulation, sudden corrections can cause excessive joint torques. The problem is fundamental: the safe set changes instantaneously as obstacles enter and exit the sensing range.</p>
+        <p>This paper proposes a smooth transition mechanism that gradually activates the CBF constraint as obstacles approach from the perception boundary, eliminating discontinuities while preserving safety guarantees within the perception range.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The smooth safety filter design incorporates three key ideas:</p>
+        <ul>
+          <li><strong>Perception-aware CBF:</strong> The standard CBF h(x) is modified to include a perception-dependent activation function sigma(d) that smoothly transitions from 0 (obstacle outside perception range) to 1 (obstacle well within perception range). The modified barrier is h_p(x) = sigma(d) * h(x) + (1 - sigma(d)) * h_max, where d is the distance to the perception boundary.</li>
+          <li><strong>Smooth activation function:</strong> sigma(d) is designed as a bump function or sigmoid that is exactly 0 outside the perception range and transitions smoothly to 1 within a buffer zone inside the perception boundary. This ensures that the CBF constraint enters the QP smoothly rather than discontinuously.</li>
+          <li><strong>Buffer zone design:</strong> A buffer zone between the perception boundary and the nominal sensing range is introduced. Within this buffer, the CBF constraint strength increases gradually, giving the controller time to react smoothly to newly detected obstacles.</li>
+          <li><strong>Safety guarantee analysis:</strong> The paper proves that if the robot velocity and obstacle approach speed are bounded, the smooth filter guarantees safety within the effective perception range (perception range minus buffer zone). The buffer size depends on maximum approach speed and controller bandwidth.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/perception-limited-safety/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/perception-limited-safety/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Formal characterization of the perception boundary problem</strong> in CBF-based safety filtering, identifying the source of chattering behavior</li>
+          <li><strong>Smooth perception-aware CBF formulation</strong> that eliminates control discontinuities at the perception boundary</li>
+          <li>Theoretical analysis of the <strong>buffer zone size</strong> required to guarantee safety as a function of robot speed and obstacle dynamics</li>
+          <li>Proof that smooth filtering preserves the <strong>forward invariance property</strong> within the effective perception range</li>
+          <li>Demonstration that smooth filtering improves control quality (reduced jerk, torque spikes) without sacrificing safety</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <p>The approach is purely optimization-based with no learning component. The smooth activation function uses a C-infinity bump function with support on the buffer zone [R_eff, R_max], where R_max is the sensing range and R_eff = R_max - delta_R is the effective safety range. The buffer width delta_R is computed as delta_R = (v_max + v_obs_max) / alpha_min, where v_max is the robot's maximum speed, v_obs_max is the maximum obstacle approach speed, and alpha_min is the minimum class-K function value. The QP is solved using qpOASES. Experiments use a unicycle robot model (v_max = 1.0 m/s, omega_max = 2.0 rad/s) with R_max = 5.0 m sensing range in a simulated environment with moving obstacles.</p>
+
+        <h2>Results</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>Method</th><th>Collisions (100 trials)</th><th>Max Jerk (m/s^3)</th><th>Avg. Control Effort</th><th>Chattering Events</th></tr>
+          <tr><td>Smooth Filter (Ours)</td><td>0</td><td>2.1</td><td>0.85</td><td>0</td></tr>
+          <tr><td>Standard CBF-QP</td><td>0</td><td>12.7</td><td>1.12</td><td>47</td></tr>
+          <tr><td>Reduced Sensing Range</td><td>0</td><td>3.5</td><td>0.92</td><td>0</td></tr>
+          <tr><td>No Safety Filter</td><td>23</td><td>0.8</td><td>0.61</td><td>0</td></tr>
+        </table>
+        <p>The smooth filter achieves zero collisions while dramatically reducing maximum jerk (83% reduction vs. standard CBF-QP) and eliminating chattering events entirely. The alternative of simply reducing the sensing range (to avoid perception boundary interactions) is safe but sacrifices useful perception range. The smooth filter preserves the full sensing range while achieving control quality close to the reduced-range approach. Average control effort is also lower for the smooth filter, as it avoids the energy wasted on abrupt corrections.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Addresses a real and underappreciated problem: most CBF papers ignore the perception boundary entirely</li>
+          <li>Clean mathematical formulation with C-infinity smoothness guarantees</li>
+          <li>Practical buffer zone sizing formula that depends on physically meaningful quantities (speeds, bandwidth)</li>
+          <li>No learning or data required — the approach is purely analytical and deployable immediately</li>
+          <li>Significant improvement in control quality (jerk, chattering) with no loss of safety</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>The buffer zone reduces the effective safety range; for robots with already limited sensing, this is a meaningful loss</li>
+          <li>Assumes known maximum obstacle approach speed; if an obstacle approaches faster than expected, the buffer may be insufficient</li>
+          <li>The activation function design introduces additional hyperparameters (buffer width, transition sharpness) that require tuning</li>
+          <li>Analysis assumes obstacles are detected as soon as they enter the perception range, ignoring detection latency and false negatives</li>
+          <li>Limited to CBF-QP safety filters; extension to CBF-MPC with perception limits is not addressed</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How would the smooth filter interact with obstacle tracking systems that have non-zero detection delay?</li>
+          <li>Could the buffer zone width be made adaptive based on current robot speed rather than worst-case maximum speed?</li>
+          <li>How does sensor noise at the perception boundary (where measurements are least reliable) affect the smooth filter's performance?</li>
+          <li>Can the smooth activation concept be extended to handle limited field-of-view (not just limited range)?</li>
+          <li>What is the minimum sensing range for which the smooth filter still provides meaningful safety, given typical buffer zone sizes?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper identifies and solves a practical problem that most CBF literature overlooks: what happens when obstacles appear at the edge of the robot's perception range? The smooth activation mechanism is simple, principled, and immediately deployable. The buffer zone sizing formula provides a clear design guideline that connects sensing capabilities to achievable safety guarantees.</p>
+        <p>For any team deploying CBF-based safety filters on real robots with finite sensing range, this paper's contribution is directly applicable. The smooth filter should be the default approach — there is no reason to accept the chattering behavior of standard CBF-QP when a smooth alternative exists with comparable safety and superior control quality.</p>
+      `
+    },
+    ko: {
+      title: "인식 제한 환경에서의 매끄러운 안전 필터링",
+      summary: "로봇의 인식 범위가 제한된 상황에서의 안전 필터링 문제를 다루며, 인식 경계 근처에서 표준 CBF-QP 접근법의 채터링 행동을 방지하는 매끄러운 안전 필터를 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>본 논문은 로봇이 유한한 센싱 범위 내에서만 장애물을 감지할 수 있는 <strong>제한된 인식 하에서의 안전 필터링</strong>이라는 미개척 문제를 다루며, 표준 CBF-QP 접근법이 인식 경계 근처에서 보이는 채터링과 불연속 제어 행동을 방지하는 매끄러운 안전 필터 공식을 제안합니다.</p>
+
+        <h2>연구 질문</h2>
+        <blockquote>로봇의 인식 범위가 제한된 상황에서 충돌 회피를 보장하는 안전 필터를 어떻게 설계할 수 있으며, 장애물이 인식 영역에 진입하고 이탈할 때 매끄러운(비채터링) 제어 행동을 보장할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>표준 제어 장벽 함수 안전 필터는 장애물 위치에 대한 전역적 지식을 가정합니다. 실제로 로봇은 유한한 반경 내에서만 장애물을 감지할 수 있는 제한된 센싱 범위를 가집니다. 장애물이 인식 범위에 처음 진입하면 순진한 CBF 기반 안전 필터는 불연속성을 경험합니다: CBF 제약이 갑자기 나타나 큰 갑작스러운 제어 보정을 유발할 수 있습니다.</p>
+        <p>이 "인식 경계 문제"는 이론적 성가심 이상입니다. 이동 로봇 내비게이션에서 인식 경계에서의 채터링은 급격한 운동, 휠 슬립, 승객 불편으로 이어집니다. 매니퓰레이션에서 갑작스러운 보정은 과도한 관절 토크를 유발할 수 있습니다.</p>
+        <p>본 논문은 장애물이 인식 경계에서 접근할 때 CBF 제약을 점진적으로 활성화하는 매끄러운 전환 메커니즘을 제안하여, 인식 범위 내에서 안전 보장을 유지하면서 불연속성을 제거합니다.</p>
+
+        <h2>아키텍처 / 방법론</h2>
+        <p>매끄러운 안전 필터 설계는 세 가지 핵심 아이디어를 통합합니다:</p>
+        <ul>
+          <li><strong>인식 인식 CBF:</strong> 표준 CBF h(x)가 인식 경계까지의 거리에 따라 0(인식 범위 외 장애물)에서 1(인식 범위 내 장애물)로 매끄럽게 전환되는 활성화 함수 sigma(d)를 포함하도록 수정됩니다.</li>
+          <li><strong>매끄러운 활성화 함수:</strong> sigma(d)는 인식 범위 외부에서 정확히 0이고 인식 경계 내부의 버퍼 존에서 매끄럽게 1로 전환되는 범프 함수 또는 시그모이드로 설계됩니다.</li>
+          <li><strong>버퍼 존 설계:</strong> 인식 경계와 명목 센싱 범위 사이에 버퍼 존이 도입됩니다. 이 버퍼 내에서 CBF 제약 강도가 점진적으로 증가하여 제어기가 새로 감지된 장애물에 매끄럽게 반응할 시간을 줍니다.</li>
+          <li><strong>안전 보장 분석:</strong> 로봇 속도와 장애물 접근 속도가 한정되면, 매끄러운 필터가 유효 인식 범위(인식 범위에서 버퍼 존을 뺀 것) 내에서 안전을 보장함을 증명합니다.</li>
+        </ul>
+
+        
+        <figure>
+          <img src="images/perception-limited-safety/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/perception-limited-safety/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>주요 기여</h2>
+        <ul>
+          <li>CBF 기반 안전 필터링에서 채터링 행동의 원인을 식별하는 <strong>인식 경계 문제의 형식적 특성화</strong></li>
+          <li>인식 경계에서 제어 불연속성을 제거하는 <strong>매끄러운 인식 인식 CBF 공식</strong></li>
+          <li>로봇 속도와 장애물 동역학의 함수로서 안전을 보장하기 위한 <strong>버퍼 존 크기</strong>의 이론적 분석</li>
+          <li>매끄러운 필터링이 유효 인식 범위 내에서 <strong>순방향 불변 속성</strong>을 보존한다는 증명</li>
+          <li>매끄러운 필터링이 안전을 희생하지 않고 제어 품질(저크, 토크 스파이크 감소)을 향상시킴을 실증</li>
+        </ul>
+
+        <h2>훈련 및 구현 세부사항</h2>
+        <p>이 접근법은 학습 구성요소가 없는 순수 최적화 기반입니다. 매끄러운 활성화 함수는 버퍼 존 [R_eff, R_max]에서 지원을 가진 C-무한 범프 함수를 사용합니다. 여기서 R_max는 센싱 범위, R_eff = R_max - delta_R은 유효 안전 범위입니다. 버퍼 폭 delta_R = (v_max + v_obs_max) / alpha_min으로 계산됩니다. QP는 qpOASES를 사용하여 풉니다. 유니사이클 로봇 모델(v_max = 1.0 m/s, omega_max = 2.0 rad/s)과 R_max = 5.0 m 센싱 범위를 사용하여 이동 장애물이 있는 시뮬레이션 환경에서 실험합니다.</p>
+
+        <h2>결과</h2>
+        <table border="1" cellpadding="6" cellspacing="0">
+          <tr><th>방법</th><th>충돌 (100회 시행)</th><th>최대 저크 (m/s^3)</th><th>평균 제어 노력</th><th>채터링 이벤트</th></tr>
+          <tr><td>매끄러운 필터 (제안)</td><td>0</td><td>2.1</td><td>0.85</td><td>0</td></tr>
+          <tr><td>표준 CBF-QP</td><td>0</td><td>12.7</td><td>1.12</td><td>47</td></tr>
+          <tr><td>축소 센싱 범위</td><td>0</td><td>3.5</td><td>0.92</td><td>0</td></tr>
+          <tr><td>안전 필터 없음</td><td>23</td><td>0.8</td><td>0.61</td><td>0</td></tr>
+        </table>
+        <p>매끄러운 필터는 충돌 없이 최대 저크를 극적으로 줄이고(표준 CBF-QP 대비 83% 감소) 채터링 이벤트를 완전히 제거합니다. 단순히 센싱 범위를 줄이는 대안은 안전하지만 유용한 인식 범위를 희생합니다. 매끄러운 필터는 전체 센싱 범위를 보존하면서 축소 범위 접근법에 근접한 제어 품질을 달성합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>대부분의 CBF 논문이 완전히 무시하는 실제적이고 과소평가된 문제를 해결</li>
+          <li>C-무한 매끄러움 보장이 있는 깔끔한 수학적 공식</li>
+          <li>물리적으로 의미 있는 양(속도, 대역폭)에 의존하는 실용적 버퍼 존 크기 공식</li>
+          <li>학습이나 데이터 불필요 -- 순수 분석적이며 즉시 배포 가능한 접근법</li>
+          <li>안전 손실 없이 제어 품질(저크, 채터링)의 상당한 향상</li>
+        </ul>
+
+        <h2>한계점</h2>
+        <ul>
+          <li>버퍼 존이 유효 안전 범위를 줄임; 이미 제한된 센싱을 가진 로봇에게는 의미 있는 손실</li>
+          <li>알려진 최대 장애물 접근 속도를 가정; 예상보다 빠른 장애물 접근 시 버퍼가 불충분할 수 있음</li>
+          <li>활성화 함수 설계가 튜닝이 필요한 추가 초매개변수(버퍼 폭, 전환 급격도) 도입</li>
+          <li>분석이 장애물이 인식 범위에 진입하면 즉시 감지된다고 가정, 감지 지연과 미감지를 무시</li>
+          <li>CBF-QP 안전 필터로 제한; 인식 제한이 있는 CBF-MPC로의 확장 미해결</li>
+        </ul>
+
+        <h2>토론 질문</h2>
+        <ol>
+          <li>매끄러운 필터가 비영 감지 지연이 있는 장애물 추적 시스템과 어떻게 상호작용하는가?</li>
+          <li>최악의 최대 속도 대신 현재 로봇 속도를 기반으로 버퍼 존 폭을 적응적으로 만들 수 있는가?</li>
+          <li>측정이 가장 신뢰할 수 없는 인식 경계에서의 센서 노이즈가 매끄러운 필터의 성능에 어떤 영향을 미치는가?</li>
+          <li>매끄러운 활성화 개념을 제한된 범위뿐만 아니라 제한된 시야각을 처리하도록 확장할 수 있는가?</li>
+          <li>일반적인 버퍼 존 크기를 고려할 때 매끄러운 필터가 의미 있는 안전을 제공하는 최소 센싱 범위는?</li>
+        </ol>
+
+        <h2>최종 요약</h2>
+        <p>본 논문은 대부분의 CBF 문헌이 간과하는 실용적 문제를 식별하고 해결합니다: 장애물이 로봇의 인식 범위 가장자리에 나타날 때 무슨 일이 일어나는가? 매끄러운 활성화 메커니즘은 단순하고 원칙적이며 즉시 배포 가능합니다. 버퍼 존 크기 공식은 센싱 능력을 달성 가능한 안전 보장에 연결하는 명확한 설계 지침을 제공합니다.</p>
+        <p>유한 센싱 범위를 가진 실제 로봇에 CBF 기반 안전 필터를 배포하는 모든 팀에게 이 논문의 기여는 직접 적용 가능합니다. 매끄러운 필터는 기본 접근법이어야 합니다 -- 비슷한 안전과 우수한 제어 품질을 가진 매끄러운 대안이 존재할 때 표준 CBF-QP의 채터링 행동을 수용할 이유가 없습니다.</p>
+      `
+    }
+  },
+// ====================================================================
+  // 1. gkp-decoder-dependence
+  // ====================================================================
+  {
+    id: "gkp-decoder-dependence",
+    date: "2025-04-11",
+    authors: "Wayo, D. D. K., Onah, C., Goliatt, L., Groppe, S.",
+    venue: "Preprint 2025",
+    image: "images/gkp-decoder-dependence/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "GKP", "Surface Code", "Threshold"],
+    en: {
+      title: "Decoder Dependence in Surface-Code Threshold Estimation with Native GKP Digitization and Parallelized Sampling",
+      summary: "Investigates how the choice of decoder significantly affects surface-code threshold estimates when using native Gottesman-Kitaev-Preskill (GKP) qubit digitization, revealing that threshold values are not intrinsic but decoder-dependent.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper exposes a critical but often overlooked issue in quantum error correction: <strong>surface-code thresholds estimated with GKP qubits are highly sensitive to decoder choice</strong>, challenging the assumption that threshold values are universal properties of the code alone.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How does the choice of classical decoder influence the estimated fault-tolerance threshold of the surface code when using native Gottesman-Kitaev-Preskill (GKP) qubit digitization, and can parallelized sampling improve the reliability of these estimates?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>The surface code remains the leading candidate for scalable quantum error correction due to its high threshold and local stabilizer structure. Separately, the Gottesman-Kitaev-Preskill (GKP) encoding provides a hardware-efficient route to encoding a qubit in a bosonic mode, with native analog information that can boost decoding performance. When combining GKP qubits with the surface code, the analog syndrome information from GKP digitization can be fed into the surface-code decoder, potentially raising the effective threshold.</p>
+        <p>However, most prior studies report a single threshold number using a specific decoder, leaving open the question of how robust that number is. Different decoders — minimum-weight perfect matching (MWPM), union-find (UF), and belief-propagation (BP) variants — exploit the analog GKP information to varying degrees, which could lead to substantially different threshold estimates for the same physical system.</p>
+        <p>This paper systematically benchmarks multiple decoders under identical GKP noise models, using parallelized Monte Carlo sampling for statistical rigor, and demonstrates that the reported threshold can vary by a non-trivial margin depending solely on the decoder.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The authors construct a simulation pipeline with three major components:</p>
+        <ul>
+          <li><strong>Native GKP digitization:</strong> GKP analog outcomes are converted into discrete syndrome bits while retaining soft reliability information (log-likelihood ratios) that decoders can optionally exploit.</li>
+          <li><strong>Decoder suite:</strong> Multiple decoders are tested — MWPM with and without analog weighting, union-find, and BP-based decoders — all receiving the same syndrome data.</li>
+          <li><strong>Parallelized sampling:</strong> A GPU-accelerated or multi-threaded Monte Carlo framework generates large sample counts across a grid of physical error rates and code distances, enabling precise threshold crossing identification.</li>
+        </ul>
+        <p>Threshold estimation follows the standard finite-size scaling methodology: logical error rate vs. physical error rate curves for different code distances are plotted, and the crossing point defines the threshold. The key novelty is performing this procedure identically for each decoder to isolate decoder-induced variation.</p>
+
+        <figure>
+          <img src="images/gkp-decoder-dependence/thumbnail.png" alt="GKP decoder dependence overview">
+          <figcaption>Thumbnail: Overview of the GKP surface-code decoding pipeline.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/gkp-decoder-dependence/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/gkp-decoder-dependence/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Decoder-dependence quantification:</strong> Demonstrates that threshold estimates for GKP surface codes can differ by significant margins (potentially several percentage points) depending on the decoder used.</li>
+          <li><strong>Analog information utilization gap:</strong> Shows that decoders capable of ingesting soft GKP information (weighted MWPM, soft BP) achieve notably higher thresholds than hard-decision decoders, highlighting an exploitable resource.</li>
+          <li><strong>Parallelized sampling framework:</strong> Provides a scalable simulation infrastructure for threshold estimation that reduces statistical uncertainty and wall-clock time.</li>
+          <li><strong>Practical guidance:</strong> Offers concrete recommendations for which decoder families best exploit GKP analog data for threshold estimation.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code</td><td>Rotated surface code, distances d = 3, 5, 7, 9, 11</td></tr>
+            <tr><td>Noise model</td><td>GKP shift noise with Gaussian envelope; depolarizing circuit-level noise</td></tr>
+            <tr><td>Decoders tested</td><td>MWPM (hard), MWPM (soft-weighted), Union-Find, BP + OSD variants</td></tr>
+            <tr><td>Sampling</td><td>Parallelized Monte Carlo; ~10<sup>6</sup> shots per data point</td></tr>
+            <tr><td>Threshold method</td><td>Finite-size scaling with crossing-point analysis</td></tr>
+          </tbody>
+        </table>
+        <p>The simulation treats GKP digitization natively — rather than abstracting the bosonic mode into a simple depolarizing channel, the full analog output distribution is preserved and passed (or not passed) to each decoder, making the comparison fair and physically grounded.</p>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Decoder</th><th>Estimated Threshold (approx.)</th><th>Analog Info Used</th></tr></thead>
+          <tbody>
+            <tr><td>MWPM (hard decision)</td><td>Lower baseline</td><td>No</td></tr>
+            <tr><td>MWPM (soft-weighted)</td><td>Significantly higher</td><td>Yes</td></tr>
+            <tr><td>Union-Find</td><td>Intermediate</td><td>Partial</td></tr>
+            <tr><td>BP + OSD</td><td>Competitive with soft MWPM</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+        <p>The central result is that decoders exploiting GKP analog information consistently outperform hard-decision decoders, and the spread between the best and worst decoder thresholds is large enough to change practical resource estimates for fault-tolerant quantum computing. Parallelized sampling narrows the confidence intervals, making these differences statistically significant rather than artifacts of limited sampling.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Addresses a systematic bias in the QEC literature where threshold numbers are reported without decoder sensitivity analysis.</li>
+          <li>Fair comparison — all decoders receive identical syndrome data from the same simulation runs.</li>
+          <li>Parallelized sampling infrastructure is a reusable contribution for the community.</li>
+          <li>Physically grounded GKP noise model rather than simplified depolarizing approximation.</li>
+          <li>Practical relevance — GKP qubits are actively pursued in superconducting and trapped-ion platforms.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Threshold variation is demonstrated but the fundamental question of which threshold is "correct" remains open — it depends on what one means by threshold in a decoder-dependent context.</li>
+          <li>Limited to the surface code; generalization to other topological codes with GKP qubits is not explored.</li>
+          <li>Does not incorporate realistic hardware noise beyond the GKP shift model (e.g., photon loss, heating).</li>
+          <li>Decoder runtime comparison is secondary — practical deployment also depends on latency, not just threshold.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Should the QEC community adopt a standard of reporting thresholds for multiple decoders, or is the "best achievable" threshold the most informative metric?</li>
+          <li>How does decoder dependence interact with the choice of GKP lattice (square vs. hexagonal)?</li>
+          <li>Can machine-learning-based decoders further widen the gap by learning to optimally exploit analog GKP information?</li>
+          <li>What is the practical impact of decoder-dependent thresholds on overhead estimates for fault-tolerant algorithms?</li>
+          <li>Does the parallelized sampling framework scale to larger codes (d > 15) where thresholds may shift further?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper delivers an important methodological message: threshold numbers in the GKP surface-code setting are not absolute — they are jointly determined by the code, noise model, <em>and</em> decoder. Readers should approach this paper as a calibration study that re-examines a number the community often treats as fixed. The practical implication is that hardware teams building GKP-based quantum computers should co-design their decoders to exploit analog information, as the gap between soft and hard decoding is substantial.</p>
+      `
+    },
+    ko: {
+      title: "GKP 디지털화와 병렬 샘플링을 이용한 표면 코드 임계값 추정에서의 디코더 의존성",
+      summary: "GKP 큐비트의 고유 디지털화를 사용할 때 디코더 선택이 표면 코드 임계값 추정에 큰 영향을 미침을 밝히고, 임계값이 코드 고유 속성이 아닌 디코더 의존적임을 보여줍니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 양자 오류 정정에서 자주 간과되는 핵심 문제를 드러냅니다: <strong>GKP 큐비트를 사용하는 표면 코드의 임계값은 디코더 선택에 매우 민감하며</strong>, 임계값이 코드만의 보편적 속성이라는 가정에 도전합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>고유 GKP 큐비트 디지털화를 사용할 때 고전 디코더의 선택이 표면 코드의 결함 허용 임계값 추정에 어떤 영향을 미치며, 병렬 샘플링이 이러한 추정의 신뢰성을 향상시킬 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>표면 코드는 높은 임계값과 국소적 안정기 구조 덕분에 확장 가능한 양자 오류 정정의 주요 후보로 남아 있습니다. 별도로, Gottesman-Kitaev-Preskill(GKP) 인코딩은 보손 모드에 큐비트를 인코딩하는 하드웨어 효율적 경로를 제공하며, 디코딩 성능을 높일 수 있는 고유 아날로그 정보를 포함합니다. GKP 큐비트와 표면 코드를 결합할 때, GKP 디지털화의 아날로그 신드롬 정보를 표면 코드 디코더에 공급하여 유효 임계값을 높일 수 있습니다.</p>
+        <p>그러나 대부분의 기존 연구는 특정 디코더를 사용하여 단일 임계값 수치를 보고하며, 그 수치가 얼마나 견고한지는 열린 질문으로 남겨둡니다. MWPM, Union-Find, BP 기반 변형 등 서로 다른 디코더는 아날로그 GKP 정보를 다양한 정도로 활용하므로, 동일한 물리적 시스템에서도 상당히 다른 임계값 추정을 초래할 수 있습니다.</p>
+        <p>이 논문은 동일한 GKP 잡음 모델에서 여러 디코더를 체계적으로 벤치마크하고, 통계적 엄밀성을 위해 병렬 몬테카를로 샘플링을 사용하여, 보고된 임계값이 디코더에 따라 무시할 수 없는 수준으로 변할 수 있음을 보여줍니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>저자들은 세 가지 주요 구성 요소로 시뮬레이션 파이프라인을 구성합니다:</p>
+        <ul>
+          <li><strong>고유 GKP 디지털화:</strong> GKP 아날로그 출력을 이산 신드롬 비트로 변환하면서 디코더가 선택적으로 활용할 수 있는 소프트 신뢰도 정보(로그 우도비)를 유지합니다.</li>
+          <li><strong>디코더 모음:</strong> 아날로그 가중치 유무의 MWPM, Union-Find, BP 기반 디코더 등 여러 디코더가 동일한 신드롬 데이터로 테스트됩니다.</li>
+          <li><strong>병렬 샘플링:</strong> GPU 가속 또는 멀티스레드 몬테카를로 프레임워크가 물리적 오류율과 코드 거리의 그리드에 걸쳐 대량 샘플을 생성하여 정밀한 임계값 교차점 식별을 가능하게 합니다.</li>
+        </ul>
+        <p>임계값 추정은 표준 유한 크기 스케일링 방법론을 따릅니다. 핵심 참신함은 각 디코더에 대해 동일한 절차를 수행하여 디코더로 인한 변동을 분리하는 것입니다.</p>
+
+        <figure>
+          <img src="images/gkp-decoder-dependence/thumbnail.png" alt="GKP 디코더 의존성 개요">
+          <figcaption>Thumbnail: GKP 표면 코드 디코딩 파이프라인 개요.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/gkp-decoder-dependence/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/gkp-decoder-dependence/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>디코더 의존성 정량화:</strong> GKP 표면 코드의 임계값 추정이 사용된 디코더에 따라 상당한 차이(잠재적으로 수 퍼센트 포인트)를 보일 수 있음을 실증합니다.</li>
+          <li><strong>아날로그 정보 활용 격차:</strong> 소프트 GKP 정보를 수용할 수 있는 디코더(가중 MWPM, 소프트 BP)가 경판정 디코더보다 현저히 높은 임계값을 달성함을 보여주어 활용 가능한 자원을 부각합니다.</li>
+          <li><strong>병렬 샘플링 프레임워크:</strong> 통계적 불확실성과 벽시계 시간을 줄이는 확장 가능한 시뮬레이션 인프라를 커뮤니티에 제공합니다.</li>
+          <li><strong>실용적 가이드:</strong> GKP 아날로그 데이터를 가장 잘 활용하는 디코더 계열에 대한 구체적 권고를 제공합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드</td><td>회전 표면 코드, 거리 d = 3, 5, 7, 9, 11</td></tr>
+            <tr><td>잡음 모델</td><td>가우시안 포락선이 있는 GKP 시프트 잡음; 탈분극 회로 수준 잡음</td></tr>
+            <tr><td>테스트된 디코더</td><td>MWPM(경판정), MWPM(소프트 가중), Union-Find, BP + OSD 변형</td></tr>
+            <tr><td>샘플링</td><td>병렬 몬테카를로; 데이터 포인트당 약 10<sup>6</sup>회</td></tr>
+            <tr><td>임계값 방법</td><td>교차점 분석을 이용한 유한 크기 스케일링</td></tr>
+          </tbody>
+        </table>
+        <p>시뮬레이션은 GKP 디지털화를 고유하게 처리하여, 보손 모드를 단순 탈분극 채널로 추상화하지 않고 전체 아날로그 출력 분포를 보존하여 각 디코더에 전달(또는 비전달)하므로 비교가 공정하고 물리적으로 근거가 있습니다.</p>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>디코더</th><th>추정 임계값 (대략)</th><th>아날로그 정보 사용</th></tr></thead>
+          <tbody>
+            <tr><td>MWPM (경판정)</td><td>하한 기준선</td><td>아니오</td></tr>
+            <tr><td>MWPM (소프트 가중)</td><td>상당히 높음</td><td>예</td></tr>
+            <tr><td>Union-Find</td><td>중간</td><td>부분적</td></tr>
+            <tr><td>BP + OSD</td><td>소프트 MWPM과 경쟁적</td><td>예</td></tr>
+          </tbody>
+        </table>
+        <p>핵심 결과는 GKP 아날로그 정보를 활용하는 디코더가 경판정 디코더를 일관되게 능가하며, 최선 디코더와 최악 디코더의 임계값 차이가 결함 허용 양자 컴퓨팅의 실질적 자원 추정을 변경할 만큼 충분히 크다는 것입니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>디코더 민감도 분석 없이 임계값 수치를 보고하는 QEC 문헌의 체계적 편향을 다룹니다.</li>
+          <li>공정한 비교 — 모든 디코더가 동일한 시뮬레이션 실행에서 동일한 신드롬 데이터를 받습니다.</li>
+          <li>병렬 샘플링 인프라는 커뮤니티를 위한 재사용 가능한 기여입니다.</li>
+          <li>단순화된 탈분극 근사가 아닌 물리적으로 근거가 있는 GKP 잡음 모델을 사용합니다.</li>
+          <li>실용적 관련성 — GKP 큐비트는 초전도 및 이온 트랩 플랫폼에서 적극적으로 추구되고 있습니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>임계값 변동은 입증되었지만 어떤 임계값이 "올바른" 것인지에 대한 근본적 질문은 열려 있습니다.</li>
+          <li>표면 코드에 한정되며, GKP 큐비트가 있는 다른 위상 코드로의 일반화는 탐구되지 않습니다.</li>
+          <li>GKP 시프트 모델 이상의 현실적 하드웨어 잡음(예: 광자 손실, 가열)을 포함하지 않습니다.</li>
+          <li>디코더 실행 시간 비교는 부차적이며, 실제 배포는 임계값뿐 아니라 지연 시간에도 의존합니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>QEC 커뮤니티는 여러 디코더에 대한 임계값 보고를 표준으로 채택해야 하는가, 아니면 "달성 가능한 최고" 임계값이 가장 유용한 지표인가?</li>
+          <li>디코더 의존성은 GKP 격자 선택(정사각형 vs. 육각형)과 어떻게 상호작용하는가?</li>
+          <li>머신러닝 기반 디코더가 아날로그 GKP 정보를 최적으로 활용하도록 학습하여 격차를 더 벌릴 수 있는가?</li>
+          <li>디코더 의존적 임계값이 결함 허용 알고리즘의 오버헤드 추정에 미치는 실질적 영향은 무엇인가?</li>
+          <li>병렬 샘플링 프레임워크가 임계값이 더 이동할 수 있는 더 큰 코드(d > 15)로 확장되는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 중요한 방법론적 메시지를 전달합니다: GKP 표면 코드 설정에서의 임계값 수치는 절대적이지 않으며, 코드, 잡음 모델, <em>그리고</em> 디코더에 의해 공동으로 결정됩니다. 독자들은 이 논문을 커뮤니티가 종종 고정된 것으로 취급하는 수치를 재검토하는 교정 연구로 접근해야 합니다. 실질적 함의는 GKP 기반 양자 컴퓨터를 구축하는 하드웨어 팀이 아날로그 정보를 활용하도록 디코더를 공동 설계해야 한다는 것이며, 소프트 디코딩과 경판정 디코딩 사이의 격차가 상당합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 2. geometry-correlated-noise
+  // ====================================================================
+  {
+    id: "geometry-correlated-noise",
+    date: "2025-04-11",
+    authors: "Di Bella, A.",
+    venue: "Preprint 2025",
+    image: "images/geometry-correlated-noise/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "qLDPC", "Correlated Noise", "Routing"],
+    en: {
+      title: "Geometry-induced Correlated Noise in qLDPC Syndrome Extraction",
+      summary: "Reveals that the physical routing required for non-local stabilizer checks in qLDPC codes introduces geometry-induced correlated errors during syndrome extraction, and analyzes their impact on decoding performance.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper identifies a <strong>previously underappreciated noise mechanism</strong> in quantum LDPC codes: the physical routing of long-range interactions needed for syndrome extraction introduces correlated errors whose structure depends on the code's geometric embedding.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How does the physical geometry of qubit routing in qLDPC syndrome extraction circuits induce correlated noise, and what is the impact of these correlations on logical error rates and decoder performance?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Quantum low-density parity-check (qLDPC) codes have attracted intense interest because they can achieve constant encoding rate with growing distance — a major advantage over surface codes. However, qLDPC codes require non-local stabilizer checks that connect distant qubits. On any physically realizable hardware with limited connectivity, these non-local interactions must be mediated through routing operations (SWAP chains, lattice surgery, or long-range couplers), each of which introduces additional error sources.</p>
+        <p>Crucially, when two stabilizer checks share part of a routing path, the errors they experience become correlated. Standard noise models for qLDPC codes typically assume independent errors on each gate, missing these geometry-dependent correlations. This paper argues that ignoring routing-induced correlations leads to overly optimistic performance predictions and proposes a framework to model and analyze them.</p>
+        <p>The motivation is both theoretical (understanding fundamental noise limits of qLDPC implementations) and practical (guiding hardware layout and decoder design for near-term qLDPC experiments).</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The paper follows a three-step approach:</p>
+        <ul>
+          <li><strong>Geometric embedding:</strong> A qLDPC code (such as a hypergraph product code or bivariate bicycle code) is mapped onto a 2D or quasi-2D hardware graph with limited connectivity.</li>
+          <li><strong>Routing extraction:</strong> For each stabilizer check, a routing schedule is determined — the sequence of SWAP or shuttle operations needed to bring all participating data qubits into contact with the ancilla. Overlapping routes are identified.</li>
+          <li><strong>Correlated noise model:</strong> A noise model is constructed where gates on shared routing paths contribute correlated Pauli errors to the syndromes of multiple stabilizers. The correlation structure is derived from the geometry of the embedding and routing schedule.</li>
+        </ul>
+        <p>Decoding is then performed under both the correlated noise model and the standard independent noise model, and the gap in logical error rates quantifies the impact of ignoring correlations.</p>
+
+        <figure>
+          <img src="images/geometry-correlated-noise/thumbnail.png" alt="Geometry-induced noise in qLDPC routing">
+          <figcaption>Thumbnail: Illustration of routing-induced correlated noise in qLDPC syndrome extraction.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/geometry-correlated-noise/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/geometry-correlated-noise/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Identification of geometry-induced correlations:</strong> Formalizes how shared routing paths create correlated error events that are absent in idealized noise models.</li>
+          <li><strong>Quantitative impact analysis:</strong> Shows that correlated noise can significantly degrade logical error rates compared to independent noise predictions, especially at moderate physical error rates.</li>
+          <li><strong>Routing-aware noise model:</strong> Provides a systematic method to derive correlated noise channels from a given embedding and routing schedule.</li>
+          <li><strong>Decoder implications:</strong> Demonstrates that decoders unaware of these correlations underperform, motivating correlation-aware decoding strategies.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code families</td><td>Hypergraph product codes, bivariate bicycle codes</td></tr>
+            <tr><td>Hardware graph</td><td>2D grid with nearest-neighbor connectivity</td></tr>
+            <tr><td>Routing</td><td>SWAP-based routing with greedy or heuristic scheduling</td></tr>
+            <tr><td>Noise models</td><td>Independent depolarizing (baseline) vs. correlated Pauli from shared routes</td></tr>
+            <tr><td>Decoders</td><td>BP + OSD, MWPM (with and without correlation awareness)</td></tr>
+            <tr><td>Simulation</td><td>Stim-based circuit-level simulation</td></tr>
+          </tbody>
+        </table>
+        <p>The routing schedule is a critical variable: different scheduling choices lead to different overlap patterns and hence different correlation structures. The paper explores several scheduling heuristics and their effect on the resulting noise correlations.</p>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Scenario</th><th>Key Finding</th></tr></thead>
+          <tbody>
+            <tr><td>Independent noise model</td><td>Standard logical error rates consistent with prior literature</td></tr>
+            <tr><td>Correlated noise model</td><td>Logical error rates increase, sometimes substantially, particularly for codes with dense routing overlap</td></tr>
+            <tr><td>Correlation-aware decoder</td><td>Partially recovers the gap, but at increased computational cost</td></tr>
+            <tr><td>Routing optimization</td><td>Better routing schedules reduce overlap and hence correlations, partially mitigating the problem</td></tr>
+          </tbody>
+        </table>
+        <p>The magnitude of the performance degradation depends on code parameters, embedding quality, and routing schedule. For codes with high-weight stabilizers requiring extensive routing, the effect is pronounced. For codes with relatively local checks, the impact is smaller but still non-negligible.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Identifies a realistic and previously overlooked noise source specific to qLDPC implementations.</li>
+          <li>Provides a principled framework to derive correlated noise from routing geometry, not just assume it.</li>
+          <li>Bridges the gap between abstract code theory and physical implementation constraints.</li>
+          <li>Motivates co-design of routing, embedding, and decoder — a valuable practical message.</li>
+          <li>Clear presentation of when correlations matter and when they can be safely ignored.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Analysis is primarily focused on 2D nearest-neighbor architectures; emerging long-range connectivity technologies (e.g., photonic links, ion shuttling) may reduce routing overhead.</li>
+          <li>The correlated noise model, while more realistic, is still a simplification — real hardware may have additional non-Markovian or leakage errors.</li>
+          <li>Routing optimization is treated heuristically; it remains unclear how close to optimal the explored schedules are.</li>
+          <li>Limited code sizes due to simulation cost — extrapolation to asymptotically large codes carries uncertainty.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can code design be adapted to minimize routing overlap for a given hardware connectivity, or is this fundamentally constrained by the code's check structure?</li>
+          <li>How do these geometry-induced correlations compare in magnitude to other correlated error sources like crosstalk and cosmic rays?</li>
+          <li>Is there a theoretical framework to predict the correlation-induced threshold shift without full simulation?</li>
+          <li>Would hardware architectures with native long-range connectivity (e.g., reconfigurable atom arrays) eliminate this problem entirely?</li>
+          <li>Can belief propagation decoders be modified to efficiently account for these specific correlation structures?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper serves as an important reality check for the qLDPC community: the theoretical promise of constant-rate codes must be weighed against the routing overhead and induced noise correlations that arise in any physical implementation. The key insight is that noise in qLDPC circuits is not merely a function of gate fidelity but also of <em>geometry</em> — how the code is laid out and how syndrome information is extracted. Anyone planning a qLDPC experiment or estimating qLDPC resource costs should account for these effects.</p>
+      `
+    },
+    ko: {
+      title: "qLDPC 신드롬 추출에서의 기하학 유도 상관 잡음",
+      summary: "qLDPC 코드에서 비국소적 안정기 검사에 필요한 물리적 라우팅이 신드롬 추출 중 기하학 유도 상관 오류를 도입함을 밝히고, 디코딩 성능에 미치는 영향을 분석합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 양자 LDPC 코드에서 <strong>이전에 충분히 인식되지 않은 잡음 메커니즘</strong>을 식별합니다: 신드롬 추출에 필요한 장거리 상호작용의 물리적 라우팅이 코드의 기하학적 임베딩에 의존하는 구조를 가진 상관 오류를 도입합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>qLDPC 신드롬 추출 회로에서 큐비트 라우팅의 물리적 기하학이 어떻게 상관 잡음을 유도하며, 이러한 상관관계가 논리적 오류율과 디코더 성능에 미치는 영향은 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>양자 저밀도 패리티 검사(qLDPC) 코드는 거리가 증가함에 따라 일정한 인코딩 비율을 달성할 수 있어 표면 코드에 비해 큰 장점을 가지며 큰 관심을 받고 있습니다. 그러나 qLDPC 코드는 먼 거리의 큐비트를 연결하는 비국소적 안정기 검사를 필요로 합니다. 제한된 연결성을 가진 물리적으로 구현 가능한 하드웨어에서는 이러한 비국소적 상호작용이 라우팅 연산(SWAP 체인, 격자 수술 또는 장거리 결합기)을 통해 매개되어야 하며, 각각 추가 오류 원인을 도입합니다.</p>
+        <p>핵심적으로, 두 안정기 검사가 라우팅 경로의 일부를 공유할 때 경험하는 오류가 상관됩니다. qLDPC 코드의 표준 잡음 모델은 일반적으로 각 게이트에 대한 독립적 오류를 가정하여 이러한 기하학 의존적 상관관계를 놓칩니다. 이 논문은 라우팅 유도 상관관계를 무시하면 지나치게 낙관적인 성능 예측으로 이어진다고 주장하며, 이를 모델링하고 분석하는 프레임워크를 제안합니다.</p>
+        <p>동기는 이론적(qLDPC 구현의 근본적 잡음 한계 이해)이면서도 실용적(근단기 qLDPC 실험을 위한 하드웨어 레이아웃 및 디코더 설계 안내)입니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>논문은 세 단계 접근법을 따릅니다:</p>
+        <ul>
+          <li><strong>기하학적 임베딩:</strong> qLDPC 코드(하이퍼그래프 곱 코드 또는 이변량 자전거 코드 등)를 제한된 연결성의 2D 또는 준2D 하드웨어 그래프에 매핑합니다.</li>
+          <li><strong>라우팅 추출:</strong> 각 안정기 검사에 대해 라우팅 스케줄(참여하는 모든 데이터 큐비트를 보조 큐비트와 접촉시키는 데 필요한 SWAP 또는 셔틀 연산 시퀀스)을 결정합니다. 겹치는 경로를 식별합니다.</li>
+          <li><strong>상관 잡음 모델:</strong> 공유 라우팅 경로의 게이트가 여러 안정기의 신드롬에 상관된 파울리 오류를 기여하는 잡음 모델을 구성합니다. 상관 구조는 임베딩과 라우팅 스케줄의 기하학에서 도출됩니다.</li>
+        </ul>
+        <p>그런 다음 상관 잡음 모델과 표준 독립 잡음 모델 모두에서 디코딩을 수행하고, 논리적 오류율의 차이가 상관관계 무시의 영향을 정량화합니다.</p>
+
+        <figure>
+          <img src="images/geometry-correlated-noise/thumbnail.png" alt="qLDPC 라우팅에서의 기하학 유도 잡음">
+          <figcaption>Thumbnail: qLDPC 신드롬 추출에서 라우팅 유도 상관 잡음의 그림.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/geometry-correlated-noise/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/geometry-correlated-noise/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>기하학 유도 상관관계 식별:</strong> 공유 라우팅 경로가 이상화된 잡음 모델에는 없는 상관 오류 이벤트를 어떻게 생성하는지 공식화합니다.</li>
+          <li><strong>정량적 영향 분석:</strong> 상관 잡음이 특히 중간 물리적 오류율에서 독립 잡음 예측에 비해 논리적 오류율을 크게 악화시킬 수 있음을 보여줍니다.</li>
+          <li><strong>라우팅 인식 잡음 모델:</strong> 주어진 임베딩과 라우팅 스케줄에서 상관 잡음 채널을 도출하는 체계적 방법을 제공합니다.</li>
+          <li><strong>디코더 함의:</strong> 이러한 상관관계를 인식하지 못하는 디코더가 성능이 떨어짐을 보여주어, 상관 인식 디코딩 전략의 필요성을 제기합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드 계열</td><td>하이퍼그래프 곱 코드, 이변량 자전거 코드</td></tr>
+            <tr><td>하드웨어 그래프</td><td>최근접 이웃 연결의 2D 그리드</td></tr>
+            <tr><td>라우팅</td><td>탐욕적 또는 휴리스틱 스케줄링을 사용한 SWAP 기반 라우팅</td></tr>
+            <tr><td>잡음 모델</td><td>독립 탈분극(기준선) vs. 공유 경로의 상관 파울리</td></tr>
+            <tr><td>디코더</td><td>BP + OSD, MWPM(상관 인식 유무)</td></tr>
+            <tr><td>시뮬레이션</td><td>Stim 기반 회로 수준 시뮬레이션</td></tr>
+          </tbody>
+        </table>
+        <p>라우팅 스케줄은 핵심 변수입니다: 서로 다른 스케줄링 선택은 서로 다른 겹침 패턴과 따라서 서로 다른 상관 구조로 이어집니다. 논문은 여러 스케줄링 휴리스틱과 결과적 잡음 상관관계에 대한 영향을 탐구합니다.</p>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>시나리오</th><th>주요 발견</th></tr></thead>
+          <tbody>
+            <tr><td>독립 잡음 모델</td><td>기존 문헌과 일관된 표준 논리적 오류율</td></tr>
+            <tr><td>상관 잡음 모델</td><td>논리적 오류율 증가, 특히 밀집한 라우팅 겹침이 있는 코드에서 상당한 증가</td></tr>
+            <tr><td>상관 인식 디코더</td><td>격차를 부분적으로 회복하지만 증가된 계산 비용 수반</td></tr>
+            <tr><td>라우팅 최적화</td><td>더 나은 라우팅 스케줄이 겹침과 상관관계를 줄여 문제를 부분적으로 완화</td></tr>
+          </tbody>
+        </table>
+        <p>성능 저하의 크기는 코드 매개변수, 임베딩 품질, 라우팅 스케줄에 따라 달라집니다. 광범위한 라우팅이 필요한 고중량 안정기가 있는 코드에서 효과가 두드러집니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>qLDPC 구현에 특유한 현실적이고 이전에 간과된 잡음 원인을 식별합니다.</li>
+          <li>라우팅 기하학에서 상관 잡음을 도출하는 원칙적 프레임워크를 제공합니다.</li>
+          <li>추상적 코드 이론과 물리적 구현 제약 사이의 간극을 연결합니다.</li>
+          <li>라우팅, 임베딩, 디코더의 공동 설계를 촉진하는 귀중한 실용적 메시지를 전달합니다.</li>
+          <li>상관관계가 중요한 경우와 안전하게 무시할 수 있는 경우에 대한 명확한 제시가 있습니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>분석이 주로 2D 최근접 이웃 아키텍처에 초점을 맞추며, 신흥 장거리 연결 기술이 라우팅 오버헤드를 줄일 수 있습니다.</li>
+          <li>상관 잡음 모델은 더 현실적이지만 여전히 단순화이며, 실제 하드웨어에는 추가적인 비마르코프 또는 누출 오류가 있을 수 있습니다.</li>
+          <li>라우팅 최적화가 휴리스틱으로 처리되며, 탐구된 스케줄이 최적에 얼마나 가까운지 불분명합니다.</li>
+          <li>시뮬레이션 비용으로 인한 제한된 코드 크기 — 점근적으로 큰 코드로의 외삽은 불확실성을 수반합니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>주어진 하드웨어 연결성에 대해 라우팅 겹침을 최소화하도록 코드 설계를 조정할 수 있는가, 아니면 코드의 검사 구조에 의해 근본적으로 제한되는가?</li>
+          <li>이러한 기하학 유도 상관관계는 크로스토크나 우주선 등 다른 상관 오류 원인과 비교하여 크기가 어떠한가?</li>
+          <li>전체 시뮬레이션 없이 상관 유도 임계값 이동을 예측하는 이론적 프레임워크가 있는가?</li>
+          <li>고유 장거리 연결성을 가진 하드웨어 아키텍처(예: 재구성 가능 원자 배열)가 이 문제를 완전히 제거할 수 있는가?</li>
+          <li>신뢰 전파 디코더를 이러한 특정 상관 구조를 효율적으로 고려하도록 수정할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 qLDPC 커뮤니티를 위한 중요한 현실 점검 역할을 합니다: 일정 비율 코드의 이론적 약속은 물리적 구현에서 발생하는 라우팅 오버헤드와 유도된 잡음 상관관계와 비교되어야 합니다. 핵심 통찰은 qLDPC 회로의 잡음이 단순히 게이트 충실도의 함수가 아니라 <em>기하학</em> — 코드가 어떻게 배치되고 신드롬 정보가 어떻게 추출되는지 — 의 함수이기도 하다는 것입니다. qLDPC 실험을 계획하거나 qLDPC 자원 비용을 추정하는 누구든지 이러한 효과를 고려해야 합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 3. magic-state-injection-qldpc
+  // ====================================================================
+  {
+    id: "magic-state-injection-qldpc",
+    date: "2025-04-11",
+    authors: "Liu, K., Xu, S., Jochym-O'Connor, T., et al.",
+    venue: "Preprint 2025",
+    image: "images/magic-state-injection-qldpc/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Magic State", "qLDPC", "Fault Tolerance"],
+    en: {
+      title: "In-Situ Simultaneous Magic State Injection on Arbitrary CSS qLDPC Codes",
+      summary: "Proposes a protocol for injecting magic states directly into arbitrary CSS qLDPC codes without requiring dedicated magic state factories, enabling simultaneous multi-qubit injection in-situ.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper removes one of the key bottlenecks for fault-tolerant computation on qLDPC codes by showing that <strong>magic states can be injected simultaneously and in-place</strong> on arbitrary CSS qLDPC codes, eliminating the need for separate magic state distillation factories.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can magic states be injected directly and simultaneously into logical qubits encoded in arbitrary CSS qLDPC codes without requiring external magic state factories or code switching, and if so, what are the fault-tolerance properties of such a protocol?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Universal fault-tolerant quantum computation requires non-Clifford gates, typically implemented via magic state injection and distillation. In the surface code paradigm, magic state distillation is performed in dedicated factory regions that consume a large fraction of physical qubits — often dominating the total resource overhead. This overhead is one of the primary motivations for exploring qLDPC codes, which offer better encoding rates.</p>
+        <p>However, magic state injection on qLDPC codes is significantly more complex than on surface codes. The non-local check structure of qLDPC codes means that standard lattice-surgery-based injection techniques do not directly apply. Previous approaches either required code switching (encoding into a different code that supports transversal non-Clifford gates) or adapted surface-code-style factories, both of which negate much of the qLDPC advantage.</p>
+        <p>This paper addresses this gap by developing an in-situ injection protocol that works natively on CSS qLDPC codes. The "simultaneous" aspect means multiple magic states can be injected in parallel across different logical qubits of the same code block, which is critical for achieving practical computational speeds.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The protocol operates in three phases:</p>
+        <ul>
+          <li><strong>Preparation:</strong> Ancilla qubits are prepared in noisy magic states (|T⟩ states) and coupled to specific data qubits of the qLDPC code block via controlled operations.</li>
+          <li><strong>Injection circuit:</strong> A carefully designed circuit applies the non-Clifford rotation to the logical qubit by consuming the ancilla magic state, using only Clifford gates and measurements on the code qubits plus the ancilla. The circuit structure respects the CSS structure of the code to maintain syndrome extractability.</li>
+          <li><strong>Post-selection / distillation:</strong> Syndrome measurements before and after injection are compared. Discrepancies flag potential injection errors, enabling either post-selection or subsequent distillation rounds to achieve target fidelity.</li>
+        </ul>
+        <p>The simultaneous injection capability arises because injections on different logical qubits act on disjoint sets of physical qubits (leveraging the qLDPC code structure), allowing them to proceed in parallel without interference.</p>
+
+        <figure>
+          <img src="images/magic-state-injection-qldpc/thumbnail.png" alt="In-situ magic state injection on qLDPC codes">
+          <figcaption>Thumbnail: In-situ simultaneous magic state injection protocol overview.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/magic-state-injection-qldpc/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Factory-free injection:</strong> Eliminates the need for dedicated magic state factories, directly injecting magic states into the qLDPC code block where computation occurs.</li>
+          <li><strong>Arbitrary CSS qLDPC compatibility:</strong> The protocol is not specialized to a specific code family — it works on any CSS qLDPC code, providing broad applicability.</li>
+          <li><strong>Simultaneous multi-qubit injection:</strong> Multiple logical qubits can receive magic states in parallel within the same code block, critical for computational throughput.</li>
+          <li><strong>Fault-tolerance analysis:</strong> Provides rigorous analysis of how injection errors propagate and how syndrome-based detection can flag them.</li>
+          <li><strong>Resource overhead reduction:</strong> Quantifies the physical qubit savings compared to factory-based approaches.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code families tested</td><td>Hypergraph product codes, bivariate bicycle codes, lifted product codes</td></tr>
+            <tr><td>Magic state type</td><td>|T⟩ = (|0⟩ + e<sup>iπ/4</sup>|1⟩)/√2 for T-gate implementation</td></tr>
+            <tr><td>Injection circuit depth</td><td>O(1) additional depth beyond standard syndrome extraction</td></tr>
+            <tr><td>Error model</td><td>Circuit-level depolarizing noise</td></tr>
+            <tr><td>Post-selection rate</td><td>Analyzed as function of physical error rate and code distance</td></tr>
+            <tr><td>Simulation</td><td>Stim-based circuit simulation with BP+OSD decoding</td></tr>
+          </tbody>
+        </table>
+        <p>The injection circuit is designed to commute with the CSS stabilizers of the code, ensuring that syndrome extraction can continue uninterrupted during and after injection. This is the key technical insight that makes in-situ operation possible.</p>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Metric</th><th>Result</th><th>Interpretation</th></tr></thead>
+          <tbody>
+            <tr><td>Injection fidelity</td><td>Competitive with factory-based approaches at comparable physical error rates</td><td>In-situ injection does not sacrifice quality</td></tr>
+            <tr><td>Qubit overhead</td><td>Significant reduction (no factory qubits needed)</td><td>Major resource savings for qLDPC architectures</td></tr>
+            <tr><td>Simultaneous injection</td><td>Up to k injections in parallel for [[n,k,d]] code</td><td>Throughput scales with code rate</td></tr>
+            <tr><td>Post-selection overhead</td><td>Moderate at relevant error rates</td><td>Practical for near-term demonstrations</td></tr>
+          </tbody>
+        </table>
+        <p>The results demonstrate that the in-situ approach is not merely a theoretical curiosity but a practical alternative that can meaningfully reduce the resource requirements of fault-tolerant quantum computation with qLDPC codes.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Eliminates one of the most costly components of fault-tolerant architecture — the magic state factory.</li>
+          <li>Generality across CSS qLDPC code families makes the result broadly applicable.</li>
+          <li>Simultaneous injection is a key practical feature that prior work lacked.</li>
+          <li>Clean theoretical framework with rigorous fault-tolerance analysis.</li>
+          <li>Concrete resource savings quantified, not just asymptotic claims.</li>
+          <li>Compatible with existing decoding infrastructure (BP+OSD, MWPM).</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Post-selection overhead may become significant at higher physical error rates, partially offsetting qubit savings.</li>
+          <li>Restricted to CSS codes — non-CSS qLDPC codes require different techniques.</li>
+          <li>The injection fidelity depends on the quality of the initial noisy magic state, which still needs preparation.</li>
+          <li>Circuit complexity may increase for codes with very high-weight stabilizers.</li>
+          <li>Experimental demonstration remains future work.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How does the in-situ injection overhead compare to lattice surgery approaches as code distance scales?</li>
+          <li>Can this protocol be combined with magic state distillation to achieve even higher fidelity injection?</li>
+          <li>What are the implications for the comparative resource analysis of surface codes vs. qLDPC codes when factory overhead is removed?</li>
+          <li>Is there an analogous in-situ protocol for non-CSS qLDPC codes?</li>
+          <li>How does simultaneous injection interact with the correlated noise issues identified in routing-heavy qLDPC implementations?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper makes a significant step toward practical fault-tolerant quantum computing with qLDPC codes by removing the magic state factory bottleneck. The ability to inject magic states in-situ and simultaneously is a qualitative advance that changes the resource calculus of qLDPC architectures. For anyone comparing qLDPC and surface code approaches, this result should be factored into the overhead analysis.</p>
+      `
+    },
+    ko: {
+      title: "임의의 CSS qLDPC 코드에서의 현장 동시 매직 스테이트 주입",
+      summary: "전용 매직 스테이트 공장 없이 임의의 CSS qLDPC 코드에 매직 스테이트를 직접 주입하는 프로토콜을 제안하며, 현장에서 동시 다중 큐비트 주입을 가능하게 합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>매직 스테이트를 임의의 CSS qLDPC 코드에 동시에 현장에서 주입</strong>할 수 있음을 보여줌으로써 qLDPC 코드에서의 결함 허용 계산의 핵심 병목 중 하나를 제거합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>외부 매직 스테이트 공장이나 코드 전환 없이 임의의 CSS qLDPC 코드에 인코딩된 논리 큐비트에 매직 스테이트를 직접 동시에 주입할 수 있으며, 그러한 프로토콜의 결함 허용 특성은 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>보편적 결함 허용 양자 계산에는 비클리포드 게이트가 필요하며, 일반적으로 매직 스테이트 주입과 증류를 통해 구현됩니다. 표면 코드 패러다임에서 매직 스테이트 증류는 전용 공장 영역에서 수행되며, 물리적 큐비트의 큰 부분을 소비합니다 — 종종 총 자원 오버헤드를 지배합니다. 이 오버헤드는 더 나은 인코딩 비율을 제공하는 qLDPC 코드를 탐구하는 주요 동기 중 하나입니다.</p>
+        <p>그러나 qLDPC 코드에서의 매직 스테이트 주입은 표면 코드보다 상당히 복잡합니다. qLDPC 코드의 비국소적 검사 구조는 표준 격자 수술 기반 주입 기술이 직접 적용되지 않음을 의미합니다. 이전 접근법은 코드 전환이나 표면 코드 스타일의 공장을 필요로 했으며, 둘 다 qLDPC 이점의 많은 부분을 상쇄합니다.</p>
+        <p>이 논문은 CSS qLDPC 코드에서 기본적으로 작동하는 현장 주입 프로토콜을 개발하여 이 간극을 해결합니다. "동시" 측면은 여러 매직 스테이트가 동일한 코드 블록의 서로 다른 논리 큐비트에 병렬로 주입될 수 있음을 의미하며, 이는 실용적 계산 속도 달성에 중요합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>프로토콜은 세 단계로 작동합니다:</p>
+        <ul>
+          <li><strong>준비:</strong> 보조 큐비트를 잡음이 있는 매직 스테이트(|T⟩ 스테이트)로 준비하고 제어 연산을 통해 qLDPC 코드 블록의 특정 데이터 큐비트에 결합합니다.</li>
+          <li><strong>주입 회로:</strong> 신중하게 설계된 회로가 보조 매직 스테이트를 소비하여 논리 큐비트에 비클리포드 회전을 적용합니다. 코드 큐비트와 보조 큐비트에 대한 클리포드 게이트와 측정만 사용합니다.</li>
+          <li><strong>후선택 / 증류:</strong> 주입 전후의 신드롬 측정을 비교합니다. 불일치가 잠재적 주입 오류를 표시하여 후선택 또는 후속 증류 라운드를 가능하게 합니다.</li>
+        </ul>
+        <p>동시 주입 능력은 서로 다른 논리 큐비트에 대한 주입이 물리적 큐비트의 분리된 집합에서 작동하기 때문에 발생하며(qLDPC 코드 구조를 활용), 간섭 없이 병렬로 진행할 수 있습니다.</p>
+
+        <figure>
+          <img src="images/magic-state-injection-qldpc/thumbnail.png" alt="qLDPC 코드에서의 현장 매직 스테이트 주입">
+          <figcaption>Thumbnail: 현장 동시 매직 스테이트 주입 프로토콜 개요.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/magic-state-injection-qldpc/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>공장 없는 주입:</strong> 전용 매직 스테이트 공장의 필요를 제거하고, 계산이 발생하는 qLDPC 코드 블록에 매직 스테이트를 직접 주입합니다.</li>
+          <li><strong>임의 CSS qLDPC 호환성:</strong> 프로토콜이 특정 코드 계열에 특화되지 않으며 모든 CSS qLDPC 코드에서 작동합니다.</li>
+          <li><strong>동시 다중 큐비트 주입:</strong> 동일한 코드 블록 내에서 여러 논리 큐비트가 병렬로 매직 스테이트를 받을 수 있어 계산 처리량에 중요합니다.</li>
+          <li><strong>결함 허용 분석:</strong> 주입 오류가 어떻게 전파되고 신드롬 기반 검출이 이를 어떻게 표시할 수 있는지에 대한 엄밀한 분석을 제공합니다.</li>
+          <li><strong>자원 오버헤드 감소:</strong> 공장 기반 접근법과 비교하여 물리적 큐비트 절약을 정량화합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>테스트된 코드 계열</td><td>하이퍼그래프 곱 코드, 이변량 자전거 코드, 리프트 곱 코드</td></tr>
+            <tr><td>매직 스테이트 유형</td><td>T-게이트 구현을 위한 |T⟩ = (|0⟩ + e<sup>iπ/4</sup>|1⟩)/√2</td></tr>
+            <tr><td>주입 회로 깊이</td><td>표준 신드롬 추출을 넘어 O(1) 추가 깊이</td></tr>
+            <tr><td>오류 모델</td><td>회로 수준 탈분극 잡음</td></tr>
+            <tr><td>후선택률</td><td>물리적 오류율과 코드 거리의 함수로 분석</td></tr>
+            <tr><td>시뮬레이션</td><td>BP+OSD 디코딩을 사용한 Stim 기반 회로 시뮬레이션</td></tr>
+          </tbody>
+        </table>
+        <p>주입 회로는 코드의 CSS 안정기와 교환 가능하도록 설계되어 주입 중과 후에 신드롬 추출이 중단 없이 계속될 수 있습니다. 이것이 현장 작동을 가능하게 하는 핵심 기술적 통찰입니다.</p>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>지표</th><th>결과</th><th>해석</th></tr></thead>
+          <tbody>
+            <tr><td>주입 충실도</td><td>비교 가능한 물리적 오류율에서 공장 기반 접근법과 경쟁적</td><td>현장 주입이 품질을 희생하지 않음</td></tr>
+            <tr><td>큐비트 오버헤드</td><td>상당한 감소(공장 큐비트 불필요)</td><td>qLDPC 아키텍처에 대한 주요 자원 절약</td></tr>
+            <tr><td>동시 주입</td><td>[[n,k,d]] 코드에 대해 최대 k개 병렬 주입</td><td>처리량이 코드 비율과 함께 확장</td></tr>
+            <tr><td>후선택 오버헤드</td><td>관련 오류율에서 중간 수준</td><td>근단기 시연에 실용적</td></tr>
+          </tbody>
+        </table>
+        <p>결과는 현장 접근법이 단순한 이론적 호기심이 아니라 qLDPC 코드를 사용한 결함 허용 양자 계산의 자원 요구를 의미 있게 줄일 수 있는 실용적 대안임을 보여줍니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>결함 허용 아키텍처에서 가장 비용이 큰 구성 요소 중 하나인 매직 스테이트 공장을 제거합니다.</li>
+          <li>CSS qLDPC 코드 계열 전반에 걸친 일반성이 결과를 광범위하게 적용 가능하게 합니다.</li>
+          <li>동시 주입은 이전 연구에 없었던 핵심 실용적 특징입니다.</li>
+          <li>엄밀한 결함 허용 분석을 갖춘 깔끔한 이론적 프레임워크입니다.</li>
+          <li>단순한 점근적 주장이 아닌 구체적 자원 절약이 정량화되었습니다.</li>
+          <li>기존 디코딩 인프라(BP+OSD, MWPM)와 호환됩니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>후선택 오버헤드가 높은 물리적 오류율에서 중요해질 수 있어 큐비트 절약을 부분적으로 상쇄할 수 있습니다.</li>
+          <li>CSS 코드에 제한되며, 비CSS qLDPC 코드는 다른 기술이 필요합니다.</li>
+          <li>주입 충실도가 초기 잡음 매직 스테이트의 품질에 의존하며, 이는 여전히 준비가 필요합니다.</li>
+          <li>매우 높은 중량의 안정기를 가진 코드에서 회로 복잡성이 증가할 수 있습니다.</li>
+          <li>실험적 시연은 향후 연구로 남아 있습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>코드 거리가 확장됨에 따라 현장 주입 오버헤드가 격자 수술 접근법과 어떻게 비교되는가?</li>
+          <li>이 프로토콜을 매직 스테이트 증류와 결합하여 더 높은 충실도 주입을 달성할 수 있는가?</li>
+          <li>공장 오버헤드가 제거될 때 표면 코드 대 qLDPC 코드의 비교 자원 분석에 대한 함의는 무엇인가?</li>
+          <li>비CSS qLDPC 코드에 대한 유사한 현장 프로토콜이 있는가?</li>
+          <li>동시 주입이 라우팅 집약적 qLDPC 구현에서 식별된 상관 잡음 문제와 어떻게 상호작용하는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 매직 스테이트 공장 병목을 제거하여 qLDPC 코드를 사용한 실용적 결함 허용 양자 계산을 향한 중요한 진전을 이룹니다. 매직 스테이트를 현장에서 동시에 주입할 수 있는 능력은 qLDPC 아키텍처의 자원 계산을 바꾸는 질적 진보입니다. qLDPC와 표면 코드 접근법을 비교하는 누구든지 이 결과를 오버헤드 분석에 반영해야 합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 4. neural-belief-matching
+  // ====================================================================
+  {
+    id: "neural-belief-matching",
+    date: "2025-04-11",
+    authors: "Menti, L., Lázaro, F.",
+    venue: "Preprint 2025",
+    image: "images/neural-belief-matching/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "QEC", "Neural Decoder", "Belief Propagation"],
+    en: {
+      title: "Neural Belief-Matching Decoding for Topological Quantum Error Correction Codes",
+      summary: "Proposes a neural network-enhanced belief propagation decoder that learns to match the belief distributions of BP iterations to optimal posterior distributions for topological QEC codes.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper introduces <strong>neural belief-matching</strong>, a principled method for augmenting belief propagation decoding of topological codes by training a neural network to correct the systematic biases in BP message updates, achieving near-optimal decoding with BP-scale computational cost.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can a neural network be trained to correct the systematic errors of belief propagation on topological code factor graphs, matching the belief distributions to the true posterior and thereby closing the gap between BP and optimal decoding?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Belief propagation (BP) is a workhorse decoding algorithm for classical LDPC codes, achieving near-optimal performance on sparse factor graphs with tree-like structure. However, topological quantum error correction codes (such as surface codes and color codes) have factor graphs with many short cycles, causing BP to converge poorly or not at all. The beliefs computed by BP on these loopy graphs are systematically biased, leading to suboptimal decoding.</p>
+        <p>Previous approaches to this problem include: (1) post-processing BP with ordered statistics decoding (OSD), which is effective but computationally expensive; (2) neural BP variants that learn edge weights, which improve convergence but lack a principled training objective; and (3) pure neural decoders that abandon BP entirely, losing its structural advantages.</p>
+        <p>This paper takes a different approach: keep the BP message-passing structure but train a neural network to transform the BP beliefs at each iteration so that they match the true posterior distribution. The training objective — minimizing the divergence between neural-corrected beliefs and the optimal posterior — is both principled and directly connected to decoding optimality.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Base BP decoder:</strong> Standard min-sum or sum-product BP runs on the factor graph of the topological code for a fixed number of iterations.</li>
+          <li><strong>Neural correction module:</strong> After each BP iteration (or after the final iteration), a lightweight neural network takes the current beliefs and syndrome as input and outputs corrected beliefs. The network architecture is typically an MLP or small GNN that respects the local structure of the factor graph.</li>
+          <li><strong>Training objective:</strong> The neural network is trained to minimize the KL divergence (or a surrogate loss) between its output beliefs and the exact posterior marginals computed via brute-force on small instances or approximated via importance sampling on larger ones.</li>
+          <li><strong>Inference:</strong> At decode time, BP runs with neural corrections applied, and the final corrected beliefs are used for hard decisions. The overhead per decoding instance is the cost of one or a few neural network forward passes.</li>
+        </ul>
+
+        <figure>
+          <img src="images/neural-belief-matching/thumbnail.png" alt="Neural belief-matching decoder architecture">
+          <figcaption>Thumbnail: Neural belief-matching decoding pipeline.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/neural-belief-matching/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Principled training objective:</strong> Unlike prior neural BP work that uses heuristic loss functions, belief matching targets the true posterior, providing a clear optimality criterion.</li>
+          <li><strong>Scalable architecture:</strong> The neural correction module is lightweight and local, scaling linearly with code size rather than quadratically.</li>
+          <li><strong>Near-optimal performance:</strong> Achieves decoding performance close to maximum-likelihood on surface and color codes, significantly outperforming vanilla BP and approaching MWPM/UF quality.</li>
+          <li><strong>Compatibility with BP infrastructure:</strong> Can be implemented as a drop-in enhancement to existing BP decoders without changing the overall decoding pipeline.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Codes tested</td><td>Surface codes (d=3 to d=11), color codes (d=5 to d=9)</td></tr>
+            <tr><td>BP variant</td><td>Min-sum and sum-product</td></tr>
+            <tr><td>BP iterations</td><td>10-50 iterations before neural correction</td></tr>
+            <tr><td>Neural architecture</td><td>MLP with 2-3 hidden layers; GNN variant for larger codes</td></tr>
+            <tr><td>Training data</td><td>Syndrome samples with exact posterior marginals (small codes) or importance-sampled approximations (larger codes)</td></tr>
+            <tr><td>Training loss</td><td>KL divergence between predicted and target beliefs</td></tr>
+            <tr><td>Hardware</td><td>Training on single GPU; inference compatible with FPGA deployment</td></tr>
+          </tbody>
+        </table>
+        <p>Training requires access to ground-truth posterior marginals, which limits the approach to codes where these can be computed or well-approximated. For small-to-moderate code distances, exact computation is feasible; for larger codes, the authors employ importance sampling techniques.</p>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Decoder</th><th>Performance vs. ML Bound</th><th>Runtime</th></tr></thead>
+          <tbody>
+            <tr><td>Vanilla BP</td><td>Significant gap, especially on surface codes</td><td>Fast</td></tr>
+            <tr><td>BP + OSD</td><td>Near-optimal but computationally heavy</td><td>Slow (OSD dominates)</td></tr>
+            <tr><td>Neural Belief-Matching</td><td>Near-optimal, close to BP+OSD</td><td>Moderate (BP + small NN forward pass)</td></tr>
+            <tr><td>MWPM</td><td>Near-optimal for surface codes</td><td>Moderate</td></tr>
+          </tbody>
+        </table>
+        <p>The neural belief-matching decoder achieves the accuracy of BP+OSD at a fraction of the runtime, making it a compelling practical alternative. On color codes, where MWPM is not directly applicable, the advantage over vanilla BP is even more pronounced.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Principled approach — the belief-matching objective has a clear theoretical justification connected to Bayesian optimality.</li>
+          <li>Practical runtime — the neural overhead is small compared to OSD post-processing.</li>
+          <li>Generalizes across topological code families (surface, color) without code-specific engineering.</li>
+          <li>Modular design — the neural module can be added to any BP decoder as a plug-in enhancement.</li>
+          <li>Thorough experimental evaluation across multiple code families, distances, and noise models.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Training requires ground-truth posterior marginals, which are expensive to compute for large codes.</li>
+          <li>Generalization across code distances is not fully demonstrated — retraining may be needed for each distance.</li>
+          <li>The neural module adds latency compared to pure BP, which may matter for real-time decoding applications.</li>
+          <li>Limited analysis of adversarial or non-standard noise models where BP biases may be qualitatively different.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the training procedure be made self-supervised, avoiding the need for ground-truth posteriors?</li>
+          <li>How does the approach scale to qLDPC codes where BP already performs better due to sparser factor graphs?</li>
+          <li>Is there a theoretical guarantee on how close the neural-corrected beliefs can get to the true posterior?</li>
+          <li>Can the neural module be distilled into simpler correction rules for hardware implementation?</li>
+          <li>How does belief-matching compare to reinforcement-learning-based decoder training approaches?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>Neural belief-matching offers a principled and practical path to improving BP decoding on topological codes. Rather than abandoning BP's structure or bolting on expensive post-processing, it surgically corrects BP's known weakness — biased beliefs on loopy graphs — using a lightweight neural network trained against the true posterior. For groups building real-time QEC decoders, this approach offers an attractive accuracy-latency trade-off.</p>
+      `
+    },
+    ko: {
+      title: "위상 양자 오류 정정 코드를 위한 신경 신뢰 매칭 디코딩",
+      summary: "BP 반복의 신뢰 분포를 최적 사후 분포에 매칭하도록 신경망을 학습시켜 위상 QEC 코드의 신뢰 전파 디코더를 향상시키는 방법을 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>신경 신뢰 매칭</strong>이라는 원리적 방법을 도입하여, 신경망이 BP 메시지 업데이트의 체계적 편향을 수정하도록 학습시킴으로써 BP 규모의 계산 비용으로 거의 최적의 디코딩을 달성합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>위상 코드 인수 그래프에서 신뢰 전파의 체계적 오류를 수정하여 신뢰 분포를 진정한 사후 분포에 매칭시키고, 이를 통해 BP와 최적 디코딩 사이의 간극을 줄이도록 신경망을 학습시킬 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>신뢰 전파(BP)는 고전 LDPC 코드의 주력 디코딩 알고리즘으로, 트리 구조를 가진 희소 인수 그래프에서 거의 최적의 성능을 달성합니다. 그러나 표면 코드와 컬러 코드 같은 위상 양자 오류 정정 코드는 많은 짧은 순환을 가진 인수 그래프를 가져 BP가 수렴이 잘 되지 않거나 전혀 수렴하지 않습니다. 이러한 루프가 있는 그래프에서 BP가 계산하는 신뢰는 체계적으로 편향되어 최적이 아닌 디코딩으로 이어집니다.</p>
+        <p>이 문제에 대한 이전 접근법에는: (1) OSD로 BP를 후처리하는 방법 — 효과적이지만 계산적으로 비용이 큽니다; (2) 엣지 가중치를 학습하는 신경 BP 변형 — 수렴을 개선하지만 원리적 학습 목표가 없습니다; (3) BP를 완전히 포기하는 순수 신경 디코더 — 구조적 장점을 잃습니다.</p>
+        <p>이 논문은 다른 접근법을 취합니다: BP 메시지 전달 구조를 유지하되, 각 반복에서 BP 신뢰를 진정한 사후 분포에 매칭되도록 변환하는 신경망을 학습시킵니다. 학습 목표 — 신경 수정된 신뢰와 최적 사후 분포 사이의 발산 최소화 — 는 원리적이며 디코딩 최적성과 직접 연결됩니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>기본 BP 디코더:</strong> 표준 min-sum 또는 sum-product BP가 위상 코드의 인수 그래프에서 고정된 반복 횟수 동안 실행됩니다.</li>
+          <li><strong>신경 보정 모듈:</strong> 각 BP 반복 후(또는 최종 반복 후) 경량 신경망이 현재 신뢰와 신드롬을 입력으로 받아 보정된 신뢰를 출력합니다.</li>
+          <li><strong>학습 목표:</strong> 신경망은 출력 신뢰와 정확한 사후 주변분포 사이의 KL 발산(또는 대리 손실)을 최소화하도록 학습됩니다.</li>
+          <li><strong>추론:</strong> 디코드 시 BP가 신경 보정이 적용된 상태로 실행되며, 최종 보정된 신뢰가 경판정에 사용됩니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/neural-belief-matching/thumbnail.png" alt="신경 신뢰 매칭 디코더 구조">
+          <figcaption>Thumbnail: 신경 신뢰 매칭 디코딩 파이프라인.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/neural-belief-matching/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>원리적 학습 목표:</strong> 휴리스틱 손실 함수를 사용하는 이전 신경 BP 연구와 달리, 신뢰 매칭은 베이지안 최적성과 연결된 명확한 이론적 정당화를 가진 진정한 사후 분포를 목표로 합니다.</li>
+          <li><strong>확장 가능한 구조:</strong> 신경 보정 모듈이 경량이며 국소적이어서 코드 크기에 대해 이차적이 아닌 선형적으로 확장됩니다.</li>
+          <li><strong>거의 최적의 성능:</strong> 표면 코드와 컬러 코드에서 최대 우도에 가까운 디코딩 성능을 달성하며, 순수 BP를 크게 능가하고 MWPM/UF 품질에 접근합니다.</li>
+          <li><strong>BP 인프라와의 호환성:</strong> 전체 디코딩 파이프라인을 변경하지 않고 기존 BP 디코더에 대한 드롭인 향상으로 구현할 수 있습니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>테스트된 코드</td><td>표면 코드(d=3~d=11), 컬러 코드(d=5~d=9)</td></tr>
+            <tr><td>BP 변형</td><td>Min-sum 및 sum-product</td></tr>
+            <tr><td>BP 반복</td><td>신경 보정 전 10-50회 반복</td></tr>
+            <tr><td>신경 구조</td><td>2-3 은닉층의 MLP; 더 큰 코드를 위한 GNN 변형</td></tr>
+            <tr><td>학습 데이터</td><td>정확한 사후 주변분포(작은 코드) 또는 중요도 샘플링 근사(큰 코드)가 있는 신드롬 샘플</td></tr>
+            <tr><td>학습 손실</td><td>예측된 신뢰와 목표 신뢰 사이의 KL 발산</td></tr>
+            <tr><td>하드웨어</td><td>단일 GPU에서 학습; FPGA 배포와 호환 가능한 추론</td></tr>
+          </tbody>
+        </table>
+        <p>학습에는 기저 진리 사후 주변분포에 대한 접근이 필요하며, 이는 계산 또는 잘 근사될 수 있는 코드로 접근법을 제한합니다. 소규모에서 중간 코드 거리에서는 정확한 계산이 가능하며, 더 큰 코드에서는 중요도 샘플링 기술을 사용합니다.</p>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>디코더</th><th>ML 한계 대비 성능</th><th>실행 시간</th></tr></thead>
+          <tbody>
+            <tr><td>순수 BP</td><td>상당한 격차, 특히 표면 코드에서</td><td>빠름</td></tr>
+            <tr><td>BP + OSD</td><td>거의 최적이지만 계산적으로 무거움</td><td>느림(OSD가 지배)</td></tr>
+            <tr><td>신경 신뢰 매칭</td><td>거의 최적, BP+OSD에 근접</td><td>중간(BP + 작은 NN 순방향 패스)</td></tr>
+            <tr><td>MWPM</td><td>표면 코드에서 거의 최적</td><td>중간</td></tr>
+          </tbody>
+        </table>
+        <p>신경 신뢰 매칭 디코더는 BP+OSD의 정확도를 실행 시간의 일부로 달성하여 매력적인 실용적 대안이 됩니다. MWPM이 직접 적용되지 않는 컬러 코드에서 순수 BP에 대한 이점이 더욱 두드러집니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>원리적 접근 — 신뢰 매칭 목표는 베이지안 최적성과 연결된 명확한 이론적 정당화를 가집니다.</li>
+          <li>실용적 실행 시간 — 신경 오버헤드가 OSD 후처리에 비해 작습니다.</li>
+          <li>코드 특화 엔지니어링 없이 위상 코드 계열(표면, 컬러) 전반에 걸쳐 일반화됩니다.</li>
+          <li>모듈식 설계 — 신경 모듈을 모든 BP 디코더에 플러그인 향상으로 추가할 수 있습니다.</li>
+          <li>여러 코드 계열, 거리, 잡음 모델에 걸친 철저한 실험 평가가 있습니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>학습에 기저 진리 사후 주변분포가 필요하며, 큰 코드에서는 계산 비용이 높습니다.</li>
+          <li>코드 거리 간 일반화가 완전히 실증되지 않았으며 각 거리에 대한 재학습이 필요할 수 있습니다.</li>
+          <li>신경 모듈이 순수 BP에 비해 지연을 추가하며, 이는 실시간 디코딩에서 중요할 수 있습니다.</li>
+          <li>BP 편향이 질적으로 다를 수 있는 적대적 또는 비표준 잡음 모델에 대한 분석이 제한적입니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>기저 진리 사후 분포의 필요성을 피하여 학습 절차를 자기 지도 방식으로 만들 수 있는가?</li>
+          <li>BP가 더 희소한 인수 그래프로 인해 이미 더 잘 수행되는 qLDPC 코드로 접근법이 어떻게 확장되는가?</li>
+          <li>신경 보정된 신뢰가 진정한 사후 분포에 얼마나 가까워질 수 있는지에 대한 이론적 보장이 있는가?</li>
+          <li>신경 모듈을 하드웨어 구현을 위한 더 단순한 보정 규칙으로 증류할 수 있는가?</li>
+          <li>신뢰 매칭은 강화 학습 기반 디코더 학습 접근법과 어떻게 비교되는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>신경 신뢰 매칭은 위상 코드에서 BP 디코딩을 개선하는 원리적이고 실용적인 경로를 제공합니다. BP의 구조를 포기하거나 비싼 후처리를 덧붙이는 대신, BP의 알려진 약점 — 루프가 있는 그래프에서의 편향된 신뢰 — 을 진정한 사후 분포에 대해 학습된 경량 신경망으로 외과적으로 수정합니다. 실시간 QEC 디코더를 구축하는 그룹에게 이 접근법은 매력적인 정확도-지연 트레이드오프를 제공합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 5. dynamic-quantum-circuits
+  // ====================================================================
+  {
+    id: "dynamic-quantum-circuits",
+    date: "2025-04-11",
+    authors: "Shirgure, S., Kökcü, E., Mitra, A., et al.",
+    venue: "Preprint 2025",
+    image: "images/dynamic-quantum-circuits/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Dynamic Circuits", "Benchmarking", "Mid-Circuit"],
+    en: {
+      title: "Characterizing and Benchmarking Dynamic Quantum Circuits",
+      summary: "Develops systematic benchmarking protocols for dynamic quantum circuits featuring mid-circuit measurements and classical feedforward, quantifying their fidelity and identifying dominant error sources on current hardware.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper fills a critical gap in the quantum benchmarking toolkit by providing <strong>dedicated protocols for characterizing dynamic quantum circuits</strong> — circuits with mid-circuit measurements and conditional operations — which behave fundamentally differently from static circuits under noise.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we systematically benchmark the performance of dynamic quantum circuits featuring mid-circuit measurements and classical feedforward, and what are the dominant error mechanisms that degrade their fidelity on current quantum hardware?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Dynamic quantum circuits — circuits that include mid-circuit measurements (MCMs), classical feedforward, and conditional quantum operations — are essential building blocks for quantum error correction, measurement-based quantum computing, and numerous near-term algorithms. Unlike static circuits where all measurements occur at the end, dynamic circuits interleave quantum and classical processing, introducing qualitatively new error mechanisms: measurement-induced decoherence on neighboring qubits, feedforward latency errors, and conditional gate calibration issues.</p>
+        <p>Existing benchmarking protocols (randomized benchmarking, quantum volume, mirror circuits) were designed for static circuits and do not capture these dynamic-circuit-specific errors. As quantum hardware matures and QEC demonstrations rely increasingly on dynamic circuits, there is an urgent need for benchmarking tools that can isolate and quantify the errors introduced by mid-circuit operations.</p>
+        <p>This paper develops such tools, applying them to state-of-the-art superconducting and trapped-ion hardware to produce actionable characterizations of dynamic circuit performance.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Dynamic circuit randomized benchmarking (DCRB):</strong> Extends standard RB by interleaving mid-circuit measurements and conditional Clifford operations, measuring the decay of state fidelity as circuit depth increases.</li>
+          <li><strong>MCM crosstalk characterization:</strong> Isolates the effect of mid-circuit measurement on spectator qubits by comparing the fidelity of operations on spectator qubits with and without concurrent MCMs on neighboring qubits.</li>
+          <li><strong>Feedforward fidelity tests:</strong> Measures the error introduced by the classical processing and conditional gate application pipeline, separating feedforward latency effects from gate errors.</li>
+          <li><strong>Composite benchmarks:</strong> End-to-end benchmarks that combine all dynamic elements in circuits representative of QEC syndrome extraction, teleportation, and repeat-until-success protocols.</li>
+        </ul>
+
+        <figure>
+          <img src="images/dynamic-quantum-circuits/thumbnail.png" alt="Dynamic quantum circuit benchmarking overview">
+          <figcaption>Thumbnail: Benchmarking framework for dynamic quantum circuits.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/dynamic-quantum-circuits/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/dynamic-quantum-circuits/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>First systematic benchmarking suite for dynamic circuits:</strong> Provides a complete protocol set that hardware teams can adopt to characterize MCM and feedforward performance.</li>
+          <li><strong>Error budget decomposition:</strong> Quantitatively separates MCM crosstalk, feedforward latency, conditional gate errors, and standard gate/decoherence errors.</li>
+          <li><strong>Cross-platform comparison:</strong> Applies the same benchmarks to multiple hardware platforms, enabling fair comparison of dynamic circuit capabilities.</li>
+          <li><strong>Actionable diagnostics:</strong> Identifies specific hardware improvements that would most reduce dynamic circuit errors on each platform.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Hardware platforms</td><td>Superconducting (IBM-class), trapped-ion systems</td></tr>
+            <tr><td>Circuit depths</td><td>1 to 100+ dynamic layers</td></tr>
+            <tr><td>Qubit counts</td><td>2 to 20+ qubits with varying MCM configurations</td></tr>
+            <tr><td>MCM types</td><td>Dispersive readout (superconducting), fluorescence (trapped-ion)</td></tr>
+            <tr><td>Feedforward latency</td><td>Measured from MCM completion to conditional gate start</td></tr>
+            <tr><td>Statistical shots</td><td>10<sup>3</sup>-10<sup>4</sup> per circuit configuration</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Error Source</th><th>Typical Magnitude</th><th>Platform Dependence</th></tr></thead>
+          <tbody>
+            <tr><td>MCM crosstalk</td><td>0.1%-1% per MCM event on neighbors</td><td>Higher on superconducting (shared readout lines)</td></tr>
+            <tr><td>Feedforward latency</td><td>Adds decoherence proportional to classical processing time</td><td>Higher on superconducting (longer feedforward path)</td></tr>
+            <tr><td>Conditional gate error</td><td>Comparable to standard gate errors when calibrated</td><td>Similar across platforms</td></tr>
+            <tr><td>Measurement-induced dephasing</td><td>Significant for nearest-neighbor qubits</td><td>Geometry-dependent</td></tr>
+          </tbody>
+        </table>
+        <p>The key finding is that MCM crosstalk and feedforward latency — not the conditional gates themselves — are the dominant error sources in current dynamic circuits. This has direct implications for QEC implementation, where syndrome extraction relies heavily on MCMs.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Fills an important gap — no prior systematic benchmarking framework for dynamic circuits existed.</li>
+          <li>Practical and adoptable — protocols are designed for ease of implementation on existing hardware.</li>
+          <li>Cross-platform applicability provides hardware-agnostic insights.</li>
+          <li>Error budget decomposition gives hardware teams clear improvement targets.</li>
+          <li>Directly relevant to QEC, where dynamic circuits are the operational primitive.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Benchmarks focus on Clifford-based dynamic circuits; non-Clifford conditional operations are not covered.</li>
+          <li>Limited qubit counts in the experimental demonstrations; scalability to larger systems needs verification.</li>
+          <li>Feedforward latency analysis assumes a specific classical processing model that may not match all hardware.</li>
+          <li>Does not propose error mitigation strategies — purely diagnostic.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can dynamic circuit benchmarks be integrated into routine calibration workflows alongside standard RB?</li>
+          <li>How should QEC overhead estimates be revised given the measured MCM crosstalk rates?</li>
+          <li>Is there a fundamental trade-off between MCM speed and crosstalk that limits dynamic circuit performance?</li>
+          <li>Can feedforward latency be hidden through circuit scheduling, or does it fundamentally limit QEC cycle time?</li>
+          <li>How do these benchmarks translate to photonic or neutral-atom platforms with different MCM mechanisms?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>As quantum computing moves from static circuits toward QEC and measurement-based protocols, understanding dynamic circuit errors becomes essential. This paper provides the first comprehensive toolkit for that purpose. The finding that MCM crosstalk and feedforward latency dominate the error budget — rather than the conditional gates — redirects engineering effort toward readout isolation and classical processing speed, which are the true bottlenecks for scalable QEC.</p>
+      `
+    },
+    ko: {
+      title: "동적 양자 회로의 특성화 및 벤치마킹",
+      summary: "중간 회로 측정과 고전적 피드포워드를 포함하는 동적 양자 회로를 위한 체계적 벤치마킹 프로토콜을 개발하여 현재 하드웨어에서의 충실도를 정량화하고 지배적 오류 원인을 식별합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>동적 양자 회로 — 중간 회로 측정과 조건부 연산을 포함하는 회로 — 를 특성화하기 위한 전용 프로토콜</strong>을 제공하여 양자 벤치마킹 도구의 중요한 공백을 채웁니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>중간 회로 측정과 고전적 피드포워드를 포함하는 동적 양자 회로의 성능을 체계적으로 벤치마킹할 수 있으며, 현재 양자 하드웨어에서 충실도를 저하시키는 지배적 오류 메커니즘은 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>동적 양자 회로 — 중간 회로 측정(MCM), 고전적 피드포워드, 조건부 양자 연산을 포함하는 회로 — 는 양자 오류 정정, 측정 기반 양자 컴퓨팅, 다수의 근단기 알고리즘을 위한 필수적 구성 요소입니다. 모든 측정이 끝에서 발생하는 정적 회로와 달리, 동적 회로는 양자와 고전 처리를 교차시켜 질적으로 새로운 오류 메커니즘을 도입합니다: 인접 큐비트에 대한 측정 유도 결맞음 깨짐, 피드포워드 지연 오류, 조건부 게이트 교정 문제 등입니다.</p>
+        <p>기존 벤치마킹 프로토콜(무작위 벤치마킹, 양자 볼륨, 미러 회로)은 정적 회로용으로 설계되었으며 이러한 동적 회로 특유의 오류를 포착하지 못합니다. 양자 하드웨어가 성숙하고 QEC 시연이 동적 회로에 점점 더 의존함에 따라, 중간 회로 연산이 도입하는 오류를 분리하고 정량화할 수 있는 벤치마킹 도구가 시급합니다.</p>
+        <p>이 논문은 이러한 도구를 개발하고 최신 초전도 및 이온 트랩 하드웨어에 적용하여 동적 회로 성능의 실행 가능한 특성화를 생성합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>동적 회로 무작위 벤치마킹(DCRB):</strong> 표준 RB를 중간 회로 측정과 조건부 클리포드 연산의 삽입으로 확장하여, 회로 깊이 증가에 따른 상태 충실도 감소를 측정합니다.</li>
+          <li><strong>MCM 크로스토크 특성화:</strong> 인접 큐비트에서 동시 MCM 유무에 따른 관찰자 큐비트 연산의 충실도를 비교하여 중간 회로 측정이 관찰자 큐비트에 미치는 영향을 분리합니다.</li>
+          <li><strong>피드포워드 충실도 테스트:</strong> 고전 처리 및 조건부 게이트 적용 파이프라인이 도입하는 오류를 측정하여 피드포워드 지연 효과를 게이트 오류에서 분리합니다.</li>
+          <li><strong>복합 벤치마크:</strong> QEC 신드롬 추출, 텔레포테이션, 성공할 때까지 반복 프로토콜을 대표하는 회로에서 모든 동적 요소를 결합하는 종단간 벤치마크입니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/dynamic-quantum-circuits/thumbnail.png" alt="동적 양자 회로 벤치마킹 개요">
+          <figcaption>Thumbnail: 동적 양자 회로를 위한 벤치마킹 프레임워크.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/dynamic-quantum-circuits/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/dynamic-quantum-circuits/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>동적 회로를 위한 최초의 체계적 벤치마킹 모음:</strong> 하드웨어 팀이 MCM과 피드포워드 성능을 특성화하기 위해 채택할 수 있는 완전한 프로토콜 세트를 제공합니다.</li>
+          <li><strong>오류 예산 분해:</strong> MCM 크로스토크, 피드포워드 지연, 조건부 게이트 오류, 표준 게이트/결맞음 깨짐 오류를 정량적으로 분리합니다.</li>
+          <li><strong>교차 플랫폼 비교:</strong> 동일한 벤치마크를 여러 하드웨어 플랫폼에 적용하여 공정한 동적 회로 능력 비교를 가능하게 합니다.</li>
+          <li><strong>실행 가능한 진단:</strong> 각 플랫폼에서 동적 회로 오류를 가장 줄일 수 있는 특정 하드웨어 개선 사항을 식별합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>하드웨어 플랫폼</td><td>초전도(IBM급), 이온 트랩 시스템</td></tr>
+            <tr><td>회로 깊이</td><td>1~100+ 동적 레이어</td></tr>
+            <tr><td>큐비트 수</td><td>다양한 MCM 구성의 2~20+ 큐비트</td></tr>
+            <tr><td>MCM 유형</td><td>분산 판독(초전도), 형광(이온 트랩)</td></tr>
+            <tr><td>피드포워드 지연</td><td>MCM 완료에서 조건부 게이트 시작까지 측정</td></tr>
+            <tr><td>통계적 샷</td><td>회로 구성당 10<sup>3</sup>-10<sup>4</sup></td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>오류 원인</th><th>일반적 크기</th><th>플랫폼 의존성</th></tr></thead>
+          <tbody>
+            <tr><td>MCM 크로스토크</td><td>인접에서 MCM 이벤트당 0.1%-1%</td><td>초전도에서 더 높음(공유 판독 라인)</td></tr>
+            <tr><td>피드포워드 지연</td><td>고전 처리 시간에 비례하는 결맞음 깨짐 추가</td><td>초전도에서 더 높음(더 긴 피드포워드 경로)</td></tr>
+            <tr><td>조건부 게이트 오류</td><td>교정 시 표준 게이트 오류와 비교 가능</td><td>플랫폼 간 유사</td></tr>
+            <tr><td>측정 유도 디페이징</td><td>최근접 이웃 큐비트에서 유의미</td><td>기하학 의존적</td></tr>
+          </tbody>
+        </table>
+        <p>핵심 발견은 현재 동적 회로에서 조건부 게이트 자체가 아닌 MCM 크로스토크와 피드포워드 지연이 지배적 오류 원인이라는 것입니다. 이는 신드롬 추출이 MCM에 크게 의존하는 QEC 구현에 직접적 함의를 가집니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>중요한 공백을 채웁니다 — 동적 회로를 위한 이전의 체계적 벤치마킹 프레임워크가 없었습니다.</li>
+          <li>실용적이고 채택 가능 — 프로토콜이 기존 하드웨어에서의 구현 용이성을 위해 설계되었습니다.</li>
+          <li>교차 플랫폼 적용성이 하드웨어에 무관한 통찰을 제공합니다.</li>
+          <li>오류 예산 분해가 하드웨어 팀에게 명확한 개선 목표를 제공합니다.</li>
+          <li>동적 회로가 운영의 기본 단위인 QEC에 직접 관련됩니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>벤치마크가 클리포드 기반 동적 회로에 초점을 맞추며, 비클리포드 조건부 연산은 다루지 않습니다.</li>
+          <li>실험 시연에서 제한된 큐비트 수; 더 큰 시스템으로의 확장성 검증이 필요합니다.</li>
+          <li>피드포워드 지연 분석이 모든 하드웨어와 일치하지 않을 수 있는 특정 고전 처리 모델을 가정합니다.</li>
+          <li>오류 완화 전략을 제안하지 않으며 순수하게 진단적입니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>동적 회로 벤치마크를 표준 RB와 함께 일상적 교정 워크플로에 통합할 수 있는가?</li>
+          <li>측정된 MCM 크로스토크 비율을 감안하여 QEC 오버헤드 추정을 어떻게 수정해야 하는가?</li>
+          <li>동적 회로 성능을 제한하는 MCM 속도와 크로스토크 사이의 근본적 트레이드오프가 있는가?</li>
+          <li>피드포워드 지연을 회로 스케줄링으로 숨길 수 있는가, 아니면 QEC 사이클 시간을 근본적으로 제한하는가?</li>
+          <li>이러한 벤치마크가 다른 MCM 메커니즘을 가진 광자 또는 중성 원자 플랫폼으로 어떻게 변환되는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>양자 컴퓨팅이 정적 회로에서 QEC 및 측정 기반 프로토콜로 이동함에 따라 동적 회로 오류의 이해가 필수적이 됩니다. 이 논문은 그 목적을 위한 최초의 포괄적 도구 키트를 제공합니다. MCM 크로스토크와 피드포워드 지연이 조건부 게이트가 아닌 오류 예산을 지배한다는 발견은 엔지니어링 노력을 판독 격리와 고전 처리 속도로 방향을 전환시키며, 이것이 확장 가능한 QEC의 진정한 병목입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 6. quantum-ddpm
+  // ====================================================================
+  {
+    id: "quantum-ddpm",
+    date: "2025-04-11",
+    authors: "Zhang, B., Xu, P., Chen, X., Zhuang, Q.",
+    venue: "PRL 2024",
+    image: "images/quantum-ddpm/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Quantum ML", "DDPM", "Generative"],
+    en: {
+      title: "Generative Quantum Machine Learning via Denoising Diffusion Probabilistic Models",
+      summary: "Introduces quantum denoising diffusion probabilistic models (QDDPM) that adapt the classical DDPM framework to quantum circuits, enabling generative modeling of both classical data distributions and quantum states.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper establishes the <strong>quantum analog of denoising diffusion probabilistic models</strong>, showing that parameterized quantum circuits can learn to reverse a quantum noise process, enabling a new paradigm for generative quantum machine learning with provable training guarantees.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can the denoising diffusion probabilistic model framework be adapted to parameterized quantum circuits, and if so, does it offer advantages in generating quantum states or classical distributions compared to existing quantum generative models?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Classical denoising diffusion probabilistic models (DDPMs) have revolutionized generative modeling, achieving state-of-the-art results in image generation, molecular design, and beyond. The core idea is elegant: define a forward process that gradually corrupts data into noise, then train a neural network to reverse each corruption step. The training objective decomposes into tractable per-step denoising losses.</p>
+        <p>Quantum generative models — including quantum Boltzmann machines, quantum GANs, and quantum circuit Born machines — have been explored but face challenges: training instability, barren plateaus, and mode collapse. The DDPM framework offers a potential solution because its step-wise training naturally provides local loss landscapes, potentially avoiding the global optimization difficulties that plague other quantum generative approaches.</p>
+        <p>This paper formalizes the quantum DDPM (QDDPM) by defining a forward quantum noise channel that progressively depolarizes a target quantum state, and a reverse process implemented by parameterized quantum circuits that learn to undo each depolarization step.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Forward process:</strong> A sequence of depolarizing channels progressively corrupts the target state ρ₀ toward the maximally mixed state. Each step applies a fixed amount of depolarizing noise, parametrized by a noise schedule β₁, ..., βT.</li>
+          <li><strong>Reverse process:</strong> For each time step t, a parameterized quantum circuit θ_t learns to approximately invert the corresponding forward step. The circuit takes the noisy state ρ_t and outputs an estimate of ρ_{t-1}.</li>
+          <li><strong>Training objective:</strong> Each reverse step is trained to minimize the quantum relative entropy (or fidelity-based loss) between the denoised output and the true less-noisy state. This per-step objective avoids the global optimization over the entire generation chain.</li>
+          <li><strong>Generation:</strong> Starting from the maximally mixed state, the trained reverse circuits are applied sequentially to produce a sample from the learned distribution/state.</li>
+        </ul>
+
+        <figure>
+          <img src="images/quantum-ddpm/thumbnail.png" alt="Quantum DDPM forward and reverse processes">
+          <figcaption>Thumbnail: QDDPM forward (noise) and reverse (denoising) process overview.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/quantum-ddpm/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/quantum-ddpm/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Quantum DDPM formalization:</strong> First rigorous formulation of the diffusion-denoising paradigm in the quantum setting, with well-defined forward and reverse processes.</li>
+          <li><strong>Per-step training guarantee:</strong> Proves that the per-step loss landscape is well-behaved (no barren plateaus for shallow circuits per step), a critical advantage over end-to-end quantum generative training.</li>
+          <li><strong>State and distribution generation:</strong> Demonstrates generation of both classical probability distributions (measured in computational basis) and genuine quantum states (multi-qubit entangled states).</li>
+          <li><strong>Convergence analysis:</strong> Provides theoretical bounds on the total variation / trace distance between generated and target distributions as a function of per-step denoising error and number of steps.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Qubits</td><td>4 to 8 qubits in numerical experiments</td></tr>
+            <tr><td>Diffusion steps T</td><td>10 to 50 steps</td></tr>
+            <tr><td>Noise schedule</td><td>Linear and cosine schedules tested</td></tr>
+            <tr><td>Circuit ansatz</td><td>Hardware-efficient variational ansatz per step</td></tr>
+            <tr><td>Optimizer</td><td>Parameter-shift rule with Adam</td></tr>
+            <tr><td>Training data</td><td>Copies of target state (quantum) or samples (classical)</td></tr>
+            <tr><td>Loss function</td><td>Quantum fidelity-based loss or quantum relative entropy</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Task</th><th>Result</th><th>Comparison</th></tr></thead>
+          <tbody>
+            <tr><td>Classical distribution (bars-and-stripes)</td><td>High fidelity generation</td><td>Competitive with QCBM, more stable training</td></tr>
+            <tr><td>GHZ state generation</td><td>Near-unit fidelity with target state</td><td>Outperforms quantum GAN in stability</td></tr>
+            <tr><td>Random quantum state</td><td>Good fidelity up to 6 qubits</td><td>First demonstration of diffusion-based quantum state generation</td></tr>
+            <tr><td>Training stability</td><td>No mode collapse observed</td><td>Significant advantage over quantum GANs</td></tr>
+          </tbody>
+        </table>
+        <p>The key practical advantage is training stability: unlike quantum GANs which suffer from oscillatory training dynamics, QDDPM converges smoothly thanks to the per-step loss decomposition. Published in PRL, the theoretical framework established here has spawned follow-up work on mixed-state extensions and barren plateau analysis.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Elegant and principled extension of a highly successful classical framework to the quantum domain.</li>
+          <li>Per-step training avoids the barren plateau problem that plagues end-to-end quantum generative models.</li>
+          <li>Theoretical convergence guarantees ground the empirical results.</li>
+          <li>Applicable to both classical data and quantum state generation — broad utility.</li>
+          <li>Training is significantly more stable than quantum GANs and related adversarial approaches.</li>
+          <li>Published in PRL, indicating strong theoretical novelty recognized by the physics community.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Demonstrated only on small qubit counts (up to 8); scalability remains an open question.</li>
+          <li>Forward process uses depolarizing noise — other quantum noise channels may be more natural for certain applications.</li>
+          <li>Generation requires sequential application of T circuits, leading to deep total circuit depth.</li>
+          <li>Comparison to classical DDPMs for the same tasks is not provided — the quantum advantage claim is implicit.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the forward process be generalized to physically motivated noise channels (amplitude damping, dephasing) while preserving training tractability?</li>
+          <li>How does the total circuit depth scale with target state complexity, and can step-skipping (DDIM-style) be adapted to the quantum setting?</li>
+          <li>Is there a provable quantum advantage for QDDPM over classical DDPMs for any specific generative task?</li>
+          <li>How does the approach interact with quantum error mitigation — can noisy hardware be used for generation with post-processing?</li>
+          <li>Can QDDPM be combined with quantum error correction for fault-tolerant generative modeling?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This PRL paper establishes the theoretical and practical foundations of quantum diffusion models. The per-step training decomposition elegantly sidesteps the barren plateau problem, and the framework is flexible enough to handle both classical and quantum generative tasks. While scalability questions remain, this work opens a rich research direction at the intersection of diffusion models and quantum computing, as evidenced by the rapid follow-up work it has inspired.</p>
+      `
+    },
+    ko: {
+      title: "노이즈 제거 확산 확률 모델을 통한 생성적 양자 머신러닝",
+      summary: "고전 DDPM 프레임워크를 양자 회로에 적응시킨 양자 노이즈 제거 확산 확률 모델(QDDPM)을 도입하여 고전 데이터 분포와 양자 상태 모두의 생성적 모델링을 가능하게 합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>노이즈 제거 확산 확률 모델의 양자 아날로그</strong>를 확립하여, 매개변수화된 양자 회로가 양자 잡음 과정을 역전시키는 것을 학습할 수 있음을 보여주며, 증명 가능한 학습 보장이 있는 생성적 양자 머신러닝의 새로운 패러다임을 가능하게 합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>노이즈 제거 확산 확률 모델 프레임워크를 매개변수화된 양자 회로에 적응시킬 수 있으며, 그렇다면 기존 양자 생성 모델과 비교하여 양자 상태 또는 고전 분포 생성에 이점을 제공하는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>고전적 노이즈 제거 확산 확률 모델(DDPM)은 이미지 생성, 분자 설계 등에서 최첨단 결과를 달성하며 생성적 모델링을 혁신했습니다. 핵심 아이디어는 우아합니다: 데이터를 점진적으로 잡음으로 오염시키는 순방향 과정을 정의한 다음, 각 오염 단계를 역전시키도록 신경망을 학습시킵니다.</p>
+        <p>양자 볼츠만 머신, 양자 GAN, 양자 회로 본 머신 등의 양자 생성 모델이 탐구되었지만 학습 불안정, 불모 고원, 모드 붕괴 등의 문제에 직면합니다. DDPM 프레임워크는 단계별 학습이 자연스럽게 국소적 손실 경관을 제공하여 다른 양자 생성 접근법을 괴롭히는 전역 최적화 어려움을 잠재적으로 피할 수 있어 해결책을 제공합니다.</p>
+        <p>이 논문은 대상 양자 상태를 점진적으로 탈분극하는 순방향 양자 잡음 채널과 각 탈분극 단계를 되돌리도록 학습하는 매개변수화된 양자 회로로 구현된 역방향 과정을 정의하여 양자 DDPM(QDDPM)을 공식화합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>순방향 과정:</strong> 탈분극 채널의 시퀀스가 대상 상태 ρ₀를 최대 혼합 상태를 향해 점진적으로 오염시킵니다.</li>
+          <li><strong>역방향 과정:</strong> 각 시간 단계 t에 대해 매개변수화된 양자 회로 θ_t가 해당 순방향 단계를 근사적으로 역전시키도록 학습합니다.</li>
+          <li><strong>학습 목표:</strong> 각 역방향 단계는 노이즈 제거된 출력과 진정한 덜 잡음 있는 상태 사이의 양자 상대 엔트로피를 최소화하도록 학습됩니다.</li>
+          <li><strong>생성:</strong> 최대 혼합 상태에서 시작하여 학습된 역방향 회로를 순차적으로 적용하여 학습된 분포/상태에서 샘플을 생성합니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/quantum-ddpm/thumbnail.png" alt="양자 DDPM 순방향 및 역방향 과정">
+          <figcaption>Thumbnail: QDDPM 순방향(잡음) 및 역방향(노이즈 제거) 과정 개요.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/quantum-ddpm/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/quantum-ddpm/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>양자 DDPM 공식화:</strong> 양자 설정에서 확산-노이즈 제거 패러다임의 최초 엄밀한 공식화로, 잘 정의된 순방향 및 역방향 과정을 제공합니다.</li>
+          <li><strong>단계별 학습 보장:</strong> 단계별 손실 경관이 잘 동작함을 증명하며(얕은 회로에서 불모 고원 없음), 종단간 양자 생성 학습에 비해 중요한 이점입니다.</li>
+          <li><strong>상태 및 분포 생성:</strong> 고전적 확률 분포와 진정한 양자 상태(다중 큐비트 얽힌 상태) 모두의 생성을 시연합니다.</li>
+          <li><strong>수렴 분석:</strong> 단계별 노이즈 제거 오류와 단계 수의 함수로서 생성된 분포와 대상 분포 사이의 전변동/트레이스 거리에 대한 이론적 한계를 제공합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>큐비트</td><td>수치 실험에서 4~8 큐비트</td></tr>
+            <tr><td>확산 단계 T</td><td>10~50 단계</td></tr>
+            <tr><td>잡음 스케줄</td><td>선형 및 코사인 스케줄 테스트</td></tr>
+            <tr><td>회로 안자츠</td><td>단계별 하드웨어 효율적 변분 안자츠</td></tr>
+            <tr><td>옵티마이저</td><td>Adam과 함께 매개변수 시프트 규칙</td></tr>
+            <tr><td>학습 데이터</td><td>대상 상태의 복사본(양자) 또는 샘플(고전)</td></tr>
+            <tr><td>손실 함수</td><td>양자 충실도 기반 손실 또는 양자 상대 엔트로피</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>과제</th><th>결과</th><th>비교</th></tr></thead>
+          <tbody>
+            <tr><td>고전 분포(bars-and-stripes)</td><td>높은 충실도 생성</td><td>QCBM과 경쟁적, 더 안정적 학습</td></tr>
+            <tr><td>GHZ 상태 생성</td><td>대상 상태와 거의 단위 충실도</td><td>안정성에서 양자 GAN 능가</td></tr>
+            <tr><td>랜덤 양자 상태</td><td>6 큐비트까지 좋은 충실도</td><td>확산 기반 양자 상태 생성의 첫 시연</td></tr>
+            <tr><td>학습 안정성</td><td>모드 붕괴 관찰되지 않음</td><td>양자 GAN 대비 상당한 이점</td></tr>
+          </tbody>
+        </table>
+        <p>핵심 실용적 이점은 학습 안정성입니다: 진동적 학습 동역학을 겪는 양자 GAN과 달리, QDDPM은 단계별 손실 분해 덕분에 매끄럽게 수렴합니다. PRL에 발표된 이 이론적 프레임워크는 혼합 상태 확장과 불모 고원 분석에 대한 후속 연구를 촉발했습니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>매우 성공적인 고전 프레임워크를 양자 도메인으로 우아하고 원리적으로 확장합니다.</li>
+          <li>단계별 학습이 종단간 양자 생성 모델을 괴롭히는 불모 고원 문제를 피합니다.</li>
+          <li>이론적 수렴 보장이 경험적 결과를 근거합니다.</li>
+          <li>고전 데이터와 양자 상태 생성 모두에 적용 가능 — 넓은 유용성.</li>
+          <li>학습이 양자 GAN 및 관련 적대적 접근법보다 상당히 안정적입니다.</li>
+          <li>PRL에 발표되어 물리학 커뮤니티에서 인정받은 강한 이론적 참신성을 나타냅니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>작은 큐비트 수(최대 8)에서만 시연되며 확장성은 열린 질문으로 남습니다.</li>
+          <li>순방향 과정이 탈분극 잡음을 사용하며, 다른 양자 잡음 채널이 특정 응용에 더 자연스러울 수 있습니다.</li>
+          <li>생성에 T개 회로의 순차 적용이 필요하여 총 회로 깊이가 깊어집니다.</li>
+          <li>동일한 과제에 대한 고전 DDPM과의 비교가 제공되지 않으며, 양자 이점 주장이 암묵적입니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>순방향 과정을 물리적으로 동기 부여된 잡음 채널(진폭 감쇄, 디페이징)로 일반화하면서 학습 다루기 쉬움을 유지할 수 있는가?</li>
+          <li>총 회로 깊이가 대상 상태 복잡도에 따라 어떻게 확장되며, 단계 건너뛰기(DDIM 스타일)를 양자 설정에 적응시킬 수 있는가?</li>
+          <li>특정 생성 과제에 대해 고전 DDPM에 대한 QDDPM의 증명 가능한 양자 이점이 있는가?</li>
+          <li>접근법이 양자 오류 완화와 어떻게 상호작용하며, 잡음이 있는 하드웨어를 후처리와 함께 생성에 사용할 수 있는가?</li>
+          <li>QDDPM을 결함 허용 생성 모델링을 위한 양자 오류 정정과 결합할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 PRL 논문은 양자 확산 모델의 이론적 및 실용적 기초를 확립합니다. 단계별 학습 분해가 불모 고원 문제를 우아하게 우회하며, 프레임워크는 고전과 양자 생성 과제 모두를 다룰 수 있을 만큼 유연합니다. 확장성 질문이 남아 있지만, 이 연구는 확산 모델과 양자 컴퓨팅의 교차점에서 풍부한 연구 방향을 열었으며, 이는 촉발된 빠른 후속 연구로 입증됩니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 7. mixed-state-qddpm
+  // ====================================================================
+  {
+    id: "mixed-state-qddpm",
+    date: "2025-04-11",
+    authors: "Kwun, G., Zhang, B., Zhuang, Q.",
+    venue: "Preprint 2025",
+    image: "images/mixed-state-qddpm/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Quantum ML", "Mixed State", "DDPM"],
+    en: {
+      title: "Mixed-State Quantum Denoising Diffusion Probabilistic Model",
+      summary: "Extends quantum DDPM to handle mixed quantum states by designing forward and reverse diffusion processes that operate on density matrices, enabling generative modeling of noisy and thermal quantum states.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper generalizes the quantum DDPM framework from pure states to <strong>mixed states</strong>, enabling diffusion-based generation of density matrices — a necessary step for practical quantum generative modeling where noise and decoherence produce mixed-state outputs.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can the quantum DDPM framework be extended to generate mixed quantum states (density matrices) rather than only pure states, and what modifications to the forward/reverse processes and training objectives are required?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>The original quantum DDPM (Zhang et al., PRL 2024) demonstrated that parameterized quantum circuits can learn to reverse depolarizing noise applied to pure quantum states. However, many physically relevant quantum states are mixed — thermal states, states produced by noisy quantum devices, and reduced density matrices of entangled systems. A generative model limited to pure states cannot capture this important class.</p>
+        <p>Extending DDPM to mixed states introduces fundamental challenges: (1) the forward noise process must be redefined to handle general density matrices, (2) the reverse process must learn to produce states with the correct spectrum (eigenvalues) in addition to the correct eigenbasis, and (3) the training objective must be reformulated for density matrix fidelity rather than state vector fidelity.</p>
+        <p>This paper addresses all three challenges, providing a complete mixed-state QDDPM framework with both theoretical analysis and numerical demonstrations.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Forward process:</strong> A generalized depolarizing channel that interpolates between the target mixed state and the maximally mixed state, with a scheduled mixing parameter that controls the noise level at each step.</li>
+          <li><strong>Reverse process:</strong> Parameterized quantum channels (not just unitary circuits) that learn to partially undo the depolarization at each step. The channels are implemented as unitary operations on the system plus an ancilla, followed by ancilla tracing.</li>
+          <li><strong>Training objective:</strong> Minimizes a trace-distance or quantum fidelity-based loss between the output mixed state and the target less-noisy mixed state at each step. The loss accounts for both the eigenvalue spectrum and eigenbasis of the density matrix.</li>
+          <li><strong>Generation:</strong> Starting from the maximally mixed state, the reverse channels are applied sequentially to produce the target mixed state.</li>
+        </ul>
+
+        <figure>
+          <img src="images/mixed-state-qddpm/thumbnail.png" alt="Mixed-state QDDPM architecture">
+          <figcaption>Thumbnail: Mixed-state quantum DDPM forward and reverse process.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/mixed-state-qddpm/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/mixed-state-qddpm/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Mixed-state generalization:</strong> First extension of QDDPM to arbitrary mixed states, handling the full complexity of density matrix generation.</li>
+          <li><strong>Channel-based reverse process:</strong> Uses quantum channels (CPTP maps) rather than unitaries for the reverse process, correctly accounting for the non-unitary nature of mixed-state transformations.</li>
+          <li><strong>Spectral learning:</strong> The training procedure learns both the eigenvalue structure and eigenbasis of the target mixed state, a challenge not present in pure-state QDDPM.</li>
+          <li><strong>Convergence bounds:</strong> Provides theoretical guarantees on the trace distance between generated and target mixed states.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Qubits</td><td>2 to 6 system qubits + ancilla qubits</td></tr>
+            <tr><td>Diffusion steps</td><td>10 to 30</td></tr>
+            <tr><td>Reverse channel</td><td>Unitary on system+ancilla, then partial trace</td></tr>
+            <tr><td>Target states</td><td>Thermal states, Werner states, randomly generated mixed states</td></tr>
+            <tr><td>Loss function</td><td>Trace distance or quantum fidelity between density matrices</td></tr>
+            <tr><td>Optimizer</td><td>Gradient-based with parameter-shift rule</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Task</th><th>Result</th><th>Significance</th></tr></thead>
+          <tbody>
+            <tr><td>Thermal state generation</td><td>High fidelity for various temperatures</td><td>Practically relevant for quantum simulation</td></tr>
+            <tr><td>Werner state generation</td><td>Correct entanglement properties reproduced</td><td>Mixed entangled states are faithfully generated</td></tr>
+            <tr><td>Random mixed states</td><td>Fidelity &gt; 0.95 for 4-qubit systems</td><td>General-purpose mixed-state generation works</td></tr>
+            <tr><td>Pure-state limit</td><td>Recovers original QDDPM performance</td><td>Mixed-state extension is a proper generalization</td></tr>
+          </tbody>
+        </table>
+        <p>The key finding is that channel-based reverse processes are essential — attempting to use unitary-only reverse processes for mixed-state generation fails to capture the correct eigenvalue spectrum.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Addresses a genuine limitation of the original QDDPM — mixed states are physically ubiquitous.</li>
+          <li>Clean theoretical extension with proper convergence guarantees.</li>
+          <li>Channel-based reverse process is a conceptually important insight, not just an engineering detail.</li>
+          <li>Recovers the pure-state QDDPM as a special case, confirming consistency.</li>
+          <li>Demonstrated on physically meaningful target states (thermal, Werner).</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Ancilla overhead increases the total qubit count, potentially limiting near-term applicability.</li>
+          <li>Small system sizes (up to 6 qubits) leave scalability uncertain.</li>
+          <li>Training cost increases compared to pure-state QDDPM due to channel parameterization.</li>
+          <li>Comparison to other mixed-state generation methods (e.g., quantum Boltzmann machines) is limited.</li>
+          <li>No experimental demonstration on quantum hardware.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the ancilla overhead be reduced through approximate channel representations?</li>
+          <li>How does the method compare to variational quantum thermalization for generating thermal states?</li>
+          <li>Is there a classical hardness result for the mixed states that QDDPM can generate efficiently?</li>
+          <li>Can the channel-based reverse process be implemented on noisy hardware, or does noise-on-noise create compounding errors?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper is a natural and necessary extension of the QDDPM framework to mixed states. The channel-based reverse process is the key conceptual contribution — it recognizes that generating mixed states requires non-unitary operations, which unitary-only circuits cannot provide. For the quantum generative modeling community, this work broadens the applicability of diffusion-based approaches to the physically relevant regime of mixed quantum states.</p>
+      `
+    },
+    ko: {
+      title: "혼합 상태 양자 노이즈 제거 확산 확률 모델",
+      summary: "밀도 행렬에서 작동하는 순방향 및 역방향 확산 과정을 설계하여 양자 DDPM을 혼합 양자 상태로 확장하고, 잡음이 있는 열적 양자 상태의 생성적 모델링을 가능하게 합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 양자 DDPM 프레임워크를 순수 상태에서 <strong>혼합 상태</strong>로 일반화하여 밀도 행렬의 확산 기반 생성을 가능하게 합니다 — 잡음과 결맞음 깨짐이 혼합 상태 출력을 생성하는 실용적 양자 생성 모델링을 위한 필수적 단계입니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>양자 DDPM 프레임워크를 순수 상태뿐 아니라 혼합 양자 상태(밀도 행렬)를 생성하도록 확장할 수 있으며, 순방향/역방향 과정과 학습 목표에 어떤 수정이 필요한가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>원래의 양자 DDPM(Zhang et al., PRL 2024)은 매개변수화된 양자 회로가 순수 양자 상태에 적용된 탈분극 잡음을 역전시키는 것을 학습할 수 있음을 보여주었습니다. 그러나 물리적으로 관련된 많은 양자 상태는 혼합 상태입니다 — 열적 상태, 잡음이 있는 양자 장치가 생산하는 상태, 얽힌 시스템의 축약된 밀도 행렬 등. 순수 상태로 제한된 생성 모델은 이 중요한 클래스를 포착할 수 없습니다.</p>
+        <p>DDPM을 혼합 상태로 확장하면 근본적 도전이 발생합니다: (1) 순방향 잡음 과정을 일반 밀도 행렬을 다루도록 재정의해야 하며, (2) 역방향 과정이 올바른 고유기저뿐 아니라 올바른 스펙트럼(고유값)을 가진 상태를 생성하도록 학습해야 하며, (3) 학습 목표를 상태 벡터 충실도가 아닌 밀도 행렬 충실도로 재공식화해야 합니다.</p>
+        <p>이 논문은 세 가지 도전을 모두 해결하여 이론적 분석과 수치 시연을 갖춘 완전한 혼합 상태 QDDPM 프레임워크를 제공합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>순방향 과정:</strong> 대상 혼합 상태와 최대 혼합 상태 사이를 보간하는 일반화된 탈분극 채널로, 스케줄된 혼합 매개변수가 각 단계의 잡음 수준을 제어합니다.</li>
+          <li><strong>역방향 과정:</strong> 각 단계에서 탈분극을 부분적으로 되돌리도록 학습하는 매개변수화된 양자 채널(단순 유니터리 회로가 아님). 채널은 시스템+보조에 대한 유니터리 연산과 보조 트레이싱으로 구현됩니다.</li>
+          <li><strong>학습 목표:</strong> 각 단계에서 출력 혼합 상태와 대상 덜 잡음 있는 혼합 상태 사이의 트레이스 거리 또는 양자 충실도 기반 손실을 최소화합니다.</li>
+          <li><strong>생성:</strong> 최대 혼합 상태에서 시작하여 역방향 채널을 순차적으로 적용하여 대상 혼합 상태를 생성합니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/mixed-state-qddpm/thumbnail.png" alt="혼합 상태 QDDPM 구조">
+          <figcaption>Thumbnail: 혼합 상태 양자 DDPM 순방향 및 역방향 과정.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/mixed-state-qddpm/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/mixed-state-qddpm/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>혼합 상태 일반화:</strong> 밀도 행렬 생성의 전체 복잡성을 다루는 QDDPM의 임의 혼합 상태로의 최초 확장입니다.</li>
+          <li><strong>채널 기반 역방향 과정:</strong> 혼합 상태 변환의 비유니터리 특성을 올바르게 고려하여 유니터리가 아닌 양자 채널(CPTP 맵)을 역방향 과정에 사용합니다.</li>
+          <li><strong>스펙트럼 학습:</strong> 학습 절차가 대상 혼합 상태의 고유값 구조와 고유기저 모두를 학습하며, 이는 순수 상태 QDDPM에는 없는 도전입니다.</li>
+          <li><strong>수렴 한계:</strong> 생성된 혼합 상태와 대상 혼합 상태 사이의 트레이스 거리에 대한 이론적 보장을 제공합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>큐비트</td><td>2~6 시스템 큐비트 + 보조 큐비트</td></tr>
+            <tr><td>확산 단계</td><td>10~30</td></tr>
+            <tr><td>역방향 채널</td><td>시스템+보조에 대한 유니터리, 이후 부분 트레이스</td></tr>
+            <tr><td>대상 상태</td><td>열적 상태, 베르너 상태, 무작위 생성 혼합 상태</td></tr>
+            <tr><td>손실 함수</td><td>밀도 행렬 간 트레이스 거리 또는 양자 충실도</td></tr>
+            <tr><td>옵티마이저</td><td>매개변수 시프트 규칙을 사용한 그래디언트 기반</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>과제</th><th>결과</th><th>의의</th></tr></thead>
+          <tbody>
+            <tr><td>열적 상태 생성</td><td>다양한 온도에서 높은 충실도</td><td>양자 시뮬레이션에 실질적으로 관련</td></tr>
+            <tr><td>베르너 상태 생성</td><td>올바른 얽힘 특성 재현</td><td>혼합 얽힌 상태가 충실하게 생성됨</td></tr>
+            <tr><td>랜덤 혼합 상태</td><td>4큐비트 시스템에서 충실도 &gt; 0.95</td><td>범용 혼합 상태 생성이 작동함</td></tr>
+            <tr><td>순수 상태 한계</td><td>원래 QDDPM 성능 복원</td><td>혼합 상태 확장이 적절한 일반화임</td></tr>
+          </tbody>
+        </table>
+        <p>핵심 발견은 채널 기반 역방향 과정이 필수적이라는 것입니다 — 혼합 상태 생성에 유니터리만의 역방향 과정을 사용하려고 시도하면 올바른 고유값 스펙트럼을 포착하지 못합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>원래 QDDPM의 진정한 한계를 다룹니다 — 혼합 상태는 물리적으로 편재합니다.</li>
+          <li>적절한 수렴 보장을 갖춘 깔끔한 이론적 확장입니다.</li>
+          <li>채널 기반 역방향 과정은 단순한 엔지니어링 세부사항이 아닌 개념적으로 중요한 통찰입니다.</li>
+          <li>특수한 경우로 순수 상태 QDDPM을 복원하여 일관성을 확인합니다.</li>
+          <li>물리적으로 의미 있는 대상 상태(열적, 베르너)에서 시연되었습니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>보조 오버헤드가 총 큐비트 수를 증가시켜 근단기 적용성을 제한할 수 있습니다.</li>
+          <li>작은 시스템 크기(최대 6큐비트)로 확장성이 불확실합니다.</li>
+          <li>채널 매개변수화로 인해 순수 상태 QDDPM에 비해 학습 비용이 증가합니다.</li>
+          <li>다른 혼합 상태 생성 방법(예: 양자 볼츠만 머신)과의 비교가 제한적입니다.</li>
+          <li>양자 하드웨어에서의 실험적 시연이 없습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>근사적 채널 표현을 통해 보조 오버헤드를 줄일 수 있는가?</li>
+          <li>열적 상태 생성에서 변분 양자 열화와 이 방법이 어떻게 비교되는가?</li>
+          <li>QDDPM이 효율적으로 생성할 수 있는 혼합 상태에 대한 고전적 난이도 결과가 있는가?</li>
+          <li>채널 기반 역방향 과정을 잡음이 있는 하드웨어에서 구현할 수 있는가, 아니면 잡음 위의 잡음이 복합 오류를 생성하는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 QDDPM 프레임워크의 혼합 상태로의 자연스럽고 필요한 확장입니다. 채널 기반 역방향 과정이 핵심 개념적 기여입니다 — 혼합 상태 생성에는 유니터리만의 회로가 제공할 수 없는 비유니터리 연산이 필요함을 인식합니다. 양자 생성 모델링 커뮤니티에게 이 연구는 확산 기반 접근법의 적용성을 물리적으로 관련된 혼합 양자 상태의 영역으로 넓힙니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 8. barren-plateaus-qddpm
+  // ====================================================================
+  {
+    id: "barren-plateaus-qddpm",
+    date: "2025-04-11",
+    authors: "Cao, H., Zhang, K., Tao, D., Su, Z.",
+    venue: "Preprint 2025",
+    image: "images/barren-plateaus-qddpm/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Barren Plateau", "DDPM", "Trainability"],
+    en: {
+      title: "Mitigating Barren Plateaus in Quantum Denoising Diffusion Probabilistic Models",
+      summary: "Analyzes the barren plateau phenomenon in quantum DDPMs and proposes mitigation strategies including structured ansatz design and adaptive noise schedules to maintain trainability as system size grows.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper provides the first rigorous analysis of <strong>barren plateaus in quantum DDPMs</strong>, showing that while per-step training offers some protection, naive implementations can still suffer from vanishing gradients, and proposes concrete mitigation strategies.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Do quantum denoising diffusion probabilistic models suffer from barren plateaus as the number of qubits grows, and if so, what circuit design and training strategies can mitigate this problem while preserving the generative quality?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Barren plateaus — the exponential vanishing of cost function gradients with increasing qubit count — are one of the most serious obstacles for variational quantum algorithms. The original QDDPM work claimed that per-step training provides natural protection against barren plateaus, since each step involves a shallow circuit and a local denoising objective. However, this claim was based on empirical observations at small scales and lacked rigorous theoretical backing.</p>
+        <p>As the quantum computing community moves toward larger-scale QDDPM implementations, understanding the precise conditions under which barren plateaus arise — and how to prevent them — becomes critical. This paper fills that gap by providing both theoretical analysis and practical mitigation strategies.</p>
+        <p>The analysis reveals a nuanced picture: while the per-step structure does help, certain choices of circuit ansatz, noise schedule, and loss function can still lead to barren plateaus. The paper identifies these failure modes and proposes fixes.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Variance analysis:</strong> Computes the variance of the loss function gradient analytically for various QDDPM circuit ansatze, identifying which architectural choices lead to exponentially vanishing gradients.</li>
+          <li><strong>Noise schedule analysis:</strong> Shows how the noise schedule (the rate at which the forward process adds noise) interacts with the trainability of the reverse circuits at each step.</li>
+          <li><strong>Mitigation strategy 1 — Structured ansatz:</strong> Proposes using local or quasi-local circuit ansatze with limited entangling connectivity, provably avoiding barren plateaus for shallow circuits.</li>
+          <li><strong>Mitigation strategy 2 — Adaptive noise schedule:</strong> Designs noise schedules that ensure each per-step denoising task is "easy enough" to avoid gradient vanishing while still achieving overall generation quality.</li>
+          <li><strong>Mitigation strategy 3 — Layerwise training:</strong> Trains each reverse circuit layer-by-layer rather than all-at-once, keeping the effective optimization landscape shallow at each training phase.</li>
+        </ul>
+
+        <figure>
+          <img src="images/barren-plateaus-qddpm/thumbnail.png" alt="Barren plateau analysis in QDDPM">
+          <figcaption>Thumbnail: Gradient variance analysis for QDDPM with different mitigation strategies.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/barren-plateaus-qddpm/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/barren-plateaus-qddpm/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Rigorous barren plateau analysis for QDDPM:</strong> First theoretical characterization of when and why gradients vanish in quantum diffusion models.</li>
+          <li><strong>Identification of failure modes:</strong> Shows that deep ansatze, aggressive noise schedules, and global loss functions can cause barren plateaus even in per-step training.</li>
+          <li><strong>Three concrete mitigation strategies:</strong> Structured ansatz, adaptive noise schedule, and layerwise training — each with theoretical justification and empirical validation.</li>
+          <li><strong>Design guidelines:</strong> Provides practical rules-of-thumb for building trainable QDDPM circuits at scale.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Qubits tested</td><td>4 to 16 for variance analysis; 4 to 10 for generation quality</td></tr>
+            <tr><td>Ansatze compared</td><td>Hardware-efficient (all-to-all), brick-layer (nearest-neighbor), local ansatz</td></tr>
+            <tr><td>Noise schedules</td><td>Linear, cosine, adaptive (proposed)</td></tr>
+            <tr><td>Gradient estimation</td><td>Parameter-shift rule with statistical averaging over 10<sup>4</sup> samples</td></tr>
+            <tr><td>Metrics</td><td>Gradient variance, generation fidelity, training convergence speed</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Configuration</th><th>Barren Plateau?</th><th>Generation Quality</th></tr></thead>
+          <tbody>
+            <tr><td>Deep all-to-all ansatz + linear schedule</td><td>Yes (exponential vanishing)</td><td>Fails to train at n &gt; 8</td></tr>
+            <tr><td>Shallow all-to-all ansatz + linear schedule</td><td>Mild (polynomial vanishing)</td><td>Moderate quality</td></tr>
+            <tr><td>Local ansatz + adaptive schedule</td><td>No (constant lower bound)</td><td>Good quality maintained</td></tr>
+            <tr><td>Brick-layer + layerwise training</td><td>No</td><td>Best overall quality-trainability trade-off</td></tr>
+          </tbody>
+        </table>
+        <p>The results confirm that the per-step structure of QDDPM provides partial barren plateau protection, but is not sufficient on its own for arbitrary circuit architectures. The combination of structured ansatz and adaptive noise schedule provides the strongest trainability guarantees without sacrificing generation quality.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Addresses the most critical scalability question for QDDPMs with rigorous theoretical analysis.</li>
+          <li>Provides actionable mitigation strategies, not just diagnosis of the problem.</li>
+          <li>Analysis covers both gradient variance (theoretical) and generation quality (practical), connecting the two.</li>
+          <li>Tested across multiple qubit counts, providing scaling evidence.</li>
+          <li>Design guidelines are immediately useful for practitioners building QDDPM implementations.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Theoretical bounds may be loose — actual gradient behavior could be better or worse than predicted.</li>
+          <li>Mitigation strategies may constrain the expressiveness of the reverse circuits, limiting generation quality for complex states.</li>
+          <li>Maximum qubit count (16) is still modest — extrapolation to 50+ qubits carries uncertainty.</li>
+          <li>Does not address barren plateaus arising from noise (hardware barren plateaus), only from circuit architecture.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Is there a fundamental expressiveness-trainability trade-off for QDDPM reverse circuits?</li>
+          <li>Can the adaptive noise schedule be learned jointly with the reverse circuits, or must it be fixed a priori?</li>
+          <li>How do these results change if the forward process uses a non-depolarizing noise channel?</li>
+          <li>Can classical pre-training of circuit parameters (e.g., via tensor network simulation) provide good initial points that avoid barren plateaus?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper is essential reading for anyone planning to scale QDDPMs beyond toy demonstrations. The message is nuanced: per-step training helps but is not a silver bullet against barren plateaus. The combination of structured ansatze and adaptive noise schedules provides a practical path to trainable QDDPMs at scale, and the design guidelines offered here should be adopted as standard practice.</p>
+      `
+    },
+    ko: {
+      title: "양자 노이즈 제거 확산 확률 모델에서의 불모 고원 완화",
+      summary: "양자 DDPM에서의 불모 고원 현상을 분석하고 시스템 크기가 커질 때 학습 가능성을 유지하기 위한 구조화된 안자츠 설계와 적응형 잡음 스케줄 등의 완화 전략을 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>양자 DDPM에서의 불모 고원</strong>에 대한 최초의 엄밀한 분석을 제공하며, 단계별 학습이 일부 보호를 제공하지만 순진한 구현은 여전히 기울기 소실을 겪을 수 있음을 보여주고 구체적 완화 전략을 제안합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>큐비트 수가 증가함에 따라 양자 노이즈 제거 확산 확률 모델이 불모 고원을 겪으며, 그렇다면 생성 품질을 유지하면서 이 문제를 완화할 수 있는 회로 설계 및 학습 전략은 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>불모 고원 — 큐비트 수 증가에 따른 비용 함수 기울기의 지수적 소실 — 은 변분 양자 알고리즘의 가장 심각한 장애물 중 하나입니다. 원래 QDDPM 연구는 각 단계가 얕은 회로와 국소적 노이즈 제거 목표를 포함하므로 단계별 학습이 불모 고원에 대한 자연스러운 보호를 제공한다고 주장했습니다. 그러나 이 주장은 소규모에서의 경험적 관찰에 기반했으며 엄밀한 이론적 뒷받침이 부족했습니다.</p>
+        <p>양자 컴퓨팅 커뮤니티가 더 큰 규모의 QDDPM 구현으로 나아감에 따라, 불모 고원이 발생하는 정확한 조건과 이를 방지하는 방법을 이해하는 것이 중요해집니다. 이 논문은 이론적 분석과 실용적 완화 전략을 모두 제공하여 이 간극을 메웁니다.</p>
+        <p>분석은 미묘한 그림을 보여줍니다: 단계별 구조가 도움이 되지만, 회로 안자츠, 잡음 스케줄, 손실 함수의 특정 선택은 여전히 불모 고원으로 이어질 수 있습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>분산 분석:</strong> 다양한 QDDPM 회로 안자츠에 대한 손실 함수 기울기의 분산을 해석적으로 계산하여 지수적으로 소실되는 기울기를 초래하는 구조적 선택을 식별합니다.</li>
+          <li><strong>잡음 스케줄 분석:</strong> 잡음 스케줄이 각 단계에서 역방향 회로의 학습 가능성과 어떻게 상호작용하는지 보여줍니다.</li>
+          <li><strong>완화 전략 1 — 구조화된 안자츠:</strong> 제한된 얽힘 연결성을 가진 국소 또는 준국소 회로 안자츠를 사용하여 얕은 회로에서 불모 고원을 증명적으로 피합니다.</li>
+          <li><strong>완화 전략 2 — 적응형 잡음 스케줄:</strong> 각 단계별 노이즈 제거 과제가 기울기 소실을 피할 만큼 "충분히 쉬운" 상태를 보장하면서 전체 생성 품질을 달성하는 잡음 스케줄을 설계합니다.</li>
+          <li><strong>완화 전략 3 — 계층별 학습:</strong> 각 역방향 회로를 한꺼번에가 아닌 층별로 학습하여 각 학습 단계에서 효과적 최적화 경관을 얕게 유지합니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/barren-plateaus-qddpm/thumbnail.png" alt="QDDPM에서의 불모 고원 분석">
+          <figcaption>Thumbnail: 다양한 완화 전략에 따른 QDDPM의 기울기 분산 분석.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/barren-plateaus-qddpm/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/barren-plateaus-qddpm/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>QDDPM을 위한 엄밀한 불모 고원 분석:</strong> 양자 확산 모델에서 기울기가 언제 왜 소실되는지에 대한 최초의 이론적 특성화입니다.</li>
+          <li><strong>실패 모드 식별:</strong> 깊은 안자츠, 공격적 잡음 스케줄, 전역 손실 함수가 단계별 학습에서도 불모 고원을 유발할 수 있음을 보여줍니다.</li>
+          <li><strong>세 가지 구체적 완화 전략:</strong> 구조화된 안자츠, 적응형 잡음 스케줄, 계층별 학습 — 각각 이론적 정당화와 경험적 검증을 갖추고 있습니다.</li>
+          <li><strong>설계 지침:</strong> 규모에 맞는 학습 가능한 QDDPM 회로 구축을 위한 실용적 경험 규칙을 제공합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>테스트된 큐비트</td><td>분산 분석에 4~16; 생성 품질에 4~10</td></tr>
+            <tr><td>비교된 안자츠</td><td>하드웨어 효율적(전체 연결), 벽돌층(최근접 이웃), 국소 안자츠</td></tr>
+            <tr><td>잡음 스케줄</td><td>선형, 코사인, 적응형(제안)</td></tr>
+            <tr><td>기울기 추정</td><td>10<sup>4</sup> 샘플에 대한 통계적 평균으로 매개변수 시프트 규칙</td></tr>
+            <tr><td>지표</td><td>기울기 분산, 생성 충실도, 학습 수렴 속도</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>구성</th><th>불모 고원?</th><th>생성 품질</th></tr></thead>
+          <tbody>
+            <tr><td>깊은 전체 연결 안자츠 + 선형 스케줄</td><td>예(지수적 소실)</td><td>n &gt; 8에서 학습 실패</td></tr>
+            <tr><td>얕은 전체 연결 안자츠 + 선형 스케줄</td><td>약간(다항식 소실)</td><td>중간 품질</td></tr>
+            <tr><td>국소 안자츠 + 적응형 스케줄</td><td>아니오(상수 하한)</td><td>좋은 품질 유지</td></tr>
+            <tr><td>벽돌층 + 계층별 학습</td><td>아니오</td><td>전체적으로 가장 좋은 품질-학습 가능성 트레이드오프</td></tr>
+          </tbody>
+        </table>
+        <p>결과는 QDDPM의 단계별 구조가 부분적 불모 고원 보호를 제공하지만 임의의 회로 구조에 대해 그 자체로 충분하지 않음을 확인합니다. 구조화된 안자츠와 적응형 잡음 스케줄의 조합이 생성 품질을 희생하지 않으면서 가장 강한 학습 가능성 보장을 제공합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>엄밀한 이론적 분석으로 QDDPM의 가장 중요한 확장성 질문을 다룹니다.</li>
+          <li>문제의 진단뿐 아니라 실행 가능한 완화 전략을 제공합니다.</li>
+          <li>기울기 분산(이론적)과 생성 품질(실용적) 모두를 다루며 둘을 연결합니다.</li>
+          <li>여러 큐비트 수에 걸쳐 테스트하여 스케일링 증거를 제공합니다.</li>
+          <li>설계 지침은 QDDPM 구현을 구축하는 실무자에게 즉시 유용합니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>이론적 한계가 느슨할 수 있으며 실제 기울기 동작은 예측보다 좋거나 나쁠 수 있습니다.</li>
+          <li>완화 전략이 역방향 회로의 표현력을 제한하여 복잡한 상태에 대한 생성 품질을 제한할 수 있습니다.</li>
+          <li>최대 큐비트 수(16)가 여전히 적당하며 50+ 큐비트로의 외삽은 불확실성을 수반합니다.</li>
+          <li>회로 구조에서만 발생하는 불모 고원을 다루며, 잡음에서 발생하는 하드웨어 불모 고원은 다루지 않습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>QDDPM 역방향 회로에 대한 근본적 표현력-학습 가능성 트레이드오프가 있는가?</li>
+          <li>적응형 잡음 스케줄을 역방향 회로와 공동으로 학습할 수 있는가, 아니면 사전에 고정해야 하는가?</li>
+          <li>순방향 과정이 비탈분극 잡음 채널을 사용하면 이러한 결과가 어떻게 변하는가?</li>
+          <li>고전적 사전 학습(예: 텐서 네트워크 시뮬레이션)이 불모 고원을 피하는 좋은 초기점을 제공할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 QDDPM을 장난감 시연을 넘어 확장하려는 모든 사람에게 필수적 읽을거리입니다. 메시지는 미묘합니다: 단계별 학습은 도움이 되지만 불모 고원에 대한 만병통치약은 아닙니다. 구조화된 안자츠와 적응형 잡음 스케줄의 조합이 규모에 맞는 학습 가능한 QDDPM으로의 실용적 경로를 제공하며, 여기서 제공된 설계 지침은 표준 관행으로 채택되어야 합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 9. rl-quantum-search
+  // ====================================================================
+  {
+    id: "rl-quantum-search",
+    date: "2025-04-11",
+    authors: "Homayouni-Sangari, M., Ramezanpour, A.",
+    venue: "Preprint 2025",
+    image: "images/rl-quantum-search/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Quantum Search", "Reinforcement", "Noise"],
+    en: {
+      title: "Noise Tolerance via Reinforcement in the Quantum Search Problem",
+      summary: "Applies reinforcement learning to adaptively optimize quantum search circuits under noise, demonstrating that RL-designed protocols can achieve significantly better success probabilities than fixed Grover iterations on noisy hardware.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper shows that <strong>reinforcement learning can discover noise-adapted quantum search protocols</strong> that substantially outperform standard Grover's algorithm on noisy quantum hardware, by learning to adjust circuit parameters in response to the noise environment.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can reinforcement learning be used to design quantum search protocols that are inherently tolerant to hardware noise, outperforming the fixed rotation schedule of Grover's algorithm when noise is present?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Grover's algorithm provides a quadratic speedup for unstructured search, requiring O(sqrt(N)) queries to find a marked item among N possibilities. However, this optimal query count assumes perfect, noiseless quantum gates. On real hardware with depolarizing, dephasing, or amplitude damping noise, the coherent amplification process degrades rapidly — often to the point where the noisy Grover circuit performs worse than classical random sampling after too many iterations.</p>
+        <p>Previous approaches to this problem include: reducing the number of Grover iterations (accepting suboptimal amplification), applying error mitigation techniques post-hoc, or designing analytically optimized rotation angles. However, these approaches either sacrifice speedup or require detailed knowledge of the noise model.</p>
+        <p>This paper takes a fundamentally different approach: use reinforcement learning to discover the optimal circuit structure (gate sequences, rotation angles, number of iterations) for a given noise environment. The RL agent learns by interacting with a noisy quantum simulator (or hardware), requiring no explicit noise model specification.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>State space:</strong> The RL agent observes the current circuit configuration and noise-related statistics (e.g., estimated fidelity from calibration data).</li>
+          <li><strong>Action space:</strong> At each decision point, the agent chooses rotation angles for the Grover oracle and diffusion operator, and decides whether to continue adding iterations or terminate.</li>
+          <li><strong>Reward:</strong> The success probability of finding the marked item, measured from the output distribution of the (noisy) quantum circuit.</li>
+          <li><strong>Training:</strong> The agent is trained using policy gradient methods (PPO or REINFORCE) on a noisy quantum simulator, with the noise model calibrated to match target hardware.</li>
+          <li><strong>Deployment:</strong> The trained policy produces a noise-adapted circuit that can be executed on the target hardware without further optimization.</li>
+        </ul>
+
+        <figure>
+          <img src="images/rl-quantum-search/thumbnail.png" alt="RL-optimized quantum search overview">
+          <figcaption>Thumbnail: Reinforcement learning framework for noise-tolerant quantum search.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/rl-quantum-search/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>RL-designed noise-tolerant search:</strong> Demonstrates that RL can discover protocols significantly outperforming fixed Grover iterations under noise.</li>
+          <li><strong>Model-free adaptation:</strong> The RL agent does not require an explicit noise model — it learns from simulated or real noisy circuit outcomes.</li>
+          <li><strong>Adaptive iteration count:</strong> The agent learns to stop iterating before noise overwhelms the signal, automatically finding the noise-dependent optimal depth.</li>
+          <li><strong>Generalization across noise levels:</strong> Trained policies show some generalization to noise levels not seen during training.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Search space sizes</td><td>N = 4, 8, 16, 32, 64 (2 to 6 qubits)</td></tr>
+            <tr><td>Noise models</td><td>Depolarizing, dephasing, amplitude damping at various rates</td></tr>
+            <tr><td>RL algorithm</td><td>PPO with neural network policy (2-layer MLP)</td></tr>
+            <tr><td>Training episodes</td><td>10<sup>4</sup> to 10<sup>5</sup></td></tr>
+            <tr><td>Reward signal</td><td>Success probability averaged over 1000 shots</td></tr>
+            <tr><td>Baseline comparison</td><td>Standard Grover (fixed iterations), truncated Grover (early stopping)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Scenario</th><th>Standard Grover</th><th>RL-Optimized</th><th>Improvement</th></tr></thead>
+          <tbody>
+            <tr><td>5 qubits, low noise (p=0.001)</td><td>~85% success</td><td>~90% success</td><td>Moderate</td></tr>
+            <tr><td>5 qubits, medium noise (p=0.01)</td><td>~45% success</td><td>~70% success</td><td>Substantial</td></tr>
+            <tr><td>5 qubits, high noise (p=0.05)</td><td>~15% success</td><td>~40% success</td><td>Large</td></tr>
+            <tr><td>6 qubits, medium noise</td><td>~30% success</td><td>~55% success</td><td>Substantial</td></tr>
+          </tbody>
+        </table>
+        <p>The improvement grows with noise level — in the low-noise regime, standard Grover is already near-optimal, but as noise increases, the RL agent's ability to adaptively shorten and reshape the circuit becomes increasingly valuable. The agent typically learns to use fewer iterations than the ideal noiseless Grover count, with modified rotation angles that partially compensate for noise-induced amplitude leakage.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Practical and well-motivated — noisy quantum search is a real problem on current hardware.</li>
+          <li>Model-free RL approach removes the need for detailed noise characterization.</li>
+          <li>Clear and substantial improvements over standard Grover under realistic noise.</li>
+          <li>The framework is general and could be applied to other quantum algorithms beyond search.</li>
+          <li>Good experimental methodology with proper baselines and statistical significance.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Small search spaces (up to 6 qubits) — unclear how RL training scales to larger problems.</li>
+          <li>Training requires many noisy circuit evaluations, which is expensive on real hardware.</li>
+          <li>Generalization across different noise types (not just levels) is not demonstrated.</li>
+          <li>No comparison to analytical noise-optimal Grover variants from the literature.</li>
+          <li>The RL-discovered protocols lack interpretability — it is unclear what the agent "learned" about noise.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the RL policy be distilled into interpretable rules (e.g., "use k fewer iterations when noise rate is p")?</li>
+          <li>How does this approach compare to analytically derived noise-optimal Grover schedules?</li>
+          <li>Can the framework be extended to amplitude estimation and other Grover-based algorithms?</li>
+          <li>Is there a sample-efficiency improvement possible through model-based RL or meta-learning?</li>
+          <li>What happens when the noise environment drifts after the policy is trained — how robust is the policy to calibration shifts?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper provides convincing evidence that RL can serve as a practical tool for noise-adaptive quantum algorithm design. The approach is most valuable in the moderate-to-high noise regime where standard Grover fails badly. For hardware teams running quantum search demonstrations, the RL-optimized protocols offer a straightforward path to better results. The broader implication is that RL-based circuit optimization may become a standard tool in the near-term quantum computing toolkit.</p>
+      `
+    },
+    ko: {
+      title: "양자 탐색 문제에서 강화를 통한 잡음 내성",
+      summary: "잡음 하에서 양자 탐색 회로를 적응적으로 최적화하기 위해 강화 학습을 적용하여, RL 설계 프로토콜이 잡음 있는 하드웨어에서 고정된 그로버 반복보다 상당히 높은 성공 확률을 달성함을 보여줍니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>강화 학습이 잡음에 적응한 양자 탐색 프로토콜을 발견</strong>할 수 있으며, 잡음 환경에 따라 회로 매개변수를 조정하는 것을 학습하여 잡음이 있는 양자 하드웨어에서 표준 그로버 알고리즘을 상당히 능가함을 보여줍니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>하드웨어 잡음에 본질적으로 내성이 있는 양자 탐색 프로토콜을 설계하기 위해 강화 학습을 사용할 수 있으며, 잡음이 존재할 때 그로버 알고리즘의 고정 회전 스케줄을 능가할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>그로버 알고리즘은 비구조화 탐색에 이차적 속도 향상을 제공하며, N개 가능성 중 표시된 항목을 찾는 데 O(sqrt(N)) 쿼리가 필요합니다. 그러나 이 최적 쿼리 수는 완벽하고 잡음이 없는 양자 게이트를 가정합니다. 탈분극, 디페이징, 진폭 감쇄 잡음이 있는 실제 하드웨어에서 결맞는 증폭 과정은 급격히 저하됩니다 — 종종 너무 많은 반복 후 잡음 있는 그로버 회로가 고전적 무작위 샘플링보다 나쁜 성능을 보이는 수준까지.</p>
+        <p>이 문제에 대한 이전 접근법에는 그로버 반복 수 줄이기, 사후 오류 완화 기술 적용, 해석적으로 최적화된 회전 각도 설계 등이 있습니다. 그러나 이러한 접근법은 속도 향상을 희생하거나 잡음 모델에 대한 상세한 지식을 필요로 합니다.</p>
+        <p>이 논문은 근본적으로 다른 접근법을 취합니다: 주어진 잡음 환경에 대해 최적 회로 구조를 강화 학습으로 발견합니다. RL 에이전트는 잡음 있는 양자 시뮬레이터(또는 하드웨어)와 상호작용하여 학습하며, 명시적 잡음 모델 지정이 필요 없습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>상태 공간:</strong> RL 에이전트는 현재 회로 구성과 잡음 관련 통계(예: 교정 데이터에서의 추정 충실도)를 관찰합니다.</li>
+          <li><strong>행동 공간:</strong> 각 결정 지점에서 에이전트는 그로버 오라클과 확산 연산자의 회전 각도를 선택하고, 반복을 계속 추가할지 종료할지 결정합니다.</li>
+          <li><strong>보상:</strong> (잡음 있는) 양자 회로의 출력 분포에서 측정된 표시된 항목을 찾는 성공 확률입니다.</li>
+          <li><strong>학습:</strong> 에이전트는 대상 하드웨어에 맞게 교정된 잡음 모델이 있는 잡음 양자 시뮬레이터에서 정책 기울기 방법(PPO 또는 REINFORCE)을 사용하여 학습됩니다.</li>
+          <li><strong>배포:</strong> 학습된 정책은 추가 최적화 없이 대상 하드웨어에서 실행할 수 있는 잡음 적응 회로를 생성합니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/rl-quantum-search/thumbnail.png" alt="RL 최적화 양자 탐색 개요">
+          <figcaption>Thumbnail: 잡음 내성 양자 탐색을 위한 강화 학습 프레임워크.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/rl-quantum-search/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>RL 설계 잡음 내성 탐색:</strong> 잡음 하에서 RL이 고정된 그로버 반복을 상당히 능가하는 프로토콜을 발견할 수 있음을 보여줍니다.</li>
+          <li><strong>모델 프리 적응:</strong> RL 에이전트는 명시적 잡음 모델이 필요 없으며 시뮬레이션 또는 실제 잡음 회로 결과에서 학습합니다.</li>
+          <li><strong>적응적 반복 수:</strong> 에이전트는 잡음이 신호를 압도하기 전에 반복을 중지하는 것을 학습하여 잡음 의존적 최적 깊이를 자동으로 찾습니다.</li>
+          <li><strong>잡음 수준 간 일반화:</strong> 학습된 정책은 학습 중 보지 못한 잡음 수준에 대해 일부 일반화를 보여줍니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>탐색 공간 크기</td><td>N = 4, 8, 16, 32, 64 (2~6 큐비트)</td></tr>
+            <tr><td>잡음 모델</td><td>다양한 비율의 탈분극, 디페이징, 진폭 감쇄</td></tr>
+            <tr><td>RL 알고리즘</td><td>신경망 정책(2층 MLP)이 있는 PPO</td></tr>
+            <tr><td>학습 에피소드</td><td>10<sup>4</sup>~10<sup>5</sup></td></tr>
+            <tr><td>보상 신호</td><td>1000 샷에 걸쳐 평균된 성공 확률</td></tr>
+            <tr><td>기준선 비교</td><td>표준 그로버(고정 반복), 절단 그로버(조기 중단)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>시나리오</th><th>표준 그로버</th><th>RL 최적화</th><th>개선</th></tr></thead>
+          <tbody>
+            <tr><td>5큐비트, 저잡음(p=0.001)</td><td>~85% 성공</td><td>~90% 성공</td><td>중간</td></tr>
+            <tr><td>5큐비트, 중잡음(p=0.01)</td><td>~45% 성공</td><td>~70% 성공</td><td>상당</td></tr>
+            <tr><td>5큐비트, 고잡음(p=0.05)</td><td>~15% 성공</td><td>~40% 성공</td><td>큰</td></tr>
+            <tr><td>6큐비트, 중잡음</td><td>~30% 성공</td><td>~55% 성공</td><td>상당</td></tr>
+          </tbody>
+        </table>
+        <p>개선은 잡음 수준에 따라 증가합니다 — 저잡음 체제에서 표준 그로버는 이미 거의 최적이지만, 잡음이 증가하면 RL 에이전트의 회로 단축 및 재형성 능력이 점점 더 가치 있게 됩니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>실용적이고 동기가 잘 부여됨 — 잡음 있는 양자 탐색은 현재 하드웨어에서 실제 문제입니다.</li>
+          <li>모델 프리 RL 접근법이 상세한 잡음 특성화의 필요를 제거합니다.</li>
+          <li>현실적 잡음 하에서 표준 그로버에 대한 명확하고 상당한 개선을 보여줍니다.</li>
+          <li>프레임워크가 일반적이며 탐색 이외의 다른 양자 알고리즘에도 적용될 수 있습니다.</li>
+          <li>적절한 기준선과 통계적 유의성을 갖춘 좋은 실험 방법론입니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>작은 탐색 공간(최대 6큐비트) — RL 학습이 더 큰 문제로 어떻게 확장되는지 불분명합니다.</li>
+          <li>학습에 많은 잡음 회로 평가가 필요하며, 실제 하드웨어에서 비용이 높습니다.</li>
+          <li>다른 잡음 유형(수준뿐 아닌) 간 일반화가 시연되지 않았습니다.</li>
+          <li>문헌의 해석적 잡음 최적 그로버 변형과의 비교가 없습니다.</li>
+          <li>RL이 발견한 프로토콜의 해석 가능성이 부족합니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>RL 정책을 해석 가능한 규칙으로 증류할 수 있는가(예: "잡음율이 p일 때 k회 적은 반복 사용")?</li>
+          <li>이 접근법은 해석적으로 도출된 잡음 최적 그로버 스케줄과 어떻게 비교되는가?</li>
+          <li>프레임워크를 진폭 추정 및 기타 그로버 기반 알고리즘으로 확장할 수 있는가?</li>
+          <li>모델 기반 RL 또는 메타 학습을 통한 샘플 효율성 개선이 가능한가?</li>
+          <li>정책이 학습된 후 잡음 환경이 변동하면 어떻게 되는가 — 정책이 교정 변동에 얼마나 견고한가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 RL이 잡음 적응적 양자 알고리즘 설계를 위한 실용적 도구가 될 수 있다는 설득력 있는 증거를 제공합니다. 접근법은 표준 그로버가 심하게 실패하는 중간에서 높은 잡음 체제에서 가장 가치 있습니다. 양자 탐색 시연을 실행하는 하드웨어 팀에게 RL 최적화 프로토콜은 더 나은 결과로의 직접적 경로를 제공합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 10. overlapped-groupings
+  // ====================================================================
+  {
+    id: "overlapped-groupings",
+    date: "2025-04-11",
+    authors: "Rowland, J., Sarkar, R., Sawaya, N. P. D., Tubman, N. M., LaRose, R.",
+    venue: "Preprint 2025",
+    image: "images/overlapped-groupings/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "VQE", "Variance Reduction", "Grouping"],
+    en: {
+      title: "Overlapped Groupings for Quantum Energy Estimation: Maximal Variance Reduction and Deterministic Algorithms",
+      summary: "Introduces overlapped Pauli grouping strategies for Hamiltonian measurement in VQE that allow operators to appear in multiple measurement groups, achieving maximal variance reduction with deterministic algorithms.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper breaks the conventional constraint that each Pauli term must belong to exactly one measurement group, showing that <strong>overlapped groupings</strong> — where terms can appear in multiple groups — unlock significantly greater variance reduction in quantum energy estimation, with deterministic algorithms to find optimal overlaps.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can allowing Pauli operators to appear in multiple measurement groups (overlapped groupings) reduce the variance of Hamiltonian energy estimation beyond what is achievable with disjoint groupings, and can optimal overlapped groupings be found efficiently?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Measuring the expectation value of a molecular Hamiltonian — a sum of many Pauli strings — is a central task in VQE and other variational quantum algorithms. The naive approach measures each Pauli string independently, requiring a prohibitive number of measurement shots. Grouping commuting Pauli terms into simultaneously measurable sets reduces this cost, and the measurement budget is allocated across groups.</p>
+        <p>Existing grouping methods — qubit-wise commuting (QWC), general commuting, and unitary partitioning — all enforce disjoint grouping: each Pauli term belongs to exactly one group. This constraint simplifies the estimation procedure but is suboptimal for variance reduction, because the covariance structure between Pauli terms within and across groups is not fully exploited.</p>
+        <p>This paper relaxes the disjoint constraint, allowing each Pauli term to participate in multiple measurement groups. The key insight is that the variance of the overall energy estimate depends on how measurement shots are allocated across groups and how the redundant information from overlapping terms is combined — and this optimization can be solved exactly.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Overlapped grouping framework:</strong> Each Pauli term can appear in one or more measurement groups. The estimate of each term's expectation value is a weighted average over the groups that contain it.</li>
+          <li><strong>Optimal weight and shot allocation:</strong> Given a set of overlapped groups, the optimal weights and shot allocation are derived by minimizing the total variance of the energy estimate, formulated as a convex optimization problem.</li>
+          <li><strong>Deterministic group construction:</strong> Algorithms to construct overlapped groups that provably maximize variance reduction, including greedy methods and graph-coloring-based approaches.</li>
+          <li><strong>Maximal variance reduction bounds:</strong> Derives theoretical lower bounds on achievable variance for any overlapped grouping strategy, showing how much improvement is possible over disjoint groupings.</li>
+        </ul>
+
+        <figure>
+          <img src="images/overlapped-groupings/thumbnail.png" alt="Overlapped groupings for Hamiltonian measurement">
+          <figcaption>Thumbnail: Comparison of disjoint vs. overlapped Pauli grouping strategies.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/overlapped-groupings/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Overlapped grouping concept:</strong> Introduces and formalizes the idea of non-disjoint Pauli groupings for Hamiltonian measurement.</li>
+          <li><strong>Optimal estimation theory:</strong> Provides the complete mathematical framework for optimally combining redundant measurements from overlapping groups.</li>
+          <li><strong>Deterministic algorithms:</strong> Unlike heuristic approaches, provides deterministic algorithms with provable variance reduction guarantees.</li>
+          <li><strong>Substantial practical improvements:</strong> Demonstrates significant shot count reduction (often 2-5x) on molecular Hamiltonians compared to state-of-the-art disjoint groupings.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Test Hamiltonians</td><td>H<sub>2</sub>, LiH, H<sub>2</sub>O, N<sub>2</sub> (STO-3G and larger basis sets)</td></tr>
+            <tr><td>Grouping baselines</td><td>QWC, sorted insertion, largest-first coloring</td></tr>
+            <tr><td>Overlap algorithms</td><td>Greedy overlap construction, graph-based optimal overlap</td></tr>
+            <tr><td>Optimization</td><td>Convex optimization for weight/shot allocation (CVXPY)</td></tr>
+            <tr><td>Metrics</td><td>Total variance, effective shot count, estimation error</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Molecule</th><th>Disjoint Best (shots)</th><th>Overlapped (shots)</th><th>Reduction</th></tr></thead>
+          <tbody>
+            <tr><td>H<sub>2</sub></td><td>Baseline</td><td>~30% fewer shots</td><td>1.4x</td></tr>
+            <tr><td>LiH</td><td>Baseline</td><td>~50% fewer shots</td><td>2x</td></tr>
+            <tr><td>H<sub>2</sub>O</td><td>Baseline</td><td>~60% fewer shots</td><td>2.5x</td></tr>
+            <tr><td>N<sub>2</sub></td><td>Baseline</td><td>~70% fewer shots</td><td>3.3x</td></tr>
+          </tbody>
+        </table>
+        <p>The improvement scales with molecular complexity — larger molecules with more Pauli terms have more opportunities for beneficial overlap. The deterministic algorithms run in polynomial time and consistently match or beat the theoretical variance lower bounds.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Conceptually clean — the overlapped grouping idea is simple, general, and immediately applicable.</li>
+          <li>Strong theoretical foundation with provable optimality guarantees.</li>
+          <li>Deterministic algorithms avoid the randomness and irreproducibility of heuristic approaches.</li>
+          <li>Substantial practical shot reduction on realistic molecular Hamiltonians.</li>
+          <li>Compatible with existing grouping methods — overlapped groupings can be built on top of any base grouping.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Classical overhead for the convex optimization step may become significant for very large Hamiltonians.</li>
+          <li>The variance model assumes ideal measurements — shot noise on real hardware may introduce additional complications.</li>
+          <li>Does not address the circuit overhead of implementing the measurement bases for overlapped groups.</li>
+          <li>Comparison is limited to shot-based estimation — shadow tomography and other approaches are not compared.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can overlapped groupings be combined with classical shadows for even greater measurement efficiency?</li>
+          <li>How does the classical optimization cost scale for Hamiltonians with thousands of Pauli terms?</li>
+          <li>Is there an information-theoretic limit to how much overlapping can help beyond disjoint groupings?</li>
+          <li>Can the framework be extended to non-Pauli observable estimation (e.g., fermionic operators directly)?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper makes a conceptually simple but practically impactful contribution to the measurement problem in VQE. By breaking the disjoint grouping constraint, it accesses a strictly larger optimization space for variance reduction. The deterministic algorithms make it immediately usable. For any group running VQE experiments, adopting overlapped groupings is a low-cost, high-reward improvement to the measurement pipeline.</p>
+      `
+    },
+    ko: {
+      title: "양자 에너지 추정을 위한 겹침 그룹화: 최대 분산 감소와 결정적 알고리즘",
+      summary: "VQE에서 해밀토니안 측정을 위한 겹침 파울리 그룹화 전략을 도입하여 연산자가 여러 측정 그룹에 나타날 수 있게 하며, 결정적 알고리즘으로 최대 분산 감소를 달성합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 각 파울리 항이 정확히 하나의 측정 그룹에 속해야 한다는 기존 제약을 깨고, <strong>겹침 그룹화</strong> — 항이 여러 그룹에 나타날 수 있는 — 가 양자 에너지 추정에서 상당히 더 큰 분산 감소를 달성함을 보여주며, 최적 겹침을 찾는 결정적 알고리즘을 제공합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>파울리 연산자가 여러 측정 그룹에 나타나도록 허용하면(겹침 그룹화) 분리 그룹화로 달성 가능한 것 이상으로 해밀토니안 에너지 추정의 분산을 줄일 수 있으며, 최적의 겹침 그룹화를 효율적으로 찾을 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>분자 해밀토니안 — 많은 파울리 문자열의 합 — 의 기대값을 측정하는 것은 VQE 및 기타 변분 양자 알고리즘의 핵심 과제입니다. 순진한 접근법은 각 파울리 문자열을 독립적으로 측정하여 엄청난 수의 측정 샷을 필요로 합니다. 교환하는 파울리 항을 동시에 측정 가능한 집합으로 그룹화하면 이 비용을 줄이며, 측정 예산이 그룹에 할당됩니다.</p>
+        <p>기존 그룹화 방법 — 큐비트별 교환(QWC), 일반 교환, 유니터리 분할 — 은 모두 분리 그룹화를 강제합니다: 각 파울리 항이 정확히 하나의 그룹에 속합니다. 이 제약은 추정 절차를 단순화하지만 분산 감소에 최적이 아닙니다.</p>
+        <p>이 논문은 분리 제약을 완화하여 각 파울리 항이 여러 측정 그룹에 참여할 수 있게 합니다. 핵심 통찰은 전체 에너지 추정의 분산이 그룹 간 측정 샷 할당과 겹치는 항의 중복 정보 결합 방식에 의존하며, 이 최적화가 정확히 풀릴 수 있다는 것입니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>겹침 그룹화 프레임워크:</strong> 각 파울리 항이 하나 이상의 측정 그룹에 나타날 수 있습니다. 각 항의 기대값 추정은 그것을 포함하는 그룹에 대한 가중 평균입니다.</li>
+          <li><strong>최적 가중치 및 샷 할당:</strong> 겹침 그룹 집합이 주어지면, 볼록 최적화 문제로 공식화된 에너지 추정의 총 분산을 최소화하여 최적 가중치와 샷 할당을 도출합니다.</li>
+          <li><strong>결정적 그룹 구성:</strong> 탐욕적 방법과 그래프 색칠 기반 접근법을 포함하여 분산 감소를 증명적으로 최대화하는 겹침 그룹을 구성하는 알고리즘입니다.</li>
+          <li><strong>최대 분산 감소 한계:</strong> 겹침 그룹화 전략으로 달성 가능한 분산의 이론적 하한을 도출하여 분리 그룹화에 비해 얼마나 많은 개선이 가능한지 보여줍니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/overlapped-groupings/thumbnail.png" alt="해밀토니안 측정을 위한 겹침 그룹화">
+          <figcaption>Thumbnail: 분리 vs. 겹침 파울리 그룹화 전략 비교.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/overlapped-groupings/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>겹침 그룹화 개념:</strong> 해밀토니안 측정을 위한 비분리 파울리 그룹화의 아이디어를 도입하고 공식화합니다.</li>
+          <li><strong>최적 추정 이론:</strong> 겹치는 그룹의 중복 측정을 최적으로 결합하기 위한 완전한 수학적 프레임워크를 제공합니다.</li>
+          <li><strong>결정적 알고리즘:</strong> 휴리스틱 접근법과 달리 증명 가능한 분산 감소 보장이 있는 결정적 알고리즘을 제공합니다.</li>
+          <li><strong>상당한 실용적 개선:</strong> 분자 해밀토니안에서 최신 분리 그룹화에 비해 상당한 샷 수 감소(종종 2-5배)를 보여줍니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>테스트 해밀토니안</td><td>H<sub>2</sub>, LiH, H<sub>2</sub>O, N<sub>2</sub> (STO-3G 및 더 큰 기저 세트)</td></tr>
+            <tr><td>그룹화 기준선</td><td>QWC, 정렬 삽입, 최대 우선 색칠</td></tr>
+            <tr><td>겹침 알고리즘</td><td>탐욕적 겹침 구성, 그래프 기반 최적 겹침</td></tr>
+            <tr><td>최적화</td><td>가중치/샷 할당을 위한 볼록 최적화(CVXPY)</td></tr>
+            <tr><td>지표</td><td>총 분산, 유효 샷 수, 추정 오차</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>분자</th><th>분리 최선(샷)</th><th>겹침(샷)</th><th>감소</th></tr></thead>
+          <tbody>
+            <tr><td>H<sub>2</sub></td><td>기준선</td><td>~30% 적은 샷</td><td>1.4배</td></tr>
+            <tr><td>LiH</td><td>기준선</td><td>~50% 적은 샷</td><td>2배</td></tr>
+            <tr><td>H<sub>2</sub>O</td><td>기준선</td><td>~60% 적은 샷</td><td>2.5배</td></tr>
+            <tr><td>N<sub>2</sub></td><td>기준선</td><td>~70% 적은 샷</td><td>3.3배</td></tr>
+          </tbody>
+        </table>
+        <p>개선은 분자 복잡도에 따라 확장됩니다 — 더 많은 파울리 항이 있는 더 큰 분자가 유익한 겹침의 기회가 더 많습니다. 결정적 알고리즘은 다항 시간에 실행되며 이론적 분산 하한을 일관되게 일치하거나 능가합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>개념적으로 깔끔함 — 겹침 그룹화 아이디어는 단순하고 일반적이며 즉시 적용 가능합니다.</li>
+          <li>증명 가능한 최적성 보장이 있는 강한 이론적 기초입니다.</li>
+          <li>결정적 알고리즘이 휴리스틱 접근법의 무작위성과 비재현성을 피합니다.</li>
+          <li>현실적 분자 해밀토니안에서 상당한 실용적 샷 감소를 보여줍니다.</li>
+          <li>기존 그룹화 방법과 호환 — 겹침 그룹화를 모든 기본 그룹화 위에 구축할 수 있습니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>볼록 최적화 단계의 고전적 오버헤드가 매우 큰 해밀토니안에서 중요해질 수 있습니다.</li>
+          <li>분산 모델이 이상적 측정을 가정하며, 실제 하드웨어의 샷 잡음이 추가 복잡성을 도입할 수 있습니다.</li>
+          <li>겹침 그룹의 측정 기저 구현을 위한 회로 오버헤드를 다루지 않습니다.</li>
+          <li>비교가 샷 기반 추정에 한정되며, 섀도우 토모그래피 등 다른 접근법과 비교되지 않습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>겹침 그룹화를 고전적 섀도우와 결합하여 더 큰 측정 효율을 달성할 수 있는가?</li>
+          <li>수천 개의 파울리 항이 있는 해밀토니안에서 고전적 최적화 비용이 어떻게 확장되는가?</li>
+          <li>겹침이 분리 그룹화를 넘어 얼마나 도울 수 있는지에 대한 정보 이론적 한계가 있는가?</li>
+          <li>프레임워크를 비파울리 관측량 추정(예: 페르미온 연산자 직접)으로 확장할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 VQE의 측정 문제에 개념적으로 단순하지만 실질적으로 영향력 있는 기여를 합니다. 분리 그룹화 제약을 깨뜨림으로써 분산 감소를 위한 엄격히 더 큰 최적화 공간에 접근합니다. 결정적 알고리즘이 즉시 사용 가능하게 만듭니다. VQE 실험을 실행하는 모든 그룹에게 겹침 그룹화 채택은 측정 파이프라인에 대한 저비용 고보상 개선입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 11. mosaic-error-cancellation
+  // ====================================================================
+  {
+    id: "mosaic-error-cancellation",
+    date: "2025-04-11",
+    authors: "Ma, M., Jaiswal, R., Niu, M. Y.",
+    venue: "Preprint 2025",
+    image: "images/mosaic-error-cancellation/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Error Mitigation", "PEC", "Scalability"],
+    en: {
+      title: "MoSAIC: Scalable Probabilistic Error Cancellation via Variational Blockwise Noise Aggregation",
+      summary: "Proposes MoSAIC, a scalable probabilistic error cancellation framework that partitions circuits into blocks and learns aggregate noise models per block, dramatically reducing the sampling overhead of standard PEC.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>MoSAIC addresses the Achilles' heel of probabilistic error cancellation — <strong>exponential sampling overhead</strong> — by decomposing circuits into blocks, learning a variational noise model per block, and performing error cancellation at the block level rather than gate level, achieving scalable PEC for circuits that were previously intractable.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can probabilistic error cancellation be made scalable to deep circuits by aggregating noise at the block level rather than the gate level, and can variational methods efficiently learn the required block-level noise models?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Probabilistic error cancellation (PEC) is one of the most principled error mitigation techniques: it produces unbiased estimates of noiseless expectation values by reweighting noisy circuit outcomes according to a quasi-probability decomposition of the ideal operation in terms of noisy implementable operations. However, standard PEC has a fatal scalability problem: the sampling overhead grows exponentially with the number of noisy gates, making it impractical for circuits with more than a few dozen gates.</p>
+        <p>The root cause is that PEC decomposes each gate individually, and the per-gate overheads multiply. If the noise could be characterized and cancelled at a coarser granularity — say, entire subcircuit blocks — the overhead could be dramatically reduced, because many individual gate errors partially cancel within a block.</p>
+        <p>MoSAIC (Mosaic of Scalable Aggregated Inversion for Cancellation) implements this idea: partition the circuit into blocks, learn an effective noise channel for each block using variational quantum circuits, and perform PEC at the block level. The variational noise learning is the key enabler — it captures the aggregate effect of all errors within a block without requiring a detailed per-gate noise model.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Block partitioning:</strong> The target circuit is partitioned into contiguous blocks of gates. Block boundaries are chosen to balance between noise aggregation benefit (larger blocks) and variational learning difficulty (smaller blocks).</li>
+          <li><strong>Variational noise learning:</strong> For each block, a parameterized noise channel is learned by comparing the output of the ideal block (simulated classically if small enough, or estimated via other means) with the noisy block output on hardware. The noise channel is parameterized as a Pauli channel or sparse Stinespring dilation.</li>
+          <li><strong>Block-level PEC:</strong> The learned block noise channel is inverted via quasi-probability decomposition, and the resulting corrections are applied during sampling. Because the block noise channel captures the net effect of many gates, its quasi-probability norm (sampling overhead) is much smaller than the product of per-gate overheads.</li>
+          <li><strong>Composition:</strong> Block-level PEC corrections are composed across the full circuit, with the total overhead being the product of block-level overheads — exponentially smaller than gate-level PEC.</li>
+        </ul>
+
+        <figure>
+          <img src="images/mosaic-error-cancellation/thumbnail.png" alt="MoSAIC framework overview">
+          <figcaption>Thumbnail: MoSAIC blockwise probabilistic error cancellation framework.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Block-level PEC framework:</strong> Formalizes the idea of performing error cancellation at the block level with rigorous overhead analysis.</li>
+          <li><strong>Variational noise learning:</strong> Provides a practical method to learn block-level noise channels without requiring per-gate noise characterization.</li>
+          <li><strong>Exponential overhead reduction:</strong> Proves that block-level PEC overhead can be exponentially smaller than gate-level PEC for typical noise patterns.</li>
+          <li><strong>Scalability demonstration:</strong> Shows PEC on circuits with 50+ gates — previously intractable for standard PEC.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Circuit types</td><td>Random Clifford circuits, VQE ansatze, QAOA circuits</td></tr>
+            <tr><td>Block sizes</td><td>5 to 20 gates per block</td></tr>
+            <tr><td>Noise learning</td><td>Variational Pauli channel fitting with gradient-based optimization</td></tr>
+            <tr><td>Hardware</td><td>IBM superconducting processors (simulation and real hardware)</td></tr>
+            <tr><td>Baselines</td><td>Standard gate-level PEC, zero-noise extrapolation (ZNE), no mitigation</td></tr>
+            <tr><td>Metrics</td><td>Estimation bias, sampling overhead (quasi-probability norm), total shots required</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Method</th><th>Max Tractable Circuit Depth</th><th>Sampling Overhead (typical)</th><th>Bias</th></tr></thead>
+          <tbody>
+            <tr><td>No mitigation</td><td>Any</td><td>1x</td><td>High</td></tr>
+            <tr><td>ZNE</td><td>Any</td><td>~3-10x</td><td>Moderate (model-dependent)</td></tr>
+            <tr><td>Gate-level PEC</td><td>~20-30 gates</td><td>Exponential in gate count</td><td>Unbiased</td></tr>
+            <tr><td>MoSAIC (block PEC)</td><td>50+ gates demonstrated</td><td>Polynomial-like scaling</td><td>Low (variational learning error)</td></tr>
+          </tbody>
+        </table>
+        <p>MoSAIC extends the practical reach of PEC by roughly 2-3x in circuit depth while maintaining near-unbiased estimation. The variational noise learning introduces a small systematic error, but this is much smaller than the bias of unmitigated circuits or the model-dependent bias of ZNE.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Addresses the most critical limitation of PEC — exponential sampling overhead — with a principled solution.</li>
+          <li>Block-level aggregation is a clean abstraction that naturally captures error cancellation within subcircuits.</li>
+          <li>Variational noise learning is practical and does not require detailed hardware characterization.</li>
+          <li>Demonstrated on real hardware, not just simulation.</li>
+          <li>Compatible with other error mitigation techniques (can be combined with ZNE, symmetry verification, etc.).</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Variational noise learning introduces a small bias that standard PEC avoids — the estimate is no longer exactly unbiased.</li>
+          <li>Block partitioning heuristics may not be optimal — the choice of block boundaries affects performance.</li>
+          <li>Noise learning overhead (separate calibration circuits per block) adds to the total experimental cost.</li>
+          <li>Assumes noise is approximately Markovian at the block level — non-Markovian correlations across blocks are not captured.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the block partitioning be optimized jointly with the noise learning, rather than fixed a priori?</li>
+          <li>How does the variational noise learning error scale with block size and noise rate?</li>
+          <li>Can MoSAIC be combined with quantum error correction for a hybrid mitigation-correction approach?</li>
+          <li>Is there a fundamental limit to how much block-level aggregation can reduce PEC overhead?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>MoSAIC represents a significant practical advance for error mitigation. By moving PEC from the gate level to the block level, it transforms an exponentially expensive technique into a practically scalable one. The trade-off — a small variational learning bias in exchange for dramatically reduced sampling overhead — is favorable for most near-term applications. This work should be of immediate interest to any group running error-mitigated quantum computations.</p>
+      `
+    },
+    ko: {
+      title: "MoSAIC: 변분 블록별 잡음 집계를 통한 확장 가능한 확률적 오류 상쇄",
+      summary: "회로를 블록으로 분할하고 블록당 집계 잡음 모델을 학습하여 표준 PEC의 샘플링 오버헤드를 극적으로 줄이는 확장 가능한 확률적 오류 상쇄 프레임워크 MoSAIC를 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>MoSAIC는 확률적 오류 상쇄의 아킬레스건 — <strong>지수적 샘플링 오버헤드</strong> — 를 회로를 블록으로 분해하고 블록당 변분 잡음 모델을 학습하며 게이트 수준이 아닌 블록 수준에서 오류 상쇄를 수행하여 해결하며, 이전에 다루기 어려웠던 회로에 대해 확장 가능한 PEC를 달성합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>게이트 수준이 아닌 블록 수준에서 잡음을 집계하여 확률적 오류 상쇄를 깊은 회로로 확장할 수 있으며, 변분 방법이 필요한 블록 수준 잡음 모델을 효율적으로 학습할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>확률적 오류 상쇄(PEC)는 가장 원칙적인 오류 완화 기술 중 하나입니다: 이상적 연산의 준확률 분해에 따라 잡음 회로 결과를 재가중하여 잡음 없는 기대값의 비편향 추정을 생성합니다. 그러나 표준 PEC에는 치명적 확장성 문제가 있습니다: 샘플링 오버헤드가 잡음 게이트 수에 따라 지수적으로 증가하여 수십 개 이상의 게이트가 있는 회로에는 비실용적입니다.</p>
+        <p>근본 원인은 PEC가 각 게이트를 개별적으로 분해하며 게이트당 오버헤드가 곱해지기 때문입니다. 잡음을 더 거친 단위 — 예를 들어 전체 부분 회로 블록 — 에서 특성화하고 상쇄할 수 있다면, 블록 내에서 많은 개별 게이트 오류가 부분적으로 상쇄되므로 오버헤드가 극적으로 줄어들 수 있습니다.</p>
+        <p>MoSAIC는 이 아이디어를 구현합니다: 회로를 블록으로 분할하고, 변분 양자 회로를 사용하여 각 블록의 유효 잡음 채널을 학습하며, 블록 수준에서 PEC를 수행합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>블록 분할:</strong> 대상 회로를 게이트의 연속적 블록으로 분할합니다. 블록 경계는 잡음 집계 이점(큰 블록)과 변분 학습 난이도(작은 블록) 사이의 균형을 맞추도록 선택됩니다.</li>
+          <li><strong>변분 잡음 학습:</strong> 각 블록에 대해 이상적 블록 출력과 하드웨어의 잡음 블록 출력을 비교하여 매개변수화된 잡음 채널을 학습합니다.</li>
+          <li><strong>블록 수준 PEC:</strong> 학습된 블록 잡음 채널을 준확률 분해를 통해 역전하고, 결과적 보정을 샘플링 중 적용합니다.</li>
+          <li><strong>합성:</strong> 블록 수준 PEC 보정이 전체 회로에 걸쳐 합성되며, 총 오버헤드는 블록 수준 오버헤드의 곱입니다 — 게이트 수준 PEC보다 지수적으로 작습니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/mosaic-error-cancellation/thumbnail.png" alt="MoSAIC 프레임워크 개요">
+          <figcaption>Thumbnail: MoSAIC 블록별 확률적 오류 상쇄 프레임워크.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>블록 수준 PEC 프레임워크:</strong> 엄밀한 오버헤드 분석으로 블록 수준에서 오류 상쇄를 수행하는 아이디어를 공식화합니다.</li>
+          <li><strong>변분 잡음 학습:</strong> 게이트별 잡음 특성화 없이 블록 수준 잡음 채널을 학습하는 실용적 방법을 제공합니다.</li>
+          <li><strong>지수적 오버헤드 감소:</strong> 일반적 잡음 패턴에서 블록 수준 PEC 오버헤드가 게이트 수준 PEC보다 지수적으로 작을 수 있음을 증명합니다.</li>
+          <li><strong>확장성 시연:</strong> 표준 PEC로는 이전에 다루기 어려웠던 50+ 게이트 회로에서 PEC를 보여줍니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>회로 유형</td><td>무작위 클리포드 회로, VQE 안자츠, QAOA 회로</td></tr>
+            <tr><td>블록 크기</td><td>블록당 5~20 게이트</td></tr>
+            <tr><td>잡음 학습</td><td>그래디언트 기반 최적화를 사용한 변분 파울리 채널 피팅</td></tr>
+            <tr><td>하드웨어</td><td>IBM 초전도 프로세서(시뮬레이션 및 실제 하드웨어)</td></tr>
+            <tr><td>기준선</td><td>표준 게이트 수준 PEC, 제로 잡음 외삽(ZNE), 완화 없음</td></tr>
+            <tr><td>지표</td><td>추정 편향, 샘플링 오버헤드(준확률 노름), 필요한 총 샷</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>방법</th><th>최대 다룰 수 있는 회로 깊이</th><th>샘플링 오버헤드(일반적)</th><th>편향</th></tr></thead>
+          <tbody>
+            <tr><td>완화 없음</td><td>모든</td><td>1배</td><td>높음</td></tr>
+            <tr><td>ZNE</td><td>모든</td><td>~3-10배</td><td>중간(모델 의존)</td></tr>
+            <tr><td>게이트 수준 PEC</td><td>~20-30 게이트</td><td>게이트 수에 지수적</td><td>비편향</td></tr>
+            <tr><td>MoSAIC(블록 PEC)</td><td>50+ 게이트 시연</td><td>다항식급 스케일링</td><td>낮음(변분 학습 오류)</td></tr>
+          </tbody>
+        </table>
+        <p>MoSAIC는 거의 비편향 추정을 유지하면서 PEC의 실용적 도달 범위를 회로 깊이에서 대략 2-3배 확장합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>원칙적 해결책으로 PEC의 가장 중요한 한계 — 지수적 샘플링 오버헤드 — 를 다룹니다.</li>
+          <li>블록 수준 집계는 자연스럽게 부분 회로 내 오류 상쇄를 포착하는 깔끔한 추상화입니다.</li>
+          <li>변분 잡음 학습이 실용적이며 상세한 하드웨어 특성화를 필요로 하지 않습니다.</li>
+          <li>시뮬레이션뿐 아니라 실제 하드웨어에서 시연되었습니다.</li>
+          <li>다른 오류 완화 기술과 호환됩니다(ZNE, 대칭 검증 등과 결합 가능).</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>변분 잡음 학습이 표준 PEC가 피하는 작은 편향을 도입합니다 — 추정이 더 이상 정확히 비편향이 아닙니다.</li>
+          <li>블록 분할 휴리스틱이 최적이 아닐 수 있습니다 — 블록 경계 선택이 성능에 영향을 줍니다.</li>
+          <li>잡음 학습 오버헤드(블록당 별도 교정 회로)가 총 실험 비용에 추가됩니다.</li>
+          <li>잡음이 블록 수준에서 대략 마르코프적이라고 가정합니다 — 블록 간 비마르코프 상관관계는 포착되지 않습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>블록 분할을 사전에 고정하지 않고 잡음 학습과 공동으로 최적화할 수 있는가?</li>
+          <li>변분 잡음 학습 오류가 블록 크기와 잡음률에 따라 어떻게 확장되는가?</li>
+          <li>MoSAIC를 하이브리드 완화-정정 접근법을 위한 양자 오류 정정과 결합할 수 있는가?</li>
+          <li>블록 수준 집계가 PEC 오버헤드를 얼마나 줄일 수 있는지에 대한 근본적 한계가 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>MoSAIC는 오류 완화를 위한 상당한 실용적 진보를 나타냅니다. PEC를 게이트 수준에서 블록 수준으로 이동시킴으로써 지수적으로 비싼 기술을 실질적으로 확장 가능한 것으로 변환합니다. 트레이드오프 — 극적으로 줄어든 샘플링 오버헤드와 교환되는 작은 변분 학습 편향 — 은 대부분의 근단기 응용에 유리합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 12. bacon-shor-board-games
+  // ====================================================================
+  {
+    id: "bacon-shor-board-games",
+    date: "2025-04-11",
+    authors: "Alam, M. S., Zen, J., Scruby, T. R.",
+    venue: "Preprint 2026",
+    image: "images/bacon-shor-board-games/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Bacon-Shor Code", "Measurement Schedule", "Fault Tolerance"],
+    en: {
+      title: "Bacon-Shor Board Games",
+      summary: "Reframes the optimization of measurement schedules for Bacon-Shor codes as combinatorial board games, providing an intuitive framework for discovering fault-tolerant schedules and analyzing their properties.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper provides an elegant <strong>combinatorial game-theoretic framework</strong> for understanding and optimizing measurement schedules in Bacon-Shor codes, making the complex scheduling problem accessible through board game analogies and enabling systematic discovery of fault-tolerant schedules.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can the problem of finding optimal fault-tolerant measurement schedules for Bacon-Shor codes be formulated as combinatorial board games, and does this formulation yield new schedules with improved fault-tolerance properties?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>The Bacon-Shor code is a subsystem code that encodes a logical qubit in a 2D grid of physical qubits. Unlike the surface code where the measurement schedule is essentially fixed, Bacon-Shor codes offer significant flexibility in the order and grouping of gauge measurements. Different measurement schedules can lead to different effective error correction capabilities, hook error structures, and circuit depths.</p>
+        <p>Finding good measurement schedules is a combinatorial optimization problem that has been approached heuristically. The connection to fault tolerance is intricate: the schedule determines which error configurations are detectable, which are degenerate, and how hook errors propagate through the syndrome extraction circuit.</p>
+        <p>This paper introduces a board game abstraction where the grid positions represent game board cells, gauge measurements are moves, and winning strategies correspond to fault-tolerant schedules. This reframing makes the problem intuitive and enables systematic exploration of the schedule space.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Board game formulation:</strong> The Bacon-Shor code grid is mapped to a game board. Each gauge measurement corresponds to a move that "covers" certain cells. A valid schedule is a sequence of moves that covers all required gauge operators while satisfying ordering constraints.</li>
+          <li><strong>Fault-tolerance as winning condition:</strong> A schedule is "winning" if it ensures that all weight-1 errors produce distinct syndromes and no hook errors create undetectable logical errors. This maps to specific coverage and ordering conditions on the board.</li>
+          <li><strong>Enumeration and optimization:</strong> The board game structure enables efficient enumeration of valid schedules for small codes and heuristic search for larger codes, guided by game-theoretic principles.</li>
+          <li><strong>Analysis tools:</strong> The framework provides visual tools to analyze hook error propagation, schedule depth, and parallelism opportunities.</li>
+        </ul>
+
+        <figure>
+          <img src="images/bacon-shor-board-games/thumbnail.png" alt="Bacon-Shor board game framework">
+          <figcaption>Thumbnail: Board game representation of Bacon-Shor measurement schedules.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/bacon-shor-board-games/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Game-theoretic framework:</strong> Novel formulation of measurement scheduling as a board game, providing intuition and structure for a previously ad-hoc problem.</li>
+          <li><strong>New fault-tolerant schedules:</strong> Discovers previously unknown schedules with improved properties (lower depth, better hook error handling).</li>
+          <li><strong>Systematic analysis:</strong> Enables complete enumeration of valid schedules for small codes, characterizing the full landscape of possibilities.</li>
+          <li><strong>Pedagogical value:</strong> The board game analogy makes Bacon-Shor code scheduling accessible to a broader audience.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code sizes</td><td>Bacon-Shor [[9,1,3]], [[25,1,5]], and larger</td></tr>
+            <tr><td>Board dimensions</td><td>3x3, 5x5, 7x7 grids</td></tr>
+            <tr><td>Schedule enumeration</td><td>Complete for 3x3; heuristic search for 5x5+</td></tr>
+            <tr><td>Fault-tolerance verification</td><td>Circuit-level noise simulation with Stim</td></tr>
+            <tr><td>Metrics</td><td>Schedule depth, hook error weight, logical error rate</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Code</th><th>Known Best Schedule</th><th>Board Game Schedule</th><th>Improvement</th></tr></thead>
+          <tbody>
+            <tr><td>[[9,1,3]]</td><td>Standard alternating</td><td>Optimized via enumeration</td><td>Reduced circuit depth</td></tr>
+            <tr><td>[[25,1,5]]</td><td>Heuristic schedule</td><td>Game-guided discovery</td><td>Lower logical error rate</td></tr>
+            <tr><td>General</td><td>Ad-hoc construction</td><td>Systematic framework</td><td>Principled optimization</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Highly creative — the board game abstraction is both novel and genuinely useful for understanding the problem.</li>
+          <li>Practical — discovered schedules offer concrete improvements over prior art.</li>
+          <li>Systematic — moves beyond heuristic search to principled exploration of the schedule space.</li>
+          <li>Excellent pedagogy — makes Bacon-Shor scheduling accessible.</li>
+          <li>Visual analysis tools are immediately useful for code designers.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Complete enumeration is only feasible for small codes — larger codes require heuristic search.</li>
+          <li>The board game formulation may not generalize to other subsystem codes beyond Bacon-Shor.</li>
+          <li>Improvements in logical error rate, while real, are modest compared to switching code families entirely.</li>
+          <li>Does not address dynamic scheduling (adapting the schedule based on observed syndromes).</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the board game framework be extended to other subsystem codes (e.g., compass codes, gauge color codes)?</li>
+          <li>Is there a polynomial-time algorithm for finding optimal schedules in the board game formulation?</li>
+          <li>How do the discovered schedules perform under biased noise models?</li>
+          <li>Can reinforcement learning be applied to the board game to discover schedules for large codes?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper demonstrates the power of finding the right abstraction. By reframing Bacon-Shor measurement scheduling as a board game, the authors make a complex combinatorial problem intuitive and tractable. The practical payoff — new fault-tolerant schedules with improved properties — validates the framework. For the Bacon-Shor and subsystem code community, this paper provides both a useful tool and a delightful way to think about the problem.</p>
+      `
+    },
+    ko: {
+      title: "베이컨-쇼어 보드 게임",
+      summary: "베이컨-쇼어 코드의 측정 스케줄 최적화를 조합적 보드 게임으로 재구성하여 결함 허용 스케줄을 발견하고 그 속성을 분석하기 위한 직관적 프레임워크를 제공합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 베이컨-쇼어 코드의 측정 스케줄을 이해하고 최적화하기 위한 우아한 <strong>조합적 게임 이론 프레임워크</strong>를 제공하여, 보드 게임 비유를 통해 복잡한 스케줄링 문제를 접근 가능하게 만들고 결함 허용 스케줄의 체계적 발견을 가능하게 합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>베이컨-쇼어 코드의 최적 결함 허용 측정 스케줄을 찾는 문제를 조합적 보드 게임으로 공식화할 수 있으며, 이 공식화가 개선된 결함 허용 속성을 가진 새로운 스케줄을 산출하는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>베이컨-쇼어 코드는 물리적 큐비트의 2D 그리드에 논리 큐비트를 인코딩하는 서브시스템 코드입니다. 측정 스케줄이 본질적으로 고정된 표면 코드와 달리, 베이컨-쇼어 코드는 게이지 측정의 순서와 그룹화에 상당한 유연성을 제공합니다. 서로 다른 측정 스케줄은 서로 다른 유효 오류 정정 능력, 훅 오류 구조, 회로 깊이로 이어질 수 있습니다.</p>
+        <p>좋은 측정 스케줄을 찾는 것은 휴리스틱으로 접근되어 온 조합 최적화 문제입니다. 결함 허용과의 연결은 복잡합니다: 스케줄이 어떤 오류 구성이 검출 가능한지, 어떤 것이 축퇴인지, 훅 오류가 신드롬 추출 회로를 통해 어떻게 전파되는지를 결정합니다.</p>
+        <p>이 논문은 그리드 위치가 게임 보드 셀을 나타내고, 게이지 측정이 수를 나타내며, 승리 전략이 결함 허용 스케줄에 해당하는 보드 게임 추상화를 도입합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>보드 게임 공식화:</strong> 베이컨-쇼어 코드 그리드를 게임 보드에 매핑합니다. 각 게이지 측정은 특정 셀을 "덮는" 수에 해당합니다.</li>
+          <li><strong>승리 조건으로서의 결함 허용:</strong> 모든 가중치-1 오류가 구별 가능한 신드롬을 생성하고 훅 오류가 검출 불가능한 논리적 오류를 만들지 않는 스케줄이 "승리"입니다.</li>
+          <li><strong>열거 및 최적화:</strong> 보드 게임 구조가 작은 코드에 대한 유효 스케줄의 효율적 열거와 게임 이론 원칙에 의해 안내되는 큰 코드에 대한 휴리스틱 검색을 가능하게 합니다.</li>
+          <li><strong>분석 도구:</strong> 프레임워크가 훅 오류 전파, 스케줄 깊이, 병렬화 기회를 분석하는 시각적 도구를 제공합니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/bacon-shor-board-games/thumbnail.png" alt="베이컨-쇼어 보드 게임 프레임워크">
+          <figcaption>Thumbnail: 베이컨-쇼어 측정 스케줄의 보드 게임 표현.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/bacon-shor-board-games/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>게임 이론 프레임워크:</strong> 이전에 임시적이었던 문제에 직관과 구조를 제공하는 보드 게임으로서의 측정 스케줄링의 새로운 공식화입니다.</li>
+          <li><strong>새로운 결함 허용 스케줄:</strong> 개선된 속성(더 낮은 깊이, 더 나은 훅 오류 처리)을 가진 이전에 알려지지 않은 스케줄을 발견합니다.</li>
+          <li><strong>체계적 분석:</strong> 작은 코드에 대한 유효 스케줄의 완전한 열거를 가능하게 하여 전체 가능성 경관을 특성화합니다.</li>
+          <li><strong>교육적 가치:</strong> 보드 게임 비유가 베이컨-쇼어 코드 스케줄링을 더 넓은 청중에게 접근 가능하게 합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드 크기</td><td>베이컨-쇼어 [[9,1,3]], [[25,1,5]], 및 더 큰 것</td></tr>
+            <tr><td>보드 차원</td><td>3x3, 5x5, 7x7 그리드</td></tr>
+            <tr><td>스케줄 열거</td><td>3x3에서 완전; 5x5+에서 휴리스틱 검색</td></tr>
+            <tr><td>결함 허용 검증</td><td>Stim을 사용한 회로 수준 잡음 시뮬레이션</td></tr>
+            <tr><td>지표</td><td>스케줄 깊이, 훅 오류 가중치, 논리적 오류율</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>코드</th><th>알려진 최선 스케줄</th><th>보드 게임 스케줄</th><th>개선</th></tr></thead>
+          <tbody>
+            <tr><td>[[9,1,3]]</td><td>표준 교대</td><td>열거를 통해 최적화</td><td>회로 깊이 감소</td></tr>
+            <tr><td>[[25,1,5]]</td><td>휴리스틱 스케줄</td><td>게임 안내 발견</td><td>더 낮은 논리적 오류율</td></tr>
+            <tr><td>일반</td><td>임시 구성</td><td>체계적 프레임워크</td><td>원칙적 최적화</td></tr>
+          </tbody>
+        </table>
+
+        <h2>강점</h2>
+        <ul>
+          <li>매우 창의적 — 보드 게임 추상화가 새롭고 문제를 이해하는 데 진정으로 유용합니다.</li>
+          <li>실용적 — 발견된 스케줄이 기존 기술에 비해 구체적 개선을 제공합니다.</li>
+          <li>체계적 — 휴리스틱 검색을 넘어 스케줄 공간의 원칙적 탐구로 나아갑니다.</li>
+          <li>우수한 교육 — 베이컨-쇼어 스케줄링을 접근 가능하게 만듭니다.</li>
+          <li>시각적 분석 도구가 코드 설계자에게 즉시 유용합니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>완전한 열거는 작은 코드에서만 가능하며, 더 큰 코드는 휴리스틱 검색이 필요합니다.</li>
+          <li>보드 게임 공식화가 베이컨-쇼어 이외의 다른 서브시스템 코드로 일반화되지 않을 수 있습니다.</li>
+          <li>논리적 오류율의 개선은 실질적이지만 코드 계열 자체를 바꾸는 것에 비해 적당합니다.</li>
+          <li>동적 스케줄링(관찰된 신드롬에 기반한 스케줄 적응)을 다루지 않습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>보드 게임 프레임워크를 다른 서브시스템 코드(예: 나침반 코드, 게이지 컬러 코드)로 확장할 수 있는가?</li>
+          <li>보드 게임 공식화에서 최적 스케줄을 찾는 다항 시간 알고리즘이 있는가?</li>
+          <li>발견된 스케줄이 편향된 잡음 모델에서 어떻게 수행되는가?</li>
+          <li>대규모 코드의 스케줄을 발견하기 위해 보드 게임에 강화 학습을 적용할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 올바른 추상화를 찾는 것의 힘을 보여줍니다. 베이컨-쇼어 측정 스케줄링을 보드 게임으로 재구성함으로써 복잡한 조합 문제를 직관적이고 다루기 쉽게 만듭니다. 실용적 성과 — 개선된 속성을 가진 새로운 결함 허용 스케줄 — 가 프레임워크를 검증합니다. 베이컨-쇼어 및 서브시스템 코드 커뮤니티에게 이 논문은 유용한 도구와 문제에 대해 생각하는 즐거운 방식 모두를 제공합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 13. floquet-bacon-shor
+  // ====================================================================
+  {
+    id: "floquet-bacon-shor",
+    date: "2025-04-11",
+    authors: "Sun, X., Li, L., Wu, Z., et al.",
+    venue: "Preprint 2025",
+    image: "images/floquet-bacon-shor/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Floquet Code", "Bacon-Shor", "Logical Operations"],
+    en: {
+      title: "Logical Operations with a Dynamical Qubit in Floquet-Bacon-Shor Code",
+      summary: "Demonstrates logical operations on a dynamical qubit encoded in the Floquet-Bacon-Shor code, showing how the periodic measurement schedule inherent to Floquet codes can be leveraged for fault-tolerant logical gates.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper shows how to perform <strong>fault-tolerant logical operations on a dynamical qubit</strong> in the Floquet-Bacon-Shor code, bridging the gap between Floquet code theory (which focuses on memory) and practical fault-tolerant computation (which requires gates).</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can logical operations — initialization, measurement, and Clifford gates — be performed on a dynamical qubit in the Floquet-Bacon-Shor code while maintaining fault tolerance, and what is the overhead compared to static subsystem code implementations?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Floquet codes are a class of dynamically generated quantum error correcting codes where the code space is not fixed but evolves periodically under a sequence of two-body measurements. The Floquet-Bacon-Shor code combines the Bacon-Shor subsystem code structure with Floquet dynamics, offering potential advantages in circuit depth and connectivity requirements. However, most Floquet code research has focused on the memory problem — preserving a logical qubit — while the equally important question of performing logical operations has received less attention.</p>
+        <p>The "dynamical qubit" in a Floquet code presents unique challenges for logical operations: the logical information moves between different physical degrees of freedom as the measurement schedule progresses, and any logical gate must be synchronized with this periodic evolution. This paper addresses these challenges by designing gate protocols that respect the Floquet dynamics.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Floquet-Bacon-Shor encoding:</strong> The code is defined on a 2D grid with a periodic sequence of X-type and Z-type gauge measurements. The logical qubit exists as a dynamical degree of freedom that cycles through different instantaneous code spaces.</li>
+          <li><strong>Logical initialization:</strong> Fault-tolerant preparation of logical |0⟩ and |+⟩ states by appropriately conditioning the first few rounds of the Floquet schedule.</li>
+          <li><strong>Logical measurement:</strong> Destructive measurement of the logical qubit in the X or Z basis by modifying the final rounds of the Floquet schedule to project onto the logical eigenstate.</li>
+          <li><strong>Logical Clifford gates:</strong> Implementation of logical H, S, and CNOT gates by modifying the Floquet measurement schedule at specific rounds — effectively "twisting" the periodic dynamics to implement the desired unitary on the logical space.</li>
+          <li><strong>Fault-tolerance analysis:</strong> Circuit-level noise simulations verify that the logical gate protocols maintain the code's error correction capability.</li>
+        </ul>
+
+        <figure>
+          <img src="images/floquet-bacon-shor/thumbnail.png" alt="Floquet-Bacon-Shor logical operations">
+          <figcaption>Thumbnail: Logical operations in the Floquet-Bacon-Shor code.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/floquet-bacon-shor/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/floquet-bacon-shor/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Complete logical gate set:</strong> First demonstration of initialization, measurement, and Clifford gates for the Floquet-Bacon-Shor code.</li>
+          <li><strong>Schedule-based gates:</strong> Logical gates are implemented by modifying the measurement schedule rather than applying additional physical gates, leveraging the Floquet structure.</li>
+          <li><strong>Fault-tolerance preservation:</strong> Shows that logical operations do not compromise the code's error correction capability when properly synchronized with the Floquet dynamics.</li>
+          <li><strong>Overhead analysis:</strong> Compares the resource cost to static Bacon-Shor implementations, quantifying the trade-offs of the Floquet approach.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code sizes</td><td>d = 3, 5, 7 Floquet-Bacon-Shor codes</td></tr>
+            <tr><td>Floquet period</td><td>Depends on code size; typically 2-4 measurement rounds per period</td></tr>
+            <tr><td>Gate protocols</td><td>Schedule modifications for H, S, CNOT</td></tr>
+            <tr><td>Noise model</td><td>Circuit-level depolarizing noise</td></tr>
+            <tr><td>Simulation</td><td>Stim-based with BP+OSD decoding</td></tr>
+            <tr><td>Metrics</td><td>Logical error rate per gate, comparison to static Bacon-Shor</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Operation</th><th>Logical Error Rate (d=5)</th><th>vs. Static Bacon-Shor</th></tr></thead>
+          <tbody>
+            <tr><td>Memory (idle)</td><td>Comparable to static code</td><td>Slight advantage in circuit depth</td></tr>
+            <tr><td>Logical H</td><td>Small overhead above memory</td><td>Comparable</td></tr>
+            <tr><td>Logical S</td><td>Moderate overhead</td><td>Slightly higher than static</td></tr>
+            <tr><td>Logical CNOT</td><td>Largest overhead</td><td>Comparable to lattice surgery</td></tr>
+          </tbody>
+        </table>
+        <p>The Floquet approach achieves competitive logical error rates with potentially simpler hardware requirements (only two-body measurements, no high-weight stabilizers). The overhead of logical gates is modest, with the main cost being the synchronization rounds needed to properly interface the gate with the Floquet dynamics.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Completes the Floquet-Bacon-Shor code as a framework for computation, not just memory.</li>
+          <li>Schedule-based gates are elegant — they use the Floquet structure rather than fighting it.</li>
+          <li>Only two-body measurements required, matching the hardware capabilities of current devices.</li>
+          <li>Thorough fault-tolerance analysis with circuit-level noise simulations.</li>
+          <li>Clear comparison to static Bacon-Shor enables informed architecture choices.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Non-Clifford gates (T-gate) are not addressed — universality requires additional techniques (magic state injection).</li>
+          <li>The synchronization overhead for logical gates adds latency compared to transversal gates in other codes.</li>
+          <li>Decoding complexity increases during gate operations due to the modified schedule.</li>
+          <li>Limited to the Bacon-Shor variant — generalization to other Floquet codes is not demonstrated.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can magic state injection be adapted to the Floquet-Bacon-Shor dynamical qubit for universal computation?</li>
+          <li>How does the Floquet gate overhead scale with code distance compared to lattice surgery on surface codes?</li>
+          <li>Can the schedule-based gate approach be generalized to other Floquet codes (e.g., honeycomb code)?</li>
+          <li>What is the optimal decoder for the modified schedules during logical gate operations?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper transforms the Floquet-Bacon-Shor code from a memory-only curiosity into a viable computational framework. The key insight — that logical gates can be implemented by schedule modifications rather than additional physical operations — is both elegant and practically important. For groups exploring alternatives to the surface code for near-term fault-tolerant demonstrations, the Floquet-Bacon-Shor code with these logical operations is now a serious contender.</p>
+      `
+    },
+    ko: {
+      title: "플로케-베이컨-쇼어 코드에서 동적 큐비트의 논리 연산",
+      summary: "플로케-베이컨-쇼어 코드에 인코딩된 동적 큐비트에서의 논리 연산을 시연하며, 플로케 코드 고유의 주기적 측정 스케줄을 결함 허용 논리 게이트에 활용할 수 있음을 보여줍니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 플로케-베이컨-쇼어 코드의 <strong>동적 큐비트에서 결함 허용 논리 연산</strong>을 수행하는 방법을 보여주어, 플로케 코드 이론(메모리에 초점)과 실용적 결함 허용 계산(게이트 필요) 사이의 간극을 연결합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>플로케-베이컨-쇼어 코드의 동적 큐비트에서 초기화, 측정, 클리포드 게이트 등의 논리 연산을 결함 허용을 유지하면서 수행하는 방법은 무엇이며, 정적 서브시스템 코드 구현에 비해 오버헤드는 어떠한가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>플로케 코드는 코드 공간이 고정되지 않고 이체 측정의 시퀀스에 따라 주기적으로 진화하는 동적으로 생성된 양자 오류 정정 코드의 한 종류입니다. 플로케-베이컨-쇼어 코드는 베이컨-쇼어 서브시스템 코드 구조와 플로케 동역학을 결합하여 회로 깊이와 연결성 요구 사항에서 잠재적 이점을 제공합니다. 그러나 대부분의 플로케 코드 연구는 메모리 문제 — 논리 큐비트 보존 — 에 초점을 맞추었으며, 논리 연산 수행이라는 동등하게 중요한 질문은 덜 주목받았습니다.</p>
+        <p>플로케 코드의 "동적 큐비트"는 논리 연산에 고유한 도전을 제시합니다: 논리 정보가 측정 스케줄이 진행됨에 따라 서로 다른 물리적 자유도 사이를 이동하며, 모든 논리 게이트는 이 주기적 진화와 동기화되어야 합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>플로케-베이컨-쇼어 인코딩:</strong> 코드는 X-유형과 Z-유형 게이지 측정의 주기적 시퀀스가 있는 2D 그리드에 정의됩니다.</li>
+          <li><strong>논리적 초기화:</strong> 플로케 스케줄의 처음 몇 라운드를 적절히 조건화하여 논리적 |0⟩ 및 |+⟩ 상태를 결함 허용으로 준비합니다.</li>
+          <li><strong>논리적 측정:</strong> 플로케 스케줄의 마지막 라운드를 수정하여 논리 큐비트를 X 또는 Z 기저에서 파괴적으로 측정합니다.</li>
+          <li><strong>논리적 클리포드 게이트:</strong> 특정 라운드에서 플로케 측정 스케줄을 수정하여 논리적 H, S, CNOT 게이트를 구현합니다 — 효과적으로 논리 공간에서 원하는 유니터리를 구현하기 위해 주기적 동역학을 "비틉니다".</li>
+          <li><strong>결함 허용 분석:</strong> 회로 수준 잡음 시뮬레이션이 논리 게이트 프로토콜이 코드의 오류 정정 능력을 유지함을 검증합니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/floquet-bacon-shor/thumbnail.png" alt="플로케-베이컨-쇼어 논리 연산">
+          <figcaption>Thumbnail: 플로케-베이컨-쇼어 코드에서의 논리 연산.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/floquet-bacon-shor/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/floquet-bacon-shor/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>완전한 논리 게이트 세트:</strong> 플로케-베이컨-쇼어 코드에 대한 초기화, 측정, 클리포드 게이트의 최초 시연입니다.</li>
+          <li><strong>스케줄 기반 게이트:</strong> 추가 물리 게이트를 적용하는 대신 측정 스케줄을 수정하여 논리 게이트를 구현하며, 플로케 구조를 활용합니다.</li>
+          <li><strong>결함 허용 보존:</strong> 논리 연산이 플로케 동역학과 적절히 동기화될 때 코드의 오류 정정 능력을 손상시키지 않음을 보여줍니다.</li>
+          <li><strong>오버헤드 분석:</strong> 정적 베이컨-쇼어 구현과 자원 비용을 비교하여 플로케 접근법의 트레이드오프를 정량화합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드 크기</td><td>d = 3, 5, 7 플로케-베이컨-쇼어 코드</td></tr>
+            <tr><td>플로케 주기</td><td>코드 크기에 의존; 일반적으로 주기당 2-4 측정 라운드</td></tr>
+            <tr><td>게이트 프로토콜</td><td>H, S, CNOT를 위한 스케줄 수정</td></tr>
+            <tr><td>잡음 모델</td><td>회로 수준 탈분극 잡음</td></tr>
+            <tr><td>시뮬레이션</td><td>BP+OSD 디코딩을 사용한 Stim 기반</td></tr>
+            <tr><td>지표</td><td>게이트당 논리적 오류율, 정적 베이컨-쇼어와 비교</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>연산</th><th>논리적 오류율(d=5)</th><th>정적 베이컨-쇼어 대비</th></tr></thead>
+          <tbody>
+            <tr><td>메모리(유휴)</td><td>정적 코드와 비교 가능</td><td>회로 깊이에서 약간의 이점</td></tr>
+            <tr><td>논리적 H</td><td>메모리 위로 작은 오버헤드</td><td>비교 가능</td></tr>
+            <tr><td>논리적 S</td><td>중간 오버헤드</td><td>정적보다 약간 높음</td></tr>
+            <tr><td>논리적 CNOT</td><td>가장 큰 오버헤드</td><td>격자 수술과 비교 가능</td></tr>
+          </tbody>
+        </table>
+        <p>플로케 접근법은 잠재적으로 더 간단한 하드웨어 요구 사항(이체 측정만, 고중량 안정기 없음)으로 경쟁력 있는 논리적 오류율을 달성합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>플로케-베이컨-쇼어 코드를 메모리뿐 아닌 계산을 위한 프레임워크로 완성합니다.</li>
+          <li>스케줄 기반 게이트가 우아합니다 — 플로케 구조와 싸우는 대신 활용합니다.</li>
+          <li>이체 측정만 필요하여 현재 장치의 하드웨어 능력에 맞습니다.</li>
+          <li>회로 수준 잡음 시뮬레이션을 통한 철저한 결함 허용 분석입니다.</li>
+          <li>정적 베이컨-쇼어와의 명확한 비교가 정보에 기반한 아키텍처 선택을 가능하게 합니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>비클리포드 게이트(T-게이트)가 다루어지지 않으며, 보편성은 추가 기술(매직 스테이트 주입)이 필요합니다.</li>
+          <li>논리 게이트를 위한 동기화 오버헤드가 다른 코드의 트랜스버설 게이트에 비해 지연을 추가합니다.</li>
+          <li>수정된 스케줄로 인해 게이트 연산 중 디코딩 복잡성이 증가합니다.</li>
+          <li>베이컨-쇼어 변형에 한정되며, 다른 플로케 코드로의 일반화가 시연되지 않습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>매직 스테이트 주입을 보편적 계산을 위한 플로케-베이컨-쇼어 동적 큐비트에 적응시킬 수 있는가?</li>
+          <li>플로케 게이트 오버헤드가 표면 코드의 격자 수술과 비교하여 코드 거리에 따라 어떻게 확장되는가?</li>
+          <li>스케줄 기반 게이트 접근법을 다른 플로케 코드(예: 벌집 코드)로 일반화할 수 있는가?</li>
+          <li>논리 게이트 연산 중 수정된 스케줄에 대한 최적 디코더는 무엇인가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 플로케-베이컨-쇼어 코드를 메모리만의 호기심에서 실행 가능한 계산 프레임워크로 변환합니다. 핵심 통찰 — 논리 게이트를 추가 물리 연산이 아닌 스케줄 수정으로 구현할 수 있다는 것 — 은 우아하고 실질적으로 중요합니다. 근단기 결함 허용 시연을 위해 표면 코드의 대안을 탐구하는 그룹에게 이러한 논리 연산이 있는 플로케-베이컨-쇼어 코드는 이제 심각한 경쟁자입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 14. detector-likelihood-qec
+  // ====================================================================
+  {
+    id: "detector-likelihood-qec",
+    date: "2025-04-11",
+    authors: "Hesner, I., Hetényi, B., Wootton, J. R.",
+    venue: "Preprint 2024",
+    image: "images/detector-likelihood-qec/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "QEC", "Benchmarking", "Detector Likelihood"],
+    en: {
+      title: "Using Detector Likelihood for Benchmarking Quantum Error Correction",
+      summary: "Proposes detector likelihood as a decoder-independent metric for benchmarking QEC experiments, providing a measure of how well the observed syndrome statistics match the expected noise model without requiring actual decoding.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper introduces <strong>detector likelihood</strong> as a principled, decoder-independent metric for QEC benchmarking, enabling fair comparison of QEC experiments across different hardware platforms and code implementations without the confound of decoder performance.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can a decoder-independent metric based on the likelihood of observed detector events provide a meaningful and practical benchmark for quantum error correction experiments, complementing or replacing logical error rate as the primary figure of merit?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>The standard metric for QEC performance is the logical error rate, measured by running many rounds of syndrome extraction and decoding. However, the logical error rate conflates two distinct factors: (1) how well the hardware performs (physical error rates, correlated noise, leakage) and (2) how well the decoder performs (matching efficiency, noise model accuracy). This makes it difficult to compare QEC experiments across different groups that use different decoders.</p>
+        <p>Furthermore, the logical error rate provides limited diagnostic information — when it is poor, it does not distinguish between "the hardware has high error rates" and "the decoder is poorly matched to the noise." A decoder-independent metric would separate these concerns, enabling hardware teams to benchmark their QEC implementations without being penalized or advantaged by decoder choice.</p>
+        <p>Detector likelihood provides such a metric: it measures how consistent the observed syndrome statistics are with the assumed noise model, without actually performing decoding. High detector likelihood indicates that the hardware noise is well-characterized and the syndromes are as expected; low detector likelihood flags model mismatch or unexpected noise sources.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Detector events:</strong> In the Stim framework, detectors are parity checks on measurement outcomes that should be deterministic in the absence of errors. A detector "firing" indicates an error has occurred.</li>
+          <li><strong>Likelihood computation:</strong> Given a noise model, the probability of each observed detector event pattern is computed. The detector likelihood is the average log-probability of the observed patterns across many experimental shots.</li>
+          <li><strong>Model comparison:</strong> Different noise models can be compared by their detector likelihoods on the same experimental data — the model that best explains the data has the highest likelihood.</li>
+          <li><strong>Diagnostic use:</strong> Anomalously low likelihood for specific detectors pinpoints which stabilizers or qubit regions have unexpected noise behavior.</li>
+        </ul>
+
+        <figure>
+          <img src="images/detector-likelihood-qec/thumbnail.png" alt="Detector likelihood benchmarking framework">
+          <figcaption>Thumbnail: Detector likelihood as a QEC benchmarking metric.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/detector-likelihood-qec/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/detector-likelihood-qec/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Decoder-independent QEC metric:</strong> First proposal and validation of detector likelihood as a standalone QEC benchmark.</li>
+          <li><strong>Noise model validation:</strong> Provides a principled way to assess whether a noise model accurately describes the hardware behavior.</li>
+          <li><strong>Diagnostic capability:</strong> Enables spatial and temporal localization of noise model mismatches.</li>
+          <li><strong>Practical computation:</strong> Shows that detector likelihood can be computed efficiently for sparse noise models relevant to QEC.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Codes tested</td><td>Surface code (d=3,5,7), repetition code</td></tr>
+            <tr><td>Data sources</td><td>Simulated (Stim) and real hardware (IBM, Google) data</td></tr>
+            <tr><td>Noise models</td><td>Depolarizing, phenomenological, circuit-level, experimentally calibrated</td></tr>
+            <tr><td>Likelihood computation</td><td>Exact for small codes; sampling-based approximation for larger codes</td></tr>
+            <tr><td>Comparison metrics</td><td>Logical error rate (with various decoders), detector likelihood</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Experiment</th><th>Logical Error Rate</th><th>Detector Likelihood</th><th>Insight</th></tr></thead>
+          <tbody>
+            <tr><td>Good hardware + good decoder</td><td>Low</td><td>High</td><td>Both metrics agree</td></tr>
+            <tr><td>Good hardware + poor decoder</td><td>Moderate</td><td>High</td><td>Likelihood correctly identifies good hardware</td></tr>
+            <tr><td>Poor hardware + good decoder</td><td>Moderate</td><td>Low</td><td>Likelihood correctly identifies hardware issues</td></tr>
+            <tr><td>Noise model mismatch</td><td>Variable</td><td>Very low</td><td>Likelihood detects model mismatch that logical error rate misses</td></tr>
+          </tbody>
+        </table>
+        <p>The key result is that detector likelihood separates hardware quality from decoder quality, and additionally serves as a noise model validation tool. Experiments with high detector likelihood but poor logical error rates clearly indicate decoder issues; experiments with low detector likelihood indicate hardware or model problems regardless of the logical error rate.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Addresses a real need — the QEC community lacks standardized decoder-independent benchmarks.</li>
+          <li>Principled statistical framework based on likelihood, a well-understood concept.</li>
+          <li>Diagnostic value goes beyond a single number — spatial and temporal likelihood maps reveal noise structure.</li>
+          <li>Compatible with the Stim ecosystem, enabling wide adoption.</li>
+          <li>Validated on both simulated and real hardware data.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Requires a noise model to compute likelihood — the metric is only as good as the model it evaluates against.</li>
+          <li>Does not replace logical error rate — it complements it, adding a different perspective.</li>
+          <li>Computation becomes expensive for large codes with many detectors.</li>
+          <li>Sensitivity to rare but important error events (e.g., leakage) may be limited by finite sampling.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Should detector likelihood become a standard reported metric alongside logical error rate in QEC papers?</li>
+          <li>Can detector likelihood be used to automatically tune noise models for better decoder performance?</li>
+          <li>How does detector likelihood relate to other information-theoretic quantities like mutual information between errors and syndromes?</li>
+          <li>Can the framework be extended to detect non-Markovian noise or temporal correlations?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>Detector likelihood is a simple but powerful idea: measure how well the hardware matches the noise model, independently of decoding. As QEC experiments become more sophisticated and cross-platform comparisons become more important, having a decoder-independent benchmark is essential. This paper provides a well-motivated, practically computable, and diagnostically rich metric that the QEC community should seriously consider adopting.</p>
+      `
+    },
+    ko: {
+      title: "양자 오류 정정 벤치마킹을 위한 디텍터 우도 사용",
+      summary: "실제 디코딩 없이 관찰된 신드롬 통계가 예상 잡음 모델과 얼마나 잘 일치하는지 측정하는 디코더 독립적 QEC 벤치마킹 지표로서 디텍터 우도를 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>디텍터 우도</strong>를 QEC 벤치마킹을 위한 원칙적이고 디코더 독립적인 지표로 도입하여, 디코더 성능의 교란 변수 없이 서로 다른 하드웨어 플랫폼과 코드 구현에 걸쳐 QEC 실험의 공정한 비교를 가능하게 합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>관찰된 디텍터 이벤트의 우도에 기반한 디코더 독립적 지표가 양자 오류 정정 실험을 위한 의미 있고 실용적인 벤치마크를 제공할 수 있으며, 논리적 오류율을 주요 성능 지표로서 보완하거나 대체할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>QEC 성능의 표준 지표는 논리적 오류율로, 많은 라운드의 신드롬 추출과 디코딩을 실행하여 측정됩니다. 그러나 논리적 오류율은 두 가지 구별되는 요인을 혼합합니다: (1) 하드웨어가 얼마나 잘 수행되는가(물리적 오류율, 상관 잡음, 누출)와 (2) 디코더가 얼마나 잘 수행되는가(매칭 효율, 잡음 모델 정확도). 이는 서로 다른 디코더를 사용하는 그룹 간 QEC 실험 비교를 어렵게 합니다.</p>
+        <p>또한 논리적 오류율은 제한된 진단 정보를 제공합니다 — 성능이 좋지 않을 때 "하드웨어의 오류율이 높다"와 "디코더가 잡음에 잘 맞지 않는다"를 구별하지 못합니다. 디코더 독립적 지표는 이러한 관심사를 분리하여 하드웨어 팀이 디코더 선택에 의해 불이익을 받거나 이점을 얻지 않고 QEC 구현을 벤치마킹할 수 있게 합니다.</p>
+        <p>디텍터 우도는 실제 디코딩을 수행하지 않고 관찰된 신드롬 통계가 가정된 잡음 모델과 얼마나 일관되는지를 측정하여 그러한 지표를 제공합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>디텍터 이벤트:</strong> Stim 프레임워크에서 디텍터는 오류가 없을 때 결정적이어야 하는 측정 결과에 대한 패리티 검사입니다.</li>
+          <li><strong>우도 계산:</strong> 잡음 모델이 주어지면, 관찰된 각 디텍터 이벤트 패턴의 확률을 계산합니다. 디텍터 우도는 많은 실험 샷에 걸친 관찰된 패턴의 평균 로그 확률입니다.</li>
+          <li><strong>모델 비교:</strong> 서로 다른 잡음 모델을 동일한 실험 데이터에서 디텍터 우도로 비교할 수 있으며, 데이터를 가장 잘 설명하는 모델이 가장 높은 우도를 가집니다.</li>
+          <li><strong>진단 사용:</strong> 특정 디텍터에 대한 비정상적으로 낮은 우도가 예상치 못한 잡음 행동을 가진 안정기 또는 큐비트 영역을 지적합니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/detector-likelihood-qec/thumbnail.png" alt="디텍터 우도 벤치마킹 프레임워크">
+          <figcaption>Thumbnail: QEC 벤치마킹 지표로서의 디텍터 우도.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/detector-likelihood-qec/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/detector-likelihood-qec/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>디코더 독립적 QEC 지표:</strong> 독립적 QEC 벤치마크로서 디텍터 우도의 최초 제안 및 검증입니다.</li>
+          <li><strong>잡음 모델 검증:</strong> 잡음 모델이 하드웨어 행동을 정확히 설명하는지 평가하는 원칙적 방법을 제공합니다.</li>
+          <li><strong>진단 능력:</strong> 잡음 모델 불일치의 공간적 및 시간적 지역화를 가능하게 합니다.</li>
+          <li><strong>실용적 계산:</strong> QEC에 관련된 희소 잡음 모델에 대해 디텍터 우도를 효율적으로 계산할 수 있음을 보여줍니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>테스트된 코드</td><td>표면 코드(d=3,5,7), 반복 코드</td></tr>
+            <tr><td>데이터 소스</td><td>시뮬레이션(Stim) 및 실제 하드웨어(IBM, Google) 데이터</td></tr>
+            <tr><td>잡음 모델</td><td>탈분극, 현상학적, 회로 수준, 실험적으로 교정된</td></tr>
+            <tr><td>우도 계산</td><td>작은 코드에서 정확; 큰 코드에서 샘플링 기반 근사</td></tr>
+            <tr><td>비교 지표</td><td>논리적 오류율(다양한 디코더), 디텍터 우도</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>실험</th><th>논리적 오류율</th><th>디텍터 우도</th><th>통찰</th></tr></thead>
+          <tbody>
+            <tr><td>좋은 하드웨어 + 좋은 디코더</td><td>낮음</td><td>높음</td><td>두 지표가 일치</td></tr>
+            <tr><td>좋은 하드웨어 + 나쁜 디코더</td><td>중간</td><td>높음</td><td>우도가 좋은 하드웨어를 올바르게 식별</td></tr>
+            <tr><td>나쁜 하드웨어 + 좋은 디코더</td><td>중간</td><td>낮음</td><td>우도가 하드웨어 문제를 올바르게 식별</td></tr>
+            <tr><td>잡음 모델 불일치</td><td>가변적</td><td>매우 낮음</td><td>우도가 논리적 오류율이 놓치는 모델 불일치를 감지</td></tr>
+          </tbody>
+        </table>
+        <p>핵심 결과는 디텍터 우도가 하드웨어 품질과 디코더 품질을 분리하며, 추가로 잡음 모델 검증 도구로도 역할한다는 것입니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>실제 필요를 다룹니다 — QEC 커뮤니티에 표준화된 디코더 독립적 벤치마크가 부족합니다.</li>
+          <li>잘 이해된 개념인 우도에 기반한 원칙적 통계 프레임워크입니다.</li>
+          <li>진단 가치가 단일 숫자를 넘어갑니다 — 공간적 및 시간적 우도 맵이 잡음 구조를 드러냅니다.</li>
+          <li>Stim 생태계와 호환되어 널리 채택이 가능합니다.</li>
+          <li>시뮬레이션 및 실제 하드웨어 데이터 모두에서 검증되었습니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>우도를 계산하려면 잡음 모델이 필요합니다 — 지표는 평가하는 모델만큼만 좋습니다.</li>
+          <li>논리적 오류율을 대체하지 않으며, 다른 관점을 추가하여 보완합니다.</li>
+          <li>많은 디텍터가 있는 큰 코드에서 계산이 비용이 높아집니다.</li>
+          <li>드물지만 중요한 오류 이벤트(예: 누출)에 대한 감도가 유한 샘플링에 의해 제한될 수 있습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>디텍터 우도가 QEC 논문에서 논리적 오류율과 함께 표준 보고 지표가 되어야 하는가?</li>
+          <li>디텍터 우도를 더 나은 디코더 성능을 위해 잡음 모델을 자동으로 조정하는 데 사용할 수 있는가?</li>
+          <li>디텍터 우도가 오류와 신드롬 사이의 상호 정보와 같은 다른 정보 이론적 양과 어떻게 관련되는가?</li>
+          <li>프레임워크를 비마르코프 잡음이나 시간적 상관관계를 감지하도록 확장할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>디텍터 우도는 단순하지만 강력한 아이디어입니다: 디코딩과 독립적으로 하드웨어가 잡음 모델과 얼마나 잘 일치하는지 측정합니다. QEC 실험이 더 정교해지고 교차 플랫폼 비교가 더 중요해짐에 따라, 디코더 독립적 벤치마크를 갖는 것이 필수적입니다. 이 논문은 QEC 커뮤니티가 채택을 심각하게 고려해야 할 잘 동기 부여되고, 실질적으로 계산 가능하며, 진단적으로 풍부한 지표를 제공합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 15. dc-mbqc
+  // ====================================================================
+  {
+    id: "dc-mbqc",
+    date: "2025-04-11",
+    authors: "Xue, Y., Yang, R., Liang, Z., Li, T.",
+    venue: "Preprint 2025",
+    image: "images/dc-mbqc/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "MBQC", "Distributed Computing", "Compilation"],
+    en: {
+      title: "DC-MBQC: A Distributed Compilation Framework for Measurement-Based Quantum Computing",
+      summary: "Presents a distributed compilation framework for measurement-based quantum computing that partitions computation across multiple quantum processing units connected by entanglement links, optimizing for communication cost and resource usage.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper addresses the <strong>compilation challenge for distributed measurement-based quantum computing</strong>, providing a framework that automatically partitions MBQC graph states across quantum processing units and optimizes inter-node entanglement consumption.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can measurement-based quantum computations be efficiently compiled and distributed across multiple quantum processing units (QPUs) connected by entanglement links, minimizing the inter-node communication overhead?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Measurement-based quantum computing (MBQC) is an alternative computational model where computation proceeds by adaptive single-qubit measurements on a pre-prepared entangled resource state (typically a cluster or graph state). While MBQC is theoretically universal, scaling it to large computations faces the same fundamental challenge as circuit-model QC: single quantum processors have limited qubit counts.</p>
+        <p>Distributed quantum computing addresses this by connecting multiple QPUs via entanglement links (Bell pairs). For the circuit model, distributed compilation is relatively well-studied, but for MBQC, the compilation problem is qualitatively different: the computation is defined by a graph state and measurement pattern, and the graph must be partitioned across QPUs with inter-node edges replaced by entanglement consumption protocols.</p>
+        <p>DC-MBQC provides the first comprehensive compilation framework for this setting, handling graph state partitioning, measurement order optimization, and entanglement resource management.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Graph state partitioning:</strong> The MBQC graph state is partitioned into subgraphs assigned to different QPUs. The partitioning minimizes the number of inter-node edges (which require Bell pair consumption) while balancing qubit load across QPUs.</li>
+          <li><strong>Entanglement-mediated edges:</strong> Inter-node edges in the graph state are implemented using pre-shared Bell pairs and local operations + classical communication (LOCC), with the framework tracking Bell pair consumption.</li>
+          <li><strong>Measurement scheduling:</strong> The adaptive measurement order is optimized to respect both the causal structure of the computation (some measurements must precede others) and the distributed setting (minimize idle time while waiting for classical feedforward across QPUs).</li>
+          <li><strong>Resource optimization:</strong> The framework jointly optimizes graph partitioning, Bell pair allocation, and measurement scheduling to minimize total execution time and entanglement cost.</li>
+        </ul>
+
+        <figure>
+          <img src="images/dc-mbqc/thumbnail.png" alt="DC-MBQC distributed compilation framework">
+          <figcaption>Thumbnail: DC-MBQC framework for distributed measurement-based quantum computing.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/dc-mbqc/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/dc-mbqc/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>First MBQC-native distributed compiler:</strong> Previous distributed compilation work targets the circuit model; this is the first framework designed specifically for MBQC graph states.</li>
+          <li><strong>Graph partitioning algorithms:</strong> Develops partitioning algorithms that exploit the structure of MBQC graph states (e.g., cluster state regularity) for efficient distribution.</li>
+          <li><strong>Joint optimization:</strong> Simultaneously optimizes partitioning, entanglement allocation, and measurement scheduling — these are typically treated separately.</li>
+          <li><strong>Scalability analysis:</strong> Provides scaling results showing how entanglement cost grows with computation size and QPU count.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Graph state types</td><td>2D cluster states, brickwork states, arbitrary graph states</td></tr>
+            <tr><td>QPU count</td><td>2 to 16 QPUs in experiments</td></tr>
+            <tr><td>Qubits per QPU</td><td>10 to 100</td></tr>
+            <tr><td>Partitioning algorithms</td><td>METIS-based, spectral, custom MBQC-aware heuristic</td></tr>
+            <tr><td>Entanglement model</td><td>Pre-shared Bell pairs with finite generation rate</td></tr>
+            <tr><td>Benchmarks</td><td>Random circuits compiled to MBQC, QFT, Grover, VQE ansatze</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Benchmark</th><th>Entanglement Cost (Bell pairs)</th><th>Execution Time Overhead</th><th>vs. Naive Partitioning</th></tr></thead>
+          <tbody>
+            <tr><td>QFT (20 qubits, 4 QPUs)</td><td>Moderate</td><td>~1.5x vs. single QPU</td><td>40% reduction in Bell pairs</td></tr>
+            <tr><td>Grover (16 qubits, 4 QPUs)</td><td>Low-moderate</td><td>~1.3x</td><td>35% reduction</td></tr>
+            <tr><td>Random circuit (50 qubits, 8 QPUs)</td><td>Higher</td><td>~2x</td><td>50% reduction</td></tr>
+            <tr><td>VQE ansatz (30 qubits, 4 QPUs)</td><td>Low</td><td>~1.2x</td><td>30% reduction</td></tr>
+          </tbody>
+        </table>
+        <p>The MBQC-aware partitioning consistently outperforms naive graph partitioning (e.g., METIS without MBQC-specific adaptations), with the advantage growing for more structured computations like QFT and VQE where the graph state has exploitable regularity.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Fills an important gap — distributed MBQC compilation was previously unexplored.</li>
+          <li>Joint optimization of partitioning, entanglement, and scheduling is the right approach for a coupled problem.</li>
+          <li>Practical MBQC-aware heuristics outperform generic graph partitioning tools.</li>
+          <li>Comprehensive benchmark suite covering diverse quantum algorithms.</li>
+          <li>Clear scaling analysis helps predict resource requirements for larger systems.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Assumes perfect Bell pair generation — noisy entanglement links would require entanglement purification overhead.</li>
+          <li>Classical communication latency between QPUs is modeled simplistically.</li>
+          <li>The framework does not incorporate fault tolerance — integrating with topological MBQC is future work.</li>
+          <li>Partitioning algorithms are heuristic — optimality gaps are not quantified.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How does the framework extend to fault-tolerant MBQC with topological cluster states?</li>
+          <li>Can the compilation be adapted to heterogeneous QPU networks with different qubit counts and connectivity?</li>
+          <li>How does entanglement generation rate limit the practical speedup of distributed MBQC?</li>
+          <li>Is there a fundamental communication complexity lower bound for distributed MBQC that these heuristics approach?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>DC-MBQC provides the missing compilation layer for distributed measurement-based quantum computing. As quantum networks mature and multi-QPU architectures become practical, the ability to efficiently compile MBQC computations across distributed nodes will be essential. This framework lays the groundwork and demonstrates that MBQC-aware compilation can significantly reduce entanglement costs compared to generic approaches.</p>
+      `
+    },
+    ko: {
+      title: "DC-MBQC: 측정 기반 양자 컴퓨팅을 위한 분산 컴파일 프레임워크",
+      summary: "얽힘 링크로 연결된 여러 양자 처리 장치에 걸쳐 계산을 분할하고 통신 비용과 자원 사용을 최적화하는 측정 기반 양자 컴퓨팅의 분산 컴파일 프레임워크를 제시합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>분산 측정 기반 양자 컴퓨팅의 컴파일 과제</strong>를 다루며, MBQC 그래프 상태를 양자 처리 장치에 걸쳐 자동으로 분할하고 노드 간 얽힘 소비를 최적화하는 프레임워크를 제공합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>얽힘 링크로 연결된 여러 양자 처리 장치(QPU)에 걸쳐 측정 기반 양자 계산을 효율적으로 컴파일하고 분산하여 노드 간 통신 오버헤드를 최소화할 수 있는 방법은 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>측정 기반 양자 컴퓨팅(MBQC)은 미리 준비된 얽힌 자원 상태(일반적으로 클러스터 또는 그래프 상태)에 대한 적응적 단일 큐비트 측정으로 계산이 진행되는 대안적 계산 모델입니다. MBQC는 이론적으로 보편적이지만, 대규모 계산으로의 확장은 회로 모델 QC와 동일한 근본적 도전에 직면합니다: 단일 양자 프로세서의 큐비트 수가 제한되어 있습니다.</p>
+        <p>분산 양자 컴퓨팅은 얽힘 링크(벨 쌍)를 통해 여러 QPU를 연결하여 이를 해결합니다. 회로 모델의 경우 분산 컴파일이 비교적 잘 연구되었지만, MBQC의 경우 컴파일 문제가 질적으로 다릅니다: 계산이 그래프 상태와 측정 패턴으로 정의되며, 그래프가 QPU에 걸쳐 분할되어야 하고 노드 간 엣지가 얽힘 소비 프로토콜로 대체되어야 합니다.</p>
+        <p>DC-MBQC는 이 설정을 위한 최초의 포괄적 컴파일 프레임워크를 제공하며, 그래프 상태 분할, 측정 순서 최적화, 얽힘 자원 관리를 다룹니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>그래프 상태 분할:</strong> MBQC 그래프 상태를 다른 QPU에 할당된 부분 그래프로 분할합니다. 분할은 노드 간 엣지 수(벨 쌍 소비 필요)를 최소화하면서 QPU 간 큐비트 부하를 균형 맞춥니다.</li>
+          <li><strong>얽힘 매개 엣지:</strong> 그래프 상태의 노드 간 엣지는 사전 공유된 벨 쌍과 국소 연산 + 고전 통신(LOCC)을 사용하여 구현되며, 프레임워크가 벨 쌍 소비를 추적합니다.</li>
+          <li><strong>측정 스케줄링:</strong> 적응적 측정 순서가 계산의 인과 구조(일부 측정이 다른 것에 선행해야 함)와 분산 설정(QPU 간 고전 피드포워드를 기다리는 동안 유휴 시간 최소화) 모두를 존중하도록 최적화됩니다.</li>
+          <li><strong>자원 최적화:</strong> 프레임워크가 그래프 분할, 벨 쌍 할당, 측정 스케줄링을 공동으로 최적화하여 총 실행 시간과 얽힘 비용을 최소화합니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/dc-mbqc/thumbnail.png" alt="DC-MBQC 분산 컴파일 프레임워크">
+          <figcaption>Thumbnail: 분산 측정 기반 양자 컴퓨팅을 위한 DC-MBQC 프레임워크.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/dc-mbqc/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/dc-mbqc/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>최초의 MBQC 네이티브 분산 컴파일러:</strong> 이전의 분산 컴파일 연구는 회로 모델을 대상으로 했으며, 이는 MBQC 그래프 상태를 위해 특별히 설계된 최초의 프레임워크입니다.</li>
+          <li><strong>그래프 분할 알고리즘:</strong> 효율적 분산을 위해 MBQC 그래프 상태의 구조(예: 클러스터 상태 규칙성)를 활용하는 분할 알고리즘을 개발합니다.</li>
+          <li><strong>공동 최적화:</strong> 일반적으로 별도로 처리되는 분할, 얽힘 할당, 측정 스케줄링을 동시에 최적화합니다.</li>
+          <li><strong>확장성 분석:</strong> 계산 크기와 QPU 수에 따라 얽힘 비용이 어떻게 증가하는지 보여주는 확장 결과를 제공합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>그래프 상태 유형</td><td>2D 클러스터 상태, 벽돌 상태, 임의 그래프 상태</td></tr>
+            <tr><td>QPU 수</td><td>실험에서 2~16 QPU</td></tr>
+            <tr><td>QPU당 큐비트</td><td>10~100</td></tr>
+            <tr><td>분할 알고리즘</td><td>METIS 기반, 스펙트럴, 맞춤형 MBQC 인식 휴리스틱</td></tr>
+            <tr><td>얽힘 모델</td><td>유한 생성률의 사전 공유 벨 쌍</td></tr>
+            <tr><td>벤치마크</td><td>MBQC로 컴파일된 무작위 회로, QFT, 그로버, VQE 안자츠</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>벤치마크</th><th>얽힘 비용(벨 쌍)</th><th>실행 시간 오버헤드</th><th>순진 분할 대비</th></tr></thead>
+          <tbody>
+            <tr><td>QFT(20큐비트, 4 QPU)</td><td>중간</td><td>단일 QPU 대비 ~1.5배</td><td>벨 쌍 40% 감소</td></tr>
+            <tr><td>그로버(16큐비트, 4 QPU)</td><td>중하</td><td>~1.3배</td><td>35% 감소</td></tr>
+            <tr><td>무작위 회로(50큐비트, 8 QPU)</td><td>높음</td><td>~2배</td><td>50% 감소</td></tr>
+            <tr><td>VQE 안자츠(30큐비트, 4 QPU)</td><td>낮음</td><td>~1.2배</td><td>30% 감소</td></tr>
+          </tbody>
+        </table>
+        <p>MBQC 인식 분할이 순진한 그래프 분할(예: MBQC 특화 적응 없는 METIS)을 일관되게 능가하며, QFT와 VQE처럼 그래프 상태가 활용 가능한 규칙성을 가진 더 구조화된 계산에서 이점이 커집니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>중요한 공백을 채웁니다 — 분산 MBQC 컴파일은 이전에 탐구되지 않았습니다.</li>
+          <li>분할, 얽힘, 스케줄링의 공동 최적화가 결합된 문제에 대한 올바른 접근법입니다.</li>
+          <li>실용적 MBQC 인식 휴리스틱이 일반적 그래프 분할 도구를 능가합니다.</li>
+          <li>다양한 양자 알고리즘을 다루는 포괄적 벤치마크 모음입니다.</li>
+          <li>명확한 확장 분석이 더 큰 시스템의 자원 요구 예측에 도움이 됩니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>완벽한 벨 쌍 생성을 가정합니다 — 잡음 있는 얽힘 링크는 얽힘 정화 오버헤드를 필요로 합니다.</li>
+          <li>QPU 간 고전 통신 지연이 단순하게 모델링됩니다.</li>
+          <li>프레임워크가 결함 허용을 포함하지 않으며, 위상적 MBQC와의 통합은 향후 연구입니다.</li>
+          <li>분할 알고리즘이 휴리스틱이며, 최적성 간극이 정량화되지 않습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>프레임워크가 위상적 클러스터 상태를 사용한 결함 허용 MBQC로 어떻게 확장되는가?</li>
+          <li>컴파일을 서로 다른 큐비트 수와 연결성을 가진 이기종 QPU 네트워크에 적응시킬 수 있는가?</li>
+          <li>얽힘 생성률이 분산 MBQC의 실용적 속도 향상을 어떻게 제한하는가?</li>
+          <li>이 휴리스틱이 접근하는 분산 MBQC에 대한 근본적 통신 복잡도 하한이 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>DC-MBQC는 분산 측정 기반 양자 컴퓨팅의 누락된 컴파일 계층을 제공합니다. 양자 네트워크가 성숙하고 다중 QPU 아키텍처가 실용적이 되면, 분산 노드에 걸쳐 MBQC 계산을 효율적으로 컴파일하는 능력이 필수적이 됩니다. 이 프레임워크는 기초를 놓고 MBQC 인식 컴파일이 일반적 접근법에 비해 얽힘 비용을 상당히 줄일 수 있음을 보여줍니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 16. clifford-compass-codes
+  // ====================================================================
+  {
+    id: "clifford-compass-codes",
+    date: "2025-04-11",
+    authors: "Campos, J. A., Brown, K. R.",
+    venue: "Preprint 2025",
+    image: "images/clifford-compass-codes/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Compass Codes", "Clifford Deformation", "QEC"],
+    en: {
+      title: "Clifford-Deformed Compass Codes",
+      summary: "Applies Clifford deformations to compass codes — a family interpolating between the surface code and Bacon-Shor code — to tailor their error correction properties to biased noise, achieving improved thresholds under realistic noise models.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper applies <strong>Clifford deformations to compass codes</strong>, demonstrating that the noise-adaptation benefits of Clifford deformation (previously shown for surface codes) extend to the broader compass code family, enabling fine-grained optimization of codes for biased noise channels.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can Clifford deformations be applied to compass codes — the family of codes interpolating between surface codes and Bacon-Shor codes — to improve their performance under biased noise, and how do the optimal deformations depend on the code's position in the compass code family?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Compass codes are a family of CSS subsystem codes defined on a 2D grid that smoothly interpolates between the surface code (all weight-4 stabilizers) and the Bacon-Shor code (weight-2 gauge operators). By adjusting which gauge operators are promoted to stabilizers, one can tune the code's properties — trading surface-code-like locality for Bacon-Shor-like gauge flexibility.</p>
+        <p>Clifford deformation is a technique that applies single-qubit Clifford rotations to the data qubits of a stabilizer code, effectively transforming the stabilizers while preserving the code's distance and logical operators. On surface codes, Clifford deformation has been shown to dramatically improve performance under biased noise (e.g., Z-biased depolarizing noise) by aligning the code's sensitivity with the noise structure.</p>
+        <p>This paper explores whether the benefits of Clifford deformation extend to the compass code family and how the optimal deformation changes as one moves from the surface code to the Bacon-Shor code along the compass code interpolation.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Compass code construction:</strong> Starting from a 2D grid, compass codes are constructed by choosing which pairs of adjacent gauge operators to merge into weight-4 stabilizers. The choice defines a point in the compass code family.</li>
+          <li><strong>Clifford deformation:</strong> Single-qubit Clifford gates (H, S, HS, etc.) are applied to selected data qubits, transforming the stabilizer generators. The code distance is preserved but the stabilizer weights and types change.</li>
+          <li><strong>Noise model:</strong> Biased Pauli noise channels where Z errors occur more frequently than X or Y errors, parameterized by a bias ratio η = p_Z / p_X.</li>
+          <li><strong>Optimization:</strong> For each compass code instance and noise bias, the optimal Clifford deformation is found by exhaustive search (small codes) or heuristic optimization (larger codes), maximizing the threshold or minimizing the logical error rate.</li>
+        </ul>
+
+        <figure>
+          <img src="images/clifford-compass-codes/thumbnail.png" alt="Clifford-deformed compass codes">
+          <figcaption>Thumbnail: Compass code family with Clifford deformation for biased noise.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/clifford-compass-codes/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Clifford deformation for compass codes:</strong> First application of Clifford deformation beyond the surface code to the broader compass code family.</li>
+          <li><strong>Bias-dependent optimal deformations:</strong> Maps how the optimal Clifford deformation changes as a function of both noise bias and position in the compass code family.</li>
+          <li><strong>Threshold improvements:</strong> Demonstrates significant threshold improvements under biased noise for compass codes that interpolate between surface and Bacon-Shor.</li>
+          <li><strong>Design guidelines:</strong> Provides practical guidance on which compass code + deformation combination is optimal for a given bias level.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code sizes</td><td>d = 3, 5, 7, 9 compass codes</td></tr>
+            <tr><td>Compass code instances</td><td>Full interpolation from surface code to Bacon-Shor</td></tr>
+            <tr><td>Clifford deformations</td><td>All single-qubit Cliffords applied per-qubit</td></tr>
+            <tr><td>Noise models</td><td>Biased depolarizing with η = 1 (unbiased) to η = 1000</td></tr>
+            <tr><td>Decoders</td><td>MWPM, BP+OSD adapted for deformed codes</td></tr>
+            <tr><td>Simulation</td><td>Stim circuit-level simulation</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Compass Code Type</th><th>Unbiased (η=1)</th><th>Moderate Bias (η=10)</th><th>High Bias (η=100)</th></tr></thead>
+          <tbody>
+            <tr><td>Surface code (no deformation)</td><td>Baseline</td><td>Baseline</td><td>Baseline</td></tr>
+            <tr><td>Surface code + deformation</td><td>Similar</td><td>Improved</td><td>Significantly improved</td></tr>
+            <tr><td>Compass (mid-family) + deformation</td><td>Similar</td><td>Best at moderate bias</td><td>Competitive</td></tr>
+            <tr><td>Near-Bacon-Shor + deformation</td><td>Slightly worse</td><td>Competitive</td><td>Best at high bias</td></tr>
+          </tbody>
+        </table>
+        <p>The results reveal an interesting landscape: the optimal code + deformation combination shifts as the noise bias changes. At moderate bias, compass codes in the middle of the family (between surface and Bacon-Shor) with appropriate deformations can outperform both endpoints. At high bias, near-Bacon-Shor deformed codes become optimal.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Natural extension — Clifford deformation and compass codes are both well-studied individually; combining them yields new insights.</li>
+          <li>Practical relevance — many quantum hardware platforms exhibit biased noise (e.g., Z-bias in superconducting qubits).</li>
+          <li>Complete landscape mapping — systematic exploration of the code-deformation-bias parameter space.</li>
+          <li>Actionable results — clear recommendations for which code+deformation to use at each bias level.</li>
+          <li>Compatible with standard decoding infrastructure.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Optimization over Clifford deformations is exponential in qubit count — scalable heuristics are needed for large codes.</li>
+          <li>Only Pauli biased noise is considered — more complex noise structures (e.g., coherent errors, leakage) are not addressed.</li>
+          <li>Compass codes share the surface code's sub-optimal encoding rate — qLDPC codes may be more efficient overall.</li>
+          <li>Decoder adaptation to deformed codes may require additional implementation effort in practice.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can Clifford deformation be applied to qLDPC codes, or is the compass/surface code locality essential?</li>
+          <li>How do Clifford-deformed compass codes compare to the XZZX surface code, which also targets biased noise?</li>
+          <li>Can the optimal deformation be learned online by monitoring the noise bias during QEC operation?</li>
+          <li>Is there a theoretical framework predicting the optimal deformation from the noise channel without brute-force search?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper demonstrates that the combination of compass codes and Clifford deformation creates a rich design space for noise-adapted quantum error correction. The key practical insight is that the optimal code is not always the surface code or the Bacon-Shor code — intermediate compass codes with appropriate deformations can outperform both under biased noise. For hardware teams with characterized noise bias, this work provides a menu of optimized code choices that can improve fault-tolerant performance without changing the hardware.</p>
+      `
+    },
+    ko: {
+      title: "클리포드 변형 나침반 코드",
+      summary: "표면 코드와 베이컨-쇼어 코드 사이를 보간하는 나침반 코드 계열에 클리포드 변형을 적용하여 편향 잡음에 대한 오류 정정 특성을 맞춤화하고 현실적 잡음 모델에서 개선된 임계값을 달성합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>나침반 코드에 클리포드 변형</strong>을 적용하여, 클리포드 변형의 잡음 적응 이점(이전에 표면 코드에서 보여진)이 더 넓은 나침반 코드 계열로 확장됨을 보여주며, 편향 잡음 채널에 대한 코드의 세밀한 최적화를 가능하게 합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>표면 코드와 베이컨-쇼어 코드 사이를 보간하는 나침반 코드 계열에 클리포드 변형을 적용하여 편향 잡음에서의 성능을 개선할 수 있으며, 최적 변형이 나침반 코드 계열에서의 코드 위치에 어떻게 의존하는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>나침반 코드는 표면 코드(모든 가중치-4 안정기)와 베이컨-쇼어 코드(가중치-2 게이지 연산자) 사이를 매끄럽게 보간하는 2D 그리드에 정의된 CSS 서브시스템 코드 계열입니다. 어떤 게이지 연산자를 안정기로 승격시킬지 조정하여 코드의 속성을 조절할 수 있습니다.</p>
+        <p>클리포드 변형은 안정기 코드의 데이터 큐비트에 단일 큐비트 클리포드 회전을 적용하여 코드의 거리와 논리 연산자를 보존하면서 안정기를 효과적으로 변환하는 기술입니다. 표면 코드에서 클리포드 변형은 코드의 감도를 잡음 구조에 맞추어 편향 잡음에서 성능을 극적으로 향상시키는 것으로 나타났습니다.</p>
+        <p>이 논문은 클리포드 변형의 이점이 나침반 코드 계열로 확장되는지와 나침반 코드 보간에서 표면 코드에서 베이컨-쇼어 코드로 이동할 때 최적 변형이 어떻게 변하는지를 탐구합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>나침반 코드 구성:</strong> 2D 그리드에서 시작하여 인접한 게이지 연산자 쌍 중 어떤 것을 가중치-4 안정기로 병합할지 선택하여 나침반 코드를 구성합니다.</li>
+          <li><strong>클리포드 변형:</strong> 선택된 데이터 큐비트에 단일 큐비트 클리포드 게이트(H, S, HS 등)를 적용하여 안정기 생성자를 변환합니다. 코드 거리는 보존되지만 안정기 가중치와 유형이 변합니다.</li>
+          <li><strong>잡음 모델:</strong> Z 오류가 X 또는 Y 오류보다 더 자주 발생하는 편향 파울리 잡음 채널, 편향 비율 η = p_Z / p_X로 매개변수화됩니다.</li>
+          <li><strong>최적화:</strong> 각 나침반 코드 인스턴스와 잡음 편향에 대해 완전 검색(작은 코드) 또는 휴리스틱 최적화(더 큰 코드)로 최적 클리포드 변형을 찾습니다.</li>
+        </ul>
+
+        <figure>
+          <img src="images/clifford-compass-codes/thumbnail.png" alt="클리포드 변형 나침반 코드">
+          <figcaption>Thumbnail: 편향 잡음에 대한 클리포드 변형이 적용된 나침반 코드 계열.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/clifford-compass-codes/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>나침반 코드를 위한 클리포드 변형:</strong> 표면 코드를 넘어 더 넓은 나침반 코드 계열에 대한 클리포드 변형의 최초 적용입니다.</li>
+          <li><strong>편향 의존적 최적 변형:</strong> 잡음 편향과 나침반 코드 계열에서의 위치 모두의 함수로 최적 클리포드 변형이 어떻게 변하는지 매핑합니다.</li>
+          <li><strong>임계값 개선:</strong> 표면 코드와 베이컨-쇼어 사이를 보간하는 나침반 코드에서 편향 잡음 하의 상당한 임계값 개선을 보여줍니다.</li>
+          <li><strong>설계 지침:</strong> 주어진 편향 수준에 대해 어떤 나침반 코드 + 변형 조합이 최적인지에 대한 실용적 지침을 제공합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드 크기</td><td>d = 3, 5, 7, 9 나침반 코드</td></tr>
+            <tr><td>나침반 코드 인스턴스</td><td>표면 코드에서 베이컨-쇼어까지의 전체 보간</td></tr>
+            <tr><td>클리포드 변형</td><td>큐비트당 적용되는 모든 단일 큐비트 클리포드</td></tr>
+            <tr><td>잡음 모델</td><td>η = 1(비편향)에서 η = 1000까지의 편향 탈분극</td></tr>
+            <tr><td>디코더</td><td>변형된 코드에 적응된 MWPM, BP+OSD</td></tr>
+            <tr><td>시뮬레이션</td><td>Stim 회로 수준 시뮬레이션</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>나침반 코드 유형</th><th>비편향(η=1)</th><th>중간 편향(η=10)</th><th>높은 편향(η=100)</th></tr></thead>
+          <tbody>
+            <tr><td>표면 코드(변형 없음)</td><td>기준선</td><td>기준선</td><td>기준선</td></tr>
+            <tr><td>표면 코드 + 변형</td><td>유사</td><td>개선</td><td>상당히 개선</td></tr>
+            <tr><td>나침반(계열 중간) + 변형</td><td>유사</td><td>중간 편향에서 최고</td><td>경쟁적</td></tr>
+            <tr><td>근베이컨-쇼어 + 변형</td><td>약간 나쁨</td><td>경쟁적</td><td>높은 편향에서 최고</td></tr>
+          </tbody>
+        </table>
+        <p>결과는 흥미로운 경관을 드러냅니다: 최적 코드 + 변형 조합이 잡음 편향이 변함에 따라 이동합니다. 중간 편향에서는 적절한 변형이 있는 계열 중간의 나침반 코드가 양 끝점 모두를 능가할 수 있습니다. 높은 편향에서는 근베이컨-쇼어 변형 코드가 최적이 됩니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>자연스러운 확장 — 클리포드 변형과 나침반 코드는 개별적으로 잘 연구되었으며, 결합이 새로운 통찰을 산출합니다.</li>
+          <li>실용적 관련성 — 많은 양자 하드웨어 플랫폼이 편향 잡음을 보입니다(예: 초전도 큐비트의 Z 편향).</li>
+          <li>완전한 경관 매핑 — 코드-변형-편향 매개변수 공간의 체계적 탐구입니다.</li>
+          <li>실행 가능한 결과 — 각 편향 수준에서 어떤 코드+변형을 사용할지에 대한 명확한 권고입니다.</li>
+          <li>표준 디코딩 인프라와 호환됩니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>클리포드 변형에 대한 최적화가 큐비트 수에 지수적이며, 큰 코드에는 확장 가능한 휴리스틱이 필요합니다.</li>
+          <li>파울리 편향 잡음만 고려되며, 더 복잡한 잡음 구조(예: 결맞는 오류, 누출)는 다루지 않습니다.</li>
+          <li>나침반 코드는 표면 코드의 최적이 아닌 인코딩 비율을 공유하며, qLDPC 코드가 전반적으로 더 효율적일 수 있습니다.</li>
+          <li>변형된 코드에 대한 디코더 적응이 실제로 추가 구현 노력을 필요로 할 수 있습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>클리포드 변형을 qLDPC 코드에 적용할 수 있는가, 아니면 나침반/표면 코드의 국소성이 필수적인가?</li>
+          <li>클리포드 변형 나침반 코드가 역시 편향 잡음을 대상으로 하는 XZZX 표면 코드와 어떻게 비교되는가?</li>
+          <li>QEC 운영 중 잡음 편향을 모니터링하여 최적 변형을 온라인으로 학습할 수 있는가?</li>
+          <li>무차별 대입 검색 없이 잡음 채널에서 최적 변형을 예측하는 이론적 프레임워크가 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 나침반 코드와 클리포드 변형의 조합이 잡음 적응 양자 오류 정정을 위한 풍부한 설계 공간을 만들어냄을 보여줍니다. 핵심 실용적 통찰은 최적 코드가 항상 표면 코드나 베이컨-쇼어 코드가 아니라는 것입니다 — 적절한 변형이 있는 중간 나침반 코드가 편향 잡음에서 둘 다를 능가할 수 있습니다. 특성화된 잡음 편향이 있는 하드웨어 팀에게 이 연구는 하드웨어를 변경하지 않고 결함 허용 성능을 향상시킬 수 있는 최적화된 코드 선택 메뉴를 제공합니다.</p>
+      `
+    }
+  },
 ];
