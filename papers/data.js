@@ -1195,7 +1195,7 @@ const PAPERS = [
     authors: "Matos, F., Durães, J., Cunha, J.",
     venue: "Informatics 2025",
     image: "images/sensor-failure-simulation/thumbnail.png",
-    link: "",
+    link: "https://www.mdpi.com/2227-9709/12/3/94",
     domain: "autonomous-driving",
     tags: ["Autonomous Driving", "Sensor Failure", "Safety", "Simulation"],
     en: {
@@ -1389,7 +1389,7 @@ const PAPERS = [
     authors: "Werling, M., Ziegler, J., Kammel, S., Thrun, S.",
     venue: "ICRA 2010",
     image: "images/frenet-trajectory/thumbnail.png",
-    link: "",
+    link: "https://ieeexplore.ieee.org/document/5509799/",
     domain: "autonomous-driving",
     tags: ["Autonomous Driving", "Trajectory Planning", "Frenet Frame"],
     en: {
@@ -1567,7 +1567,7 @@ const PAPERS = [
     authors: "Ma, L., Xue, J., Kawabata, K., Zhu, J., Ma, C., Zheng, N.",
     venue: "T-ITS 2015",
     image: "images/sampling-motion-planning/thumbnail.png",
-    link: "",
+    link: "https://ieeexplore.ieee.org/document/7042261/",
     domain: "autonomous-driving",
     tags: ["Autonomous Driving", "Motion Planning", "RRT", "Sampling"],
     en: {
@@ -1760,7 +1760,7 @@ const PAPERS = [
     authors: "Fu, M., Song, W., Yang, Y., Wang, M.",
     venue: "ITSC 2015",
     image: "images/urban-path-planning/thumbnail.png",
-    link: "",
+    link: "https://ieeexplore.ieee.org/document/7313209",
     domain: "autonomous-driving",
     tags: ["Autonomous Driving", "Path Planning", "Decision Making", "Urban"],
     en: {
@@ -1953,7 +1953,7 @@ const PAPERS = [
     authors: "Vu, T. M., Moezzi, R., Cyrus, J., Hlava, J.",
     venue: "Electronics 2021",
     image: "images/mpc-autonomous-driving/thumbnail.png",
-    link: "",
+    link: "https://www.mdpi.com/2079-9292/10/21/2593",
     domain: "autonomous-driving",
     tags: ["Autonomous Driving", "MPC", "Trajectory Tracking", "Control"],
     en: {
@@ -2128,7 +2128,7 @@ const PAPERS = [
     authors: "Saradagi, A., Sankaranarayanan, V. N., et al.",
     venue: "CEP 2025",
     image: "images/switched-cbf-docking/thumbnail.png",
-    link: "",
+    link: "https://www.sciencedirect.com/science/article/pii/S0967066125000371",
     domain: "ai-security",
     tags: ["AI Security", "CBF", "Docking Control", "Space"],
     en: {
@@ -2531,7 +2531,7 @@ const PAPERS = [
     authors: "Bloem, R., Konighofer, B., Konighofer, R., Wang, C.",
     venue: "TACAS 2015",
     image: "images/shield-synthesis/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/1501.02573",
     domain: "ai-security",
     tags: ["AI Security", "Shield Synthesis", "Runtime Enforcement", "Formal Methods"],
     en: {
@@ -2735,7 +2735,7 @@ const PAPERS = [
     authors: "Sabashvili, A.",
     venue: "Preprint 2025",
     image: "images/conformal-prediction-timeseries/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2601.18509",
     domain: "deep-learning",
     tags: ["Deep Learning", "Conformal Prediction", "Time Series", "Uncertainty"],
     en: {
@@ -2907,7 +2907,7 @@ const PAPERS = [
     authors: "Gu, A., Dao, T.",
     venue: "COLM 2024",
     image: "images/mamba/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2312.00752",
     domain: "deep-learning",
     tags: ["Deep Learning", "SSM", "Sequence Modeling", "Selective State Space"],
     en: {
@@ -3090,7 +3090,7 @@ const PAPERS = [
     authors: "Adam, C., Oles, K., Romanczukiewicz, T., Wereszczynski, A.",
     venue: "PRL 2019",
     image: "images/soliton-spectral-walls/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/1903.12100",
     domain: "deep-learning",
     tags: ["Physics", "Solitons", "Spectral Structure", "Field Theory"],
     en: {
@@ -3259,7 +3259,7 @@ const PAPERS = [
     authors: "Yankelevich, V., Porciani, C.",
     venue: "MNRAS 2019",
     image: "images/cosmo-bispectrum/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/1807.07076",
     domain: "deep-learning",
     tags: ["Physics", "Cosmology", "Bispectrum", "Fisher Matrix"],
     en: {
@@ -3460,7 +3460,7 @@ const PAPERS = [
     authors: "Yang, H., Krishnan, V., Sinha, S., Mahadevan, L.",
     venue: "Preprint 2025",
     image: "images/optimal-transport-hjb/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2604.07762",
     domain: "deep-learning",
     tags: ["Deep Learning", "Optimal Transport", "Generative Model", "HJB"],
     en: {
@@ -3630,7 +3630,7 @@ const PAPERS = [
     authors: "Bogorad, Z., Elsharkawy, I., Kahn, Y.",
     venue: "Preprint 2026",
     image: "images/generative-phase-space/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2604.02415",
     domain: "deep-learning",
     tags: ["Deep Learning", "Generative Model", "Phase Space", "Particle Physics"],
     en: {
@@ -3835,7 +3835,7 @@ const PAPERS = [
     authors: "Dai, Y., Chen, S., Jia, X., Yu, R.",
     venue: "KDD 2026",
     image: "images/flow-learners-pde/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2604.07366",
     domain: "deep-learning",
     tags: ["Deep Learning", "PDE", "Flow Matching", "Scientific Computing"],
     en: {
@@ -4011,7 +4011,7 @@ const PAPERS = [
     authors: "Wang, Q., Shen, H., Wang, L., et al.",
     venue: "Applied Intelligence 2026",
     image: "images/fbao-backdoor/thumbnail.png",
-    link: "",
+    link: "https://link.springer.com/article/10.1007/s10489-026-07156-7",
     tags: ["AI Security", "Backdoor Attack", "Object Detection", "Frequency"],
     en: {
       title: "FBAO: Backdoor Attack Against Object Detection via Frequency Noise Injection",
@@ -4212,7 +4212,7 @@ const PAPERS = [
     authors: "Høyheim, E., Eckhoff, M. W., Grov, G., et al.",
     venue: "MILCOM 2024",
     image: "images/backdoor-active-paths/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.10641",
     tags: ["AI Security", "Backdoor Detection", "Neural Network", "Intrusion Detection"],
     en: {
       title: "Detecting and Eliminating Neural Network Backdoors Through Active Paths with Application to Intrusion Detection",
@@ -4421,7 +4421,7 @@ const PAPERS = [
     authors: "Cohen, M. H., Molnar, T. G., Ames, A. D.",
     venue: "ARCRAS 2024",
     image: "images/cbf-reduced-order/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2403.09865",
     tags: ["AI Security", "CBF", "Safety", "Reduced-Order Models"],
     en: {
       title: "Safety-Critical Control for Autonomous Systems: Control Barrier Functions via Reduced-Order Models",
@@ -4625,7 +4625,7 @@ const PAPERS = [
     authors: "Knoedler, L., So, O., Yin, J., et al.",
     venue: "RA-L 2025",
     image: "images/policy-cbf-runtime/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2410.11157",
     tags: ["AI Security", "CBF", "Safety Filter", "Runtime"],
     en: {
       title: "Safety on the Fly: Constructing Robust Safety Filters via Policy Control Barrier Functions at Runtime",
@@ -4823,7 +4823,7 @@ const PAPERS = [
     authors: "Guler, B., Pompetzki, K., Sun, Y., et al.",
     venue: "Preprint 2025",
     image: "images/safety-aware-shared-autonomy/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.01705",
     tags: ["AI Security", "Shared Autonomy", "CBF", "Manipulation"],
     en: {
       title: "A Safety-Aware Shared Autonomy Framework with Barrier Functions for Robotic Manipulation",
@@ -5016,7 +5016,7 @@ const PAPERS = [
     authors: "Yang, L., Werner, B., de Sa, M., Ames, A. D.",
     venue: "Preprint 2025",
     image: "images/cbf-rl/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2510.14959",
     tags: ["AI Security", "CBF", "Reinforcement Learning", "Safety Filter"],
     en: {
       title: "CBF-RL: Safety Filtering Reinforcement Learning in Training with Control Barrier Functions",
@@ -5216,7 +5216,7 @@ const PAPERS = [
     authors: "Tayal, M., Tayal, M., Prakash, R.",
     venue: "Preprint 2025",
     image: "images/v-ocbf/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2512.10822",
     tags: ["AI Security", "CBF", "Offline Learning", "Safety Filter"],
     en: {
       title: "V-OCBF: Learning Safety Filters from Offline Data via Value-Guided Offline Control Barrier Functions",
@@ -5484,7 +5484,7 @@ const PAPERS = [
     authors: "Derajic, B., Bernhard, S., Hoenig, W.",
     venue: "Preprint 2025",
     image: "images/cn-cbf/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.06921",
     tags: ["AI Security", "Neural CBF", "Robot Navigation", "Dynamic Environment"],
     en: {
       title: "CN-CBF: Composite Neural Control Barrier Function for Safe Robot Navigation in Dynamic Environments",
@@ -5683,7 +5683,7 @@ const PAPERS = [
     authors: "Liu, S., Huang, Z., Belta, C. A.",
     venue: "Preprint 2025",
     image: "images/cbf-obstacle-avoidance/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2509.16037",
     tags: ["AI Security", "CBF", "Obstacle Avoidance", "SDF"],
     en: {
       title: "Learning Safety for Obstacle Avoidance via Control Barrier Functions",
@@ -5897,7 +5897,7 @@ const PAPERS = [
     authors: "Liang, F., Yang, Y., Dai, S.-L.",
     venue: "Preprint 2025",
     image: "images/pointcloud-cbf-mpc/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2510.02885",
     tags: ["AI Security", "CBF", "MPC", "Point Cloud", "Mobile Robot"],
     en: {
       title: "Point Cloud-Based Control Barrier Functions for Model Predictive Control in Safety-Critical Navigation of Autonomous Mobile Robots",
@@ -6121,7 +6121,7 @@ const PAPERS = [
     authors: "Yin, X., Liang, C., Guo, Y., Mei, J.",
     venue: "Preprint 2025",
     image: "images/log-gp-cbf/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2512.01668",
     tags: ["AI Security", "CBF", "Gaussian Process", "Dynamic Environment"],
     en: {
       title: "Dynamic Log-Gaussian Process Control Barrier Function for Safe Robotic Navigation in Dynamic Environments",
@@ -6329,7 +6329,7 @@ const PAPERS = [
     authors: "Smaili, L., Berkane, S.",
     venue: "IFAC 2025",
     image: "images/perception-limited-safety/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2512.17057",
     tags: ["AI Security", "Safety Filter", "Perception", "Smooth Control"],
     en: {
       title: "Perception-Limited Smooth Safety Filtering",
@@ -6517,7 +6517,7 @@ const PAPERS = [
     authors: "Wayo, D. D. K., Onah, C., Goliatt, L., Groppe, S.",
     venue: "Preprint 2025",
     image: "images/gkp-decoder-dependence/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.25757",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "GKP", "Surface Code", "Threshold"],
     en: {
@@ -6737,7 +6737,7 @@ const PAPERS = [
     authors: "Di Bella, A.",
     venue: "Preprint 2025",
     image: "images/geometry-correlated-noise/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2604.01040",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "qLDPC", "Correlated Noise", "Routing"],
     en: {
@@ -6959,7 +6959,7 @@ const PAPERS = [
     authors: "Liu, K., Xu, S., Jochym-O'Connor, T., et al.",
     venue: "Preprint 2025",
     image: "images/magic-state-injection-qldpc/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2604.05126",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Magic State", "qLDPC", "Fault Tolerance"],
     en: {
@@ -7175,7 +7175,7 @@ const PAPERS = [
     authors: "Menti, L., Lázaro, F.",
     venue: "Preprint 2025",
     image: "images/neural-belief-matching/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.21730",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "QEC", "Neural Decoder", "Belief Propagation"],
     en: {
@@ -7385,7 +7385,7 @@ const PAPERS = [
     authors: "Shirgure, S., Kökcü, E., Mitra, A., et al.",
     venue: "Preprint 2025",
     image: "images/dynamic-quantum-circuits/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2604.03360",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Dynamic Circuits", "Benchmarking", "Mid-Circuit"],
     en: {
@@ -7603,7 +7603,7 @@ const PAPERS = [
     authors: "Zhang, B., Xu, P., Chen, X., Zhuang, Q.",
     venue: "PRL 2024",
     image: "images/quantum-ddpm/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2310.05866",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Quantum ML", "DDPM", "Generative"],
     en: {
@@ -7833,7 +7833,7 @@ const PAPERS = [
     authors: "Kwun, G., Zhang, B., Zhuang, Q.",
     venue: "Preprint 2025",
     image: "images/mixed-state-qddpm/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2411.17608",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Quantum ML", "Mixed State", "DDPM"],
     en: {
@@ -8083,7 +8083,7 @@ const PAPERS = [
     authors: "Cao, H., Zhang, K., Tao, D., Su, Z.",
     venue: "Preprint 2025",
     image: "images/barren-plateaus-qddpm/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2512.06695",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Barren Plateau", "DDPM", "Trainability"],
     en: {
@@ -8291,7 +8291,7 @@ const PAPERS = [
     authors: "Homayouni-Sangari, M., Ramezanpour, A.",
     venue: "Preprint 2025",
     image: "images/rl-quantum-search/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2604.04137",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Quantum Search", "Reinforcement", "Noise"],
     en: {
@@ -8501,7 +8501,7 @@ const PAPERS = [
     authors: "Rowland, J., Sarkar, R., Sawaya, N. P. D., Tubman, N. M., LaRose, R.",
     venue: "Preprint 2025",
     image: "images/overlapped-groupings/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2604.07156",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "VQE", "Variance Reduction", "Grouping"],
     en: {
@@ -8703,7 +8703,7 @@ const PAPERS = [
     authors: "Ma, M., Jaiswal, R., Niu, M. Y.",
     venue: "Preprint 2025",
     image: "images/mosaic-error-cancellation/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.26063",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Error Mitigation", "PEC", "Scalability"],
     en: {
@@ -8943,7 +8943,7 @@ const PAPERS = [
     authors: "Alam, M. S., Zen, J., Scruby, T. R.",
     venue: "Preprint 2026",
     image: "images/bacon-shor-board-games/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2504.02749",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Bacon-Shor Code", "Measurement Schedule", "Fault Tolerance"],
     en: {
@@ -9149,7 +9149,7 @@ const PAPERS = [
     authors: "Sun, X., Li, L., Wu, Z., et al.",
     venue: "Preprint 2025",
     image: "images/floquet-bacon-shor/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2503.03867",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Floquet Code", "Bacon-Shor", "Logical Operations"],
     en: {
@@ -9357,7 +9357,7 @@ const PAPERS = [
     authors: "Hesner, I., Hetényi, B., Wootton, J. R.",
     venue: "Preprint 2024",
     image: "images/detector-likelihood-qec/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2408.02082",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "QEC", "Benchmarking", "Detector Likelihood"],
     en: {
@@ -9571,7 +9571,7 @@ const PAPERS = [
     authors: "Xue, Y., Yang, R., Liang, Z., Li, T.",
     venue: "Preprint 2025",
     image: "images/dc-mbqc/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2601.00214",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "MBQC", "Distributed Computing", "Compilation"],
     en: {
@@ -9779,7 +9779,7 @@ const PAPERS = [
     authors: "Campos, J. A., Brown, K. R.",
     venue: "Preprint 2025",
     image: "images/clifford-compass-codes/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2412.03808",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Compass Codes", "Clifford Deformation", "QEC"],
     en: {
@@ -9982,7 +9982,7 @@ const PAPERS = [
     authors: "Chengyu, Y., et al.",
     venue: "Preprint 2025",
     image: "images/bayesian-qec-discovery/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2601.18562",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "QEC", "Bayesian Optimization"],
     en: {
@@ -10203,7 +10203,7 @@ const PAPERS = [
     authors: "Liu, Y., et al.",
     venue: "Preprint 2025",
     image: "images/alphasyndrome/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2601.12509",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "QEC", "Reinforcement Learning"],
     en: {
@@ -10396,7 +10396,7 @@ const PAPERS = [
     authors: "Baireuther, P., et al.",
     venue: "Quantum 2018",
     image: "images/ml-correlated-qubit-errors/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/1705.07855",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "QEC", "Machine Learning", "Surface Code"],
     en: {
@@ -10601,7 +10601,7 @@ const PAPERS = [
     authors: "Khatri, S., et al.",
     venue: "Quantum 2019",
     image: "images/quantum-assisted-compiling/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/1807.00800",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Quantum Compiling", "Variational"],
     en: {
@@ -10806,7 +10806,7 @@ const PAPERS = [
     authors: "Hines, J., et al.",
     venue: "Preprint 2025",
     image: "images/simulating-qec-beyond-pauli/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.18457",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "QEC", "Coherent Errors", "Simulation"],
     en: {
@@ -10995,7 +10995,7 @@ const PAPERS = [
     authors: "Lu, J. Z., et al.",
     venue: "Preprint 2026",
     image: "images/pqc-stabilizer-decoding/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.19110",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Post-Quantum Crypto", "Stabilizer Codes"],
     en: {
@@ -11190,7 +11190,7 @@ const PAPERS = [
     authors: "Chhetri, G., et al.",
     venue: "ACM Computing Surveys 2025",
     image: "images/pqc-quantum-safe-survey/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2510.10436",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Post-Quantum Crypto", "Survey", "NIST"],
     en: {
@@ -11425,7 +11425,7 @@ const PAPERS = [
     authors: "Kokare, P. N., et al.",
     venue: "Survey 2024",
     image: "images/pqc-past-future/thumbnail.png",
-    link: "",
+    link: "https://www.researchgate.net/publication/382398375",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Post-Quantum Crypto", "Survey", "Lattice"],
     en: {
@@ -11661,7 +11661,7 @@ const PAPERS = [
     authors: "Ahmed, N., Zhang, L., Gangopadhyay, A.",
     venue: "Preprint 2025",
     image: "images/pqc-library-survey/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2508.16078",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Post-Quantum Crypto", "Libraries"],
     en: {
@@ -11867,7 +11867,7 @@ const PAPERS = [
     authors: "Cao, H., et al.",
     venue: "Preprint 2025",
     image: "images/generative-decoding-qec/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2503.21374",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "QEC", "Generative Model", "Decoder"],
     en: {
@@ -12067,7 +12067,7 @@ const PAPERS = [
     authors: "Liu, Z., Gong, A., Clark, B. K.",
     venue: "Preprint 2025",
     image: "images/diffusion-decoding-qldpc/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2509.22347",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "qLDPC", "Diffusion Model", "Decoder"],
     en: {
@@ -12267,7 +12267,7 @@ const PAPERS = [
     authors: "Wiesemann, J., et al.",
     venue: "Preprint 2025",
     image: "images/finite-size-decoy-qkd/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2405.16578",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "QKD", "Finite-Size", "Security Proof"],
     en: {
@@ -12459,7 +12459,7 @@ const PAPERS = [
     authors: "Miles, J., et al.",
     venue: "Preprint 2025",
     image: "images/rydberg-gate-syndrome/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.13492",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "Rydberg Gate", "Syndrome Measurement"],
     en: {
@@ -12653,7 +12653,7 @@ const PAPERS = [
     authors: "Wayo, D. D. K., et al.",
     venue: "Preprint 2025",
     image: "images/lidmas-decoder/thumbnail.png",
-    link: "",
+    link: "https://arxiv.org/abs/2603.06730",
     domain: "quantum-computing",
     tags: ["Quantum Computing", "CV Codes", "Surface Code", "Decoder"],
     en: {
