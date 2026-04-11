@@ -1,6 +1,8 @@
 # Paper Reviews
 
 A bilingual (English / Korean) static site for structured paper reviews, hosted on GitHub Pages.
+<img width="1916" height="904" alt="image" src="https://github.com/user-attachments/assets/ee8ca6e0-d94b-4d9b-bdef-ab3061832bb9" />
+
 
 ## Features
 
