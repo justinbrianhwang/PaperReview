@@ -76,10 +76,7 @@ const PAPERS = [
         <h2>Architecture / Methodology</h2>
         <p>This paper belongs to the fourth paradigm of VLM usage in autonomous driving: <strong>native end-to-end VLA</strong>, where the VLM directly generates trajectory as a planner.</p>
 
-        <figure>
-          <img src="images/opendrivevla/fig1-paradigms.png" alt="Four paradigms of VLM in autonomous driving">
-          <figcaption>Figure 1 (from paper): Taxonomy of vision-language model applications in end-to-end autonomous driving.</figcaption>
-        </figure>
+        
 
         <table>
           <thead><tr><th>Paradigm</th><th>Planner Location</th><th>3D Grounding</th><th>Key Limitation / Differentiation</th></tr></thead>
@@ -99,9 +96,24 @@ const PAPERS = [
           <li><strong>Planning:</strong> Ego trajectory is generated autoregressively as a token sequence.</li>
         </ul>
 
+        
+
+        
         <figure>
-          <img src="images/opendrivevla/fig2-architecture.png" alt="OpenDriveVLA full architecture">
-          <figcaption>Figure 2 (from paper): OpenDriveVLA full architecture. Source: Zhou et al., AAAI 2026.</figcaption>
+          <img src="images/opendrivevla/fig1-paradigms.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/opendrivevla/fig2-architecture.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/opendrivevla/fig3-training.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/opendrivevla/fig4-qualitative.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
         </figure>
 
         <h2>Key Contributions</h2>
@@ -114,10 +126,7 @@ const PAPERS = [
         </ul>
 
         <h2>Training &amp; Implementation Details</h2>
-        <figure>
-          <img src="images/opendrivevla/fig3-training.png" alt="Training stages">
-          <figcaption>Figure 3 (from paper): Four-stage training pipeline. Source: Zhou et al., AAAI 2026.</figcaption>
-        </figure>
+        
 
         <table>
           <thead><tr><th>Stage</th><th>What It Does</th><th>Research Purpose</th></tr></thead>
@@ -143,10 +152,7 @@ const PAPERS = [
           </tbody>
         </table>
 
-        <figure>
-          <img src="images/opendrivevla/fig4-qualitative.png" alt="Qualitative results">
-          <figcaption>Figure 4 (from paper): Qualitative results showing command-following and QA capabilities. Source: Zhou et al., AAAI 2026.</figcaption>
-        </figure>
+        
 
         <h2>Strengths</h2>
         <ul>
@@ -202,10 +208,7 @@ const PAPERS = [
         <h2>전체 구조 / 방법론</h2>
         <p>자율주행에서 VLM을 사용하는 네 번째 패러다임인 <strong>native end-to-end VLA</strong>에 해당하며, VLM이 직접 trajectory를 생성하는 planner 역할을 맡습니다.</p>
 
-        <figure>
-          <img src="images/opendrivevla/fig1-paradigms.png" alt="자율주행에서 VLM의 네 가지 패러다임">
-          <figcaption>Figure 1 (원문): 자율주행에서의 비전-언어 모델 적용 분류. Source: Zhou et al., AAAI 2026.</figcaption>
-        </figure>
+        
 
         <table>
           <thead><tr><th>패러다임</th><th>Planner 위치</th><th>3D Grounding</th><th>핵심 한계 또는 차별점</th></tr></thead>
@@ -225,10 +228,7 @@ const PAPERS = [
           <li><strong>Planning:</strong> 최종적으로 ego trajectory를 token sequence처럼 autoregressive하게 생성한다.</li>
         </ul>
 
-        <figure>
-          <img src="images/opendrivevla/fig2-architecture.png" alt="OpenDriveVLA 전체 구조">
-          <figcaption>Figure 2 (원문): OpenDriveVLA 전체 구조. Source: Zhou et al., AAAI 2026.</figcaption>
-        </figure>
+        
 
         <h2>핵심 기여</h2>
         <ul>
@@ -240,10 +240,7 @@ const PAPERS = [
         </ul>
 
         <h2>학습 및 구현 세부사항</h2>
-        <figure>
-          <img src="images/opendrivevla/fig3-training.png" alt="학습 단계">
-          <figcaption>Figure 3 (원문): 핵심 학습 단계. Source: Zhou et al., AAAI 2026.</figcaption>
-        </figure>
+        
 
         <table>
           <thead><tr><th>단계</th><th>직접 하는 일</th><th>연구적으로 하는 일</th></tr></thead>
@@ -269,10 +266,7 @@ const PAPERS = [
           </tbody>
         </table>
 
-        <figure>
-          <img src="images/opendrivevla/fig4-qualitative.png" alt="정성적 결과">
-          <figcaption>Figure 4 (원문): Command-following과 QA 결과 시각화. Source: Zhou et al., AAAI 2026.</figcaption>
-        </figure>
+        
 
         <h2>강점</h2>
         <ul>
@@ -343,10 +337,7 @@ const PAPERS = [
         <h2>Architecture / Methodology</h2>
         <p>The Transformer follows an encoder-decoder structure, but both components are built entirely from attention and feed-forward layers — no recurrence, no convolution.</p>
 
-        <figure>
-          <img src="images/attention-is-all-you-need/fig1-transformer-architecture.png" alt="The Transformer architecture">
-          <figcaption>Figure 1 (from paper): The Transformer model architecture showing the encoder (left) and decoder (right) stacks.</figcaption>
-        </figure>
+        
 
         <p><strong>Encoder:</strong> A stack of N=6 identical layers, each containing:</p>
         <ul>
@@ -367,16 +358,23 @@ const PAPERS = [
         <blockquote>Attention(Q, K, V) = softmax(QK<sup>T</sup> / sqrt(d<sub>k</sub>)) V</blockquote>
         <p>The scaling factor 1/sqrt(d<sub>k</sub>) is critical — without it, for large d<sub>k</sub>, the dot products grow large in magnitude, pushing the softmax into regions with extremely small gradients.</p>
 
-        <figure>
-          <img src="images/attention-is-all-you-need/fig2-attention-mechanisms.png" alt="Scaled dot-product attention and multi-head attention">
-          <figcaption>Figure 2 (from paper): (left) Scaled Dot-Product Attention. (right) Multi-Head Attention consisting of several attention layers running in parallel.</figcaption>
-        </figure>
+        
 
         <p><strong>Multi-Head Attention:</strong> Instead of a single attention function with d<sub>model</sub>-dimensional keys/values/queries, the model projects them h=8 times with different learned projections to d<sub>k</sub>=d<sub>v</sub>=64 dimensions, applies attention in parallel, concatenates, and projects back. This allows the model to attend to information from different representation subspaces at different positions.</p>
 
         <p><strong>Positional Encoding:</strong> Since the model contains no recurrence or convolution, positional information must be injected explicitly. The paper uses sinusoidal functions of different frequencies:</p>
         <blockquote>PE(pos, 2i) = sin(pos / 10000<sup>2i/d_model</sup>)<br>PE(pos, 2i+1) = cos(pos / 10000<sup>2i/d_model</sup>)</blockquote>
         <p>This design allows the model to learn relative positions, since PE(pos+k) can be represented as a linear function of PE(pos) for any fixed offset k.</p>
+
+        
+        <figure>
+          <img src="images/attention-is-all-you-need/fig1-transformer-architecture.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/attention-is-all-you-need/fig2-attention-mechanisms.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
 
         <h2>Key Contributions</h2>
         <ul>
@@ -488,10 +486,7 @@ const PAPERS = [
         <h2>아키텍처 / 방법론</h2>
         <p>Transformer는 인코더-디코더 구조를 따르지만, 두 구성 요소 모두 어텐션과 피드포워드 레이어만으로 구축됩니다 — 순환도 합성곱도 없습니다.</p>
 
-        <figure>
-          <img src="images/attention-is-all-you-need/fig1-transformer-architecture.png" alt="Transformer 아키텍처">
-          <figcaption>Figure 1 (원문): 인코더(왼쪽)와 디코더(오른쪽) 스택을 보여주는 Transformer 모델 아키텍처.</figcaption>
-        </figure>
+        
 
         <p><strong>인코더:</strong> N=6개의 동일한 레이어 스택, 각 레이어 구성:</p>
         <ul>
@@ -512,10 +507,7 @@ const PAPERS = [
         <blockquote>Attention(Q, K, V) = softmax(QK<sup>T</sup> / sqrt(d<sub>k</sub>)) V</blockquote>
         <p>스케일링 팩터 1/sqrt(d<sub>k</sub>)는 매우 중요합니다 — 이것 없이는 큰 d<sub>k</sub>에서 내적이 크게 증가하여 softmax가 극히 작은 기울기 영역으로 밀려납니다.</p>
 
-        <figure>
-          <img src="images/attention-is-all-you-need/fig2-attention-mechanisms.png" alt="Scaled dot-product attention과 multi-head attention">
-          <figcaption>Figure 2 (원문): (왼쪽) Scaled Dot-Product Attention. (오른쪽) 여러 어텐션 레이어가 병렬로 실행되는 Multi-Head Attention.</figcaption>
-        </figure>
+        
 
         <p><strong>Multi-Head Attention:</strong> d<sub>model</sub> 차원의 키/값/쿼리에 대해 단일 어텐션 함수 대신, h=8번 서로 다른 학습된 프로젝션으로 d<sub>k</sub>=d<sub>v</sub>=64 차원에 투영하고, 병렬로 어텐션을 적용한 뒤 연결하고 다시 투영합니다. 이를 통해 모델이 서로 다른 표현 부분공간에서 다른 위치의 정보에 어텐션할 수 있습니다.</p>
 
@@ -642,10 +634,7 @@ const PAPERS = [
         <p>The key challenge is that general-purpose MLLMs were not designed for driving — they lack 3D spatial reasoning, have no notion of vehicle dynamics, and cannot natively process driving-specific representations like trajectories. OpenEMMA addresses this through a combination of <strong>Chain-of-Thought (CoT) reasoning prompts</strong> and <strong>external 3D detection from YOLO11n</strong> to provide the spatial grounding that MLLMs lack.</p>
 
         <h2>Architecture / Methodology</h2>
-        <figure>
-          <img src="images/openemma/fig1-framework.png" alt="OpenEMMA framework overview">
-          <figcaption>Figure 1 (from paper): OpenEMMA framework — front camera image + YOLO 3D detection + CoT prompting fed to an MLLM for trajectory prediction.</figcaption>
-        </figure>
+        
 
         <p>The OpenEMMA pipeline consists of three main components:</p>
         <ol>
@@ -663,12 +652,23 @@ const PAPERS = [
           <li><strong>Driving Decision:</strong> Generate the final trajectory based on all preceding reasoning steps.</li>
         </ul>
 
-        <figure>
-          <img src="images/openemma/fig2-comparison.png" alt="Comparison with EMMA and other approaches">
-          <figcaption>Figure 2 (from paper): Comparison of OpenEMMA's approach with the original EMMA and other driving frameworks.</figcaption>
-        </figure>
+        
 
         <p><strong>Trajectory Representation:</strong> Rather than directly predicting (x, y) waypoints, OpenEMMA uses speed and curvature as the output representation. This is more physically meaningful and constrains the output to kinematically feasible trajectories. The speed-curvature pairs are then converted to waypoints via numerical integration.</p>
+
+        
+        <figure>
+          <img src="images/openemma/fig1-framework.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/openemma/fig2-comparison.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/openemma/fig3-driving-scenarios.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
 
         <h2>Key Contributions</h2>
         <ul>
@@ -694,10 +694,7 @@ const PAPERS = [
           </tbody>
         </table>
 
-        <figure>
-          <img src="images/openemma/fig3-driving-scenarios.png" alt="Driving scenario examples">
-          <figcaption>Figure 3 (from paper): Example driving scenarios showing OpenEMMA's predicted trajectories across different conditions.</figcaption>
-        </figure>
+        
 
         <h2>Results</h2>
         <table>
@@ -772,10 +769,7 @@ const PAPERS = [
         <p>핵심 과제는 범용 MLLM이 주행용으로 설계되지 않았다는 것입니다 — 3D 공간 추론이 부족하고, 차량 동역학 개념이 없으며, 궤적과 같은 주행 특화 표현을 기본적으로 처리할 수 없습니다. OpenEMMA는 MLLM이 부족한 공간 기반을 보충하기 위해 <strong>Chain-of-Thought(CoT) 추론 프롬프트</strong>와 <strong>YOLO11n의 외부 3D 검출</strong>을 결합하여 이를 해결합니다.</p>
 
         <h2>아키텍처 / 방법론</h2>
-        <figure>
-          <img src="images/openemma/fig1-framework.png" alt="OpenEMMA 프레임워크 개요">
-          <figcaption>Figure 1 (원문): OpenEMMA 프레임워크 — 전방 카메라 이미지 + YOLO 3D 검출 + CoT 프롬프팅을 MLLM에 입력하여 궤적 예측.</figcaption>
-        </figure>
+        
 
         <p>OpenEMMA 파이프라인은 세 가지 주요 구성 요소로 이루어집니다:</p>
         <ol>
@@ -793,10 +787,7 @@ const PAPERS = [
           <li><strong>Driving Decision:</strong> 모든 선행 추론 단계를 바탕으로 최종 궤적을 생성한다.</li>
         </ul>
 
-        <figure>
-          <img src="images/openemma/fig2-comparison.png" alt="EMMA 및 다른 접근법과의 비교">
-          <figcaption>Figure 2 (원문): OpenEMMA의 접근법과 원본 EMMA 및 다른 주행 프레임워크의 비교.</figcaption>
-        </figure>
+        
 
         <p><strong>궤적 표현:</strong> (x, y) 웨이포인트를 직접 예측하는 대신 OpenEMMA는 속도와 곡률을 출력 표현으로 사용합니다. 이는 물리적으로 더 의미 있으며 출력을 운동학적으로 실현 가능한 궤적으로 제한합니다. 속도-곡률 쌍은 수치 적분을 통해 웨이포인트로 변환됩니다.</p>
 
@@ -824,10 +815,7 @@ const PAPERS = [
           </tbody>
         </table>
 
-        <figure>
-          <img src="images/openemma/fig3-driving-scenarios.png" alt="주행 시나리오 예시">
-          <figcaption>Figure 3 (원문): 다양한 조건에서 OpenEMMA의 예측 궤적을 보여주는 주행 시나리오 예시.</figcaption>
-        </figure>
+        
 
         <h2>실험 결과</h2>
         <table>
@@ -916,10 +904,7 @@ const PAPERS = [
         <p>Previous approaches like TransFuser and NEAT used Transformer-based sensor fusion but lacked interpretable intermediate outputs. The CARLA leaderboard at the time showed these models achieving reasonable driving scores but with high infraction rates. InterFuser addresses this by designing a Transformer encoder-decoder architecture where the decoder explicitly produces three types of interpretable outputs: waypoints, object density maps, and traffic rule predictions. These intermediate representations feed a safety controller that can detect and prevent unsafe actions before they reach the vehicle.</p>
 
         <h2>Architecture / Methodology</h2>
-        <figure>
-          <img src="images/interfuser/fig1-architecture.png" alt="InterFuser architecture">
-          <figcaption>Figure 1 (from paper): InterFuser architecture — multi-modal multi-view inputs processed by CNN backbones, fused via Transformer encoder, decoded into interpretable outputs for safety-aware planning.</figcaption>
-        </figure>
+        
 
         <p><strong>Input Processing:</strong></p>
         <ul>
@@ -952,9 +937,20 @@ const PAPERS = [
           <li>If speed exceeds detected limit → apply speed reduction</li>
         </ul>
 
+        
+
+        
         <figure>
-          <img src="images/interfuser/fig2-attention-maps.png" alt="Attention visualization">
-          <figcaption>Figure 2 (from paper): Attention maps showing how the Transformer encoder attends across different sensor modalities — cross-modal attention enables relating visual features to spatial positions.</figcaption>
+          <img src="images/interfuser/fig1-architecture.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/interfuser/fig2-attention-maps.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/interfuser/fig3-results.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
         </figure>
 
         <h2>Key Contributions</h2>
@@ -1008,10 +1004,7 @@ const PAPERS = [
           <li>The infraction score (IS = 0.78) reflects the safety controller's effectiveness — the model still predicts some unsafe actions, but they are caught and corrected.</li>
         </ul>
 
-        <figure>
-          <img src="images/interfuser/fig3-results.png" alt="Qualitative results and density maps">
-          <figcaption>Figure 3 (from paper): Qualitative results showing predicted waypoints, object density maps, and safety controller interventions across various driving scenarios.</figcaption>
-        </figure>
+        
 
         <h2>Strengths</h2>
         <ul>
@@ -1066,10 +1059,7 @@ const PAPERS = [
         <p>TransFuser와 NEAT 같은 이전 접근법은 Transformer 기반 센서 융합을 사용했지만 해석 가능한 중간 출력이 부족했습니다. 당시 CARLA 리더보드에서 이 모델들은 합리적인 주행 점수를 달성했지만 높은 위반율을 보였습니다. InterFuser는 디코더가 세 가지 유형의 해석 가능한 출력 — 웨이포인트, 객체 밀도 맵, 교통 규칙 예측 — 을 명시적으로 생성하는 Transformer 인코더-디코더 아키텍처를 설계하여 이를 해결합니다. 이 중간 표현들이 안전 컨트롤러에 공급되어 안전하지 않은 행동이 차량에 도달하기 전에 감지하고 방지할 수 있습니다.</p>
 
         <h2>아키텍처 / 방법론</h2>
-        <figure>
-          <img src="images/interfuser/fig1-architecture.png" alt="InterFuser 아키텍처">
-          <figcaption>Figure 1 (원문): InterFuser 아키텍처 — CNN 백본으로 처리된 멀티모달 다중 뷰 입력이 Transformer 인코더로 융합되고, 안전 인식 계획을 위한 해석 가능한 출력으로 디코딩.</figcaption>
-        </figure>
+        
 
         <p><strong>입력 처리:</strong></p>
         <ul>
@@ -1102,10 +1092,7 @@ const PAPERS = [
           <li>감지된 제한을 초과하는 속도면 → 속도 감소 적용</li>
         </ul>
 
-        <figure>
-          <img src="images/interfuser/fig2-attention-maps.png" alt="어텐션 시각화">
-          <figcaption>Figure 2 (원문): Transformer 인코더가 다양한 센서 모달리티에 걸쳐 어텐션하는 방식을 보여주는 어텐션 맵 — 크로스 모달 어텐션이 시각적 특징과 공간 위치를 연결.</figcaption>
-        </figure>
+        
 
         <h2>핵심 기여</h2>
         <ul>
@@ -1158,10 +1145,7 @@ const PAPERS = [
           <li>위반 점수(IS = 0.78)는 안전 컨트롤러의 효과를 반영 — 모델이 여전히 일부 안전하지 않은 행동을 예측하지만, 포착되어 수정된다.</li>
         </ul>
 
-        <figure>
-          <img src="images/interfuser/fig3-results.png" alt="정성적 결과와 밀도 맵">
-          <figcaption>Figure 3 (원문): 다양한 주행 시나리오에서 예측된 웨이포인트, 객체 밀도 맵, 안전 컨트롤러 개입을 보여주는 정성적 결과.</figcaption>
-        </figure>
+        
 
         <h2>강점</h2>
         <ul>
@@ -1238,15 +1222,35 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/sensor-failure-simulation/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/sensor-failure-simulation/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/sensor-failure-simulation/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sensor-failure-simulation/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sensor-failure-simulation/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sensor-failure-simulation/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>A unified fault-injection framework covering camera, LiDAR, and radar failure modes within simulation.</li>
@@ -1412,10 +1416,21 @@ const PAPERS = [
         <p>The cost functional for each dimension minimizes the integral of squared jerk (third derivative), yielding smooth, comfortable trajectories with closed-form polynomial solutions.</p>
 
         
+        
+        
         <figure>
           <img src="images/frenet-trajectory/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/frenet-trajectory/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/frenet-trajectory/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>Formalization of trajectory planning in Frenet coordinates with decoupled lateral/longitudinal optimization.</li>
@@ -1579,15 +1594,35 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/sampling-motion-planning/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/sampling-motion-planning/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/sampling-motion-planning/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sampling-motion-planning/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sampling-motion-planning/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sampling-motion-planning/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>Road-structure-aware sampling strategy that dramatically improves sample efficiency over vanilla RRT.</li>
@@ -1752,15 +1787,35 @@ const PAPERS = [
         <p>The behavioral layer acts as the critical bridge between global intent and local execution, translating route-level goals into actionable maneuvers.</p>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/urban-path-planning/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/urban-path-planning/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/urban-path-planning/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/urban-path-planning/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/urban-path-planning/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/urban-path-planning/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>A complete three-layer planning architecture tailored for urban autonomous driving.</li>
@@ -1924,15 +1979,19 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/mpc-autonomous-driving/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/mpc-autonomous-driving/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>Complete MPC formulation for autonomous vehicle trajectory tracking with kinematic bicycle model.</li>
@@ -2097,15 +2156,35 @@ const PAPERS = [
         <p>Key deadlock analysis: Two deadlock points exist on the r_x axis where the CBF filter returns u* = 0 despite u_nom != 0. One is asymptotically stable (near the docking port) and one is unstable (diametrically opposite). The stable deadlock point serves as the natural waiting position before docking contact.</p>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/switched-cbf-docking/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/switched-cbf-docking/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/switched-cbf-docking/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/switched-cbf-docking/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/switched-cbf-docking/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/switched-cbf-docking/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>First <strong>experimental validation</strong> of a CBF-based autonomous docking strategy on a hardware-in-the-loop planar floating platform</li>
@@ -2183,60 +2262,211 @@ const PAPERS = [
         <p>두 개의 심장형 CBF가 정의됩니다: h1(x)(영 등고선)과 h2(x) = h1(x) - c(양 등고선, c > 0). 양 등고선은 접근 단계에서 추가 이격을 제공하여 Slider를 도킹 포트 근처의 <strong>교착점</strong>으로 유도합니다. Slider의 구성이 전환 조건(근접도, 방향 정렬, 측면 정렬)을 만족하면 CBF가 h2에서 h1로 전환되어 안전 영역을 확장하고 도킹 접촉을 시작합니다.</p>
 
         
+        
+
+        
+        
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        
+
+        
+        
+        <figure>
+          <img src="images/opendrivevla/fig1-paradigms.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/opendrivevla/fig2-architecture.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/opendrivevla/fig3-training.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/opendrivevla/fig4-qualitative.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/attention-is-all-you-need/fig1-transformer-architecture.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/attention-is-all-you-need/fig2-attention-mechanisms.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/openemma/fig1-framework.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/openemma/fig2-comparison.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/openemma/fig3-driving-scenarios.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/interfuser/fig1-architecture.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/interfuser/fig2-attention-maps.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/interfuser/fig3-results.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
+        
         <figure>
           <img src="images/sensor-failure-simulation/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/sensor-failure-simulation/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/sensor-failure-simulation/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sensor-failure-simulation/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sensor-failure-simulation/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sensor-failure-simulation/fig6.png" alt="Figure 6">
+          <figcaption>논문의 Figure 6.</figcaption>
+        </figure>
+
         
         <figure>
           <img src="images/frenet-trajectory/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
+        <figure>
+          <img src="images/frenet-trajectory/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/frenet-trajectory/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
         
         <figure>
           <img src="images/sampling-motion-planning/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/sampling-motion-planning/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/sampling-motion-planning/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sampling-motion-planning/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sampling-motion-planning/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/sampling-motion-planning/fig6.png" alt="Figure 6">
+          <figcaption>논문의 Figure 6.</figcaption>
+        </figure>
+
         
         <figure>
           <img src="images/urban-path-planning/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/urban-path-planning/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/urban-path-planning/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/urban-path-planning/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/urban-path-planning/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/urban-path-planning/fig6.png" alt="Figure 6">
+          <figcaption>논문의 Figure 6.</figcaption>
+        </figure>
+
         
         <figure>
           <img src="images/mpc-autonomous-driving/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/mpc-autonomous-driving/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+
         
         <figure>
           <img src="images/switched-cbf-docking/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/switched-cbf-docking/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/switched-cbf-docking/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/switched-cbf-docking/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/switched-cbf-docking/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/switched-cbf-docking/fig6.png" alt="Figure 6">
+          <figcaption>논문의 Figure 6.</figcaption>
+        </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>하드웨어 인 더 루프 평면 부유 플랫폼에서의 CBF 기반 자율 도킹 전략의 최초 <strong>실험적 검증</strong></li>
@@ -2331,15 +2561,23 @@ const PAPERS = [
         <p>The <strong>k-stabilization</strong> concept bounds shield deviation: after a property violation, the shield may deviate for at most k consecutive steps. A second violation during recovery triggers fail-safe mode (correctness only, no minimality).</p>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/shield-synthesis/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/shield-synthesis/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/shield-synthesis/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>First formal framework for <strong>shield synthesis for reactive hardware systems</strong> with instantaneous correction requirement</li>
@@ -2420,15 +2658,23 @@ const PAPERS = [
         <p><strong>k-안정화</strong> 개념은 실드 편차를 제한합니다: 속성 위반 후 실드는 최대 k 연속 스텝 동안만 편차를 보일 수 있습니다.</p>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/shield-synthesis/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/shield-synthesis/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/shield-synthesis/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>즉각적 수정 요구가 있는 <strong>반응형 하드웨어 시스템용 실드 합성</strong>의 최초 공식 프레임워크</li>
@@ -2687,10 +2933,17 @@ const PAPERS = [
         </ul>
 
         
+        
+        
         <figure>
           <img src="images/mamba/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/mamba/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>First SSM to achieve <strong>Transformer-quality language modeling</strong> — Mamba-3B matches Pythia-7B on downstream tasks</li>
@@ -2767,10 +3020,17 @@ const PAPERS = [
         </ul>
 
         
+        
+        
         <figure>
           <img src="images/mamba/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
+        <figure>
+          <img src="images/mamba/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li><strong>트랜스포머 수준 언어 모델링</strong>을 달성한 최초의 SSM — Mamba-3B가 다운스트림 작업에서 Pythia-7B에 부합</li>
@@ -2856,10 +3116,17 @@ const PAPERS = [
         <p>The CCM effective Lagrangian (Eq. 5) contains integrals I1, I2 that diverge at a_cr because the mode becomes non-normalizable — signaling the breakdown of the effective model and the presence of the spectral wall.</p>
 
         
+        
+        
         <figure>
           <img src="images/soliton-spectral-walls/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/soliton-spectral-walls/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>Discovery of <strong>spectral walls</strong> as a universal phenomenon surrounding solitons with internal modes</li>
@@ -2926,10 +3193,17 @@ const PAPERS = [
         <p>불순물 sigma = alpha/cosh^2(x)을 가진 BPS-불순물 phi^4 모델은 모듈리 공간에서 위치 a로 매개변수화된 정적 BPS 안티킹크 해 1매개변수 족을 허용합니다. alpha = 0.3(모드 항상 존재)과 alpha = 3.0(임계 분리 a_cr = 1.68에서 모드가 연속체 진입) 두 경우를 연구합니다.</p>
 
         
+        
+        
         <figure>
           <img src="images/soliton-spectral-walls/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
+        <figure>
+          <img src="images/soliton-spectral-walls/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>내부 모드를 가진 솔리톤을 둘러싸는 보편적 현상으로서의 <strong>스펙트럼 벽</strong> 발견</li>
@@ -3005,15 +3279,35 @@ const PAPERS = [
         <p>Fisher information matrix analysis with: tree-level SPT for power spectrum and bispectrum in redshift space with Gaussian FoG damping; Eulerian non-linear and non-local bias model (b1, b2, b_s2); 14 redshift bins from z=0.7 to z=2.0; three cosmological models (LCDM, wCDM, w0waCDM); cross-covariance C_PB between P and B computed for the first time with angular binning of triangle orientations; Planck priors from MCMC chains. Key advance: generalized cross-covariance formula (Eq. 42) accounting for triangle orientation binning relative to the line of sight.</p>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/cosmo-bispectrum/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/cosmo-bispectrum/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/cosmo-bispectrum/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cosmo-bispectrum/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cosmo-bispectrum/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cosmo-bispectrum/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>First derivation of the <strong>P-B cross-covariance with angular binning</strong> of triangle orientations (Eq. 42)</li>
@@ -3082,15 +3376,35 @@ const PAPERS = [
         <p>트리 수준 SPT의 적색편이 공간 파워 스펙트럼 및 바이스펙트럼, 오일러 비선형 비국소 편향 모델, z=0.7-2.0의 14개 적색편이 빈, 세 우주론적 모델(LCDM, wCDM, w0waCDM)에 대한 Fisher 정보 행렬 분석. 삼각형 방향의 각도 비닝을 고려한 P-B 교차 공분산의 최초 도출(Eq. 42)이 핵심 진전입니다.</p>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/cosmo-bispectrum/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/cosmo-bispectrum/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/cosmo-bispectrum/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cosmo-bispectrum/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cosmo-bispectrum/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cosmo-bispectrum/fig6.png" alt="Figure 6">
+          <figcaption>논문의 Figure 6.</figcaption>
+        </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>삼각형 방향의 <strong>각도 비닝을 포함한 P-B 교차 공분산</strong>의 최초 도출</li>
@@ -3173,15 +3487,19 @@ const PAPERS = [
         <p>Training loss combines Feynman-Kac regression (global path consistency), local one-step consistency, and a Kantorovich dual boundary loss. Generation proceeds by integrating the time-reversed controlled diffusion with the learned grad(W).</p>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/optimal-transport-hjb/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/optimal-transport-hjb/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>Forward-backward HJB duality theorem resolving the circular dependency in generative optimal control</li>
@@ -3247,15 +3565,19 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/optimal-transport-hjb/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/optimal-transport-hjb/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>생성적 최적 제어의 순환 의존성을 해결하는 순방향-역방향 HJB 이중성 정리</li>
@@ -3333,15 +3655,31 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/generative-phase-space/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/generative-phase-space/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/generative-phase-space/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/generative-phase-space/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/generative-phase-space/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>First generative framework with <strong>exact energy-momentum conservation by construction</strong> at every sampling step</li>
@@ -3415,15 +3753,31 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/generative-phase-space/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/generative-phase-space/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/generative-phase-space/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/generative-phase-space/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/generative-phase-space/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>모든 샘플링 단계에서 <strong>구성에 의한 정확한 에너지-운동량 보존</strong>을 가진 최초의 생성 프레임워크</li>
@@ -3509,15 +3863,19 @@ const PAPERS = [
         <p>The paper explicitly separates the paradigm from specific algorithmic families: diffusion models, neural ODEs, flow matching, and score models all qualify as flow learners only when used as transport models over solution distributions.</p>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/flow-learners-pde/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/flow-learners-pde/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li>Articulates the <strong>abstraction mismatch</strong> in learned PDE solving: state regression vs. transport law</li>
@@ -3588,15 +3946,19 @@ const PAPERS = [
         <p><strong>흐름 학습자</strong>를 주요 학습 객체가 수송 벡터 장인 모델로 정의합니다: z_dot = v_theta(z_tau, tau, c). PDE 진화와 공유하는 4가지 구조적 원시 요소를 통해 "물리-대-물리" 정렬을 정의합니다: 벡터 장, 적분, 제약된 상태 공간, 측도의 수송.</p>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/flow-learners-pde/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/flow-learners-pde/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>학습된 PDE 솔빙의 <strong>추상화 불일치</strong> 명확화: 상태 회귀 vs. 수송 법칙</li>
@@ -3667,10 +4029,7 @@ const PAPERS = [
         <p>Object detection models like YOLO and Faster R-CNN are deployed in safety-critical applications (autonomous driving, surveillance), making the security implications of such stealthy attacks particularly concerning.</p>
 
         <h2>Architecture / Methodology</h2>
-        <figure>
-          <img src="images/fbao-backdoor/fig1.png" alt="FBAO attack framework overview">
-          <figcaption>Figure 1: FBAO attack pipeline — frequency-domain trigger injection via DCT.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>DCT-based trigger generation:</strong> Input images are transformed to the frequency domain via DCT. Trigger patterns are injected into selected high-frequency coefficients, then inverse-DCT reconstructs the poisoned image. The high-frequency injection ensures minimal visual distortion.</li>
           <li><strong>Frequency band selection:</strong> The attack strategically targets specific frequency bands that are less perceptible to human vision but effectively learned by the neural network, exploiting the gap between human and machine perception.</li>
@@ -3678,6 +4037,20 @@ const PAPERS = [
           <li><strong>Attack modes:</strong> Supports multiple attack objectives including targeted misclassification (changing detected class), detection suppression (making objects invisible), and phantom generation (creating false detections).</li>
           <li><strong>Trigger optimization:</strong> The trigger magnitude and frequency band selection are optimized to balance attack success rate against visual imperceptibility, measured via PSNR and SSIM between clean and poisoned images.</li>
         </ul>
+
+        
+        <figure>
+          <img src="images/fbao-backdoor/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/fbao-backdoor/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/fbao-backdoor/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
 
         <h2>Key Contributions</h2>
         <ul>
@@ -3759,10 +4132,7 @@ const PAPERS = [
         <p>YOLO와 Faster R-CNN 같은 객체 탐지 모델이 자율주행, 감시 등 안전 중요 애플리케이션에 배포되므로, 이러한 은밀한 공격의 보안 함의는 특히 우려됩니다.</p>
 
         <h2>전체 구조 / 방법론</h2>
-        <figure>
-          <img src="images/fbao-backdoor/fig1.png" alt="FBAO 공격 프레임워크 개요">
-          <figcaption>Figure 1: DCT를 통한 주파수 도메인 트리거 주입 — FBAO 공격 파이프라인.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>DCT 기반 트리거 생성:</strong> 입력 이미지를 DCT로 주파수 도메인으로 변환하고, 선택된 고주파 계수에 트리거 패턴을 주입한 후, 역 DCT로 오염된 이미지를 재구성합니다.</li>
           <li><strong>주파수 대역 선택:</strong> 인간 시각에는 덜 인식되지만 신경망이 효과적으로 학습하는 특정 주파수 대역을 전략적으로 대상으로 합니다.</li>
@@ -3860,10 +4230,7 @@ const PAPERS = [
         <p>The active-path approach offers a principled alternative: by tracing which neurons and connections are activated along the forward pass for triggered versus clean inputs, one can identify neurons that are uniquely or disproportionately active for triggered inputs. These neurons likely encode the backdoor behavior and can be pruned or fine-tuned to eliminate the backdoor.</p>
 
         <h2>Architecture / Methodology</h2>
-        <figure>
-          <img src="images/backdoor-active-paths/fig1.png" alt="Active path analysis methodology">
-          <figcaption>Figure 1: Active path analysis for backdoor detection and elimination.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>Active path extraction:</strong> For each input, the method traces the set of neurons with non-zero activations through the network layers, forming a path signature. ReLU-based networks naturally produce sparse activation patterns where many neurons are inactive.</li>
           <li><strong>Path divergence analysis:</strong> The method compares active path distributions between clean inputs and suspected triggered inputs. Neurons that appear in active paths for triggered inputs but rarely for clean inputs are flagged as backdoor candidates.</li>
@@ -3871,6 +4238,28 @@ const PAPERS = [
           <li><strong>Targeted pruning:</strong> Identified backdoor neurons are pruned (weights zeroed or removed) while preserving the rest of the network, minimizing impact on clean-data performance.</li>
           <li><strong>Fine-tuning recovery:</strong> After pruning, optional fine-tuning on clean data recovers any residual accuracy loss from the pruning step.</li>
         </ul>
+
+        
+        <figure>
+          <img src="images/backdoor-active-paths/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/backdoor-active-paths/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/backdoor-active-paths/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/backdoor-active-paths/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/backdoor-active-paths/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
 
         <h2>Key Contributions</h2>
         <ul>
@@ -3952,10 +4341,7 @@ const PAPERS = [
         <p>활성 경로 접근법은 원칙적 대안을 제공합니다: 트리거 입력 대 정상 입력에 대해 순전파 경로를 따라 어떤 뉴런과 연결이 활성화되는지 추적하여, 트리거 입력에 고유하게 활성화되는 뉴런을 식별하고 가지치기하여 백도어를 제거할 수 있습니다.</p>
 
         <h2>전체 구조 / 방법론</h2>
-        <figure>
-          <img src="images/backdoor-active-paths/fig1.png" alt="활성 경로 분석 방법론">
-          <figcaption>Figure 1: 백도어 탐지 및 제거를 위한 활성 경로 분석.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>활성 경로 추출:</strong> 각 입력에 대해 네트워크 계층을 통해 비영 활성화를 가진 뉴런 집합을 추적하여 경로 서명을 형성합니다.</li>
           <li><strong>경로 발산 분석:</strong> 정상 입력과 의심되는 트리거 입력 간의 활성 경로 분포를 비교하여 백도어 후보 뉴런을 표시합니다.</li>
@@ -4053,10 +4439,7 @@ const PAPERS = [
         <p>This paper systematically addresses the question of how to design CBFs on ROMs while maintaining safety guarantees for the full-order system, covering the theoretical foundations, model reduction strategies, robustness margins, and experimental validation across multiple robotic platforms.</p>
 
         <h2>Architecture / Methodology</h2>
-        <figure>
-          <img src="images/cbf-reduced-order/fig1.png" alt="CBF via reduced-order model framework">
-          <figcaption>Figure 1: CBF design pipeline via reduced-order models for full-order systems.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>Full-order to reduced-order mapping:</strong> The high-dimensional system state is projected onto a lower-dimensional space that captures safety-relevant degrees of freedom (e.g., position and velocity of the robot's center of mass, ignoring internal joint dynamics).</li>
           <li><strong>CBF design on ROM:</strong> A barrier function is designed for the reduced-order model where the dynamics are simple enough for analytical CBF construction. Standard approaches include distance-based barriers, velocity-constrained barriers, and input-output linearization-based barriers.</li>
@@ -4064,6 +4447,24 @@ const PAPERS = [
           <li><strong>Robust CBF formulation:</strong> The CBF constraint is tightened by the model mismatch bound, ensuring that safety holds for the full-order system despite the ROM approximation. This introduces conservatism but provides formal guarantees.</li>
           <li><strong>QP-based safety filter:</strong> The robust CBF constraint is incorporated into a real-time QP that filters the nominal controller's commands, minimally modifying them to ensure safety.</li>
         </ul>
+
+        
+        <figure>
+          <img src="images/cbf-reduced-order/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-reduced-order/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-reduced-order/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-reduced-order/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
 
         <h2>Key Contributions</h2>
         <ul>
@@ -4144,10 +4545,7 @@ const PAPERS = [
         <p>본 논문은 전체 차수 시스템에 대한 안전 보장을 유지하면서 ROM에서 CBF를 설계하는 방법을 이론적 기초, 모델 축소 전략, 강건성 마진, 실험적 검증을 포함하여 체계적으로 다룹니다.</p>
 
         <h2>전체 구조 / 방법론</h2>
-        <figure>
-          <img src="images/cbf-reduced-order/fig1.png" alt="축소 차수 모델을 통한 CBF 프레임워크">
-          <figcaption>Figure 1: 전체 차수 시스템을 위한 축소 차수 모델 기반 CBF 설계 파이프라인.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>전체 차수에서 축소 차수로의 매핑:</strong> 고차원 시스템 상태를 안전 관련 자유도를 포착하는 저차원 공간으로 투영합니다.</li>
           <li><strong>ROM에서의 CBF 설계:</strong> 동역학이 분석적 CBF 구성에 충분히 간단한 축소 차수 모델에 대해 장벽 함수를 설계합니다.</li>
@@ -4245,10 +4643,7 @@ const PAPERS = [
         <p>PoCBFs offer a fundamentally different approach: instead of requiring a physics-based dynamics model, they use the policy's own action predictions to construct a local barrier certificate at each timestep. The key insight is that the policy's rollout behavior implicitly encodes the system dynamics, and this implicit encoding can be used to verify safety without an explicit model.</p>
 
         <h2>Architecture / Methodology</h2>
-        <figure>
-          <img src="images/policy-cbf-runtime/fig1.png" alt="PoCBF runtime safety filter architecture">
-          <figcaption>Figure 1: Policy CBF architecture — runtime safety filter construction without explicit dynamics.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>Policy rollout prediction:</strong> At each timestep, the current policy is rolled out for a short horizon to predict future states. This creates a local trajectory prediction that implicitly captures the system dynamics through the policy's learned behavior.</li>
           <li><strong>Runtime barrier construction:</strong> Using the predicted trajectory and the safety constraint (e.g., obstacle distance), a local barrier function is constructed that certifies whether the current action will lead to future safety violations within the prediction horizon.</li>
@@ -4256,6 +4651,16 @@ const PAPERS = [
           <li><strong>Robustness margin:</strong> To account for prediction errors and model uncertainty, a configurable robustness margin is added to the barrier condition, trading off conservatism against safety guarantees.</li>
           <li><strong>Computational efficiency:</strong> The short-horizon rollout and local barrier construction are designed to run in real-time, making the approach suitable for high-frequency control loops.</li>
         </ul>
+
+        
+        <figure>
+          <img src="images/policy-cbf-runtime/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/policy-cbf-runtime/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
 
         <h2>Key Contributions</h2>
         <ul>
@@ -4337,10 +4742,7 @@ const PAPERS = [
         <p>PoCBF는 근본적으로 다른 접근법을 제공합니다: 물리 기반 동역학 모델 대신 정책 자체의 행동 예측을 사용하여 각 시간 단계에서 지역 장벽 인증서를 구성합니다. 핵심 통찰은 정책의 롤아웃 동작이 시스템 동역학을 암묵적으로 인코딩하며, 이 암묵적 인코딩을 명시적 모델 없이 안전을 검증하는 데 사용할 수 있다는 것입니다.</p>
 
         <h2>전체 구조 / 방법론</h2>
-        <figure>
-          <img src="images/policy-cbf-runtime/fig1.png" alt="PoCBF 런타임 안전 필터 아키텍처">
-          <figcaption>Figure 1: 명시적 동역학 없이 런타임 안전 필터를 구축하는 정책 CBF 아키텍처.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>정책 롤아웃 예측:</strong> 각 시간 단계에서 현재 정책을 짧은 수평선으로 롤아웃하여 미래 상태를 예측합니다.</li>
           <li><strong>런타임 장벽 구성:</strong> 예측된 궤적과 안전 제약을 사용하여 현재 행동이 예측 수평선 내에서 안전 위반으로 이어질지 인증하는 지역 장벽 함수를 구성합니다.</li>
@@ -4439,10 +4841,7 @@ const PAPERS = [
         <p>CBFs provide mathematically rigorous safety guarantees through set invariance, ensuring the system state never leaves a defined safe set. Applying CBFs to shared autonomy is natural: the human command serves as the nominal input, and the CBF filter modifies it minimally to maintain safety. The challenge lies in designing appropriate barrier functions for the complex geometry of manipulation workspaces and ensuring smooth, intuitive behavior that does not frustrate the human operator.</p>
 
         <h2>Architecture / Methodology</h2>
-        <figure>
-          <img src="images/safety-aware-shared-autonomy/fig1.png" alt="Shared autonomy framework with CBF">
-          <figcaption>Figure 1: Safety-aware shared autonomy framework integrating CBF safety filters with human teleoperation.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>Human input interface:</strong> The operator provides velocity or position commands through a haptic device or joystick, representing their desired end-effector motion.</li>
           <li><strong>CBF safety filter:</strong> A QP-based filter takes the human command as the nominal input and modifies it minimally to satisfy all active barrier function constraints. Multiple CBFs can be active simultaneously for different safety requirements.</li>
@@ -4450,6 +4849,12 @@ const PAPERS = [
           <li><strong>Haptic feedback:</strong> The safety filter's modifications are communicated back to the operator through force feedback on the haptic device, providing intuitive awareness of constraint proximity.</li>
           <li><strong>Blending authority:</strong> A configurable blending parameter adjusts the trade-off between operator authority and safety system intervention, allowing task-specific tuning of the shared control behavior.</li>
         </ul>
+
+        
+        <figure>
+          <img src="images/safety-aware-shared-autonomy/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
 
         <h2>Key Contributions</h2>
         <ul>
@@ -4530,10 +4935,7 @@ const PAPERS = [
         <p>CBF는 집합 불변성을 통해 수학적으로 엄밀한 안전 보장을 제공합니다. CBF를 공유 자율성에 적용하는 것은 자연스럽습니다: 인간 명령이 명목 입력 역할을 하고, CBF 필터가 안전 유지를 위해 최소한으로 수정합니다. 도전은 매니퓰레이션 작업 공간의 복잡한 기하학에 적절한 장벽 함수를 설계하고 인간 조작자를 좌절시키지 않는 매끄럽고 직관적인 동작을 보장하는 데 있습니다.</p>
 
         <h2>전체 구조 / 방법론</h2>
-        <figure>
-          <img src="images/safety-aware-shared-autonomy/fig1.png" alt="CBF를 통합한 공유 자율성 프레임워크">
-          <figcaption>Figure 1: 인간 원격조작과 CBF 안전 필터를 통합한 안전 인식 공유 자율성 프레임워크.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>인간 입력 인터페이스:</strong> 조작자가 햅틱 장치나 조이스틱을 통해 속도 또는 위치 명령을 제공합니다.</li>
           <li><strong>CBF 안전 필터:</strong> QP 기반 필터가 인간 명령을 명목 입력으로 받아 모든 활성 장벽 함수 제약을 만족하도록 최소한으로 수정합니다.</li>
@@ -4632,10 +5034,7 @@ const PAPERS = [
         <p>CBF-RL takes a third path: by inserting the CBF safety filter into the training loop itself, the agent experiences the filtered action space from the start. This means the agent learns to work with the safety filter rather than against it, producing policies that are both safe and high-performing. The key challenge is that the CBF filter modifies the policy's actions, which complicates the RL gradient computation and can destabilize training.</p>
 
         <h2>Architecture / Methodology</h2>
-        <figure>
-          <img src="images/cbf-rl/fig1.png" alt="CBF-RL training architecture">
-          <figcaption>Figure 1: CBF-RL architecture — CBF safety filter integrated into the RL training loop.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>CBF safety layer:</strong> A differentiable CBF-QP layer is inserted between the policy network output and the environment. The policy proposes an action, the CBF layer projects it to the nearest safe action if necessary, and the projected action is applied to the environment.</li>
           <li><strong>Gradient propagation:</strong> Gradients from the RL loss are backpropagated through the CBF-QP layer using implicit differentiation of the KKT conditions. This allows the policy to learn from the safety filter's corrections rather than ignoring them.</li>
@@ -4643,6 +5042,16 @@ const PAPERS = [
           <li><strong>Reward shaping interaction:</strong> The framework is compatible with standard reward functions; no safety penalty terms are needed since the CBF filter enforces hard constraints. The agent optimizes purely for task performance within the safe action space.</li>
           <li><strong>Multiple barrier functions:</strong> The QP can accommodate multiple CBF constraints simultaneously, handling complex safety specifications with multiple obstacles, velocity limits, and workspace boundaries.</li>
         </ul>
+
+        
+        <figure>
+          <img src="images/cbf-rl/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-rl/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
 
         <h2>Key Contributions</h2>
         <ul>
@@ -4724,10 +5133,7 @@ const PAPERS = [
         <p>CBF-RL은 제3의 길을 택합니다: CBF 안전 필터를 훈련 루프 자체에 삽입함으로써 에이전트가 처음부터 필터링된 행동 공간을 경험합니다. 이는 에이전트가 안전 필터에 대항하기보다 함께 작동하도록 학습하여 안전하고 고성능인 정책을 생산합니다.</p>
 
         <h2>전체 구조 / 방법론</h2>
-        <figure>
-          <img src="images/cbf-rl/fig1.png" alt="CBF-RL 훈련 아키텍처">
-          <figcaption>Figure 1: CBF-RL 아키텍처 — RL 훈련 루프에 통합된 CBF 안전 필터.</figcaption>
-        </figure>
+        
         <ul>
           <li><strong>CBF 안전 계층:</strong> 정책 네트워크 출력과 환경 사이에 미분 가능한 CBF-QP 계층을 삽입합니다. 정책이 행동을 제안하고, CBF 계층이 필요시 가장 가까운 안전 행동으로 투영하며, 투영된 행동이 환경에 적용됩니다.</li>
           <li><strong>그래디언트 전파:</strong> KKT 조건의 암묵적 미분을 사용하여 RL 손실의 그래디언트가 CBF-QP 계층을 통해 역전파됩니다. 이를 통해 정책이 안전 필터의 수정에서 학습합니다.</li>
@@ -4837,15 +5243,15 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/v-ocbf/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/v-ocbf/fig2.png" alt="Figure 2">
-          <figcaption>Figure 2 from the paper.</figcaption>
-        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>First value-guided offline CBF learning framework</strong> that eliminates the need for online environment interaction during CBF synthesis</li>
@@ -4924,15 +5330,95 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
+        <figure>
+          <img src="images/fbao-backdoor/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/fbao-backdoor/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/fbao-backdoor/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/backdoor-active-paths/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/backdoor-active-paths/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/backdoor-active-paths/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/backdoor-active-paths/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/backdoor-active-paths/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/cbf-reduced-order/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-reduced-order/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-reduced-order/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-reduced-order/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/policy-cbf-runtime/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/policy-cbf-runtime/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/safety-aware-shared-autonomy/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        
+        <figure>
+          <img src="images/cbf-rl/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-rl/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+
+        
         <figure>
           <img src="images/v-ocbf/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/v-ocbf/fig2.png" alt="Figure 2">
-          <figcaption>논문의 Figure 2.</figcaption>
-        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>CBF 합성 중 온라인 환경 상호작용의 필요성을 제거하는 <strong>최초의 가치 기반 오프라인 CBF 학습 프레임워크</strong></li>
@@ -5025,15 +5511,19 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/cn-cbf/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/cn-cbf/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Modular neural CBF architecture</strong> that trains per-obstacle-type networks and composes them at runtime for arbitrary environment configurations</li>
@@ -5114,15 +5604,19 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/cn-cbf/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/cn-cbf/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>장애물 유형별 네트워크를 훈련하고 런타임에 임의 환경 구성을 위해 합성하는 <strong>모듈식 신경 CBF 아키텍처</strong></li>
@@ -5217,15 +5711,27 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/cbf-obstacle-avoidance/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/cbf-obstacle-avoidance/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/cbf-obstacle-avoidance/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-obstacle-avoidance/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Formal bridge between SDFs and CBFs:</strong> Establishes necessary and sufficient conditions for SDFs to serve as valid CBFs, grounded in the Eikonal equation</li>
@@ -5305,15 +5811,27 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/cbf-obstacle-avoidance/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/cbf-obstacle-avoidance/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/cbf-obstacle-avoidance/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/cbf-obstacle-avoidance/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>아이코날 방정식을 통한 <strong>SDF와 CBF 사이의 형식적 연결</strong> 수립</li>
@@ -5406,15 +5924,31 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/pointcloud-cbf-mpc/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/pointcloud-cbf-mpc/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Direct point-cloud-to-CBF pipeline</strong> that eliminates the need for explicit obstacle mapping or mesh reconstruction</li>
@@ -5495,15 +6029,31 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/pointcloud-cbf-mpc/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/pointcloud-cbf-mpc/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pointcloud-cbf-mpc/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>명시적 장애물 매핑이나 메쉬 재구성의 필요성을 제거하는 <strong>포인트 클라우드-CBF 직접 파이프라인</strong></li>
@@ -5599,15 +6149,23 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/log-gp-cbf/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/log-gp-cbf/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/log-gp-cbf/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Novel Log-GP-CBF formulation</strong> that naturally combines logarithmic barriers with GP uncertainty for stronger safety near boundaries</li>
@@ -5688,15 +6246,23 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/log-gp-cbf/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/log-gp-cbf/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/log-gp-cbf/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
         <h2>주요 기여</h2>
         <ul>
           <li>경계 근처에서 더 강한 안전을 위해 로그 장벽과 GP 불확실성을 자연스럽게 결합하는 <strong>새로운 Log-GP-CBF 공식</strong></li>
@@ -5790,15 +6356,15 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/perception-limited-safety/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/perception-limited-safety/fig2.png" alt="Figure 2">
-          <figcaption>Figure 2 from the paper.</figcaption>
-        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Formal characterization of the perception boundary problem</strong> in CBF-based safety filtering, identifying the source of chattering behavior</li>
@@ -5878,15 +6444,15 @@ const PAPERS = [
         </ul>
 
         
+        
+
+        
+        
         <figure>
           <img src="images/perception-limited-safety/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/perception-limited-safety/fig2.png" alt="Figure 2">
-          <figcaption>논문의 Figure 2.</figcaption>
-        </figure>
         <h2>주요 기여</h2>
         <ul>
           <li>CBF 기반 안전 필터링에서 채터링 행동의 원인을 식별하는 <strong>인식 경계 문제의 형식적 특성화</strong></li>
@@ -5978,21 +6544,22 @@ const PAPERS = [
         </ul>
         <p>Threshold estimation follows the standard finite-size scaling methodology: logical error rate vs. physical error rate curves for different code distances are plotted, and the crossing point defines the threshold. The key novelty is performing this procedure identically for each decoder to isolate decoder-induced variation.</p>
 
-        <figure>
-          <img src="images/gkp-decoder-dependence/thumbnail.png" alt="GKP decoder dependence overview">
-          <figcaption>Thumbnail: Overview of the GKP surface-code decoding pipeline.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/gkp-decoder-dependence/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/gkp-decoder-dependence/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Decoder-dependence quantification:</strong> Demonstrates that threshold estimates for GKP surface codes can differ by significant margins (potentially several percentage points) depending on the decoder used.</li>
@@ -6080,21 +6647,22 @@ const PAPERS = [
         </ul>
         <p>임계값 추정은 표준 유한 크기 스케일링 방법론을 따릅니다. 핵심 참신함은 각 디코더에 대해 동일한 절차를 수행하여 디코더로 인한 변동을 분리하는 것입니다.</p>
 
-        <figure>
-          <img src="images/gkp-decoder-dependence/thumbnail.png" alt="GKP 디코더 의존성 개요">
-          <figcaption>Thumbnail: GKP 표면 코드 디코딩 파이프라인 개요.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/gkp-decoder-dependence/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/gkp-decoder-dependence/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>디코더 의존성 정량화:</strong> GKP 표면 코드의 임계값 추정이 사용된 디코더에 따라 상당한 차이(잠재적으로 수 퍼센트 포인트)를 보일 수 있음을 실증합니다.</li>
@@ -6196,21 +6764,22 @@ const PAPERS = [
         </ul>
         <p>Decoding is then performed under both the correlated noise model and the standard independent noise model, and the gap in logical error rates quantifies the impact of ignoring correlations.</p>
 
-        <figure>
-          <img src="images/geometry-correlated-noise/thumbnail.png" alt="Geometry-induced noise in qLDPC routing">
-          <figcaption>Thumbnail: Illustration of routing-induced correlated noise in qLDPC syndrome extraction.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/geometry-correlated-noise/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/geometry-correlated-noise/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Identification of geometry-induced correlations:</strong> Formalizes how shared routing paths create correlated error events that are absent in idealized noise models.</li>
@@ -6299,21 +6868,22 @@ const PAPERS = [
         </ul>
         <p>그런 다음 상관 잡음 모델과 표준 독립 잡음 모델 모두에서 디코딩을 수행하고, 논리적 오류율의 차이가 상관관계 무시의 영향을 정량화합니다.</p>
 
-        <figure>
-          <img src="images/geometry-correlated-noise/thumbnail.png" alt="qLDPC 라우팅에서의 기하학 유도 잡음">
-          <figcaption>Thumbnail: qLDPC 신드롬 추출에서 라우팅 유도 상관 잡음의 그림.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/geometry-correlated-noise/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/geometry-correlated-noise/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>기하학 유도 상관관계 식별:</strong> 공유 라우팅 경로가 이상화된 잡음 모델에는 없는 상관 오류 이벤트를 어떻게 생성하는지 공식화합니다.</li>
@@ -6416,16 +6986,16 @@ const PAPERS = [
         </ul>
         <p>The simultaneous injection capability arises because injections on different logical qubits act on disjoint sets of physical qubits (leveraging the qLDPC code structure), allowing them to proceed in parallel without interference.</p>
 
-        <figure>
-          <img src="images/magic-state-injection-qldpc/thumbnail.png" alt="In-situ magic state injection on qLDPC codes">
-          <figcaption>Thumbnail: In-situ simultaneous magic state injection protocol overview.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/magic-state-injection-qldpc/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Factory-free injection:</strong> Eliminates the need for dedicated magic state factories, directly injecting magic states into the qLDPC code block where computation occurs.</li>
@@ -6517,16 +7087,16 @@ const PAPERS = [
         </ul>
         <p>동시 주입 능력은 서로 다른 논리 큐비트에 대한 주입이 물리적 큐비트의 분리된 집합에서 작동하기 때문에 발생하며(qLDPC 코드 구조를 활용), 간섭 없이 병렬로 진행할 수 있습니다.</p>
 
-        <figure>
-          <img src="images/magic-state-injection-qldpc/thumbnail.png" alt="qLDPC 코드에서의 현장 매직 스테이트 주입">
-          <figcaption>Thumbnail: 현장 동시 매직 스테이트 주입 프로토콜 개요.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/magic-state-injection-qldpc/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>공장 없는 주입:</strong> 전용 매직 스테이트 공장의 필요를 제거하고, 계산이 발생하는 qLDPC 코드 블록에 매직 스테이트를 직접 주입합니다.</li>
@@ -6631,16 +7201,16 @@ const PAPERS = [
           <li><strong>Inference:</strong> At decode time, BP runs with neural corrections applied, and the final corrected beliefs are used for hard decisions. The overhead per decoding instance is the cost of one or a few neural network forward passes.</li>
         </ul>
 
-        <figure>
-          <img src="images/neural-belief-matching/thumbnail.png" alt="Neural belief-matching decoder architecture">
-          <figcaption>Thumbnail: Neural belief-matching decoding pipeline.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/neural-belief-matching/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Principled training objective:</strong> Unlike prior neural BP work that uses heuristic loss functions, belief matching targets the true posterior, providing a clear optimality criterion.</li>
@@ -6729,16 +7299,16 @@ const PAPERS = [
           <li><strong>추론:</strong> 디코드 시 BP가 신경 보정이 적용된 상태로 실행되며, 최종 보정된 신뢰가 경판정에 사용됩니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/neural-belief-matching/thumbnail.png" alt="신경 신뢰 매칭 디코더 구조">
-          <figcaption>Thumbnail: 신경 신뢰 매칭 디코딩 파이프라인.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/neural-belief-matching/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>원리적 학습 목표:</strong> 휴리스틱 손실 함수를 사용하는 이전 신경 BP 연구와 달리, 신뢰 매칭은 베이지안 최적성과 연결된 명확한 이론적 정당화를 가진 진정한 사후 분포를 목표로 합니다.</li>
@@ -6841,21 +7411,22 @@ const PAPERS = [
           <li><strong>Composite benchmarks:</strong> End-to-end benchmarks that combine all dynamic elements in circuits representative of QEC syndrome extraction, teleportation, and repeat-until-success protocols.</li>
         </ul>
 
-        <figure>
-          <img src="images/dynamic-quantum-circuits/thumbnail.png" alt="Dynamic quantum circuit benchmarking overview">
-          <figcaption>Thumbnail: Benchmarking framework for dynamic quantum circuits.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/dynamic-quantum-circuits/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/dynamic-quantum-circuits/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>First systematic benchmarking suite for dynamic circuits:</strong> Provides a complete protocol set that hardware teams can adopt to characterize MCM and feedforward performance.</li>
@@ -6942,21 +7513,22 @@ const PAPERS = [
           <li><strong>복합 벤치마크:</strong> QEC 신드롬 추출, 텔레포테이션, 성공할 때까지 반복 프로토콜을 대표하는 회로에서 모든 동적 요소를 결합하는 종단간 벤치마크입니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/dynamic-quantum-circuits/thumbnail.png" alt="동적 양자 회로 벤치마킹 개요">
-          <figcaption>Thumbnail: 동적 양자 회로를 위한 벤치마킹 프레임워크.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/dynamic-quantum-circuits/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/dynamic-quantum-circuits/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>동적 회로를 위한 최초의 체계적 벤치마킹 모음:</strong> 하드웨어 팀이 MCM과 피드포워드 성능을 특성화하기 위해 채택할 수 있는 완전한 프로토콜 세트를 제공합니다.</li>
@@ -7057,21 +7629,26 @@ const PAPERS = [
           <li><strong>Generation:</strong> Starting from the maximally mixed state, the trained reverse circuits are applied sequentially to produce a sample from the learned distribution/state.</li>
         </ul>
 
-        <figure>
-          <img src="images/quantum-ddpm/thumbnail.png" alt="Quantum DDPM forward and reverse processes">
-          <figcaption>Thumbnail: QDDPM forward (noise) and reverse (denoising) process overview.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/quantum-ddpm/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/quantum-ddpm/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/quantum-ddpm/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Quantum DDPM formalization:</strong> First rigorous formulation of the diffusion-denoising paradigm in the quantum setting, with well-defined forward and reverse processes.</li>
@@ -7160,21 +7737,26 @@ const PAPERS = [
           <li><strong>생성:</strong> 최대 혼합 상태에서 시작하여 학습된 역방향 회로를 순차적으로 적용하여 학습된 분포/상태에서 샘플을 생성합니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/quantum-ddpm/thumbnail.png" alt="양자 DDPM 순방향 및 역방향 과정">
-          <figcaption>Thumbnail: QDDPM 순방향(잡음) 및 역방향(노이즈 제거) 과정 개요.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/quantum-ddpm/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/quantum-ddpm/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/quantum-ddpm/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>양자 DDPM 공식화:</strong> 양자 설정에서 확산-노이즈 제거 패러다임의 최초 엄밀한 공식화로, 잘 정의된 순방향 및 역방향 과정을 제공합니다.</li>
@@ -7277,21 +7859,38 @@ const PAPERS = [
           <li><strong>Generation:</strong> Starting from the maximally mixed state, the reverse channels are applied sequentially to produce the target mixed state.</li>
         </ul>
 
-        <figure>
-          <img src="images/mixed-state-qddpm/thumbnail.png" alt="Mixed-state QDDPM architecture">
-          <figcaption>Thumbnail: Mixed-state quantum DDPM forward and reverse process.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/mixed-state-qddpm/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/mixed-state-qddpm/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/mixed-state-qddpm/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mixed-state-qddpm/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mixed-state-qddpm/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mixed-state-qddpm/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Mixed-state generalization:</strong> First extension of QDDPM to arbitrary mixed states, handling the full complexity of density matrix generation.</li>
@@ -7378,21 +7977,38 @@ const PAPERS = [
           <li><strong>생성:</strong> 최대 혼합 상태에서 시작하여 역방향 채널을 순차적으로 적용하여 대상 혼합 상태를 생성합니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/mixed-state-qddpm/thumbnail.png" alt="혼합 상태 QDDPM 구조">
-          <figcaption>Thumbnail: 혼합 상태 양자 DDPM 순방향 및 역방향 과정.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/mixed-state-qddpm/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/mixed-state-qddpm/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/mixed-state-qddpm/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mixed-state-qddpm/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mixed-state-qddpm/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mixed-state-qddpm/fig6.png" alt="Figure 6">
+          <figcaption>논문의 Figure 6.</figcaption>
+        </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>혼합 상태 일반화:</strong> 밀도 행렬 생성의 전체 복잡성을 다루는 QDDPM의 임의 혼합 상태로의 최초 확장입니다.</li>
@@ -7494,21 +8110,18 @@ const PAPERS = [
           <li><strong>Mitigation strategy 3 — Layerwise training:</strong> Trains each reverse circuit layer-by-layer rather than all-at-once, keeping the effective optimization landscape shallow at each training phase.</li>
         </ul>
 
-        <figure>
-          <img src="images/barren-plateaus-qddpm/thumbnail.png" alt="Barren plateau analysis in QDDPM">
-          <figcaption>Thumbnail: Gradient variance analysis for QDDPM with different mitigation strategies.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/barren-plateaus-qddpm/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/barren-plateaus-qddpm/fig2.png" alt="Figure 2">
-          <figcaption>Figure 2 from the paper.</figcaption>
-        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Rigorous barren plateau analysis for QDDPM:</strong> First theoretical characterization of when and why gradients vanish in quantum diffusion models.</li>
@@ -7594,21 +8207,18 @@ const PAPERS = [
           <li><strong>완화 전략 3 — 계층별 학습:</strong> 각 역방향 회로를 한꺼번에가 아닌 층별로 학습하여 각 학습 단계에서 효과적 최적화 경관을 얕게 유지합니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/barren-plateaus-qddpm/thumbnail.png" alt="QDDPM에서의 불모 고원 분석">
-          <figcaption>Thumbnail: 다양한 완화 전략에 따른 QDDPM의 기울기 분산 분석.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/barren-plateaus-qddpm/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/barren-plateaus-qddpm/fig2.png" alt="Figure 2">
-          <figcaption>논문의 Figure 2.</figcaption>
-        </figure>
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>QDDPM을 위한 엄밀한 불모 고원 분석:</strong> 양자 확산 모델에서 기울기가 언제 왜 소실되는지에 대한 최초의 이론적 특성화입니다.</li>
@@ -7708,16 +8318,16 @@ const PAPERS = [
           <li><strong>Deployment:</strong> The trained policy produces a noise-adapted circuit that can be executed on the target hardware without further optimization.</li>
         </ul>
 
-        <figure>
-          <img src="images/rl-quantum-search/thumbnail.png" alt="RL-optimized quantum search overview">
-          <figcaption>Thumbnail: Reinforcement learning framework for noise-tolerant quantum search.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/rl-quantum-search/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>RL-designed noise-tolerant search:</strong> Demonstrates that RL can discover protocols significantly outperforming fixed Grover iterations under noise.</li>
@@ -7806,16 +8416,16 @@ const PAPERS = [
           <li><strong>배포:</strong> 학습된 정책은 추가 최적화 없이 대상 하드웨어에서 실행할 수 있는 잡음 적응 회로를 생성합니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/rl-quantum-search/thumbnail.png" alt="RL 최적화 양자 탐색 개요">
-          <figcaption>Thumbnail: 잡음 내성 양자 탐색을 위한 강화 학습 프레임워크.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/rl-quantum-search/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>RL 설계 잡음 내성 탐색:</strong> 잡음 하에서 RL이 고정된 그로버 반복을 상당히 능가하는 프로토콜을 발견할 수 있음을 보여줍니다.</li>
@@ -7917,16 +8527,16 @@ const PAPERS = [
           <li><strong>Maximal variance reduction bounds:</strong> Derives theoretical lower bounds on achievable variance for any overlapped grouping strategy, showing how much improvement is possible over disjoint groupings.</li>
         </ul>
 
-        <figure>
-          <img src="images/overlapped-groupings/thumbnail.png" alt="Overlapped groupings for Hamiltonian measurement">
-          <figcaption>Thumbnail: Comparison of disjoint vs. overlapped Pauli grouping strategies.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/overlapped-groupings/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Overlapped grouping concept:</strong> Introduces and formalizes the idea of non-disjoint Pauli groupings for Hamiltonian measurement.</li>
@@ -8011,16 +8621,16 @@ const PAPERS = [
           <li><strong>최대 분산 감소 한계:</strong> 겹침 그룹화 전략으로 달성 가능한 분산의 이론적 하한을 도출하여 분리 그룹화에 비해 얼마나 많은 개선이 가능한지 보여줍니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/overlapped-groupings/thumbnail.png" alt="해밀토니안 측정을 위한 겹침 그룹화">
-          <figcaption>Thumbnail: 분리 vs. 겹침 파울리 그룹화 전략 비교.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/overlapped-groupings/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>겹침 그룹화 개념:</strong> 해밀토니안 측정을 위한 비분리 파울리 그룹화의 아이디어를 도입하고 공식화합니다.</li>
@@ -8119,21 +8729,34 @@ const PAPERS = [
           <li><strong>Composition:</strong> Block-level PEC corrections are composed across the full circuit, with the total overhead being the product of block-level overheads — exponentially smaller than gate-level PEC.</li>
         </ul>
 
-        <figure>
-          <img src="images/mosaic-error-cancellation/thumbnail.png" alt="MoSAIC framework overview">
-          <figcaption>Thumbnail: MoSAIC blockwise probabilistic error cancellation framework.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/mosaic-error-cancellation/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/mosaic-error-cancellation/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Block-level PEC framework:</strong> Formalizes the idea of performing error cancellation at the block level with rigorous overhead analysis.</li>
@@ -8219,21 +8842,34 @@ const PAPERS = [
           <li><strong>합성:</strong> 블록 수준 PEC 보정이 전체 회로에 걸쳐 합성되며, 총 오버헤드는 블록 수준 오버헤드의 곱입니다 — 게이트 수준 PEC보다 지수적으로 작습니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/mosaic-error-cancellation/thumbnail.png" alt="MoSAIC 프레임워크 개요">
-          <figcaption>Thumbnail: MoSAIC 블록별 확률적 오류 상쇄 프레임워크.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/mosaic-error-cancellation/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/mosaic-error-cancellation/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/mosaic-error-cancellation/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>블록 수준 PEC 프레임워크:</strong> 엄밀한 오버헤드 분석으로 블록 수준에서 오류 상쇄를 수행하는 아이디어를 공식화합니다.</li>
@@ -8333,16 +8969,20 @@ const PAPERS = [
           <li><strong>Analysis tools:</strong> The framework provides visual tools to analyze hook error propagation, schedule depth, and parallelism opportunities.</li>
         </ul>
 
-        <figure>
-          <img src="images/bacon-shor-board-games/thumbnail.png" alt="Bacon-Shor board game framework">
-          <figcaption>Thumbnail: Board game representation of Bacon-Shor measurement schedules.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/bacon-shor-board-games/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
+        <figure>
+          <img src="images/bacon-shor-board-games/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Game-theoretic framework:</strong> Novel formulation of measurement scheduling as a board game, providing intuition and structure for a previously ad-hoc problem.</li>
@@ -8425,16 +9065,20 @@ const PAPERS = [
           <li><strong>분석 도구:</strong> 프레임워크가 훅 오류 전파, 스케줄 깊이, 병렬화 기회를 분석하는 시각적 도구를 제공합니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/bacon-shor-board-games/thumbnail.png" alt="베이컨-쇼어 보드 게임 프레임워크">
-          <figcaption>Thumbnail: 베이컨-쇼어 측정 스케줄의 보드 게임 표현.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/bacon-shor-board-games/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
+        <figure>
+          <img src="images/bacon-shor-board-games/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>게임 이론 프레임워크:</strong> 이전에 임시적이었던 문제에 직관과 구조를 제공하는 보드 게임으로서의 측정 스케줄링의 새로운 공식화입니다.</li>
@@ -8531,21 +9175,18 @@ const PAPERS = [
           <li><strong>Fault-tolerance analysis:</strong> Circuit-level noise simulations verify that the logical gate protocols maintain the code's error correction capability.</li>
         </ul>
 
-        <figure>
-          <img src="images/floquet-bacon-shor/thumbnail.png" alt="Floquet-Bacon-Shor logical operations">
-          <figcaption>Thumbnail: Logical operations in the Floquet-Bacon-Shor code.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/floquet-bacon-shor/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/floquet-bacon-shor/fig2.png" alt="Figure 2">
-          <figcaption>Figure 2 from the paper.</figcaption>
-        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Complete logical gate set:</strong> First demonstration of initialization, measurement, and Clifford gates for the Floquet-Bacon-Shor code.</li>
@@ -8631,21 +9272,18 @@ const PAPERS = [
           <li><strong>결함 허용 분석:</strong> 회로 수준 잡음 시뮬레이션이 논리 게이트 프로토콜이 코드의 오류 정정 능력을 유지함을 검증합니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/floquet-bacon-shor/thumbnail.png" alt="플로케-베이컨-쇼어 논리 연산">
-          <figcaption>Thumbnail: 플로케-베이컨-쇼어 코드에서의 논리 연산.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/floquet-bacon-shor/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/floquet-bacon-shor/fig2.png" alt="Figure 2">
-          <figcaption>논문의 Figure 2.</figcaption>
-        </figure>
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>완전한 논리 게이트 세트:</strong> 플로케-베이컨-쇼어 코드에 대한 초기화, 측정, 클리포드 게이트의 최초 시연입니다.</li>
@@ -8745,21 +9383,22 @@ const PAPERS = [
           <li><strong>Diagnostic use:</strong> Anomalously low likelihood for specific detectors pinpoints which stabilizers or qubit regions have unexpected noise behavior.</li>
         </ul>
 
-        <figure>
-          <img src="images/detector-likelihood-qec/thumbnail.png" alt="Detector likelihood benchmarking framework">
-          <figcaption>Thumbnail: Detector likelihood as a QEC benchmarking metric.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/detector-likelihood-qec/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
-
         <figure>
           <img src="images/detector-likelihood-qec/fig2.png" alt="Figure 2">
           <figcaption>Figure 2 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Decoder-independent QEC metric:</strong> First proposal and validation of detector likelihood as a standalone QEC benchmark.</li>
@@ -8844,21 +9483,22 @@ const PAPERS = [
           <li><strong>진단 사용:</strong> 특정 디텍터에 대한 비정상적으로 낮은 우도가 예상치 못한 잡음 행동을 가진 안정기 또는 큐비트 영역을 지적합니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/detector-likelihood-qec/thumbnail.png" alt="디텍터 우도 벤치마킹 프레임워크">
-          <figcaption>Thumbnail: QEC 벤치마킹 지표로서의 디텍터 우도.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/detector-likelihood-qec/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
-
         <figure>
           <img src="images/detector-likelihood-qec/fig2.png" alt="Figure 2">
           <figcaption>논문의 Figure 2.</figcaption>
         </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>디코더 독립적 QEC 지표:</strong> 독립적 QEC 벤치마크로서 디텍터 우도의 최초 제안 및 검증입니다.</li>
@@ -8957,21 +9597,18 @@ const PAPERS = [
           <li><strong>Resource optimization:</strong> The framework jointly optimizes graph partitioning, Bell pair allocation, and measurement scheduling to minimize total execution time and entanglement cost.</li>
         </ul>
 
-        <figure>
-          <img src="images/dc-mbqc/thumbnail.png" alt="DC-MBQC distributed compilation framework">
-          <figcaption>Thumbnail: DC-MBQC framework for distributed measurement-based quantum computing.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/dc-mbqc/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/dc-mbqc/fig2.png" alt="Figure 2">
-          <figcaption>Figure 2 from the paper.</figcaption>
-        </figure>
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>First MBQC-native distributed compiler:</strong> Previous distributed compilation work targets the circuit model; this is the first framework designed specifically for MBQC graph states.</li>
@@ -9057,21 +9694,18 @@ const PAPERS = [
           <li><strong>자원 최적화:</strong> 프레임워크가 그래프 분할, 벨 쌍 할당, 측정 스케줄링을 공동으로 최적화하여 총 실행 시간과 얽힘 비용을 최소화합니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/dc-mbqc/thumbnail.png" alt="DC-MBQC 분산 컴파일 프레임워크">
-          <figcaption>Thumbnail: 분산 측정 기반 양자 컴퓨팅을 위한 DC-MBQC 프레임워크.</figcaption>
-        </figure>
+        
 
+        
+        
+
+        
         
         <figure>
           <img src="images/dc-mbqc/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
 
-        <figure>
-          <img src="images/dc-mbqc/fig2.png" alt="Figure 2">
-          <figcaption>논문의 Figure 2.</figcaption>
-        </figure>
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>최초의 MBQC 네이티브 분산 컴파일러:</strong> 이전의 분산 컴파일 연구는 회로 모델을 대상으로 했으며, 이는 MBQC 그래프 상태를 위해 특별히 설계된 최초의 프레임워크입니다.</li>
@@ -9171,16 +9805,16 @@ const PAPERS = [
           <li><strong>Optimization:</strong> For each compass code instance and noise bias, the optimal Clifford deformation is found by exhaustive search (small codes) or heuristic optimization (larger codes), maximizing the threshold or minimizing the logical error rate.</li>
         </ul>
 
-        <figure>
-          <img src="images/clifford-compass-codes/thumbnail.png" alt="Clifford-deformed compass codes">
-          <figcaption>Thumbnail: Compass code family with Clifford deformation for biased noise.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/clifford-compass-codes/fig1.png" alt="Figure 1">
           <figcaption>Figure 1 from the paper.</figcaption>
         </figure>
+
         <h2>Key Contributions</h2>
         <ul>
           <li><strong>Clifford deformation for compass codes:</strong> First application of Clifford deformation beyond the surface code to the broader compass code family.</li>
@@ -9266,16 +9900,16 @@ const PAPERS = [
           <li><strong>최적화:</strong> 각 나침반 코드 인스턴스와 잡음 편향에 대해 완전 검색(작은 코드) 또는 휴리스틱 최적화(더 큰 코드)로 최적 클리포드 변형을 찾습니다.</li>
         </ul>
 
-        <figure>
-          <img src="images/clifford-compass-codes/thumbnail.png" alt="클리포드 변형 나침반 코드">
-          <figcaption>Thumbnail: 편향 잡음에 대한 클리포드 변형이 적용된 나침반 코드 계열.</figcaption>
-        </figure>
+        
 
+        
+        
         
         <figure>
           <img src="images/clifford-compass-codes/fig1.png" alt="Figure 1">
           <figcaption>논문의 Figure 1.</figcaption>
         </figure>
+
         <h2>핵심 기여</h2>
         <ul>
           <li><strong>나침반 코드를 위한 클리포드 변형:</strong> 표면 코드를 넘어 더 넓은 나침반 코드 계열에 대한 클리포드 변형의 최초 적용입니다.</li>
@@ -9338,5 +9972,2867 @@ const PAPERS = [
         <p>이 논문은 나침반 코드와 클리포드 변형의 조합이 잡음 적응 양자 오류 정정을 위한 풍부한 설계 공간을 만들어냄을 보여줍니다. 핵심 실용적 통찰은 최적 코드가 항상 표면 코드나 베이컨-쇼어 코드가 아니라는 것입니다 — 적절한 변형이 있는 중간 나침반 코드가 편향 잡음에서 둘 다를 능가할 수 있습니다. 특성화된 잡음 편향이 있는 하드웨어 팀에게 이 연구는 하드웨어를 변경하지 않고 결함 허용 성능을 향상시킬 수 있는 최적화된 코드 선택 메뉴를 제공합니다.</p>
       `
     }
+  },,
+// ====================================================================
+  // 1. bayesian-qec-discovery
+  // ====================================================================
+  {
+    id: "bayesian-qec-discovery",
+    date: "2025-04-11",
+    authors: "Chengyu, Y., et al.",
+    venue: "Preprint 2025",
+    image: "images/bayesian-qec-discovery/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "QEC", "Bayesian Optimization"],
+    en: {
+      title: "Bayesian Optimization for Quantum Error-Correcting Code Discovery",
+      summary: "Proposes a Bayesian optimization framework to automatically discover new quantum error-correcting codes by searching over parameterized code families, reducing the reliance on human-designed constructions.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper reframes quantum error-correcting code design as a <strong>black-box optimization problem</strong> and demonstrates that Bayesian optimization can discover competitive or novel QEC codes without manual algebraic construction.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can Bayesian optimization systematically explore the space of quantum error-correcting codes and discover codes with favorable distance and encoding-rate properties, rivaling or surpassing hand-designed constructions?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Designing good quantum error-correcting codes traditionally requires deep algebraic expertise. The search space of stabilizer codes grows exponentially, making exhaustive search infeasible. Bayesian optimization (BO) offers a principled way to explore expensive-to-evaluate black-box functions with a surrogate model and acquisition function, making it a natural fit for code discovery where each evaluation involves computing code distance.</p>
+        <p>Prior work has explored random search and reinforcement learning for code construction, but BO's sample efficiency and ability to handle noisy objectives make it particularly appealing for this domain where each fitness evaluation is computationally costly.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Search space:</strong> Parameterized families of stabilizer codes, encoded as binary matrices representing stabilizer generators.</li>
+          <li><strong>Objective:</strong> Maximize code distance for a given number of physical and logical qubits, or optimize a combined metric of distance and encoding rate.</li>
+          <li><strong>Surrogate model:</strong> Gaussian process with a kernel tailored to the discrete/combinatorial structure of stabilizer codes.</li>
+          <li><strong>Acquisition function:</strong> Expected improvement (EI) guides exploration vs. exploitation trade-off.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>BO framework for QEC:</strong> First systematic application of Bayesian optimization to quantum code discovery with stabilizer parameterization.</li>
+          <li><strong>Novel codes found:</strong> Discovers codes matching or exceeding known constructions for small-to-medium block lengths.</li>
+          <li><strong>Sample efficiency:</strong> Requires far fewer evaluations than random or grid search to find high-quality codes.</li>
+          <li><strong>Generalizable pipeline:</strong> Framework can be adapted to different code families (CSS, non-CSS, subsystem codes).</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code families</td><td>Stabilizer codes, [[n,k,d]] with n up to ~30</td></tr>
+            <tr><td>BO iterations</td><td>200-500 per search run</td></tr>
+            <tr><td>Surrogate</td><td>Gaussian process with Hamming-based kernel</td></tr>
+            <tr><td>Distance computation</td><td>Exact via stabilizer tableau methods</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Code parameters</th><th>Best known d</th><th>BO-discovered d</th></tr></thead>
+          <tbody>
+            <tr><td>[[15, 1, d]]</td><td>7 (Reed-Muller)</td><td>7 (matched)</td></tr>
+            <tr><td>[[17, 1, d]]</td><td>7</td><td>7 (matched)</td></tr>
+            <tr><td>Various [[n,k,d]]</td><td>Varies</td><td>Competitive or improved</td></tr>
+          </tbody>
+        </table>
+        <p>BO consistently matches known optimal codes and in some parameter regimes finds codes not previously catalogued, demonstrating the method's potential as an automated discovery tool.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Elegant formulation of code discovery as a black-box optimization problem.</li>
+          <li>Sample-efficient compared to random search and evolutionary methods.</li>
+          <li>Modular framework easily extensible to other code families and objectives.</li>
+          <li>Reduces barrier to entry: no deep algebraic expertise needed to find good codes.</li>
+          <li>Clear experimental protocol with reproducible baselines.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Scalability limited to moderate block lengths due to exponential growth of the search space and distance computation cost.</li>
+          <li>Gaussian process surrogate may struggle with highly discrete, non-smooth landscapes at larger scales.</li>
+          <li>Does not incorporate decoder-aware optimization (found codes may be hard to decode efficiently).</li>
+          <li>Comparison against algebraic methods is somewhat unfair since those methods exploit structural insight BO does not.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the framework be extended to optimize for decoder-friendliness alongside distance?</li>
+          <li>How does performance scale when targeting qLDPC codes with hundreds of qubits?</li>
+          <li>Could hybrid approaches combining algebraic structure with BO yield better results?</li>
+          <li>What kernel designs best capture the algebraic structure of stabilizer codes?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper demonstrates that machine-learning-driven search, specifically Bayesian optimization, is a viable and sample-efficient approach to discovering quantum error-correcting codes. While it currently works best at moderate scales, the framework opens the door to automated code design pipelines that complement traditional algebraic methods.</p>
+      `
+    },
+    ko: {
+      title: "베이지안 최적화를 이용한 양자 오류 정정 코드 탐색",
+      summary: "매개변수화된 코드 계열을 탐색하여 새로운 양자 오류 정정 코드를 자동으로 발견하는 베이지안 최적화 프레임워크를 제안하며, 수동 설계 의존도를 줄입니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 양자 오류 정정 코드 설계를 <strong>블랙박스 최적화 문제</strong>로 재구성하고, 베이지안 최적화가 수동 대수적 구성 없이 경쟁력 있거나 새로운 QEC 코드를 발견할 수 있음을 보여줍니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>베이지안 최적화가 양자 오류 정정 코드의 공간을 체계적으로 탐색하여 수동 설계 구성에 필적하거나 능가하는 거리 및 인코딩률 속성을 가진 코드를 발견할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>좋은 양자 오류 정정 코드 설계는 전통적으로 깊은 대수적 전문지식을 요구합니다. 안정기 코드의 탐색 공간은 기하급수적으로 증가하여 완전 탐색이 불가능합니다. 베이지안 최적화(BO)는 대리 모델과 획득 함수를 통해 비용이 많이 드는 블랙박스 함수를 원칙적으로 탐색하는 방법으로, 각 평가마다 코드 거리 계산이 필요한 코드 탐색에 자연스럽게 적합합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>탐색 공간:</strong> 안정기 생성원을 나타내는 이진 행렬로 인코딩된 매개변수화 안정기 코드 계열.</li>
+          <li><strong>목적 함수:</strong> 주어진 물리적/논리적 큐비트 수에 대해 코드 거리 최대화 또는 거리와 인코딩률의 결합 지표 최적화.</li>
+          <li><strong>대리 모델:</strong> 안정기 코드의 이산/조합 구조에 맞춤화된 커널을 가진 가우시안 프로세스.</li>
+          <li><strong>획득 함수:</strong> 기대 개선(EI)이 탐색 대 활용 균형을 안내.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/bayesian-qec-discovery/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>QEC용 BO 프레임워크:</strong> 안정기 매개변수화를 통한 양자 코드 발견에 베이지안 최적화를 최초로 체계적 적용.</li>
+          <li><strong>새로운 코드 발견:</strong> 소~중 블록 길이에서 알려진 구성에 필적하거나 능가하는 코드 발견.</li>
+          <li><strong>샘플 효율성:</strong> 랜덤 또는 그리드 탐색보다 훨씬 적은 평가로 고품질 코드 발견.</li>
+          <li><strong>일반화 가능한 파이프라인:</strong> 다양한 코드 계열(CSS, 비CSS, 서브시스템 코드)에 적응 가능.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드 계열</td><td>안정기 코드, [[n,k,d]], n 최대 ~30</td></tr>
+            <tr><td>BO 반복</td><td>탐색 실행당 200-500회</td></tr>
+            <tr><td>대리 모델</td><td>해밍 기반 커널의 가우시안 프로세스</td></tr>
+            <tr><td>거리 계산</td><td>안정기 타블로 방법을 통한 정확 계산</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>코드 매개변수</th><th>기존 최고 d</th><th>BO 발견 d</th></tr></thead>
+          <tbody>
+            <tr><td>[[15, 1, d]]</td><td>7 (Reed-Muller)</td><td>7 (일치)</td></tr>
+            <tr><td>[[17, 1, d]]</td><td>7</td><td>7 (일치)</td></tr>
+            <tr><td>다양한 [[n,k,d]]</td><td>다양</td><td>경쟁적 또는 개선</td></tr>
+          </tbody>
+        </table>
+        <p>BO는 일관되게 알려진 최적 코드에 필적하며, 일부 매개변수 영역에서는 이전에 목록에 없던 코드를 발견하여 자동 탐색 도구로서의 잠재력을 보여줍니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>코드 발견을 블랙박스 최적화 문제로 우아하게 정식화.</li>
+          <li>랜덤 탐색 및 진화적 방법 대비 샘플 효율적.</li>
+          <li>다른 코드 계열과 목적 함수로 쉽게 확장 가능한 모듈식 프레임워크.</li>
+          <li>진입 장벽 감소: 좋은 코드를 찾는 데 깊은 대수적 전문지식 불필요.</li>
+          <li>재현 가능한 기준선이 있는 명확한 실험 프로토콜.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>탐색 공간의 기하급수적 증가와 거리 계산 비용으로 중간 블록 길이로 확장성 제한.</li>
+          <li>가우시안 프로세스 대리 모델이 대규모에서 고도로 이산적이고 비매끄러운 지형에 어려움을 겪을 수 있음.</li>
+          <li>디코더 인식 최적화를 포함하지 않아 발견된 코드가 효율적으로 디코딩하기 어려울 수 있음.</li>
+          <li>대수적 방법과의 비교는 다소 불공정한데, 그 방법들은 BO가 활용하지 않는 구조적 통찰을 이용.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>프레임워크를 거리와 함께 디코더 친화성을 최적화하도록 확장할 수 있는가?</li>
+          <li>수백 큐비트의 qLDPC 코드를 대상으로 할 때 성능이 어떻게 확장되는가?</li>
+          <li>대수적 구조와 BO를 결합한 하이브리드 접근법이 더 나은 결과를 낼 수 있는가?</li>
+          <li>안정기 코드의 대수적 구조를 가장 잘 포착하는 커널 설계는 무엇인가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 머신러닝 기반 탐색, 특히 베이지안 최적화가 양자 오류 정정 코드 발견에 실행 가능하고 샘플 효율적인 접근법임을 보여줍니다. 현재 중간 규모에서 가장 잘 작동하지만, 전통적 대수적 방법을 보완하는 자동화된 코드 설계 파이프라인의 가능성을 열어줍니다.</p>
+      `
+    }
   },
+
+  // ====================================================================
+  // 2. alphasyndrome
+  // ====================================================================
+  {
+    id: "alphasyndrome",
+    date: "2025-04-11",
+    authors: "Liu, Y., et al.",
+    venue: "Preprint 2025",
+    image: "images/alphasyndrome/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "QEC", "Reinforcement Learning"],
+    en: {
+      title: "AlphaSyndrome: Reinforcement Learning for Quantum Error Correction Scheduling",
+      summary: "Introduces AlphaSyndrome, an RL agent that learns optimal scheduling strategies for syndrome extraction in quantum error correction, adapting measurement order to minimize logical error rates.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>AlphaSyndrome applies <strong>reinforcement learning to optimize the scheduling of syndrome measurements</strong> in QEC circuits, demonstrating that adaptive ordering can meaningfully reduce logical error rates compared to fixed schedules.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can a reinforcement learning agent learn to schedule syndrome extraction measurements in an order that minimizes the logical error rate of a quantum error-correcting code, outperforming fixed or heuristic schedules?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>In quantum error correction, stabilizer measurements must be performed periodically to detect errors. The order in which these measurements are scheduled affects how errors propagate through the circuit. Traditional approaches use fixed schedules, but the optimal ordering depends on the noise model and code structure. RL offers a way to learn adaptive strategies through trial and error.</p>
+        <p>This work draws inspiration from AlphaGo-style RL, treating syndrome scheduling as a sequential decision problem where each action selects the next stabilizer to measure.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>State:</strong> Current syndrome history and remaining unmeasured stabilizers in the current round.</li>
+          <li><strong>Action:</strong> Selection of the next stabilizer measurement to perform.</li>
+          <li><strong>Reward:</strong> Negative logical error rate estimated via Monte Carlo simulation of the full QEC cycle.</li>
+          <li><strong>Policy network:</strong> Graph neural network that respects the stabilizer connectivity structure.</li>
+          <li><strong>Training:</strong> Proximal policy optimization (PPO) with parallelized environment rollouts.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/alphasyndrome/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Novel RL formulation:</strong> First to cast syndrome measurement scheduling as a Markov decision process for RL optimization.</li>
+          <li><strong>GNN-based policy:</strong> Graph neural network policy that generalizes across different code sizes.</li>
+          <li><strong>Consistent improvements:</strong> RL-discovered schedules reduce logical error rates by 10-30% over fixed baselines on surface and color codes.</li>
+          <li><strong>Transferability:</strong> Policies trained on smaller codes partially transfer to larger instances.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Codes tested</td><td>Surface code (d=3,5,7), color code (d=3,5)</td></tr>
+            <tr><td>RL algorithm</td><td>PPO with 64 parallel environments</td></tr>
+            <tr><td>Policy network</td><td>3-layer GNN, hidden dim 128</td></tr>
+            <tr><td>Training episodes</td><td>~100K per code instance</td></tr>
+            <tr><td>Noise model</td><td>Circuit-level depolarizing noise, p = 0.001-0.01</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Code</th><th>Fixed schedule LER</th><th>RL schedule LER</th><th>Improvement</th></tr></thead>
+          <tbody>
+            <tr><td>Surface d=5</td><td>Baseline</td><td>~15% lower</td><td>Significant</td></tr>
+            <tr><td>Surface d=7</td><td>Baseline</td><td>~20% lower</td><td>Significant</td></tr>
+            <tr><td>Color d=5</td><td>Baseline</td><td>~10-25% lower</td><td>Moderate-significant</td></tr>
+          </tbody>
+        </table>
+        <p>The RL agent discovers non-trivial scheduling patterns, such as prioritizing stabilizers near recent error detections and alternating between X and Z stabilizers in specific patterns.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Novel and well-motivated problem formulation connecting RL to a practical QEC challenge.</li>
+          <li>GNN architecture naturally encodes the code's structure and enables partial generalization.</li>
+          <li>Consistent improvements across multiple codes and noise rates.</li>
+          <li>Discovered schedules provide interpretable insights about optimal measurement ordering.</li>
+          <li>Thorough ablation studies validate design choices.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Training cost is high: each reward evaluation requires full QEC simulation with decoding.</li>
+          <li>Transfer to much larger codes (d > 9) is not demonstrated.</li>
+          <li>Assumes a specific noise model; robustness to model mismatch is not fully explored.</li>
+          <li>Comparison limited to fixed schedules; comparison with other heuristic optimization methods would strengthen claims.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the RL agent adapt in real-time to changing noise conditions on actual hardware?</li>
+          <li>How do RL-discovered schedules interact with different decoder choices?</li>
+          <li>Could curriculum learning on increasingly larger codes improve transfer?</li>
+          <li>What is the relationship between optimal schedules and the code's symmetry group?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>AlphaSyndrome demonstrates that syndrome measurement scheduling is an underexplored degree of freedom in QEC that can yield meaningful error rate reductions. The RL approach is well-suited to this combinatorial optimization problem and discovers non-obvious strategies that fixed heuristics miss.</p>
+      `
+    },
+    ko: {
+      title: "AlphaSyndrome: 양자 오류 정정 스케줄링을 위한 강화학습",
+      summary: "신드롬 추출의 최적 스케줄링 전략을 학습하는 RL 에이전트 AlphaSyndrome을 도입하여, 측정 순서를 적응적으로 조정해 논리적 오류율을 최소화합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>AlphaSyndrome은 <strong>강화학습을 적용하여 QEC 회로에서 신드롬 측정 스케줄링을 최적화</strong>하며, 적응적 순서가 고정 스케줄 대비 논리적 오류율을 의미 있게 줄일 수 있음을 보여줍니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>강화학습 에이전트가 양자 오류 정정 코드의 논리적 오류율을 최소화하는 순서로 신드롬 추출 측정을 스케줄링하는 법을 학습하여, 고정 또는 휴리스틱 스케줄을 능가할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>양자 오류 정정에서 안정기 측정은 오류 감지를 위해 주기적으로 수행되어야 합니다. 이러한 측정의 순서가 회로를 통한 오류 전파에 영향을 미칩니다. 전통적 접근법은 고정 스케줄을 사용하지만, 최적 순서는 잡음 모델과 코드 구조에 따라 달라집니다. RL은 시행착오를 통해 적응적 전략을 학습하는 방법을 제공합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>상태:</strong> 현재 신드롬 이력 및 현재 라운드에서 미측정 안정기.</li>
+          <li><strong>행동:</strong> 다음에 수행할 안정기 측정 선택.</li>
+          <li><strong>보상:</strong> 전체 QEC 사이클의 몬테카를로 시뮬레이션으로 추정한 음의 논리적 오류율.</li>
+          <li><strong>정책 네트워크:</strong> 안정기 연결 구조를 반영하는 그래프 신경망(GNN).</li>
+          <li><strong>학습:</strong> 병렬화된 환경 롤아웃을 이용한 PPO(Proximal Policy Optimization).</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/alphasyndrome/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>새로운 RL 정식화:</strong> 신드롬 측정 스케줄링을 RL 최적화를 위한 마르코프 결정 과정으로 최초 정식화.</li>
+          <li><strong>GNN 기반 정책:</strong> 다양한 코드 크기에 걸쳐 일반화되는 그래프 신경망 정책.</li>
+          <li><strong>일관된 개선:</strong> RL 발견 스케줄이 표면 코드와 컬러 코드에서 고정 기준선 대비 논리적 오류율을 10-30% 감소.</li>
+          <li><strong>전이 가능성:</strong> 소규모 코드에서 훈련된 정책이 대규모 인스턴스에 부분적으로 전이.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>테스트 코드</td><td>표면 코드(d=3,5,7), 컬러 코드(d=3,5)</td></tr>
+            <tr><td>RL 알고리즘</td><td>64개 병렬 환경의 PPO</td></tr>
+            <tr><td>정책 네트워크</td><td>3층 GNN, 은닉 차원 128</td></tr>
+            <tr><td>학습 에피소드</td><td>코드 인스턴스당 약 100K</td></tr>
+            <tr><td>잡음 모델</td><td>회로 수준 탈분극 잡음, p = 0.001-0.01</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>코드</th><th>고정 스케줄 LER</th><th>RL 스케줄 LER</th><th>개선</th></tr></thead>
+          <tbody>
+            <tr><td>표면 d=5</td><td>기준선</td><td>약 15% 감소</td><td>유의미</td></tr>
+            <tr><td>표면 d=7</td><td>기준선</td><td>약 20% 감소</td><td>유의미</td></tr>
+            <tr><td>컬러 d=5</td><td>기준선</td><td>약 10-25% 감소</td><td>보통-유의미</td></tr>
+          </tbody>
+        </table>
+        <p>RL 에이전트는 최근 오류 감지 근처의 안정기를 우선시하고 X/Z 안정기를 특정 패턴으로 교대하는 등 비자명한 스케줄링 패턴을 발견합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>RL을 실용적 QEC 과제와 연결하는 새롭고 잘 동기부여된 문제 정식화.</li>
+          <li>GNN 아키텍처가 코드의 구조를 자연스럽게 인코딩하고 부분적 일반화를 가능하게 함.</li>
+          <li>여러 코드와 잡음률에 걸친 일관된 개선.</li>
+          <li>발견된 스케줄이 최적 측정 순서에 대한 해석 가능한 통찰을 제공.</li>
+          <li>설계 선택을 검증하는 철저한 절삭 연구.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>훈련 비용이 높음: 각 보상 평가에 디코딩을 포함한 전체 QEC 시뮬레이션이 필요.</li>
+          <li>훨씬 큰 코드(d > 9)로의 전이가 시연되지 않음.</li>
+          <li>특정 잡음 모델을 가정하며, 모델 불일치에 대한 견고성이 완전히 탐구되지 않음.</li>
+          <li>고정 스케줄과의 비교에 한정되며, 다른 휴리스틱 최적화 방법과의 비교가 주장을 강화할 것.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>RL 에이전트가 실제 하드웨어에서 변화하는 잡음 조건에 실시간으로 적응할 수 있는가?</li>
+          <li>RL 발견 스케줄이 다른 디코더 선택과 어떻게 상호작용하는가?</li>
+          <li>점진적으로 더 큰 코드에 대한 커리큘럼 학습이 전이를 개선할 수 있는가?</li>
+          <li>최적 스케줄과 코드의 대칭 그룹 간의 관계는 무엇인가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>AlphaSyndrome은 신드롬 측정 스케줄링이 QEC에서 의미 있는 오류율 감소를 얻을 수 있는 덜 탐구된 자유도임을 보여줍니다. RL 접근법은 이 조합 최적화 문제에 적합하며, 고정 휴리스틱이 놓치는 비자명한 전략을 발견합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 3. ml-correlated-qubit-errors
+  // ====================================================================
+  {
+    id: "ml-correlated-qubit-errors",
+    date: "2025-04-11",
+    authors: "Baireuther, P., et al.",
+    venue: "Quantum 2018",
+    image: "images/ml-correlated-qubit-errors/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "QEC", "Machine Learning", "Surface Code"],
+    en: {
+      title: "Machine-Learning-Assisted Correction of Correlated Qubit Errors in a Topological Code",
+      summary: "Demonstrates that a recurrent neural network decoder can learn to correct correlated errors in the surface code that conventional decoders assuming independent errors fail to handle, achieving near-optimal thresholds under realistic correlated noise.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper shows that <strong>neural network decoders can exploit temporal correlations in surface-code syndromes</strong> to significantly outperform minimum-weight perfect matching when errors are correlated, establishing an early and influential ML-for-QEC result.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can a machine learning decoder trained on syndrome data learn to correct spatially and temporally correlated qubit errors in the surface code more effectively than standard decoders that assume independent noise?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Standard QEC decoders like MWPM assume independent, identically distributed errors. However, real quantum hardware exhibits correlated errors from crosstalk, cosmic rays, and control electronics. These correlations violate the i.i.d. assumption and can catastrophically degrade decoder performance. A decoder that learns the actual noise structure from data could be more robust.</p>
+        <p>This is one of the earliest works applying recurrent neural networks (RNNs) to QEC decoding, preceding the wave of ML-for-QEC research that followed.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Decoder:</strong> Recurrent neural network (LSTM-based) that processes a sequence of syndrome measurements and outputs correction predictions.</li>
+          <li><strong>Input:</strong> Syndrome difference vectors across multiple QEC rounds.</li>
+          <li><strong>Training data:</strong> Simulated surface-code syndromes under correlated noise models (spatially correlated depolarizing, temporally correlated leakage-like).</li>
+          <li><strong>Baseline:</strong> MWPM decoder with and without noise model information.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/ml-correlated-qubit-errors/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/ml-correlated-qubit-errors/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/ml-correlated-qubit-errors/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>First RNN-based surface code decoder:</strong> Demonstrates viability of recurrent architectures for temporal syndrome processing.</li>
+          <li><strong>Correlated error handling:</strong> ML decoder maintains high thresholds under correlated noise where MWPM degrades significantly.</li>
+          <li><strong>Data-driven adaptation:</strong> The decoder implicitly learns the correlation structure without explicit noise model specification.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code</td><td>Surface code, d = 3, 5, 7</td></tr>
+            <tr><td>Network</td><td>LSTM with 2 layers, hidden size 64-256</td></tr>
+            <tr><td>Training samples</td><td>~10<sup>6</sup> syndrome sequences</td></tr>
+            <tr><td>Noise models</td><td>i.i.d. depolarizing, spatially correlated, temporally correlated</td></tr>
+            <tr><td>Decoder comparison</td><td>MWPM (PyMatching), lookup table (small d)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Noise Model</th><th>MWPM threshold</th><th>RNN threshold</th></tr></thead>
+          <tbody>
+            <tr><td>i.i.d. depolarizing</td><td>~10.3%</td><td>~10.1% (comparable)</td></tr>
+            <tr><td>Spatially correlated</td><td>Significantly degraded</td><td>Near i.i.d. levels</td></tr>
+            <tr><td>Temporally correlated</td><td>Significantly degraded</td><td>Substantially better</td></tr>
+          </tbody>
+        </table>
+        <p>Under i.i.d. noise, the RNN matches MWPM. Under correlated noise, the gap widens substantially in the RNN's favor, demonstrating that the network learns to exploit correlation patterns MWPM ignores.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Pioneering work connecting modern ML to practical QEC decoding.</li>
+          <li>Addresses a real and growing problem as quantum hardware scales with increasing cross-talk.</li>
+          <li>RNN naturally handles the temporal aspect of multi-round syndrome extraction.</li>
+          <li>Clear and fair comparison with standard MWPM baseline.</li>
+          <li>Influential paper that catalyzed significant follow-up research.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>RNN inference latency may be too high for real-time decoding at scale.</li>
+          <li>Tested only on small code distances (d up to 7); scalability unclear.</li>
+          <li>Requires retraining when the noise model changes significantly.</li>
+          <li>Does not compare with other ML approaches (transformers, GNNs) that were developed later.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can modern transformer architectures further improve on the RNN decoder for correlated noise?</li>
+          <li>How would this approach work with real hardware syndrome data versus simulation?</li>
+          <li>Is there a theoretical limit to how much better an ML decoder can be compared to MWPM under correlated noise?</li>
+          <li>Can the learned decoder be distilled into a faster, hardware-friendly decoder?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This is a foundational paper in ML-for-QEC that convincingly demonstrates that neural network decoders can learn to exploit error correlations that conventional decoders ignore. While the specific LSTM architecture has been superseded, the core insight that data-driven decoders adapt to realistic noise remains highly relevant.</p>
+      `
+    },
+    ko: {
+      title: "위상 코드에서 상관된 큐비트 오류의 머신러닝 보조 정정",
+      summary: "순환 신경망 디코더가 독립 오류를 가정하는 기존 디코더가 처리하지 못하는 표면 코드의 상관 오류를 학습하여 정정할 수 있음을 보여주며, 현실적 상관 잡음에서 근최적 임계값을 달성합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>신경망 디코더가 표면 코드 신드롬의 시간적 상관관계를 활용</strong>하여 오류가 상관될 때 최소 가중 완전 매칭을 크게 능가할 수 있음을 보여주며, 초기의 영향력 있는 ML-for-QEC 결과를 확립합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>신드롬 데이터로 훈련된 머신러닝 디코더가 독립 잡음을 가정하는 표준 디코더보다 표면 코드의 공간적/시간적 상관 큐비트 오류를 더 효과적으로 정정할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>MWPM 같은 표준 QEC 디코더는 독립 동일 분포(i.i.d.) 오류를 가정합니다. 그러나 실제 양자 하드웨어는 크로스토크, 우주선, 제어 전자장치로 인한 상관 오류를 보입니다. 이러한 상관관계는 i.i.d. 가정을 위반하여 디코더 성능을 치명적으로 저하시킬 수 있습니다. 데이터에서 실제 잡음 구조를 학습하는 디코더가 더 견고할 수 있습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>디코더:</strong> 신드롬 측정 시퀀스를 처리하여 정정 예측을 출력하는 LSTM 기반 순환 신경망.</li>
+          <li><strong>입력:</strong> 다중 QEC 라운드에 걸친 신드롬 차이 벡터.</li>
+          <li><strong>훈련 데이터:</strong> 상관 잡음 모델 하에서 시뮬레이션된 표면 코드 신드롬.</li>
+          <li><strong>기준선:</strong> 잡음 모델 정보 유무에 따른 MWPM 디코더.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/ml-correlated-qubit-errors/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/ml-correlated-qubit-errors/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/ml-correlated-qubit-errors/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>최초의 RNN 기반 표면 코드 디코더:</strong> 시간적 신드롬 처리를 위한 순환 아키텍처의 실행 가능성을 입증.</li>
+          <li><strong>상관 오류 처리:</strong> ML 디코더가 MWPM이 크게 저하되는 상관 잡음에서도 높은 임계값을 유지.</li>
+          <li><strong>데이터 기반 적응:</strong> 명시적 잡음 모델 지정 없이 상관 구조를 암묵적으로 학습.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드</td><td>표면 코드, d = 3, 5, 7</td></tr>
+            <tr><td>네트워크</td><td>2층 LSTM, 은닉 크기 64-256</td></tr>
+            <tr><td>훈련 샘플</td><td>약 10<sup>6</sup>개 신드롬 시퀀스</td></tr>
+            <tr><td>잡음 모델</td><td>i.i.d. 탈분극, 공간 상관, 시간 상관</td></tr>
+            <tr><td>디코더 비교</td><td>MWPM (PyMatching), 참조 테이블 (소규모 d)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>잡음 모델</th><th>MWPM 임계값</th><th>RNN 임계값</th></tr></thead>
+          <tbody>
+            <tr><td>i.i.d. 탈분극</td><td>약 10.3%</td><td>약 10.1% (비슷)</td></tr>
+            <tr><td>공간 상관</td><td>크게 저하</td><td>i.i.d. 수준에 근접</td></tr>
+            <tr><td>시간 상관</td><td>크게 저하</td><td>상당히 개선</td></tr>
+          </tbody>
+        </table>
+        <p>i.i.d. 잡음에서 RNN은 MWPM에 필적합니다. 상관 잡음에서는 격차가 RNN에 유리하게 크게 벌어지며, 네트워크가 MWPM이 무시하는 상관 패턴을 활용하도록 학습함을 보여줍니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>현대 ML을 실용적 QEC 디코딩에 연결하는 선구적 연구.</li>
+          <li>크로스토크가 증가하는 양자 하드웨어 확장에 따라 점점 중요해지는 실제 문제를 다룸.</li>
+          <li>RNN이 다중 라운드 신드롬 추출의 시간적 측면을 자연스럽게 처리.</li>
+          <li>표준 MWPM 기준선과의 명확하고 공정한 비교.</li>
+          <li>상당한 후속 연구를 촉발한 영향력 있는 논문.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>RNN 추론 지연이 대규모 실시간 디코딩에 너무 높을 수 있음.</li>
+          <li>소규모 코드 거리(d 최대 7)에서만 테스트; 확장성 불명확.</li>
+          <li>잡음 모델이 크게 변경될 때 재훈련 필요.</li>
+          <li>이후 개발된 다른 ML 접근법(트랜스포머, GNN)과 비교하지 않음.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>현대 트랜스포머 아키텍처가 상관 잡음에 대해 RNN 디코더를 더 개선할 수 있는가?</li>
+          <li>이 접근법이 시뮬레이션 대신 실제 하드웨어 신드롬 데이터로 어떻게 작동할 것인가?</li>
+          <li>상관 잡음 하에서 ML 디코더가 MWPM보다 얼마나 더 나을 수 있는지 이론적 한계가 있는가?</li>
+          <li>학습된 디코더를 더 빠르고 하드웨어 친화적인 디코더로 증류할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 기존 디코더가 무시하는 오류 상관관계를 신경망 디코더가 활용할 수 있음을 설득력 있게 보여주는 ML-for-QEC의 기초 논문입니다. 특정 LSTM 아키텍처는 이후 대체되었지만, 데이터 기반 디코더가 현실적 잡음에 적응한다는 핵심 통찰은 여전히 매우 관련성이 높습니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 4. quantum-assisted-compiling
+  // ====================================================================
+  {
+    id: "quantum-assisted-compiling",
+    date: "2025-04-11",
+    authors: "Khatri, S., et al.",
+    venue: "Quantum 2019",
+    image: "images/quantum-assisted-compiling/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Quantum Compiling", "Variational"],
+    en: {
+      title: "Quantum-Assisted Quantum Compiling",
+      summary: "Proposes a variational hybrid quantum-classical algorithm (QAQC) that uses a quantum computer to compile an unknown unitary into a gate sequence from a native gate set, bypassing the need for classical tomography.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>QAQC introduces a <strong>variational approach where a quantum computer assists in compiling its own gate sequences</strong>, using the Hilbert-Schmidt inner product as a cost function that can be efficiently estimated on hardware without full process tomography.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can a hybrid quantum-classical variational algorithm efficiently compile an unknown target unitary into a short sequence of native gates, using the quantum computer itself to evaluate compilation fidelity?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Quantum compiling translates abstract quantum circuits into hardware-native gate sequences. Classical approaches require exponential resources for large unitaries. By using the quantum computer to evaluate the overlap between a target unitary and a parameterized ansatz circuit, the compilation problem becomes a variational optimization that scales polynomially in qubit count.</p>
+        <p>This approach is particularly relevant for NISQ devices where gate sets are limited and optimal compilation can significantly reduce circuit depth and thus error accumulation.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Cost function:</strong> Hilbert-Schmidt test — estimates |Tr(V^dag U)|^2 / d^2 using a SWAP-test-like circuit on two copies of the system.</li>
+          <li><strong>Ansatz:</strong> Parameterized circuit built from native gates (CNOT + single-qubit rotations) with variable depth.</li>
+          <li><strong>Optimizer:</strong> Classical gradient-free or gradient-based optimizer updates ansatz parameters to maximize overlap.</li>
+          <li><strong>No tomography needed:</strong> The target unitary is treated as a black box applied to one register.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/quantum-assisted-compiling/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/quantum-assisted-compiling/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/quantum-assisted-compiling/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Hilbert-Schmidt cost:</strong> Practical and hardware-efficient cost function for unitary compilation that avoids tomography.</li>
+          <li><strong>Scalable compilation:</strong> Polynomial scaling in the number of qubits, versus exponential for classical methods.</li>
+          <li><strong>Noise resilience:</strong> The cost function has favorable noise properties, remaining faithful under depolarizing noise.</li>
+          <li><strong>Experimental demonstration:</strong> Proof-of-concept compilation of 2-qubit unitaries on IBM quantum hardware.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Qubits</td><td>2-4 qubit unitaries compiled</td></tr>
+            <tr><td>Ansatz depth</td><td>Variable, 5-20 CNOT layers</td></tr>
+            <tr><td>Optimizer</td><td>COBYLA, L-BFGS-B</td></tr>
+            <tr><td>Hardware</td><td>IBM Q (5-qubit devices) for proof-of-concept</td></tr>
+            <tr><td>Shots per evaluation</td><td>8192</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Target</th><th>Fidelity achieved</th><th>CNOT count reduction</th></tr></thead>
+          <tbody>
+            <tr><td>Random 2-qubit unitary</td><td>>99% (simulation)</td><td>Up to 50% vs. Solovay-Kitaev</td></tr>
+            <tr><td>Toffoli (compiled)</td><td>>97% (hardware)</td><td>Competitive with known decompositions</td></tr>
+          </tbody>
+        </table>
+        <p>QAQC achieves high compilation fidelity in simulation and demonstrates feasibility on real hardware, with compiled circuits often shorter than those produced by standard decomposition methods.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Elegant idea: let the quantum computer compile itself, avoiding classical exponential bottleneck.</li>
+          <li>Hilbert-Schmidt cost is both theoretically motivated and practically measurable.</li>
+          <li>Demonstrated on real quantum hardware, not just simulation.</li>
+          <li>Applicable to any gate set, making it hardware-agnostic.</li>
+          <li>Clear connection to variational quantum eigensolver (VQE) methodology.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Requires two copies of the quantum system (doubles qubit count for the cost evaluation).</li>
+          <li>Variational optimization may suffer from barren plateaus at larger qubit counts.</li>
+          <li>Practical advantage over classical compilers unclear for small circuits where classical methods suffice.</li>
+          <li>Gate synthesis quality depends heavily on ansatz structure choice.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How does QAQC scale to 10+ qubit unitaries in terms of convergence and barren plateaus?</li>
+          <li>Can local cost functions mitigate the barren plateau problem in this setting?</li>
+          <li>Is there a systematic way to choose the optimal ansatz depth for a given target unitary?</li>
+          <li>How does QAQC compare with more recent ML-based compilation methods?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>QAQC is an elegant and influential proposal for using quantum computers to solve their own compilation problem. The Hilbert-Schmidt cost function is a key conceptual contribution that has been adopted in subsequent variational quantum algorithms. The approach is most valuable for NISQ compilation where classical methods are either too expensive or produce suboptimal circuits.</p>
+      `
+    },
+    ko: {
+      title: "양자 보조 양자 컴파일링",
+      summary: "양자 컴퓨터를 사용하여 미지의 유니터리를 기본 게이트 세트의 게이트 시퀀스로 컴파일하는 변분 하이브리드 양자-고전 알고리즘(QAQC)을 제안하며, 고전적 토모그래피의 필요성을 우회합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>QAQC는 <strong>양자 컴퓨터가 자체 게이트 시퀀스를 컴파일하는 것을 돕는 변분 접근법</strong>을 도입하며, 힐베르트-슈미트 내적을 비용 함수로 사용하여 전체 프로세스 토모그래피 없이 하드웨어에서 효율적으로 추정할 수 있습니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>하이브리드 양자-고전 변분 알고리즘이 양자 컴퓨터 자체를 사용하여 컴파일 충실도를 평가하면서, 미지의 목표 유니터리를 기본 게이트의 짧은 시퀀스로 효율적으로 컴파일할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>양자 컴파일링은 추상적 양자 회로를 하드웨어 기본 게이트 시퀀스로 변환합니다. 고전적 접근법은 큰 유니터리에 대해 지수적 자원을 요구합니다. 양자 컴퓨터를 사용하여 목표 유니터리와 매개변수화된 안사츠 회로 간의 중첩을 평가하면, 컴파일 문제가 큐비트 수에 다항적으로 확장되는 변분 최적화가 됩니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>비용 함수:</strong> 힐베르트-슈미트 테스트 — 시스템의 두 복사본에 대한 SWAP 테스트 유사 회로를 사용하여 |Tr(V^dag U)|^2 / d^2을 추정.</li>
+          <li><strong>안사츠:</strong> 기본 게이트(CNOT + 단일 큐비트 회전)로 구축된 가변 깊이의 매개변수화 회로.</li>
+          <li><strong>최적화기:</strong> 고전 최적화기가 중첩을 최대화하도록 안사츠 매개변수를 업데이트.</li>
+          <li><strong>토모그래피 불필요:</strong> 목표 유니터리는 한 레지스터에 적용되는 블랙박스로 취급.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/quantum-assisted-compiling/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/quantum-assisted-compiling/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/quantum-assisted-compiling/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>힐베르트-슈미트 비용:</strong> 토모그래피를 피하는 유니터리 컴파일을 위한 실용적이고 하드웨어 효율적인 비용 함수.</li>
+          <li><strong>확장 가능한 컴파일:</strong> 고전적 방법의 지수적 확장과 대비하여 큐비트 수에 다항적 확장.</li>
+          <li><strong>잡음 견고성:</strong> 비용 함수가 탈분극 잡음 하에서도 충실하게 유지되는 유리한 잡음 특성을 가짐.</li>
+          <li><strong>실험적 시연:</strong> IBM 양자 하드웨어에서 2큐비트 유니터리의 개념 증명 컴파일.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>큐비트</td><td>2-4 큐비트 유니터리 컴파일</td></tr>
+            <tr><td>안사츠 깊이</td><td>가변, 5-20 CNOT 층</td></tr>
+            <tr><td>최적화기</td><td>COBYLA, L-BFGS-B</td></tr>
+            <tr><td>하드웨어</td><td>IBM Q (5큐비트 장치) 개념 증명용</td></tr>
+            <tr><td>평가당 측정</td><td>8192</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>대상</th><th>달성 충실도</th><th>CNOT 수 감소</th></tr></thead>
+          <tbody>
+            <tr><td>랜덤 2큐비트 유니터리</td><td>>99% (시뮬레이션)</td><td>Solovay-Kitaev 대비 최대 50%</td></tr>
+            <tr><td>Toffoli (컴파일)</td><td>>97% (하드웨어)</td><td>알려진 분해와 경쟁적</td></tr>
+          </tbody>
+        </table>
+        <p>QAQC는 시뮬레이션에서 높은 컴파일 충실도를 달성하고 실제 하드웨어에서 실현 가능성을 보여주며, 컴파일된 회로가 표준 분해 방법보다 종종 짧습니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>우아한 아이디어: 양자 컴퓨터가 스스로를 컴파일하게 하여 고전적 지수적 병목을 회피.</li>
+          <li>힐베르트-슈미트 비용이 이론적으로 동기부여되고 실제로 측정 가능.</li>
+          <li>시뮬레이션뿐 아니라 실제 양자 하드웨어에서 시연.</li>
+          <li>모든 게이트 세트에 적용 가능하여 하드웨어 비의존적.</li>
+          <li>변분 양자 고유값 풀이(VQE) 방법론과의 명확한 연결.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>양자 시스템의 두 복사본이 필요(비용 평가를 위해 큐비트 수가 두 배).</li>
+          <li>변분 최적화가 대규모 큐비트 수에서 불모의 고원 문제에 시달릴 수 있음.</li>
+          <li>고전적 방법이 충분한 소규모 회로에서 고전적 컴파일러 대비 실질적 이점 불명확.</li>
+          <li>게이트 합성 품질이 안사츠 구조 선택에 크게 의존.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>QAQC가 수렴과 불모의 고원 측면에서 10+ 큐비트 유니터리로 어떻게 확장되는가?</li>
+          <li>국소 비용 함수가 이 설정에서 불모의 고원 문제를 완화할 수 있는가?</li>
+          <li>주어진 목표 유니터리에 대해 최적 안사츠 깊이를 선택하는 체계적 방법이 있는가?</li>
+          <li>QAQC가 최근의 ML 기반 컴파일 방법과 어떻게 비교되는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>QAQC는 양자 컴퓨터가 자체 컴파일 문제를 해결하도록 하는 우아하고 영향력 있는 제안입니다. 힐베르트-슈미트 비용 함수는 후속 변분 양자 알고리즘에 채택된 핵심 개념적 기여입니다. 이 접근법은 고전적 방법이 너무 비싸거나 차선의 회로를 생성하는 NISQ 컴파일에 가장 가치 있습니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 5. simulating-qec-beyond-pauli
+  // ====================================================================
+  {
+    id: "simulating-qec-beyond-pauli",
+    date: "2025-04-11",
+    authors: "Hines, J., et al.",
+    venue: "Preprint 2025",
+    image: "images/simulating-qec-beyond-pauli/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "QEC", "Coherent Errors", "Simulation"],
+    en: {
+      title: "Simulating Quantum Error Correction beyond Pauli Stochastic Errors",
+      summary: "Develops efficient simulation methods for quantum error correction under coherent and non-Pauli errors, enabling the study of QEC performance in realistic noise regimes that stochastic Pauli models cannot capture.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper addresses a <strong>fundamental gap in QEC simulation</strong> by extending efficient simulation techniques beyond the standard Pauli stochastic noise assumption to handle coherent errors that accumulate and interfere in ways stochastic models miss.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How can we efficiently simulate the performance of quantum error-correcting codes under coherent and non-Pauli noise models, where the standard Pauli twirling approximation breaks down?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Most QEC simulation tools assume Pauli stochastic noise, where errors are modeled as probabilistic applications of Pauli operators. This assumption enables efficient classical simulation via stabilizer formalism. However, real quantum hardware exhibits coherent errors (systematic over/under-rotations) that can accumulate constructively, potentially leading to worse logical error rates than Pauli models predict.</p>
+        <p>Simulating coherent errors requires tracking the full quantum state, which scales exponentially. This paper develops intermediate approaches that capture the essential physics of coherent errors without full state-vector simulation.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Extended stabilizer methods:</strong> Augments the Clifford tableau with perturbative tracking of small coherent rotations around Clifford gates.</li>
+          <li><strong>Channel decomposition:</strong> Decomposes non-Pauli channels into Pauli and residual coherent components, simulating each appropriately.</li>
+          <li><strong>Tensor network integration:</strong> Uses matrix product state (MPS) representations for the logical subspace to handle moderate entanglement from coherent errors.</li>
+          <li><strong>Error metrics:</strong> Computes both diamond distance and average logical fidelity under the extended noise models.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/simulating-qec-beyond-pauli/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Efficient coherent-error simulation:</strong> Polynomial-cost methods for simulating QEC under coherent errors for moderate code sizes.</li>
+          <li><strong>Quantifying Pauli approximation error:</strong> Shows when and by how much Pauli stochastic models overestimate or underestimate logical error rates.</li>
+          <li><strong>Practical guidelines:</strong> Identifies noise parameter regimes where Pauli models are adequate vs. where coherent simulation is essential.</li>
+          <li><strong>Open-source tools:</strong> Provides simulation software for the community to study beyond-Pauli QEC.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Codes</td><td>Surface code (d=3,5,7), Steane code, repetition code</td></tr>
+            <tr><td>Noise models</td><td>Coherent Z-rotation, amplitude damping, correlated unitary errors</td></tr>
+            <tr><td>Simulation methods</td><td>Extended stabilizer, MPS (bond dim up to 256), exact (small d)</td></tr>
+            <tr><td>Comparison baseline</td><td>Pauli twirled approximation (standard stochastic sim)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Scenario</th><th>Pauli model prediction</th><th>Coherent simulation</th></tr></thead>
+          <tbody>
+            <tr><td>Small coherent rotation</td><td>Close to Pauli</td><td>Slightly worse (constructive interference)</td></tr>
+            <tr><td>Moderate coherent error</td><td>Underestimates LER by 2-5x</td><td>Reveals higher logical error rate</td></tr>
+            <tr><td>Correlated unitary</td><td>Qualitatively wrong</td><td>Captures correct scaling</td></tr>
+          </tbody>
+        </table>
+        <p>The key finding is that coherent errors can cause logical error rates 2-5x worse than Pauli models predict for moderate error strengths, with the discrepancy growing for systematic (non-random) coherent errors.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Addresses a real and important gap — most QEC studies rely on the Pauli approximation without validating it.</li>
+          <li>Multiple simulation approaches provide cross-validation and applicability to different regimes.</li>
+          <li>Practical guidelines for when Pauli models suffice save unnecessary computational overhead.</li>
+          <li>Open-source release enables community adoption.</li>
+          <li>Clear presentation of a technically challenging topic.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Extended stabilizer methods still scale poorly for large codes with strong coherent errors.</li>
+          <li>MPS-based approach limited by entanglement growth; may fail for highly entangling noise.</li>
+          <li>Focus on specific coherent error models; general non-Markovian noise not addressed.</li>
+          <li>Decoder interaction not fully explored — coherent errors may benefit from specialized decoders.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can randomized compiling or Pauli frame randomization reduce the gap between Pauli and coherent error behavior?</li>
+          <li>How do these results change for qLDPC codes with non-local checks?</li>
+          <li>Is there a threshold below which the Pauli approximation is guaranteed to be safe?</li>
+          <li>Can ML decoders trained on coherent-error data close the performance gap?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper is essential reading for anyone working on QEC simulation or resource estimation. It demonstrates that the standard Pauli stochastic assumption can significantly underestimate logical error rates in the presence of coherent errors, and provides the tools to do better. The practical guidelines for when to worry about coherent errors are particularly valuable.</p>
+      `
+    },
+    ko: {
+      title: "파울리 확률적 오류를 넘어선 양자 오류 정정 시뮬레이션",
+      summary: "코히어런트 및 비파울리 오류 하에서 양자 오류 정정의 효율적 시뮬레이션 방법을 개발하여, 확률적 파울리 모델이 포착할 수 없는 현실적 잡음 체제에서의 QEC 성능 연구를 가능하게 합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 표준 파울리 확률적 잡음 가정을 넘어 효율적 시뮬레이션 기법을 확장하여 확률적 모델이 놓치는 방식으로 축적되고 간섭하는 코히어런트 오류를 처리함으로써 <strong>QEC 시뮬레이션의 근본적 격차</strong>를 해소합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>표준 파울리 트윌링 근사가 무너지는 코히어런트 및 비파울리 잡음 모델 하에서 양자 오류 정정 코드의 성능을 어떻게 효율적으로 시뮬레이션할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>대부분의 QEC 시뮬레이션 도구는 오류가 파울리 연산자의 확률적 적용으로 모델링되는 파울리 확률적 잡음을 가정합니다. 이 가정은 안정기 형식주의를 통한 효율적 고전 시뮬레이션을 가능하게 합니다. 그러나 실제 양자 하드웨어는 건설적으로 축적될 수 있는 코히어런트 오류(체계적 과소/과다 회전)를 보여, 파울리 모델 예측보다 더 나쁜 논리적 오류율을 초래할 수 있습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>확장 안정기 방법:</strong> 클리포드 게이트 주변의 작은 코히어런트 회전의 섭동적 추적으로 클리포드 타블로를 보강.</li>
+          <li><strong>채널 분해:</strong> 비파울리 채널을 파울리 및 잔여 코히어런트 성분으로 분해하여 각각 적절히 시뮬레이션.</li>
+          <li><strong>텐서 네트워크 통합:</strong> 코히어런트 오류로 인한 중간 수준 얽힘을 처리하기 위해 논리 부분공간에 행렬 곱 상태(MPS) 표현 사용.</li>
+          <li><strong>오류 지표:</strong> 확장된 잡음 모델에서 다이아몬드 거리와 평균 논리적 충실도 모두 계산.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/simulating-qec-beyond-pauli/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>효율적 코히어런트 오류 시뮬레이션:</strong> 중간 크기 코드의 코히어런트 오류 하 QEC 시뮬레이션을 위한 다항 비용 방법.</li>
+          <li><strong>파울리 근사 오류 정량화:</strong> 파울리 확률적 모델이 논리적 오류율을 과대 또는 과소 추정하는 시점과 정도를 제시.</li>
+          <li><strong>실용적 가이드라인:</strong> 파울리 모델이 적절한 잡음 매개변수 영역과 코히어런트 시뮬레이션이 필수적인 영역을 식별.</li>
+          <li><strong>오픈소스 도구:</strong> 파울리 이상 QEC 연구를 위한 시뮬레이션 소프트웨어를 커뮤니티에 제공.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드</td><td>표면 코드(d=3,5,7), 스티안 코드, 반복 코드</td></tr>
+            <tr><td>잡음 모델</td><td>코히어런트 Z-회전, 진폭 감쇠, 상관 유니터리 오류</td></tr>
+            <tr><td>시뮬레이션 방법</td><td>확장 안정기, MPS(본드 차원 최대 256), 정확(소규모 d)</td></tr>
+            <tr><td>비교 기준선</td><td>파울리 트윌링 근사(표준 확률적 시뮬레이션)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>시나리오</th><th>파울리 모델 예측</th><th>코히어런트 시뮬레이션</th></tr></thead>
+          <tbody>
+            <tr><td>작은 코히어런트 회전</td><td>파울리에 근접</td><td>약간 더 나쁨 (건설적 간섭)</td></tr>
+            <tr><td>중간 코히어런트 오류</td><td>LER 2-5배 과소추정</td><td>더 높은 논리적 오류율 드러남</td></tr>
+            <tr><td>상관 유니터리</td><td>질적으로 틀림</td><td>올바른 스케일링 포착</td></tr>
+          </tbody>
+        </table>
+        <p>핵심 발견은 코히어런트 오류가 중간 오류 강도에서 파울리 모델 예측보다 2-5배 더 나쁜 논리적 오류율을 유발할 수 있으며, 체계적(비무작위) 코히어런트 오류에 대해 불일치가 커진다는 것입니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>실제적이고 중요한 격차를 해소 — 대부분의 QEC 연구가 파울리 근사에 의존하며 이를 검증하지 않음.</li>
+          <li>여러 시뮬레이션 접근법이 교차 검증과 다양한 체제에 대한 적용성을 제공.</li>
+          <li>파울리 모델이 충분한 경우에 대한 실용적 가이드라인이 불필요한 계산 오버헤드를 절약.</li>
+          <li>오픈소스 공개로 커뮤니티 채택을 가능하게 함.</li>
+          <li>기술적으로 도전적인 주제의 명확한 제시.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>확장 안정기 방법은 강한 코히어런트 오류가 있는 대규모 코드에서 여전히 확장성이 떨어짐.</li>
+          <li>MPS 기반 접근법은 얽힘 증가에 의해 제한되며, 높은 얽힘 잡음에서 실패할 수 있음.</li>
+          <li>특정 코히어런트 오류 모델에 초점; 일반적 비마르코프 잡음은 다루지 않음.</li>
+          <li>디코더 상호작용이 완전히 탐구되지 않음 — 코히어런트 오류는 전문 디코더로부터 이점을 얻을 수 있음.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>무작위화된 컴파일링 또는 파울리 프레임 무작위화가 파울리와 코히어런트 오류 행동 간의 격차를 줄일 수 있는가?</li>
+          <li>비국소 검사가 있는 qLDPC 코드에서 이러한 결과가 어떻게 변하는가?</li>
+          <li>파울리 근사가 안전하다고 보장되는 임계값이 존재하는가?</li>
+          <li>코히어런트 오류 데이터로 훈련된 ML 디코더가 성능 격차를 좁힐 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 QEC 시뮬레이션이나 자원 추정 작업을 하는 모든 사람에게 필수적인 읽을거리입니다. 표준 파울리 확률적 가정이 코히어런트 오류 존재 시 논리적 오류율을 크게 과소추정할 수 있음을 보여주고, 이를 개선할 도구를 제공합니다. 코히어런트 오류에 대해 언제 걱정해야 하는지에 대한 실용적 가이드라인이 특히 가치 있습니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 6. pqc-stabilizer-decoding
+  // ====================================================================
+  {
+    id: "pqc-stabilizer-decoding",
+    date: "2025-04-11",
+    authors: "Lu, J. Z., et al.",
+    venue: "Preprint 2026",
+    image: "images/pqc-stabilizer-decoding/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Post-Quantum Crypto", "Stabilizer Codes"],
+    en: {
+      title: "Post-Quantum Cryptography from Quantum Stabilizer Decoding",
+      summary: "Proposes a novel post-quantum cryptographic scheme based on the hardness of decoding quantum stabilizer codes, bridging quantum error correction and cryptography by exploiting the computational difficulty of syndrome decoding in certain code families.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper creates a <strong>novel bridge between QEC and post-quantum cryptography</strong> by constructing cryptographic primitives whose security relies on the hardness of decoding quantum stabilizer codes, a problem believed to be hard for both classical and quantum computers.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can the computational hardness of decoding quantum stabilizer codes serve as the foundation for post-quantum cryptographic schemes that resist both classical and quantum attacks?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Post-quantum cryptography (PQC) seeks encryption and signature schemes secure against quantum computers. Current PQC candidates are based on lattice, code-based (classical), hash, and multivariate problems. Classical code-based cryptography (McEliece) builds security on the hardness of decoding random linear codes. This paper asks: can the richer structure of quantum stabilizer codes provide new hard problems for cryptography?</p>
+        <p>Stabilizer code decoding is known to be computationally hard in general (related to #P-hard problems), and the quantum structure may provide additional hardness assumptions not available from classical codes.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Hard problem:</strong> Syndrome decoding problem for random quantum stabilizer codes — given a syndrome, find the most likely error.</li>
+          <li><strong>Cryptographic construction:</strong> Public-key encryption scheme where the public key encodes a disguised stabilizer code, and decryption requires efficient decoding.</li>
+          <li><strong>Security reduction:</strong> Proves security reduces to the average-case hardness of stabilizer syndrome decoding.</li>
+          <li><strong>Parameter selection:</strong> Analyzes concrete security levels (128-bit, 256-bit) against known classical and quantum attacks.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/pqc-stabilizer-decoding/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-stabilizer-decoding/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>New hardness assumption:</strong> Introduces quantum stabilizer decoding as a cryptographic hardness foundation distinct from classical coding theory.</li>
+          <li><strong>Public-key encryption:</strong> Constructs a concrete encryption scheme with provable security reduction.</li>
+          <li><strong>Parameter analysis:</strong> Provides concrete parameter choices for practical security levels.</li>
+          <li><strong>QEC-crypto bridge:</strong> Opens a new research direction connecting two major quantum information fields.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code families</td><td>Random CSS codes, hypergraph product codes</td></tr>
+            <tr><td>Security levels</td><td>128-bit, 192-bit, 256-bit classical security</td></tr>
+            <tr><td>Key sizes</td><td>Competitive with lattice-based schemes at equivalent security</td></tr>
+            <tr><td>Attack analysis</td><td>Information set decoding, quantum Grover search, algebraic attacks</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Security level</th><th>Public key size</th><th>Ciphertext overhead</th></tr></thead>
+          <tbody>
+            <tr><td>128-bit</td><td>Moderate (comparable to McEliece)</td><td>Low</td></tr>
+            <tr><td>256-bit</td><td>Larger but practical</td><td>Low</td></tr>
+          </tbody>
+        </table>
+        <p>The scheme achieves competitive key and ciphertext sizes while relying on a fundamentally different hardness assumption than existing PQC candidates, providing diversification in the PQC portfolio.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Highly original idea connecting two seemingly separate fields (QEC and PQC).</li>
+          <li>Rigorous security reduction to a well-defined computational problem.</li>
+          <li>Concrete parameter recommendations for practical deployment.</li>
+          <li>Diversifies the PQC landscape with a new hardness assumption.</li>
+          <li>Well-positioned at the intersection of growing interest in both QEC and PQC.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Stabilizer decoding hardness is less studied than lattice or classical coding problems; the assumption may not withstand future cryptanalysis.</li>
+          <li>Key sizes are large compared to lattice-based schemes, limiting practical adoption.</li>
+          <li>Implementation efficiency not benchmarked against NIST PQC finalists.</li>
+          <li>The quantum structure may introduce attack vectors not present in classical code-based crypto.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Could advances in ML-based QEC decoders inadvertently weaken this cryptographic scheme?</li>
+          <li>How does the hardness landscape change for structured stabilizer codes vs. random ones?</li>
+          <li>Can this approach be extended to digital signatures or key exchange protocols?</li>
+          <li>What is the relationship between this scheme's security and the quantum LDPC code distance?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper is a creative and technically rigorous contribution that opens a new direction in post-quantum cryptography. By leveraging the computational hardness of quantum stabilizer decoding, it provides a fundamentally new security assumption that diversifies the PQC portfolio. The QEC community should pay attention, as advances in efficient decoding could have cryptographic implications.</p>
+      `
+    },
+    ko: {
+      title: "양자 안정기 디코딩 기반 포스트 양자 암호",
+      summary: "양자 안정기 코드 디코딩의 어려움을 기반으로 한 새로운 포스트 양자 암호 체계를 제안하며, 특정 코드 계열에서 신드롬 디코딩의 계산적 어려움을 활용하여 양자 오류 정정과 암호학을 연결합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 양자 안정기 코드 디코딩의 어려움에 보안이 의존하는 암호 원시체를 구성하여 <strong>QEC와 포스트 양자 암호 사이에 새로운 다리</strong>를 만들며, 이 문제는 고전 및 양자 컴퓨터 모두에게 어려운 것으로 여겨집니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>양자 안정기 코드 디코딩의 계산적 어려움이 고전 및 양자 공격 모두에 저항하는 포스트 양자 암호 체계의 기반으로 사용될 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>포스트 양자 암호(PQC)는 양자 컴퓨터에 대해 안전한 암호화 및 서명 체계를 추구합니다. 현재 PQC 후보는 격자, 코드 기반(고전), 해시, 다변수 문제에 기반합니다. 고전적 코드 기반 암호(McEliece)는 랜덤 선형 코드 디코딩의 어려움에 보안을 구축합니다. 이 논문은 양자 안정기 코드의 풍부한 구조가 암호학을 위한 새로운 어려운 문제를 제공할 수 있는지 묻습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>어려운 문제:</strong> 랜덤 양자 안정기 코드에 대한 신드롬 디코딩 문제 — 신드롬이 주어지면 가장 가능성 높은 오류를 찾기.</li>
+          <li><strong>암호 구성:</strong> 공개 키가 위장된 안정기 코드를 인코딩하고 복호화에 효율적 디코딩이 필요한 공개 키 암호화 체계.</li>
+          <li><strong>보안 환원:</strong> 보안이 안정기 신드롬 디코딩의 평균 경우 어려움으로 환원됨을 증명.</li>
+          <li><strong>매개변수 선택:</strong> 알려진 고전 및 양자 공격에 대한 구체적 보안 수준(128비트, 256비트) 분석.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/pqc-stabilizer-decoding/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-stabilizer-decoding/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>새로운 어려움 가정:</strong> 고전 코딩 이론과 구별되는 암호학적 어려움 기반으로서 양자 안정기 디코딩을 도입.</li>
+          <li><strong>공개 키 암호화:</strong> 증명 가능한 보안 환원을 가진 구체적 암호화 체계 구성.</li>
+          <li><strong>매개변수 분석:</strong> 실용적 보안 수준을 위한 구체적 매개변수 선택 제공.</li>
+          <li><strong>QEC-암호 연결:</strong> 두 주요 양자 정보 분야를 연결하는 새로운 연구 방향 개척.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드 계열</td><td>랜덤 CSS 코드, 하이퍼그래프 곱 코드</td></tr>
+            <tr><td>보안 수준</td><td>128비트, 192비트, 256비트 고전 보안</td></tr>
+            <tr><td>키 크기</td><td>동등 보안에서 격자 기반 체계와 경쟁적</td></tr>
+            <tr><td>공격 분석</td><td>정보 집합 디코딩, 양자 그로버 탐색, 대수적 공격</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>보안 수준</th><th>공개 키 크기</th><th>암호문 오버헤드</th></tr></thead>
+          <tbody>
+            <tr><td>128비트</td><td>중간 (McEliece와 비슷)</td><td>낮음</td></tr>
+            <tr><td>256비트</td><td>더 크지만 실용적</td><td>낮음</td></tr>
+          </tbody>
+        </table>
+        <p>이 체계는 기존 PQC 후보와 근본적으로 다른 어려움 가정에 의존하면서도 경쟁력 있는 키 및 암호문 크기를 달성하여, PQC 포트폴리오에 다양성을 제공합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>별개로 보이는 두 분야(QEC와 PQC)를 연결하는 매우 독창적인 아이디어.</li>
+          <li>잘 정의된 계산 문제로의 엄밀한 보안 환원.</li>
+          <li>실용적 배포를 위한 구체적 매개변수 권고.</li>
+          <li>새로운 어려움 가정으로 PQC 지형을 다양화.</li>
+          <li>QEC와 PQC 모두에 대한 관심이 증가하는 교차점에 잘 위치.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>안정기 디코딩 어려움은 격자나 고전 코딩 문제보다 덜 연구되어 있어 향후 암호분석에 견디지 못할 수 있음.</li>
+          <li>키 크기가 격자 기반 체계보다 커서 실용적 채택을 제한.</li>
+          <li>NIST PQC 최종 후보와의 구현 효율성 벤치마크 부재.</li>
+          <li>양자 구조가 고전 코드 기반 암호에 없는 공격 벡터를 도입할 수 있음.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>ML 기반 QEC 디코더의 발전이 이 암호 체계를 의도치 않게 약화시킬 수 있는가?</li>
+          <li>구조화된 안정기 코드 대 랜덤 코드에서 어려움 지형이 어떻게 변하는가?</li>
+          <li>이 접근법을 디지털 서명이나 키 교환 프로토콜로 확장할 수 있는가?</li>
+          <li>이 체계의 보안과 양자 LDPC 코드 거리 사이의 관계는 무엇인가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 포스트 양자 암호에 새로운 방향을 여는 창의적이고 기술적으로 엄밀한 기여입니다. 양자 안정기 디코딩의 계산적 어려움을 활용하여 PQC 포트폴리오를 다양화하는 근본적으로 새로운 보안 가정을 제공합니다. QEC 커뮤니티는 효율적 디코딩의 발전이 암호학적 함의를 가질 수 있으므로 주목해야 합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 7. pqc-quantum-safe-survey
+  // ====================================================================
+  {
+    id: "pqc-quantum-safe-survey",
+    date: "2025-04-11",
+    authors: "Chhetri, G., et al.",
+    venue: "ACM Computing Surveys 2025",
+    image: "images/pqc-quantum-safe-survey/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Post-Quantum Crypto", "Survey", "NIST"],
+    en: {
+      title: "Post-Quantum Cryptography and Quantum-Safe Security: A Comprehensive Survey",
+      summary: "Provides a comprehensive survey of the post-quantum cryptography landscape, covering NIST standardization candidates, lattice-based, code-based, hash-based, and multivariate approaches, along with migration challenges and quantum-safe deployment strategies.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This is a <strong>thorough reference survey of the post-quantum cryptography field</strong> as of 2025, covering the full spectrum from mathematical foundations of PQC schemes to practical migration strategies for quantum-safe infrastructure.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>What is the current state of post-quantum cryptography, including NIST-standardized algorithms, emerging alternatives, and the practical challenges of migrating existing infrastructure to quantum-safe security?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>The advent of cryptographically relevant quantum computers threatens current public-key cryptography (RSA, ECC). NIST has finalized its first PQC standards (CRYSTALS-Kyber/ML-KEM, CRYSTALS-Dilithium/ML-DSA, FALCON, SPHINCS+), but the migration to quantum-safe systems is complex and ongoing. A comprehensive survey is needed to orient researchers and practitioners.</p>
+        <p>This survey covers not just the algorithms but also the broader ecosystem: hybrid schemes, implementation challenges, side-channel resistance, and organizational migration roadmaps.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Taxonomy:</strong> Classifies PQC approaches by mathematical foundation — lattice, code, hash, multivariate, isogeny (post-SIKE).</li>
+          <li><strong>NIST process review:</strong> Documents the multi-round standardization process, finalist selection criteria, and ongoing round-4 candidates.</li>
+          <li><strong>Comparative analysis:</strong> Compares key sizes, performance, security levels, and implementation maturity across PQC families.</li>
+          <li><strong>Migration framework:</strong> Discusses crypto-agility, hybrid TLS, inventory assessment, and transition timelines.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Comprehensive taxonomy:</strong> Unified classification of all major PQC families with security assumptions and trade-offs.</li>
+          <li><strong>NIST timeline documentation:</strong> Detailed account of the standardization process through final standards publication.</li>
+          <li><strong>Performance comparison:</strong> Side-by-side benchmarks of NIST finalists across key generation, encapsulation, signing operations.</li>
+          <li><strong>Migration guidance:</strong> Practical framework for organizations planning quantum-safe transitions.</li>
+          <li><strong>Open problems:</strong> Identifies key research gaps including side-channel resistance and formal verification.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Aspect</th><th>Coverage</th></tr></thead>
+          <tbody>
+            <tr><td>Algorithms surveyed</td><td>ML-KEM, ML-DSA, FALCON, SPHINCS+, BIKE, Classic McEliece, HQC, and more</td></tr>
+            <tr><td>Security levels</td><td>NIST levels 1-5 (equivalent to AES-128 through AES-256)</td></tr>
+            <tr><td>Performance metrics</td><td>Key size, encapsulation/signing time, bandwidth overhead</td></tr>
+            <tr><td>Implementation platforms</td><td>x86, ARM, embedded, FPGA/ASIC</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Scheme</th><th>Type</th><th>Public key</th><th>Performance</th></tr></thead>
+          <tbody>
+            <tr><td>ML-KEM-768</td><td>Lattice KEM</td><td>1,184 bytes</td><td>Fast</td></tr>
+            <tr><td>ML-DSA-65</td><td>Lattice signature</td><td>1,952 bytes</td><td>Fast</td></tr>
+            <tr><td>FALCON-512</td><td>Lattice signature</td><td>897 bytes</td><td>Moderate (complex signing)</td></tr>
+            <tr><td>SPHINCS+-128s</td><td>Hash signature</td><td>32 bytes</td><td>Slow (large signatures)</td></tr>
+            <tr><td>Classic McEliece</td><td>Code KEM</td><td>~261 KB</td><td>Fast decaps, huge keys</td></tr>
+          </tbody>
+        </table>
+        <p>Lattice-based schemes dominate in overall performance balance, but hash-based signatures offer the most conservative security assumptions. Code-based schemes provide strong security but suffer from large key sizes.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Exceptionally comprehensive — covers algorithms, implementations, migration, and open problems.</li>
+          <li>Up-to-date with NIST final standards and ongoing round-4 activity.</li>
+          <li>Practical migration framework useful for industry practitioners, not just researchers.</li>
+          <li>Fair and balanced comparison across PQC families without bias toward any approach.</li>
+          <li>Well-structured with clear taxonomy that aids navigation of the complex PQC landscape.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Survey breadth comes at the cost of depth — individual schemes receive limited technical analysis.</li>
+          <li>Side-channel analysis coverage is relatively brief despite its practical importance.</li>
+          <li>Rapidly evolving field means some details will date quickly.</li>
+          <li>Limited discussion of quantum key distribution (QKD) as a complementary approach.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Should organizations adopt hybrid classical+PQC schemes during the transition, or move directly to pure PQC?</li>
+          <li>How should the cryptographic community respond if a new quantum algorithm breaks lattice assumptions?</li>
+          <li>What role should formal verification play in PQC implementation assurance?</li>
+          <li>How do resource estimates for cryptographically relevant quantum computers affect migration urgency?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This survey is an excellent starting point for anyone entering the PQC field or planning a quantum-safe migration. It provides the big picture of where the field stands post-NIST standardization while honestly identifying the remaining challenges. The migration guidance section is particularly valuable for bridging the gap between cryptographic research and practical deployment.</p>
+      `
+    },
+    ko: {
+      title: "포스트 양자 암호와 양자 안전 보안: 종합 서베이",
+      summary: "NIST 표준화 후보, 격자 기반, 코드 기반, 해시 기반 및 다변수 접근법과 함께 마이그레이션 과제 및 양자 안전 배포 전략을 다루는 포스트 양자 암호 분야의 종합 서베이를 제공합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이것은 PQC 체계의 수학적 기초부터 양자 안전 인프라를 위한 실용적 마이그레이션 전략까지 전체 범위를 다루는 <strong>포스트 양자 암호 분야의 철저한 참조 서베이</strong>입니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>NIST 표준화 알고리즘, 신흥 대안, 기존 인프라를 양자 안전 보안으로 마이그레이션하는 실질적 과제를 포함하여 포스트 양자 암호의 현재 상태는 어떠한가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>암호학적으로 유의미한 양자 컴퓨터의 등장이 현재의 공개 키 암호(RSA, ECC)를 위협합니다. NIST는 첫 PQC 표준(CRYSTALS-Kyber/ML-KEM, CRYSTALS-Dilithium/ML-DSA, FALCON, SPHINCS+)을 확정했지만, 양자 안전 시스템으로의 마이그레이션은 복잡하고 진행 중입니다. 연구자와 실무자를 안내하기 위한 종합 서베이가 필요합니다.</p>
+        <p>이 서베이는 알고리즘뿐 아니라 하이브리드 체계, 구현 과제, 부채널 저항성, 조직적 마이그레이션 로드맵 등 더 넓은 생태계도 다룹니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>분류 체계:</strong> 수학적 기반별 PQC 접근법 분류 — 격자, 코드, 해시, 다변수, 아이소제니(SIKE 이후).</li>
+          <li><strong>NIST 프로세스 검토:</strong> 다중 라운드 표준화 과정, 최종 후보 선정 기준, 진행 중인 4라운드 후보 문서화.</li>
+          <li><strong>비교 분석:</strong> PQC 계열 간 키 크기, 성능, 보안 수준, 구현 성숙도 비교.</li>
+          <li><strong>마이그레이션 프레임워크:</strong> 암호 민첩성, 하이브리드 TLS, 인벤토리 평가, 전환 일정 논의.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-quantum-safe-survey/fig6.png" alt="Figure 6">
+          <figcaption>논문의 Figure 6.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>종합적 분류 체계:</strong> 모든 주요 PQC 계열의 보안 가정과 트레이드오프를 포함한 통합 분류.</li>
+          <li><strong>NIST 타임라인 문서화:</strong> 최종 표준 발표까지의 표준화 과정에 대한 상세한 기술.</li>
+          <li><strong>성능 비교:</strong> 키 생성, 캡슐화, 서명 연산에 걸친 NIST 최종 후보의 나란한 벤치마크.</li>
+          <li><strong>마이그레이션 가이드:</strong> 양자 안전 전환을 계획하는 조직을 위한 실용적 프레임워크.</li>
+          <li><strong>미해결 문제:</strong> 부채널 저항성 및 형식 검증을 포함한 주요 연구 격차 식별.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>측면</th><th>다루는 범위</th></tr></thead>
+          <tbody>
+            <tr><td>서베이 대상 알고리즘</td><td>ML-KEM, ML-DSA, FALCON, SPHINCS+, BIKE, Classic McEliece, HQC 등</td></tr>
+            <tr><td>보안 수준</td><td>NIST 수준 1-5 (AES-128 ~ AES-256 동등)</td></tr>
+            <tr><td>성능 지표</td><td>키 크기, 캡슐화/서명 시간, 대역폭 오버헤드</td></tr>
+            <tr><td>구현 플랫폼</td><td>x86, ARM, 임베디드, FPGA/ASIC</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>체계</th><th>유형</th><th>공개 키</th><th>성능</th></tr></thead>
+          <tbody>
+            <tr><td>ML-KEM-768</td><td>격자 KEM</td><td>1,184 바이트</td><td>빠름</td></tr>
+            <tr><td>ML-DSA-65</td><td>격자 서명</td><td>1,952 바이트</td><td>빠름</td></tr>
+            <tr><td>FALCON-512</td><td>격자 서명</td><td>897 바이트</td><td>보통 (복잡한 서명)</td></tr>
+            <tr><td>SPHINCS+-128s</td><td>해시 서명</td><td>32 바이트</td><td>느림 (큰 서명)</td></tr>
+            <tr><td>Classic McEliece</td><td>코드 KEM</td><td>약 261 KB</td><td>빠른 복호화, 거대한 키</td></tr>
+          </tbody>
+        </table>
+        <p>격자 기반 체계가 전반적 성능 균형에서 우세하지만, 해시 기반 서명이 가장 보수적인 보안 가정을 제공합니다. 코드 기반 체계는 강한 보안을 제공하지만 큰 키 크기로 어려움을 겪습니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>매우 포괄적 — 알고리즘, 구현, 마이그레이션, 미해결 문제를 모두 다룸.</li>
+          <li>NIST 최종 표준 및 진행 중인 4라운드 활동에 대해 최신 상태.</li>
+          <li>연구자뿐 아니라 산업 실무자에게도 유용한 실용적 마이그레이션 프레임워크.</li>
+          <li>특정 접근법에 편향 없이 PQC 계열 간 공정하고 균형 잡힌 비교.</li>
+          <li>복잡한 PQC 지형의 탐색을 돕는 명확한 분류 체계로 잘 구조화.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>서베이의 넓은 범위가 깊이의 대가로 옴 — 개별 체계가 제한된 기술적 분석을 받음.</li>
+          <li>실질적 중요성에도 불구하고 부채널 분석 범위가 비교적 간략.</li>
+          <li>빠르게 진화하는 분야라 일부 세부사항이 빠르게 구식이 될 것.</li>
+          <li>보완적 접근법인 양자 키 분배(QKD)에 대한 논의가 제한적.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>조직은 전환 기간 동안 하이브리드 고전+PQC 체계를 채택해야 하는가, 아니면 순수 PQC로 바로 이동해야 하는가?</li>
+          <li>새로운 양자 알고리즘이 격자 가정을 깨뜨릴 경우 암호학 커뮤니티는 어떻게 대응해야 하는가?</li>
+          <li>PQC 구현 보증에서 형식 검증은 어떤 역할을 해야 하는가?</li>
+          <li>암호학적으로 유의미한 양자 컴퓨터의 자원 추정이 마이그레이션 긴급성에 어떤 영향을 미치는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 서베이는 PQC 분야에 입문하거나 양자 안전 마이그레이션을 계획하는 누구에게나 훌륭한 시작점입니다. NIST 표준화 이후 분야의 현재 위치에 대한 전체 그림을 제공하면서 남은 과제를 정직하게 식별합니다. 마이그레이션 가이드 섹션은 암호학 연구와 실용적 배포 간의 격차를 좁히는 데 특히 가치 있습니다.</p>
+      `
+    }
+  },
+// ====================================================================
+  // 1. pqc-past-future
+  // ====================================================================
+  {
+    id: "pqc-past-future",
+    date: "2025-04-11",
+    authors: "Kokare, P. N., et al.",
+    venue: "Survey 2024",
+    image: "images/pqc-past-future/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Post-Quantum Crypto", "Survey", "Lattice"],
+    en: {
+      title: "Post-Quantum Cryptography: A Survey of Past and Future",
+      summary: "A comprehensive survey covering the evolution of post-quantum cryptographic schemes from early proposals to NIST-standardized algorithms, with a focus on lattice-based, code-based, hash-based, and multivariate approaches.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>A broad-scope survey that traces <strong>post-quantum cryptography from its theoretical origins through the NIST standardization process</strong>, providing a useful reference map of the major algorithm families and their relative maturity.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>What is the current landscape of post-quantum cryptographic algorithms, how have they evolved over the past two decades, and what are the remaining challenges for widespread deployment?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>The advent of large-scale quantum computers threatens classical public-key cryptography based on integer factorization and discrete logarithm problems. Shor's algorithm would render RSA and ECC insecure, motivating research into quantum-resistant alternatives. NIST's multi-round standardization process has recently concluded its initial selections, making this an opportune moment for a retrospective and forward-looking survey.</p>
+        <p>This survey is motivated by the need to consolidate the scattered literature across lattice-based (CRYSTALS-Kyber/Dilithium), code-based (Classic McEliece), hash-based (SPHINCS+), and multivariate schemes into a single accessible reference that tracks both theoretical security and practical performance.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The survey is organized by cryptographic family:</p>
+        <ul>
+          <li><strong>Lattice-based:</strong> Covers LWE, RLWE, and NTRU problems; details Kyber (KEM) and Dilithium (signature) as NIST selections.</li>
+          <li><strong>Code-based:</strong> Reviews McEliece and Niederreiter frameworks and their modern variants.</li>
+          <li><strong>Hash-based:</strong> Discusses stateful (XMSS) and stateless (SPHINCS+) signature schemes.</li>
+          <li><strong>Multivariate:</strong> Examines oil-and-vinegar and HFE-family schemes, noting limited adoption.</li>
+          <li><strong>Isogeny-based:</strong> Briefly covers SIKE's rise and cryptanalytic break.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/pqc-past-future/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Unified taxonomy:</strong> Organizes all major PQC families with consistent comparison criteria (security level, key size, performance).</li>
+          <li><strong>NIST timeline:</strong> Documents the complete standardization journey from Round 1 through final selections.</li>
+          <li><strong>Security analysis:</strong> Summarizes best-known classical and quantum attacks for each scheme family.</li>
+          <li><strong>Migration roadmap:</strong> Discusses practical transition challenges including hybrid schemes and backward compatibility.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Scope</td><td>~200 references spanning 2005-2024</td></tr>
+            <tr><td>NIST levels</td><td>Security levels 1-5 mapped to AES/SHA equivalents</td></tr>
+            <tr><td>Comparison metrics</td><td>Key size, ciphertext size, signature size, CPU cycles</td></tr>
+            <tr><td>Platforms</td><td>Desktop, embedded, IoT performance data compiled</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Scheme Family</th><th>NIST Status</th><th>Key Size</th><th>Maturity</th></tr></thead>
+          <tbody>
+            <tr><td>Lattice (Kyber/Dilithium)</td><td>Standardized</td><td>Moderate</td><td>High</td></tr>
+            <tr><td>Hash (SPHINCS+)</td><td>Standardized</td><td>Small keys, large sigs</td><td>High</td></tr>
+            <tr><td>Code (McEliece)</td><td>Round 4</td><td>Very large</td><td>High</td></tr>
+            <tr><td>Isogeny (SIKE)</td><td>Broken</td><td>Small</td><td>Abandoned</td></tr>
+          </tbody>
+        </table>
+        <p>Lattice-based schemes dominate due to their balanced performance-security tradeoff. Hash-based signatures offer conservative security but with larger signatures. Code-based schemes remain viable but suffer from large key sizes.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Comprehensive coverage of all major PQC families in a single document.</li>
+          <li>Clear timeline of NIST standardization rounds with rationale for selections and eliminations.</li>
+          <li>Includes practical deployment considerations (hybrid modes, TLS integration).</li>
+          <li>Accessible to readers without deep cryptographic background.</li>
+          <li>Discusses both theoretical security reductions and concrete parameter choices.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Limited depth on implementation-level side-channel attacks (timing, power analysis).</li>
+          <li>Isogeny-based discussion is outdated given SIKE's complete break in 2022.</li>
+          <li>Does not cover emerging lattice attacks (e.g., recent improvements in BKZ) in detail.</li>
+          <li>Missing quantitative benchmarks on constrained devices beyond summary tables.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How should organizations prioritize PQC migration given uncertainty about future quantum computing timelines?</li>
+          <li>Are hybrid classical-PQC schemes a necessary transitional step or an unnecessary complexity?</li>
+          <li>Could new cryptanalytic breakthroughs (like the SIKE attack) threaten lattice-based schemes?</li>
+          <li>What role should hardware acceleration play in PQC adoption for IoT devices?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This survey serves as a solid entry point for understanding the PQC landscape. Readers should use it as a reference map rather than a deep technical guide -- for each algorithm family, it provides enough context to understand the design rationale and current status, then points to primary sources for deeper study. The key message is that lattice-based cryptography has emerged as the pragmatic winner, but diversity in deployed schemes remains important for defense in depth.</p>
+      `
+    },
+    ko: {
+      title: "Post-Quantum Cryptography: 과거와 미래에 대한 서베이",
+      summary: "초기 제안부터 NIST 표준화 알고리즘까지 포스트 양자 암호 체계의 진화를 격자 기반, 코드 기반, 해시 기반, 다변수 접근법을 중심으로 종합적으로 조사한 서베이입니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p><strong>포스트 양자 암호를 이론적 기원부터 NIST 표준화 과정까지 추적</strong>하는 광범위한 서베이로, 주요 알고리즘 계열과 성숙도에 대한 유용한 참조 지도를 제공합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>포스트 양자 암호 알고리즘의 현재 현황은 어떠하며, 지난 20년간 어떻게 발전해 왔고, 광범위한 배포를 위한 남은 과제는 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>대규모 양자 컴퓨터의 출현은 정수 분해와 이산 로그 문제에 기반한 고전 공개키 암호를 위협합니다. Shor 알고리즘은 RSA와 ECC를 무력화할 수 있어 양자 저항성 대안 연구가 활발합니다. NIST의 다단계 표준화 과정이 초기 선정을 마무리한 시점에서, 회고적이고 미래지향적인 서베이가 시의적절합니다.</p>
+        <p>이 서베이는 격자 기반(CRYSTALS-Kyber/Dilithium), 코드 기반(Classic McEliece), 해시 기반(SPHINCS+), 다변수 체계에 걸친 분산된 문헌을 통합하여 이론적 보안성과 실용적 성능을 모두 추적하는 단일 참조 문헌이 필요하다는 동기에서 작성되었습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>서베이는 암호 계열별로 구성됩니다:</p>
+        <ul>
+          <li><strong>격자 기반:</strong> LWE, RLWE, NTRU 문제를 다루며 NIST 선정인 Kyber(KEM)와 Dilithium(서명)을 상세히 설명합니다.</li>
+          <li><strong>코드 기반:</strong> McEliece, Niederreiter 프레임워크와 현대적 변형을 검토합니다.</li>
+          <li><strong>해시 기반:</strong> 상태 유지형(XMSS)과 비상태형(SPHINCS+) 서명 체계를 논의합니다.</li>
+          <li><strong>다변수:</strong> Oil-and-Vinegar 및 HFE 계열 체계를 검토하며 제한적 채택을 지적합니다.</li>
+          <li><strong>아이소제니 기반:</strong> SIKE의 부상과 암호 분석적 파괴를 간략히 다룹니다.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/pqc-past-future/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig4.png" alt="Figure 4">
+          <figcaption>논문의 Figure 4.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig5.png" alt="Figure 5">
+          <figcaption>논문의 Figure 5.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-past-future/fig6.png" alt="Figure 6">
+          <figcaption>논문의 Figure 6.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>통합 분류:</strong> 일관된 비교 기준(보안 수준, 키 크기, 성능)으로 모든 주요 PQC 계열을 정리합니다.</li>
+          <li><strong>NIST 타임라인:</strong> 1라운드부터 최종 선정까지 완전한 표준화 과정을 문서화합니다.</li>
+          <li><strong>보안 분석:</strong> 각 체계 계열에 대한 최선의 고전 및 양자 공격을 요약합니다.</li>
+          <li><strong>마이그레이션 로드맵:</strong> 하이브리드 체계와 하위 호환성을 포함한 실질적 전환 과제를 논의합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>항목</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>범위</td><td>2005-2024년에 걸친 약 200개 참고문헌</td></tr>
+            <tr><td>NIST 레벨</td><td>AES/SHA 동등치에 매핑된 보안 레벨 1-5</td></tr>
+            <tr><td>비교 지표</td><td>키 크기, 암호문 크기, 서명 크기, CPU 사이클</td></tr>
+            <tr><td>플랫폼</td><td>데스크톱, 임베디드, IoT 성능 데이터 수집</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>체계 계열</th><th>NIST 상태</th><th>키 크기</th><th>성숙도</th></tr></thead>
+          <tbody>
+            <tr><td>격자 (Kyber/Dilithium)</td><td>표준화됨</td><td>보통</td><td>높음</td></tr>
+            <tr><td>해시 (SPHINCS+)</td><td>표준화됨</td><td>작은 키, 큰 서명</td><td>높음</td></tr>
+            <tr><td>코드 (McEliece)</td><td>4라운드</td><td>매우 큼</td><td>높음</td></tr>
+            <tr><td>아이소제니 (SIKE)</td><td>파괴됨</td><td>작음</td><td>폐기</td></tr>
+          </tbody>
+        </table>
+        <p>격자 기반 체계가 균형 잡힌 성능-보안 트레이드오프로 지배적입니다. 해시 기반 서명은 보수적 보안을 제공하지만 서명이 큽니다. 코드 기반 체계는 여전히 유효하지만 큰 키 크기로 어려움이 있습니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>모든 주요 PQC 계열을 단일 문서에서 포괄적으로 다룹니다.</li>
+          <li>선정 및 탈락 근거와 함께 NIST 표준화 라운드의 명확한 타임라인을 제공합니다.</li>
+          <li>실질적 배포 고려사항(하이브리드 모드, TLS 통합)을 포함합니다.</li>
+          <li>깊은 암호학적 배경 없는 독자에게도 접근 가능합니다.</li>
+          <li>이론적 보안 환원과 구체적 파라미터 선택을 모두 논의합니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>구현 수준의 부채널 공격(타이밍, 전력 분석)에 대한 깊이가 제한적입니다.</li>
+          <li>아이소제니 기반 논의는 2022년 SIKE 완전 파괴 이후 시대에 뒤떨어져 있습니다.</li>
+          <li>최근 격자 공격 개선(예: BKZ 개선)을 상세히 다루지 않습니다.</li>
+          <li>요약 테이블 이상의 제한된 디바이스 정량적 벤치마크가 부족합니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>미래 양자 컴퓨팅 타임라인의 불확실성을 고려할 때 조직은 PQC 마이그레이션을 어떻게 우선순위화해야 하는가?</li>
+          <li>하이브리드 고전-PQC 체계는 필수적 전환 단계인가 아니면 불필요한 복잡성인가?</li>
+          <li>SIKE 공격과 같은 새로운 암호 분석 돌파가 격자 기반 체계를 위협할 수 있는가?</li>
+          <li>IoT 디바이스의 PQC 채택에서 하드웨어 가속은 어떤 역할을 해야 하는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 서베이는 PQC 현황을 이해하기 위한 견고한 출발점입니다. 독자는 심층 기술 가이드가 아닌 참조 지도로 활용해야 합니다 -- 각 알고리즘 계열에 대해 설계 근거와 현재 상태를 이해할 수 있는 충분한 맥락을 제공하고 심화 학습을 위한 원본 소스를 안내합니다. 핵심 메시지는 격자 기반 암호가 실용적 승자로 부상했지만, 심층 방어를 위해 배포되는 체계의 다양성이 여전히 중요하다는 것입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 2. pqc-library-survey
+  // ====================================================================
+  {
+    id: "pqc-library-survey",
+    date: "2025-04-11",
+    authors: "Ahmed, N., Zhang, L., Gangopadhyay, A.",
+    venue: "Preprint 2025",
+    image: "images/pqc-library-survey/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Post-Quantum Crypto", "Libraries"],
+    en: {
+      title: "A Survey of Post-Quantum Cryptography Support in Cryptographic Libraries",
+      summary: "Systematically evaluates how major cryptographic libraries (OpenSSL, liboqs, BoringSSL, etc.) have integrated NIST-standardized post-quantum algorithms, assessing API maturity, algorithm coverage, and interoperability.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>A practical survey that <strong>maps the current state of PQC integration across major cryptographic libraries</strong>, revealing significant disparities in algorithm support, API readiness, and interoperability testing.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>To what extent do mainstream cryptographic libraries support NIST-standardized post-quantum algorithms, and what gaps remain for production deployment?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>While NIST has finalized its first set of post-quantum standards (ML-KEM, ML-DSA, SLH-DSA), the actual adoption depends on cryptographic library support. Developers rely on libraries like OpenSSL, liboqs, BoringSSL, and language-specific bindings to deploy these algorithms. Without comprehensive library support, the transition from theoretical standardization to practical deployment stalls.</p>
+        <p>This survey fills the gap between algorithm-level research and real-world deployment readiness by systematically cataloging PQC support across the most widely used libraries, including their API stability, performance characteristics, and hybrid mode capabilities.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Library selection:</strong> Covers OpenSSL 3.x, liboqs (Open Quantum Safe), BoringSSL, NSS, wolfSSL, Bouncy Castle, and PQClean.</li>
+          <li><strong>Evaluation criteria:</strong> Algorithm coverage (KEM, signature), API stability, hybrid TLS support, side-channel countermeasures, and platform support.</li>
+          <li><strong>Testing methodology:</strong> Interoperability tests between libraries for key exchange and signature verification.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/pqc-library-survey/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-library-survey/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-library-survey/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Comprehensive comparison matrix:</strong> First systematic cross-library comparison of PQC algorithm support with consistent evaluation criteria.</li>
+          <li><strong>Interoperability findings:</strong> Identifies specific incompatibilities between library implementations of the same algorithms.</li>
+          <li><strong>Hybrid mode analysis:</strong> Documents which libraries support hybrid classical-PQC key exchange and how they implement it.</li>
+          <li><strong>Deployment readiness score:</strong> Ranks libraries by production readiness for PQC migration.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Libraries tested</td><td>7 major libraries across C, Java, and Rust ecosystems</td></tr>
+            <tr><td>Algorithms</td><td>ML-KEM (Kyber), ML-DSA (Dilithium), SLH-DSA (SPHINCS+), FN-DSA (Falcon)</td></tr>
+            <tr><td>Test platform</td><td>x86-64 and ARM64 benchmarking</td></tr>
+            <tr><td>TLS versions</td><td>TLS 1.3 with hybrid key exchange</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Library</th><th>KEM Support</th><th>Signature Support</th><th>Hybrid TLS</th></tr></thead>
+          <tbody>
+            <tr><td>liboqs</td><td>Full</td><td>Full</td><td>Via OQS-provider</td></tr>
+            <tr><td>OpenSSL 3.x</td><td>Partial</td><td>Partial</td><td>Experimental</td></tr>
+            <tr><td>BoringSSL</td><td>ML-KEM only</td><td>Limited</td><td>Yes (Chrome)</td></tr>
+            <tr><td>wolfSSL</td><td>Full</td><td>Partial</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+        <p>liboqs leads in algorithm coverage but lags in production hardening. BoringSSL has the most battle-tested hybrid TLS deployment via Chrome. OpenSSL support is growing but API stability remains a concern for early adopters.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Highly practical focus that directly serves developers planning PQC migration.</li>
+          <li>Covers both algorithm-level and protocol-level (TLS) integration.</li>
+          <li>Includes performance benchmarks across different hardware architectures.</li>
+          <li>Identifies concrete interoperability bugs rather than abstract compatibility claims.</li>
+          <li>Timely given the 2024-2025 NIST standardization timeline.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Library landscape evolves rapidly; findings may become outdated within months.</li>
+          <li>Side-channel analysis is surface-level; no original timing or power analysis performed.</li>
+          <li>Does not cover hardware security module (HSM) support for PQC.</li>
+          <li>Limited coverage of embedded/RTOS library ecosystems.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Should library developers prioritize algorithm coverage or production hardening of a smaller set?</li>
+          <li>How critical is cross-library interoperability for PQC adoption in practice?</li>
+          <li>Will the rapid evolution of PQC standards destabilize library APIs and discourage early adoption?</li>
+          <li>What role should automated compliance testing play in validating PQC library implementations?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This survey is essential reading for engineering teams planning PQC migration. It reveals that while algorithm support is advancing quickly, the ecosystem is fragmented -- no single library offers a complete, production-ready PQC stack. Teams should expect to use liboqs for breadth, rely on BoringSSL or wolfSSL for production TLS, and plan for ongoing library updates as standards finalize.</p>
+      `
+    },
+    ko: {
+      title: "암호 라이브러리의 포스트 양자 암호 지원 현황 서베이",
+      summary: "주요 암호 라이브러리(OpenSSL, liboqs, BoringSSL 등)가 NIST 표준화된 포스트 양자 알고리즘을 어떻게 통합했는지 체계적으로 평가하고, API 성숙도, 알고리즘 범위, 상호운용성을 분석합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p><strong>주요 암호 라이브러리 전반의 PQC 통합 현황</strong>을 매핑하는 실용적 서베이로, 알고리즘 지원, API 준비도, 상호운용성 테스트에서 상당한 격차를 드러냅니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>주류 암호 라이브러리가 NIST 표준화 포스트 양자 알고리즘을 어느 정도까지 지원하며, 프로덕션 배포를 위해 어떤 격차가 남아 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>NIST가 첫 번째 포스트 양자 표준(ML-KEM, ML-DSA, SLH-DSA)을 확정했지만, 실제 채택은 암호 라이브러리 지원에 달려 있습니다. 개발자들은 OpenSSL, liboqs, BoringSSL 등의 라이브러리에 의존하여 이러한 알고리즘을 배포합니다. 포괄적인 라이브러리 지원 없이는 이론적 표준화에서 실질적 배포로의 전환이 지연됩니다.</p>
+        <p>이 서베이는 가장 널리 사용되는 라이브러리의 PQC 지원을 체계적으로 카탈로그화하여 알고리즘 수준 연구와 실세계 배포 준비도 사이의 격차를 메웁니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>라이브러리 선정:</strong> OpenSSL 3.x, liboqs, BoringSSL, NSS, wolfSSL, Bouncy Castle, PQClean을 다룹니다.</li>
+          <li><strong>평가 기준:</strong> 알고리즘 범위(KEM, 서명), API 안정성, 하이브리드 TLS 지원, 부채널 대응, 플랫폼 지원.</li>
+          <li><strong>테스트 방법론:</strong> 키 교환 및 서명 검증에 대한 라이브러리 간 상호운용성 테스트.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/pqc-library-survey/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-library-survey/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/pqc-library-survey/fig3.png" alt="Figure 3">
+          <figcaption>논문의 Figure 3.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>포괄적 비교 매트릭스:</strong> 일관된 평가 기준으로 PQC 알고리즘 지원의 최초 체계적 교차 라이브러리 비교.</li>
+          <li><strong>상호운용성 발견:</strong> 동일 알고리즘의 라이브러리 구현 간 특정 비호환성을 식별합니다.</li>
+          <li><strong>하이브리드 모드 분석:</strong> 어떤 라이브러리가 하이브리드 고전-PQC 키 교환을 지원하고 어떻게 구현하는지 문서화합니다.</li>
+          <li><strong>배포 준비도 점수:</strong> PQC 마이그레이션을 위한 프로덕션 준비도별 라이브러리 순위를 매깁니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>항목</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>테스트된 라이브러리</td><td>C, Java, Rust 생태계의 7개 주요 라이브러리</td></tr>
+            <tr><td>알고리즘</td><td>ML-KEM (Kyber), ML-DSA (Dilithium), SLH-DSA (SPHINCS+), FN-DSA (Falcon)</td></tr>
+            <tr><td>테스트 플랫폼</td><td>x86-64 및 ARM64 벤치마킹</td></tr>
+            <tr><td>TLS 버전</td><td>하이브리드 키 교환이 있는 TLS 1.3</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>라이브러리</th><th>KEM 지원</th><th>서명 지원</th><th>하이브리드 TLS</th></tr></thead>
+          <tbody>
+            <tr><td>liboqs</td><td>완전</td><td>완전</td><td>OQS-provider 통해</td></tr>
+            <tr><td>OpenSSL 3.x</td><td>부분적</td><td>부분적</td><td>실험적</td></tr>
+            <tr><td>BoringSSL</td><td>ML-KEM만</td><td>제한적</td><td>예 (Chrome)</td></tr>
+            <tr><td>wolfSSL</td><td>완전</td><td>부분적</td><td>예</td></tr>
+          </tbody>
+        </table>
+        <p>liboqs가 알고리즘 범위에서 선두이지만 프로덕션 경화에서는 뒤처집니다. BoringSSL이 Chrome을 통해 가장 실전 검증된 하이브리드 TLS 배포를 갖추고 있습니다. OpenSSL 지원은 성장 중이지만 API 안정성이 초기 채택자에게 우려됩니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>PQC 마이그레이션을 계획하는 개발자에게 직접적으로 도움이 되는 매우 실용적인 초점.</li>
+          <li>알고리즘 수준과 프로토콜 수준(TLS) 통합을 모두 다룹니다.</li>
+          <li>다양한 하드웨어 아키텍처에서의 성능 벤치마크를 포함합니다.</li>
+          <li>추상적 호환성 주장이 아닌 구체적 상호운용성 버그를 식별합니다.</li>
+          <li>2024-2025 NIST 표준화 타임라인에 맞춰 시의적절합니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>라이브러리 환경이 빠르게 변화하여 수개월 내에 발견 사항이 구식이 될 수 있습니다.</li>
+          <li>부채널 분석이 표면적이며, 독자적인 타이밍이나 전력 분석은 수행되지 않았습니다.</li>
+          <li>PQC를 위한 하드웨어 보안 모듈(HSM) 지원을 다루지 않습니다.</li>
+          <li>임베디드/RTOS 라이브러리 생태계에 대한 범위가 제한적입니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>라이브러리 개발자들은 알고리즘 범위를 우선시해야 하는가, 아니면 소수 집합의 프로덕션 경화를 우선시해야 하는가?</li>
+          <li>교차 라이브러리 상호운용성은 실제 PQC 채택에 얼마나 중요한가?</li>
+          <li>PQC 표준의 빠른 진화가 라이브러리 API를 불안정하게 하고 조기 채택을 저해할 것인가?</li>
+          <li>PQC 라이브러리 구현 검증에서 자동화된 준수 테스트는 어떤 역할을 해야 하는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 서베이는 PQC 마이그레이션을 계획하는 엔지니어링 팀에 필수적입니다. 알고리즘 지원이 빠르게 발전하고 있지만 생태계가 분열되어 있음을 보여줍니다 -- 단일 라이브러리가 완전하고 프로덕션 준비된 PQC 스택을 제공하지 않습니다. 팀은 범위를 위해 liboqs를, 프로덕션 TLS를 위해 BoringSSL이나 wolfSSL을 사용하고, 표준이 확정됨에 따라 지속적인 라이브러리 업데이트를 계획해야 합니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 3. generative-decoding-qec
+  // ====================================================================
+  {
+    id: "generative-decoding-qec",
+    date: "2025-04-11",
+    authors: "Cao, H., et al.",
+    venue: "Preprint 2025",
+    image: "images/generative-decoding-qec/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "QEC", "Generative Model", "Decoder"],
+    en: {
+      title: "Generative Decoding for Quantum Error-Correcting Codes",
+      summary: "Proposes using generative models (diffusion/autoregressive) as decoders for quantum error-correcting codes, learning the error distribution conditioned on syndromes to sample likely corrections rather than deterministically computing them.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper reframes quantum error correction decoding as a <strong>conditional generative modeling problem</strong>, using learned distributions over error patterns to produce high-quality corrections that outperform traditional decoders on moderate-distance codes.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can generative models that learn the posterior distribution of errors conditioned on syndromes serve as effective and scalable decoders for quantum error-correcting codes?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Decoding quantum error-correcting codes is computationally challenging because the decoder must infer the most likely error given a syndrome, accounting for degeneracies where different physical errors produce identical syndromes. Traditional decoders (MWPM, union-find, BP) use handcrafted algorithms that may not fully exploit the error distribution structure.</p>
+        <p>Generative models -- which excel at learning complex distributions in classical ML -- offer a natural alternative: learn the conditional distribution P(error | syndrome) from training data, then sample corrections. This could capture correlations and degeneracies that deterministic decoders miss.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Generative decoder framework:</strong> The syndrome is provided as a conditioning input; the model generates a candidate error pattern by sampling from the learned posterior.</li>
+          <li><strong>Model variants:</strong> Both diffusion-based and autoregressive architectures are explored, treating the error vector as the generation target.</li>
+          <li><strong>Training:</strong> Supervised on (syndrome, error) pairs generated from known noise models via Monte Carlo simulation.</li>
+          <li><strong>Inference:</strong> Multiple samples are drawn and the most likely equivalence class is selected, exploiting degeneracy naturally.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/generative-decoding-qec/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/generative-decoding-qec/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Novel framing:</strong> First to systematically apply generative models (diffusion and autoregressive) as QEC decoders.</li>
+          <li><strong>Degeneracy handling:</strong> The generative approach naturally handles error degeneracies by sampling multiple corrections.</li>
+          <li><strong>Competitive accuracy:</strong> Achieves logical error rates competitive with or superior to MWPM on surface codes up to moderate distances.</li>
+          <li><strong>Flexible architecture:</strong> Framework is code-agnostic and can be adapted to different code families.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Codes tested</td><td>Rotated surface code d = 3, 5, 7, 9</td></tr>
+            <tr><td>Noise model</td><td>Depolarizing noise, code-capacity and phenomenological</td></tr>
+            <tr><td>Training data</td><td>~10<sup>6</sup> syndrome-error pairs per code distance</td></tr>
+            <tr><td>Models</td><td>Diffusion (DDPM-style), autoregressive transformer</td></tr>
+            <tr><td>Inference</td><td>Multi-sample majority vote over equivalence classes</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Decoder</th><th>d=5 Logical Error Rate</th><th>d=7 Logical Error Rate</th></tr></thead>
+          <tbody>
+            <tr><td>MWPM</td><td>Baseline</td><td>Baseline</td></tr>
+            <tr><td>Generative (diffusion)</td><td>Comparable</td><td>Slightly better</td></tr>
+            <tr><td>Generative (autoregressive)</td><td>Comparable</td><td>Competitive</td></tr>
+          </tbody>
+        </table>
+        <p>The generative decoders match or slightly exceed MWPM at moderate distances, with the advantage growing for correlated noise models where MWPM's independence assumptions break down.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Creative application of generative modeling to a well-defined combinatorial problem.</li>
+          <li>Natural handling of degeneracy -- a fundamental challenge in quantum decoding.</li>
+          <li>Code-agnostic framework applicable beyond surface codes.</li>
+          <li>Multi-sample inference provides controllable accuracy-latency tradeoff.</li>
+          <li>Thorough comparison against established decoder baselines.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Inference latency is much higher than MWPM or union-find due to iterative sampling.</li>
+          <li>Scalability to large distances (d > 15) is unclear due to growing error space.</li>
+          <li>Training requires noise model knowledge; adaptability to unknown noise is not demonstrated.</li>
+          <li>Hardware deployment for real-time decoding is not addressed.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can distillation or amortization techniques reduce the inference cost to meet real-time decoding deadlines?</li>
+          <li>How does performance degrade when the training noise model differs from the actual hardware noise?</li>
+          <li>Could generative decoders be combined with fast decoders (union-find for easy syndromes, generative for hard ones)?</li>
+          <li>Does the generative approach scale better for qLDPC codes where MWPM is unavailable?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper opens an interesting direction by viewing QEC decoding through the lens of generative modeling. While not yet practical for real-time deployment due to latency, the framework's natural handling of degeneracy and its code-agnostic nature make it a promising research direction. The key open question is whether inference speed can be brought within the constraints of quantum error correction cycles.</p>
+      `
+    },
+    ko: {
+      title: "양자 오류 정정 코드를 위한 생성 모델 디코딩",
+      summary: "생성 모델(확산/자기회귀)을 양자 오류 정정 코드의 디코더로 사용하여, 신드롬에 조건부된 오류 분포를 학습하고 결정론적 계산 대신 가능한 교정을 샘플링하는 방법을 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>양자 오류 정정 디코딩을 <strong>조건부 생성 모델링 문제</strong>로 재구성하여, 오류 패턴에 대한 학습된 분포를 사용하여 중간 거리 코드에서 전통적 디코더를 능가하는 고품질 교정을 생성합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>신드롬에 조건부된 오류의 사후 분포를 학습하는 생성 모델이 양자 오류 정정 코드의 효과적이고 확장 가능한 디코더로 기능할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>양자 오류 정정 코드의 디코딩은 디코더가 신드롬이 주어졌을 때 가장 가능성 있는 오류를 추론해야 하므로 계산적으로 어렵습니다. 서로 다른 물리적 오류가 동일한 신드롬을 생성하는 축퇴를 고려해야 합니다. MWPM, union-find, BP 같은 전통적 디코더는 오류 분포 구조를 완전히 활용하지 못할 수 있는 수작업 알고리즘을 사용합니다.</p>
+        <p>복잡한 분포 학습에 뛰어난 생성 모델은 자연스러운 대안을 제공합니다: 훈련 데이터에서 조건부 분포 P(오류 | 신드롬)를 학습한 후 교정을 샘플링합니다. 이는 결정론적 디코더가 놓치는 상관관계와 축퇴를 포착할 수 있습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>생성 디코더 프레임워크:</strong> 신드롬이 조건 입력으로 제공되고, 모델이 학습된 사후 분포에서 샘플링하여 후보 오류 패턴을 생성합니다.</li>
+          <li><strong>모델 변형:</strong> 확산 기반과 자기회귀 아키텍처 모두 탐구하며, 오류 벡터를 생성 대상으로 취급합니다.</li>
+          <li><strong>훈련:</strong> 몬테카를로 시뮬레이션으로 알려진 잡음 모델에서 생성된 (신드롬, 오류) 쌍으로 지도 학습.</li>
+          <li><strong>추론:</strong> 여러 샘플을 추출하고 가장 가능성 있는 동치류를 선택하여 축퇴를 자연스럽게 활용합니다.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/generative-decoding-qec/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/generative-decoding-qec/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>새로운 프레이밍:</strong> 생성 모델(확산 및 자기회귀)을 QEC 디코더로 체계적으로 적용한 최초 연구.</li>
+          <li><strong>축퇴 처리:</strong> 여러 교정을 샘플링하여 오류 축퇴를 자연스럽게 처리합니다.</li>
+          <li><strong>경쟁력 있는 정확도:</strong> 중간 거리까지의 표면 코드에서 MWPM과 동등하거나 우수한 논리적 오류율 달성.</li>
+          <li><strong>유연한 아키텍처:</strong> 코드에 구애받지 않고 다른 코드 계열에 적응 가능한 프레임워크.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>테스트 코드</td><td>회전 표면 코드 d = 3, 5, 7, 9</td></tr>
+            <tr><td>잡음 모델</td><td>탈분극 잡음, 코드 용량 및 현상학적</td></tr>
+            <tr><td>훈련 데이터</td><td>코드 거리당 약 10<sup>6</sup>개 신드롬-오류 쌍</td></tr>
+            <tr><td>모델</td><td>확산(DDPM 스타일), 자기회귀 트랜스포머</td></tr>
+            <tr><td>추론</td><td>동치류에 대한 다중 샘플 다수결 투표</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>디코더</th><th>d=5 논리적 오류율</th><th>d=7 논리적 오류율</th></tr></thead>
+          <tbody>
+            <tr><td>MWPM</td><td>기준선</td><td>기준선</td></tr>
+            <tr><td>생성(확산)</td><td>동등</td><td>약간 우수</td></tr>
+            <tr><td>생성(자기회귀)</td><td>동등</td><td>경쟁적</td></tr>
+          </tbody>
+        </table>
+        <p>생성 디코더는 중간 거리에서 MWPM과 동등하거나 약간 초과하며, MWPM의 독립성 가정이 무너지는 상관 잡음 모델에서 이점이 커집니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>잘 정의된 조합 문제에 대한 생성 모델링의 창의적 적용.</li>
+          <li>양자 디코딩의 근본적 과제인 축퇴의 자연스러운 처리.</li>
+          <li>표면 코드를 넘어 적용 가능한 코드 비의존적 프레임워크.</li>
+          <li>다중 샘플 추론이 제어 가능한 정확도-지연 트레이드오프를 제공합니다.</li>
+          <li>확립된 디코더 기준선에 대한 철저한 비교.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>반복적 샘플링으로 인해 추론 지연이 MWPM이나 union-find보다 훨씬 높습니다.</li>
+          <li>커지는 오류 공간으로 인해 큰 거리(d > 15)로의 확장성이 불명확합니다.</li>
+          <li>훈련에 잡음 모델 지식이 필요하며, 미지 잡음에 대한 적응성이 입증되지 않았습니다.</li>
+          <li>실시간 디코딩을 위한 하드웨어 배포가 다루어지지 않았습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>증류 또는 상각 기법이 실시간 디코딩 마감을 충족하도록 추론 비용을 줄일 수 있는가?</li>
+          <li>훈련 잡음 모델이 실제 하드웨어 잡음과 다를 때 성능이 어떻게 저하되는가?</li>
+          <li>생성 디코더를 빠른 디코더와 결합할 수 있는가(쉬운 신드롬은 union-find, 어려운 것은 생성)?</li>
+          <li>MWPM을 사용할 수 없는 qLDPC 코드에서 생성 접근법이 더 잘 확장되는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 QEC 디코딩을 생성 모델링의 관점에서 바라보는 흥미로운 방향을 열어줍니다. 지연 시간으로 인해 아직 실시간 배포에는 실용적이지 않지만, 축퇴의 자연스러운 처리와 코드 비의존적 특성이 유망한 연구 방향입니다. 핵심 미해결 질문은 추론 속도가 양자 오류 정정 사이클의 제약 내로 들어올 수 있는지입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 4. diffusion-decoding-qldpc
+  // ====================================================================
+  {
+    id: "diffusion-decoding-qldpc",
+    date: "2025-04-11",
+    authors: "Liu, Z., Gong, A., Clark, B. K.",
+    venue: "Preprint 2025",
+    image: "images/diffusion-decoding-qldpc/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "qLDPC", "Diffusion Model", "Decoder"],
+    en: {
+      title: "Decoding Quantum Low-Density Parity-Check Codes with Diffusion",
+      summary: "Applies diffusion models to decode quantum LDPC codes, leveraging the iterative denoising process to produce syndrome-consistent corrections that outperform belief propagation on codes where traditional decoders struggle.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper demonstrates that <strong>diffusion models can serve as effective decoders for qLDPC codes</strong>, a family where standard MWPM is inapplicable and belief propagation often fails due to short cycles in the Tanner graph.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can diffusion-based generative models decode quantum LDPC codes more accurately than belief propagation and its variants, particularly for codes with problematic Tanner graph structure?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Quantum LDPC codes promise constant-rate encoding with growing distance, but decoding them is notoriously difficult. Unlike surface codes where MWPM works well, qLDPC codes have non-local check structure that prevents direct application of matching-based decoders. Belief propagation (BP) is the standard alternative but suffers from convergence issues on graphs with short cycles.</p>
+        <p>Diffusion models, which iteratively denoise a random initial state into a structured output, offer a compelling alternative: they can learn complex conditional distributions without requiring the graphical model structure assumptions that limit BP.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Diffusion decoder:</strong> Starts from Gaussian noise and iteratively denoises toward an error pattern conditioned on the observed syndrome.</li>
+          <li><strong>Syndrome conditioning:</strong> The syndrome vector is injected at each denoising step via cross-attention or concatenation.</li>
+          <li><strong>Projection step:</strong> After denoising, a projection ensures the decoded error is syndrome-consistent.</li>
+          <li><strong>Codes tested:</strong> Hypergraph product codes and bicycle codes of various parameters.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/diffusion-decoding-qldpc/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/diffusion-decoding-qldpc/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>First diffusion decoder for qLDPC:</strong> Demonstrates feasibility of diffusion models as decoders specifically for quantum LDPC codes.</li>
+          <li><strong>Outperforms BP:</strong> Achieves lower logical error rates than standard BP and BP+OSD on codes with short Tanner graph cycles.</li>
+          <li><strong>Syndrome consistency:</strong> The projection mechanism guarantees valid corrections, unlike raw neural network outputs.</li>
+          <li><strong>Scalability study:</strong> Evaluates performance across multiple code sizes to assess scaling behavior.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Codes</td><td>Hypergraph product codes [[n,k,d]], bicycle codes</td></tr>
+            <tr><td>Noise model</td><td>Independent depolarizing, code-capacity setting</td></tr>
+            <tr><td>Diffusion steps</td><td>100-500 denoising steps</td></tr>
+            <tr><td>Architecture</td><td>U-Net-style with syndrome cross-attention</td></tr>
+            <tr><td>Training</td><td>~10<sup>6</sup> syndrome-error pairs, Adam optimizer</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Decoder</th><th>Hypergraph Product</th><th>Bicycle Code</th></tr></thead>
+          <tbody>
+            <tr><td>BP</td><td>Baseline</td><td>Baseline (poor)</td></tr>
+            <tr><td>BP + OSD</td><td>Improved</td><td>Improved</td></tr>
+            <tr><td>Diffusion</td><td>Best</td><td>Best</td></tr>
+          </tbody>
+        </table>
+        <p>The diffusion decoder shows the largest advantage on codes where BP struggles most (short cycles, high degeneracy). The gap narrows for codes with better BP-friendly structure.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Addresses a real bottleneck: qLDPC decoding is a major unsolved challenge for quantum computing.</li>
+          <li>Clean experimental design isolating the decoder contribution from other variables.</li>
+          <li>Syndrome projection guarantees valid outputs, combining neural flexibility with hard constraints.</li>
+          <li>Demonstrates clear advantage precisely where existing methods fail.</li>
+          <li>Open and reproducible evaluation methodology.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Inference requires hundreds of denoising steps, making real-time decoding infeasible.</li>
+          <li>Training is code-specific; a new model must be trained for each code family and distance.</li>
+          <li>Only code-capacity noise model tested; circuit-level noise would be more realistic.</li>
+          <li>Comparison with other ML-based decoders (GNN, transformer) is limited.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can few-step diffusion (consistency models, flow matching) bring inference time to practical levels?</li>
+          <li>Is there a way to train a single diffusion decoder that generalizes across code families?</li>
+          <li>How does the diffusion decoder handle time-correlated syndrome data from repeated measurements?</li>
+          <li>Could the diffusion decoder be used as a refinement stage after a fast initial BP pass?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper makes a strong case that diffusion models are well-suited for the specific challenges of qLDPC decoding -- handling degeneracy, working without graph structure assumptions, and outperforming BP where it fails. The main barrier to practical use is inference speed, making this a research contribution that points toward future real-time diffusion decoders rather than an immediately deployable solution.</p>
+      `
+    },
+    ko: {
+      title: "확산 모델을 이용한 양자 저밀도 패리티 검사 코드 디코딩",
+      summary: "확산 모델을 양자 LDPC 코드 디코딩에 적용하여, 반복적 잡음 제거 과정을 활용해 전통적 디코더가 어려워하는 코드에서 신드롬 일관적 교정을 생성합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p><strong>확산 모델이 qLDPC 코드의 효과적인 디코더로 기능할 수 있음</strong>을 보여주며, 표준 MWPM이 적용 불가능하고 신뢰 전파가 자주 실패하는 코드 계열에서의 성과를 입증합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>확산 기반 생성 모델이 특히 문제가 있는 태너 그래프 구조를 가진 코드에서 신뢰 전파와 그 변형보다 양자 LDPC 코드를 더 정확하게 디코딩할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>양자 LDPC 코드는 거리가 증가하면서 일정 비율 인코딩을 약속하지만, 디코딩이 매우 어렵습니다. MWPM이 잘 작동하는 표면 코드와 달리, qLDPC 코드는 매칭 기반 디코더의 직접 적용을 막는 비국소적 검사 구조를 가집니다. 표준 대안인 신뢰 전파(BP)는 짧은 사이클이 있는 그래프에서 수렴 문제를 겪습니다.</p>
+        <p>무작위 초기 상태를 구조화된 출력으로 반복적으로 잡음 제거하는 확산 모델은 BP를 제한하는 그래픽 모델 구조 가정 없이 복잡한 조건부 분포를 학습할 수 있어 설득력 있는 대안을 제공합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>확산 디코더:</strong> 가우시안 잡음에서 시작하여 관측된 신드롬에 조건부로 오류 패턴을 향해 반복적으로 잡음을 제거합니다.</li>
+          <li><strong>신드롬 조건화:</strong> 각 잡음 제거 단계에서 교차 어텐션 또는 연결을 통해 신드롬 벡터가 주입됩니다.</li>
+          <li><strong>투영 단계:</strong> 잡음 제거 후 투영이 디코딩된 오류가 신드롬 일관적임을 보장합니다.</li>
+          <li><strong>테스트 코드:</strong> 다양한 파라미터의 초그래프 곱 코드와 자전거 코드.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/diffusion-decoding-qldpc/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+        <figure>
+          <img src="images/diffusion-decoding-qldpc/fig2.png" alt="Figure 2">
+          <figcaption>논문의 Figure 2.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>최초의 qLDPC 확산 디코더:</strong> 양자 LDPC 코드 전용 디코더로서 확산 모델의 실현 가능성을 입증합니다.</li>
+          <li><strong>BP 능가:</strong> 짧은 태너 그래프 사이클이 있는 코드에서 표준 BP 및 BP+OSD보다 낮은 논리적 오류율 달성.</li>
+          <li><strong>신드롬 일관성:</strong> 투영 메커니즘이 원시 신경망 출력과 달리 유효한 교정을 보장합니다.</li>
+          <li><strong>확장성 연구:</strong> 여러 코드 크기에서 성능을 평가하여 스케일링 동작을 분석합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드</td><td>초그래프 곱 코드 [[n,k,d]], 자전거 코드</td></tr>
+            <tr><td>잡음 모델</td><td>독립 탈분극, 코드 용량 설정</td></tr>
+            <tr><td>확산 단계</td><td>100-500 잡음 제거 단계</td></tr>
+            <tr><td>아키텍처</td><td>신드롬 교차 어텐션이 있는 U-Net 스타일</td></tr>
+            <tr><td>훈련</td><td>약 10<sup>6</sup>개 신드롬-오류 쌍, Adam 옵티마이저</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>디코더</th><th>초그래프 곱</th><th>자전거 코드</th></tr></thead>
+          <tbody>
+            <tr><td>BP</td><td>기준선</td><td>기준선 (불량)</td></tr>
+            <tr><td>BP + OSD</td><td>개선됨</td><td>개선됨</td></tr>
+            <tr><td>확산</td><td>최고</td><td>최고</td></tr>
+          </tbody>
+        </table>
+        <p>확산 디코더는 BP가 가장 어려워하는 코드(짧은 사이클, 높은 축퇴)에서 가장 큰 이점을 보입니다. BP에 우호적인 구조를 가진 코드에서는 격차가 좁아집니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>실질적 병목 해결: qLDPC 디코딩은 양자 컴퓨팅의 주요 미해결 과제입니다.</li>
+          <li>다른 변수로부터 디코더 기여를 분리하는 깔끔한 실험 설계.</li>
+          <li>신드롬 투영이 유효한 출력을 보장하여 신경망 유연성과 엄격한 제약을 결합합니다.</li>
+          <li>기존 방법이 실패하는 곳에서 정확히 명확한 이점을 보여줍니다.</li>
+          <li>개방적이고 재현 가능한 평가 방법론.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>추론에 수백 번의 잡음 제거 단계가 필요하여 실시간 디코딩이 불가능합니다.</li>
+          <li>훈련이 코드별로 특화되어 각 코드 계열과 거리에 대해 새 모델을 훈련해야 합니다.</li>
+          <li>코드 용량 잡음 모델만 테스트되었으며, 회로 수준 잡음이 더 현실적일 것입니다.</li>
+          <li>다른 ML 기반 디코더(GNN, 트랜스포머)와의 비교가 제한적입니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>소수 단계 확산(일관성 모델, 플로우 매칭)이 추론 시간을 실용적 수준으로 낮출 수 있는가?</li>
+          <li>코드 계열을 넘어 일반화하는 단일 확산 디코더를 훈련할 수 있는 방법이 있는가?</li>
+          <li>확산 디코더는 반복 측정의 시간 상관 신드롬 데이터를 어떻게 처리하는가?</li>
+          <li>확산 디코더를 빠른 초기 BP 패스 후의 정제 단계로 사용할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 확산 모델이 qLDPC 디코딩의 특정 과제에 적합하다는 강력한 주장을 합니다 -- 축퇴 처리, 그래프 구조 가정 없이 작동, BP가 실패하는 곳에서의 우수한 성능. 실용적 사용의 주요 장벽은 추론 속도이며, 이는 즉시 배포 가능한 솔루션이 아닌 미래의 실시간 확산 디코더를 가리키는 연구 기여입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 5. finite-size-decoy-qkd
+  // ====================================================================
+  {
+    id: "finite-size-decoy-qkd",
+    date: "2025-04-11",
+    authors: "Wiesemann, J., et al.",
+    venue: "Preprint 2025",
+    image: "images/finite-size-decoy-qkd/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "QKD", "Finite-Size", "Security Proof"],
+    en: {
+      title: "A Consolidated and Accessible Security Proof for Finite-Size Decoy-State Quantum Key Distribution",
+      summary: "Provides a unified, self-contained security proof for decoy-state BB84 QKD in the finite-key regime, consolidating scattered results into a single accessible framework with tighter key rate bounds.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>A pedagogical yet rigorous paper that <strong>consolidates the finite-size security analysis of decoy-state QKD</strong> into a single coherent framework, making the proof chain accessible while tightening key rate bounds.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can the security proof for finite-size decoy-state BB84 QKD be presented in a consolidated, self-contained manner that is both rigorous and accessible, while improving upon existing finite-key rate bounds?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Quantum key distribution (QKD) promises information-theoretically secure communication, but practical security proofs must account for finite data: real experiments exchange a finite number of signals, making statistical estimation of parameters necessary. The decoy-state method, which uses multiple intensity levels to bound the single-photon contribution, adds further complexity.</p>
+        <p>Existing finite-size security proofs are scattered across multiple papers, each handling different aspects (decoy analysis, privacy amplification, error correction cost). This fragmentation makes it difficult for implementers to verify the full proof chain. This paper consolidates everything into one self-contained treatment.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Protocol:</strong> Standard decoy-state BB84 with signal, decoy, and vacuum intensity levels.</li>
+          <li><strong>Finite-size framework:</strong> Entropic uncertainty relation approach with composable security definition.</li>
+          <li><strong>Decoy analysis:</strong> Linear programming bounds on single-photon yield and error rate from finite observed statistics.</li>
+          <li><strong>Key rate formula:</strong> Combines smooth min-entropy bound, error correction leakage, and privacy amplification with explicit finite-size corrections.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/finite-size-decoy-qkd/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Consolidation:</strong> First fully self-contained presentation of finite-size decoy-state BB84 security proof.</li>
+          <li><strong>Tighter bounds:</strong> Improved finite-size key rate through optimized statistical fluctuation terms.</li>
+          <li><strong>Composable security:</strong> Proof is composable, meaning it remains valid when QKD keys are used in subsequent protocols.</li>
+          <li><strong>Accessibility:</strong> Written to be understandable by experimentalists, not just theorists.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Aspect</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Protocol</td><td>Decoy-state BB84, 3 intensity levels</td></tr>
+            <tr><td>Security definition</td><td>Composable (universally composable framework)</td></tr>
+            <tr><td>Block sizes</td><td>N = 10<sup>8</sup> to 10<sup>12</sup> signals analyzed</td></tr>
+            <tr><td>Security parameter</td><td>epsilon = 10<sup>-10</sup> (total security)</td></tr>
+            <tr><td>Channel model</td><td>Standard fiber-optic loss model (0.2 dB/km)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Block Size N</th><th>Previous Key Rate</th><th>This Work Key Rate</th><th>Distance (km)</th></tr></thead>
+          <tbody>
+            <tr><td>10<sup>10</sup></td><td>Moderate</td><td>Improved (~5-15%)</td><td>50-100</td></tr>
+            <tr><td>10<sup>12</sup></td><td>Near asymptotic</td><td>Tighter bound</td><td>100-200</td></tr>
+            <tr><td>10<sup>8</sup></td><td>Very low</td><td>Noticeable improvement</td><td>20-50</td></tr>
+          </tbody>
+        </table>
+        <p>The tighter bounds are most impactful at moderate block sizes (10<sup>8</sup>-10<sup>10</sup>) where finite-size corrections dominate, yielding 5-15% higher key rates than previous analyses for the same security level.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Removes the need to cross-reference multiple papers for a complete security proof.</li>
+          <li>Composable security framework ensures real-world applicability.</li>
+          <li>Clear separation of statistical and information-theoretic components.</li>
+          <li>Practical key rate improvements at experimentally relevant block sizes.</li>
+          <li>Accessible writing style bridges theorists and experimentalists.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Restricted to standard BB84 with decoy states; does not cover MDI-QKD or TF-QKD.</li>
+          <li>Assumes ideal single-photon detectors and standard detector models.</li>
+          <li>Does not address implementation security loopholes (side channels, Trojan horse attacks).</li>
+          <li>Key rate improvements, while meaningful, are incremental rather than transformative.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can this consolidated framework be extended to cover measurement-device-independent protocols?</li>
+          <li>How sensitive are the tighter bounds to mischaracterization of the source intensity levels?</li>
+          <li>Would numerical optimization of decoy intensities further improve finite-size key rates?</li>
+          <li>Is the composable security framework necessary for all practical QKD deployments, or is standalone security sufficient?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper is valuable primarily as a reference work that lowers the barrier to understanding finite-size QKD security. The tighter key rate bounds are a welcome improvement, but the main contribution is consolidation: providing a single, self-contained document that an experimentalist can follow from protocol description to final key rate formula. This is the paper to cite and consult when implementing decoy-state BB84 with rigorous finite-size security.</p>
+      `
+    },
+    ko: {
+      title: "유한 크기 디코이 상태 양자 키 분배에 대한 통합적이고 접근 가능한 보안 증명",
+      summary: "유한 키 영역에서 디코이 상태 BB84 QKD의 통합된 자체 완결적 보안 증명을 제공하며, 분산된 결과들을 단일 접근 가능한 프레임워크로 통합하고 더 타이트한 키 레이트 경계를 제시합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p><strong>디코이 상태 QKD의 유한 크기 보안 분석을 단일 일관된 프레임워크로 통합</strong>하는 교육적이면서도 엄밀한 논문으로, 증명 체인을 접근 가능하게 만들면서 키 레이트 경계를 개선합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>유한 크기 디코이 상태 BB84 QKD의 보안 증명을 엄밀하면서도 접근 가능한 통합된 자체 완결적 방식으로 제시할 수 있으며, 기존 유한 키 레이트 경계를 개선할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>양자 키 분배(QKD)는 정보 이론적으로 안전한 통신을 약속하지만, 실용적 보안 증명은 유한 데이터를 고려해야 합니다. 실제 실험에서는 유한한 수의 신호를 교환하므로 파라미터의 통계적 추정이 필요합니다. 여러 강도 수준을 사용하여 단일 광자 기여를 제한하는 디코이 상태 방법은 추가 복잡성을 더합니다.</p>
+        <p>기존 유한 크기 보안 증명은 여러 논문에 분산되어 있어 구현자가 전체 증명 체인을 검증하기 어렵습니다. 이 논문은 모든 것을 하나의 자체 완결적 처리로 통합합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>프로토콜:</strong> 신호, 디코이, 진공 강도 수준을 가진 표준 디코이 상태 BB84.</li>
+          <li><strong>유한 크기 프레임워크:</strong> 조합 가능 보안 정의를 가진 엔트로피 불확정성 관계 접근법.</li>
+          <li><strong>디코이 분석:</strong> 유한 관측 통계에서 단일 광자 수율과 오류율에 대한 선형 프로그래밍 경계.</li>
+          <li><strong>키 레이트 공식:</strong> 부드러운 최소 엔트로피 경계, 오류 정정 누출, 프라이버시 증폭을 명시적 유한 크기 보정과 결합.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/finite-size-decoy-qkd/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>통합:</strong> 유한 크기 디코이 상태 BB84 보안 증명의 최초 완전 자체 완결적 제시.</li>
+          <li><strong>더 타이트한 경계:</strong> 최적화된 통계적 변동 항을 통한 유한 크기 키 레이트 개선.</li>
+          <li><strong>조합 가능 보안:</strong> QKD 키가 후속 프로토콜에서 사용될 때도 유효한 조합 가능 증명.</li>
+          <li><strong>접근성:</strong> 이론가뿐 아니라 실험가도 이해할 수 있도록 작성.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>항목</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>프로토콜</td><td>디코이 상태 BB84, 3개 강도 수준</td></tr>
+            <tr><td>보안 정의</td><td>조합 가능(보편적 조합 가능 프레임워크)</td></tr>
+            <tr><td>블록 크기</td><td>N = 10<sup>8</sup> ~ 10<sup>12</sup> 신호 분석</td></tr>
+            <tr><td>보안 파라미터</td><td>epsilon = 10<sup>-10</sup> (전체 보안)</td></tr>
+            <tr><td>채널 모델</td><td>표준 광섬유 손실 모델 (0.2 dB/km)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>블록 크기 N</th><th>기존 키 레이트</th><th>본 연구 키 레이트</th><th>거리 (km)</th></tr></thead>
+          <tbody>
+            <tr><td>10<sup>10</sup></td><td>보통</td><td>개선 (~5-15%)</td><td>50-100</td></tr>
+            <tr><td>10<sup>12</sup></td><td>점근적에 근접</td><td>더 타이트한 경계</td><td>100-200</td></tr>
+            <tr><td>10<sup>8</sup></td><td>매우 낮음</td><td>눈에 띄는 개선</td><td>20-50</td></tr>
+          </tbody>
+        </table>
+        <p>더 타이트한 경계는 유한 크기 보정이 지배하는 중간 블록 크기(10<sup>8</sup>-10<sup>10</sup>)에서 가장 영향력이 크며, 동일 보안 수준에서 이전 분석보다 5-15% 높은 키 레이트를 제공합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>완전한 보안 증명을 위해 여러 논문을 교차 참조할 필요를 제거합니다.</li>
+          <li>조합 가능 보안 프레임워크가 실세계 적용 가능성을 보장합니다.</li>
+          <li>통계적 구성 요소와 정보 이론적 구성 요소의 명확한 분리.</li>
+          <li>실험적으로 관련 있는 블록 크기에서 실질적 키 레이트 개선.</li>
+          <li>이론가와 실험가를 연결하는 접근 가능한 서술 방식.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>표준 BB84와 디코이 상태에 제한되며 MDI-QKD나 TF-QKD를 다루지 않습니다.</li>
+          <li>이상적 단일 광자 검출기와 표준 검출기 모델을 가정합니다.</li>
+          <li>구현 보안 허점(부채널, 트로이 목마 공격)을 다루지 않습니다.</li>
+          <li>키 레이트 개선이 의미 있지만 혁신적이기보다는 점진적입니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>이 통합 프레임워크가 측정 장치 독립적 프로토콜을 포함하도록 확장될 수 있는가?</li>
+          <li>더 타이트한 경계는 소스 강도 수준의 잘못된 특성화에 얼마나 민감한가?</li>
+          <li>디코이 강도의 수치적 최적화가 유한 크기 키 레이트를 더 개선할 수 있는가?</li>
+          <li>조합 가능 보안 프레임워크가 모든 실용적 QKD 배포에 필요한가, 아니면 독립형 보안으로 충분한가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 주로 유한 크기 QKD 보안 이해의 장벽을 낮추는 참조 자료로서 가치가 있습니다. 더 타이트한 키 레이트 경계는 환영할 만한 개선이지만, 주요 기여는 통합입니다: 실험가가 프로토콜 설명에서 최종 키 레이트 공식까지 따라갈 수 있는 단일 자체 완결적 문서를 제공합니다. 엄밀한 유한 크기 보안으로 디코이 상태 BB84를 구현할 때 인용하고 참조해야 할 논문입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 6. rydberg-gate-syndrome
+  // ====================================================================
+  {
+    id: "rydberg-gate-syndrome",
+    date: "2025-04-11",
+    authors: "Miles, J., et al.",
+    venue: "Preprint 2025",
+    image: "images/rydberg-gate-syndrome/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Rydberg Gate", "Syndrome Measurement"],
+    en: {
+      title: "Qubit Syndrome Measurements with a High-Fidelity Rb-Cs Rydberg Gate",
+      summary: "Demonstrates high-fidelity two-qubit Rydberg gates between rubidium and cesium atoms and applies them to syndrome extraction circuits for quantum error correction, achieving competitive fidelities in a dual-species atomic platform.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>An experimental paper demonstrating that <strong>heteronuclear Rb-Cs Rydberg gates can perform syndrome measurements</strong> with fidelities approaching the requirements for fault-tolerant quantum error correction, validating the dual-species atomic approach.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can heteronuclear Rydberg gates between rubidium and cesium atoms achieve sufficient fidelity for syndrome extraction in quantum error correction, and what are the dominant error sources?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Neutral atom quantum computers have emerged as a scalable platform, with Rydberg-mediated interactions enabling long-range entangling gates. Using two atomic species (Rb and Cs) provides natural separation between data qubits and ancilla qubits, eliminating crosstalk during individual addressing. This dual-species approach is particularly attractive for quantum error correction where ancilla qubits perform syndrome extraction without disturbing data qubits.</p>
+        <p>However, the Rydberg interaction between heteronuclear species has different characteristics than homonuclear gates, and achieving high fidelity requires careful optimization of pulse sequences and addressing of species-specific decoherence mechanisms.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Platform:</strong> Optical tweezer arrays with Rb-87 (data qubits) and Cs-133 (ancilla qubits) atoms.</li>
+          <li><strong>Gate mechanism:</strong> Rydberg blockade-mediated CZ gate between Rb and Cs using optimized pulse sequences.</li>
+          <li><strong>Syndrome circuit:</strong> Weight-4 stabilizer measurements using ancilla Cs atoms coupled to neighboring Rb data qubits.</li>
+          <li><strong>Characterization:</strong> Randomized benchmarking, process tomography, and syndrome extraction fidelity measurements.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/rydberg-gate-syndrome/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>High-fidelity heteronuclear gate:</strong> Demonstrates Rb-Cs CZ gate fidelity exceeding 99% after optimization.</li>
+          <li><strong>Syndrome extraction:</strong> First demonstration of full weight-4 stabilizer measurement using dual-species Rydberg platform.</li>
+          <li><strong>Error budget:</strong> Detailed characterization of error sources (Rydberg decay, motional heating, laser phase noise).</li>
+          <li><strong>Scalability argument:</strong> Dual-species approach naturally separates data and ancilla roles, simplifying error correction circuits.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Species</td><td>Rb-87 (data), Cs-133 (ancilla)</td></tr>
+            <tr><td>Gate type</td><td>Rydberg blockade CZ gate</td></tr>
+            <tr><td>Gate fidelity</td><td>>99% (post-selected), ~98.5% (raw)</td></tr>
+            <tr><td>Gate time</td><td>~1 microsecond</td></tr>
+            <tr><td>Stabilizer weight</td><td>Weight-4 (surface code plaquette)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Metric</th><th>Value</th></tr></thead>
+          <tbody>
+            <tr><td>Two-qubit gate fidelity (RB)</td><td>>99%</td></tr>
+            <tr><td>Single-qubit gate fidelity</td><td>>99.5%</td></tr>
+            <tr><td>Syndrome extraction fidelity</td><td>~95-97% (full circuit)</td></tr>
+            <tr><td>Dominant error source</td><td>Rydberg state decay and motional heating</td></tr>
+          </tbody>
+        </table>
+        <p>The syndrome extraction fidelity of 95-97% for a full weight-4 stabilizer circuit is competitive with other neutral atom platforms and approaching the threshold for surface code error correction with moderate code distances.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Clean demonstration of a dual-species advantage for quantum error correction.</li>
+          <li>Detailed error budget identifying actionable improvements.</li>
+          <li>Gate fidelities competitive with state-of-the-art single-species Rydberg platforms.</li>
+          <li>Direct connection to QEC requirements rather than isolated gate benchmarks.</li>
+          <li>Scalable architecture with natural data-ancilla separation.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Syndrome extraction demonstrated on a single stabilizer, not a full surface code.</li>
+          <li>Post-selection inflates reported fidelities; raw numbers are more relevant for fault tolerance.</li>
+          <li>Atom loss and reloading overhead not fully characterized for repetitive syndrome cycles.</li>
+          <li>Comparison with single-species approaches is not on equal footing (different system sizes).</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the dual-species approach maintain its advantage at the system sizes needed for logical qubits (hundreds of atoms)?</li>
+          <li>How does atom loss during Rydberg excitation scale with the number of syndrome extraction rounds?</li>
+          <li>Would mid-circuit measurement and feed-forward be feasible on this platform for real-time error correction?</li>
+          <li>Could three-species systems further improve the separation of roles in error correction circuits?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper provides encouraging experimental evidence that dual-species neutral atom platforms are viable for quantum error correction. The high heteronuclear gate fidelity and successful syndrome extraction demonstrate that the added complexity of managing two species pays off in cleaner error correction circuits. The next milestone will be scaling to a full distance-3 surface code with repeated syndrome extraction.</p>
+      `
+    },
+    ko: {
+      title: "고충실도 Rb-Cs 뤼드베르크 게이트를 이용한 큐비트 신드롬 측정",
+      summary: "루비듐과 세슘 원자 간 고충실도 2큐비트 뤼드베르크 게이트를 시연하고 양자 오류 정정을 위한 신드롬 추출 회로에 적용하여, 이중 원자종 플랫폼에서 경쟁력 있는 충실도를 달성합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p><strong>이종 원자핵 Rb-Cs 뤼드베르크 게이트가 결함 허용 양자 오류 정정 요건에 근접하는 충실도로 신드롬 측정을 수행할 수 있음</strong>을 실험적으로 입증하여 이중 원자종 접근법을 검증합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>루비듐과 세슘 원자 간 이종 원자핵 뤼드베르크 게이트가 양자 오류 정정의 신드롬 추출에 충분한 충실도를 달성할 수 있으며, 지배적 오류 원인은 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>중성 원자 양자 컴퓨터는 확장 가능한 플랫폼으로 부상했으며, 뤼드베르크 매개 상호작용이 장거리 얽힘 게이트를 가능하게 합니다. 두 원자종(Rb과 Cs)을 사용하면 데이터 큐비트와 보조 큐비트 사이의 자연스러운 분리를 제공하여 개별 주소 지정 중 누화를 제거합니다. 이 이중 원자종 접근법은 보조 큐비트가 데이터 큐비트를 방해하지 않고 신드롬 추출을 수행하는 양자 오류 정정에 특히 매력적입니다.</p>
+        <p>그러나 이종 원자핵 간의 뤼드베르크 상호작용은 동종 게이트와 다른 특성을 가지며, 높은 충실도를 달성하려면 펄스 시퀀스의 신중한 최적화와 종별 결맞음 해제 메커니즘의 처리가 필요합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>플랫폼:</strong> Rb-87(데이터 큐비트)과 Cs-133(보조 큐비트) 원자가 있는 광학 핀셋 배열.</li>
+          <li><strong>게이트 메커니즘:</strong> 최적화된 펄스 시퀀스를 사용한 Rb과 Cs 간 뤼드베르크 봉쇄 매개 CZ 게이트.</li>
+          <li><strong>신드롬 회로:</strong> 인접 Rb 데이터 큐비트에 결합된 보조 Cs 원자를 사용한 가중치-4 안정기 측정.</li>
+          <li><strong>특성화:</strong> 무작위 벤치마킹, 프로세스 토모그래피, 신드롬 추출 충실도 측정.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/rydberg-gate-syndrome/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>고충실도 이종 원자핵 게이트:</strong> 최적화 후 99%를 초과하는 Rb-Cs CZ 게이트 충실도를 시연합니다.</li>
+          <li><strong>신드롬 추출:</strong> 이중 원자종 뤼드베르크 플랫폼을 사용한 전체 가중치-4 안정기 측정의 최초 시연.</li>
+          <li><strong>오류 예산:</strong> 오류 원인(뤼드베르크 붕괴, 운동 가열, 레이저 위상 잡음)의 상세한 특성화.</li>
+          <li><strong>확장성 논거:</strong> 이중 원자종 접근법이 데이터와 보조 역할을 자연스럽게 분리하여 오류 정정 회로를 단순화합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>원자종</td><td>Rb-87 (데이터), Cs-133 (보조)</td></tr>
+            <tr><td>게이트 유형</td><td>뤼드베르크 봉쇄 CZ 게이트</td></tr>
+            <tr><td>게이트 충실도</td><td>>99% (사후 선택), ~98.5% (원시)</td></tr>
+            <tr><td>게이트 시간</td><td>~1 마이크로초</td></tr>
+            <tr><td>안정기 가중치</td><td>가중치-4 (표면 코드 플라켓)</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>지표</th><th>값</th></tr></thead>
+          <tbody>
+            <tr><td>2큐비트 게이트 충실도 (RB)</td><td>>99%</td></tr>
+            <tr><td>단일 큐비트 게이트 충실도</td><td>>99.5%</td></tr>
+            <tr><td>신드롬 추출 충실도</td><td>~95-97% (전체 회로)</td></tr>
+            <tr><td>지배적 오류 원인</td><td>뤼드베르크 상태 붕괴 및 운동 가열</td></tr>
+          </tbody>
+        </table>
+        <p>전체 가중치-4 안정기 회로의 95-97% 신드롬 추출 충실도는 다른 중성 원자 플랫폼과 경쟁력이 있으며, 중간 코드 거리에서의 표면 코드 오류 정정 임계값에 접근하고 있습니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>양자 오류 정정을 위한 이중 원자종 이점의 깔끔한 시연.</li>
+          <li>실행 가능한 개선을 식별하는 상세한 오류 예산.</li>
+          <li>최신 단일 원자종 뤼드베르크 플랫폼과 경쟁력 있는 게이트 충실도.</li>
+          <li>고립된 게이트 벤치마크가 아닌 QEC 요구 사항과의 직접적 연결.</li>
+          <li>자연스러운 데이터-보조 분리가 있는 확장 가능한 아키텍처.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>신드롬 추출이 전체 표면 코드가 아닌 단일 안정기에서 시연되었습니다.</li>
+          <li>사후 선택이 보고된 충실도를 부풀리며, 결함 허용에는 원시 수치가 더 관련이 있습니다.</li>
+          <li>반복적 신드롬 사이클에 대한 원자 손실 및 재적재 오버헤드가 완전히 특성화되지 않았습니다.</li>
+          <li>단일 원자종 접근법과의 비교가 동등한 조건(다른 시스템 크기)이 아닙니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>이중 원자종 접근법이 논리적 큐비트에 필요한 시스템 크기(수백 개 원자)에서 이점을 유지할 수 있는가?</li>
+          <li>뤼드베르크 여기 중 원자 손실은 신드롬 추출 라운드 수에 따라 어떻게 확장되는가?</li>
+          <li>실시간 오류 정정을 위한 회로 중간 측정 및 피드포워드가 이 플랫폼에서 실현 가능한가?</li>
+          <li>3원자종 시스템이 오류 정정 회로에서 역할 분리를 더 개선할 수 있는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 이중 원자종 중성 원자 플랫폼이 양자 오류 정정에 실행 가능하다는 고무적인 실험적 증거를 제공합니다. 높은 이종 원자핵 게이트 충실도와 성공적인 신드롬 추출은 두 원자종 관리의 추가 복잡성이 더 깨끗한 오류 정정 회로로 보상됨을 보여줍니다. 다음 이정표는 반복적 신드롬 추출이 있는 전체 거리-3 표면 코드로의 확장입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // 7. lidmas-decoder
+  // ====================================================================
+  {
+    id: "lidmas-decoder",
+    date: "2025-04-11",
+    authors: "Wayo, D. D. K., et al.",
+    venue: "Preprint 2025",
+    image: "images/lidmas-decoder/thumbnail.png",
+    link: "",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "CV Codes", "Surface Code", "Decoder"],
+    en: {
+      title: "Decoder Performance in Hybrid CV-Discrete Surface-Code Threshold Estimation Using LiDMaS+",
+      summary: "Evaluates the LiDMaS+ decoder for hybrid continuous-variable and discrete-variable surface codes, analyzing how decoder choice and analog information from CV qubits affect threshold estimation in this hybrid architecture.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper benchmarks the <strong>LiDMaS+ decoder on hybrid CV-discrete surface codes</strong>, demonstrating that incorporating analog CV information into the decoding process meaningfully improves threshold estimates compared to purely discrete approaches.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How does the LiDMaS+ decoder perform for threshold estimation in hybrid continuous-variable/discrete-variable surface codes, and how much does analog CV information contribute to decoding accuracy?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Hybrid quantum error correction architectures that combine continuous-variable (CV) qubits (such as GKP states) with discrete-variable surface codes have attracted interest because CV qubits provide analog syndrome information that can enhance decoding. The LiDMaS+ (Lifted Decoder with Matched Sampling) decoder is designed specifically to exploit this analog information.</p>
+        <p>Accurate threshold estimation for such hybrid codes requires decoders that can properly ingest and utilize the soft analog data from CV measurements, rather than simply discretizing it. This paper systematically evaluates LiDMaS+ for this purpose.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <ul>
+          <li><strong>Hybrid code:</strong> Surface code with physical qubits encoded as GKP states in bosonic modes, providing analog syndrome data.</li>
+          <li><strong>LiDMaS+ decoder:</strong> Extends standard matching decoders by incorporating soft information from CV measurements as edge weights.</li>
+          <li><strong>Threshold estimation:</strong> Finite-size scaling analysis across multiple code distances with Monte Carlo sampling.</li>
+          <li><strong>Comparison:</strong> Benchmarked against standard MWPM with hard-decision inputs and other soft-information decoders.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/lidmas-decoder/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1 from the paper.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>LiDMaS+ evaluation:</strong> First comprehensive benchmark of LiDMaS+ on hybrid CV-discrete surface codes across multiple distances.</li>
+          <li><strong>Analog information value:</strong> Quantifies the threshold improvement from using soft CV information versus hard decisions.</li>
+          <li><strong>Decoder comparison:</strong> Compares LiDMaS+ against MWPM and union-find variants on hybrid codes.</li>
+          <li><strong>Practical guidance:</strong> Provides recommendations for decoder selection in hybrid CV-discrete architectures.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Details</th></tr></thead>
+          <tbody>
+            <tr><td>Code</td><td>Rotated surface code, d = 3, 5, 7, 9, 11</td></tr>
+            <tr><td>CV encoding</td><td>GKP states with Gaussian noise envelope</td></tr>
+            <tr><td>Decoder</td><td>LiDMaS+ with soft-weighted matching</td></tr>
+            <tr><td>Sampling</td><td>Monte Carlo, ~10<sup>6</sup> shots per point</td></tr>
+            <tr><td>Threshold method</td><td>Finite-size scaling crossing analysis</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Decoder</th><th>Threshold (sigma)</th><th>Analog Info</th></tr></thead>
+          <tbody>
+            <tr><td>MWPM (hard)</td><td>Lower baseline</td><td>No</td></tr>
+            <tr><td>MWPM (soft)</td><td>Improved</td><td>Yes</td></tr>
+            <tr><td>LiDMaS+</td><td>Highest</td><td>Yes (optimized)</td></tr>
+          </tbody>
+        </table>
+        <p>LiDMaS+ achieves the highest threshold among tested decoders by optimally weighting the analog GKP information. The improvement over hard-decision MWPM is substantial, confirming that soft information is a critical resource in hybrid CV-discrete architectures.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li>Directly addresses a practical need in the growing hybrid CV-discrete QEC community.</li>
+          <li>Systematic comparison across multiple code distances ensures robust threshold estimates.</li>
+          <li>Clear demonstration that analog information is not just helpful but essential for optimal thresholds.</li>
+          <li>LiDMaS+ decoder is well-motivated and clearly described.</li>
+          <li>Results are consistent with and extend prior decoder-dependence findings.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li>Limited to GKP-based CV encoding; other CV schemes (cat codes, binomial codes) not tested.</li>
+          <li>Only surface code topology; generalization to other code families unclear.</li>
+          <li>Decoder runtime analysis is minimal; practical latency not evaluated.</li>
+          <li>Noise model is simplified; realistic hardware noise (photon loss, finite squeezing) partially addressed.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>How does LiDMaS+ compare to neural-network-based decoders that could also ingest soft CV information?</li>
+          <li>Can the LiDMaS+ approach be adapted for concatenated codes beyond the surface code?</li>
+          <li>What is the minimum squeezing level at which analog CV information provides meaningful decoding advantage?</li>
+          <li>How would hardware-realistic noise models (finite energy GKP states) change the threshold estimates?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper reinforces the message that decoder choice matters critically in hybrid quantum error correction, and that decoders designed to exploit analog CV information (like LiDMaS+) unlock substantially better thresholds. For teams building GKP-based quantum computers, co-designing the decoder with the CV measurement pipeline is not optional -- it is essential for reaching competitive thresholds.</p>
+      `
+    },
+    ko: {
+      title: "LiDMaS+를 이용한 하이브리드 CV-이산 표면 코드 임계값 추정에서의 디코더 성능",
+      summary: "하이브리드 연속변수-이산변수 표면 코드에 대한 LiDMaS+ 디코더를 평가하고, 디코더 선택과 CV 큐비트의 아날로그 정보가 이 하이브리드 아키텍처의 임계값 추정에 어떤 영향을 미치는지 분석합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p><strong>하이브리드 CV-이산 표면 코드에서 LiDMaS+ 디코더를 벤치마크</strong>하여, 아날로그 CV 정보를 디코딩 과정에 통합하면 순수 이산 접근법에 비해 의미 있는 임계값 개선이 이루어짐을 입증합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>하이브리드 연속변수/이산변수 표면 코드에서 LiDMaS+ 디코더의 임계값 추정 성능은 어떠하며, 아날로그 CV 정보가 디코딩 정확도에 얼마나 기여하는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>연속변수(CV) 큐비트(예: GKP 상태)와 이산변수 표면 코드를 결합하는 하이브리드 양자 오류 정정 아키텍처는 CV 큐비트가 디코딩을 향상시킬 수 있는 아날로그 신드롬 정보를 제공하기 때문에 관심을 받고 있습니다. LiDMaS+(Lifted Decoder with Matched Sampling) 디코더는 이 아날로그 정보를 활용하도록 특별히 설계되었습니다.</p>
+        <p>이러한 하이브리드 코드의 정확한 임계값 추정에는 CV 측정의 소프트 아날로그 데이터를 단순히 이산화하지 않고 적절히 수용하고 활용할 수 있는 디코더가 필요합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <ul>
+          <li><strong>하이브리드 코드:</strong> 보손 모드에서 GKP 상태로 인코딩된 물리적 큐비트가 있는 표면 코드로, 아날로그 신드롬 데이터를 제공합니다.</li>
+          <li><strong>LiDMaS+ 디코더:</strong> CV 측정의 소프트 정보를 엣지 가중치로 통합하여 표준 매칭 디코더를 확장합니다.</li>
+          <li><strong>임계값 추정:</strong> 몬테카를로 샘플링으로 여러 코드 거리에 걸친 유한 크기 스케일링 분석.</li>
+          <li><strong>비교:</strong> 경판정 입력의 표준 MWPM 및 기타 소프트 정보 디코더와 벤치마크.</li>
+        </ul>
+        
+
+        
+        <figure>
+          <img src="images/lidmas-decoder/fig1.png" alt="Figure 1">
+          <figcaption>논문의 Figure 1.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>LiDMaS+ 평가:</strong> 여러 거리에 걸친 하이브리드 CV-이산 표면 코드에서의 LiDMaS+ 최초 종합 벤치마크.</li>
+          <li><strong>아날로그 정보 가치:</strong> 소프트 CV 정보 사용 대 경판정의 임계값 개선을 정량화합니다.</li>
+          <li><strong>디코더 비교:</strong> 하이브리드 코드에서 LiDMaS+를 MWPM 및 union-find 변형과 비교합니다.</li>
+          <li><strong>실용적 가이드:</strong> 하이브리드 CV-이산 아키텍처에서의 디코더 선택에 대한 권고를 제공합니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>세부사항</th></tr></thead>
+          <tbody>
+            <tr><td>코드</td><td>회전 표면 코드, d = 3, 5, 7, 9, 11</td></tr>
+            <tr><td>CV 인코딩</td><td>가우시안 잡음 포락선이 있는 GKP 상태</td></tr>
+            <tr><td>디코더</td><td>소프트 가중 매칭이 있는 LiDMaS+</td></tr>
+            <tr><td>샘플링</td><td>몬테카를로, 포인트당 약 10<sup>6</sup>회</td></tr>
+            <tr><td>임계값 방법</td><td>유한 크기 스케일링 교차점 분석</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>디코더</th><th>임계값 (시그마)</th><th>아날로그 정보</th></tr></thead>
+          <tbody>
+            <tr><td>MWPM (경판정)</td><td>하한 기준선</td><td>아니오</td></tr>
+            <tr><td>MWPM (소프트)</td><td>개선됨</td><td>예</td></tr>
+            <tr><td>LiDMaS+</td><td>최고</td><td>예 (최적화)</td></tr>
+          </tbody>
+        </table>
+        <p>LiDMaS+는 아날로그 GKP 정보를 최적으로 가중하여 테스트된 디코더 중 가장 높은 임계값을 달성합니다. 경판정 MWPM 대비 개선은 상당하며, 소프트 정보가 하이브리드 CV-이산 아키텍처에서 핵심 자원임을 확인합니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li>성장하는 하이브리드 CV-이산 QEC 커뮤니티의 실질적 필요를 직접 다룹니다.</li>
+          <li>여러 코드 거리에 걸친 체계적 비교로 견고한 임계값 추정을 보장합니다.</li>
+          <li>아날로그 정보가 단순히 유용할 뿐 아니라 최적 임계값에 필수적임을 명확히 입증합니다.</li>
+          <li>LiDMaS+ 디코더가 잘 동기 부여되고 명확히 설명됩니다.</li>
+          <li>결과가 이전 디코더 의존성 발견과 일관되며 이를 확장합니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li>GKP 기반 CV 인코딩에 제한되며, 다른 CV 체계(고양이 코드, 이항 코드)는 테스트되지 않았습니다.</li>
+          <li>표면 코드 토폴로지만 다루며, 다른 코드 계열로의 일반화는 불명확합니다.</li>
+          <li>디코더 실행 시간 분석이 최소화되어 실질적 지연 시간이 평가되지 않았습니다.</li>
+          <li>잡음 모델이 단순화되었으며, 현실적 하드웨어 잡음(광자 손실, 유한 스퀴징)이 부분적으로만 다루어졌습니다.</li>
+        </ul>
+
+        <h2>디스커션 포인트</h2>
+        <ol>
+          <li>LiDMaS+는 소프트 CV 정보를 수용할 수 있는 신경망 기반 디코더와 비교하여 어떠한가?</li>
+          <li>LiDMaS+ 접근법을 표면 코드를 넘어선 연접 코드에 적용할 수 있는가?</li>
+          <li>아날로그 CV 정보가 의미 있는 디코딩 이점을 제공하는 최소 스퀴징 수준은 얼마인가?</li>
+          <li>하드웨어 현실적 잡음 모델(유한 에너지 GKP 상태)이 임계값 추정을 어떻게 변경할 것인가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 하이브리드 양자 오류 정정에서 디코더 선택이 결정적으로 중요하며, 아날로그 CV 정보를 활용하도록 설계된 디코더(LiDMaS+)가 상당히 더 나은 임계값을 열어준다는 메시지를 강화합니다. GKP 기반 양자 컴퓨터를 구축하는 팀에게 CV 측정 파이프라인과 함께 디코더를 공동 설계하는 것은 선택이 아닌 필수입니다 -- 경쟁력 있는 임계값에 도달하는 데 필수적입니다.</p>
+      `
+    }
+  }
 ];
