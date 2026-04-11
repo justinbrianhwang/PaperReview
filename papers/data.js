@@ -53,7 +53,7 @@ const PAPERS = [
     authors: "Zhou, X., Han, X., Yang, F., Ma, Y., Tresp, V., Knoll, A.",
     venue: "AAAI 2026",
     image: "images/opendrivevla/thumbnail.png",
-    link: "https://arxiv.org/abs/2503.14302",
+    link: "https://arxiv.org/abs/2503.23463",
     tags: ["Autonomous Driving", "VLM", "End-to-End", "LLM", "Planning"],
     en: {
       title: "OpenDriveVLA: Towards End-to-End Autonomous Driving with Large Vision Language Action Model",
