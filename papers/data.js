@@ -20,6 +20,7 @@
 //   venue: "Conference/Journal Year",
 //   image: "images/unique-slug/thumbnail.png",
 //   link: "https://arxiv.org/abs/...",
+//   domain: "autonomous-driving",  // autonomous-driving | quantum-computing | ai-security | deep-learning
 //   tags: ["tag1", "tag2"],
 //   en: {
 //     title: "Paper Title",
@@ -57,6 +58,7 @@ const PAPERS = [
     venue: "AAAI 2026",
     image: "images/opendrivevla/thumbnail.png",
     link: "https://arxiv.org/abs/2503.23463",
+    domain: "autonomous-driving",
     tags: ["Autonomous Driving", "VLM", "End-to-End", "LLM", "Planning"],
     en: {
       title: "OpenDriveVLA: Towards End-to-End Autonomous Driving with Large Vision Language Action Model",
@@ -322,6 +324,7 @@ const PAPERS = [
     venue: "NeurIPS 2017",
     image: "images/attention-is-all-you-need/thumbnail.png",
     link: "https://arxiv.org/abs/1706.03762",
+    domain: "deep-learning",
     tags: ["Transformer", "NLP", "Attention", "Deep Learning"],
     en: {
       title: "Attention Is All You Need",
@@ -622,6 +625,7 @@ const PAPERS = [
     venue: "CVPR 2025 Workshop",
     image: "images/openemma/thumbnail.png",
     link: "https://arxiv.org/abs/2412.15208",
+    domain: "autonomous-driving",
     tags: ["Autonomous Driving", "MLLM", "End-to-End", "Open-Source"],
     en: {
       title: "OpenEMMA: Open-Source Multimodal Model for End-to-End Autonomous Driving",
@@ -895,6 +899,7 @@ const PAPERS = [
     venue: "CoRL 2023",
     image: "images/interfuser/thumbnail.png",
     link: "https://arxiv.org/abs/2207.14024",
+    domain: "autonomous-driving",
     tags: ["Autonomous Driving", "Sensor Fusion", "Transformer", "Safety"],
     en: {
       title: "Safety-Enhanced Autonomous Driving Using Interpretable Sensor Fusion Transformer",
