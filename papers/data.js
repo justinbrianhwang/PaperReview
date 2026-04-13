@@ -9972,7 +9972,7 @@ const PAPERS = [
         <p>이 논문은 나침반 코드와 클리포드 변형의 조합이 잡음 적응 양자 오류 정정을 위한 풍부한 설계 공간을 만들어냄을 보여줍니다. 핵심 실용적 통찰은 최적 코드가 항상 표면 코드나 베이컨-쇼어 코드가 아니라는 것입니다 — 적절한 변형이 있는 중간 나침반 코드가 편향 잡음에서 둘 다를 능가할 수 있습니다. 특성화된 잡음 편향이 있는 하드웨어 팀에게 이 연구는 하드웨어를 변경하지 않고 결함 허용 성능을 향상시킬 수 있는 최적화된 코드 선택 메뉴를 제공합니다.</p>
       `
     }
-  },,
+  },
 // ====================================================================
   // 1. bayesian-qec-discovery
   // ====================================================================
@@ -12832,6 +12832,325 @@ const PAPERS = [
 
         <h2>최종 정리</h2>
         <p>이 논문은 하이브리드 양자 오류 정정에서 디코더 선택이 결정적으로 중요하며, 아날로그 CV 정보를 활용하도록 설계된 디코더(LiDMaS+)가 상당히 더 나은 임계값을 열어준다는 메시지를 강화합니다. GKP 기반 양자 컴퓨터를 구축하는 팀에게 CV 측정 파이프라인과 함께 디코더를 공동 설계하는 것은 선택이 아닌 필수입니다 -- 경쟁력 있는 임계값에 도달하는 데 필수적입니다.</p>
+      `
+    }
+  },
+  // ====================================================================
+  // FedDAP
+  // ====================================================================
+  {
+    id: "feddap",
+    date: "2026-04-08",
+    authors: "Le, H. Q., Nguyen, L. X., Qiao, Y., Kim, S. T., Huh, E.-N., Hong, C. S.",
+    venue: "arXiv 2026",
+    image: "images/feddap/thumbnail.png",
+    link: "https://arxiv.org/abs/2604.06795",
+    domain: "deep-learning",
+    tags: ["Federated Learning", "Prototype Learning", "Domain Shift", "Contrastive Learning", "Non-IID"],
+    en: {
+      title: "FedDAP: Domain-Aware Prototype Learning for Federated Learning under Domain Shift",
+      summary: "Replaces a single class-wise global prototype with per-(class, domain) prototypes and a dual alignment loss, turning federated prototype learning into a domain-aware framework robust to feature-distribution skew.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>The novelty is not "using prototypes in federated learning" — it is recognizing that a single global prototype per class is <strong>semantically diluted</strong> under domain shift, and fixing this with <strong>per-(class, domain) prototypes</strong> plus a <strong>dual alignment loss</strong> that separates intra-domain consistency from cross-domain contrastive regularization.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>When federated clients hold data from heterogeneous domains, how can prototype-based supervision preserve domain-specific semantics at the server side and avoid forcing every client to align with a domain-agnostic average?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Federated Learning (FL) aims to train a shared model across decentralized clients without exposing raw data. The dominant obstacle in real-world FL is <strong>non-IID data</strong>. Most prior work tackles <em>label skew</em> (different class distributions across clients) while implicitly assuming a shared data domain. In practice, clients collect images under different styles, sensors, or environments — a "dog" photo, a cartoon dog, and a sketched dog all belong to the same class but have very different feature distributions. This is <strong>feature skew / domain shift</strong>, and it breaks the assumption behind class-averaging.</p>
+
+        <p>Prototype-based FL (FedProto, FPL, FedPLVM, FedTGP, FedSA…) has emerged as a lightweight alternative to communicating full model weights: each client uploads class-wise feature centroids, the server averages them, and clients pull their local features toward those centroids. FedDAP argues this line of work suffers from two coupled weaknesses under domain shift:</p>
+        <ol>
+          <li><strong>Semantic dilution at aggregation.</strong> Averaging prototypes from photo / cartoon / sketch domains for the "dog" class produces a centroid that represents no specific domain. It becomes a compromise vector with weak discriminative power.</li>
+          <li><strong>Domain-agnostic alignment at the client.</strong> Every client is forced to align with the same diluted prototype regardless of what domain it lives in — a photo client is pulled toward a cartoon-contaminated target. This is the exact opposite of what a client should do.</li>
+        </ol>
+
+        <p>FedDAP's claim is that these two problems are not fixable by better averaging alone — you need to <em>preserve</em> the domain axis in the prototype representation itself, and to <em>condition</em> the alignment loss on which domain a client belongs to.</p>
+
+        <figure>
+          <img src="images/feddap/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: Conceptual contrast. (a) A single label-specific prototype averages domains together — the "General Prototype" for dog sits between photo and cartoon features, causing <em>semantic conflict</em> when a photo client or cartoon client tries to align with it. (b) FedDAP's domain-specific prototypes disentangle the feature space along two axes: label semantics (vertical) and domain characteristics (horizontal). Each (class, domain) pair gets its own prototype, so a photo-of-dog client aligns with the photo-of-dog prototype, not with a cartoon-contaminated compromise.</figcaption>
+        </figure>
+
+        <h2>Architecture / Methodology</h2>
+        <p>FedDAP keeps the familiar FedAvg communication scaffold but changes <strong>what is aggregated</strong> and <strong>how clients train locally</strong>. The design has three movable parts: local prototype computation, server-side similarity-weighted fusion, and a dual alignment loss.</p>
+
+        <figure>
+          <img src="images/feddap/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: End-to-end FedDAP flow. (1) Each client m computes local prototypes p<sub>m</sub><sup>(c,d)</sup> — one vector per (class, domain) pair — by averaging feature embeddings from its local data. Only features from the client's own domain d show up here. (2) The central server groups all uploaded prototypes by (class, domain), computes pairwise cosine similarity scores inside each group, and fuses them with a softmax-attention-weighted sum (not a uniform average). The result is a tensor P ∈ ℝ<sup>D×C×I</sup>: one prototype per (class, domain) pair. (3) Clients download the full tensor and train locally with two complementary losses — L<sub>DPA</sub> aligning local features to their intra-domain prototype, and L<sub>CPCL</sub> contrasting against cross-domain prototypes.</figcaption>
+        </figure>
+
+        <p><strong>Local prototype computation.</strong> For client m with domain label d, class c's local prototype is a simple feature average:</p>
+        <p style="text-align:center"><em>p<sub>m</sub><sup>(c,d)</sup> = (1/|D<sub>m</sub>(c)|) Σ f<sub>θ</sub>(x<sub>i</sub><sup>m</sup>)</em></p>
+        <p>The client stacks these into a C×I matrix and uploads it together with its domain identifier.</p>
+
+        <p><strong>Similarity-weighted fusion at the server.</strong> For each (class c, domain d) pair, the server collects all prototypes contributed by clients in domain d and computes an attention score:</p>
+        <p style="text-align:center"><em>S<sub>j</sub> = Σ<sub>k≠j</sub> cos(p<sub>j</sub><sup>(c,d)</sup>, p<sub>k</sub><sup>(c,d)</sup>), &nbsp; α<sub>j</sub> = softmax(S<sub>j</sub>/τ<sub>agg</sub>)</em></p>
+        <p>Prototypes that are more consistent with peers in the same (class, domain) group get higher weight; outliers are damped. The final global prototype P<sup>(c,d)</sup> is Σ<sub>j</sub> α<sub>j</sub> · p<sub>j</sub><sup>(c,d)</sup>. This is the mechanism that turns "domain-specific averaging" into "domain-specific <em>robust</em> averaging."</p>
+
+        <p><strong>Dual Prototype Alignment strategy.</strong> The client-side loss has two heads:</p>
+        <ul>
+          <li><strong>Domain-Consistent Prototype Alignment (L<sub>DPA</sub>).</strong> For a local feature z<sub>i</sub> of class c in domain d<sub>m</sub>, pull it toward P<sup>(c,d<sub>m</sub>)</sup> (its own-domain prototype) via cosine similarity. This enforces intra-domain stability without cross-domain noise.</li>
+          <li><strong>Cross-Domain Prototype Contrastive Learning (L<sub>CPCL</sub>).</strong> Build a positive set P<sub>i</sub><sup>+</sup> = {P<sup>(y<sub>i</sub>,d′)</sup> | d′ ≠ d<sub>m</sub>} (same class, other domains) and a negative set P<sub>i</sub><sup>−</sup> = {P<sup>(c′,d′)</sup> | c′ ≠ y<sub>i</sub>, d′ ≠ d<sub>m</sub>}. An InfoNCE-style loss pulls z<sub>i</sub> toward positives and pushes away from negatives. This is what injects <em>domain-invariant</em> semantics on top of <em>domain-consistent</em> anchoring.</li>
+        </ul>
+
+        <p>The total loss is <em>L = L<sub>CE</sub> + λ<sub>1</sub> L<sub>DPA</sub> + λ<sub>2</sub> L<sub>CPCL</sub></em>. The two hyperparameters are the knob that trades off intra-domain stability against cross-domain generalization.</p>
+
+        <table>
+          <thead><tr><th>Component</th><th>What It Fixes</th><th>Why It Matters</th></tr></thead>
+          <tbody>
+            <tr><td>Per-(class, domain) prototypes</td><td>Semantic dilution at server</td><td>Preserves the domain axis instead of averaging it away.</td></tr>
+            <tr><td>Cosine-similarity-weighted fusion</td><td>Outlier / noisy client contamination</td><td>Weights client contributions by in-group consistency, not uniformly.</td></tr>
+            <tr><td>L<sub>DPA</sub> (intra-domain)</td><td>Domain-agnostic alignment at client</td><td>A photo client is pulled toward its own photo prototype, not a cross-domain compromise.</td></tr>
+            <tr><td>L<sub>CPCL</sub> (cross-domain)</td><td>Narrow intra-domain bias</td><td>Cross-domain positives/negatives enforce semantic consistency across domain boundaries.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Domain-specific global prototypes.</strong> First work to keep one prototype per (class, domain) pair in federated prototype learning — the representation itself is aware of the domain structure.</li>
+          <li><strong>Similarity-weighted fusion mechanism.</strong> Replaces uniform averaging at aggregation with an attention-weighted scheme that up-weights clients whose prototypes agree with peers in the same (class, domain) group.</li>
+          <li><strong>Dual alignment strategy.</strong> Cleanly separates intra-domain anchoring (L<sub>DPA</sub>) from cross-domain regularization (L<sub>CPCL</sub>); prior work mixed the two into a single global prototype loss.</li>
+          <li><strong>Consistent SOTA across three benchmarks.</strong> +5.61% / +15.06% / +6.86% over FedAvg on DomainNet / Office-10 / PACS, beating recent prototype-based (FedPLVM, FPL, FedProto) and domain-generalization (FedRDN, FedGA) baselines.</li>
+          <li><strong>Robust on leave-one-domain-out generalization.</strong> Gains persist when the test domain is unseen during training, indicating the approach is not just overfitting to seen domains.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>Datasets:</strong> DomainNet (6 domains, 10 classes subsampled from 345), Office-10 (4 domains: Caltech, Amazon, Webcam, DSLR), PACS (4 styles: Photo, Art, Cartoon, Sketch).</li>
+          <li><strong>Backbones:</strong> ResNet-10 for DomainNet / Office-10, ResNet-18 for PACS.</li>
+          <li><strong>FL setup:</strong> 20 clients for DomainNet, 10 clients for Office-10 and PACS; clients are allocated across domains with varying counts (e.g., PACS: Photo ×3, Art ×2, Cartoon ×1, Sketch ×4).</li>
+          <li><strong>Training:</strong> 100 communication rounds, 10 local epochs per round; batch size 32 (DomainNet, Office-10) or 16 (PACS); Top-1 accuracy averaged over last 5 rounds across 3 seeds.</li>
+          <li><strong>Hyperparameters:</strong> τ<sub>agg</sub> ∈ {0.001, 0.01, 0.1, 1}, τ<sub>cross</sub> ∈ {0.02, 0.04, 0.08, 0.1, 0.2}, λ<sub>1</sub> ∈ {1, 2, 5, 10} (best ≈10), λ<sub>2</sub> ∈ {1, 2, 5, 10} (best ≈1).</li>
+          <li><strong>Communication cost:</strong> Upload traffic unchanged (clients send only their own domain's prototypes). Download traffic grows by a factor of D (number of domains) since server broadcasts the full per-domain tensor — still negligible compared to weight synchronization.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Method</th><th>DomainNet Avg</th><th>Office-10 Avg</th><th>PACS Avg</th></tr></thead>
+          <tbody>
+            <tr><td>FedAvg</td><td>59.59</td><td>57.47</td><td>77.07</td></tr>
+            <tr><td>FedProto (AAAI'22)</td><td>60.51</td><td>64.69</td><td>80.95</td></tr>
+            <tr><td>FPL (CVPR'23)</td><td>62.17</td><td>67.52</td><td>81.11</td></tr>
+            <tr><td>FedPLVM (NeurIPS'24)</td><td>62.22</td><td>68.77</td><td>82.06</td></tr>
+            <tr><td>FedRDN (CVPR'25)</td><td>61.01</td><td>65.54</td><td>83.17</td></tr>
+            <tr><td><strong>FedDAP</strong></td><td><strong>65.20 (+5.61)</strong></td><td><strong>72.53 (+15.06)</strong></td><td><strong>84.63 (+7.56)</strong></td></tr>
+          </tbody>
+        </table>
+
+        <figure>
+          <img src="images/feddap/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: Test-accuracy curves over 100 communication rounds on Office-10, DomainNet, and PACS. FedDAP (blue) not only reaches the highest final accuracy but also climbs faster in the early phase — by round 20 it is already above most baselines' final values. This matters for real FL deployments where communication rounds are the bottleneck.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/feddap/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: t-SNE visualizations of learned features on DomainNet (top) and PACS (bottom). Left panels are FedProto, right panels are FedDAP. FedProto produces diffuse, overlapping clusters — evidence of semantic dilution. FedDAP produces tight, radially separated "spokes," each corresponding to a (class, domain) prototype. Notably, same-class points from different domains are still pulled together via L<sub>CPCL</sub>, while different-class points are pushed apart — giving both domain-aware structure and class-level discrimination.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/feddap/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5: Sensitivity of FedDAP to its four hyperparameters across all three datasets. (a) τ<sub>agg</sub> (aggregation temperature): Office-10 prefers larger values (~0.01), DomainNet and PACS prefer smaller (~0.001). (b) τ<sub>cross</sub> (contrastive temperature): DomainNet and PACS benefit from larger values, Office-10 peaks around 0.04. (c) λ<sub>1</sub> (intra-domain weight): monotonically improves performance up to 10 — stronger intra-domain anchoring is always helpful. (d) λ<sub>2</sub> (cross-domain weight): peaks at 1 and degrades past 5 — too much cross-domain contrast over-regularizes the domain-specific structure and destroys what L<sub>DPA</sub> just built.</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>Ablation</th><th>DomainNet</th><th>Office-10</th><th>PACS</th></tr></thead>
+          <tbody>
+            <tr><td>FedAvg baseline (no L<sub>DPA</sub>, no L<sub>CPCL</sub>)</td><td>59.59</td><td>57.47</td><td>77.07</td></tr>
+            <tr><td>+ L<sub>CPCL</sub> only</td><td>62.86</td><td>62.18</td><td>81.87</td></tr>
+            <tr><td>+ L<sub>DPA</sub> only</td><td>62.61</td><td>68.53</td><td>78.74</td></tr>
+            <tr><td>+ Both (full FedDAP)</td><td>65.20</td><td>72.53</td><td>84.63</td></tr>
+            <tr><td>Uniform averaging vs. similarity-weighted fusion</td><td>64.15 → 65.20</td><td>71.49 → 72.53</td><td>83.22 → 84.63</td></tr>
+          </tbody>
+        </table>
+
+        <p>Two signals stand out. First, L<sub>DPA</sub> alone gives disproportionate gains on Office-10 (+11.06) — that dataset has stronger domain separation (Caltech vs. Webcam vs. DSLR), so intra-domain anchoring is the dominant bottleneck. Second, the similarity-weighted fusion consistently adds ~1% on top of uniform averaging — not enormous, but free of extra communication cost, so essentially a design freebie.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li><strong>The diagnosis precedes the fix.</strong> The paper identifies two specific failure modes (semantic dilution, domain-agnostic alignment) before proposing the method — the proposal reads as a targeted response, not a generic trick.</li>
+          <li><strong>Clean separation of concerns.</strong> Intra-domain consistency (L<sub>DPA</sub>) and cross-domain generalization (L<sub>CPCL</sub>) are decoupled into two losses with independent hyperparameters, making the ablation tell a clear story.</li>
+          <li><strong>Communication cost barely changes.</strong> Only the download direction grows by a factor of D, which is negligible compared to FedAvg's weight-sync traffic.</li>
+          <li><strong>Holds up under leave-one-domain-out.</strong> Table 5 shows gains persist on unseen target domains, suggesting the domain-specific prototypes do not merely memorize seen domains.</li>
+          <li><strong>Training curves converge faster.</strong> Not just a final-accuracy win — FedDAP reaches baseline final accuracy in ~20 rounds, halving communication.</li>
+          <li><strong>Robust to hyperparameter choice.</strong> λ<sub>1</sub>=10 and λ<sub>2</sub>=1 work across all three datasets, and the sensitivity plots (Fig. 5) stay within a few points of the best — practitioners don't need dataset-specific tuning.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>Domain labels are assumed known.</strong> Every client must declare its domain identifier to the server. In real FL this is often unavailable or privacy-sensitive — a photo-vs-sketch label is trivial, but medical-imaging domain labels can leak site identity.</li>
+          <li><strong>Scaling with D.</strong> The per-domain prototype tensor grows linearly with the number of domains. For hundreds of domains (cross-silo medical, large IoT fleets) the download payload and the cross-domain contrastive combinatorics become awkward.</li>
+          <li><strong>No closed-loop / online validation.</strong> Experiments are standard image-classification benchmarks. Streaming / online / drift-during-deployment scenarios are not addressed.</li>
+          <li><strong>Class set is assumed shared across domains.</strong> The formulation assumes every (class, domain) pair has at least one client providing the prototype. Partial coverage (some classes missing in some domains) is not discussed.</li>
+          <li><strong>Privacy analysis is cursory.</strong> The DP appendix adds Gaussian noise and reports a small drop, but there is no formal (ε, δ) statement or comparison under equivalent privacy budget.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>What happens if the domain labels are noisy or mis-clustered — does FedDAP degrade gracefully, or does the per-(class, domain) grid collapse?</li>
+          <li>The cross-domain contrastive loss L<sub>CPCL</sub> over-regularizes at λ<sub>2</sub>≥5. Is there a principled way to bound λ<sub>2</sub> relative to domain diversity rather than grid-searching?</li>
+          <li>Could domain identifiers themselves be <em>learned</em> (clustering in prototype space) instead of provided, making FedDAP applicable where domain is latent?</li>
+          <li>How does FedDAP compose with orthogonal FL advances — communication compression, secure aggregation, personalized heads? Does the per-(class, domain) tensor play well with secure aggregation primitives?</li>
+          <li>For tasks where the "domain" is a continuous attribute (lighting, age, acquisition protocol), does the discrete (class, domain) grid still make sense, or does it need a continuous generalization?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>FedDAP is the kind of paper that looks obvious in retrospect: keep the domain axis in your prototype representation, and condition alignment on which domain the client belongs to. The contribution is in articulating <em>why</em> prior prototype-based FL methods under-performed under domain shift (semantic dilution + domain-agnostic alignment) and providing a minimal-surgery fix that drops into the FedAvg scaffold.</p>
+        <p>Read the paper with two questions in mind: (1) <em>What is being averaged, and does that average carry meaningful semantics?</em> — Fig. 1 is the whole motivation. (2) <em>What is the client supposed to pull toward, given its own domain?</em> — L<sub>DPA</sub> + L<sub>CPCL</sub> is the whole method. Everything else (the attention weighting, the temperature hyperparameters, the ablations) is engineering polish on top of those two insights.</p>
+      `
+    },
+    ko: {
+      title: "FedDAP: 도메인 시프트 상황의 연합학습을 위한 도메인 인지 프로토타입 학습",
+      summary: "기존 연합 프로토타입 학습의 \"클래스당 글로벌 프로토타입 하나\" 구조를 (클래스, 도메인) 쌍당 프로토타입으로 교체하고, intra-domain 정합과 cross-domain contrastive 손실을 분리한 이중 정합 전략을 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문의 핵심은 "연합학습에 프로토타입을 쓴다"가 아니라, 도메인 시프트 상황에서 <strong>클래스당 글로벌 프로토타입 하나</strong>가 이미 <strong>의미적으로 희석(semantic dilution)</strong>된 벡터라는 진단입니다. 이를 <strong>(클래스, 도메인) 쌍당 프로토타입</strong>과 <strong>intra-domain 정합 + cross-domain contrastive</strong>를 분리한 이중 손실로 해결합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>연합학습 클라이언트들이 서로 다른 도메인에 속해 있을 때, 프로토타입 기반 지도(supervision)는 서버 쪽에서 어떻게 도메인 고유의 의미를 보존할 수 있으며, 클라이언트가 "도메인에 무관한 평균"에 억지로 맞춰지는 현상을 어떻게 피할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>연합학습(FL)은 원시 데이터를 공유하지 않고 여러 클라이언트에서 모델을 학습하는 프레임워크입니다. 실제 환경에서 가장 큰 걸림돌은 <strong>non-IID 데이터</strong>입니다. 기존 연구 대부분은 <em>label skew</em>(클라이언트마다 클래스 분포가 다름)에 집중하고, 데이터 도메인은 동일하다고 암묵적으로 가정합니다. 하지만 현실에서는 서로 다른 스타일, 센서, 환경에서 이미지가 수집됩니다 — "dog" 클래스의 사진, 만화, 스케치는 같은 라벨이지만 feature 분포가 크게 다릅니다. 이것이 <strong>feature skew / 도메인 시프트</strong>이며, 이 상황에서는 "클래스 평균"이라는 기존 전제가 무너집니다.</p>
+
+        <p>프로토타입 기반 FL(FedProto, FPL, FedPLVM, FedTGP, FedSA 등)은 전체 모델 파라미터를 주고받는 대신 클래스별 feature centroid만 전송하는 경량 프레임워크로 주목받아 왔습니다. FedDAP는 이 계열이 도메인 시프트 하에서 서로 얽힌 두 가지 약점을 지닌다고 지적합니다:</p>
+        <ol>
+          <li><strong>집계 단계의 의미 희석.</strong> photo / cartoon / sketch 도메인의 "dog" 프로토타입을 평균하면 어느 도메인도 대표하지 못하는 타협 벡터가 됩니다. 식별력이 약한 centroid가 됩니다.</li>
+          <li><strong>클라이언트의 도메인 무관 정합.</strong> 모든 클라이언트가 자신이 속한 도메인과 무관하게 동일한 희석된 프로토타입에 맞춰야 합니다 — photo 클라이언트가 cartoon에 오염된 타깃으로 끌려갑니다. 클라이언트가 해야 할 일과 정반대입니다.</li>
+        </ol>
+
+        <p>저자들은 이 두 문제가 "더 나은 평균 방법"으로는 풀리지 않고, 프로토타입 <em>표현 자체에서 도메인 축을 보존</em>하고 정합 손실을 <em>클라이언트 도메인에 조건부</em>로 설계해야 한다고 주장합니다.</p>
+
+        <figure>
+          <img src="images/feddap/fig1.png" alt="Figure 1">
+          <figcaption>그림 1: 개념 비교. (a) 라벨별 단일 프로토타입은 여러 도메인을 평균해 버리므로, "General Prototype"이 photo feature와 cartoon feature 사이에 위치합니다 — photo 클라이언트와 cartoon 클라이언트 모두 이 희석된 타깃에 맞춰야 하므로 <em>semantic conflict</em>가 발생합니다. (b) FedDAP의 도메인 고유 프로토타입은 feature 공간을 라벨 의미축(세로)과 도메인 특성축(가로)으로 분리합니다. (클래스, 도메인) 쌍마다 별도의 프로토타입을 두므로, photo-of-dog 클라이언트는 photo-of-dog 프로토타입에 정합되며 cartoon에 오염된 타협치를 피합니다.</figcaption>
+        </figure>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>FedDAP는 FedAvg의 통신 구조는 그대로 두고, <strong>무엇을 집계할지</strong>와 <strong>클라이언트가 로컬에서 어떻게 학습할지</strong>를 바꿉니다. 세 가지 구성요소가 있습니다: 로컬 프로토타입 계산, 서버 측 유사도 가중 융합, 이중 정합 손실.</p>
+
+        <figure>
+          <img src="images/feddap/fig2.png" alt="Figure 2">
+          <figcaption>그림 2: FedDAP의 end-to-end 흐름. (1) 각 클라이언트 m은 자신의 로컬 데이터로부터 (클래스, 도메인) 쌍마다 로컬 프로토타입 p<sub>m</sub><sup>(c,d)</sup>를 계산합니다 — 자기 도메인 d의 feature만 여기에 사용됩니다. (2) 중앙 서버는 업로드된 프로토타입을 (class, domain)별로 묶고, 각 그룹 내 코사인 유사도를 계산해 softmax-attention 가중합(단순 평균이 아님)으로 융합합니다. 결과는 텐서 P ∈ ℝ<sup>D×C×I</sup> — (클래스, 도메인) 쌍마다 프로토타입 하나. (3) 클라이언트는 전체 텐서를 다운로드해 두 손실로 로컬 학습을 수행합니다 — L<sub>DPA</sub>는 자기 도메인 프로토타입으로 정합, L<sub>CPCL</sub>는 다른 도메인 프로토타입과 contrastive.</figcaption>
+        </figure>
+
+        <p><strong>로컬 프로토타입 계산.</strong> 도메인 d에 속한 클라이언트 m의 클래스 c 프로토타입은 feature 평균입니다:</p>
+        <p style="text-align:center"><em>p<sub>m</sub><sup>(c,d)</sup> = (1/|D<sub>m</sub>(c)|) Σ f<sub>θ</sub>(x<sub>i</sub><sup>m</sup>)</em></p>
+        <p>클라이언트는 이를 C×I 행렬로 쌓아 도메인 ID와 함께 업로드합니다.</p>
+
+        <p><strong>서버에서의 유사도 가중 융합.</strong> 각 (class c, domain d) 쌍에 대해, 서버는 도메인 d 클라이언트들의 프로토타입을 모아 attention score를 계산합니다:</p>
+        <p style="text-align:center"><em>S<sub>j</sub> = Σ<sub>k≠j</sub> cos(p<sub>j</sub><sup>(c,d)</sup>, p<sub>k</sub><sup>(c,d)</sup>), &nbsp; α<sub>j</sub> = softmax(S<sub>j</sub>/τ<sub>agg</sub>)</em></p>
+        <p>같은 (class, domain) 그룹 안에서 다른 프로토타입들과 일관된 벡터는 가중치가 커지고, outlier는 감쇠됩니다. 최종 글로벌 프로토타입은 P<sup>(c,d)</sup> = Σ<sub>j</sub> α<sub>j</sub> · p<sub>j</sub><sup>(c,d)</sup>. 이 메커니즘이 "도메인 특화 평균"을 "도메인 특화 <em>강건한</em> 평균"으로 바꿉니다.</p>
+
+        <p><strong>Dual Prototype Alignment 전략.</strong> 클라이언트 손실은 두 갈래로 구성됩니다:</p>
+        <ul>
+          <li><strong>Domain-Consistent Prototype Alignment (L<sub>DPA</sub>).</strong> 도메인 d<sub>m</sub>의 클래스 c 로컬 feature z<sub>i</sub>를 P<sup>(c,d<sub>m</sub>)</sup> (자기 도메인 프로토타입)으로 코사인 유사도로 끌어당깁니다. 크로스 도메인 잡음 없이 intra-domain 안정성을 강제합니다.</li>
+          <li><strong>Cross-Domain Prototype Contrastive Learning (L<sub>CPCL</sub>).</strong> 양성 집합 P<sub>i</sub><sup>+</sup> = {P<sup>(y<sub>i</sub>,d′)</sup> | d′ ≠ d<sub>m</sub>} (같은 클래스, 다른 도메인)과 음성 집합 P<sub>i</sub><sup>−</sup> = {P<sup>(c′,d′)</sup> | c′ ≠ y<sub>i</sub>, d′ ≠ d<sub>m</sub>}을 구성해 InfoNCE 스타일 손실로 양성에 가까이, 음성에서 멀리 끌어냅니다. 도메인-일관 고정 위에 <em>도메인 불변</em> 의미를 얹는 역할입니다.</li>
+        </ul>
+
+        <p>전체 손실은 <em>L = L<sub>CE</sub> + λ<sub>1</sub> L<sub>DPA</sub> + λ<sub>2</sub> L<sub>CPCL</sub></em>. 두 하이퍼파라미터가 intra-domain 안정성과 cross-domain 일반화 간의 trade-off를 조절합니다.</p>
+
+        <table>
+          <thead><tr><th>구성요소</th><th>무엇을 고치는가</th><th>왜 중요한가</th></tr></thead>
+          <tbody>
+            <tr><td>(class, domain) 쌍당 프로토타입</td><td>서버의 의미 희석</td><td>도메인 축을 평균해 버리지 않고 보존합니다.</td></tr>
+            <tr><td>코사인 유사도 가중 융합</td><td>outlier/잡음 클라이언트 오염</td><td>그룹 내 일관성에 따라 기여도를 차등화합니다.</td></tr>
+            <tr><td>L<sub>DPA</sub> (intra-domain)</td><td>클라이언트의 도메인 무관 정합</td><td>photo 클라이언트가 자기 도메인 프로토타입에 정합되도록 합니다.</td></tr>
+            <tr><td>L<sub>CPCL</sub> (cross-domain)</td><td>intra-domain만 보는 편향</td><td>도메인 경계를 넘는 의미 일관성을 강제합니다.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>도메인 고유 글로벌 프로토타입.</strong> 연합 프로토타입 학습에서 (class, domain) 쌍당 프로토타입을 유지하는 최초의 설계 — 표현 자체가 도메인 구조를 인지합니다.</li>
+          <li><strong>유사도 가중 융합 메커니즘.</strong> 집계 단계의 균등 평균을 attention 가중합으로 교체해, 그룹 내 일관된 클라이언트에 더 큰 가중을 부여합니다.</li>
+          <li><strong>이중 정합 전략.</strong> intra-domain 앵커(L<sub>DPA</sub>)와 cross-domain 정규화(L<sub>CPCL</sub>)를 깔끔히 분리했습니다. 기존 연구는 둘을 하나의 글로벌 프로토타입 손실로 섞어 놓았습니다.</li>
+          <li><strong>세 벤치마크에서 일관된 SOTA.</strong> DomainNet / Office-10 / PACS에서 FedAvg 대비 +5.61% / +15.06% / +6.86%, 최신 prototype 계열(FedPLVM, FPL, FedProto)과 도메인 일반화 계열(FedRDN, FedGA) 모두 상회.</li>
+          <li><strong>leave-one-domain-out에서도 유지.</strong> 학습 중 본 적 없는 타깃 도메인에서도 성능 이득이 유지돼, 본 도메인에 overfitting되지 않음을 보여줍니다.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>데이터셋:</strong> DomainNet(6 도메인, 원본 345개 중 10개 클래스 샘플), Office-10(4 도메인: Caltech, Amazon, Webcam, DSLR), PACS(4 스타일: Photo, Art, Cartoon, Sketch).</li>
+          <li><strong>백본:</strong> DomainNet / Office-10은 ResNet-10, PACS는 ResNet-18.</li>
+          <li><strong>FL 설정:</strong> DomainNet은 20 클라이언트, Office-10 / PACS는 10 클라이언트. 도메인별 할당 수가 다름 (예: PACS Photo ×3, Art ×2, Cartoon ×1, Sketch ×4).</li>
+          <li><strong>학습:</strong> 100 통신 라운드, 라운드당 로컬 10 epoch; 배치 크기 32(DomainNet, Office-10) 또는 16(PACS); 3 seed 평균의 마지막 5 라운드 Top-1 정확도.</li>
+          <li><strong>하이퍼파라미터:</strong> τ<sub>agg</sub> ∈ {0.001, 0.01, 0.1, 1}, τ<sub>cross</sub> ∈ {0.02, 0.04, 0.08, 0.1, 0.2}, λ<sub>1</sub> ∈ {1, 2, 5, 10} (최적 ≈10), λ<sub>2</sub> ∈ {1, 2, 5, 10} (최적 ≈1).</li>
+          <li><strong>통신 비용:</strong> 업로드 트래픽은 그대로(클라이언트는 자기 도메인 프로토타입만 전송). 다운로드 트래픽은 도메인 수 D 배가 되지만, FedAvg의 모델 파라미터 동기화에 비하면 무시할 수 있는 크기.</li>
+        </ul>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>방법</th><th>DomainNet Avg</th><th>Office-10 Avg</th><th>PACS Avg</th></tr></thead>
+          <tbody>
+            <tr><td>FedAvg</td><td>59.59</td><td>57.47</td><td>77.07</td></tr>
+            <tr><td>FedProto (AAAI'22)</td><td>60.51</td><td>64.69</td><td>80.95</td></tr>
+            <tr><td>FPL (CVPR'23)</td><td>62.17</td><td>67.52</td><td>81.11</td></tr>
+            <tr><td>FedPLVM (NeurIPS'24)</td><td>62.22</td><td>68.77</td><td>82.06</td></tr>
+            <tr><td>FedRDN (CVPR'25)</td><td>61.01</td><td>65.54</td><td>83.17</td></tr>
+            <tr><td><strong>FedDAP</strong></td><td><strong>65.20 (+5.61)</strong></td><td><strong>72.53 (+15.06)</strong></td><td><strong>84.63 (+7.56)</strong></td></tr>
+          </tbody>
+        </table>
+
+        <figure>
+          <img src="images/feddap/fig3.png" alt="Figure 3">
+          <figcaption>그림 3: Office-10, DomainNet, PACS에서의 100 라운드 테스트 정확도 곡선. FedDAP(파랑)는 최종 정확도가 가장 높을 뿐 아니라 초반 상승도 빠릅니다 — 20 라운드 즈음에 이미 대부분 기법의 최종 정확도를 넘어섭니다. 실제 FL 배포에서 통신 라운드가 병목임을 고려하면 중요한 특성입니다.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/feddap/fig4.png" alt="Figure 4">
+          <figcaption>그림 4: DomainNet(위)과 PACS(아래)에서 학습된 feature의 t-SNE 시각화. 왼쪽 패널은 FedProto, 오른쪽 패널은 FedDAP. FedProto는 겹치고 흩어진 클러스터를 만듭니다 — semantic dilution의 증거입니다. FedDAP는 (class, domain) 프로토타입 각각에 대응하는 방사형 "spoke"를 만듭니다. 주목할 점은 서로 다른 도메인의 같은 클래스 점들이 L<sub>CPCL</sub>로 여전히 묶여 있고, 서로 다른 클래스 점들은 밀려나 있다는 점입니다 — 도메인 인지 구조와 클래스 수준 판별을 동시에 얻습니다.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/feddap/fig5.png" alt="Figure 5">
+          <figcaption>그림 5: FedDAP의 네 하이퍼파라미터 민감도. (a) τ<sub>agg</sub> (집계 온도): Office-10은 큰 값(~0.01), DomainNet과 PACS는 작은 값(~0.001)을 선호. (b) τ<sub>cross</sub> (contrastive 온도): DomainNet과 PACS는 큰 값이 유리, Office-10은 0.04 부근에서 정점. (c) λ<sub>1</sub> (intra-domain 가중): 10까지 단조 증가 — intra-domain 앵커는 강할수록 좋습니다. (d) λ<sub>2</sub> (cross-domain 가중): 1에서 정점, 5 이상에서 저하 — cross-domain contrastive가 지나치면 L<sub>DPA</sub>가 만든 도메인 고유 구조를 오히려 흐트러뜨립니다.</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>Ablation</th><th>DomainNet</th><th>Office-10</th><th>PACS</th></tr></thead>
+          <tbody>
+            <tr><td>FedAvg 베이스라인 (둘 다 없음)</td><td>59.59</td><td>57.47</td><td>77.07</td></tr>
+            <tr><td>+ L<sub>CPCL</sub>만</td><td>62.86</td><td>62.18</td><td>81.87</td></tr>
+            <tr><td>+ L<sub>DPA</sub>만</td><td>62.61</td><td>68.53</td><td>78.74</td></tr>
+            <tr><td>+ 둘 다 (전체 FedDAP)</td><td>65.20</td><td>72.53</td><td>84.63</td></tr>
+            <tr><td>균등 평균 vs. 유사도 가중 융합</td><td>64.15 → 65.20</td><td>71.49 → 72.53</td><td>83.22 → 84.63</td></tr>
+          </tbody>
+        </table>
+
+        <p>두 가지 신호가 눈에 띕니다. 첫째, L<sub>DPA</sub>만으로도 Office-10에서 +11.06으로 큰 이득을 주는데 — Office-10은 도메인 간 분리(Caltech vs. Webcam vs. DSLR)가 뚜렷해 intra-domain 앵커가 주 병목이기 때문입니다. 둘째, 유사도 가중 융합은 균등 평균 대비 일관되게 ~1% 향상시킵니다 — 절대값은 작지만 추가 통신 비용이 없으므로 사실상 설계상의 공짜입니다.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li><strong>진단이 해법보다 먼저입니다.</strong> 두 실패 모드(semantic dilution, 도메인 무관 정합)를 먼저 진단하고 그에 맞춰 방법을 제안 — 방법이 일반적인 트릭이 아니라 표적형 대응으로 읽힙니다.</li>
+          <li><strong>관심사 분리.</strong> intra-domain 일관성(L<sub>DPA</sub>)과 cross-domain 일반화(L<sub>CPCL</sub>)가 독립 하이퍼파라미터를 가진 두 손실로 분리돼 있어, ablation이 명쾌한 이야기를 만듭니다.</li>
+          <li><strong>통신 비용 거의 불변.</strong> 다운로드 트래픽이 D 배가 되지만 FedAvg의 모델 동기화에 비해 무시 가능합니다.</li>
+          <li><strong>leave-one-domain-out에서도 유지.</strong> 본 적 없는 타깃 도메인에서도 성능이 유지되어 도메인 고유 프로토타입이 단순히 본 도메인을 암기하지 않음을 시사.</li>
+          <li><strong>수렴이 빠름.</strong> 최종 정확도만 이긴 게 아니라 베이스라인 최종치를 ~20 라운드에 도달해 통신을 절반으로 줄입니다.</li>
+          <li><strong>하이퍼파라미터에 강건.</strong> λ<sub>1</sub>=10, λ<sub>2</sub>=1이 세 데이터셋에서 공통으로 잘 작동하며, 민감도 곡선(그림 5)도 최적값에서 몇 점 이내 — 데이터셋별 튜닝 부담이 낮습니다.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li><strong>도메인 라벨이 알려져 있다고 가정.</strong> 모든 클라이언트가 서버에 자기 도메인 ID를 알려야 합니다. 실제 FL에서는 이 정보가 없거나 프라이버시 민감할 수 있습니다 — photo/sketch는 쉬워도, 의료 영상 도메인 라벨은 병원 식별을 흘릴 수 있습니다.</li>
+          <li><strong>도메인 수 D에 따른 확장성.</strong> 도메인별 프로토타입 텐서가 D에 선형으로 커집니다. 수백 개 도메인(cross-silo 의료, 대규모 IoT)이면 다운로드 페이로드와 cross-domain contrastive 조합이 부담이 됩니다.</li>
+          <li><strong>closed-loop / 온라인 검증이 없음.</strong> 실험은 표준 이미지 분류 벤치마크로 한정. 스트리밍 / 배포 중 드리프트 시나리오는 다루지 않음.</li>
+          <li><strong>클래스 집합이 도메인 간 공유된다고 가정.</strong> 모든 (class, domain) 쌍에 최소 한 클라이언트가 프로토타입을 공급해야 합니다. 일부 도메인에 일부 클래스가 없는 상황은 논의되지 않습니다.</li>
+          <li><strong>프라이버시 분석이 얕음.</strong> 부록의 DP 분석은 가우시안 노이즈를 추가하고 성능 하락을 보고하지만, 공식 (ε, δ) 명세나 동일 예산 하 비교는 없습니다.</li>
+        </ul>
+
+        <h2>토의 포인트</h2>
+        <ol>
+          <li>도메인 라벨이 잡음을 포함하거나 잘못 클러스터링되었다면 FedDAP가 우아하게 저하하는가, 아니면 (class, domain) 격자가 붕괴하는가?</li>
+          <li>L<sub>CPCL</sub>은 λ<sub>2</sub>≥5에서 과정규화됩니다. λ<sub>2</sub>를 도메인 다양도에 따라 원칙적으로 제한하는 방법이 있을까요, 아니면 여전히 grid search만이 답일까요?</li>
+          <li>도메인 ID를 서버에 명시적으로 주는 대신 프로토타입 공간에서 <em>학습</em>할 수 있을까요 — 도메인이 잠재변수인 상황에 FedDAP를 확장 가능한가?</li>
+          <li>FedDAP는 통신 압축, secure aggregation, 개인화 헤드 같은 직교 FL 기법과 어떻게 합성되는가? (class, domain) 텐서가 secure aggregation 프리미티브와 궁합이 맞는가?</li>
+          <li>"도메인"이 연속 속성(조명, 연령, 취득 프로토콜)인 경우 이산 (class, domain) 격자가 여전히 의미가 있는가, 아니면 연속 일반화가 필요한가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>FedDAP는 돌이켜 보면 당연해 보이는 종류의 논문입니다 — 프로토타입 표현에 도메인 축을 유지하고, 클라이언트가 속한 도메인에 조건부로 정합하라. 기여의 본질은 기존 프로토타입 기반 FL이 도메인 시프트에서 왜 저조했는지(semantic dilution + 도메인 무관 정합)를 정확히 짚어내고, FedAvg 스캐폴드 위에 최소한의 수술로 해결했다는 점입니다.</p>
+        <p>이 논문은 두 질문을 머리에 두고 읽으면 구조가 선명해집니다: (1) <em>무엇을 평균하고 있으며 그 평균은 의미 있는가?</em> — 그림 1이 전체 동기입니다. (2) <em>클라이언트가 자기 도메인에 맞춰 무엇으로 끌려가야 하는가?</em> — L<sub>DPA</sub> + L<sub>CPCL</sub>이 방법 전부입니다. 나머지(attention 가중, 온도 하이퍼파라미터, ablation)는 이 두 통찰 위의 엔지니어링 마감재입니다.</p>
       `
     }
   }
