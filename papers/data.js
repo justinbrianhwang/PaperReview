@@ -13153,5 +13153,349 @@ const PAPERS = [
         <p>이 논문은 두 질문을 머리에 두고 읽으면 구조가 선명해집니다: (1) <em>무엇을 평균하고 있으며 그 평균은 의미 있는가?</em> — 그림 1이 전체 동기입니다. (2) <em>클라이언트가 자기 도메인에 맞춰 무엇으로 끌려가야 하는가?</em> — L<sub>DPA</sub> + L<sub>CPCL</sub>이 방법 전부입니다. 나머지(attention 가중, 온도 하이퍼파라미터, ablation)는 이 두 통찰 위의 엔지니어링 마감재입니다.</p>
       `
     }
+  },
+  // ====================================================================
+  // Check-weight-constrained quantum codes
+  // ====================================================================
+  {
+    id: "check-weight-qldpc",
+    date: "2026-01-21",
+    authors: "Wang, L., Liu, A. Z., Li, R., Kubica, A., Gu, S.",
+    venue: "arXiv 2026",
+    image: "images/check-weight-qldpc/thumbnail.png",
+    link: "https://arxiv.org/abs/2601.14546",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "QEC", "qLDPC", "Stabilizer Codes", "Linear Programming"],
+    en: {
+      title: "Check-weight-constrained quantum codes: Bounds and examples",
+      summary: "Establishes tight asymptotic bounds on stabilizer and subsystem code parameters when the check weight is constrained, and maps the finite-size landscape via LP upper bounds and explicit quantum Tanner code constructions.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper answers the fundamental question: <strong>how much does constraining the check weight cost you in code parameters?</strong> The answer is sharp — weight-3 stabilizer codes are provably trivial, weight-4 CSS codes are generalized surface codes with kd<sup>2</sup> = O(n), and weight-2 subsystem codes hit d &le; &radic;n and kd &le; n. The finite-size LP bounds plus explicit quantum Tanner codes then chart the practical landscape for codes with tens to hundreds of qubits.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Given that quantum error correction requires measuring multi-qubit check operators, and hardware limits how many qubits each check can touch, what are the fundamental limits on code parameters [[n, k, d]] as a function of the maximum check weight w?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Quantum error-correcting codes protect logical qubits by measuring stabilizer checks — multi-qubit Pauli operators that detect errors without disturbing the encoded information. The practical difficulty is that each check must be implemented as a physical circuit, and the more qubits a check touches (its <em>weight</em>), the harder it is to implement reliably. This is why quantum low-density parity-check (qLDPC) codes — codes with bounded check weight — are central to the quest for scalable quantum computing.</p>
+
+        <p>The breakthrough discovery of asymptotically good qLDPC codes (k, d = &Theta;(n)) by Panteleev-Kalachev, Leverrier-Z&eacute;mor, and others showed that constant-weight checks can, in principle, achieve optimal scaling. Weight-reduction techniques then showed that check weight 5 suffices for stabilizer codes and weight 3 for subsystem codes. But these are existence results for the <em>asymptotic</em> regime. Two crucial questions remained open:</p>
+        <ol>
+          <li><strong>Impossibility boundaries.</strong> For which check weights is it provably impossible to beat certain parameter tradeoffs? Can weight-3 stabilizer codes even have nontrivial distance?</li>
+          <li><strong>Finite-size landscape.</strong> For codes with tens to hundreds of qubits — the regime relevant to near-term experiments — how close can explicit constructions get to the theoretical limits?</li>
+        </ol>
+
+        <p>This paper attacks both questions simultaneously: analytical proofs for the asymptotic regime and LP-based numerical bounds plus a systematic code search for the finite-size regime.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The paper has three methodological layers: asymptotic proofs (Sec. III), finite-size LP bounds (Sec. IV), and explicit code constructions (Sec. V).</p>
+
+        <p><strong>Asymptotic bounds — check weight 3 stabilizer codes.</strong> The central technique is a <em>minimal code</em> argument. For a class of codes (e.g., CSS codes with w = 3, k &gt; 0, d &gt; 2), assume the class is nonempty, pick a code with the fewest qubits and then the smallest total check weight. This minimal code has no disentangled subsystems (or you could remove them for a smaller code) and no redundant checks. The proof then counts qubits vs. checks: each qubit appears in at most two X and two Z checks (by commutation constraints), and a careful double-counting shows 2n &le; 2r (number of checks), which forces k = 0. For general (non-CSS) stabilizer codes, a separate argument shows any minimal weight-3 code can be Clifford-rotated to a CSS code via a graph coloring argument on the mismatch graph, reducing to the CSS case.</p>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: Proof of Lemma III.11 — showing that CSS*(4) codes are generalized surface codes. (a) A code with qubits on edges and X-checks at vertices. (b) Z-checks correspond to cycles in the graph. (c) Gluing the cycles into polygons along shared edges produces a closed manifold on which the code is a generalized surface code.</figcaption>
+        </figure>
+
+        <p><strong>Asymptotic bounds — check weight 4 CSS codes.</strong> For CSS codes where each qubit is in exactly two X checks and two Z checks (CSS*(4)), the proof shows such codes are always generalized surface codes on closed manifolds. The argument constructs a multigraph where X checks are vertices and qubits are edges, shows Z checks are disjoint cycles (by commutation), then glues polygons along shared edges to form a cellulated surface. Fetaya's systolic inequality then gives kd<sup>2</sup> = O(n).</p>
+
+        <p><strong>Asymptotic bounds — check weight 2 subsystem codes.</strong> Any CSS subsystem code with weight-2 checks is shown to be equivalent to a binary matrix A, with k = rank(A), d<sub>X</sub> = d<sub>col</sub>(A), d<sub>Z</sub> = d<sub>row</sub>(A). The number of 1-entries in A is at most n, giving d<sup>2</sup> &le; d<sub>col</sub> &middot; d<sub>row</sub> &le; n and kd &le; n. These bounds are tight: Bravyi's 2011 construction saturates them.</p>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: Log-log plot of achievable parameters (k, d) for CSS subsystem codes with check weight 2. The green region is achievable by Bravyi's construction. The red region is ruled out by Theorem III.14. The bounds d &le; &radic;n and kd &le; n are tight.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: (a) Example of a subsystem code with check weight 2. Red/blue lines and circles indicate X/Z checks of weight two and one. (b) The associated binary matrix A, where rows correspond to weight-2 X components and columns to weight-2 Z components. Entries are parities of common qubits between components.</figcaption>
+        </figure>
+
+        <p><strong>Finite-size LP bounds.</strong> The LP variables are the weight distribution coefficients {A<sub>i</sub>} (number of stabilizers of weight i) and their duals {B<sub>i</sub>}. Standard constraints come from MacWilliams identities and the distance condition. The key new constraint (Theorem IV.5) exploits check weight: any m independent checks of weight &le; w produce m distinct codewords of weight &le; mw, giving a staircase lower bound on cumulative weight distributions. LP infeasibility for given (n, k, d, w) certifies that no such code exists.</p>
+
+        <p><strong>Explicit constructions — quantum Tanner codes.</strong> Quantum Tanner codes are CSS codes built from left-right Cayley complexes and local classical codes. The search pipeline enumerates base groups (order 6–12), samples local codes and generating sets, constructs the codes, and ranks them by score = kd<sup>2</sup>/(nw&#772;<sup>&beta;</sup>). Distance estimation uses QDistRnd with deterministic certification for d &le; 9.</p>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Weight-3 impossibility (Theorem III.7).</strong> Any stabilizer code with check weight 3 has either d &le; 2 or k = 0. This is the first complete proof for all stabilizer codes (not just CSS), using a novel reduction via the mismatch graph's bipartiteness.</li>
+          <li><strong>Weight-4 surface code characterization (Theorem III.9).</strong> CSS codes in CSS*(4) are generalized surface codes with kd<sup>2</sup> = O(n). Extends to bivariate bicycle codes where A, B are each two-monomial — these must also be surface codes.</li>
+          <li><strong>Weight-2 subsystem code characterization (Theorem III.14).</strong> Complete characterization via binary matrix equivalence: d &le; &radic;n and kd &le; n, tight with Bravyi's construction.</li>
+          <li><strong>New LP constraints for check weight (Theorem IV.5).</strong> Staircase inequalities on cumulative weight distributions give strictly tighter finite-size bounds than unconstrained LP.</li>
+          <li><strong>Systematic quantum Tanner code search.</strong> Explicit codes with favorable parameters (e.g., [[64,22,4]] at w = 8, [[30,4,6]] BB code at w = 6) that approach the LP bounds, delineating the practical landscape.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>LP solver:</strong> Gurobi, with normalization to handle coefficient ranges exceeding 10<sup>10</sup>. Constraints with coefficient ratio &gt; 10<sup>10</sup> are dropped. Bounds computed for n &le; 100 (stabilizer) or n &le; 150 (CSS), extrapolated linearly beyond.</li>
+          <li><strong>Code search:</strong> Base groups of order 6–12 from GAP SmallGroup database. Local codes from codetables.de with lengths &le; 12. For each (G, C<sub>A</sub>, C<sub>B</sub>), 10 random generating set pairs sampled, each with 10 random coordinate permutations of C<sub>B</sub>. Top 200 codes retained by score<sub>1</sub>.</li>
+          <li><strong>Distance certification:</strong> QDistRnd (50,000 trials) for upper bound estimation, plus deterministic verification for d &le; 9.</li>
+          <li><strong>Scoring:</strong> score<sub>&beta;</sub> = kd<sup>2</sup> / (nw&#772;<sup>&beta;</sup>) with &beta; &isin; {0.5, 1.0, 1.5, 2.0, 2.5}. Ranked by score<sub>1</sub> for balanced distance-weight tradeoff.</li>
+          <li><strong>Post-processing:</strong> Monotonicity in n, d, and w exploited: k(n,d,w) = min over d' &le; d and w' &ge; w of the LP solutions, combined with feasibility checks excluding weight-1 stabilizers.</li>
+          <li><strong>Code availability:</strong> Parity-check matrices on GitHub.</li>
+        </ul>
+
+        <h2>Results</h2>
+        <figure>
+          <img src="images/check-weight-qldpc/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: Main results. (a) Upper bounds on k for CSS codes in the (n, k, d) space as a function of check weight w (color). Higher check weight (yellow) permits more logical qubits at any given distance and code length. (b) Explicit qLDPC code parameters in the rate-distance plane. Green dots are quantum Tanner codes, red dots are BB codes and variants. Solid curves are LP achievability frontiers for w = 6 and w = 10. All explicit codes lie below the LP frontier, but the best quantum Tanner codes populate the high-rate, low-relative-distance regime.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5: Cross-sections of CSS upper bounds. (a) Fixed n = 70: k decreases roughly linearly with d, with higher w permitting larger k. (b) Fixed k = 20: minimum n required increases with d. (c) Fixed d = 8: k grows linearly with n, with slope depending on w. The approximately linear relationships are consistent with the existence of good codes at w &ge; 5.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6: Comparison of CSS (dashed) and stabilizer (solid) upper bounds at fixed d = 7. Stabilizer codes have strictly higher upper bounds than CSS codes — and some stabilizer bounds even fall below known unconstrained codes (red line), proving that constraining check weight has a concrete finite-size cost even for stabilizer codes that are not CSS.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig7.png" alt="Figure 7">
+          <figcaption>Figure 7: Quantum Tanner code parameters vs. CSS upper bounds. (a) d &ge; 4: small codes approach the bounds closely — nearly optimal at this distance. (b) d &ge; 8: a visible gap remains between the best found codes and the LP bounds, indicating room for either better constructions or tighter bounds.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig8.png" alt="Figure 8">
+          <figcaption>Figure 8: All generated quantum Tanner codes (w &le; 10, d &ge; 3) in the rate-distance plane. Colors label base groups, fill styles label check weight. Cyan crosses are LP-feasible points, and the solid step curve is the LP achievability frontier. The best codes concentrate in the high-rate, low-&delta; regime.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig9.png" alt="Figure 9">
+          <figcaption>Figure 9: Upper bounds on k for general stabilizer codes in the (n, k, d) space. The structure mirrors the CSS bounds (Fig. 1a) but with higher allowed k at every (n, d, w) point, since stabilizer codes are a larger class.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig10.png" alt="Figure 10">
+          <figcaption>Figure 10: Stabilizer bounds cross-sections at n = 70, k = 15, and d = 4. Similar linear relationships as CSS bounds, but with higher achievable parameters throughout.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig11.png" alt="Figure 11">
+          <figcaption>Figure 11: CSS vs. stabilizer bounds at (a) d = 5 and (b) d = 9. The gap between solid (stabilizer) and dashed (CSS) lines is most pronounced at lower check weights, confirming that CSS constraints are an additional restriction beyond check weight alone.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig12.png" alt="Figure 12">
+          <figcaption>Figure 12: Rate-distance tradeoff for all quantum Tanner codes (w &le; 20, d &ge; 3) colored by base group. Increasing &delta; rapidly suppresses the achievable rate, revealing a steep finite-size tradeoff. Codes from different base groups (abelian and non-abelian) overlap substantially.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig13.png" alt="Figure 13">
+          <figcaption>Figure 13: Per-group 3D frontiers of (n, k, d) for quantum Tanner codes with w &le; 20. Each panel is a different base group. The translucent surface is the achievable envelope. The "wedge" shape is consistent across groups: increasing d at fixed n forces rapid decrease in k. Abelian and non-abelian groups show surprisingly similar finite-size frontiers.</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>Construction</th><th>[[n, k, d]]</th><th>w</th></tr></thead>
+          <tbody>
+            <tr><td>Quantum Tanner</td><td>[[96, 30, 4]]</td><td>8</td></tr>
+            <tr><td>Quantum Tanner</td><td>[[288, 16, 16]]</td><td>9</td></tr>
+            <tr><td>Quantum Tanner</td><td>[[392, 53, 12]]</td><td>16</td></tr>
+            <tr><td>Quantum Tanner</td><td>[[528, 16, 32]]</td><td>16</td></tr>
+            <tr><td>BB code</td><td>[[126, 12, 10]]</td><td>6</td></tr>
+            <tr><td>BB code</td><td>[[144, 14, 14]]</td><td>8</td></tr>
+            <tr><td>BB code</td><td>[[294, 10, 20]]</td><td>6</td></tr>
+            <tr><td>BB code</td><td>[[340, 16, 18]]</td><td>6</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li><strong>Sharp impossibility results.</strong> The weight-3 impossibility is a clean, elementary proof with a concrete bound (d &le; 2), not just an asymptotic statement. The reduction from general stabilizer to CSS codes via mismatch graph bipartiteness is elegant.</li>
+          <li><strong>Tight characterizations.</strong> The weight-4 surface code theorem and weight-2 subsystem matrix equivalence both achieve matching upper and lower bounds — these are not just bounds, they are complete classifications.</li>
+          <li><strong>Theory-experiment bridge.</strong> By running LP bounds and code search in the same paper, the authors can directly show where known codes sit relative to fundamental limits, identifying both nearly-optimal regimes and improvable gaps.</li>
+          <li><strong>Generality.</strong> The asymptotic bounds assume only check weight constraints — no geometric locality, no special graph structure. This makes them applicable to all qLDPC codes, not just planar or local architectures.</li>
+          <li><strong>Practical code library.</strong> Parity-check matrices on GitHub for all found codes — directly usable by experimentalists.</li>
+          <li><strong>Clean paper organization.</strong> Asymptotic theory, numerical bounds, and constructions are cleanly separated, each self-contained.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>Weight-4 result is restricted to CSS*(4).</strong> The kd<sup>2</sup> = O(n) bound requires each qubit in exactly two X and two Z checks. The full CSS weight-4 case (allowing qubits in fewer checks) remains open — the manifold-with-boundary analogue of Fetaya's theorem is missing.</li>
+          <li><strong>LP numerics degrade at large n.</strong> Coefficient ranges exceed solver precision for n &gt; 100 (stabilizer) or n &gt; 150 (CSS), requiring extrapolation. The bounds for stabilizer codes at higher distances are visibly less smooth.</li>
+          <li><strong>No decoding or threshold analysis.</strong> The paper focuses purely on code parameters, not on whether the found codes can be efficiently decoded or what error thresholds they achieve.</li>
+          <li><strong>Quantum Tanner codes may not be the best finite-size family.</strong> The search is restricted to this one construction family. Other families (lifted product, balanced product, fiber bundle) might fill the observed gaps.</li>
+          <li><strong>No results for weight 5.</strong> Weight 5 is the critical threshold where asymptotically good stabilizer codes exist, but no nontrivial parameter bounds are proven at this weight.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Can the weight-4 CSS bound kd<sup>2</sup> = O(n) be extended to all CSS codes with check weight 4, including those where some qubits participate in fewer than two checks of each type? What relative-homology version of Fetaya's inequality would be needed?</li>
+          <li>The gap between LP bounds and explicit codes at d &ge; 8 suggests room for improvement. Is the gap due to loose LP bounds, suboptimal code search, or a genuine structural barrier in quantum Tanner codes?</li>
+          <li>Abelian and non-abelian base groups produce surprisingly similar finite-size frontiers. Does this mean expansion (the asymptotic advantage of non-abelian groups) only kicks in at much larger n?</li>
+          <li>For near-term experiments with ~100 qubits and limited connectivity, what is the practically optimal (n, k, d, w) tradeoff? Should experimentalists target weight 6 (BB-like) or weight 8–10 (quantum Tanner)?</li>
+          <li>Weight reduction maps good codes to weight-5 stabilizer or weight-3 subsystem codes with constant-factor parameter loss. Is there a "reverse" technique — starting from a weight-constrained construction and boosting parameters without increasing weight?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper draws the map of what is possible for quantum codes under check-weight constraints. The asymptotic story is now essentially complete for weights 2, 3, and 4: weight 3 stabilizer codes are trivial, weight 4 CSS codes are surface codes, and weight 2 subsystem codes are matrix codes. The finite-size LP bounds and quantum Tanner code search then populate the practical landscape for the first time, showing that small codes at low distances (d = 4) are already near-optimal but higher distances remain unexplored territory.</p>
+        <p>Read this paper in two passes. First pass: absorb the three impossibility/characterization theorems (Theorems III.7, III.9, III.14) — they are the permanent contributions that will be cited for decades. Second pass: study the LP methodology and code search as a template for how to chart the frontier of any constrained code family — the technique is more general than the specific application.</p>
+      `
+    },
+    ko: {
+      title: "체크 가중치 제약 양자 코드: 상한과 예제",
+      summary: "체크 가중치가 제약된 스태빌라이저 및 서브시스템 코드의 점근적 파라미터 상한을 확립하고, LP 상한 및 양자 태너 코드 구성을 통해 유한 크기 실용 코드의 지형을 매핑합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 근본적인 질문에 답합니다: <strong>체크 가중치를 제한하면 코드 파라미터에 얼마나 비용이 드는가?</strong> 답은 명확합니다 — 가중치-3 스태빌라이저 코드는 증명 가능하게 자명하고, 가중치-4 CSS 코드는 kd<sup>2</sup> = O(n)인 일반화된 표면 코드이며, 가중치-2 서브시스템 코드는 d &le; &radic;n과 kd &le; n을 만족합니다. 유한 크기 LP 상한과 명시적 양자 태너 코드 구성이 수십~수백 큐비트 코드의 실용적 지형을 그려냅니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>양자 오류 정정이 다중 큐비트 체크 연산자의 측정을 필요로 하고, 하드웨어가 각 체크가 건드릴 수 있는 큐비트 수를 제한하는 상황에서, 최대 체크 가중치 w의 함수로서 코드 파라미터 [[n, k, d]]의 근본적 한계는 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>양자 오류 정정 코드는 스태빌라이저 체크 — 인코딩된 정보를 교란하지 않으면서 오류를 감지하는 다중 큐비트 파울리 연산자 — 를 측정하여 논리 큐비트를 보호합니다. 실용적 난관은 각 체크를 물리적 회로로 구현해야 하고, 체크가 건드리는 큐비트가 많을수록(가중치가 높을수록) 구현이 어려워진다는 점입니다. 이것이 체크 가중치가 상수로 제한된 양자 저밀도 패리티 체크(qLDPC) 코드가 확장 가능한 양자 컴퓨팅의 핵심인 이유입니다.</p>
+
+        <p>Panteleev-Kalachev, Leverrier-Z&eacute;mor 등에 의한 점근적으로 최적인 qLDPC 코드(k, d = &Theta;(n))의 발견은 상수 가중치 체크로 원칙적으로 최적 스케일링을 달성할 수 있음을 보여주었습니다. 가중치 축소 기법은 스태빌라이저 코드에서 체크 가중치 5, 서브시스템 코드에서 3이면 충분함을 보여주었습니다. 하지만 이는 <em>점근적</em> 영역의 존재성 결과입니다. 두 가지 중요한 질문이 열려 있었습니다:</p>
+        <ol>
+          <li><strong>불가능성 경계.</strong> 어떤 체크 가중치에서 특정 파라미터 트레이드오프를 증명적으로 넘을 수 없는가? 가중치-3 스태빌라이저 코드가 자명하지 않은 거리를 가질 수 있는가?</li>
+          <li><strong>유한 크기 지형.</strong> 수십~수백 큐비트의 코드 — 단기 실험에 관련된 영역 — 에서 명시적 구성이 이론적 한계에 얼마나 가까울 수 있는가?</li>
+        </ol>
+
+        <p>이 논문은 두 질문을 동시에 공략합니다: 점근적 영역에 대한 해석적 증명과 유한 크기 영역에 대한 LP 기반 수치 상한 및 체계적 코드 탐색.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>논문은 세 방법론적 층위를 가집니다: 점근적 증명(Sec. III), 유한 크기 LP 상한(Sec. IV), 명시적 코드 구성(Sec. V).</p>
+
+        <p><strong>점근적 상한 — 체크 가중치 3 스태빌라이저 코드.</strong> 핵심 기법은 <em>최소 코드(minimal code)</em> 논증입니다. 코드 클래스(예: w = 3, k &gt; 0, d &gt; 2인 CSS 코드)가 비어있지 않다고 가정하고, 가장 적은 큐비트와 가장 작은 총 체크 가중치를 가진 코드를 선택합니다. 이 최소 코드는 분리된 서브시스템이 없고(있으면 제거하여 더 작은 코드를 만들 수 있으므로) 독립적인 체크만 가집니다. 증명은 큐비트 대 체크 수를 셉니다: 각 큐비트는 최대 2개의 X 체크와 2개의 Z 체크에 포함되고(교환 관계 제약), 이중 계수를 통해 2n &le; 2r(체크 수)임을 보여 k = 0을 강제합니다. 일반(비-CSS) 스태빌라이저 코드의 경우, 미스매치 그래프의 이분 그래프 성질을 이용한 클리포드 회전으로 CSS 코드로 환원합니다.</p>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig2.png" alt="Figure 2">
+          <figcaption>그림 2: Lemma III.11의 증명 그림 — CSS*(4) 코드가 일반화된 표면 코드임을 보여줍니다. (a) 큐비트가 간선에, X-체크가 꼭짓점에 놓인 코드. (b) Z-체크는 그래프의 순환(cycle)에 대응. (c) 순환을 다각형으로 만들어 공유 간선을 따라 붙이면 폐곡면을 형성하고, 그 위에 코드가 일반화된 표면 코드가 됩니다.</figcaption>
+        </figure>
+
+        <p><strong>점근적 상한 — 체크 가중치 4 CSS 코드.</strong> 각 큐비트가 정확히 2개의 X 체크와 2개의 Z 체크에 포함된 CSS 코드(CSS*(4))에 대해, 이러한 코드가 항상 폐곡면 위의 일반화된 표면 코드임을 증명합니다. X 체크를 꼭짓점, 큐비트를 간선으로 하는 다중그래프를 구성하고, Z 체크가 이산 순환임을 보인 뒤, 다각형을 공유 간선을 따라 붙여 격자화된 곡면을 형성합니다. Fetaya의 systolic 부등식이 kd<sup>2</sup> = O(n)을 줍니다.</p>
+
+        <p><strong>점근적 상한 — 체크 가중치 2 서브시스템 코드.</strong> 가중치-2 체크를 가진 CSS 서브시스템 코드는 이진 행렬 A와 동치임을 보이며, k = rank(A), d<sub>X</sub> = d<sub>col</sub>(A), d<sub>Z</sub> = d<sub>row</sub>(A)입니다. A의 1의 개수가 최대 n이므로 d<sup>2</sup> &le; d<sub>col</sub> &middot; d<sub>row</sub> &le; n과 kd &le; n을 얻습니다. 이 상한은 Bravyi의 2011년 구성으로 포화됩니다.</p>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig3.png" alt="Figure 3">
+          <figcaption>그림 3: 체크 가중치 2인 CSS 서브시스템 코드의 달성 가능 파라미터(k, d) 로그-로그 플롯. 녹색 영역은 Bravyi 구성으로 달성 가능하고, 빨간 영역은 Theorem III.14에 의해 배제됩니다. d &le; &radic;n과 kd &le; n 상한은 타이트합니다.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig4.png" alt="Figure 4">
+          <figcaption>그림 4: (a) 체크 가중치 2인 서브시스템 코드 예시. 빨간/파란 선과 원은 가중치 2와 1의 X/Z 체크를 표시. (b) 연관된 이진 행렬 A. 행은 가중치-2 X 컴포넌트, 열은 가중치-2 Z 컴포넌트에 대응하며, 항목은 컴포넌트 간 공유 큐비트의 패리티.</figcaption>
+        </figure>
+
+        <p><strong>유한 크기 LP 상한.</strong> LP 변수는 가중치 분포 계수 {A<sub>i</sub>}(가중치 i인 스태빌라이저 수)와 쌍대 분포 {B<sub>i</sub>}입니다. 표준 제약 조건은 MacWilliams 항등식과 거리 조건에서 옵니다. 핵심 새 제약(Theorem IV.5)은 체크 가중치를 활용합니다: 가중치 &le; w인 m개 독립 체크의 곱은 가중치 &le; mw인 m개 구별 코드워드를 주므로, 누적 가중치 분포에 계단식 하한을 제공합니다. 주어진 (n, k, d, w)에 대해 LP가 비실현 가능이면 그러한 코드가 존재하지 않음을 증명합니다.</p>
+
+        <p><strong>명시적 구성 — 양자 태너 코드.</strong> 양자 태너 코드는 좌-우 케일리 복합체와 로컬 고전 코드로 구성된 CSS 코드입니다. 탐색 파이프라인은 기저 군(차수 6–12)을 열거하고, 로컬 코드와 생성 집합을 샘플링하며, 코드를 구성하고 점수 = kd<sup>2</sup>/(nw&#772;<sup>&beta;</sup>)로 순위를 매깁니다. 거리 추정은 QDistRnd (50,000 시행)를 사용하고 d &le; 9에 대해 결정론적 검증을 수행합니다.</p>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>가중치-3 불가능성 (Theorem III.7).</strong> 체크 가중치 3인 모든 스태빌라이저 코드는 d &le; 2이거나 k = 0입니다. 미스매치 그래프의 이분성을 통한 환원으로 CSS뿐 아니라 모든 스태빌라이저 코드에 대한 최초의 완전한 증명.</li>
+          <li><strong>가중치-4 표면 코드 특성화 (Theorem III.9).</strong> CSS*(4) 코드는 kd<sup>2</sup> = O(n)인 일반화된 표면 코드입니다. A, B가 각각 2개의 단항식인 이변수 자전거 코드에도 확장 — 이들도 표면 코드여야 합니다.</li>
+          <li><strong>가중치-2 서브시스템 코드 특성화 (Theorem III.14).</strong> 이진 행렬 동치를 통한 완전한 특성화: d &le; &radic;n과 kd &le; n, Bravyi 구성으로 타이트.</li>
+          <li><strong>체크 가중치에 대한 새로운 LP 제약 (Theorem IV.5).</strong> 누적 가중치 분포에 대한 계단식 부등식이 제약 없는 LP보다 엄격히 더 타이트한 유한 크기 상한을 줍니다.</li>
+          <li><strong>체계적 양자 태너 코드 탐색.</strong> LP 상한에 근접하는 유리한 파라미터의 명시적 코드(예: [[64,22,4]] w = 8, [[30,4,6]] BB 코드 w = 6)를 찾아 실용적 지형을 묘사.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>LP 솔버:</strong> Gurobi, 10<sup>10</sup>을 넘는 계수 범위 처리를 위한 정규화. 계수 비율 &gt; 10<sup>10</sup>인 제약은 제거. n &le; 100(스태빌라이저) 또는 n &le; 150(CSS)까지 계산하고 이후 선형 외삽.</li>
+          <li><strong>코드 탐색:</strong> GAP SmallGroup 데이터베이스의 차수 6–12 기저 군. codetables.de의 길이 &le; 12 로컬 코드. 각 (G, C<sub>A</sub>, C<sub>B</sub>)에 대해 10개 랜덤 생성 집합 쌍, 각각 C<sub>B</sub>의 10개 랜덤 열 치환. score<sub>1</sub> 기준 상위 200개 코드 유지.</li>
+          <li><strong>거리 인증:</strong> QDistRnd (50,000 시행)로 상한 추정, d &le; 9에 대해 결정론적 검증.</li>
+          <li><strong>점수:</strong> score<sub>&beta;</sub> = kd<sup>2</sup> / (nw&#772;<sup>&beta;</sup>), &beta; &isin; {0.5, 1.0, 1.5, 2.0, 2.5}. 거리-가중치 균형을 위해 score<sub>1</sub>로 순위.</li>
+          <li><strong>코드 공개:</strong> 패리티 체크 행렬 GitHub 제공.</li>
+        </ul>
+
+        <h2>실험 결과</h2>
+        <figure>
+          <img src="images/check-weight-qldpc/fig1.png" alt="Figure 1">
+          <figcaption>그림 1: 주요 결과. (a) CSS 코드의 (n, k, d) 공간에서 체크 가중치 w(색상)의 함수로 본 k 상한. 높은 체크 가중치(노란색)는 주어진 거리와 코드 길이에서 더 많은 논리 큐비트를 허용. (b) rate-distance 평면의 명시적 qLDPC 코드 파라미터. 초록 점은 양자 태너 코드, 빨간 점은 BB 코드 및 변형. 실선은 w = 6과 w = 10의 LP 달성 가능 프론티어. 모든 명시적 코드가 LP 프론티어 아래에 위치하지만, 최고 양자 태너 코드는 고-rate, 저-&delta; 영역을 차지.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig5.png" alt="Figure 5">
+          <figcaption>그림 5: CSS 상한 단면. (a) n = 70 고정: k가 d에 따라 대략 선형 감소, 높은 w가 더 큰 k 허용. (b) k = 20 고정: 필요 최소 n이 d에 따라 증가. (c) d = 8 고정: k가 n에 따라 선형 증가, 기울기는 w에 의존. 대략 선형 관계는 w &ge; 5에서 좋은 코드 존재와 일치.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig6.png" alt="Figure 6">
+          <figcaption>그림 6: d = 7 고정에서 CSS(점선)과 스태빌라이저(실선) 상한 비교. 스태빌라이저 코드가 CSS보다 엄격히 높은 상한을 가지며 — 일부 스태빌라이저 상한은 알려진 비제약 코드(빨간 선) 아래에까지 떨어져, 체크 가중치 제약이 CSS가 아닌 스태빌라이저 코드에도 구체적 유한 크기 비용이 있음을 증명.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig7.png" alt="Figure 7">
+          <figcaption>그림 7: 양자 태너 코드 파라미터 vs. CSS 상한. (a) d &ge; 4: 작은 코드가 상한에 가깝게 접근 — 이 거리에서 거의 최적. (b) d &ge; 8: 최선 코드와 LP 상한 사이에 눈에 띄는 갭이 남아, 더 나은 구성이나 더 타이트한 상한의 여지가 있음.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig8.png" alt="Figure 8">
+          <figcaption>그림 8: 모든 생성된 양자 태너 코드(w &le; 10, d &ge; 3) rate-distance 평면. 색상은 기저 군, 채움 스타일은 체크 가중치. 하늘색 십자는 LP 실현 가능 점, 실선 계단 곡선은 LP 달성 가능 프론티어. 최고 코드는 고-rate, 저-&delta; 영역에 집중.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig9.png" alt="Figure 9">
+          <figcaption>그림 9: 일반 스태빌라이저 코드의 (n, k, d) 공간에서 k 상한. CSS 상한(그림 1a)과 구조는 동일하나, 스태빌라이저 코드가 더 큰 클래스이므로 모든 (n, d, w) 점에서 더 높은 k 허용.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig10.png" alt="Figure 10">
+          <figcaption>그림 10: n = 70, k = 15, d = 4에서의 스태빌라이저 상한 단면. CSS 상한과 유사한 선형 관계이나 전반적으로 더 높은 달성 가능 파라미터.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig11.png" alt="Figure 11">
+          <figcaption>그림 11: (a) d = 5와 (b) d = 9에서 CSS vs. 스태빌라이저 상한 비교. 실선(스태빌라이저)과 점선(CSS) 간 갭은 낮은 체크 가중치에서 가장 뚜렷 — CSS 제약이 체크 가중치만의 제약을 넘는 추가 제한임을 확인.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig12.png" alt="Figure 12">
+          <figcaption>그림 12: 모든 양자 태너 코드(w &le; 20, d &ge; 3)의 기저 군별 rate-distance 트레이드오프. &delta; 증가가 달성 가능 rate를 급격히 억제하여 가파른 유한 크기 트레이드오프를 드러냄. 다른 기저 군(아벨과 비아벨)의 코드가 상당히 겹침.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/check-weight-qldpc/fig13.png" alt="Figure 13">
+          <figcaption>그림 13: 양자 태너 코드(w &le; 20)의 기저 군별 (n, k, d) 3D 프론티어. 각 패널은 다른 기저 군. 반투명 면은 달성 가능 엔벨로프. "쐐기(wedge)" 형태가 군에 걸쳐 일관적: 고정 n에서 d를 높이면 k가 급격히 감소. 아벨과 비아벨 군이 놀랍게도 유사한 유한 크기 프론티어를 보임.</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>구성</th><th>[[n, k, d]]</th><th>w</th></tr></thead>
+          <tbody>
+            <tr><td>양자 태너</td><td>[[96, 30, 4]]</td><td>8</td></tr>
+            <tr><td>양자 태너</td><td>[[288, 16, 16]]</td><td>9</td></tr>
+            <tr><td>양자 태너</td><td>[[392, 53, 12]]</td><td>16</td></tr>
+            <tr><td>양자 태너</td><td>[[528, 16, 32]]</td><td>16</td></tr>
+            <tr><td>BB 코드</td><td>[[126, 12, 10]]</td><td>6</td></tr>
+            <tr><td>BB 코드</td><td>[[144, 14, 14]]</td><td>8</td></tr>
+            <tr><td>BB 코드</td><td>[[294, 10, 20]]</td><td>6</td></tr>
+            <tr><td>BB 코드</td><td>[[340, 16, 18]]</td><td>6</td></tr>
+          </tbody>
+        </table>
+
+        <h2>강점</h2>
+        <ul>
+          <li><strong>명확한 불가능성 결과.</strong> 가중치-3 불가능성은 점근적 진술이 아닌 구체적 상한(d &le; 2)을 가진 깔끔하고 초등적인 증명. 미스매치 그래프의 이분성을 통한 일반 스태빌라이저에서 CSS로의 환원이 우아합니다.</li>
+          <li><strong>타이트한 특성화.</strong> 가중치-4 표면 코드 정리와 가중치-2 서브시스템 행렬 동치 모두 상한과 하한이 일치 — 단순 상한이 아니라 완전한 분류.</li>
+          <li><strong>이론-실험 다리.</strong> LP 상한과 코드 탐색을 같은 논문에서 수행하여 알려진 코드가 근본 한계에 대비 어디에 위치하는지 직접 보여주며, 거의 최적인 영역과 개선 가능 갭을 동시에 식별.</li>
+          <li><strong>일반성.</strong> 점근적 상한은 체크 가중치 제약만 가정 — 기하학적 국소성이나 특수 그래프 구조를 가정하지 않아 모든 qLDPC 코드에 적용 가능.</li>
+          <li><strong>실용적 코드 라이브러리.</strong> 발견된 모든 코드의 패리티 체크 행렬을 GitHub에 공개 — 실험가들이 직접 사용 가능.</li>
+          <li><strong>깔끔한 논문 구성.</strong> 점근적 이론, 수치 상한, 구성이 깔끔하게 분리되어 각각 자기 완결적.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li><strong>가중치-4 결과가 CSS*(4)로 제한.</strong> kd<sup>2</sup> = O(n) 상한은 각 큐비트가 정확히 2개의 X/Z 체크에 포함되어야 합니다. 더 적은 체크에 포함된 큐비트를 허용하는 전체 CSS 가중치-4 경우는 미해결 — 경계를 가진 곡면에 대한 Fetaya 정리의 유사체가 없습니다.</li>
+          <li><strong>LP 수치가 큰 n에서 저하.</strong> 계수 범위가 n &gt; 100(스태빌라이저) 또는 n &gt; 150(CSS)에서 솔버 정밀도를 초과하여 외삽이 필요합니다. 높은 거리의 스태빌라이저 상한은 눈에 띄게 덜 매끄럽습니다.</li>
+          <li><strong>디코딩이나 임계값 분석 없음.</strong> 코드 파라미터에만 집중하며, 발견된 코드가 효율적으로 디코딩 가능한지나 어떤 오류 임계값을 달성하는지는 다루지 않습니다.</li>
+          <li><strong>양자 태너 코드가 최선 유한 크기 족이 아닐 수 있음.</strong> 탐색이 이 하나의 구성 족에 제한됩니다. 리프트곱, 균형곱, 파이버 번들 등 다른 족이 관찰된 갭을 채울 수 있습니다.</li>
+          <li><strong>가중치 5에 대한 결과 없음.</strong> 가중치 5는 점근적으로 좋은 스태빌라이저 코드가 존재하는 임계 가중치이지만, 이 가중치에서 자명하지 않은 파라미터 상한이 증명되지 않았습니다.</li>
+        </ul>
+
+        <h2>토의 포인트</h2>
+        <ol>
+          <li>가중치-4 CSS 상한 kd<sup>2</sup> = O(n)을 일부 큐비트가 각 유형의 2개 미만 체크에 포함된 경우를 포함하는 모든 CSS 코드로 확장할 수 있는가? Fetaya 부등식의 어떤 상대 호몰로지 버전이 필요한가?</li>
+          <li>d &ge; 8에서 LP 상한과 명시적 코드 간의 갭은 LP 상한이 느슨하기 때문인가, 코드 탐색이 불충분하기 때문인가, 아니면 양자 태너 코드의 구조적 장벽인가?</li>
+          <li>아벨과 비아벨 기저 군이 놀랍게도 유사한 유한 크기 프론티어를 만든다. 이는 확장(expansion) — 비아벨 군의 점근적 장점 — 이 훨씬 더 큰 n에서만 작동한다는 의미인가?</li>
+          <li>~100 큐비트와 제한된 연결성을 가진 단기 실험에서 실용적으로 최적인 (n, k, d, w) 트레이드오프는 무엇인가? 실험가는 가중치 6(BB류)을 목표로 해야 하는가, 가중치 8–10(양자 태너)을 목표로 해야 하는가?</li>
+          <li>가중치 축소는 좋은 코드를 가중치-5 스태빌라이저 또는 가중치-3 서브시스템 코드로 변환하면서 상수 배의 파라미터 손실을 동반한다. "역방향" 기법 — 가중치 제약 구성에서 출발하여 가중치를 올리지 않으면서 파라미터를 향상 — 이 가능한가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 체크 가중치 제약 하에서 양자 코드로 무엇이 가능한지의 지도를 그립니다. 가중치 2, 3, 4에 대한 점근적 이야기는 이제 본질적으로 완결입니다: 가중치 3 스태빌라이저 코드는 자명하고, 가중치 4 CSS 코드는 표면 코드이며, 가중치 2 서브시스템 코드는 행렬 코드입니다. 유한 크기 LP 상한과 양자 태너 코드 탐색이 실용적 지형을 처음으로 채워 넣으며, 낮은 거리(d = 4) 코드는 이미 거의 최적이지만 높은 거리는 미개척 영역으로 남아 있음을 보여줍니다.</p>
+        <p>이 논문은 두 번 읽기를 권합니다. 첫 번째: 세 불가능성/특성화 정리(Theorems III.7, III.9, III.14) 흡수 — 수십 년간 인용될 영구적 기여입니다. 두 번째: LP 방법론과 코드 탐색을 모든 제약된 코드 족의 프론티어를 차트화하는 <em>템플릿</em>으로 연구 — 기법은 이 특정 응용보다 더 일반적입니다.</p>
+      `
+    }
   }
 ];
