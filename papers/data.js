@@ -13497,5 +13497,321 @@ const PAPERS = [
         <p>이 논문은 두 번 읽기를 권합니다. 첫 번째: 세 불가능성/특성화 정리(Theorems III.7, III.9, III.14) 흡수 — 수십 년간 인용될 영구적 기여입니다. 두 번째: LP 방법론과 코드 탐색을 모든 제약된 코드 족의 프론티어를 차트화하는 <em>템플릿</em>으로 연구 — 기법은 이 특정 응용보다 더 일반적입니다.</p>
       `
     }
+  },
+  {
+    id: "symmetrically-coupled-erasure",
+    date: "2026-04-24",
+    authors: "Hung, J. S.-C., Haim, A., Raha, M., Kim, G., Huang, Z., Chou, M.-H., D'Ewart, M., Davis, E., Mishra, A., Arrangoiz-Arriola, P., Khalajhedayati, A., Hover, D., Brandão, F. G. S. L., Clerk, A. A., Retzker, A., Levine, H., Painter, O.",
+    venue: "arXiv 2026 (Amazon Center for Quantum Computing)",
+    image: "images/symmetrically-coupled-erasure/thumbnail.png",
+    link: "https://arxiv.org/abs/2604.16292",
+    domain: "quantum-computing",
+    tags: ["Quantum Computing", "Superconducting Qubits", "Dual-rail", "Erasure Qubits", "Dispersive Readout", "QEC"],
+    en: {
+      title: "Fast, High-Fidelity Erasure Detection of Dual-Rail Qubits with Symmetrically Coupled Readout",
+      summary: "Uses a single readout resonator symmetrically coupled to both transmons of a dual-rail qubit to perform 384 ns mid-circuit erasure checks with 6.0(2)×10⁻⁴ residual error and enables continuous parallel erasure detection alongside X90 gates with <1×10⁻⁵ induced gate error.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This paper demonstrates a hardware-efficient erasure-detection primitive for transmon dual-rail qubits in which <strong>a single dispersively-coupled readout resonator</strong> — symmetrically coupled to both transmons so that the dispersive shifts of the two logical states match (&chi;-matching) — acts simultaneously as (i) an ancilla-free erasure detector, (ii) a logical-state readout element, and (iii) a leakage detector. Single-shot 384 ns erasure checks achieve a state-of-the-art residual error of 6.0(2)&times;10<sup>-4</sup> per check with 2.54(1)&times;10<sup>-2</sup> erasure error; more strikingly, the same resonator enables <em>continuous</em> erasure monitoring in parallel with single-qubit Clifford gates, adding less than 1&times;10<sup>-5</sup> error per X90 on top of a 6.5&times;10<sup>-5</sup> baseline.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can we build a mid-circuit erasure check for superconducting dual-rail qubits that is simultaneously fast, high-fidelity, hardware-efficient (no extra ancilla transmon), and compatible with logical gates running in parallel — all while preserving the strong erasure noise bias that makes erasure qubits attractive for QEC?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Erasure qubits are a leading paradigm for fault-tolerant quantum computing because they convert the dominant physical errors into <em>heralded</em> erasure events that can be decoded with much higher thresholds and lower overhead than unheralded Pauli errors. For transmon dual-rail qubits the logical states &#124;0<sub>L</sub>&rang; = (&#124;ge&rang; - &#124;eg&rang;)/&radic;2 and &#124;1<sub>L</sub>&rang; = (&#124;ge&rang; + &#124;eg&rang;)/&radic;2 live in the single-excitation subspace of two coupled transmons, so a T<sub>1</sub> event of either transmon deterministically drops the system into the joint ground state &#124;gg&rang;. Detecting whether the system is in &#124;gg&rang; (and nothing else) is therefore equivalent to a QND erasure check — provided the check does not itself dephase the logical subspace.</p>
+
+        <p>Prior demonstrations of mid-circuit erasure checks on dual-rail transmons (Levine et al. PRX 2024, de Leon / Yale / Google groups) rely on an extra ancilla transmon dispersively coupled to the dual-rail pair. That ancilla is used to drive a conditional state-mapping pulse whose outcome is then read out through a dedicated resonator. This works, but costs two transmons-worth of control/readout hardware per data qubit and pays a time overhead that competes with the CZ gate duration. The community has therefore been searching for an erasure-check primitive that preserves the QND property and the logical coherence but eliminates the ancilla.</p>
+
+        <p>The idea explored here, originally proposed by Tsunoda et al. (Ref. 13), is to couple a <em>single</em> readout resonator symmetrically to both transmons (g<sub>RT1</sub> = g<sub>RT2</sub>). In the dispersive limit the resonator sees three relevant states: &#124;gg&rang; and the two logical states &#124;0<sub>L</sub>&rang;, &#124;1<sub>L</sub>&rang;. Their dispersive shifts are 0, 2&chi;<sub>0</sub>, 2&chi;<sub>1</sub>. If &chi;<sub>0</sub> = &chi;<sub>1</sub> (the &chi;-matching condition), the resonator distinguishes the erasure state &#124;gg&rang; from the logical subspace but cannot distinguish &#124;0<sub>L</sub>&rang; from &#124;1<sub>L</sub>&rang; — i.e., it performs a QND erasure check without measurement-induced logical dephasing.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The device consists of two tunable transmons (dual-rail pair) exchange-coupled at g/2&pi; &sim; 47 MHz, both capacitively coupled with equal strengths g<sub>RT1</sub> = g<sub>RT2</sub> to a common readout resonator that is itself coupled to a single-mode Purcell filter and thence to the transmission line. The resonator (SRO — symmetrically coupled readout oscillator) has &kappa;/2&pi; &sim; 12 MHz. The dual-rail operating point (the transmon frequency at which the two qubits are tuned into resonance) is a tunable flux parameter and selects where in the &chi;-matching landscape the experiment sits.</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: Erasure-detection concept. (a) Dual-rail subspace: &#124;0<sub>L</sub>&rang; and &#124;1<sub>L</sub>&rang; are the symmetric/antisymmetric single-excitation superpositions of the two transmons; T<sub>1</sub> decay takes the system out of the logical subspace into &#124;gg&rang;, converting amplitude damping into a heralded erasure. (b) Circuit: two transmons (T1, T2) exchange-coupled at g, symmetrically coupled to a readout resonator (R) with equal strengths g<sub>RT1</sub> = g<sub>RT2</sub>, with a Purcell filter (P) suppressing radiative loss. (c) Energy-level picture of the photon-number-dependent shifts: states &#124;0<sub>L</sub>&rang;, &#124;1<sub>L</sub>&rang; pick up shifts 2&chi;<sub>0</sub>n<sub>r</sub>, 2&chi;<sub>1</sub>n<sub>r</sub>; the logical gap is modified by 2&chi;<sub>DR</sub>n<sub>r</sub> where &chi;<sub>DR</sub> = &chi;<sub>1</sub> - &chi;<sub>0</sub>. (d) Top: "erasure readout" configuration where &#124;0<sub>L</sub>&rang; and &#124;1<sub>L</sub>&rang; give nearly identical resonator responses but &#124;gg&rang; is well-separated. Bottom: by detuning the two transmons the same resonator becomes a three-state logical readout.</figcaption>
+        </figure>
+
+        <p><strong>&chi;-matching calibration.</strong> &chi;<sub>DR</sub> = &chi;<sub>1</sub> - &chi;<sub>0</sub> is measured by number-splitting spectroscopy versus the dual-rail operating point. A zero-crossing near 4.5 GHz sets the &chi;-matched working point, at which &chi;<sub>DR</sub>/2&pi; = -0.7(5) kHz while &chi;/2&pi; = -4.25 MHz, giving a &chi;-matching ratio &#124;&chi;<sub>DR</sub>/&chi;&#124; that stays below 10<sup>-2</sup> across a 600 MHz tuning window.</p>
+
+        <p><strong>Erasure pulse and integration window.</strong> A 384 ns square microwave pulse is applied to the SRO at the frequency where the resonator sits when the dual-rail is in &#124;gg&rang;, so the drive is detuned from the logical-state resonator by 2&#124;&chi;&#124; &sim; 8 MHz (selective darkening — the photon population is dominated by &#124;gg&rang; and strongly suppressed for &#124;0<sub>L</sub>&rang;/&#124;1<sub>L</sub>&rang;). Integration extends to 496 ns to capture &sim; 8.7/&kappa; of ringdown. The SRO passively resets through its &kappa;, eliminating the need for an active depletion sequence.</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: &chi;-matching and interleaved randomized benchmarking (ILRB). (a) Measured &chi;<sub>DR</sub> (blue) vs. dual-rail operating point crosses zero near 4.5 GHz; red is a circuit-parameter model. (b) &#124;&chi;<sub>DR</sub>/&chi;&#124; stays &le; 10<sup>-2</sup> over a 600 MHz tuning range (red bar marks 10<sup>-2</sup>). (c) ILRB sequence: erasure checks are inserted every 5 Cliffords in both reference and interleaved runs (common EC) with additional interleaved EC between gates; an X echo pulse is folded in during each EC. (d) Postselection probability (blue=ref, red=interleaved) decays exponentially to 0 giving 2.54(1)&times;10<sup>-2</sup> erasure error per check; postselected survival (purple, orange) fit to 1/2-offset exponentials yields 6.0(2)&times;10<sup>-4</sup> residual error per check.</figcaption>
+        </figure>
+
+        <p><strong>Induced-error decomposition.</strong> To separate the erasure-check-induced errors from idling errors, the authors perform two dedicated experiments:</p>
+        <ul>
+          <li><em>Bit-flip characterization</em> — prepare in &#124;0<sub>L</sub>&rang; or &#124;1<sub>L</sub>&rang;, apply a variable number of ECs inside a <em>fixed</em> 49.92 &mu;s idling window, postselect on no detected erasure, measure in Z. The difference of the two polarization decays yields p<sub>1</sub> = 2.8(1)&times;10<sup>-4</sup> induced bit-flip per check.</li>
+          <li><em>Phase characterization</em> — a Hahn echo sequence with variable number of ECs inside the same fixed evolution time isolates induced dephasing. The decay of &radic;(&lang;X&rang;<sup>2</sup>+&lang;Y&rang;<sup>2</sup>) gives p<sub>2</sub> = 2.2(3)&times;10<sup>-4</sup> per check; subtracting the p<sub>1</sub>/2 contribution leaves pure induced dephasing p<sub>&phi;</sub> = 8(3)&times;10<sup>-5</sup>.</li>
+        </ul>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: Benchmarking induced errors of a single erasure check. (a) Sequence for bit-flip characterization: prepare &#124;0<sub>L</sub>&rang;/&#124;1<sub>L</sub>&rang;, insert N ECs, read out in Z. (b) Sequence for phase characterization: Hahn echo with N interleaved ECs at fixed 49.92 &mu;s total evolution time. (c) Postselected P(1<sub>L</sub>) vs. number of checks for the two initial states. (d) Difference of the two curves fits an exponential to 0 giving p<sub>1</sub> = 2.8(1)&times;10<sup>-4</sup>. (e) Postselected phase coherence initially <em>rises</em> as more checks suppress two-step relaxation-reheating processes, then decays with slope p<sub>2</sub> = 2.2(3)&times;10<sup>-4</sup>.</figcaption>
+        </figure>
+
+        <p><strong>Readout-induced erasure.</strong> To understand why the erasure error per check is roughly twice what a naive T<sub>erasure</sub> estimate would predict, the authors compare idle T<sub>erasure</sub> to the T<sub>erasure</sub> observed under a calibrated continuous readout drive, and monitor both over &sim;48 hours. A median &sim;2&times; reduction of T<sub>erasure</sub> under readout is seen, with frequent dropouts correlated with near-resonant TLS defects — consistent with the Stark-shift / drive-induced broadening mechanisms identified in recent transmon readout studies (Refs. 27-30).</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: Readout-induced degradation of T<sub>erasure</sub>. (a) 1 - P(gg) relaxation curves idle (black) vs. under continuous readout drive (color), showing clear suppression of T<sub>erasure</sub> for both &#124;0<sub>L</sub>&rang; (left) and &#124;1<sub>L</sub>&rang; (right). (b) CDFs over 48 hours: median T<sub>erasure</sub> drops from 24.4 &mu;s (&#124;0<sub>L</sub>&rang; idle) / 21.0 &mu;s (&#124;1<sub>L</sub>&rang; idle) to 12.2 / 11.3 &mu;s under readout. (c) Time series of the same data shows the readout-drive trace has more frequent sporadic dropouts, which correlate with near-resonant TLS defects characterized separately by spectroscopy.</figcaption>
+        </figure>
+
+        <p><strong>Continuous parallel erasure detection.</strong> The same 384 ns probe is replaced by an always-on drive of identical frequency and amplitude while single-qubit X90 gates run on the dual-rail qubit. The continuous heterodyne record is partitioned into fixed integration windows (e.g. 480 ns, corresponding to 10 Cliffords) and each window is threshold-classified as an erasure event or not. Because &chi;-matching hides logical information from the resonator, this continuous measurement does not dephase the logical subspace — a property that is essentially unique to the SRO architecture.</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5: Continuous parallel erasure detection. (a) Single-qubit RB is run with an always-on SRO probe; the continuous record is integrated and classified in fixed windows. (b) Postselected survival with continuous checks (red) vs. end-of-line-only checks (gray) gives residual error per X90 = 6.4(3)&times;10<sup>-5</sup>. (c) Histogram of 480 ns-integrated erasure measurements (SNR = 16.1(1), separation error &sim;0.23%); red line is the classification threshold. (d) Measurement SNR scales linearly with integration time. (e) Example time-resolved trajectories at integration times 96, 192, 480, 960 ns: longer integration buys accuracy at the cost of temporal resolution; the bottom row shows a reheating event where missing it would contaminate the logical data. (f) 5-day CDFs of X90 erasure error and residual error for continuous vs. 10-discrete checks show continuous adds &le; 10<sup>-5</sup> residual error per X90 while suppressing the high-error tail from sporadic TLS-mediated leakage/seepage.</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Ancilla-free erasure check for dual-rail transmons.</strong> A single dispersively-coupled, symmetrically-coupled resonator replaces the ancilla transmon + dedicated readout resonator architecture used in all prior dual-rail erasure-check demonstrations.</li>
+          <li><strong>&chi;-matching over a wide tuning band.</strong> Engineered symmetric coupling yields &#124;&chi;<sub>DR</sub>/&chi;&#124; &le; 10<sup>-2</sup> across 600 MHz of tuning, preserving the flexibility needed to dodge TLS defects and spectator-mode collisions.</li>
+          <li><strong>State-of-the-art erasure-check residual error.</strong> 6.0(2)&times;10<sup>-4</sup> per 384 ns check, with an explicit error budget showing that &lt; 20% of the residual error comes from the check itself and idling error during the measurement dominates — a clean path to further improvement via faster readout.</li>
+          <li><strong>New operating modality: continuous erasure detection in parallel with logical gates.</strong> A simultaneous X90 residual error of 7.2&times;10<sup>-5</sup> with &lt; 1&times;10<sup>-5</sup> attributable to the erasure monitoring, together with empirical suppression of the high-error TLS-driven tail that plagues single-qubit RB.</li>
+          <li><strong>Multi-role resonator.</strong> By breaking &chi;-degeneracy on demand (flux-detuning a transmon or mapping logical states onto different excitation numbers), the same SRO also performs logical readout and higher-excitation leakage detection — a compact building block for a QEC unit cell.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>Device.</strong> Two flux-tunable transmons (tuning range &sim;2.5-5.5 GHz) with exchange coupling g such that &Omega;<sub>DR</sub>/2&pi; = 94.15 MHz. Readout resonator with &kappa;<sub>&#124;gg&rang;</sub>/2&pi; = 12.4(2) MHz and &kappa;<sub>&#124;1<sub>L</sub>&rang;</sub>/2&pi; = 10.5(1) MHz (slight asymmetry due to the readout-Purcell parameter regime).</li>
+          <li><strong>Coherence (median over 5 days at 4.5 GHz working point).</strong> T<sub>1</sub> = 2176 &mu;s, CPMG-16 T<sub>2</sub> = 1116 &mu;s, CPMG-1 T<sub>2</sub> = 471 &mu;s, idle T<sub>erasure</sub><sup>&#124;0<sub>L</sub>&rang;</sup> = 27 &mu;s, T<sub>erasure</sub><sup>&#124;1<sub>L</sub>&rang;</sup> = 24 &mu;s.</li>
+          <li><strong>Measurement chain.</strong> Phase-preserving amplifier with TWPA first stage; effective efficiency &eta;<sub>eff</sub>/&eta;<sub>ideal</sub> = 25(1)% (i.e. &eta;<sub>eff</sub> &sim; 0.125 with &eta;<sub>ideal</sub> = 0.5 for phase-preserving).</li>
+          <li><strong>Erasure check timing.</strong> 384 ns square pulse + 112 ns ringdown integration = 496 ns total measurement window; common EC cadence every 5 Cliffords (&sim;2.8 &mu;s) in ILRB.</li>
+          <li><strong>Single-shot SNR.</strong> Calibrated readout SNR = 11.6(5), separation error &epsilon;<sub>sep</sub> = 0.8%; for the 480 ns continuous-window analysis SNR = 16.1(1), &epsilon;<sub>sep</sub> = 0.23%.</li>
+          <li><strong>X90 gate.</strong> 24 ns duration; baseline X90 residual error (no continuous check) = 9&times;10<sup>-5</sup> (device table) / 6.5&times;10<sup>-5</sup> (median in Fig. 5(f)); Cliffords are implemented as two X90 + virtual-Z sandwiches (Ref. 35).</li>
+          <li><strong>ILRB protocol.</strong> Adapted from Ref. 4: common ECs every 5 Cliffords in both ref and interleaved runs; the interleaved run additionally inserts an EC (with embedded X echo pulse) between gates. Erasure error per check is extracted from the ratio of postselection decays; residual error from postselected survival with symmetrized readout.</li>
+          <li><strong>Stability monitoring.</strong> Coherence and erasure-error metrics reported as medians from &sim;800 repeated measurements over 5 days <em>without recalibration</em>, giving a realistic picture of drift.</li>
+        </ul>
+
+        <h2>Results</h2>
+
+        <table>
+          <thead><tr><th>Metric</th><th>Value</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Erasure-check duration</td><td>384 ns pulse + 112 ns ringdown</td><td>SRO passively resets via &kappa;</td></tr>
+            <tr><td>Erasure error per check</td><td>2.54(1)&times;10<sup>-2</sup></td><td>Dominated by T<sub>erasure</sub> decay during check</td></tr>
+            <tr><td>Residual error per check</td><td>6.0(2)&times;10<sup>-4</sup></td><td>&lt; 20% from the check itself</td></tr>
+            <tr><td>Induced bit-flip per check p<sub>1</sub></td><td>2.8(1)&times;10<sup>-4</sup></td><td>Fixed-time protocol</td></tr>
+            <tr><td>Induced dephasing per check p<sub>&phi;</sub></td><td>8(3)&times;10<sup>-5</sup></td><td>Echo protocol, after subtracting p<sub>1</sub>/2</td></tr>
+            <tr><td>Erasure noise bias</td><td>42(1)</td><td>Ratio of erasure to residual error</td></tr>
+            <tr><td>Continuous-check X90 residual error</td><td>6.4(3)&times;10<sup>-5</sup> (fit) / 7.2&times;10<sup>-5</sup> (5-day median)</td><td>Baseline w/o continuous check: 6.5&times;10<sup>-5</sup></td></tr>
+            <tr><td>Continuous-check X90 erasure error</td><td>2.6&times;10<sup>-3</sup></td><td>Baseline w/ discrete 10-checks: 1.8&times;10<sup>-3</sup></td></tr>
+            <tr><td>Excess residual error from parallel check</td><td>&lt; 1&times;10<sup>-5</sup> per X90</td><td>Consistent with (p<sub>1</sub>+p<sub>&phi;</sub>)/3 scaled to 24 ns</td></tr>
+            <tr><td>&#124;&chi;<sub>DR</sub>/&chi;&#124;</td><td>&le; 10<sup>-2</sup> over 600 MHz</td><td>Tuning flexibility for TLS dodging</td></tr>
+          </tbody>
+        </table>
+
+        <p>The published <em>residual-error budget</em> (Table I in the paper) reproduces &sim;80% of the measured 6.0(2)&times;10<sup>-4</sup> from independently characterized contributions: T<sub>1</sub>-idle during the check (7.7&times;10<sup>-5</sup>), T<sub>&phi;</sub>-idle (1.11&times;10<sup>-4</sup>), two X90 echo pulses (1.8&times;10<sup>-4</sup>), p<sub>1</sub>/3 (9.3&times;10<sup>-5</sup>), and p<sub>&phi;</sub>/3 (2.7&times;10<sup>-5</sup>). The dominant share is idling error, not the check itself — a favorable bottleneck that fast-readout advances (Refs. 14-16, 26) can directly attack.</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig6.png" alt="Figure 6">
+          <figcaption>Appendix C: Dispersive shift characterization. (a) Resonator spectroscopy for &#124;gg&rang; (blue) and &#124;1<sub>L</sub>&rang; (red) resolves &chi;. (b) AC-Stark-shifted &#124;gg&rang;&harr;&#124;1<sub>L</sub>&rang; transition vs. readout probe amplitude (left) maps the photon number n<sub>r</sub> and recovers &chi; (right: 2D Stark scan). (c) Number-splitting Ramsey-style scan in n<sub>r</sub> extracts &chi;<sub>DR</sub> directly from the dual-rail gap modulation. (d) Detuning slopes at three operating points (4.4, 4.5, 4.6 GHz) give &chi;<sub>DR</sub>/2&pi; = -11(5), -0.7(5), +12.2(4) kHz, confirming the zero-crossing near the &chi;-matched point.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig7.png" alt="Figure 7">
+          <figcaption>Appendix: IQ-plane readout statistics. (a) 2D histogram of the integrated readout signal showing well-separated &#124;gg&rang; (red) and &#124;0<sub>L</sub>&rang;/&#124;1<sub>L</sub>&rang; (blue) clouds, with a faint &#124;X&rang; higher-excitation population. (b) Binary-classification boundary at radius &sigma; around the logical cloud. (c,d) Residual and erasure errors as functions of the erasure-check threshold in units of &sigma;: there is a broad minimum where leakage postselection can push residual error below the binary-classification band.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig8.png" alt="Figure 8">
+          <figcaption>Appendix G: TLS-correlated T<sub>erasure</sub> dropouts. (a) T<sub>erasure</sub> time series for idle and readout (&#124;1<sub>L</sub>&rang;) over &sim;60 hours. (b) Simultaneous &#124;1<sub>L</sub>&rang; spectroscopy showing transient dark features that coincide with T<sub>erasure</sub> dropouts — strong circumstantial evidence that near-resonant TLS defects are the main driver of sporadic erasure-time fluctuations.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig9.png" alt="Figure 9">
+          <figcaption>Appendix I: Stability CDFs over 5 days. (a) Erasure error for X90 (1.7&times;10<sup>-3</sup>), common-check EC (3.5&times;10<sup>-2</sup>), and all-check EC (3.9&times;10<sup>-2</sup>). (b) Residual error for X90 (9.1&times;10<sup>-5</sup>), common-check EC (8.3&times;10<sup>-4</sup>), and all-check EC (5.3&times;10<sup>-4</sup>). (c) Coherence distributions: T<sub>1</sub> = 2.18 ms, CPMG-16 T<sub>2</sub> = 1.12 ms, CPMG-1 T<sub>2</sub> = 471 &mu;s, T<sub>erasure</sub><sup>&#124;0<sub>L</sub>&rang;</sup> &sim; 30 &mu;s, T<sub>erasure</sub><sup>&#124;1<sub>L</sub>&rang;</sup> &sim; 28 &mu;s.</figcaption>
+        </figure>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li><strong>Hardware savings that scale.</strong> Removing the ancilla transmon per data qubit is a first-order architectural win for a full QEC code where hundreds of data qubits each need erasure detection — the saving is in transmons, control lines, readout lines, and calibration burden simultaneously.</li>
+          <li><strong>Transparent error budget.</strong> The paper doesn't just quote numbers — it breaks the 6.0(2)&times;10<sup>-4</sup> residual into independently benchmarked contributions that sum to &sim;4.9&times;10<sup>-4</sup> (&sim;80% of the measurement), and identifies idling error as the dominant contribution, which directly points at faster-readout techniques as the next lever.</li>
+          <li><strong>New operational modality.</strong> Continuous parallel erasure detection that doesn't dephase the logical qubit is genuinely novel — and the data in Fig. 5(f) empirically show that it suppresses the high-error tail of the X90 error distribution (the TLS-driven outliers), which is precisely the regime where QEC performance suffers most.</li>
+          <li><strong>Realistic stability characterization.</strong> 5-day medians without recalibration, CDFs for T<sub>1</sub>/T<sub>2</sub>/T<sub>erasure</sub>, and explicit correlation of sporadic T<sub>erasure</sub> dropouts with TLS spectroscopy give a picture of what the check actually does on a real device over a real timescale, not the best single-shot number.</li>
+          <li><strong>&chi;-matching over 600 MHz.</strong> The tuning bandwidth is wide enough that the dual-rail can be retuned around fabrication-dependent TLS defects without losing the &chi;-matched condition — an operational detail that will matter a lot at scale.</li>
+          <li><strong>Multi-role resonator.</strong> One SRO can perform erasure detection, logical readout (by breaking the &chi;-degeneracy), and higher-excitation leakage detection, which dramatically compresses the device inventory per logical qubit.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>Erasure error still dominated by T<sub>erasure</sub>.</strong> The 2.54(1)&times;10<sup>-2</sup> erasure error per check, and especially the readout-induced &sim;2&times; reduction of T<sub>erasure</sub>, is set by the underlying transmon T<sub>1</sub> and by readout-induced loss enhancement — improvements will require transmon materials/fabrication work, not just circuit design.</li>
+          <li><strong>No two-qubit gate or multi-qubit stabilizer demonstration.</strong> The paper benchmarks a single dual-rail qubit and single-qubit gates; integration with dual-rail CZ gates and a surface-code or qLDPC stabilizer cycle (where syndrome extraction timing and leakage dynamics get harder) is left for future work.</li>
+          <li><strong>Measurement efficiency is modest.</strong> &eta;<sub>eff</sub>/&eta;<sub>ideal</sub> = 25% leaves a factor &gt; 4 improvement in SNR for a given photon number available from amplifier / measurement-chain engineering (Ref. 26), which the error budget says would directly attack the idling-error dominance.</li>
+          <li><strong>Soft information not exploited in the decoder.</strong> Continuous parallel detection naturally produces analog readout trajectories (Fig. 5(e), left column) that a soft-information decoder (Refs. 17, 18) could consume, but the paper only demonstrates binary thresholding — the soft-information QEC claim is therefore architectural rather than experimentally proven end-to-end.</li>
+          <li><strong>Induced bit-flip mechanism not pinned down.</strong> p<sub>1</sub> = 2.8&times;10<sup>-4</sup> is consistent with rare measurement-induced-state-transition (MIST) events and/or slow TLS-mediated leakage/seepage, but no direct attribution is made — the authors "leave a detailed study of bit-flip mechanisms to future work."</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>The residual-error budget attributes 1.8&times;10<sup>-4</sup> (&sim;30%) to the two X90 dynamical-decoupling echo pulses. In a realistic surface-code or qLDPC cycle with cycle time &ge; the erasure-check duration, those echoes fold into the stabilizer schedule "for free". What does the residual error become in a more realistic circuit, and at what point does it drop below the &sim;1&times;10<sup>-4</sup> regime needed for high-threshold FT operation?</li>
+          <li>Continuous parallel erasure detection preserves the &chi;-matched QND property, but the paper shows a 45% increase in erasure error (1.8 &rarr; 2.6 &times;10<sup>-3</sup> per X90) due to readout-induced T<sub>erasure</sub> degradation. Is there a pulsed / duty-cycled variant of the parallel scheme that recovers most of the temporal resolution with less T<sub>erasure</sub> damage?</li>
+          <li>&chi;-matching is an <em>engineered</em> symmetry. How sensitive is the 600 MHz flat &#124;&chi;<sub>DR</sub>/&chi;&#124; band to fabrication-level asymmetries (g<sub>RT1</sub> vs. g<sub>RT2</sub>, junction frequency spread) at scale? Could a dispersive-shift tuning knob (e.g., a SNAIL coupler) restore &chi;-matching on a defect-by-defect basis?</li>
+          <li>The authors note that breaking the &chi;-degeneracy via flux-detuning turns the SRO into a three-state logical readout. What is the measurement time / fidelity tradeoff for this mode compared to a dedicated logical-readout resonator? When is the &chi;-matched "single resonator does everything" architecture a net win vs. the more traditional split architecture?</li>
+          <li>Figure 5(f) suggests continuous monitoring empirically <em>suppresses</em> the high-error TLS-mediated tail of the X90 error distribution. Is this because the fast checks catch leakage/seepage events that would otherwise corrupt many gates, or because the TLS dynamics themselves are slower than the integration window? An ablation that varies the integration window (and thereby the effective check cadence) would isolate these mechanisms — and would quantify the soft-information gain claimed for the decoder.</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>The SRO architecture turns erasure detection from a bolt-on ancilla operation into a <em>native primitive</em> of the dual-rail qubit itself. By exploiting the fact that &chi;-matching hides logical information from the readout resonator, one resonator now does what previously took a transmon ancilla plus a dedicated readout path, and does it in 384 ns with a residual error approaching the single-qubit-gate error floor. The new "continuous parallel" modality is the more speculative contribution — it points at a future where erasure detection runs all the time, for free, alongside logical gates, and feeds soft information into the decoder — but even the pulsed mode alone is a clear step forward for hardware-efficient erasure-based QEC on superconducting dual-rail qubits.</p>
+        <p>Read this paper in two passes. First pass: Figs. 1 and 2 and the residual-error budget in Table I — they capture the core idea (&chi;-matching), the key number (6.0(2)&times;10<sup>-4</sup> per check), and where that number comes from. Second pass: Section V and Fig. 5(f) — the continuous-parallel demonstration and its CDF-level suppression of the TLS-driven high-error tail is the piece of the paper most likely to change how the next generation of dual-rail-qubit QEC cycles are designed.</p>
+      `
+    },
+    ko: {
+      title: "대칭 결합 공진기를 이용한 듀얼-레일 큐비트의 빠르고 고충실도 소거 검출",
+      summary: "듀얼-레일 큐비트의 두 트랜스몬에 대칭 결합된 단일 판독 공진기를 이용하여 384 ns 만에 6.0(2)×10⁻⁴의 잔여 오류로 회로 중간 소거 검사를 수행하고, 동일한 공진기로 X90 게이트와 병렬로 연속 소거 검출을 수행하면서도 유도된 게이트 오류를 1×10⁻⁵ 미만으로 유지합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 듀얼-레일 트랜스몬 큐비트를 위한 하드웨어 효율적 소거 검출 프리미티브를 제시합니다. <strong>단 하나의 분산 결합 판독 공진기</strong>를 두 트랜스몬에 대칭으로 결합하여 두 논리 상태의 분산 이동(&chi;)이 일치(&chi;-matching)하도록 설계하면, 이 공진기가 동시에 (i) 보조 큐비트 없는 소거 검출기, (ii) 논리 상태 판독 요소, (iii) 누출 검출기 역할을 합니다. 384 ns 단일 샷 소거 검사는 2.54(1)&times;10<sup>-2</sup>의 소거 오류와 6.0(2)&times;10<sup>-4</sup>의 최첨단 잔여 오류를 달성하고, 더 놀라운 것은 같은 공진기로 X90 게이트와 <em>병렬</em>로 연속 소거 감시를 수행하면서 6.5&times;10<sup>-5</sup> 기준선 위에 1&times;10<sup>-5</sup> 미만의 오류만 추가한다는 점입니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>초전도 듀얼-레일 큐비트에 대해, 빠르고, 고충실도이며, 하드웨어 효율적(추가 보조 트랜스몬 없음)이고, 논리 게이트와 병렬로 실행 가능하면서도, 소거 큐비트를 QEC에 매력적으로 만드는 강한 소거 노이즈 편향을 보존하는 회로 중간 소거 검사를 만들 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>소거 큐비트는 주된 물리 오류를 <em>예고된</em> 소거 이벤트로 변환하여 페이울리 오류보다 훨씬 높은 임계값과 낮은 오버헤드로 디코딩할 수 있기 때문에 오류 내성 양자 컴퓨팅의 선도적 패러다임입니다. 듀얼-레일 트랜스몬의 논리 상태 &#124;0<sub>L</sub>&rang; = (&#124;ge&rang; - &#124;eg&rang;)/&radic;2와 &#124;1<sub>L</sub>&rang; = (&#124;ge&rang; + &#124;eg&rang;)/&radic;2는 두 결합 트랜스몬의 단일 여기 부분공간에 존재하므로, 어느 트랜스몬의 T<sub>1</sub> 이벤트는 시스템을 결정론적으로 합동 바닥 상태 &#124;gg&rang;로 떨어뜨립니다. 따라서 시스템이 &#124;gg&rang;에 있는지(그리고 오직 &#124;gg&rang;에만) 검출하는 것은 논리 부분공간을 탈위상시키지 않는 한 QND 소거 검사와 동치입니다.</p>
+
+        <p>듀얼-레일 트랜스몬에 대한 이전 회로 중간 소거 검사 시연(Levine et al. PRX 2024, de Leon/예일/구글 그룹)은 듀얼-레일 쌍에 분산 결합된 <em>추가</em> 보조 트랜스몬에 의존합니다. 이 보조 큐비트는 조건부 상태 매핑 펄스를 구동하는 데 쓰이고 그 결과가 전용 공진기로 판독됩니다. 이 방식은 작동하지만 데이터 큐비트당 2개 트랜스몬 분량의 제어/판독 하드웨어를 소비하고 CZ 게이트 duration과 경쟁하는 시간 오버헤드를 지불합니다. 따라서 커뮤니티는 QND 특성과 논리 코히런스를 보존하되 보조 큐비트를 제거하는 소거 검사 프리미티브를 찾고 있었습니다.</p>
+
+        <p>여기서 탐구되는 아이디어(원래 Tsunoda et al. Ref. 13에서 제안됨)는 <em>단일</em> 판독 공진기를 두 트랜스몬에 대칭으로 결합하는 것입니다(g<sub>RT1</sub> = g<sub>RT2</sub>). 분산 한계에서 공진기는 세 가지 관련 상태 &#124;gg&rang;, &#124;0<sub>L</sub>&rang;, &#124;1<sub>L</sub>&rang;를 봅니다. 이들의 분산 이동은 0, 2&chi;<sub>0</sub>, 2&chi;<sub>1</sub>입니다. &chi;<sub>0</sub> = &chi;<sub>1</sub>(&chi;-matching 조건)이면, 공진기는 소거 상태 &#124;gg&rang;를 논리 부분공간과 구분하지만 &#124;0<sub>L</sub>&rang;와 &#124;1<sub>L</sub>&rang;를 구분할 수 없습니다 — 즉, 측정 유도 논리 탈위상 없이 QND 소거 검사를 수행합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>장치는 g/2&pi; &sim; 47 MHz로 교환 결합된 두 튜너블 트랜스몬(듀얼-레일 쌍)과, 양쪽에 동일한 강도 g<sub>RT1</sub> = g<sub>RT2</sub>로 용량 결합된 공통 판독 공진기로 구성되며, 이 공진기는 단일 모드 Purcell 필터를 거쳐 전송선으로 결합됩니다. 공진기(SRO — 대칭 결합 판독 공진기)의 &kappa;/2&pi; &sim; 12 MHz. 듀얼-레일 동작점(두 큐비트가 공명하도록 튜닝되는 트랜스몬 주파수)은 튜너블한 플럭스 파라미터로, 실험이 &chi;-matching 지형의 어디에 위치하는지를 결정합니다.</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig1.png" alt="Figure 1">
+          <figcaption>그림 1: 소거 검출 개념도. (a) 듀얼-레일 부분공간: &#124;0<sub>L</sub>&rang;와 &#124;1<sub>L</sub>&rang;는 두 트랜스몬의 단일 여기 대칭/반대칭 중첩; T<sub>1</sub> 감쇠는 시스템을 논리 부분공간 밖으로, &#124;gg&rang;로 보내며 진폭 감쇠를 예고된 소거로 변환. (b) 회로: g로 교환 결합된 두 트랜스몬(T1, T2), 동일 강도 g<sub>RT1</sub> = g<sub>RT2</sub>로 판독 공진기(R)에 대칭 결합, Purcell 필터(P)가 복사 손실 억제. (c) 광자 수 의존 이동의 에너지 준위 그림: &#124;0<sub>L</sub>&rang;, &#124;1<sub>L</sub>&rang;는 2&chi;<sub>0</sub>n<sub>r</sub>, 2&chi;<sub>1</sub>n<sub>r</sub>만큼 이동; 논리 간극은 &chi;<sub>DR</sub> = &chi;<sub>1</sub> - &chi;<sub>0</sub>일 때 2&chi;<sub>DR</sub>n<sub>r</sub>만큼 수정. (d) 위: "소거 판독" 구성 — &#124;0<sub>L</sub>&rang;와 &#124;1<sub>L</sub>&rang;가 거의 동일한 공진기 응답을 주지만 &#124;gg&rang;는 잘 분리됨. 아래: 두 트랜스몬을 디튠하면 동일 공진기가 3-상태 논리 판독이 됨.</figcaption>
+        </figure>
+
+        <p><strong>&chi;-matching 캘리브레이션.</strong> &chi;<sub>DR</sub> = &chi;<sub>1</sub> - &chi;<sub>0</sub>를 듀얼-레일 동작점에 대한 수 분리 분광법으로 측정. 4.5 GHz 근처의 영점 교차가 &chi;-matched 작동점을 설정하며, 이 점에서 &chi;<sub>DR</sub>/2&pi; = -0.7(5) kHz, &chi;/2&pi; = -4.25 MHz로 &chi;-matching 비율 &#124;&chi;<sub>DR</sub>/&chi;&#124;가 600 MHz 튜닝 창 전체에서 10<sup>-2</sup> 이하로 유지됩니다.</p>
+
+        <p><strong>소거 펄스와 적분 창.</strong> 384 ns 사각 마이크로파 펄스를 듀얼-레일이 &#124;gg&rang; 상태일 때의 공진기 주파수에 인가하여, 구동이 논리 상태 공진기로부터 2&#124;&chi;&#124; &sim; 8 MHz 디튠되게 합니다(선택적 암화화 — 광자 수는 &#124;gg&rang;가 지배하고 &#124;0<sub>L</sub>&rang;/&#124;1<sub>L</sub>&rang;는 강하게 억제됨). 적분은 &sim; 8.7/&kappa;의 링다운을 포착하기 위해 496 ns까지 연장. SRO는 &kappa;를 통해 수동적으로 리셋되어 능동 소진 시퀀스가 필요 없음.</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig2.png" alt="Figure 2">
+          <figcaption>그림 2: &chi;-matching과 인터리브 무작위 벤치마킹(ILRB). (a) 측정된 &chi;<sub>DR</sub>(파랑)가 듀얼-레일 동작점에 대해 4.5 GHz 근처에서 영점 교차; 빨강은 회로 파라미터 모델. (b) &#124;&chi;<sub>DR</sub>/&chi;&#124;가 600 MHz 튜닝 범위에서 &le; 10<sup>-2</sup> 유지(빨간 막대는 10<sup>-2</sup>). (c) ILRB 시퀀스: 소거 검사가 기준 및 인터리브 런 모두에서 5 Cliffords마다 삽입(공통 EC)되고 인터리브 런은 게이트 사이에 추가 EC; 각 EC 내에 X 에코 펄스 포함. (d) 후선택 확률(파랑=기준, 빨강=인터리브)이 0으로 지수 감쇠하여 2.54(1)&times;10<sup>-2</sup> 소거 오류/검사; 후선택 생존 확률(보라, 주황)이 1/2 오프셋 지수에 피팅되어 6.0(2)&times;10<sup>-4</sup> 잔여 오류/검사.</figcaption>
+        </figure>
+
+        <p><strong>유도 오류 분해.</strong> 소거 검사 유도 오류와 idling 오류를 분리하기 위해 저자들은 두 개의 전용 실험을 수행합니다:</p>
+        <ul>
+          <li><em>비트 플립 특성화</em> — &#124;0<sub>L</sub>&rang; 또는 &#124;1<sub>L</sub>&rang;로 준비, <em>고정된</em> 49.92 &mu;s idling 창 안에 가변 수의 EC 삽입, 소거 미검출로 후선택, Z 측정. 두 편극 감쇠의 차이에서 검사당 유도 비트 플립 p<sub>1</sub> = 2.8(1)&times;10<sup>-4</sup>.</li>
+          <li><em>위상 특성화</em> — 같은 고정 진화 시간 내 가변 수의 EC를 포함한 Hahn 에코 시퀀스로 유도 탈위상 분리. &radic;(&lang;X&rang;<sup>2</sup>+&lang;Y&rang;<sup>2</sup>) 감쇠가 검사당 p<sub>2</sub> = 2.2(3)&times;10<sup>-4</sup>; p<sub>1</sub>/2 기여를 빼면 순수 유도 탈위상 p<sub>&phi;</sub> = 8(3)&times;10<sup>-5</sup>.</li>
+        </ul>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig3.png" alt="Figure 3">
+          <figcaption>그림 3: 단일 소거 검사 유도 오류의 벤치마킹. (a) 비트 플립 특성화 시퀀스: &#124;0<sub>L</sub>&rang;/&#124;1<sub>L</sub>&rang; 준비, N개 EC 삽입, Z 기저로 판독. (b) 위상 특성화 시퀀스: 고정 49.92 &mu;s 총 진화 시간에 N개 인터리브 EC가 있는 Hahn 에코. (c) 두 초기 상태에 대한 후선택 P(1<sub>L</sub>) vs. 검사 수. (d) 두 곡선의 차이가 0으로의 지수에 피팅되어 p<sub>1</sub> = 2.8(1)&times;10<sup>-4</sup>. (e) 후선택 위상 코히런스는 더 많은 검사가 두 단계 relaxation-reheating 과정을 억제하면서 먼저 <em>상승</em>하고, 이후 기울기 p<sub>2</sub> = 2.2(3)&times;10<sup>-4</sup>로 감쇠.</figcaption>
+        </figure>
+
+        <p><strong>판독 유도 소거.</strong> 검사당 소거 오류가 순진한 T<sub>erasure</sub> 추정의 약 두 배인 이유를 이해하기 위해, 저자들은 idle T<sub>erasure</sub>와 캘리브레이션된 연속 판독 구동 하의 T<sub>erasure</sub>를 비교하고 &sim;48시간 모니터링합니다. 판독 하에서 T<sub>erasure</sub>의 중앙값이 &sim;2배 감소하며, 근공명 TLS 결함과 상관된 빈번한 dropout — 최근 트랜스몬 판독 연구(Refs. 27-30)에서 식별된 Stark 이동/구동 유도 확장 메커니즘과 일치.</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig4.png" alt="Figure 4">
+          <figcaption>그림 4: 판독 유도 T<sub>erasure</sub> 저하. (a) idle(검정)과 연속파 판독 구동 하(색)에서 1 - P(gg) 이완 곡선, &#124;0<sub>L</sub>&rang;(왼쪽)와 &#124;1<sub>L</sub>&rang;(오른쪽) 모두 T<sub>erasure</sub> 명확히 억제. (b) 48시간 CDF: T<sub>erasure</sub> 중앙값이 24.4 &mu;s(&#124;0<sub>L</sub>&rang; idle)/21.0 &mu;s(&#124;1<sub>L</sub>&rang; idle)에서 판독 하 12.2/11.3 &mu;s로 감소. (c) 시계열은 판독 구동 trace가 더 빈번한 산발적 dropout을 보이며, 별도 분광으로 특성화된 근공명 TLS 결함과 상관.</figcaption>
+        </figure>
+
+        <p><strong>연속 병렬 소거 검출.</strong> 단일 큐비트 X90 게이트가 듀얼-레일 큐비트에서 실행되는 동안 동일 주파수/진폭의 구동이 항상 켜져 있는 형태로 384 ns 프로브를 대체. 연속 헤테로다인 기록은 고정 적분 창(예: 480 ns, 10 Cliffords에 해당)으로 분할되고 각 창이 임계값 분류로 소거 이벤트 여부가 결정됩니다. &chi;-matching이 논리 정보를 공진기로부터 숨기므로, 이 연속 측정은 논리 부분공간을 탈위상시키지 않습니다 — SRO 구조에 본질적으로 고유한 성질.</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig5.png" alt="Figure 5">
+          <figcaption>그림 5: 연속 병렬 소거 검출. (a) 단일 큐비트 RB가 상시 SRO 프로브로 실행; 연속 기록을 고정 창에서 적분하고 분류. (b) 연속 검사 하 후선택 생존(빨강) vs. 끝단만 검사(회색) 결과 X90당 잔여 오류 = 6.4(3)&times;10<sup>-5</sup>. (c) 480 ns 적분된 소거 측정 히스토그램(SNR = 16.1(1), 분리 오류 &sim;0.23%); 빨간 선은 분류 임계값. (d) 측정 SNR이 적분 시간에 선형 스케일. (e) 적분 시간 96, 192, 480, 960 ns에서의 시간 분해 궤적 예: 더 긴 적분은 정확도를 사되 시간 분해능을 잃음; 아래 행은 놓치면 논리 데이터가 오염될 reheating 이벤트. (f) 연속 vs. 10 이산 검사의 X90 소거 오류/잔여 오류 5일 CDF — 연속이 X90당 잔여 오류를 &le; 10<sup>-5</sup> 추가하고 산발 TLS 매개 leakage/seepage로 인한 고오류 꼬리를 억제.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>듀얼-레일 트랜스몬을 위한 보조 큐비트 없는 소거 검사.</strong> 단일 분산 결합/대칭 결합 공진기가 모든 이전 듀얼-레일 소거 검사 시연에서 사용된 보조 트랜스몬 + 전용 판독 공진기 구조를 대체.</li>
+          <li><strong>넓은 튜닝 대역에 걸친 &chi;-matching.</strong> 엔지니어링된 대칭 결합이 600 MHz 튜닝 전체에서 &#124;&chi;<sub>DR</sub>/&chi;&#124; &le; 10<sup>-2</sup>를 산출 — TLS 결함과 스펙테이터 모드 충돌 회피에 필요한 유연성 보존.</li>
+          <li><strong>최첨단 소거 검사 잔여 오류.</strong> 384 ns 검사당 6.0(2)&times;10<sup>-4</sup>, 잔여 오류의 &lt; 20%만 검사 자체에서 기인하고 측정 중 idling 오류가 지배함을 명시한 오류 예산 — 빠른 판독을 통한 개선의 명확한 경로.</li>
+          <li><strong>새로운 작동 모드: 논리 게이트와 병렬 연속 소거 검출.</strong> 7.2&times;10<sup>-5</sup>의 동시 X90 잔여 오류 중 소거 감시에 기인하는 것은 &lt; 1&times;10<sup>-5</sup>, 단일 큐비트 RB를 괴롭히는 TLS 구동 고오류 꼬리의 경험적 억제 동반.</li>
+          <li><strong>다역할 공진기.</strong> (트랜스몬 플럭스 디튜닝 또는 논리 상태를 다른 여기 수로 매핑하여) &chi;-축퇴를 필요시 깨뜨림으로써, 같은 SRO가 논리 판독과 고여기 누출 검출까지 수행 — QEC 단위 셀의 간결한 구성 요소.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>장치.</strong> 튜닝 범위 &sim;2.5-5.5 GHz의 두 플럭스-튜너블 트랜스몬, &Omega;<sub>DR</sub>/2&pi; = 94.15 MHz가 되는 교환 결합 g. 판독 공진기 &kappa;<sub>&#124;gg&rang;</sub>/2&pi; = 12.4(2) MHz, &kappa;<sub>&#124;1<sub>L</sub>&rang;</sub>/2&pi; = 10.5(1) MHz(판독-Purcell 파라미터 영역으로 인한 약간의 비대칭).</li>
+          <li><strong>코히런스(4.5 GHz 작동점 5일 중앙값).</strong> T<sub>1</sub> = 2176 &mu;s, CPMG-16 T<sub>2</sub> = 1116 &mu;s, CPMG-1 T<sub>2</sub> = 471 &mu;s, idle T<sub>erasure</sub><sup>&#124;0<sub>L</sub>&rang;</sup> = 27 &mu;s, T<sub>erasure</sub><sup>&#124;1<sub>L</sub>&rang;</sup> = 24 &mu;s.</li>
+          <li><strong>측정 체인.</strong> 위상 보존 증폭기(TWPA 첫 단), 실효 효율 &eta;<sub>eff</sub>/&eta;<sub>ideal</sub> = 25(1)%(즉, &eta;<sub>ideal</sub> = 0.5의 위상 보존에 대해 &eta;<sub>eff</sub> &sim; 0.125).</li>
+          <li><strong>소거 검사 타이밍.</strong> 384 ns 사각 펄스 + 112 ns 링다운 적분 = 총 496 ns 측정 창; ILRB에서 공통 EC cadence는 5 Cliffords마다(&sim;2.8 &mu;s).</li>
+          <li><strong>단일 샷 SNR.</strong> 캘리브레이션된 판독 SNR = 11.6(5), 분리 오류 &epsilon;<sub>sep</sub> = 0.8%; 480 ns 연속 창 분석에서 SNR = 16.1(1), &epsilon;<sub>sep</sub> = 0.23%.</li>
+          <li><strong>X90 게이트.</strong> 24 ns duration; 기준 X90 잔여 오류(연속 검사 없음) = 9&times;10<sup>-5</sup>(장치 표)/6.5&times;10<sup>-5</sup>(그림 5(f) 중앙값); Clifford는 두 X90 + 가상-Z 샌드위치로 구현(Ref. 35).</li>
+          <li><strong>ILRB 프로토콜.</strong> Ref. 4에서 적응: ref와 인터리브 런 모두에서 5 Cliffords마다 공통 EC; 인터리브 런은 추가로 게이트 사이에 EC(X 에코 펄스 포함) 삽입. 검사당 소거 오류는 후선택 감쇠 비율에서 추출; 잔여 오류는 대칭화된 판독의 후선택 생존에서 추출.</li>
+          <li><strong>안정성 모니터링.</strong> 5일간 <em>재캘리브레이션 없이</em> &sim;800회 반복 측정의 중앙값으로 보고되는 코히런스와 소거-오류 지표 — 드리프트의 현실적 그림.</li>
+        </ul>
+
+        <h2>실험 결과</h2>
+
+        <table>
+          <thead><tr><th>지표</th><th>값</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>소거 검사 지속 시간</td><td>384 ns 펄스 + 112 ns 링다운</td><td>SRO는 &kappa;로 수동 리셋</td></tr>
+            <tr><td>검사당 소거 오류</td><td>2.54(1)&times;10<sup>-2</sup></td><td>검사 중 T<sub>erasure</sub> 감쇠가 지배</td></tr>
+            <tr><td>검사당 잔여 오류</td><td>6.0(2)&times;10<sup>-4</sup></td><td>검사 자체 기여 &lt; 20%</td></tr>
+            <tr><td>검사당 유도 비트 플립 p<sub>1</sub></td><td>2.8(1)&times;10<sup>-4</sup></td><td>고정 시간 프로토콜</td></tr>
+            <tr><td>검사당 유도 탈위상 p<sub>&phi;</sub></td><td>8(3)&times;10<sup>-5</sup></td><td>에코 프로토콜, p<sub>1</sub>/2 공제 후</td></tr>
+            <tr><td>소거 노이즈 편향</td><td>42(1)</td><td>소거/잔여 오류 비율</td></tr>
+            <tr><td>연속 검사 X90 잔여 오류</td><td>6.4(3)&times;10<sup>-5</sup>(피팅)/7.2&times;10<sup>-5</sup>(5일 중앙값)</td><td>연속 검사 없는 기준: 6.5&times;10<sup>-5</sup></td></tr>
+            <tr><td>연속 검사 X90 소거 오류</td><td>2.6&times;10<sup>-3</sup></td><td>10 이산 검사 기준: 1.8&times;10<sup>-3</sup></td></tr>
+            <tr><td>병렬 검사가 추가한 잔여 오류</td><td>X90당 &lt; 1&times;10<sup>-5</sup></td><td>24 ns로 스케일된 (p<sub>1</sub>+p<sub>&phi;</sub>)/3와 일치</td></tr>
+            <tr><td>&#124;&chi;<sub>DR</sub>/&chi;&#124;</td><td>600 MHz 걸쳐 &le; 10<sup>-2</sup></td><td>TLS 회피를 위한 튜닝 유연성</td></tr>
+          </tbody>
+        </table>
+
+        <p>공개된 <em>잔여-오류 예산</em>(논문의 Table I)은 독립적으로 특성화된 기여로부터 측정된 6.0(2)&times;10<sup>-4</sup>의 &sim;80%를 재현합니다: 검사 중 T<sub>1</sub>-idle(7.7&times;10<sup>-5</sup>), T<sub>&phi;</sub>-idle(1.11&times;10<sup>-4</sup>), 두 X90 에코 펄스(1.8&times;10<sup>-4</sup>), p<sub>1</sub>/3(9.3&times;10<sup>-5</sup>), p<sub>&phi;</sub>/3(2.7&times;10<sup>-5</sup>). 지배적 몫은 검사 자체가 아니라 idling 오류 — 빠른 판독 기술(Refs. 14-16, 26)이 직접 공격할 수 있는 유리한 병목.</p>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig6.png" alt="Figure 6">
+          <figcaption>Appendix C: 분산 이동 특성화. (a) &#124;gg&rang;(파랑)와 &#124;1<sub>L</sub>&rang;(빨강) 공진기 분광으로 &chi; 분해. (b) 판독 프로브 진폭에 대한 AC-Stark 이동된 &#124;gg&rang;&harr;&#124;1<sub>L</sub>&rang; 전이(왼쪽)가 광자 수 n<sub>r</sub>을 매핑하고 &chi; 복원(오른쪽: 2D Stark 스캔). (c) n<sub>r</sub>에서 수 분리 Ramsey 스타일 스캔이 듀얼-레일 간극 변조로부터 &chi;<sub>DR</sub>을 직접 추출. (d) 세 동작점(4.4, 4.5, 4.6 GHz)의 디튜닝 기울기가 &chi;<sub>DR</sub>/2&pi; = -11(5), -0.7(5), +12.2(4) kHz를 주어 &chi;-matched 점 근처 영점 교차 확인.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig7.png" alt="Figure 7">
+          <figcaption>Appendix: IQ 평면 판독 통계. (a) 잘 분리된 &#124;gg&rang;(빨강)와 &#124;0<sub>L</sub>&rang;/&#124;1<sub>L</sub>&rang;(파랑) 클라우드를 보이는 적분된 판독 신호의 2D 히스토그램, 희미한 &#124;X&rang; 고여기 집단. (b) 논리 클라우드 주변 반경 &sigma;의 이진 분류 경계. (c,d) &sigma; 단위 소거 검사 임계값 함수로서의 잔여 오류와 소거 오류: leakage 후선택이 이진 분류 띠 아래로 잔여 오류를 밀어 내릴 수 있는 넓은 최소값 존재.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig8.png" alt="Figure 8">
+          <figcaption>Appendix G: TLS 상관 T<sub>erasure</sub> dropout. (a) &sim;60시간의 idle과 판독(&#124;1<sub>L</sub>&rang;) T<sub>erasure</sub> 시계열. (b) 동시 &#124;1<sub>L</sub>&rang; 분광 — 일시적 암 특징이 T<sub>erasure</sub> dropout과 동시에 나타남. 근공명 TLS 결함이 산발적 소거 시간 변동의 주요 원인이라는 강한 정황적 증거.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/symmetrically-coupled-erasure/fig9.png" alt="Figure 9">
+          <figcaption>Appendix I: 5일간 안정성 CDF. (a) X90(1.7&times;10<sup>-3</sup>), 공통 체크 EC(3.5&times;10<sup>-2</sup>), 전체 체크 EC(3.9&times;10<sup>-2</sup>)의 소거 오류. (b) X90(9.1&times;10<sup>-5</sup>), 공통 체크 EC(8.3&times;10<sup>-4</sup>), 전체 체크 EC(5.3&times;10<sup>-4</sup>)의 잔여 오류. (c) 코히런스 분포: T<sub>1</sub> = 2.18 ms, CPMG-16 T<sub>2</sub> = 1.12 ms, CPMG-1 T<sub>2</sub> = 471 &mu;s, T<sub>erasure</sub><sup>&#124;0<sub>L</sub>&rang;</sup> &sim; 30 &mu;s, T<sub>erasure</sub><sup>&#124;1<sub>L</sub>&rang;</sup> &sim; 28 &mu;s.</figcaption>
+        </figure>
+
+        <h2>강점</h2>
+        <ul>
+          <li><strong>스케일에 유리한 하드웨어 절감.</strong> 데이터 큐비트당 보조 트랜스몬을 제거하는 것은 수백 개의 데이터 큐비트 각각이 소거 검출을 필요로 하는 전체 QEC 코드에서 1차 구조적 이점 — 트랜스몬, 제어 선, 판독 선, 캘리브레이션 부담이 동시에 절감됩니다.</li>
+          <li><strong>투명한 오류 예산.</strong> 논문은 숫자를 인용하는 데 그치지 않고 6.0(2)&times;10<sup>-4</sup> 잔여를 독립적으로 벤치마크된 기여(&sim;4.9&times;10<sup>-4</sup>, &sim;80%)로 분해하고, idling 오류를 지배적 기여로 식별하여 다음 레버로 더 빠른 판독 기법을 직접 가리킵니다.</li>
+          <li><strong>새로운 작동 모드.</strong> 논리 큐비트를 탈위상시키지 않는 연속 병렬 소거 검출은 진정으로 새로운 것 — 그림 5(f)의 데이터는 이것이 X90 오류 분포의 고오류 꼬리(TLS 구동 이상치)를 경험적으로 억제함을 보여주며, 이는 QEC 성능이 가장 나빠지는 영역.</li>
+          <li><strong>현실적 안정성 특성화.</strong> 재캘리브레이션 없는 5일 중앙값, T<sub>1</sub>/T<sub>2</sub>/T<sub>erasure</sub> CDF, 산발적 T<sub>erasure</sub> dropout과 TLS 분광의 명시적 상관 — 최상의 단일 샷 숫자가 아닌 실제 장치에서 실제 시간 스케일에 걸친 검사의 실제 거동을 보여줌.</li>
+          <li><strong>600 MHz에 걸친 &chi;-matching.</strong> 튜닝 대역폭이 &chi;-matched 조건을 잃지 않고 제작 의존 TLS 결함을 피해 듀얼-레일을 재튜닝할 수 있을 만큼 넓음 — 스케일에서 큰 영향을 미칠 운영상 세부사항.</li>
+          <li><strong>다역할 공진기.</strong> 하나의 SRO가 소거 검출, 논리 판독(&chi;-축퇴 파괴로), 고여기 누출 검출을 수행 가능 — 논리 큐비트당 장치 목록을 극적으로 압축.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li><strong>소거 오류가 여전히 T<sub>erasure</sub>에 의해 지배됨.</strong> 2.54(1)&times;10<sup>-2</sup> 검사당 소거 오류, 특히 판독 유도 &sim;2배 T<sub>erasure</sub> 감소는 기저 트랜스몬 T<sub>1</sub>과 판독 유도 손실 증강에 의해 설정됨 — 개선은 회로 설계만이 아닌 트랜스몬 재료/제작 작업 필요.</li>
+          <li><strong>2-큐비트 게이트나 다중 큐비트 스태빌라이저 시연 없음.</strong> 논문은 단일 듀얼-레일 큐비트와 단일 큐비트 게이트를 벤치마크 — 듀얼-레일 CZ 게이트와 surface-code/qLDPC 스태빌라이저 사이클(증상 추출 타이밍과 누출 동역학이 어려워짐)과의 통합은 향후 작업.</li>
+          <li><strong>측정 효율이 보통.</strong> &eta;<sub>eff</sub>/&eta;<sub>ideal</sub> = 25%는 주어진 광자 수에서 SNR의 &gt; 4배 개선 여지를 남김 — 증폭기/측정 체인 엔지니어링(Ref. 26)에서 가능하며, 오류 예산이 말하는 idling 오류 지배를 직접 공격.</li>
+          <li><strong>디코더가 소프트 정보를 활용하지 않음.</strong> 연속 병렬 검출은 소프트 정보 디코더(Refs. 17, 18)가 소비할 수 있는 아날로그 판독 궤적(그림 5(e) 왼쪽 열)을 자연스럽게 생성하지만, 논문은 이진 임계값만 시연 — 따라서 소프트 정보 QEC 주장은 엔드-투-엔드 실험적으로 증명되지 않고 구조적.</li>
+          <li><strong>유도 비트 플립 메커니즘이 고정되지 않음.</strong> p<sub>1</sub> = 2.8&times;10<sup>-4</sup>는 희귀 측정 유도 상태 전이(MIST) 이벤트 및/또는 느린 TLS 매개 leakage/seepage와 일치하지만, 직접 원인 규명 없음 — 저자들은 "비트 플립 메커니즘의 상세 연구는 향후 작업으로 남김."</li>
+        </ul>
+
+        <h2>토의 포인트</h2>
+        <ol>
+          <li>잔여 오류 예산은 1.8&times;10<sup>-4</sup>(&sim;30%)를 두 X90 동적 디커플링 에코 펄스에 귀속. 소거 검사 지속 시간 이상의 cycle time을 가진 현실적 surface-code/qLDPC 사이클에서 이러한 에코는 스태빌라이저 스케줄에 "공짜로" 접힘. 더 현실적 회로에서 잔여 오류는 얼마가 되며, 고임계값 FT 작동에 필요한 &sim;1&times;10<sup>-4</sup> 영역 아래로 떨어지는 시점은 언제인가?</li>
+          <li>연속 병렬 소거 검출은 &chi;-matched QND 특성을 보존하지만, 논문은 판독 유도 T<sub>erasure</sub> 저하로 인해 X90당 소거 오류가 45% 증가(1.8 &rarr; 2.6 &times;10<sup>-3</sup>)함을 보임. 시간 분해능 대부분을 회복하면서 T<sub>erasure</sub> 손상을 줄이는 펄스/듀티-사이클 병렬 변형이 있는가?</li>
+          <li>&chi;-matching은 <em>엔지니어링된</em> 대칭성. 600 MHz 평탄 &#124;&chi;<sub>DR</sub>/&chi;&#124; 대역이 스케일에서 제작 수준 비대칭(g<sub>RT1</sub> vs. g<sub>RT2</sub>, 접합 주파수 산란)에 얼마나 민감한가? 분산 이동 튜닝 노브(예: SNAIL 결합기)가 결함 단위로 &chi;-matching을 복원할 수 있는가?</li>
+          <li>저자들은 플럭스 디튜닝으로 &chi;-축퇴를 깨면 SRO가 3-상태 논리 판독이 된다고 언급. 이 모드의 측정 시간/충실도 트레이드오프는 전용 논리 판독 공진기와 비교하여 어떠한가? &chi;-matched "단일 공진기가 모든 것을 수행" 구조가 전통적 분할 구조 대비 순이득인 시점은 언제인가?</li>
+          <li>그림 5(f)는 연속 모니터링이 경험적으로 X90 오류 분포의 고오류 TLS 매개 꼬리를 <em>억제</em>함을 시사. 이것이 빠른 검사가 많은 게이트를 오염시킬 leakage/seepage 이벤트를 포착하기 때문인가, 아니면 TLS 동역학 자체가 적분 창보다 느리기 때문인가? 적분 창(따라서 실효 검사 cadence)을 변화시키는 ablation이 이러한 메커니즘을 분리할 것이며 — 디코더의 소프트 정보 이득 주장도 정량화.</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>SRO 구조는 소거 검출을 보조 큐비트 볼트-온 연산에서 듀얼-레일 큐비트 자체의 <em>네이티브 프리미티브</em>로 전환합니다. &chi;-matching이 논리 정보를 판독 공진기로부터 숨긴다는 사실을 활용함으로써, 이전에 트랜스몬 보조 큐비트와 전용 판독 경로가 필요했던 작업을 한 공진기가 수행하며, 단일 큐비트 게이트 오류 한계에 근접하는 잔여 오류로 384 ns 만에 수행합니다. 새로운 "연속 병렬" 모드는 더 사변적 기여 — 소거 검출이 논리 게이트 옆에서 항상, 공짜로 실행되고 소프트 정보를 디코더에 공급하는 미래를 가리킴 — 이지만, 펄스 모드만으로도 초전도 듀얼-레일 큐비트의 하드웨어 효율적 소거 기반 QEC에 명확한 진전입니다.</p>
+        <p>이 논문은 두 번 읽기를 권합니다. 첫 번째: 그림 1, 2와 Table I의 잔여 오류 예산 — 핵심 아이디어(&chi;-matching), 핵심 숫자(검사당 6.0(2)&times;10<sup>-4</sup>), 그 숫자가 어디서 오는지를 포착. 두 번째: 섹션 V와 그림 5(f) — 연속 병렬 시연과 TLS 구동 고오류 꼬리의 CDF 수준 억제는 듀얼-레일 큐비트 QEC 사이클의 다음 세대 설계 방식을 바꿀 가능성이 가장 높은 부분.</p>
+      `
+    }
   }
 ];
