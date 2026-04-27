@@ -13813,5 +13813,395 @@ const PAPERS = [
         <p>이 논문은 두 번 읽기를 권합니다. 첫 번째: 그림 1, 2와 Table I의 잔여 오류 예산 — 핵심 아이디어(&chi;-matching), 핵심 숫자(검사당 6.0(2)&times;10<sup>-4</sup>), 그 숫자가 어디서 오는지를 포착. 두 번째: 섹션 V와 그림 5(f) — 연속 병렬 시연과 TLS 구동 고오류 꼬리의 CDF 수준 억제는 듀얼-레일 큐비트 QEC 사이클의 다음 세대 설계 방식을 바꿀 가능성이 가장 높은 부분.</p>
       `
     }
+  },
+  {
+    id: "abft-matrix-operations",
+    date: "1984-06-01",
+    authors: "Huang, K.-H., Abraham, J. A.",
+    venue: "IEEE Transactions on Computers, Vol. C-33, No. 6, June 1984",
+    image: "images/abft-matrix-operations/thumbnail.png",
+    link: "https://ieeexplore.ieee.org/document/1676475",
+    domain: "deep-learning",
+    tags: ["Fault Tolerance", "ABFT", "Matrix Operations", "Systolic Arrays", "Checksum Codes", "Multiprocessor Systems"],
+    en: {
+      title: "Algorithm-Based Fault Tolerance for Matrix Operations",
+      summary: "Introduces algorithm-based fault tolerance (ABFT): a system-level technique that encodes matrix data with row/column checksums, redesigns matrix algorithms to operate on the encoded data, and distributes computation across processors so that any single faulty processor in a multiprocessor system can be detected, located, and corrected with O(1/n) hardware and O(log₂(n)/n) time overhead.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This is the foundational paper of <strong>algorithm-based fault tolerance (ABFT)</strong>. By encoding matrices with row/column checksums and redesigning matrix multiplication, LU decomposition, and inversion to <em>preserve</em> that encoding, Huang and Abraham reduce single-processor failure detection/correction to a checksum-mismatch lookup at the intersection of one inconsistent row and one inconsistent column. The key analytical result — that the redundancy ratio is O(1/n) in hardware and O(log<sub>2</sub>(n)/n) in time — is what makes ABFT cost-effective at scale, and it is the blueprint that every subsequent ABFT result (GPU/TPU GEMM, DNN inference, sparse linear algebra) builds on.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Existing fault-tolerance schemes (TMR, alternating logic, RESO, watchdog processors) all pay a constant-factor overhead in hardware or time. Can we exploit the <em>structure of the algorithm itself</em> to detect and correct single-processor failures in a multiprocessor system at sub-constant overhead — that is, can the redundancy ratio asymptotically vanish as the problem grows?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>By the early 1980s, VLSI scaling had made multiprocessor systems (MPP, systolic arrays) attractive for matrix-heavy workloads — signal/image processing, weather prediction, finite-element analysis. But scaling also increased <em>transient</em> failure rates that off-line testing alone could not catch, demanding concurrent error detection. The state of the art at the time fell into two camps:</p>
+        <ul>
+          <li><strong>Error masking (TMR, quadded logic):</strong> 200-300% hardware redundancy to vote out a single-module failure.</li>
+          <li><strong>Concurrent detection (TSC, alternating logic, RESO, watchdog):</strong> 73-100% hardware or time redundancy, and crucially most of these are tied to the gate-level <em>single stuck-at fault model</em>, which (as Banerjee &amp; Abraham showed) does not cover real VLSI failure modes.</li>
+        </ul>
+
+        <p>The authors propose to abandon both. Instead of protecting the <em>module</em>, protect the <em>data</em>: encode matrices at the word level (not the bit level), then ensure the algorithm preserves the encoding. A single faulty processor in a multiprocessor system corrupts only its share of the output; the redundancy in the encoding is enough to detect, locate, and correct that corruption. The fault model is intentionally generic — a faulty module may produce <em>any</em> erroneous outputs interpretable as 0/1 by other modules — sidestepping the stuck-at limitation entirely.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>ABFT has three pillars: (1) data encoding, (2) algorithm redesign that preserves the encoding, (3) computation distribution that prevents a single faulty processor from corrupting more than one element per row/column.</p>
+
+        <p><strong>Checksum matrix encoding.</strong> For an n-by-m matrix A with elements a<sub>i,j</sub>, define:</p>
+        <ul>
+          <li><em>Column checksum matrix</em> A<sub>c</sub> — append a row whose j-th entry is &Sigma;<sub>i</sub> a<sub>i,j</sub>, i.e. A<sub>c</sub> = [A; e<sup>T</sup>A] where e is the all-ones vector.</li>
+          <li><em>Row checksum matrix</em> A<sub>r</sub> — append a column with the row sums: A<sub>r</sub> = [A | Ae].</li>
+          <li><em>Full checksum matrix</em> A<sub>f</sub> — column checksum of the row checksum matrix; equivalently, both an extra row and extra column of sums.</li>
+        </ul>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: Checksum matrix multiplication. A column-checksum matrix A<sub>c</sub> (ordinary matrix A with an extra row of column sums at the bottom) multiplied by a row-checksum matrix B<sub>r</sub> (matrix B with an extra column of row sums on the right) yields a full-checksum matrix C<sub>f</sub> — the result C with both row and column sum vectors automatically attached. The encoding is preserved by the algorithm itself.</figcaption>
+        </figure>
+
+        <p><strong>Operations that preserve the encoding (Theorems 4.1-4.5).</strong> Five matrix operations are shown to preserve the checksum property:</p>
+        <ul>
+          <li><em>Multiplication</em>: A<sub>c</sub> &times; B<sub>r</sub> = C<sub>f</sub>. The proof is direct: e<sup>T</sup>(AB) = (e<sup>T</sup>A)B and (AB)e = A(Be), so the column/row sums of the product are exactly the products of the appended summation vectors.</li>
+          <li><em>Addition</em>: A<sub>f</sub> + B<sub>f</sub> = (A+B)<sub>f</sub>.</li>
+          <li><em>Scalar multiplication</em>: c &middot; A<sub>f</sub> = (cA)<sub>f</sub>.</li>
+          <li><em>LU decomposition (Theorem 4.2)</em>: when C is LU-decomposable, the full checksum matrix C<sub>f</sub> decomposes into a column-checksum lower triangular L<sub>c</sub> and a row-checksum upper triangular U<sub>r</sub>.</li>
+          <li><em>Transposition</em>: (A<sub>f</sub>)<sup>T</sup> = (A<sup>T</sup>)<sub>f</sub>.</li>
+        </ul>
+
+        <p>For integer matrices, the authors note that residue arithmetic mod 2<sup>r</sup> can be applied to the summation vectors so the checksums fit in the same word width as the data — a practical detail that becomes important for fixed-point hardware.</p>
+
+        <p><strong>Detection, location, and correction.</strong> The minimum matrix distance of the set of full checksum matrices is 4 (Theorem 4.6, via Elias's theorem on product codes), so a single erroneous element can be uniquely located and corrected. The procedure is:</p>
+        <ol>
+          <li>Recompute the row and column sums of the information part and compare against the appended checksums.</li>
+          <li>The error is at the intersection of the inconsistent row and inconsistent column.</li>
+          <li>Correct by adding the difference between the recomputed sum and the stored checksum to the erroneous element (or replace the checksum if the checksum itself is wrong).</li>
+        </ol>
+
+        <p><strong>Mesh-connected processor array (Section V-A).</strong> An (n+1)-by-(n+1) mesh with row/column broadcast computes A<sub>c</sub> &times; B<sub>r</sub> in n time steps; the (n+1)-th row and column processors compute the summation vectors as a by-product. After the multiplication, the boundary processors verify the checksums in log<sub>2</sub>(n) more steps via parallel reduction.</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: Multiplication of two dense checksum matrices in a mesh-connected processor array. The 5x5 mesh handles a 4x4 multiplication: the top four rows/leftmost four columns of A and B carry the information; the fifth row/column carry the column-sum / row-sum vectors. After n=4 time steps each processor in the (n+1)x(n+1) mesh holds one element of the full-checksum result C<sub>f</sub>, and any single faulty processor corrupts exactly one element — locatable by checksum mismatch.</figcaption>
+        </figure>
+
+        <p><strong>Limited-processor variant (Fig. 3-4).</strong> Real systems have fewer processors than matrix elements. The authors partition A<sub>c</sub>, B<sub>r</sub> into p-by-n / n-by-p submatrices and rotate the input submatrices A<sub>i</sub> down (j-1) rows and B<sub>j</sub> right (i-1) columns before each block multiplication. The rotation guarantees that a single faulty processor produces at most one erroneous element <em>per row</em> of the full output, preserving correctability.</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: Partitioned checksum matrices. A large checksum matrix is partitioned into submatrices; multiplying partitioned A and B yields a result with multiple summation vectors (each thin strip is a sum vector of the submatrix on its top or left). Each submatrix can carry at most one corrupted element, so the partitioned scheme inherits single-error correctability.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: An n-by-n checksum matrix multiplication performed on a smaller p-by-p array (n = &lfloor;(p-1)/2&rfloor; * p). Erroneous elements (x marks) caused by a single faulty processor are confined by the rotation scheme to &lfloor;(p-1)/2&rfloor; consecutive rows in the first p rows of C<sub>f</sub>, with at most one error per row. The remaining &lfloor;(p+1)/2&rfloor; consistent rows pinpoint the faulty processor at the intersection of the first inconsistent row and first inconsistent column.</figcaption>
+        </figure>
+
+        <p><strong>Systolic array variant (Section V-A.2).</strong> Band matrices A (bandwidth W<sub>1</sub>) and B (bandwidth W<sub>2</sub>) are multiplied on the standard Kung-Leiserson hex-mesh systolic array. The authors add four boundary modules — G<sub>1</sub>/G<sub>2</sub> (W<sub>1</sub>+W<sub>2</sub>-1 inner-product / adder / buffer chains that consume the row/column sum streams of A<sub>c</sub>/B<sub>r</sub>) and G<sub>3</sub>/G<sub>4</sub> (which recompute row/column sums of the C output stream and TSC-compare them).</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5: The matrix multiplication of two checksum band matrices. A<sub>c</sub> (band matrix A with column sum vector at the bottom) times B<sub>r</sub> (band matrix B with row sum vector on the right) yields C<sub>f</sub> (band C plus both summation vectors). The band-matrix structure is preserved while attaching the checksum encoding.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6: A matrix multiplication systolic array operating on two checksum band matrices. The hex-mesh of inner-product processors performs the standard band-matrix multiply; the auxiliary modules G1 (left, W1 IP processors + adders + buffers) and G2 (right, W2 IP processors + adders + buffers) consume the boundary sum streams to produce C's row/column summation vectors directly. Modules G3 and G4 recompute row/column sums of the streamed-out C entries and a TSC comparator checks consistency online — turning the systolic multiply into a self-checking pipeline.</figcaption>
+        </figure>
+
+        <p><strong>Error patterns and module-level diagnosis.</strong> Different fault locations produce distinct error signatures. A faulty inner processor (col s) corrupts the diagonal of C indexed by s; a faulty G1/G3 corrupts only the row sum vector; a faulty G2/G4 corrupts only the column sum vector. So the error pattern alone diagnoses which functional unit failed.</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig7.png" alt="Figure 7">
+          <figcaption>Figure 7: Error patterns in C<sub>f</sub> caused by different faults. (a) Faulty inner processor: errors lie on a single diagonal of C with one error per row and one per column — fully detectable and correctable. (b) Faulty module G1: errors confined to one row sum vector. (c) Faulty module G2: errors confined to one column sum vector. The pattern itself diagnoses which unit failed.</figcaption>
+        </figure>
+
+        <p><strong>Lower bound on the number of processors (Theorem 5.2).</strong> If a single processor is responsible for too many output elements, those elements may form a "loop" in the chessboard sense — an even cycle of marked squares such that each row and column contains at least two of them — and a single faulty processor can shift values around the loop in a way that cancels in <em>every</em> row and column sum, becoming undetectable. Lemma 5.1 + Theorem 5.1 show that any 2n marked squares in an n-by-n board contain such a loop. Therefore each processor can produce at most 2n-1 elements, and at least <strong>P<sub>min</sub> = &lceil;n²/(2n-1)&rceil;</strong> processors are required for error-detectable n-by-n checksum matrix multiplication. The bound is tight, and the paper gives an explicit constructive arrangement reaching it (Figs. 10-11).</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig8.png" alt="Figure 8">
+          <figcaption>Figure 8: Redundancy ratio vs. matrix dimension and bandwidth. (a) Mesh-connected processor array: hardware (solid) and time (dashed) redundancy both fall as &sim;1/n, dropping below 10% by n = 10 and approaching zero for large matrices. (b) Systolic array: hardware redundancy as a function of band matrix bandwidth shows the same asymptotic vanishing. The plot is the headline message of the paper — fault tolerance becomes cheaper, in fractional terms, as the problem grows.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig9.png" alt="Figure 9">
+          <figcaption>Figure 9: Error-undetectable patterns ("loops") in a full checksum matrix. When a single processor's output set forms a closed cycle of marked squares — each participating row and column contains at least two — a faulty processor can shift values around the cycle so that every row and column sum still matches. These loops are the obstruction that drives the &lceil;n²/(2n-1)&rceil; lower bound.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig10.png" alt="Figure 10">
+          <figcaption>Figure 10: Constructive arrangements achieving P<sub>min</sub>. (a) n = 5, P<sub>min</sub> = 3 — three processors share a 5x5 output with no processor's elements forming a loop. (b) n = 6, P<sub>min</sub> = 4. The labels indicate which of the P<sub>min</sub> processors computes each element; the construction generalizes recursively.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig11.png" alt="Figure 11">
+          <figcaption>Figure 11: Recursive extension from n to n+2. Given a P<sub>min</sub>-processor arrangement for an n-by-n error-detectable checksum matrix, one additional processor (handling the new boundary elements with the labeling shown) extends it to a P<sub>min</sub>+1 arrangement for the (n+2)-by-(n+2) case. This induction proves that the &lceil;n²/(2n-1)&rceil; lower bound is achievable for every n.</figcaption>
+        </figure>
+
+        <p><strong>LU decomposition and matrix inversion.</strong> For LU on a mesh, error propagation is analyzed: a fault at processor (x, y) at iteration min(x, y) causes the x-th row and y-th column of the result to be the first inconsistent row/column — so the faulty processor is at their intersection. Matrix inversion is laid out on an n-by-(2n+1) mesh storing [A | I | row-sum]; Gaussian elimination preserves the row checksum (CSEV — checksum encoded vector), and a fault outside the elimination region is confined to its column.</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig12.png" alt="Figure 12">
+          <figcaption>Figure 12: Checksum matrix inversion on an n-by-(2n+1) mesh-connected array. The left half stores A, the middle stores the identity, and the rightmost column stores the row-sum CSEV. Gaussian elimination eliminates A's off-diagonal entries while preserving the CSEV property of every row, so a faulty processor's error propagates predictably and remains localizable by checksum mismatch.</figcaption>
+        </figure>
+
+        <p><strong>Uniprocessor variant (Section V-D).</strong> Even on a single processor — where a faulty unit could in principle corrupt every output element — the checksum has nontrivial detection power. If a defect causes d random consecutive output bits to be unreliable, the probability that the error pattern in one element happens to mask the sum of errors in the other n elements of a row/column is &le; 2<sup>-d</sup> (worst case 1/2 at d=1). The full-checksum-matrix undetected error probability is &le; 2<sup>-(n+1)</sup>, giving the detection coverage in Table III: 93.75% at n=3, 99.6% at n=7, 99.999% at n=15.</p>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>The ABFT paradigm.</strong> The paper names and formalizes the three-pillar recipe — encode the data, redesign the algorithm to preserve the encoding, distribute the computation. This template seeded an entire research field; nearly every modern ABFT paper still cites this trio.</li>
+          <li><strong>Checksum matrix calculus.</strong> The five preservation theorems (multiplication, addition, scalar product, LU decomposition, transposition) form a closed algebra: any composition of these operations on full-checksum inputs yields a full-checksum output, so encoding only needs to be applied once at the boundary.</li>
+          <li><strong>Single-error locate-and-correct via row/column intersection.</strong> The minimum-distance-4 result on the product code makes single-element correction trivial: O(n) checksum recomputation, O(1) intersection, O(1) repair.</li>
+          <li><strong>Concrete architectures with vanishing overhead.</strong> Mesh and systolic implementations are spelled out with full data-flow timing; redundancy ratios are O(1/n) hardware and O(log<sub>2</sub>(n)/n) time, and Fig. 8 shows the curves dropping below 10% by n=10 — the result that made ABFT economically appealing.</li>
+          <li><strong>Tight lower bound P<sub>min</sub> = &lceil;n²/(2n-1)&rceil;.</strong> The loop argument (Lemma 5.1 + Theorem 5.1 + Theorem 5.2) is one of the first information-theoretic lower bounds on the number of processors required for reliable computation — a result that grounds the upper-bound architectures in something deeper than engineering intuition.</li>
+          <li><strong>Module-level fault model independent of stuck-at.</strong> By assuming the faulty unit can produce <em>any</em> values interpretable as 0/1, the paper escapes the stuck-at-fault limitation that plagued contemporary fault-tolerance work and pre-empted the VLSI-failure-mode critique that Banerjee &amp; Abraham would soon make.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <ul>
+          <li><strong>Encoding cost.</strong> A full checksum matrix is (n+1)-by-(m+1), one extra row and one extra column. For dense matrices this is 2/n + O(1/n²) extra storage; for band matrices the overhead depends on bandwidth.</li>
+          <li><strong>Word-length blow-up.</strong> Floating-point checksums grow as O(n) times the largest matrix element; the authors note that even at n = 200 this is only +4 to the base-16 exponent, well within IEEE float range. For integer matrices, residue arithmetic mod 2<sup>r</sup> keeps the checksum at the same word width.</li>
+          <li><strong>Mesh-connected dense multiply.</strong> (n+1)x(n+1) processors, n time steps for the multiply, log<sub>2</sub>(n) more for the row/column reduction; redundancy ratios 2/n hardware, 2k log<sub>2</sub>(n)/n time (k = ratio of add to multiply).</li>
+          <li><strong>Limited-processor partitioning.</strong> p-by-p array handles n = &lfloor;(p-1)/2&rfloor; * p with submatrix rotation; partition pattern is the modular shift that prevents loop formation.</li>
+          <li><strong>Systolic band multiply.</strong> Standard W<sub>1</sub>xW<sub>2</sub> hex-mesh + four boundary modules G<sub>1</sub>-G<sub>4</sub>; each G<sub>i</sub> contains W<sub>i</sub> IP processors + W<sub>i</sub>-1 adders + min(W<sub>1</sub>,W<sub>2</sub>)+1 buffers (G<sub>1</sub>/G<sub>2</sub>) or W<sub>1</sub>+W<sub>2</sub>-1 adders + log<sub>2</sub>(W) buffers (G<sub>3</sub>/G<sub>4</sub>); two TSC comparators check row and column consistency online.</li>
+          <li><strong>Roundoff tolerance.</strong> For floating-point checks, comparisons must allow a small &epsilon; tolerance (citing Wilkinson's rounding-error analysis); a large roundoff in one element triggers a single-row/column inconsistency that can be ignored, while widespread roundoff is treated like a transient fault. False alarms are acknowledged as a real cost; the authors argue the conservative tradeoff is to accept some false alarms in exchange for catching genuine numerical pathologies.</li>
+          <li><strong>Communication and memory.</strong> Latch registers and inter-processor buses are excluded from the fault model on the assumption that Hamming codes / alternate retry already protect them — ABFT only protects the processors themselves.</li>
+        </ul>
+
+        <h2>Results</h2>
+
+        <table>
+          <thead><tr><th>Architecture</th><th>Hardware redundancy</th><th>Time redundancy</th><th>Asymptotic ratio</th></tr></thead>
+          <tbody>
+            <tr><td>Mesh-connected (dense, n-by-n)</td><td>2n + 1 processors</td><td>2k log<sub>2</sub>(n)</td><td>2/n hardware, O(log<sub>2</sub>(n)/n) time</td></tr>
+            <tr><td>Systolic band multiply (bandwidths W<sub>1</sub>, W<sub>2</sub>)</td><td>W<sub>1</sub>+W<sub>2</sub> proc + auxiliaries</td><td>W<sub>1</sub>+W<sub>2</sub></td><td>O(1/W<sub>1</sub>) hardware</td></tr>
+            <tr><td>Lower bound P<sub>min</sub> for error-detectable n-by-n multiply</td><td>&lceil;n²/(2n-1)&rceil;</td><td>—</td><td>&sim;n/2 + 1/4 + 1/(8n-4)</td></tr>
+          </tbody>
+        </table>
+
+        <p>The headline result is Fig. 8: with adders/buffers/TSC comparators charged at 10% of a multiplier-bearing processor, the redundancy ratio for both mesh and systolic implementations falls below 10% by n &sim; 10 and approaches zero for large n. This is the quantitative claim that legitimized ABFT against TMR's 200% baseline.</p>
+
+        <p>For uniprocessor execution, the minimum detection coverage P<sub>d,min</sub> as a function of n (Table III) is: 75% (n=1), 93.75% (n=3), 99.6% (n=7), 99.999% (n=15) — under the worst-case d=1 assumption that defects flip a single random output bit per element.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li><strong>Right level of abstraction.</strong> Encoding at the word/matrix level (not bit level) is what lets the same scheme cover transmission, storage, and computation faults without bit-level circuit knowledge. This is the move that made ABFT portable across very different hardware substrates.</li>
+          <li><strong>Closure under composition.</strong> The five preservation theorems mean any algorithm built from these operations inherits fault tolerance for free — no per-algorithm redesign once the building blocks are encoded.</li>
+          <li><strong>Tight upper-and-lower-bound treatment.</strong> Most fault-tolerance papers stop at "here's a scheme; it works." Section V-A.3's loop argument and the matching constructive arrangement give an information-theoretic boundary on what is achievable, not just an existence proof.</li>
+          <li><strong>Architecture-aware analysis.</strong> The mesh and systolic instantiations are not abstract — data-flow timing, boundary-module structure, and hardware accounting (10% adder/comparator weighting) are spelled out so the asymptotic claims translate into real chip-area numbers.</li>
+          <li><strong>Generic fault model.</strong> Replacing stuck-at with "any output values interpretable as 0/1" sidesteps the most common critique of contemporary fault-tolerance work and matches what real VLSI defects can do.</li>
+          <li><strong>Practical numerical caveats.</strong> Acknowledging roundoff false alarms, the residue-arithmetic trick for integer matrices, and the floating-point exponent blow-up for large n shows that the authors thought hard about deployment, not just theory.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>Single-fault assumption.</strong> The whole correction story rests on at most one faulty module within a window of comparable to MTBF. Multi-module faults or correlated failures (common-mode power glitch, shared clock, environmental upset) break the "one inconsistent row + one inconsistent column" diagnosis, and the paper does not address them.</li>
+          <li><strong>Roundoff false alarms are deferred.</strong> The paper notes that floating-point comparisons need an &epsilon; tolerance and that false alarms are possible, but explicitly leaves the numerical analysis "beyond the scope" — a real gap for IEEE-754 deployment that subsequent papers (notably the bound-based ABFT line) have had to fill.</li>
+          <li><strong>Communication faults assumed protected.</strong> By scoping the fault model to processors only and trusting Hamming codes / retry on the buses and latches, the paper gives no account of how to compose ABFT with the unreliability of inter-processor links — an issue that becomes load-bearing in distributed-memory and chiplet architectures.</li>
+          <li><strong>LU and inversion treatment is sketchy.</strong> The detection/location argument for LU decomposition is plausible but skips many cases (pivoting, near-singular matrices); inversion correction is explicitly punted to the first author's PhD thesis "due to lack of space."</li>
+          <li><strong>Encoding scope.</strong> The five preservation theorems cover dense and band linear algebra, but iterative solvers, FFT, and other non-linear algorithms need their own preservation arguments — the technique is not as automatic as TMR.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>The single-fault assumption is the linchpin of the location/correction argument. In modern accelerator stacks (GPU/TPU/wafer-scale) where soft-error rates per chip are high enough that two near-simultaneous faults are realistic, what is the right generalization? Layered ABFT with k checksums (k-error-correcting product codes) is one direction; another is replicating the ABFT layer across pipeline stages. Which is cheaper at typical FIT rates?</li>
+          <li>Floating-point roundoff false alarms are deferred here, but in 2026 they are arguably the dominant operational issue with ABFT. Can recent error-bound techniques (fp-ABFT, ULP-based thresholds) be retrofitted to this paper's mesh/systolic constructions, or do they require a fundamentally different encoding?</li>
+          <li>The P<sub>min</sub> = &lceil;n²/(2n-1)&rceil; lower bound is for <em>detection</em>. What is the analogous tight lower bound for <em>correction</em> of a single faulty processor? The loop argument gives a necessary condition for detection; correction requires that the error pattern be uniquely identifiable, which should be strictly harder.</li>
+          <li>Modern DNN inference is dominated by GEMM with low-precision (INT8/FP8) data, and fault rates on the multiplier units are non-trivial. Does the residue-arithmetic-mod-2<sup>r</sup> trick still work when checksums must fit in INT8 alongside data? Or does the practical encoding slip back to higher-precision checksums (INT32) at modest extra cost?</li>
+          <li>The authors mention but do not analyze the case of LU decomposition with pivoting. Pivoting permutes rows during elimination, which permutes the row-sum vector in a way that is not preserved by the elimination operations. What is the right encoding for LU with partial pivoting — re-encoding after each pivot, or a permutation-invariant checksum (e.g., column-only, which is invariant under row swaps)?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This is the paper that turned fault tolerance for matrix computation from a hardware problem into an algorithm problem. The technical contribution — encode, preserve, distribute — is so clean that it has been recycled almost verbatim for forty years across systolic arrays, GPU GEMM, distributed BLAS, sparse iterative solvers, and DNN inference. The redundancy-ratio plot in Fig. 8 (asymptotically vanishing overhead) is the quantitative claim that justified every later ABFT paper, and the P<sub>min</sub> lower bound established the information-theoretic floor that no subsequent scheme has beaten.</p>
+        <p>Read it twice. First pass: Section IV (the encoding theorems) and Fig. 1 — the algebra of checksum matrices, which generalizes far beyond the multiply-add primitives shown. Second pass: Section V-A.3 (the loop argument and P<sub>min</sub> lower bound) — this is the part of the paper that has aged best and is still the right starting point for any modern attempt to derive lower bounds on fault-tolerant matrix computation. The mesh/systolic constructions in Sections V-A.1-2 are best read for the methodology rather than the specific architecture, since real hardware has moved well past 1980s mesh assumptions while the encoding logic has not.</p>
+      `
+    },
+    ko: {
+      title: "행렬 연산을 위한 알고리즘 기반 결함 허용",
+      summary: "행/열 체크섬으로 행렬 데이터를 인코딩하고, 인코딩을 보존하도록 행렬 알고리즘을 재설계하며, 다중 프로세서 시스템에 계산을 분산시킴으로써 단일 결함 프로세서를 O(1/n) 하드웨어와 O(log₂(n)/n) 시간 오버헤드로 검출·위치 파악·수정할 수 있는 시스템 수준 기법인 알고리즘 기반 결함 허용(ABFT)을 제시합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 <strong>알고리즘 기반 결함 허용(ABFT)</strong>의 시초가 되는 논문입니다. 행/열 체크섬으로 행렬을 인코딩하고 행렬 곱셈, LU 분해, 역행렬 계산이 그 인코딩을 <em>보존</em>하도록 재설계함으로써, Huang과 Abraham은 단일 프로세서 결함의 검출/수정을 하나의 불일치 행과 하나의 불일치 열의 교차점에서 체크섬 불일치 조회로 환원합니다. 핵심 분석 결과 — 중복도가 하드웨어 O(1/n), 시간 O(log<sub>2</sub>(n)/n) — 이 ABFT가 대규모에서 비용 효율적이게 만드는 이유이며, 이후 모든 ABFT 결과(GPU/TPU GEMM, DNN 추론, 희소 선형대수)가 그 위에 쌓아 올린 청사진입니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>기존의 결함 허용 기법(TMR, 교대 논리, RESO, 와치독 프로세서)은 모두 하드웨어나 시간에 상수 비율의 오버헤드를 지불합니다. <em>알고리즘의 구조 자체</em>를 활용하여 다중 프로세서 시스템의 단일 프로세서 결함을 sub-constant 오버헤드로 검출·수정할 수 있는가? 즉, 문제 크기가 커질수록 중복 비율이 점근적으로 0으로 수렴할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>1980년대 초까지 VLSI 스케일링은 행렬 중심 워크로드(신호/이미지 처리, 일기 예보, 유한 요소 분석)를 위한 다중 프로세서 시스템(MPP, 시스톨릭 어레이)을 매력적으로 만들었습니다. 하지만 스케일링은 또한 오프라인 테스트만으로 잡을 수 없는 <em>일시적</em> 결함률을 증가시켜 동시 오류 검출을 요구했습니다. 당시 최신 기술은 두 진영으로 나뉘어 있었습니다:</p>
+        <ul>
+          <li><strong>오류 마스킹(TMR, 사중 논리):</strong> 단일 모듈 결함을 투표로 제거하기 위한 200-300% 하드웨어 중복.</li>
+          <li><strong>동시 검출(TSC, 교대 논리, RESO, 와치독):</strong> 73-100% 하드웨어 또는 시간 중복, 그리고 결정적으로 대부분 게이트 수준 <em>단일 stuck-at 결함 모델</em>에 묶여 있음 — Banerjee &amp; Abraham이 보였듯 실제 VLSI 결함 모드를 다 커버하지 못함.</li>
+        </ul>
+
+        <p>저자들은 둘 다 버리자고 제안합니다. <em>모듈</em>을 보호하는 대신 <em>데이터</em>를 보호하라: 비트 수준이 아닌 워드 수준에서 행렬을 인코딩하고, 알고리즘이 인코딩을 보존하도록 보장하라. 다중 프로세서 시스템에서 단일 결함 프로세서는 출력의 자기 몫만 손상시키며, 인코딩의 중복성이 그 손상을 검출·위치 파악·수정하기에 충분합니다. 결함 모델은 의도적으로 일반적입니다 — 결함 모듈은 다른 모듈이 0/1로 해석할 수 있는 <em>어떤</em> 잘못된 출력이라도 생성할 수 있음 — stuck-at 한계를 완전히 우회합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>ABFT는 세 기둥을 가집니다: (1) 데이터 인코딩, (2) 인코딩을 보존하는 알고리즘 재설계, (3) 단일 결함 프로세서가 행/열당 둘 이상의 원소를 손상시키지 못하도록 하는 계산 분산.</p>
+
+        <p><strong>체크섬 행렬 인코딩.</strong> n-by-m 행렬 A의 원소 a<sub>i,j</sub>에 대해 다음을 정의:</p>
+        <ul>
+          <li><em>열 체크섬 행렬</em> A<sub>c</sub> — j번째 항이 &Sigma;<sub>i</sub> a<sub>i,j</sub>인 행을 추가, 즉 A<sub>c</sub> = [A; e<sup>T</sup>A], e는 모두 1인 벡터.</li>
+          <li><em>행 체크섬 행렬</em> A<sub>r</sub> — 행 합을 가진 열 추가: A<sub>r</sub> = [A | Ae].</li>
+          <li><em>완전 체크섬 행렬</em> A<sub>f</sub> — 행 체크섬 행렬의 열 체크섬; 동등하게, 합의 추가 행과 추가 열 모두.</li>
+        </ul>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig1.png" alt="Figure 1">
+          <figcaption>그림 1: 체크섬 행렬 곱셈. 열 체크섬 행렬 A<sub>c</sub>(아래에 열 합의 추가 행이 붙은 일반 행렬 A)에 행 체크섬 행렬 B<sub>r</sub>(오른쪽에 행 합의 추가 열이 붙은 행렬 B)을 곱하면 완전 체크섬 행렬 C<sub>f</sub>가 나옴 — 결과 C와 함께 행/열 합 벡터가 자동으로 부착됨. 인코딩이 알고리즘 자체에 의해 보존됨.</figcaption>
+        </figure>
+
+        <p><strong>인코딩을 보존하는 연산 (Theorems 4.1-4.5).</strong> 다섯 가지 행렬 연산이 체크섬 속성을 보존함:</p>
+        <ul>
+          <li><em>곱셈</em>: A<sub>c</sub> &times; B<sub>r</sub> = C<sub>f</sub>. 증명은 직접적: e<sup>T</sup>(AB) = (e<sup>T</sup>A)B 그리고 (AB)e = A(Be), 따라서 곱의 열/행 합은 정확히 부착된 합 벡터의 곱.</li>
+          <li><em>덧셈</em>: A<sub>f</sub> + B<sub>f</sub> = (A+B)<sub>f</sub>.</li>
+          <li><em>스칼라 곱</em>: c &middot; A<sub>f</sub> = (cA)<sub>f</sub>.</li>
+          <li><em>LU 분해 (Theorem 4.2)</em>: C가 LU 분해 가능할 때, 완전 체크섬 행렬 C<sub>f</sub>는 열 체크섬 하삼각 L<sub>c</sub>와 행 체크섬 상삼각 U<sub>r</sub>로 분해됨.</li>
+          <li><em>전치</em>: (A<sub>f</sub>)<sup>T</sup> = (A<sup>T</sup>)<sub>f</sub>.</li>
+        </ul>
+
+        <p>정수 행렬에 대해 저자들은 잔여 산술 mod 2<sup>r</sup>을 합 벡터에 적용하면 체크섬이 데이터와 같은 워드 폭에 들어맞는다는 점을 언급 — 고정소수점 하드웨어에 중요한 실용적 세부사항.</p>
+
+        <p><strong>검출, 위치 파악, 수정.</strong> 완전 체크섬 행렬 집합의 최소 행렬 거리는 4(Theorem 4.6, 곱 부호에 대한 Elias 정리), 따라서 단일 잘못된 원소는 고유하게 위치 파악·수정 가능. 절차:</p>
+        <ol>
+          <li>정보 부분의 행과 열 합을 재계산하고 부착된 체크섬과 비교.</li>
+          <li>오류는 불일치 행과 불일치 열의 교차점에 위치.</li>
+          <li>재계산된 합과 저장된 체크섬의 차이를 잘못된 원소에 더하여 수정(또는 체크섬 자체가 틀렸다면 체크섬 교체).</li>
+        </ol>
+
+        <p><strong>메시 연결 프로세서 어레이 (Section V-A).</strong> 행/열 브로드캐스트가 있는 (n+1)-by-(n+1) 메시가 n 시간 단계로 A<sub>c</sub> &times; B<sub>r</sub>을 계산; (n+1)번째 행과 열 프로세서가 부산물로 합 벡터를 계산. 곱셈 후 경계 프로세서가 병렬 축소를 통해 log<sub>2</sub>(n) 단계 더로 체크섬을 검증.</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig2.png" alt="Figure 2">
+          <figcaption>그림 2: 메시 연결 프로세서 어레이에서 두 밀집 체크섬 행렬의 곱셈. 5x5 메시가 4x4 곱셈 처리: A와 B의 위 4행/왼쪽 4열은 정보를 전달; 5번째 행/열은 열-합/행-합 벡터 전달. n=4 시간 단계 후 (n+1)x(n+1) 메시의 각 프로세서가 완전 체크섬 결과 C<sub>f</sub>의 한 원소를 보유하며, 단일 결함 프로세서는 정확히 한 원소만 손상시킴 — 체크섬 불일치로 위치 파악 가능.</figcaption>
+        </figure>
+
+        <p><strong>제한된 프로세서 변형 (그림 3-4).</strong> 실제 시스템은 행렬 원소보다 적은 프로세서를 가짐. 저자들은 A<sub>c</sub>, B<sub>r</sub>를 p-by-n / n-by-p 부분 행렬로 분할하고 각 블록 곱셈 전에 입력 부분 행렬 A<sub>i</sub>를 (j-1)행 아래로, B<sub>j</sub>를 (i-1)열 오른쪽으로 회전. 회전은 단일 결함 프로세서가 완전 출력의 <em>행당</em> 최대 하나의 잘못된 원소만 생성하도록 보장하여 수정 가능성을 보존.</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig3.png" alt="Figure 3">
+          <figcaption>그림 3: 분할된 체크섬 행렬. 큰 체크섬 행렬을 부분 행렬로 분할; 분할된 A와 B를 곱하면 다중 합 벡터를 가진 결과(각 얇은 띠는 위 또는 왼쪽 부분 행렬의 합 벡터). 각 부분 행렬은 최대 하나의 손상 원소를 가질 수 있어, 분할 방식이 단일 오류 수정 가능성을 상속.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig4.png" alt="Figure 4">
+          <figcaption>그림 4: 더 작은 p-by-p 어레이에서 수행되는 n-by-n 체크섬 행렬 곱셈 (n = &lfloor;(p-1)/2&rfloor; * p). 단일 결함 프로세서로 인한 잘못된 원소(x 표시)는 회전 방식에 의해 C<sub>f</sub>의 첫 p 행 중 &lfloor;(p-1)/2&rfloor;개 연속 행에 한정되며, 행당 최대 하나의 오류. 남은 &lfloor;(p+1)/2&rfloor;개 일관된 행이 첫 불일치 행과 첫 불일치 열의 교차점에서 결함 프로세서를 정확히 지목.</figcaption>
+        </figure>
+
+        <p><strong>시스톨릭 어레이 변형 (Section V-A.2).</strong> 대역폭 W<sub>1</sub>인 띠 행렬 A와 W<sub>2</sub>인 B는 표준 Kung-Leiserson 육각 메시 시스톨릭 어레이에서 곱해짐. 저자들은 네 개의 경계 모듈을 추가 — G<sub>1</sub>/G<sub>2</sub>(A<sub>c</sub>/B<sub>r</sub>의 행/열 합 스트림을 소비하는 W<sub>1</sub>+W<sub>2</sub>-1 내적/덧셈기/버퍼 체인)와 G<sub>3</sub>/G<sub>4</sub>(C 출력 스트림의 행/열 합을 재계산하고 TSC 비교).</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig5.png" alt="Figure 5">
+          <figcaption>그림 5: 두 체크섬 띠 행렬의 행렬 곱셈. A<sub>c</sub>(아래에 열 합 벡터를 가진 띠 행렬 A) 곱하기 B<sub>r</sub>(오른쪽에 행 합 벡터를 가진 띠 행렬 B)는 C<sub>f</sub>(띠 C에 두 합 벡터)를 산출. 띠 행렬 구조가 보존되면서 체크섬 인코딩이 부착됨.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig6.png" alt="Figure 6">
+          <figcaption>그림 6: 두 체크섬 띠 행렬에서 작동하는 행렬 곱셈 시스톨릭 어레이. 내적 프로세서의 육각 메시가 표준 띠 행렬 곱을 수행; 보조 모듈 G1(왼쪽, W1 IP 프로세서 + 덧셈기 + 버퍼)과 G2(오른쪽, W2 IP 프로세서 + 덧셈기 + 버퍼)가 경계 합 스트림을 소비하여 C의 행/열 합 벡터를 직접 생성. 모듈 G3와 G4는 스트리밍 출력되는 C 항목의 행/열 합을 재계산하고 TSC 비교기가 일관성을 온라인으로 확인 — 시스톨릭 곱셈을 자가 점검 파이프라인으로 전환.</figcaption>
+        </figure>
+
+        <p><strong>오류 패턴과 모듈 수준 진단.</strong> 다른 결함 위치는 구별되는 오류 시그니처를 생성. 결함 내부 프로세서(s열)는 s로 인덱싱된 C의 대각선을 손상; 결함 G1/G3는 행 합 벡터만 손상; 결함 G2/G4는 열 합 벡터만 손상. 따라서 오류 패턴 자체가 어떤 기능 단위가 고장났는지 진단.</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig7.png" alt="Figure 7">
+          <figcaption>그림 7: 다른 결함으로 인한 C<sub>f</sub>의 오류 패턴. (a) 결함 내부 프로세서: 오류는 행당 한 개, 열당 한 개씩 C의 단일 대각선에 위치 — 완전히 검출/수정 가능. (b) 결함 모듈 G1: 오류가 한 행 합 벡터에 한정. (c) 결함 모듈 G2: 오류가 한 열 합 벡터에 한정. 패턴 자체가 어떤 단위가 고장났는지 진단.</figcaption>
+        </figure>
+
+        <p><strong>프로세서 수의 하한 (Theorem 5.2).</strong> 단일 프로세서가 너무 많은 출력 원소를 담당하면, 그 원소들이 체스판 의미의 "루프(loop)"를 형성할 수 있음 — 각 행과 열이 적어도 두 개의 표시 사각형을 포함하는 짝수 사이클 — 단일 결함 프로세서가 루프 주위로 값을 이동시켜 <em>모든</em> 행과 열 합에서 상쇄되어 검출 불가능해짐. Lemma 5.1 + Theorem 5.1은 n-by-n 보드의 임의의 2n개 표시 사각형이 그러한 루프를 포함함을 보임. 따라서 각 프로세서는 최대 2n-1 원소를 생성할 수 있고, 오류 검출 가능한 n-by-n 체크섬 행렬 곱셈에는 적어도 <strong>P<sub>min</sub> = &lceil;n²/(2n-1)&rceil;</strong> 프로세서가 필요. 한계는 타이트하며, 논문은 이를 달성하는 명시적 구성 배치를 제시(그림 10-11).</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig8.png" alt="Figure 8">
+          <figcaption>그림 8: 행렬 차원과 대역폭에 대한 중복 비율. (a) 메시 연결 프로세서 어레이: 하드웨어(실선)와 시간(점선) 중복 모두 &sim;1/n로 감소, n = 10에서 10% 아래로 떨어지고 큰 행렬에서 0에 접근. (b) 시스톨릭 어레이: 띠 행렬 대역폭의 함수로서 하드웨어 중복이 동일한 점근적 소실을 보임. 이 그림이 논문의 헤드라인 메시지 — 결함 허용이 문제 크기가 커질수록 비례적으로 더 저렴해짐.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig9.png" alt="Figure 9">
+          <figcaption>그림 9: 완전 체크섬 행렬에서 검출 불가능한 패턴("루프"). 단일 프로세서의 출력 집합이 표시 사각형의 닫힌 사이클을 형성할 때 — 참여하는 각 행과 열이 적어도 두 개를 포함 — 결함 프로세서가 사이클 주위로 값을 이동시켜 모든 행과 열 합이 여전히 일치하게 만들 수 있음. 이러한 루프가 &lceil;n²/(2n-1)&rceil; 하한을 추동하는 장애물.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig10.png" alt="Figure 10">
+          <figcaption>그림 10: P<sub>min</sub>을 달성하는 구성 배치. (a) n = 5, P<sub>min</sub> = 3 — 세 프로세서가 5x5 출력을 공유하면서 어떤 프로세서의 원소도 루프를 형성하지 않음. (b) n = 6, P<sub>min</sub> = 4. 라벨은 P<sub>min</sub> 프로세서 중 어느 것이 각 원소를 계산하는지 표시; 구성은 재귀적으로 일반화.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig11.png" alt="Figure 11">
+          <figcaption>그림 11: n에서 n+2로의 재귀적 확장. 오류 검출 가능 n-by-n 체크섬 행렬에 대한 P<sub>min</sub>-프로세서 배치가 주어지면, 추가 프로세서 하나(표시된 라벨링으로 새 경계 원소 처리)가 (n+2)-by-(n+2) 경우에 대한 P<sub>min</sub>+1 배치로 확장. 이 귀납이 모든 n에 대해 &lceil;n²/(2n-1)&rceil; 하한이 달성 가능함을 증명.</figcaption>
+        </figure>
+
+        <p><strong>LU 분해와 행렬 역변환.</strong> 메시에서 LU에 대해 오류 전파가 분석됨: 반복 min(x, y)에서 프로세서 (x, y)의 결함은 결과의 x번째 행과 y번째 열이 첫 불일치 행/열이 되게 함 — 결함 프로세서가 그 교차점에 위치. 행렬 역변환은 [A | I | 행-합]을 저장하는 n-by-(2n+1) 메시에 배치; 가우스 소거가 행 체크섬(CSEV — checksum encoded vector)을 보존하며, 소거 영역 밖의 결함은 그 열에 한정.</p>
+
+        <figure>
+          <img src="images/abft-matrix-operations/fig12.png" alt="Figure 12">
+          <figcaption>그림 12: n-by-(2n+1) 메시 연결 어레이에서 수행되는 체크섬 행렬 역변환. 왼쪽 절반은 A를 저장, 가운데는 항등 행렬, 가장 오른쪽 열은 행-합 CSEV를 저장. 가우스 소거가 모든 행의 CSEV 속성을 보존하면서 A의 비대각 항목을 제거하므로, 결함 프로세서의 오류가 예측 가능하게 전파되고 체크섬 불일치로 여전히 위치 파악 가능.</figcaption>
+        </figure>
+
+        <p><strong>단일 프로세서 변형 (Section V-D).</strong> 결함 단위가 원칙적으로 모든 출력 원소를 손상시킬 수 있는 단일 프로세서에서도 — 체크섬은 자명하지 않은 검출 능력을 가짐. 결함이 d 무작위 연속 출력 비트를 신뢰할 수 없게 만든다고 가정하면, 한 원소의 오류 패턴이 우연히 행/열의 다른 n 원소의 오류 합을 마스킹할 확률은 &le; 2<sup>-d</sup>(d=1에서 최악 1/2). 완전 체크섬 행렬 미검출 오류 확률은 &le; 2<sup>-(n+1)</sup>, 표 III의 검출 커버리지를 산출: n=3에서 93.75%, n=7에서 99.6%, n=15에서 99.999%.</p>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>ABFT 패러다임.</strong> 논문은 세 기둥 레시피 — 데이터 인코딩, 인코딩을 보존하는 알고리즘 재설계, 계산 분산 — 를 명명하고 형식화. 이 템플릿이 전체 연구 분야의 씨앗이 되었으며; 거의 모든 현대 ABFT 논문이 여전히 이 삼중을 인용.</li>
+          <li><strong>체크섬 행렬 대수.</strong> 다섯 보존 정리(곱셈, 덧셈, 스칼라 곱, LU 분해, 전치)가 닫힌 대수를 형성: 완전 체크섬 입력에 대한 이 연산들의 어떤 합성도 완전 체크섬 출력을 산출하므로, 인코딩은 경계에서 한 번만 적용하면 됨.</li>
+          <li><strong>행/열 교차점을 통한 단일 오류 위치 파악·수정.</strong> 곱 부호에 대한 최소 거리 4 결과로 단일 원소 수정이 자명: O(n) 체크섬 재계산, O(1) 교차, O(1) 복구.</li>
+          <li><strong>점근적으로 사라지는 오버헤드를 가진 구체적 구조.</strong> 메시와 시스톨릭 구현이 완전한 데이터 흐름 타이밍과 함께 명시; 중복 비율은 하드웨어 O(1/n), 시간 O(log<sub>2</sub>(n)/n)이고, 그림 8은 n=10에서 곡선이 10% 아래로 떨어짐을 보임 — ABFT를 경제적으로 매력적이게 만든 결과.</li>
+          <li><strong>타이트한 하한 P<sub>min</sub> = &lceil;n²/(2n-1)&rceil;.</strong> 루프 논증(Lemma 5.1 + Theorem 5.1 + Theorem 5.2)은 신뢰할 수 있는 계산에 필요한 프로세서 수에 대한 최초의 정보 이론적 하한 중 하나 — 상한 구조를 단순한 엔지니어링 직관 이상의 무언가에 근거를 둠.</li>
+          <li><strong>Stuck-at에 독립적인 모듈 수준 결함 모델.</strong> 결함 단위가 0/1로 해석 가능한 <em>어떤</em> 값이라도 생성할 수 있다고 가정함으로써, 논문은 동시대 결함 허용 작업을 괴롭혔던 stuck-at 결함 한계를 벗어나며 Banerjee &amp; Abraham이 곧 제기할 VLSI 결함 모드 비판을 선제적으로 처리.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <ul>
+          <li><strong>인코딩 비용.</strong> 완전 체크섬 행렬은 (n+1)-by-(m+1), 추가 행 하나와 추가 열 하나. 밀집 행렬에서 추가 저장은 2/n + O(1/n²); 띠 행렬은 대역폭에 의존.</li>
+          <li><strong>워드 길이 팽창.</strong> 부동소수점 체크섬은 가장 큰 행렬 원소의 O(n) 배로 증가; 저자들은 n = 200에서도 16진법 지수에서 +4에 불과하며 IEEE float 범위 내라고 언급. 정수 행렬에서 잔여 산술 mod 2<sup>r</sup>은 체크섬을 같은 워드 폭으로 유지.</li>
+          <li><strong>메시 연결 밀집 곱셈.</strong> (n+1)x(n+1) 프로세서, 곱셈에 n 시간 단계, 행/열 축소에 log<sub>2</sub>(n) 더; 중복 비율 하드웨어 2/n, 시간 2k log<sub>2</sub>(n)/n (k = 곱셈에 대한 덧셈의 비율).</li>
+          <li><strong>제한된 프로세서 분할.</strong> p-by-p 어레이가 n = &lfloor;(p-1)/2&rfloor; * p를 부분 행렬 회전으로 처리; 분할 패턴은 루프 형성을 막는 모듈러 시프트.</li>
+          <li><strong>시스톨릭 띠 곱셈.</strong> 표준 W<sub>1</sub>xW<sub>2</sub> 육각 메시 + 네 경계 모듈 G<sub>1</sub>-G<sub>4</sub>; 각 G<sub>i</sub>는 W<sub>i</sub> IP 프로세서 + W<sub>i</sub>-1 덧셈기 + min(W<sub>1</sub>,W<sub>2</sub>)+1 버퍼(G<sub>1</sub>/G<sub>2</sub>) 또는 W<sub>1</sub>+W<sub>2</sub>-1 덧셈기 + log<sub>2</sub>(W) 버퍼(G<sub>3</sub>/G<sub>4</sub>); 두 TSC 비교기가 행과 열 일관성을 온라인으로 확인.</li>
+          <li><strong>반올림 허용.</strong> 부동소수점 검사에서 비교는 작은 &epsilon; 허용을 가져야 함(Wilkinson의 반올림 오류 분석 인용); 한 원소의 큰 반올림은 무시할 수 있는 단일 행/열 불일치를 트리거하는 반면, 광범위한 반올림은 일시적 결함처럼 처리됨. 거짓 경보가 실제 비용으로 인정됨; 저자들은 진정한 수치 병리를 잡는 대가로 일부 거짓 경보를 받아들이는 보수적 트레이드오프를 옹호.</li>
+          <li><strong>통신과 메모리.</strong> 래치 레지스터와 프로세서 간 버스는 결함 모델에서 제외 — Hamming 부호/대체 재시도가 이미 보호한다는 가정; ABFT는 프로세서 자체만 보호.</li>
+        </ul>
+
+        <h2>실험 결과</h2>
+
+        <table>
+          <thead><tr><th>구조</th><th>하드웨어 중복</th><th>시간 중복</th><th>점근적 비율</th></tr></thead>
+          <tbody>
+            <tr><td>메시 연결 (밀집, n-by-n)</td><td>2n + 1 프로세서</td><td>2k log<sub>2</sub>(n)</td><td>하드웨어 2/n, 시간 O(log<sub>2</sub>(n)/n)</td></tr>
+            <tr><td>시스톨릭 띠 곱셈 (대역폭 W<sub>1</sub>, W<sub>2</sub>)</td><td>W<sub>1</sub>+W<sub>2</sub> 프로세서 + 보조</td><td>W<sub>1</sub>+W<sub>2</sub></td><td>하드웨어 O(1/W<sub>1</sub>)</td></tr>
+            <tr><td>오류 검출 가능 n-by-n 곱셈에 대한 하한 P<sub>min</sub></td><td>&lceil;n²/(2n-1)&rceil;</td><td>—</td><td>&sim;n/2 + 1/4 + 1/(8n-4)</td></tr>
+          </tbody>
+        </table>
+
+        <p>헤드라인 결과는 그림 8: 덧셈기/버퍼/TSC 비교기를 곱셈기를 가진 프로세서의 10%로 계산할 때, 메시와 시스톨릭 구현 모두에 대한 중복 비율은 n &sim; 10에서 10% 아래로 떨어지고 큰 n에서 0에 접근. 이것이 TMR의 200% 기준선에 대해 ABFT를 정당화한 정량적 주장.</p>
+
+        <p>단일 프로세서 실행에 대해, n의 함수로서 최소 검출 커버리지 P<sub>d,min</sub>(표 III): 75%(n=1), 93.75%(n=3), 99.6%(n=7), 99.999%(n=15) — 결함이 원소당 단일 무작위 출력 비트를 뒤집는다는 최악 d=1 가정 하에서.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li><strong>적절한 추상화 수준.</strong> 비트 수준이 아닌 워드/행렬 수준의 인코딩이 같은 방식으로 비트 수준 회로 지식 없이 전송, 저장, 계산 결함을 커버하게 만듦. 이것이 ABFT를 매우 다른 하드웨어 기판에 걸쳐 이식 가능하게 만든 움직임.</li>
+          <li><strong>합성에 대한 닫힘성.</strong> 다섯 보존 정리는 이 연산들로 구축된 어떤 알고리즘도 무료로 결함 허용을 상속함을 의미 — 빌딩 블록이 인코딩되면 알고리즘별 재설계 불필요.</li>
+          <li><strong>타이트한 상한과 하한 처리.</strong> 대부분의 결함 허용 논문은 "여기 방식이 있고 작동한다"에서 멈춤. Section V-A.3의 루프 논증과 일치하는 구성 배치는 단순한 존재 증명이 아니라 무엇이 달성 가능한지에 대한 정보 이론적 경계를 제공.</li>
+          <li><strong>구조 인식 분석.</strong> 메시와 시스톨릭 인스턴스화는 추상적이지 않음 — 데이터 흐름 타이밍, 경계 모듈 구조, 하드웨어 회계(10% 덧셈기/비교기 가중치)가 명시되어 점근적 주장이 실제 칩 면적 숫자로 변환됨.</li>
+          <li><strong>일반적 결함 모델.</strong> Stuck-at를 "0/1로 해석 가능한 어떤 출력 값"으로 대체함으로써 동시대 결함 허용 작업의 가장 흔한 비판을 우회하고 실제 VLSI 결함이 할 수 있는 것과 일치.</li>
+          <li><strong>실용적 수치 주의사항.</strong> 반올림 거짓 경보, 정수 행렬을 위한 잔여 산술 트릭, 큰 n에 대한 부동소수점 지수 팽창을 인정하는 것이 저자들이 단순한 이론이 아닌 배포에 대해 깊이 생각했음을 보여줌.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li><strong>단일 결함 가정.</strong> 전체 수정 이야기는 MTBF에 비교할 만한 시간 창 내에 최대 하나의 결함 모듈이 있다는 가정에 기반. 다중 모듈 결함이나 상관된 실패(공통 모드 전원 글리치, 공유 클럭, 환경 업셋)는 "한 불일치 행 + 한 불일치 열" 진단을 깨뜨리며, 논문은 이를 다루지 않음.</li>
+          <li><strong>반올림 거짓 경보가 보류됨.</strong> 논문은 부동소수점 비교가 &epsilon; 허용을 필요로 하고 거짓 경보가 가능함을 언급하지만, 수치 분석을 명시적으로 "범위 밖"으로 남김 — 후속 논문(특히 경계 기반 ABFT 라인)이 채워야 했던 IEEE-754 배포의 실제 갭.</li>
+          <li><strong>통신 결함이 보호된다고 가정.</strong> 결함 모델을 프로세서로만 한정하고 버스와 래치에 Hamming 부호/재시도를 신뢰함으로써, 논문은 ABFT를 프로세서 간 링크의 신뢰할 수 없음과 어떻게 결합할지 설명하지 않음 — 분산 메모리와 칩렛 구조에서 부담이 되는 문제.</li>
+          <li><strong>LU와 역변환 처리가 개략적.</strong> LU 분해의 검출/위치 파악 논증은 그럴듯하지만 많은 경우(피벗팅, 거의 특이한 행렬)를 건너뜀; 역변환 수정은 명시적으로 첫 번째 저자의 박사 논문으로 "공간 부족" 사유로 미뤄짐.</li>
+          <li><strong>인코딩 범위.</strong> 다섯 보존 정리가 밀집과 띠 선형대수를 커버하지만 반복 솔버, FFT, 다른 비선형 알고리즘은 자체 보존 논증이 필요 — 기법이 TMR만큼 자동적이지 않음.</li>
+        </ul>
+
+        <h2>토의 포인트</h2>
+        <ol>
+          <li>단일 결함 가정이 위치 파악/수정 논증의 핵심. 칩당 소프트 오류율이 거의 동시 두 결함이 현실적이 될 만큼 높은 현대 가속기 스택(GPU/TPU/웨이퍼 스케일)에서 올바른 일반화는 무엇인가? k 체크섬을 가진 계층 ABFT(k-오류 수정 곱 부호)가 하나의 방향; 다른 하나는 파이프라인 단계에 걸쳐 ABFT 계층을 복제. 일반적인 FIT 비율에서 어느 것이 더 저렴한가?</li>
+          <li>부동소수점 반올림 거짓 경보가 여기서 보류되었지만, 2026년에는 ABFT의 지배적 운영 이슈일 것. 최근 오류 경계 기법(fp-ABFT, ULP 기반 임계값)이 이 논문의 메시/시스톨릭 구조에 후행 적용될 수 있는가, 아니면 근본적으로 다른 인코딩이 필요한가?</li>
+          <li>P<sub>min</sub> = &lceil;n²/(2n-1)&rceil; 하한은 <em>검출</em>에 대한 것. 단일 결함 프로세서의 <em>수정</em>에 대한 유사한 타이트 하한은 무엇인가? 루프 논증은 검출의 필요 조건을 제공; 수정은 오류 패턴이 고유하게 식별 가능해야 하므로 엄격하게 더 어려워야 함.</li>
+          <li>현대 DNN 추론은 저정밀도(INT8/FP8) 데이터의 GEMM이 지배하며 곱셈기 단위의 결함률은 무시할 수 없음. 잔여 산술 mod 2<sup>r</sup> 트릭이 체크섬이 데이터와 함께 INT8에 들어가야 할 때도 작동하는가? 아니면 실용적 인코딩이 적당한 추가 비용으로 더 높은 정밀도 체크섬(INT32)으로 후퇴하는가?</li>
+          <li>저자들은 피벗팅이 있는 LU 분해의 경우를 언급하지만 분석하지 않음. 피벗팅은 소거 중 행을 치환하며, 이는 소거 연산에 의해 보존되지 않는 방식으로 행-합 벡터를 치환. 부분 피벗팅이 있는 LU에 대한 올바른 인코딩은 — 각 피벗 후 재인코딩, 아니면 치환 불변 체크섬(예: 행 스왑에 불변인 열-전용)?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 행렬 계산을 위한 결함 허용을 하드웨어 문제에서 알고리즘 문제로 전환시킨 논문입니다. 기술적 기여 — 인코딩, 보존, 분산 — 이 너무 깔끔해서 시스톨릭 어레이, GPU GEMM, 분산 BLAS, 희소 반복 솔버, DNN 추론에 걸쳐 거의 그대로 40년간 재활용되었습니다. 그림 8의 중복 비율 플롯(점근적으로 사라지는 오버헤드)은 모든 후속 ABFT 논문을 정당화한 정량적 주장이며, P<sub>min</sub> 하한은 어떤 후속 방식도 깨지 못한 정보 이론적 바닥을 확립했습니다.</p>
+        <p>두 번 읽기를 권합니다. 첫 번째: Section IV(인코딩 정리)와 그림 1 — 보여진 곱셈-덧셈 프리미티브를 훨씬 넘어 일반화되는 체크섬 행렬의 대수. 두 번째: Section V-A.3(루프 논증과 P<sub>min</sub> 하한) — 이것이 가장 잘 노화된 부분이며 결함 허용 행렬 계산에 대한 하한을 도출하려는 어떤 현대적 시도에도 여전히 올바른 시작점. Sections V-A.1-2의 메시/시스톨릭 구조는 특정 구조보다 방법론을 위해 읽는 것이 가장 좋음 — 실제 하드웨어는 1980년대 메시 가정을 훨씬 넘어섰지만 인코딩 논리는 그렇지 않음.</p>
+      `
+    }
   }
 ];
