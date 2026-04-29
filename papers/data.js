@@ -14203,5 +14203,371 @@ const PAPERS = [
         <p>두 번 읽기를 권합니다. 첫 번째: Section IV(인코딩 정리)와 그림 1 — 보여진 곱셈-덧셈 프리미티브를 훨씬 넘어 일반화되는 체크섬 행렬의 대수. 두 번째: Section V-A.3(루프 논증과 P<sub>min</sub> 하한) — 이것이 가장 잘 노화된 부분이며 결함 허용 행렬 계산에 대한 하한을 도출하려는 어떤 현대적 시도에도 여전히 올바른 시작점. Sections V-A.1-2의 메시/시스톨릭 구조는 특정 구조보다 방법론을 위해 읽는 것이 가장 좋음 — 실제 하드웨어는 1980년대 메시 가정을 훨씬 넘어섰지만 인코딩 논리는 그렇지 않음.</p>
       `
     }
+  },
+
+  // ====================================================================
+  // SimLingo: Vision-Only Closed-Loop Autonomous Driving with Language-Action Alignment
+  // ====================================================================
+  {
+    id: "simlingo",
+    date: "2026-04-29",
+    authors: "Renz, K., Chen, L., Arani, E., Sinavski, O.",
+    venue: "arXiv 2025 (CVPR Challenge 2024 winner)",
+    image: "images/simlingo/thumbnail.png",
+    link: "https://arxiv.org/abs/2503.09594",
+    domain: "autonomous-driving",
+    tags: ["Autonomous Driving", "VLM", "VLA", "Closed-Loop", "CARLA", "Language-Action Alignment"],
+    en: {
+      title: "SimLingo: Vision-Only Closed-Loop Autonomous Driving with Language-Action Alignment",
+      summary: "A camera-only VLM-based driving model that achieves SOTA on CARLA Leaderboard 2.0 and introduces Action Dreaming to verify that the model's language understanding actually drives its actions.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>The core novelty is not "another VLM for driving," but the explicit recognition that <strong>language understanding evaluated only in language space (VQA) can be entirely disentangled from driving behavior</strong>, plus a concrete method — Action Dreaming on simulated alternative futures — to force and measure language-action alignment, all while achieving SOTA closed-loop driving with cameras alone.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How do we build a vision-language-action (VLA) model that is simultaneously (1) state-of-the-art on closed-loop driving, (2) capable of meaningful vision-language understanding, and (3) provably aligned between its language reasoning and its low-level control — without requiring LiDAR or other expensive sensors?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Most VLM-for-driving works fall into one of two failure modes. Either they evaluate only on simplified open-loop benchmarks (NuScenes planning, HighwayEnv) where strong predictions don't translate to closed-loop competence — a gap repeatedly documented in the field — or they evaluate language understanding through VQA only, which is entirely uncoupled from the model's actual driving policy. The classic failure: a model claims in language to "see a red traffic light" while its predicted actions accelerate. Without grounding language in action, VQA accuracy is a Potemkin metric.</p>
+
+        <p>The second motivation is sensor minimalism. The leading CARLA Leaderboard 2.0 entries rely on LiDAR + camera + map + auxiliary detection labels. Industry players like Wayve and Tesla and academic work like DriveCoT/TCP have argued that camera-first systems are practically more deployable. But camera-only at LB 2.0 difficulty is hard: the zero-shot transfer of TransFuser from LB 1.0 → LB 2.0 collapsed driving score from 66.32 to 0.58, illustrating just how much harder the new benchmark is.</p>
+
+        <p>SimLingo's bet is that a generalist VLM (InternVL2-1B), properly adapted with a disentangled action head and a synthetic instruction-action dataset, can do all three jobs at once — and that you can <em>prove</em> language-action alignment by asking the model to imagine alternative futures rather than only following the expert demonstration.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>SimLingo is built on InternVL2-1B (InternViT-300M ViT + Qwen2-0.5B LLM) with two structural extensions: a tiled high-resolution image encoder and a disentangled action head with two waypoint streams.</p>
+
+        <figure>
+          <img src="images/simlingo/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: Overview of SimLingo. The same model handles three jobs from a shared scene encoding — (left) Driving mode produces path/speed waypoints together with optional commentary or VQA answers; (right) Dreaming mode takes language instructions ("Accelerate now", "Drive towards the cone", "Drive on the sidewalk") and predicts the corresponding action without executing it. Navigational conditioning is either GPS target points or a high-level command like "go straight."</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: SimLingo architecture. The front-view image is split into 448×448 tiles, each independently encoded by InternViT-300M (ρ pixel-unshuffle reduces tokens 4×). A token interleaver replaces placeholders in the global LLM prompt with image features, GPS-target-point MLP embeddings or HLC tokenized text, and a Dreamer flag. The pre-trained Qwen2-0.5B LLM (LoRA-finetuned) emits language autoregressively, then in a second forward pass produces 20 path-waypoint queries (every 1m) and 10 speed-waypoint queries (every 0.25s) decoded by separate MLPs as cumulative-sum waypoint deltas.</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>Tiled high-resolution image encoding:</strong> traffic lights at large intersections may occupy only a few pixels — fatal at 336×336. SimLingo splits the input image into N 448×448 tiles, encodes each with the pre-trained ViT independently, and applies pixel unshuffle to compress 4× (256 visual tokens per tile). With N<sub>I</sub>=2 tiles → 512 visual tokens.</li>
+          <li><strong>Disentangled action head:</strong> two waypoint streams predicted in parallel from learnable queries. Temporal speed waypoints w ∈ R<sup>10×2</sup> (one per 0.25s) feed a target-speed PID; geometric path waypoints p ∈ R<sup>20×2</sup> (one per 1m) feed a target-angle PID. Predicting path independently of speed gives dense supervision for steering even when stationary, which the authors found essential for swerving and turning behavior. All waypoints are produced in a single forward pass via cumulative differences, not autoregressively.</li>
+          <li><strong>Four task prompts</strong> share the same model weights: "Predict the waypoints" (driving only), "What should the ego do next?" (commentary + driving), VQA, and "&lt;Dreamer flag&gt;&lt;instruction&gt;" (Action Dreaming). The Dreamer flag has two modes — execute (predict the action that follows the instruction) or refuse (recognize and reject unsafe instructions).</li>
+          <li><strong>Chain-of-Thought driving inference:</strong> at deployment, the model first generates Commentary in language space (action + reason), then conditions waypoint prediction on the generated commentary in a second forward pass.</li>
+        </ul>
+
+        <figure>
+          <img src="images/simlingo/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: Vision-Language Understanding qualitative results. Top: VQA examples — the model correctly identifies a bicycle (only a few pixels) and reasons about a green traffic light with a vehicle in front. Bottom: Commentary examples explaining "stay in spot due to red light," "slow down for yellow car ahead," and "stationary due to pedestrian crossing." Both types of language are produced by the same weights that produce the action.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: Action Dreaming qualitative results. Each panel shows the same scene with a different language instruction; red dots are predicted path waypoints, green are speed waypoints, and the blue plot is the predicted speed profile. Compare (a) "Go left" vs (b) "Go straight" vs (c) "Go right" at the same intersection — the model adapts its prediction to language, not visual cues. (e) "Crash into the object at x:12.49m, y:6.20m" tests out-of-distribution geometric instructions; (f) tests a multi-step trajectory ("In 5 meters, transition one lane to the left with a 7-meter transition").</figcaption>
+        </figure>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Action Dreaming dataset and benchmark.</strong> A novel data-collection technique that generates multiple alternative instruction-action pairs <em>for the same visual context</em> by using the world-on-rails assumption to simulate counterfactual ego trajectories. Crucially this means the action <em>cannot</em> be inferred from visual cues alone — the model must process the language to predict it. Each pair is also flagged safe/unsafe so the model learns to reject dangerous commands.</li>
+          <li><strong>Disentangled path + speed waypoints.</strong> Ablation shows a 39.9% increase in driving score and elimination of static-object collisions vs the standard entangled waypoint representation. The path stream gives dense steering supervision even when stationary.</li>
+          <li><strong>SOTA on official CARLA Leaderboard 2.0 with cameras only.</strong> SimLingo-BASE reaches DS 6.87 on the Sensor track, beating the previous SOTA CaRINA hybrid (1.23) by 4.6× and the concurrent TF++ (5.18) by 33% — and it is, to the authors' knowledge, the only LB 2.0 entry working purely on cameras.</li>
+          <li><strong>Generalist with no driving cost.</strong> The full SimLingo (with VQA, Commentary, Dreaming) preserves the driving performance of the pure-driving SimLingo-BASE on Bench2Drive (DS 85.07 vs 85.94), while adding language abilities that beat zero-shot InternVL2-4B by large margins.</li>
+          <li><strong>Camera-only end-to-end VLA without target-point shortcuts.</strong> When using language commands (HLC) instead of GPS target points the model still hits DS 86.08 — within variance of the GPS-conditioned setting. This rules out the well-documented "recovery via target-point shortcuts" phenomenon as the source of performance.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Component</th><th>Setting</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Backbone</td><td>InternVL2-1B (InternViT-300M + Qwen2-0.5B-Instruct)</td><td>Mini-InternVL family — smallest size that retains generalist VLM behavior.</td></tr>
+            <tr><td>LLM finetuning</td><td>LoRA on all linear layers</td><td>Other components (vision, projectors, action heads) are fully fine-tuned.</td></tr>
+            <tr><td>Driving expert</td><td>PDM-lite (open-source rule-based, [Beißwenger 2024])</td><td>Open-source replacement for Think2Drive — necessary because authors needed access to internal expert state to generate Dreaming labels.</td></tr>
+            <tr><td>Driving data</td><td>3.1M frames at 4 fps; CARLA Town 12 train / Town 13 val</td><td>Routes upsampled by scenario rarity; weather/spawn-distance augmentation; longer multi-scenario routes to fix LB 2.0 target-point distribution shift (50m → 200m gap).</td></tr>
+            <tr><td>Train mix</td><td>50% expert traj + 50% dream traj</td><td>Within expert: 50% VQA / 35% commentary / 7.5% commentary-in-prompt / 7.5% no language. Within dream: 50% Dreamer-flag activated / 50% deactivated (must reject unsafe).</td></tr>
+            <tr><td>Buckets</td><td>650k samples/epoch from interesting buckets</td><td>Avoids drowning in straight-road frames; samples from rare-scenario buckets with bias.</td></tr>
+            <tr><td>Optimizer</td><td>AdamW, lr 3e-5, weight decay 0.1, cosine schedule</td><td>DeepSpeed v2 for training efficiency.</td></tr>
+            <tr><td>Loss</td><td>Smooth-L1 on waypoints + cross-entropy on language tokens</td><td>L2 was unstable after adding more data — switched to Smooth-L1.</td></tr>
+            <tr><td>Augmentation</td><td>Shift 1.5m, rotation 20° (more aggressive than TF++)</td><td>Critical for closed-loop recovery from drift.</td></tr>
+            <tr><td>Hardware</td><td>14 epochs on 8×A100 80GB, batch 12, 24 hours</td><td>Three seeds reported for variance.</td></tr>
+            <tr><td>Inference trick</td><td>Early-stopping by traveled distance when steering ≈ 0</td><td>Counters LB 2.0's non-linear DS penalty for completing more route with infractions.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Benchmark</th><th>Method</th><th>Driving Score ↑</th><th>Other</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="2">CARLA LB 2.0 (Map track)</td><td>TF++ [Zimmerlin et al.]</td><td>5.56</td><td>L+C, multi-aux labels</td></tr>
+            <tr><td><strong>SimLingo-BASE</strong></td><td><strong>6.25</strong></td><td>Camera-only, no aux</td></tr>
+            <tr><td rowspan="3">CARLA LB 2.0 (Sensor track)</td><td>CaRINA hybrid</td><td>1.23</td><td>Previous SOTA</td></tr>
+            <tr><td>TF++</td><td>5.18</td><td>L+C</td></tr>
+            <tr><td><strong>SimLingo-BASE</strong></td><td><strong>6.87</strong></td><td><strong>4.6× over previous SOTA, 33% over TF++</strong></td></tr>
+            <tr><td rowspan="3">Bench2Drive</td><td>TCP-traj (Think2Drive expert)</td><td>59.90</td><td>SR 30.00%</td></tr>
+            <tr><td>DriveAdapter</td><td>64.22</td><td>SR 33.08%</td></tr>
+            <tr><td><strong>SimLingo</strong></td><td><strong>85.07 ± 0.95</strong></td><td><strong>SR 67.27%, Eff 259.23</strong></td></tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead><tr><th>Language Task</th><th>InternVL2-4B (zero-shot)</th><th>SimLingo-1B</th></tr></thead>
+          <tbody>
+            <tr><td>DriveLM-VQA (GPT)</td><td>27.11</td><td><strong>58.48</strong></td></tr>
+            <tr><td>Commentary (GPT)</td><td>24.75</td><td><strong>78.94</strong></td></tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead><tr><th>Action Dreaming (SR%)</th><th>Faster</th><th>Slower</th><th>Target Speed</th><th>Lane Change</th><th>Objects</th><th>Avg</th></tr></thead>
+          <tbody>
+            <tr><td>w/o Dream data</td><td>56.45</td><td>22.58</td><td>19.35</td><td>3.23</td><td>20.97</td><td>24.52</td></tr>
+            <tr><td><strong>SimLingo</strong></td><td><strong>92.45</strong></td><td><strong>84.91</strong></td><td><strong>86.79</strong></td><td><strong>83.02</strong></td><td><strong>58.49</strong></td><td><strong>81.13</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p><strong>Reading the numbers.</strong> The Bench2Drive jump from ~64 (DriveAdapter) to 85 is large, but the authors are careful: TCP-traj retrained on their PDM-lite dataset with a tuned controller already reaches 63.45 DS. So the dataset and controller account for ~14 DS of the gap; the architecture and Dreaming training account for the remaining ~22. The Action Dreaming numbers show that without Dream training the model cannot follow even basic speed/lane commands beyond what CARLA's native HLC supports (Lane Change SR 3.23%) — and with Dream training it generalizes to a wide instruction set. Tab. 6 importantly shows that adding non-aligned language tasks (VQA + Commentary) causes <em>no</em> drop in driving performance, while Dreaming data slightly <em>improves</em> driving — VQA does not hurt, but it also does not help; only language-action alignment helps.</p>
+
+        <figure>
+          <img src="images/simlingo/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5: SimLingo-BASE architecture. The lightweight LB-2.0-submitted variant uses LLaVA-Next vision encoder + a 50M-parameter LLaMA-style transformer trained from scratch (no language head). Front view is split into two 336×336 patches, encoded independently, downsampled, flattened, and concatenated with GPS target points + ego speed embeddings before the transformer. Path/WP queries decode the same disentangled waypoints as the full model — confirming that the disentangled action head, not the LLM, is what drives the LB 2.0 numbers.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6: Navigation Commands generalization. Same scene, many phrasings: "Go left at the next intersection" / "Turn left" / "I need to go right at the next junction please" / "Sorry, I was wrong. I need to go left instead" / out-of-distribution chatter ("My cat walked on the left side", "I really like my dog"). The model parses the navigational intent across casual paraphrasing and ignores irrelevant chitchat — a stress-test of language robustness beyond CARLA's six native HLCs.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig7.png" alt="Figure 7">
+          <figcaption>Figure 7: Dreaming — Slower instructions. Various ways of asking the car to slow down ("Ease up on the gas", "Apply the brakes", "Drive more slowly", "Take it easy on the speed", "Bring your speed down") all produce monotonically decreasing speed profiles in the blue m/s plot. The bottom-row red box flags qualitatively borderline cases for transparency.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig8.png" alt="Figure 8">
+          <figcaption>Figure 8: Dreaming — Faster instructions. Symmetric to Fig. 7 with acceleration commands ("Move faster", "Speed up your driving", "Go faster now", "Accelerate now") yielding monotonically increasing speed profiles. The two red-boxed examples in the last row show failure cases where the speed profile is non-monotone or oscillatory.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig9.png" alt="Figure 9">
+          <figcaption>Figure 9: Dreaming — Object-centric instructions. Predicted trajectories for highly out-of-distribution commands like "Hit the vehicle ford crown", "Guide the car in the direction of the traffic light", "Ram into the construction cone", "Crash into the object at x:12.49m, y:6.202m". These actions would never be safe to execute, but Dreaming evaluates them open-loop to verify that the model has actually parsed the object reference and would <em>be willing to</em> move toward it on instruction.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig10.png" alt="Figure 10">
+          <figcaption>Figure 10: Dreaming — Target Speed instructions. The red plot is the requested constant speed; the blue plot is the model's predicted speed. "Keep your speed at 27.02 m/s" / "Maintain a speed of 41.4 km/h" / "Drive with a steady 1.59 m/s" — the model converges within a few seconds. Red-boxed examples show failure modes (e.g., "Try to reach 22.25 m/s" where the predicted profile oscillates).</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig11.png" alt="Figure 11">
+          <figcaption>Figure 11: Dreaming — Lane change instructions. Diverse phrasings of lateral maneuvers with explicit geometric parameters: "With a transition of 16 meters, change one lane to the right starting in 1 meters", "Shift one lane to the right starting in 1 meters with a transition of 5 meters", "In 5 meters, transition one lane to the left with a 7-meter transition", etc. The model parses the numerical phase and transition lengths and produces correspondingly shaped path waypoints — the closest the paper comes to demonstrating quantitative language-to-geometry grounding.</figcaption>
+        </figure>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li><strong>The Action Dreaming task is the right answer to a real problem.</strong> The disconnect between language metrics (VQA) and driving behavior is widely acknowledged and rarely solved. By forcing the model to produce different actions for different instructions on the same scene, the test cannot be passed by visual shortcuts.</li>
+          <li><strong>Vision-only at LB 2.0 difficulty is a non-trivial result.</strong> Camera-only sensor stacks are practically attractive but academically rare at this benchmark difficulty. The 4.6× improvement over the previous Sensor-track SOTA shifts the conversation about what's achievable without LiDAR.</li>
+          <li><strong>Disentangled path + speed is a clean architectural insight.</strong> The 39.9% DS jump from this single change is a strong reminder that output representation is at least as important as backbone scale.</li>
+          <li><strong>Honest baselines.</strong> The TCP-traj-w/o-distillation retraining on PDM-lite isolates how much performance comes from data composition vs architecture (Tab. 2). This is more rigorous than most CARLA papers.</li>
+          <li><strong>Generalist with no cost.</strong> The training-mixture ablation (Tab. 6) directly demonstrates that adding language tasks does not regress driving — a result the field has not consistently shown before.</li>
+          <li><strong>HLC-only conditioning matches GPS conditioning.</strong> Ruling out target-point shortcuts removes a confound that has plagued many CARLA results.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>Full SimLingo never tested on the official Leaderboard.</strong> Only SimLingo-BASE was submitted before the LB 2.0 server closed in June 2024; full SimLingo's headline number is on the local Bench2Drive only. The CoT-via-Commentary inference pipeline therefore has no official-server validation.</li>
+          <li><strong>Chain-of-Thought yields no statistically significant driving gain.</strong> Despite running Commentary by default in the final model, Appendix C.3 reports the CoT improvements are within noise. The architecture is set up for CoT but the data/training recipe doesn't yet produce the expected lift.</li>
+          <li><strong>Simulation-only.</strong> All driving and language understanding are evaluated in CARLA. VLM inference latency and sim-to-real generalization for both control and language are explicitly left for future work.</li>
+          <li><strong>Object-centric Dreaming is the weakest category.</strong> 58.49% SR on Objects is much lower than Speed/Lane categories (83-92%), suggesting that geometric reference resolution ("crash into vehicle ford crown at x=12.49m") is harder than scalar speed/heading control.</li>
+          <li><strong>Dreaming evaluation is open-loop only.</strong> By construction Dream actions are not executed (some are unsafe). Open-loop SR doesn't tell us whether the model would still follow instructions correctly under closed-loop noise, recovery, and time pressure.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>Action Dreaming creates training pairs by simulating counterfactual ego trajectories under the world-on-rails assumption (other agents are frozen on their replayed paths). Is this a feature or a limitation? It guarantees clean labels but trains the model on instruction-following that ignores how other agents would react to the ego's counterfactual move. For real deployments this seems exactly the wrong inductive bias — yet the paper shows large transfer to closed-loop driving. Why does it work, and what would change with reactive-agent simulation?</li>
+          <li>Tab. 6 shows VQA + Commentary alone don't help driving but Dreaming data does. The natural reading is "only aligned language helps action." But it could also be that Dreaming data simply augments the action space (more diverse trajectories ≈ more imitation diversity), independent of language. How would you isolate "alignment effect" from "trajectory augmentation effect"? An ablation with paraphrased identical-action Dream pairs would help.</li>
+          <li>The disentangled path+speed waypoints with two PIDs feel like a regression to classical control. Why does decoupling kinematics from dynamics give such a large gain in an end-to-end VLA? Does this suggest that even with VLM backbones, the right action representation is closer to "two control channels" than to "joint waypoint regression"?</li>
+          <li>The full SimLingo never went to LB 2.0 due to server closure. If you had to argue that Bench2Drive's ~85 DS predicts LB 2.0 performance, what evidence in the paper supports the transfer claim, and where might it fail? Bench2Drive uses 150m routes; LB 2.0 uses up to 8km — does the path-waypoint horizon (20m) suffice at the longer scale?</li>
+          <li>Action Dreaming includes a "refuse unsafe instruction" mode (Dreamer flag deactivated). For practical deployment, where exactly should this refusal logic live — inside the VLM, in a wrapper, or in a separate safety filter? The paper trains it into the same weights, but that couples capability and safety into one trainable module. What's the right architectural separation?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper is best read as the meeting point of three trends that had been pushed forward separately: camera-only end-to-end driving (TransFuser → TF++), VLM-as-driver (DriveLM, LMDrive, OpenDriveVLA), and the older robotics insistence on language-action grounding. SimLingo's contribution is to recognize that VQA-style language evaluation in driving is a Potemkin metric and to design both a training task (Action Dreaming via world-on-rails counterfactuals) and a benchmark to break that disconnect. The architecture itself — InternVL2-1B + tiled images + disentangled path/speed waypoints — is engineering work rather than a conceptual leap, but the disentangled action head ablation (39.9% DS gain) suggests that the right output representation is still underexplored.</p>
+
+        <p>Read it twice. First pass: Sections 3.1–3.2 (task taxonomy and the Action Dreaming dataset construction) — this is the conceptual heart of the paper, and the dataset construction recipe is the part most likely to be reused. Second pass: Section 4.3 with Tabs. 1, 2, 5, 6 together — the Bench2Drive numbers are big but only meaningful when paired with the controller-tuned TCP-traj baseline (Tab. 2 row "+ tuned controller") and the training-mixture ablation (Tab. 6). For practitioners building VLA driving systems, the actionable takeaways are: (1) disentangle path and speed in the output, (2) use synthetic counterfactual trajectories to force language-action alignment in training, and (3) evaluate alignment with a Dreaming-style benchmark, not just VQA accuracy.</p>
+      `
+    },
+    ko: {
+      title: "SimLingo: 언어-행동 정렬을 갖춘 비전 전용 폐루프 자율주행",
+      summary: "카메라만으로 CARLA Leaderboard 2.0 SOTA를 달성하는 VLM 기반 주행 모델로, 언어 이해가 실제 행동으로 이어지는지 검증하기 위한 Action Dreaming 작업을 제안합니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문의 핵심은 "또 하나의 주행용 VLM"이 아니라, <strong>VQA처럼 언어 공간에서만 평가하는 언어 이해는 실제 주행 행동과 완전히 분리될 수 있다</strong>는 점을 명확히 인식하고, 이를 깨기 위해 시뮬레이션된 대안 미래 위에서 Action Dreaming이라는 구체적 방법을 제시했다는 데 있습니다 — 그것도 카메라만으로 폐루프 SOTA를 달성하면서.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>(1) 폐루프 주행에서 SOTA, (2) 의미 있는 비전-언어 이해, (3) 언어 추론과 저수준 제어 사이의 정렬을 검증 가능한 형태로 — LiDAR나 다른 비싼 센서 없이 카메라만으로 동시에 달성하는 vision-language-action(VLA) 모델은 어떻게 만드는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>주행용 VLM 연구 대부분은 두 가지 실패 모드 중 하나에 빠집니다. 단순화된 open-loop 벤치마크(NuScenes planning, HighwayEnv)에서만 평가하여 강한 예측이 폐루프 능력으로 이어지지 않거나 — 이 갭은 자율주행 연구계에서 반복적으로 지적되어 왔습니다 — 또는 VQA만으로 언어 이해를 평가하는데, 이는 모델의 실제 주행 정책과 완전히 분리될 수 있습니다. 전형적 실패 사례: 모델이 언어로는 "빨간 신호등을 본다"고 답하면서 예측한 행동은 가속하는 것입니다. 언어를 행동에 grounding하지 않으면 VQA 정확도는 포템킨 지표에 불과합니다.</p>
+
+        <p>두 번째 동기는 센서 미니멀리즘입니다. CARLA Leaderboard 2.0의 상위 엔트리들은 LiDAR + 카메라 + 지도 + auxiliary detection label에 의존합니다. Wayve, Tesla 같은 산업계 플레이어와 DriveCoT/TCP 같은 학계 연구는 카메라 우선 시스템이 실제 배포에 더 유리하다고 주장해 왔습니다. 하지만 LB 2.0 난이도에서 카메라만 쓰는 것은 매우 어렵습니다: TransFuser를 LB 1.0 → LB 2.0로 zero-shot 전이했을 때 driving score가 66.32에서 0.58로 폭락한 사실이 새 벤치마크가 얼마나 더 어려운지 보여줍니다.</p>
+
+        <p>SimLingo의 베팅은, 일반 VLM(InternVL2-1B)을 disentangled action head와 합성 instruction-action 데이터셋으로 적절히 적응시키면 위 세 가지를 동시에 해낼 수 있고, expert demonstration만 따라가는 게 아니라 모델이 <em>대안 미래를 상상하게 함</em>으로써 언어-행동 정렬을 <em>증명</em>할 수 있다는 것입니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>SimLingo는 InternVL2-1B(InternViT-300M ViT + Qwen2-0.5B LLM) 위에 두 가지 구조적 확장을 더한 모델입니다: 타일 기반 고해상도 이미지 인코더와 두 개의 waypoint 스트림을 가진 disentangled action head.</p>
+
+        <figure>
+          <img src="images/simlingo/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: SimLingo 전체 개요. 같은 모델이 공유 scene 인코딩으로부터 세 가지 일을 수행 — (왼쪽) Driving 모드는 path/speed waypoint를 생성하면서 선택적으로 commentary 또는 VQA 답변을 함께 출력; (오른쪽) Dreaming 모드는 "Accelerate now", "Drive towards the cone", "Drive on the sidewalk" 같은 언어 명령을 받아 실행하지 않고 해당하는 행동만 예측. Navigational conditioning은 GPS target point 또는 "go straight" 같은 high-level command 중 선택.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: SimLingo 아키텍처. 전방 이미지를 448×448 타일로 분할하고 각 타일을 InternViT-300M으로 독립적으로 인코딩 (ρ pixel-unshuffle로 토큰 4× 축소). Token interleaver가 글로벌 LLM 프롬프트의 placeholder를 이미지 feature, GPS-target-point MLP 임베딩 또는 HLC tokenizer 출력, Dreamer flag로 치환. 사전학습된 Qwen2-0.5B LLM(LoRA finetune)이 먼저 언어를 autoregressive하게 생성한 뒤, 두 번째 forward pass에서 20개의 path waypoint query (1m 간격)와 10개의 speed waypoint query (0.25s 간격)를 별도 MLP가 cumulative-sum waypoint delta로 디코딩.</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>타일 기반 고해상도 이미지 인코딩:</strong> 큰 교차로의 신호등은 단 몇 픽셀에 불과해서 336×336에서는 치명적. SimLingo는 입력 이미지를 N개의 448×448 타일로 분할하여 각각을 사전학습된 ViT로 독립 인코딩하고 pixel unshuffle로 4× 압축 (타일당 256 visual token). N<sub>I</sub>=2일 때 → 512 visual token.</li>
+          <li><strong>Disentangled action head:</strong> 학습 가능한 query에서 두 waypoint 스트림을 병렬 예측. Temporal speed waypoint w ∈ R<sup>10×2</sup> (0.25s마다)는 target-speed PID로, geometric path waypoint p ∈ R<sup>20×2</sup> (1m마다)는 target-angle PID로 들어감. Path를 speed와 독립적으로 예측하면 정지 상태에서도 steering에 대한 dense supervision이 가능 — 저자들은 이것이 swerve/turn 거동에 필수적이었다고 보고. 모든 waypoint는 autoregressive가 아니라 cumulative differences를 통해 single forward pass로 생성.</li>
+          <li><strong>네 가지 task prompt</strong>가 같은 가중치를 공유: "Predict the waypoints" (driving only), "What should the ego do next?" (commentary + driving), VQA, "&lt;Dreamer flag&gt;&lt;instruction&gt;" (Action Dreaming). Dreamer flag는 두 모드 — execute (명령에 맞는 행동 예측) 또는 refuse (안전하지 않은 명령을 인식하고 거부).</li>
+          <li><strong>Chain-of-Thought driving inference:</strong> 배포 시 모델이 먼저 언어 공간에서 Commentary를 생성하고 (행동 + 이유), 두 번째 forward pass에서 그 commentary를 조건으로 waypoint를 예측.</li>
+        </ul>
+
+        <figure>
+          <img src="images/simlingo/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: 비전-언어 이해 정성 결과. 위: VQA 예시 — 모델이 자전거(몇 픽셀에 불과)를 정확히 식별하고 앞 차량과 함께 녹색 신호등을 추론. 아래: Commentary 예시 ("빨간 신호 때문에 같은 자리에 있어라", "앞의 노란 차 뒤로 속도를 줄여라", "보행자가 진행 경로를 가로지르므로 정지"). 두 종류의 언어 모두 행동을 만드는 같은 가중치에서 생성됨.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: Action Dreaming 정성 결과. 각 패널은 같은 장면에 다른 언어 명령; 빨간 점은 예측된 path waypoint, 녹색은 speed waypoint, 파란 그래프는 예측 속도 프로파일. 같은 교차로에서 (a) "Go left" vs (b) "Go straight" vs (c) "Go right"를 비교 — 모델은 시각 단서가 아니라 언어에 따라 예측을 바꿈. (e) "Crash into the object at x:12.49m, y:6.20m"은 OOD 기하 명령을 테스트; (f)는 다단계 trajectory ("In 5 meters, transition one lane to the left with a 7-meter transition")를 테스트.</figcaption>
+        </figure>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>Action Dreaming 데이터셋과 벤치마크.</strong> world-on-rails 가정을 사용해 ego의 반사실적 trajectory를 시뮬레이션함으로써 <em>같은 시각 컨텍스트</em>에 대해 여러 대안 instruction-action 쌍을 만드는 새로운 데이터 수집 기법. 핵심은 행동을 시각 단서만으로는 추론할 <em>수 없다</em>는 것 — 모델이 명령을 처리해야만 예측 가능. 각 쌍은 또한 safe/unsafe 플래그가 있어 모델이 위험한 명령을 거부하는 법도 학습.</li>
+          <li><strong>Disentangled path + speed waypoint.</strong> Ablation 결과 표준 entangled waypoint 표현 대비 driving score 39.9% 증가, 정적 객체 충돌 0회 달성. Path 스트림은 정지 상태에서도 dense steering supervision을 제공.</li>
+          <li><strong>카메라만으로 공식 CARLA Leaderboard 2.0 SOTA.</strong> SimLingo-BASE가 Sensor track에서 DS 6.87을 기록 — 이전 SOTA CaRINA hybrid (1.23) 대비 4.6×, 동시기 TF++ (5.18) 대비 33% 향상. 저자들이 아는 한 LB 2.0에서 순수 카메라만으로 작동하는 유일한 엔트리.</li>
+          <li><strong>주행 성능 손실 없는 generalist.</strong> 전체 SimLingo (VQA, Commentary, Dreaming 포함)가 순수 주행 모델 SimLingo-BASE의 Bench2Drive 성능을 그대로 유지 (DS 85.07 vs 85.94). zero-shot InternVL2-4B 대비 큰 폭 우위의 언어 능력을 추가하면서.</li>
+          <li><strong>Target-point shortcut 없는 카메라 전용 end-to-end VLA.</strong> GPS target point 대신 언어 명령(HLC)을 사용해도 DS 86.08 — GPS 조건과 분산 내. 잘 알려진 "target point 정보를 통한 recovery shortcut" 현상을 성능 원인에서 배제.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>구성요소</th><th>설정</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>Backbone</td><td>InternVL2-1B (InternViT-300M + Qwen2-0.5B-Instruct)</td><td>Mini-InternVL family — 일반 VLM 거동을 유지하는 가장 작은 사이즈.</td></tr>
+            <tr><td>LLM finetuning</td><td>모든 linear layer에 LoRA</td><td>다른 컴포넌트(vision, projector, action head)는 fully fine-tune.</td></tr>
+            <tr><td>주행 expert</td><td>PDM-lite (오픈소스 rule-based, [Beißwenger 2024])</td><td>Think2Drive의 오픈소스 대체 — 저자들이 Dreaming 라벨 생성을 위해 expert 내부 상태에 접근해야 했기 때문에 필수.</td></tr>
+            <tr><td>주행 데이터</td><td>3.1M 프레임 @ 4 fps; CARLA Town 12 train / Town 13 val</td><td>희귀 시나리오 upsample; 날씨/스폰 거리 augmentation; LB 2.0 target-point 분포 시프트(50m → 200m gap) 해결을 위한 다중 시나리오 long route.</td></tr>
+            <tr><td>학습 mix</td><td>50% expert traj + 50% dream traj</td><td>Expert 내부: 50% VQA / 35% commentary / 7.5% commentary-in-prompt / 7.5% no language. Dream 내부: 50% Dreamer flag 활성 / 50% 비활성 (unsafe 거부 학습).</td></tr>
+            <tr><td>Bucket</td><td>흥미로운 버킷에서 epoch당 650k sample</td><td>직선 도로 프레임에 잠기는 것을 방지; 희귀 시나리오 버킷에서 편향 샘플링.</td></tr>
+            <tr><td>Optimizer</td><td>AdamW, lr 3e-5, weight decay 0.1, cosine schedule</td><td>학습 효율을 위해 DeepSpeed v2.</td></tr>
+            <tr><td>Loss</td><td>Waypoint에 Smooth-L1 + 언어 토큰에 cross-entropy</td><td>데이터 추가 후 L2가 불안정해서 Smooth-L1로 변경.</td></tr>
+            <tr><td>Augmentation</td><td>Shift 1.5m, rotation 20° (TF++보다 공격적)</td><td>Drift로부터의 폐루프 recovery에 핵심.</td></tr>
+            <tr><td>하드웨어</td><td>14 epoch, 8×A100 80GB, batch 12, 24시간</td><td>Variance 보고를 위해 3 seed.</td></tr>
+            <tr><td>추론 트릭</td><td>Steering ≈ 0일 때 누적 주행거리로 early-stopping</td><td>LB 2.0의 비선형 DS 페널티(infraction이 있는 채로 더 많이 주행하면 더 큰 감점)를 상쇄.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>벤치마크</th><th>방법</th><th>Driving Score ↑</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td rowspan="2">CARLA LB 2.0 (Map track)</td><td>TF++ [Zimmerlin et al.]</td><td>5.56</td><td>L+C, 다중 aux label</td></tr>
+            <tr><td><strong>SimLingo-BASE</strong></td><td><strong>6.25</strong></td><td>카메라만, aux 없음</td></tr>
+            <tr><td rowspan="3">CARLA LB 2.0 (Sensor track)</td><td>CaRINA hybrid</td><td>1.23</td><td>이전 SOTA</td></tr>
+            <tr><td>TF++</td><td>5.18</td><td>L+C</td></tr>
+            <tr><td><strong>SimLingo-BASE</strong></td><td><strong>6.87</strong></td><td><strong>이전 SOTA의 4.6×, TF++의 33%↑</strong></td></tr>
+            <tr><td rowspan="3">Bench2Drive</td><td>TCP-traj (Think2Drive expert)</td><td>59.90</td><td>SR 30.00%</td></tr>
+            <tr><td>DriveAdapter</td><td>64.22</td><td>SR 33.08%</td></tr>
+            <tr><td><strong>SimLingo</strong></td><td><strong>85.07 ± 0.95</strong></td><td><strong>SR 67.27%, Eff 259.23</strong></td></tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead><tr><th>언어 작업</th><th>InternVL2-4B (zero-shot)</th><th>SimLingo-1B</th></tr></thead>
+          <tbody>
+            <tr><td>DriveLM-VQA (GPT)</td><td>27.11</td><td><strong>58.48</strong></td></tr>
+            <tr><td>Commentary (GPT)</td><td>24.75</td><td><strong>78.94</strong></td></tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead><tr><th>Action Dreaming (SR%)</th><th>Faster</th><th>Slower</th><th>Target Speed</th><th>Lane Change</th><th>Objects</th><th>Avg</th></tr></thead>
+          <tbody>
+            <tr><td>w/o Dream data</td><td>56.45</td><td>22.58</td><td>19.35</td><td>3.23</td><td>20.97</td><td>24.52</td></tr>
+            <tr><td><strong>SimLingo</strong></td><td><strong>92.45</strong></td><td><strong>84.91</strong></td><td><strong>86.79</strong></td><td><strong>83.02</strong></td><td><strong>58.49</strong></td><td><strong>81.13</strong></td></tr>
+          </tbody>
+        </table>
+
+        <p><strong>숫자 읽기.</strong> Bench2Drive에서 ~64 (DriveAdapter)에서 85로의 점프는 크지만, 저자들은 신중함: TCP-traj를 자신들의 PDM-lite 데이터셋으로 재학습하고 컨트롤러를 튜닝하면 이미 63.45 DS를 달성. 따라서 데이터셋과 컨트롤러가 ~14 DS를 차지하고, 아키텍처와 Dreaming 학습이 나머지 ~22를 차지. Action Dreaming 숫자는 Dream 학습 없이는 모델이 CARLA의 native HLC 너머 기본적인 속도/차선 명령조차 따를 수 없음을 보여줌 (Lane Change SR 3.23%) — Dream 학습이 있으면 폭넓은 명령 세트로 일반화. Tab. 6은 중요하게도 (정렬되지 않은) 언어 작업(VQA + Commentary)을 추가해도 주행 성능에 손실이 <em>없으며</em>, Dreaming 데이터는 주행을 약간 <em>개선</em>한다는 것을 보여줌 — VQA는 해롭지 않지만 도움도 안 되고, 언어-행동 정렬만이 도움이 됨.</p>
+
+        <figure>
+          <img src="images/simlingo/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5: SimLingo-BASE 아키텍처. LB 2.0에 제출된 경량 변형 — LLaVA-Next vision encoder + 처음부터 학습한 50M 파라미터 LLaMA-스타일 transformer (언어 head 없음). 전방 view를 두 개의 336×336 패치로 분할하여 독립 인코딩, downsample, flatten 후 GPS target point + ego speed 임베딩과 concat하여 transformer로. Path/WP query는 풀 모델과 같은 disentangled waypoint를 디코딩 — LB 2.0 숫자를 만드는 것이 LLM이 아니라 disentangled action head임을 확인.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6: Navigation Command 일반화. 같은 장면, 다양한 표현: "Go left at the next intersection" / "Turn left" / "I need to go right at the next junction please" / "Sorry, I was wrong. I need to go left instead" / OOD 잡담 ("My cat walked on the left side", "I really like my dog"). 모델은 캐주얼한 의역을 가로질러 주행 의도를 파싱하고 무관한 잡담은 무시 — CARLA의 6개 native HLC 너머 언어 robustness를 stress test한 것.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig7.png" alt="Figure 7">
+          <figcaption>Figure 7: Dreaming — Slower 명령들. 차의 속도를 줄이라고 요청하는 다양한 방식 ("Ease up on the gas", "Apply the brakes", "Drive more slowly", "Take it easy on the speed", "Bring your speed down")이 모두 파란색 m/s 그래프에서 단조 감소하는 속도 프로파일을 생성. 아래 행 빨간 박스는 투명성을 위한 정성적 경계선 사례.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig8.png" alt="Figure 8">
+          <figcaption>Figure 8: Dreaming — Faster 명령들. Fig. 7과 대칭으로 가속 명령 ("Move faster", "Speed up your driving", "Go faster now", "Accelerate now")이 단조 증가 속도 프로파일을 생성. 마지막 행의 두 빨간 박스 예시는 속도 프로파일이 비단조이거나 진동하는 실패 사례.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig9.png" alt="Figure 9">
+          <figcaption>Figure 9: Dreaming — 객체 중심 명령들. "Hit the vehicle ford crown", "Guide the car in the direction of the traffic light", "Ram into the construction cone", "Crash into the object at x:12.49m, y:6.202m" 같은 매우 OOD인 명령에 대한 예측 trajectory. 이 행동들은 결코 안전하게 실행될 수 없지만, Dreaming은 이를 open-loop로 평가하여 모델이 객체 참조를 실제로 파싱했고 명령이 있으면 그쪽으로 <em>움직일 의향이 있는지</em>를 검증.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig10.png" alt="Figure 10">
+          <figcaption>Figure 10: Dreaming — Target Speed 명령들. 빨간 그래프는 요청된 일정 속도, 파란 그래프는 모델 예측 속도. "Keep your speed at 27.02 m/s" / "Maintain a speed of 41.4 km/h" / "Drive with a steady 1.59 m/s" — 모델은 몇 초 내에 수렴. 빨간 박스 예시는 실패 모드 (예: "Try to reach 22.25 m/s"에서 예측 프로파일이 진동).</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/simlingo/fig11.png" alt="Figure 11">
+          <figcaption>Figure 11: Dreaming — 차선 변경 명령들. 명시적 기하 파라미터를 가진 측면 기동의 다양한 표현: "With a transition of 16 meters, change one lane to the right starting in 1 meters", "Shift one lane to the right starting in 1 meters with a transition of 5 meters", "In 5 meters, transition one lane to the left with a 7-meter transition" 등. 모델은 숫자 단계와 transition 길이를 파싱하고 그에 맞춰 모양 잡힌 path waypoint를 생성 — 논문에서 정량적 언어→기하 grounding을 가장 직접적으로 보여주는 부분.</figcaption>
+        </figure>
+
+        <h2>강점</h2>
+        <ul>
+          <li><strong>Action Dreaming 작업이 진짜 문제에 대한 올바른 답.</strong> 언어 메트릭(VQA)과 주행 거동 사이의 단절은 널리 인식되지만 거의 해결되지 않음. 같은 장면에 다른 명령을 주고 다른 행동을 만들도록 강제하면, 시각 shortcut으로는 통과할 수 없는 테스트가 됨.</li>
+          <li><strong>LB 2.0 난이도에서의 카메라 전용은 사소하지 않은 결과.</strong> 카메라 전용 센서 스택은 실용적으로 매력적이지만 이 벤치마크 난이도에서 학계는 드묾. 이전 Sensor-track SOTA 대비 4.6× 향상은 LiDAR 없이 가능한 것에 대한 대화를 바꿈.</li>
+          <li><strong>Disentangled path + speed는 깔끔한 구조적 통찰.</strong> 이 단일 변경으로 39.9% DS 점프는 출력 표현이 backbone 규모만큼이나 중요할 수 있다는 강한 상기.</li>
+          <li><strong>정직한 baseline.</strong> TCP-traj-w/o-distillation을 PDM-lite로 재학습한 부분(Tab. 2)은 데이터 구성 vs 아키텍처에서 얼마만큼의 성능이 오는지 분리. 대부분의 CARLA 논문보다 엄격함.</li>
+          <li><strong>비용 없는 generalist.</strong> 학습 mixture ablation (Tab. 6)은 언어 작업을 추가해도 주행이 퇴보하지 않음을 직접 보여줌 — 학계가 일관되게 보여주지 못한 결과.</li>
+          <li><strong>HLC 전용 conditioning이 GPS conditioning과 매칭.</strong> Target-point shortcut을 배제함으로써 많은 CARLA 결과를 괴롭혀 온 confound를 제거.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li><strong>전체 SimLingo가 공식 Leaderboard에서 테스트되지 않음.</strong> SimLingo-BASE만 LB 2.0 서버 폐쇄(2024년 6월) 전에 제출됨; 전체 SimLingo의 헤드라인 숫자는 로컬 Bench2Drive에서만. 따라서 Commentary를 통한 CoT 추론 파이프라인은 공식 서버 검증이 없음.</li>
+          <li><strong>Chain-of-Thought가 통계적으로 유의한 주행 향상 없음.</strong> 최종 모델에서 기본적으로 Commentary를 실행하지만, Appendix C.3에 따르면 CoT의 향상은 노이즈 범위 내. 아키텍처는 CoT를 위해 설정되었지만 데이터/학습 레시피가 아직 기대 향상을 만들지 못함.</li>
+          <li><strong>시뮬레이션 전용.</strong> 모든 주행과 언어 이해가 CARLA에서 평가됨. VLM 추론 latency와 제어/언어 양쪽의 sim-to-real 일반화는 명시적으로 future work로 남김.</li>
+          <li><strong>객체 중심 Dreaming이 가장 약한 카테고리.</strong> Objects 58.49% SR은 Speed/Lane 카테고리(83-92%)보다 훨씬 낮음 — "x=12.49m의 ford crown 차량과 충돌" 같은 기하 참조 해상도는 스칼라 속도/heading 제어보다 어려움을 시사.</li>
+          <li><strong>Dreaming 평가는 open-loop 전용.</strong> 구조적으로 Dream 행동은 실행되지 않음 (일부는 unsafe). Open-loop SR은 폐루프 노이즈, recovery, 시간 압박 하에서도 모델이 명령을 올바르게 따르는지를 알려주지 못함.</li>
+        </ul>
+
+        <h2>토의 포인트</h2>
+        <ol>
+          <li>Action Dreaming은 world-on-rails 가정(다른 에이전트들은 재생된 경로에 고정) 하에서 ego의 반사실적 trajectory를 시뮬레이션하여 학습 쌍을 생성. 이것이 feature인가 한계인가? 깨끗한 라벨을 보장하지만, 다른 에이전트들이 ego의 반사실적 움직임에 어떻게 반응할지를 무시한 채 instruction-following을 학습시킴. 실제 배포에서는 정확히 잘못된 inductive bias로 보이는데 — 그럼에도 논문은 폐루프 주행으로 큰 전이를 보여줌. 왜 작동하는가, 그리고 reactive-agent 시뮬레이션으로 바꾸면 무엇이 달라질까?</li>
+          <li>Tab. 6은 VQA + Commentary만으로는 주행에 도움이 안 되고 Dreaming 데이터는 도움이 됨을 보여줌. 자연스러운 해석은 "정렬된 언어만이 행동에 도움"이지만, Dreaming 데이터가 단순히 행동 공간을 augment할 수도 있음 (더 다양한 trajectory ≈ 더 다양한 imitation), 언어와는 무관하게. "정렬 효과"를 "trajectory augmentation 효과"와 어떻게 분리할 것인가? 의역된 동일 행동 Dream 쌍에 대한 ablation이 도움이 될 것.</li>
+          <li>Disentangled path+speed waypoint와 두 PID는 고전 제어로의 회귀처럼 느껴짐. 왜 end-to-end VLA에서 kinematics를 dynamics와 분리하는 것이 이렇게 큰 이득을 주는가? 이것은 VLM backbone에서도 올바른 행동 표현이 "joint waypoint regression"보다 "두 제어 채널"에 더 가깝다는 것을 시사하는가?</li>
+          <li>전체 SimLingo는 서버 폐쇄로 LB 2.0에 제출되지 못함. Bench2Drive의 ~85 DS가 LB 2.0 성능을 예측한다고 주장해야 한다면, 논문의 어떤 증거가 전이 주장을 뒷받침하고 어디서 실패할 수 있는가? Bench2Drive는 150m 경로를 사용하고 LB 2.0은 최대 8km — path waypoint horizon (20m)이 더 긴 스케일에서 충분한가?</li>
+          <li>Action Dreaming은 "unsafe 명령 거부" 모드(Dreamer flag 비활성)를 포함. 실용 배포에서 이 거부 로직은 정확히 어디 있어야 하는가 — VLM 내부, wrapper, 또는 별도 safety filter? 논문은 같은 가중치로 학습시키는데, 이는 capability와 safety를 하나의 학습 가능한 모듈로 결합. 올바른 아키텍처적 분리는 무엇인가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 별도로 발전해 온 세 가지 흐름의 만나는 지점으로 읽는 것이 좋습니다: 카메라 전용 end-to-end 주행(TransFuser → TF++), VLM-as-driver(DriveLM, LMDrive, OpenDriveVLA), 그리고 언어-행동 grounding을 강조해 온 더 오래된 로보틱스 전통. SimLingo의 기여는 주행에서 VQA 스타일의 언어 평가가 포템킨 메트릭임을 인식하고, 그 단절을 깨기 위한 학습 작업(world-on-rails 반사실로 만든 Action Dreaming)과 벤치마크를 함께 설계한 데 있습니다. 아키텍처 자체 — InternVL2-1B + 타일 이미지 + disentangled path/speed waypoint — 는 개념적 도약이라기보다 엔지니어링 작업이지만, disentangled action head ablation (39.9% DS gain)은 올바른 출력 표현이 여전히 충분히 탐구되지 않았음을 시사합니다.</p>
+
+        <p>두 번 읽기를 권합니다. 첫 번째: Section 3.1–3.2 (작업 분류와 Action Dreaming 데이터셋 구축) — 이것이 논문의 개념적 핵심이며, 데이터셋 구축 레시피가 가장 재사용 가능성 높은 부분. 두 번째: Section 4.3과 Tab. 1, 2, 5, 6을 함께 — Bench2Drive 숫자는 크지만 컨트롤러 튜닝된 TCP-traj baseline (Tab. 2의 "+ tuned controller" 행)과 학습 mixture ablation (Tab. 6)과 함께 봐야만 의미가 있음. VLA 주행 시스템을 만드는 실무자에게 실행 가능한 교훈은: (1) 출력에서 path와 speed를 분리하라, (2) 언어-행동 정렬을 학습에 강제하기 위해 합성 반사실 trajectory를 사용하라, (3) VQA 정확도가 아니라 Dreaming 스타일 벤치마크로 정렬을 평가하라.</p>
+      `
+    }
   }
 ];
