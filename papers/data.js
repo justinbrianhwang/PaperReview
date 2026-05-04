@@ -14569,5 +14569,281 @@ const PAPERS = [
         <p>두 번 읽기를 권합니다. 첫 번째: Section 3.1–3.2 (작업 분류와 Action Dreaming 데이터셋 구축) — 이것이 논문의 개념적 핵심이며, 데이터셋 구축 레시피가 가장 재사용 가능성 높은 부분. 두 번째: Section 4.3과 Tab. 1, 2, 5, 6을 함께 — Bench2Drive 숫자는 크지만 컨트롤러 튜닝된 TCP-traj baseline (Tab. 2의 "+ tuned controller" 행)과 학습 mixture ablation (Tab. 6)과 함께 봐야만 의미가 있음. VLA 주행 시스템을 만드는 실무자에게 실행 가능한 교훈은: (1) 출력에서 path와 speed를 분리하라, (2) 언어-행동 정렬을 학습에 강제하기 위해 합성 반사실 trajectory를 사용하라, (3) VQA 정확도가 아니라 Dreaming 스타일 벤치마크로 정렬을 평가하라.</p>
       `
     }
+  },
+
+  // ====================================================================
+  // GPU-Accelerated Syndrome Decoding for Quantum LDPC Codes below the 63 µs Latency Threshold
+  // ====================================================================
+  {
+    id: "qldpc-gpu-decoder",
+    date: "2026-05-04",
+    authors: "Ferraz, O., Coutinho, B., Falcão, G., Gomes, M., Monteiro, F. A., Silva, V.",
+    venue: "arXiv 2025 (extended abstract)",
+    image: "images/qldpc-gpu-decoder/thumbnail.png",
+    link: "https://arxiv.org/abs/2508.07879",
+    domain: "quantum-computing",
+    tags: ["Quantum Error Correction", "QLDPC", "Belief Propagation", "GPU", "Real-Time Decoding", "Min-Sum Algorithm"],
+    en: {
+      title: "GPU-Accelerated Syndrome Decoding for Quantum LDPC Codes below the 63 µs Latency Threshold",
+      summary: "First GPU-based QLDPC syndrome decoder, hitting 23.3-43.7 µs on RTX 4090 — under Google Willow's surface-code real-time threshold — using a single CUDA kernel with constant memory and four sync barriers per BP iteration.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>The contribution is not a new algorithm but a <strong>concrete demonstration that commodity desktop GPUs (RTX 3090/4090) can decode QLDPC codes within the 63 µs real-time syndrome-processing budget</strong> set by Google's Willow surface-code experiment — measured end-to-end including host↔device transfers — using a single CUDA kernel that decodes both X and Z components together with min-sum belief propagation.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can constant-rate quantum LDPC codes — which scale better than surface codes but have higher decoding complexity — be decoded fast enough on widely available GPU hardware to meet the same real-time latency threshold (63 µs) demonstrated for surface codes on Google's Willow processor?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Fault-tolerant quantum computing requires syndrome decoders that finish in less time than the physical syndrome-extraction cycle — otherwise errors accumulate faster than they're corrected (the "decoder backlog" problem). In 2024 Google demonstrated below-threshold quantum error correction on Willow with a distance-5 surface code, achieving an average decoder latency of <strong>63 µs over a million cycles</strong> [Acharya et al., Nature 2024]. This 63 µs is the operational benchmark any future decoder for a superconducting platform must meet.</p>
+
+        <p>Surface codes work because they are local on a 2D grid and have high thresholds, but their <strong>encoding rate (logical/physical qubits) approaches zero</strong> as code distance grows. Reaching megaqubit logical capacity with surface codes alone implies billions of physical qubits — likely infeasible. Quantum LDPC codes, especially Panteleev–Kalachev "good" QLDPC codes [IEEE TIT 2021] and the linear-time-decodable construction of Dinur–Hsieh–Lin–Vidick [STOC 2023], promise <strong>constant rate and linear minimum distance</strong>, drastically reducing physical qubit overhead. The Bravyi–Cross–Gambetta–Maslov–Rall–Yoder "high-threshold low-overhead" QLDPC family [Nature 2024] gives a concrete construction with codes like [[72, 12, 6]], [[144, 12, 12]], [[288, 12, 18]], and [[784, 24, 24]] — what this paper benchmarks.</p>
+
+        <p>The catch: QLDPC codes have <strong>larger block length, sparser parity-check matrices, and often nonlocal stabilizers</strong> than surface codes, all of which slow classical decoding. Worse, decoders must work from <em>syndromes only</em>, never the codeword itself, because measuring the data qubits would collapse the quantum state. Existing QLDPC decoder work focused on accuracy, FPGA implementation [Valls et al. 2021], or asymptotic complexity — but until this paper there had been no GPU-based QLDPC decoder demonstrating real-time wall-clock latency on commodity hardware.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The paper adapts the <strong>min-sum algorithm (MSA)</strong> — a low-complexity approximation of belief propagation popular in classical 5G LDPC decoding — to the syndrome-only setting and maps it tightly onto CUDA.</p>
+
+        <figure>
+          <img src="images/qldpc-gpu-decoder/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: LDPC Tanner graph for the toy parity-check matrix in Eq. (1). Variable nodes (VN<sub>0</sub>...VN<sub>5</sub>, circles) are connected to check nodes (CN<sub>0</sub>...CN<sub>2</sub>, squares) through a permutation network; the dashed edges represent message passing in both directions during BP iterations. M = 3 check nodes (rows of H), N = 6 variable nodes (columns), check-node degree d<sub>c</sub> = 4, variable-node degree d<sub>v</sub> = 2. The QLDPC codes benchmarked here have the same bipartite structure but with M, N in the hundreds.</figcaption>
+        </figure>
+
+        <p><strong>Algorithm side — syndrome-based MSA.</strong> Each BP iteration consists of:</p>
+        <ul>
+          <li><strong>Check-node update:</strong> r<sub>m,n</sub><sup>(k)</sup> = αs<sub>m</sub> · ∏<sub>j∈S<sub>v</sub>(m)\n</sub> sign(q<sub>m,j</sub><sup>(k-1)</sup>) · min<sub>j∈S<sub>v</sub>(m)\n</sub>|q<sub>m,j</sub><sup>(k-1)</sup>|. The factor αs<sub>m</sub> is the key syndrome-decoding adaptation: when syndrome bit s<sub>m</sub> = 1 (constraint violated), the sign is flipped; α ∈ (0,1) is the standard min-sum scaling factor that compensates for MSA's overestimation.</li>
+          <li><strong>Variable-node update:</strong> q<sub>m,n</sub><sup>(k)</sup> = γ<sub>n</sub> + Σ<sub>i∈S<sub>c</sub>(n)\m</sub> r<sub>i,n</sub><sup>(k)</sup>. γ<sub>n</sub> is the prior LLR — in classical LDPC this comes from the channel; in syndrome-based QLDPC it's initialized from the soft-syndrome reliability if available, otherwise a fixed value.</li>
+          <li><strong>A posteriori &amp; tentative decision:</strong> Q<sub>n</sub><sup>(k)</sup> = γ<sub>n</sub> + Σ<sub>i∈S<sub>c</sub>(n)</sub> r<sub>i,n</sub><sup>(k)</sup>; ê<sub>n</sub><sup>(k)</sup> = 1 if Q<sub>n</sub><sup>(k)</sup> < 0 else 0.</li>
+          <li><strong>Stopping:</strong> iterate until ê<sup>(k-1)</sup>·H<sup>T</sup> = s (valid correction found) or k = I<sub>max</sub>.</li>
+        </ul>
+
+        <p>For CSS-type quantum codes the X and Z error syndromes are decoded independently (HX·ê<sub>Z</sub><sup>T</sup> = s<sub>Z</sub> and HZ·ê<sub>X</sub><sup>T</sup> = s<sub>X</sub>) — but this paper concatenates them into a single kernel.</p>
+
+        <figure>
+          <img src="images/qldpc-gpu-decoder/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: Proposed GPU-based QLDPC decoder. The static parity-check matrices H<sub>X</sub>, H<sub>Z</sub> are stored compressed in <strong>constant memory</strong> for fast broadcast access; dynamic syndromes s<sub>X</sub>, s<sub>Z</sub> live in global memory. Each BP iteration runs as one CUDA kernel with four synchronization barriers: (1) between minimum and sign computation inside CN processing, (2) after CN processing, (3) after VN processing, (4) after a-posteriori &amp; tentative decision. CN processing uses 2M threads (size of s<sub>X</sub>+s<sub>Z</sub>); VN processing uses 2N threads. Concatenating X and Z components into a single kernel halves kernel-launch overhead.</figcaption>
+        </figure>
+
+        <p><strong>GPU-side design choices.</strong></p>
+        <ul>
+          <li><strong>Constant memory for H<sub>X</sub>, H<sub>Z</sub>.</strong> Parity-check matrices never change across syndromes for a fixed code; constant memory gives broadcast reads to all threads in a warp without bank conflicts.</li>
+          <li><strong>Single kernel for X and Z.</strong> Concatenating both components in memory and decoding in one kernel avoids paying kernel-launch overhead twice and improves occupancy.</li>
+          <li><strong>Thread mapping.</strong> 2M threads for CN processing (one per check), 2N threads for VN processing (one per variable). The CN step is further split into a separate min-computation and sign-computation pass with a sync barrier in between, so the min-tree reduction and the sign-product reduction can each be done coalesced.</li>
+          <li><strong>Compressed sparse representation.</strong> H is sparse, so the kernel reads only non-zero indices, not the full M×N matrix.</li>
+          <li><strong>Floating-point in this prototype</strong>, with explicit acknowledgment in Table 1 that 8-bit / 16-bit integer arithmetic with quantization is the next optimization (4× / 2× transfer reduction + faster integer ALUs).</li>
+        </ul>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>First GPU-based QLDPC decoder.</strong> To the authors' knowledge no prior work has implemented a QLDPC syndrome decoder on GPU hardware; previous work targeted CPUs, FPGAs, or stayed at the algorithmic-paper level.</li>
+          <li><strong>Sub-63 µs end-to-end latency on commodity hardware.</strong> [[784, 24, 24]] — the largest code tested, also the most useful encoding rate — runs in 62.9 µs on RTX 3090 and 43.7 µs on RTX 4090 including host↔device transfers, beating the Willow surface-code threshold without resorting to FPGA or ASIC.</li>
+          <li><strong>Single-kernel X+Z decoding.</strong> Concatenating the two CSS error channels into one kernel is a small but important latency-saving choice — kernel-launch overhead is non-trivial at &lt;100 µs total budget.</li>
+          <li><strong>Demonstrated scalability across GPU classes.</strong> Same code runs on Jetson TX2 (edge SoC), Jetson AGX Orin (embedded), RTX 3090 and RTX 4090 (desktop). Jetson misses 63 µs by 15-30 µs on smaller codes; desktop GPUs hit it on every code tested. The data point matters because future deployments may want compact embedded form factors near the dilution refrigerator.</li>
+          <li><strong>Optimization roadmap (Table 1).</strong> The paper is explicit about what it has <em>not</em> done yet: integer/quantized arithmetic, shared-memory caching, async kernel launches, thread/block tuning, comparison to non-Willow timing budgets. This roadmap is a contribution in itself for follow-up work.</li>
+        </ul>
+
+        <h2>Training &amp; Implementation Details</h2>
+        <p>This is a classical decoder, so there is no training. The implementation parameters:</p>
+        <table>
+          <thead><tr><th>Component</th><th>Setting</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Decoding algorithm</td><td>Min-sum algorithm (MSA) with scaling factor α</td><td>α ∈ (0,1) compensates for min-sum's magnitude overestimation; chosen empirically.</td></tr>
+            <tr><td>Iterations</td><td>10 fixed, no early termination</td><td>Worst-case latency reported; early termination would lower average but keep worst-case.</td></tr>
+            <tr><td>Codes tested</td><td>[[72, 12, 6]], [[108, 8, 10]], [[144, 12, 12]], [[288, 12, 18]], [[784, 24, 24]]</td><td>From Bravyi–Cross–Gambetta–Maslov–Rall–Yoder Nature 2024 family.</td></tr>
+            <tr><td>Arithmetic</td><td>32-bit floating point</td><td>Acknowledged as suboptimal; integer/quantized arithmetic is on roadmap.</td></tr>
+            <tr><td>Memory layout</td><td>Constant memory for H<sub>X</sub>, H<sub>Z</sub> (compressed); global memory for syndromes and messages</td><td>Shared memory not yet exploited; flagged in Table 1 as next optimization.</td></tr>
+            <tr><td>Concurrency</td><td>Single kernel for X+Z, 2M threads for CN, 2N threads for VN</td><td>4 synchronization barriers per iteration.</td></tr>
+            <tr><td>Hardware</td><td>Nvidia Jetson TX2 (Pascal SoC), Jetson AGX Orin (Ampere SoC), RTX 3090 (Ampere desktop), RTX 4090 (Ada Lovelace desktop)</td><td>Jetson uses unified memory (no explicit transfers); desktop GPUs include host↔device transfer time.</td></tr>
+            <tr><td>Reported metric</td><td>Total decoding time (host↔device transfer + kernel execution)</td><td>End-to-end latency, not kernel-only — important honest comparison.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <figure>
+          <img src="images/qldpc-gpu-decoder/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: End-to-end decoding latency (µs, including host↔device transfers + 10 BP iterations in float) on five QLDPC codes across four GPU platforms. The dashed orange line is the 63 µs Willow real-time threshold [Acharya et al., Nature 2024]. RTX 3090 stays below threshold for every code (largest [[784,24,24]] at 62.9 µs); RTX 4090 has substantial headroom (largest at 43.7 µs, smallest at 23.3 µs). Jetson TX2 and Orin overshoot for smaller codes by ~15–30 µs and miss badly on [[784,24,24]] (185.4 µs and 122.9 µs respectively).</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>Code [[n, k, d]]</th><th>TX2</th><th>AGX Orin</th><th>RTX 3090</th><th>RTX 4090</th></tr></thead>
+          <tbody>
+            <tr><td>[[72, 12, 6]]</td><td>89.4 µs</td><td>77.9 µs</td><td>34.0 µs</td><td><strong>23.3 µs</strong></td></tr>
+            <tr><td>[[108, 8, 10]]</td><td>78.1 µs</td><td>77.2 µs</td><td>35.5 µs</td><td>28.7 µs</td></tr>
+            <tr><td>[[144, 12, 12]]</td><td>87.7 µs</td><td>76.5 µs</td><td>34.9 µs</td><td>28.6 µs</td></tr>
+            <tr><td>[[288, 12, 18]]</td><td>134.1 µs</td><td>85.3 µs</td><td>43.2 µs</td><td>28.1 µs</td></tr>
+            <tr><td><strong>[[784, 24, 24]]</strong></td><td>185.4 µs</td><td>122.9 µs</td><td><strong>62.9 µs</strong></td><td><strong>43.7 µs</strong></td></tr>
+            <tr><td colspan="5"><em>63 µs = Google Willow real-time threshold [Acharya et al. 2024]</em></td></tr>
+          </tbody>
+        </table>
+
+        <p><strong>Reading the numbers.</strong> Three things are worth noting. (1) <em>End-to-end</em> includes PCIe transfers; on desktop GPUs these add ~15% overhead for small codes and ~5% for large. (2) The Jetson platforms have <em>lower</em> transfer overhead (unified memory eliminates explicit copies) but their compute is too weak — kernel time dominates. So unified memory wins where you'd expect (small data, weak compute) and loses where it matters (large QLDPC matrices). (3) The [[784, 24, 24]] result on RTX 3090 — 62.9 µs vs 63 µs threshold — is wafer-thin: any drift in transfer scheduling or kernel jitter could push it over, which is why the headroom on the 4090 (43.7 µs) is the more dependable real-time number.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li><strong>Honest end-to-end measurement.</strong> Reporting host↔device transfer + kernel time, not kernel-only, makes the comparison to Willow's 63 µs operational latency apples-to-apples. Many GPU papers quote kernel-only numbers that look better than they really are in a system context.</li>
+          <li><strong>Targets a specific, recently established threshold.</strong> Tying the work to Acharya et al. 2024's measured 63 µs gives the result a concrete operational meaning, not just a relative speedup over a strawman baseline.</li>
+          <li><strong>Single-kernel X+Z decoding is the right engineering call.</strong> At &lt;100 µs total budget, kernel-launch overhead is a real fraction; concatenating the two CSS components is a small idea with disproportionate impact.</li>
+          <li><strong>Cross-platform sweep.</strong> Comparing edge SoC (Jetson TX2/Orin) to desktop GPUs (3090/4090) usefully maps the design space — relevant if future fault-tolerant systems need decoders physically close to the cryostat.</li>
+          <li><strong>Explicit roadmap (Table 1).</strong> The paper says exactly what it hasn't optimized yet (integer arithmetic, shared memory, async launches, thread/block tuning) — giving follow-up work a clear path. Not common in benchmark-heavy papers.</li>
+          <li><strong>Tests Bravyi et al.'s "high-threshold low-overhead" code family.</strong> Decoding the actual codes from Nature 2024 means the result connects to a credible architectural roadmap for QLDPC-based fault tolerance, not arbitrary toy codes.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>No accuracy results reported.</strong> The paper measures latency only — no logical error rate, no comparison of MSA-with-α decoding accuracy versus OSD, BP+OSD, or guided-decimation BP for these codes. A 23 µs decoder that fails to correct realistic noise patterns is useless. The arXiv version is an extended abstract; full accuracy curves are presumably in the planned full paper.</li>
+          <li><strong>Floating-point only in this prototype.</strong> Table 1 lists integer/quantized arithmetic as the obvious next step. Without it, the latency is not the practical bound; with it, performance changes substantially. The headline numbers should be read as upper bounds on what's achievable.</li>
+          <li><strong>Fixed 10 iterations, no early termination.</strong> Real systems would use early termination once the syndrome is satisfied. Average-case latency would be lower than reported, but the paper doesn't measure tail latency, which is what actually matters for real-time deadlines (an occasional miss accumulates as a logical error). A worst-case 10-iteration bound is fine for the threshold claim, but a tail-latency distribution would be more informative.</li>
+          <li><strong>Soft-syndrome handling alluded to but not benchmarked.</strong> Section 2 motivates soft-syndrome decoding (analog reliabilities for each syndrome bit) but the experiments don't actually use it — they decode binary syndromes. Soft-syndrome is the harder, more realistic case under measurement noise.</li>
+          <li><strong>Single decoder family.</strong> Only the Bravyi et al. 2024 code family is tested. Panteleev–Kalachev good QLDPC codes (mentioned in the intro) and Dinur–Hsieh–Lin–Vidick linear-time decodable codes are not benchmarked, and they have different sparsity/connectivity patterns that would stress the GPU implementation differently.</li>
+          <li><strong>PCIe transfer is in the critical path.</strong> The 5–15% transfer overhead on desktop GPUs assumes the syndrome arrives via PCIe. In a real fault-tolerant system the syndrome must come from a control board near the cryostat — PCIe latency variability under load could dominate the budget. Async kernel launches (Table 1) help throughput but not single-syndrome latency.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>The 63 µs threshold comes from Google Willow's distance-5 surface code with superconducting qubits. QLDPC codes typically have <em>longer</em> physical syndrome cycles (more entangling gates per stabilizer measurement, due to weight-6+ checks vs. surface code's weight-4). Does meeting the surface-code latency budget actually mean what it does for surface codes — or does QLDPC's syndrome cycle change the budget? What would the paper's results look like if we used the QLDPC-specific cycle time instead of 63 µs?</li>
+          <li>The single-kernel X+Z decoding is a clever latency optimization, but it ties the two decoding problems together. What happens to fairness and accuracy when one component (say X) converges in 3 iterations and the other (Z) needs 10? With fixed 10 iterations the X channel is wasting compute; with early termination the kernel exits whenever both are done, which is the slower of the two — so the joint kernel is bottlenecked by the worst component. Is there a sweet spot between fully-joint and fully-separate kernels?</li>
+          <li>Table 1 lists 8/16-bit integer quantization as the next optimization. For belief propagation specifically, quantization noise can interact with the convergence dynamics of MSA — small messages can be quantized to zero and the iteration stalls. What's the right way to validate that a quantized decoder still corrects the same error patterns as the float version? The paper doesn't address this; it should.</li>
+          <li>The 62.9 µs RTX 3090 result for [[784,24,24]] is so close to the 63 µs threshold that it's effectively a coin flip in production — kernel jitter, OS scheduling, PCIe contention can each easily add several µs. What would a robust real-time guarantee look like — a specific tail-latency target (e.g. 99.9th percentile under 63 µs), measured over millions of cycles like Acharya et al.? The current methodology reports a single average and doesn't address jitter.</li>
+          <li>The decoder runs on commodity GPUs that sit far from the dilution fridge. For a real fault-tolerant deployment, do you put the GPU in the room temperature electronics rack and route the syndrome over PCIe/Ethernet, or do you push toward an in-cryostat decoder (likely FPGA/ASIC, not GPU)? At 63 µs total budget, even ~10 µs of network latency is significant. Where does GPU decoding fit in the actual deployment story — research and benchmarking, or production?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This is a short, sharply targeted engineering result: take a known algorithm (min-sum BP for syndrome decoding), map it carefully onto CUDA, and measure end-to-end latency against a recently established operational threshold (Willow's 63 µs). The result — sub-threshold on commodity desktop GPUs for the Bravyi et al. 2024 code family — is meaningful because it changes the cost-of-decoder argument against QLDPC codes from "needs custom silicon" to "an RTX 4090 is enough, with room to spare." That's a non-trivial shift in how to think about deployment paths beyond surface codes.</p>
+
+        <p>That said, this is an extended abstract, not a complete paper. There are no accuracy numbers, no jitter or tail-latency analysis, no integer-arithmetic baseline, and no soft-syndrome experiments. The honest reading is: <strong>the latency target is achievable on commodity GPU hardware; whether the same configuration also provides the logical error rates required for fault tolerance is the unanswered question</strong>. The roadmap in Table 1 is the right one — quantization, shared memory, async launches, thread tuning all stand to push latency well below the threshold and create real headroom for jitter and accuracy trade-offs.</p>
+
+        <p>Read this paper for two things. First, the <strong>Section 2 + Algorithm 1 + Figure 2 trio</strong>: the cleanest concise statement I've seen of the differences between classical and syndrome-based LDPC decoding mapped onto a specific GPU kernel structure. Second, <strong>Figure 3 + Table 1 together</strong>: the latency bar chart shows what's achievable today, and the optimization roadmap shows what to do next. For QLDPC researchers, this is the existence proof that real-time decoding on commodity hardware is no longer a blocker — accuracy and integration are now the bottlenecks.</p>
+      `
+    },
+    ko: {
+      title: "63 µs 지연 임계값 아래의 양자 LDPC 코드를 위한 GPU 가속 syndrome 디코딩",
+      summary: "Google Willow의 surface code 실시간 임계값(63 µs) 아래에서 동작하는 최초의 GPU 기반 QLDPC syndrome 디코더 — RTX 4090에서 호스트↔디바이스 전송 포함 23.3-43.7 µs 달성, 단일 CUDA 커널로 X/Z 컴포넌트를 동시 디코딩하는 BP iteration당 4개의 sync barrier 구조.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문의 기여는 새 알고리즘이 아니라 <strong>commodity 데스크톱 GPU(RTX 3090/4090)가 Google Willow surface-code 실험에서 설정한 63 µs 실시간 syndrome 처리 예산 내에서 QLDPC 코드를 디코딩할 수 있다는 구체적 시연</strong>입니다 — 호스트↔디바이스 전송을 포함한 end-to-end 측정으로, X와 Z 컴포넌트를 함께 min-sum belief propagation으로 디코딩하는 단일 CUDA 커널을 사용.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>Surface code보다 더 잘 확장되지만 디코딩 복잡도가 더 높은 constant-rate 양자 LDPC 코드를, Google Willow 프로세서에서 surface code에 대해 시연된 동일한 실시간 지연 임계값(63 µs)을 만족하도록 널리 보급된 GPU 하드웨어에서 충분히 빠르게 디코딩할 수 있는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>Fault-tolerant 양자 컴퓨팅은 syndrome 추출 cycle보다 더 짧은 시간에 끝나는 syndrome 디코더를 필요로 합니다 — 그렇지 않으면 오류가 수정되는 속도보다 빠르게 누적됨 ("decoder backlog" 문제). 2024년 Google은 Willow에서 distance-5 surface code로 below-threshold 양자 오류 수정을 시연했고, <strong>백만 cycle에 걸쳐 평균 디코더 지연 63 µs</strong>를 달성했습니다 [Acharya et al., Nature 2024]. 이 63 µs는 초전도 큐비트 플랫폼을 위한 어떤 미래 디코더든 충족해야 하는 운영 벤치마크입니다.</p>
+
+        <p>Surface code는 2D grid에서 local하고 threshold가 높아서 잘 작동하지만, 코드 거리가 커질수록 <strong>encoding rate (logical/physical 큐비트 비율)가 0에 점근</strong>합니다. Surface code만으로 megaqubit logical 용량에 도달하려면 수십억 개의 physical 큐비트가 필요 — 거의 불가능. 양자 LDPC 코드, 특히 Panteleev–Kalachev "good" QLDPC 코드 [IEEE TIT 2021]와 Dinur–Hsieh–Lin–Vidick의 linear-time-decodable 구성 [STOC 2023]은 <strong>constant rate와 linear minimum distance</strong>를 약속하며, physical 큐비트 오버헤드를 극적으로 줄입니다. Bravyi–Cross–Gambetta–Maslov–Rall–Yoder의 "high-threshold low-overhead" QLDPC family [Nature 2024]는 [[72, 12, 6]], [[144, 12, 12]], [[288, 12, 18]], [[784, 24, 24]] 같은 코드를 가진 구체적 구성을 제공 — 이 논문이 벤치마크하는 것.</p>
+
+        <p>문제: QLDPC 코드는 surface code보다 <strong>block 길이가 더 크고, parity-check 행렬이 더 sparse하며, stabilizer가 종종 nonlocal</strong>입니다 — 모두 classical 디코딩을 느리게 만듦. 더 나쁘게도, 디코더는 <em>syndrome만으로</em> 작동해야 함, 절대 codeword 자체가 아님 — data 큐비트를 측정하면 양자 상태가 붕괴되기 때문. 기존 QLDPC 디코더 연구는 정확도, FPGA 구현 [Valls et al. 2021], 또는 점근적 복잡도에 초점 — 하지만 이 논문 이전에는 commodity 하드웨어에서 실시간 wall-clock 지연을 시연한 GPU 기반 QLDPC 디코더가 없었습니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>논문은 classical 5G LDPC 디코딩에서 인기 있는 belief propagation의 저복잡도 근사인 <strong>min-sum 알고리즘 (MSA)</strong>를 syndrome-only 설정에 맞게 적응시키고 CUDA에 정밀하게 매핑합니다.</p>
+
+        <figure>
+          <img src="images/qldpc-gpu-decoder/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: 식 (1)의 toy parity-check 행렬에 대한 LDPC Tanner graph. Variable node (VN<sub>0</sub>...VN<sub>5</sub>, 원)들이 check node (CN<sub>0</sub>...CN<sub>2</sub>, 사각형)들에 permutation network를 통해 연결됨; 점선 edge는 BP iteration 동안 양방향 메시지 전달을 표현. M = 3 check node (H의 행), N = 6 variable node (열), check-node degree d<sub>c</sub> = 4, variable-node degree d<sub>v</sub> = 2. 여기서 벤치마크하는 QLDPC 코드들은 같은 bipartite 구조를 가지지만 M, N이 수백 단위.</figcaption>
+        </figure>
+
+        <p><strong>알고리즘 측 — syndrome-based MSA.</strong> 각 BP iteration은 다음으로 구성:</p>
+        <ul>
+          <li><strong>Check-node 업데이트:</strong> r<sub>m,n</sub><sup>(k)</sup> = αs<sub>m</sub> · ∏<sub>j∈S<sub>v</sub>(m)\n</sub> sign(q<sub>m,j</sub><sup>(k-1)</sup>) · min<sub>j∈S<sub>v</sub>(m)\n</sub>|q<sub>m,j</sub><sup>(k-1)</sup>|. 인자 αs<sub>m</sub>이 핵심 syndrome-decoding 적응: syndrome bit s<sub>m</sub> = 1 (제약 위반)일 때 부호가 뒤집힘; α ∈ (0,1)는 MSA의 overestimation을 보정하는 표준 min-sum scaling factor.</li>
+          <li><strong>Variable-node 업데이트:</strong> q<sub>m,n</sub><sup>(k)</sup> = γ<sub>n</sub> + Σ<sub>i∈S<sub>c</sub>(n)\m</sub> r<sub>i,n</sub><sup>(k)</sup>. γ<sub>n</sub>는 prior LLR — classical LDPC에서는 채널에서 오고; syndrome-based QLDPC에서는 soft-syndrome 신뢰도가 있으면 그것으로 초기화, 없으면 고정값.</li>
+          <li><strong>A posteriori &amp; tentative decision:</strong> Q<sub>n</sub><sup>(k)</sup> = γ<sub>n</sub> + Σ<sub>i∈S<sub>c</sub>(n)</sub> r<sub>i,n</sub><sup>(k)</sup>; ê<sub>n</sub><sup>(k)</sup> = 1 if Q<sub>n</sub><sup>(k)</sup> < 0 else 0.</li>
+          <li><strong>정지:</strong> ê<sup>(k-1)</sup>·H<sup>T</sup> = s (유효한 수정 발견)일 때까지 또는 k = I<sub>max</sub>까지 반복.</li>
+        </ul>
+
+        <p>CSS-type 양자 코드의 X와 Z 오류 syndrome은 독립적으로 디코딩되지만 (HX·ê<sub>Z</sub><sup>T</sup> = s<sub>Z</sub>와 HZ·ê<sub>X</sub><sup>T</sup> = s<sub>X</sub>) — 이 논문은 둘을 단일 커널에 concat합니다.</p>
+
+        <figure>
+          <img src="images/qldpc-gpu-decoder/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: 제안하는 GPU 기반 QLDPC 디코더. 정적 parity-check 행렬 H<sub>X</sub>, H<sub>Z</sub>는 fast broadcast access를 위해 <strong>constant memory</strong>에 압축 저장; 동적 syndrome s<sub>X</sub>, s<sub>Z</sub>는 global memory에 위치. 각 BP iteration은 4개의 synchronization barrier를 가진 단일 CUDA 커널로 실행: (1) CN processing 내 minimum과 sign 계산 사이, (2) CN processing 후, (3) VN processing 후, (4) a-posteriori &amp; tentative decision 후. CN processing은 2M 스레드 사용 (s<sub>X</sub>+s<sub>Z</sub>의 크기); VN processing은 2N 스레드. X와 Z 컴포넌트를 단일 커널에 concat하면 커널 launch 오버헤드가 절반.</figcaption>
+        </figure>
+
+        <p><strong>GPU 측 설계 선택.</strong></p>
+        <ul>
+          <li><strong>H<sub>X</sub>, H<sub>Z</sub>를 위한 constant memory.</strong> Parity-check 행렬은 고정된 코드에 대해 syndrome마다 변하지 않음; constant memory는 bank conflict 없이 warp 내 모든 스레드에 broadcast read를 제공.</li>
+          <li><strong>X와 Z를 위한 단일 커널.</strong> 두 컴포넌트를 메모리에 concat하고 한 커널에서 디코딩하면 커널 launch 오버헤드를 두 번 내지 않게 되고 occupancy가 향상됨.</li>
+          <li><strong>스레드 매핑.</strong> CN processing에 2M 스레드 (check당 하나), VN processing에 2N 스레드 (variable당 하나). CN 단계는 sync barrier로 분리된 별도의 min-computation과 sign-computation pass로 더 나뉘어, min-tree reduction과 sign-product reduction이 각각 coalesced로 수행 가능.</li>
+          <li><strong>Compressed sparse 표현.</strong> H가 sparse이므로 커널은 전체 M×N 행렬이 아니라 non-zero 인덱스만 읽음.</li>
+          <li>이 prototype은 <strong>floating-point</strong>로, Table 1에서 8-bit / 16-bit 정수 산술과 quantization이 다음 최적화 (4× / 2× 전송 감소 + 더 빠른 정수 ALU)임을 명시적으로 인정.</li>
+        </ul>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>최초의 GPU 기반 QLDPC 디코더.</strong> 저자들이 아는 한 GPU 하드웨어에서 QLDPC syndrome 디코더를 구현한 선행 연구가 없음; 기존 연구는 CPU, FPGA를 타겟으로 하거나 알고리즘 논문 수준에 머무름.</li>
+          <li><strong>Commodity 하드웨어에서 sub-63 µs end-to-end 지연.</strong> [[784, 24, 24]] — 테스트된 가장 큰 코드, 또한 가장 유용한 encoding rate — 가 호스트↔디바이스 전송 포함 RTX 3090에서 62.9 µs, RTX 4090에서 43.7 µs로 실행 — FPGA나 ASIC에 의존하지 않고 Willow surface-code 임계값을 능가.</li>
+          <li><strong>단일 커널 X+Z 디코딩.</strong> 두 CSS 오류 채널을 한 커널에 concat하는 것은 작지만 중요한 지연 절감 선택 — 총 예산 &lt;100 µs일 때 커널 launch 오버헤드는 사소하지 않음.</li>
+          <li><strong>GPU 클래스 전반의 확장성 시연.</strong> 같은 코드가 Jetson TX2 (edge SoC), Jetson AGX Orin (embedded), RTX 3090과 RTX 4090 (desktop)에서 실행. Jetson은 작은 코드에서 63 µs를 15-30 µs 차이로 놓침; 데스크톱 GPU는 테스트한 모든 코드에서 충족. 미래 배포가 dilution refrigerator 근처의 컴팩트한 embedded form factor를 원할 수 있어 의미 있는 데이터 포인트.</li>
+          <li><strong>최적화 로드맵 (Table 1).</strong> 논문은 아직 <em>하지 않은</em> 것을 명시적으로 밝힘: 정수/quantized 산술, shared-memory 캐싱, async 커널 launch, 스레드/block 튜닝, non-Willow 타이밍 예산과의 비교. 이 로드맵 자체가 후속 연구를 위한 기여.</li>
+        </ul>
+
+        <h2>학습 및 구현 세부사항</h2>
+        <p>이것은 classical 디코더이므로 학습 없음. 구현 파라미터:</p>
+        <table>
+          <thead><tr><th>구성요소</th><th>설정</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>디코딩 알고리즘</td><td>scaling factor α를 가진 min-sum algorithm (MSA)</td><td>α ∈ (0,1)는 min-sum의 magnitude overestimation을 보정; 경험적으로 선택.</td></tr>
+            <tr><td>Iteration</td><td>고정 10회, early termination 없음</td><td>최악 지연 보고; early termination은 평균을 낮추지만 최악은 유지.</td></tr>
+            <tr><td>테스트 코드</td><td>[[72, 12, 6]], [[108, 8, 10]], [[144, 12, 12]], [[288, 12, 18]], [[784, 24, 24]]</td><td>Bravyi–Cross–Gambetta–Maslov–Rall–Yoder Nature 2024 family에서.</td></tr>
+            <tr><td>산술</td><td>32-bit floating point</td><td>최적이 아님을 인정; 정수/quantized 산술이 로드맵.</td></tr>
+            <tr><td>메모리 레이아웃</td><td>H<sub>X</sub>, H<sub>Z</sub>를 위한 constant memory (압축); syndrome과 메시지를 위한 global memory</td><td>Shared memory는 아직 활용 안 됨; Table 1에서 다음 최적화로 표시.</td></tr>
+            <tr><td>동시성</td><td>X+Z를 위한 단일 커널, CN 위한 2M 스레드, VN 위한 2N 스레드</td><td>iteration당 4개의 synchronization barrier.</td></tr>
+            <tr><td>하드웨어</td><td>Nvidia Jetson TX2 (Pascal SoC), Jetson AGX Orin (Ampere SoC), RTX 3090 (Ampere desktop), RTX 4090 (Ada Lovelace desktop)</td><td>Jetson은 unified memory 사용 (명시적 전송 없음); 데스크톱 GPU는 호스트↔디바이스 전송 시간 포함.</td></tr>
+            <tr><td>보고된 메트릭</td><td>총 디코딩 시간 (호스트↔디바이스 전송 + 커널 실행)</td><td>End-to-end 지연, 커널만 아님 — 정직한 비교에 중요.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <figure>
+          <img src="images/qldpc-gpu-decoder/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: 4개 GPU 플랫폼 전반에 걸친 5개 QLDPC 코드의 end-to-end 디코딩 지연 (µs, 호스트↔디바이스 전송 + float에서 10 BP iteration 포함). 점선 주황선은 63 µs Willow 실시간 임계값 [Acharya et al., Nature 2024]. RTX 3090은 모든 코드에서 임계값 아래 (가장 큰 [[784,24,24]]가 62.9 µs); RTX 4090은 상당한 여유 (가장 큰 것이 43.7 µs, 가장 작은 것이 23.3 µs). Jetson TX2와 Orin은 작은 코드에서 ~15-30 µs로 초과하고 [[784,24,24]]에서는 크게 빗나감 (각각 185.4 µs와 122.9 µs).</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>코드 [[n, k, d]]</th><th>TX2</th><th>AGX Orin</th><th>RTX 3090</th><th>RTX 4090</th></tr></thead>
+          <tbody>
+            <tr><td>[[72, 12, 6]]</td><td>89.4 µs</td><td>77.9 µs</td><td>34.0 µs</td><td><strong>23.3 µs</strong></td></tr>
+            <tr><td>[[108, 8, 10]]</td><td>78.1 µs</td><td>77.2 µs</td><td>35.5 µs</td><td>28.7 µs</td></tr>
+            <tr><td>[[144, 12, 12]]</td><td>87.7 µs</td><td>76.5 µs</td><td>34.9 µs</td><td>28.6 µs</td></tr>
+            <tr><td>[[288, 12, 18]]</td><td>134.1 µs</td><td>85.3 µs</td><td>43.2 µs</td><td>28.1 µs</td></tr>
+            <tr><td><strong>[[784, 24, 24]]</strong></td><td>185.4 µs</td><td>122.9 µs</td><td><strong>62.9 µs</strong></td><td><strong>43.7 µs</strong></td></tr>
+            <tr><td colspan="5"><em>63 µs = Google Willow 실시간 임계값 [Acharya et al. 2024]</em></td></tr>
+          </tbody>
+        </table>
+
+        <p><strong>숫자 읽기.</strong> 세 가지가 주목할 만함. (1) <em>End-to-end</em>는 PCIe 전송을 포함; 데스크톱 GPU에서 작은 코드는 ~15% 오버헤드, 큰 코드는 ~5%를 추가. (2) Jetson 플랫폼은 전송 오버헤드가 <em>더 낮음</em> (unified memory가 명시적 복사 제거)이지만 컴퓨트가 너무 약해서 — 커널 시간이 지배. 즉 unified memory는 예상되는 곳 (작은 데이터, 약한 컴퓨트)에서 이기고 중요한 곳 (큰 QLDPC 행렬)에서 짐. (3) RTX 3090에서 [[784, 24, 24]] 결과 — 62.9 µs vs 63 µs 임계값 — 은 종이 한 장 차이: 전송 스케줄링이나 커널 jitter의 어떤 drift도 초과시킬 수 있어 4090에서의 여유 (43.7 µs)가 더 신뢰할 수 있는 실시간 숫자.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li><strong>정직한 end-to-end 측정.</strong> 호스트↔디바이스 전송 + 커널 시간을 보고 (커널만이 아님)함으로써 Willow의 63 µs 운영 지연과의 비교를 사과 대 사과로 만듦. 많은 GPU 논문은 시스템 컨텍스트에서 실제보다 더 좋아 보이는 커널-only 숫자를 인용.</li>
+          <li><strong>최근 확립된 구체적 임계값을 타겟.</strong> Acharya et al. 2024의 측정된 63 µs에 작업을 묶음으로써 결과에 strawman baseline 대비 상대적 speedup이 아닌 구체적 운영 의미를 부여.</li>
+          <li><strong>단일 커널 X+Z 디코딩이 올바른 엔지니어링 결정.</strong> 총 예산 &lt;100 µs에서 커널 launch 오버헤드는 실질적 부분; 두 CSS 컴포넌트를 concat하는 것은 작은 아이디어지만 비례적이지 않은 영향.</li>
+          <li><strong>크로스 플랫폼 sweep.</strong> Edge SoC (Jetson TX2/Orin)와 데스크톱 GPU (3090/4090)를 비교하여 설계 공간을 유용하게 매핑 — 미래 fault-tolerant 시스템이 cryostat에 물리적으로 가까운 디코더가 필요할 경우 관련.</li>
+          <li><strong>명시적 로드맵 (Table 1).</strong> 논문은 아직 최적화하지 않은 것을 정확히 밝힘 (정수 산술, shared memory, async launch, 스레드/block 튜닝) — 후속 연구에 명확한 경로 제공. 벤치마크 중심 논문에서 흔하지 않음.</li>
+          <li><strong>Bravyi et al.의 "high-threshold low-overhead" 코드 family를 테스트.</strong> Nature 2024의 실제 코드를 디코딩하면 결과가 임의의 toy 코드가 아닌 QLDPC 기반 fault tolerance를 위한 신뢰할 수 있는 아키텍처 로드맵에 연결됨.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li><strong>정확도 결과 보고 없음.</strong> 논문은 지연만 측정 — logical error rate 없음, 이 코드들에 대해 MSA-with-α 디코딩 정확도 vs OSD, BP+OSD, 또는 guided-decimation BP의 비교 없음. 현실적 노이즈 패턴을 수정하지 못하는 23 µs 디코더는 무용지물. arXiv 버전은 extended abstract; 전체 정확도 곡선은 계획된 풀 페이퍼에 있을 것으로 추정.</li>
+          <li><strong>이 prototype은 floating-point만.</strong> Table 1은 정수/quantized 산술을 명백한 다음 단계로 나열. 그것 없이는 지연이 실용적 한계가 아님; 그것이 있으면 성능이 상당히 변화. 헤드라인 숫자는 달성 가능한 것의 상한으로 읽어야 함.</li>
+          <li><strong>고정 10 iteration, early termination 없음.</strong> 실제 시스템은 syndrome이 만족되면 early termination을 사용. 평균 지연은 보고된 것보다 낮을 것이지만, 논문은 tail latency를 측정하지 않음 — 이것이 실시간 마감에 실제로 중요 (가끔 놓치는 것이 logical error로 누적). 임계값 주장에는 worst-case 10-iteration bound가 괜찮지만, tail latency 분포가 더 정보적일 것.</li>
+          <li><strong>Soft-syndrome 처리는 언급되지만 벤치마크 안 됨.</strong> Section 2는 soft-syndrome 디코딩 (각 syndrome bit에 대한 analog 신뢰도)을 동기 부여하지만 실험은 실제로 사용 안 함 — binary syndrome을 디코딩. Soft-syndrome은 측정 노이즈 하의 더 어렵고 더 현실적인 경우.</li>
+          <li><strong>단일 디코더 family.</strong> Bravyi et al. 2024 코드 family만 테스트. 인트로에 언급된 Panteleev–Kalachev good QLDPC 코드와 Dinur–Hsieh–Lin–Vidick linear-time decodable 코드는 벤치마크되지 않았고, 이들은 GPU 구현에 다르게 부담을 주는 다른 sparsity/connectivity 패턴을 가짐.</li>
+          <li><strong>PCIe 전송이 critical path에 있음.</strong> 데스크톱 GPU에서 5-15% 전송 오버헤드는 syndrome이 PCIe로 도착한다고 가정. 실제 fault-tolerant 시스템에서는 syndrome이 cryostat 근처의 control board에서 와야 함 — load 하의 PCIe 지연 변동성이 예산을 지배할 수 있음. Async 커널 launch (Table 1)는 throughput에 도움이지만 단일 syndrome 지연에는 아님.</li>
+        </ul>
+
+        <h2>토의 포인트</h2>
+        <ol>
+          <li>63 µs 임계값은 초전도 큐비트의 Google Willow distance-5 surface code에서 옴. QLDPC 코드는 일반적으로 <em>더 긴</em> physical syndrome cycle을 가짐 (stabilizer 측정당 더 많은 entangling gate, weight-6+ check vs surface code의 weight-4 때문). Surface-code 지연 예산을 충족하는 것이 surface code에 대해 의미하는 것을 실제로 의미하는가 — 아니면 QLDPC의 syndrome cycle이 예산을 바꾸는가? 63 µs 대신 QLDPC-specific cycle 시간을 사용하면 논문 결과는 어떻게 보일까?</li>
+          <li>단일 커널 X+Z 디코딩은 영리한 지연 최적화이지만, 두 디코딩 문제를 함께 묶음. 한 컴포넌트 (예: X)가 3 iteration에 수렴하고 다른 것 (Z)이 10이 필요할 때 fairness와 정확도에 무엇이 일어나는가? 고정 10 iteration이면 X 채널이 컴퓨트를 낭비; early termination이면 둘 다 끝났을 때 커널이 종료, 즉 둘 중 더 느린 쪽 — 따라서 결합 커널은 worst 컴포넌트에 의해 병목. Fully-joint와 fully-separate 커널 사이에 sweet spot이 있는가?</li>
+          <li>Table 1은 8/16-bit 정수 quantization을 다음 최적화로 나열. Belief propagation 특히 quantization 노이즈가 MSA의 수렴 dynamics와 상호작용할 수 있음 — 작은 메시지가 0으로 quantize되어 iteration이 정체. Quantized 디코더가 float 버전과 같은 오류 패턴을 여전히 수정한다는 것을 검증하는 올바른 방법은? 논문은 이를 다루지 않음; 다뤄야 함.</li>
+          <li>RTX 3090에서 [[784,24,24]]에 대한 62.9 µs 결과는 63 µs 임계값에 너무 가까워서 production에서 사실상 동전 던지기 — 커널 jitter, OS 스케줄링, PCIe 경합이 각각 쉽게 몇 µs를 추가할 수 있음. 강건한 실시간 보장은 어떻게 보일까 — Acharya et al.처럼 백만 cycle에 걸쳐 측정된 구체적 tail-latency 타겟 (예: 99.9th percentile under 63 µs)? 현재 방법론은 단일 평균을 보고하고 jitter를 다루지 않음.</li>
+          <li>디코더는 dilution fridge에서 멀리 떨어진 commodity GPU에서 실행. 실제 fault-tolerant 배포에서 GPU를 상온 전자장비 랙에 두고 syndrome을 PCIe/Ethernet으로 라우팅, 아니면 in-cryostat 디코더 (FPGA/ASIC, GPU 아님일 가능성)로 push하는가? 63 µs 총 예산에서 ~10 µs의 네트워크 지연도 상당. GPU 디코딩은 실제 배포 스토리에서 어디에 fit — 연구와 벤치마킹, 아니면 production?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이것은 짧고 날카롭게 타겟된 엔지니어링 결과: 알려진 알고리즘 (syndrome 디코딩을 위한 min-sum BP)을 가져와 CUDA에 신중하게 매핑하고 최근 확립된 운영 임계값 (Willow의 63 µs)에 대해 end-to-end 지연을 측정. 결과 — Bravyi et al. 2024 코드 family에 대해 commodity 데스크톱 GPU에서 임계값 아래 — 는 QLDPC 코드에 대한 디코더 비용 논거를 "custom silicon 필요"에서 "RTX 4090로 충분, 여유까지"로 바꾸기 때문에 의미가 있음. 그것은 surface code 너머의 배포 경로에 대해 어떻게 생각할지에 사소하지 않은 변화입니다.</p>
+
+        <p>그렇긴 하지만 이것은 extended abstract이지 완전한 논문이 아님. 정확도 숫자, jitter나 tail-latency 분석, 정수 산술 baseline, soft-syndrome 실험이 없음. 정직한 읽기는: <strong>지연 타겟은 commodity GPU 하드웨어에서 달성 가능; 동일한 구성이 fault tolerance에 필요한 logical error rate도 제공하는지는 답해지지 않은 질문</strong>. Table 1의 로드맵은 올바름 — quantization, shared memory, async launch, 스레드 튜닝 모두 지연을 임계값보다 훨씬 아래로 push하고 jitter와 정확도 trade-off를 위한 실제 여유를 만들 수 있음.</p>
+
+        <p>이 논문을 두 가지 이유로 읽으세요. 첫째, <strong>Section 2 + Algorithm 1 + Figure 2 trio</strong>: 특정 GPU 커널 구조에 매핑된 classical과 syndrome-based LDPC 디코딩의 차이에 대한 가장 깔끔한 간결한 진술. 둘째, <strong>Figure 3 + Table 1을 함께</strong>: 지연 막대그래프는 오늘 달성 가능한 것을 보여주고, 최적화 로드맵은 다음에 무엇을 할지 보여줌. QLDPC 연구자에게 이것은 commodity 하드웨어에서 실시간 디코딩이 더 이상 blocker가 아니라는 존재 증명 — 이제 정확도와 통합이 병목입니다.</p>
+      `
+    }
   }
 ];
