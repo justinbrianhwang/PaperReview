@@ -8,7 +8,8 @@ const DOMAINS = [
   { id: 'autonomous-driving', en: 'Autonomous Driving', ko: '자율주행' },
   { id: 'quantum-computing',  en: 'Quantum Computing',  ko: '양자컴퓨터' },
   { id: 'ai-security',        en: 'AI Security',        ko: 'AI 보안' },
-  { id: 'deep-learning',      en: 'Deep Learning',      ko: '딥러닝' }
+  { id: 'deep-learning',      en: 'Deep Learning',      ko: '딥러닝' },
+  { id: 'physics',            en: 'Physics',            ko: '물리학' }
 ];
 
 function applyLang() {

@@ -20,7 +20,7 @@
 //   venue: "Conference/Journal Year",
 //   image: "images/unique-slug/thumbnail.png",
 //   link: "https://arxiv.org/abs/...",
-//   domain: "autonomous-driving",  // autonomous-driving | quantum-computing | ai-security | deep-learning
+//   domain: "autonomous-driving",  // autonomous-driving | quantum-computing | ai-security | deep-learning | physics
 //   tags: ["tag1", "tag2"],
 //   en: {
 //     title: "Paper Title",
@@ -14843,6 +14843,286 @@ const PAPERS = [
         <p>그렇긴 하지만 이것은 extended abstract이지 완전한 논문이 아님. 정확도 숫자, jitter나 tail-latency 분석, 정수 산술 baseline, soft-syndrome 실험이 없음. 정직한 읽기는: <strong>지연 타겟은 commodity GPU 하드웨어에서 달성 가능; 동일한 구성이 fault tolerance에 필요한 logical error rate도 제공하는지는 답해지지 않은 질문</strong>. Table 1의 로드맵은 올바름 — quantization, shared memory, async launch, 스레드 튜닝 모두 지연을 임계값보다 훨씬 아래로 push하고 jitter와 정확도 trade-off를 위한 실제 여유를 만들 수 있음.</p>
 
         <p>이 논문을 두 가지 이유로 읽으세요. 첫째, <strong>Section 2 + Algorithm 1 + Figure 2 trio</strong>: 특정 GPU 커널 구조에 매핑된 classical과 syndrome-based LDPC 디코딩의 차이에 대한 가장 깔끔한 간결한 진술. 둘째, <strong>Figure 3 + Table 1을 함께</strong>: 지연 막대그래프는 오늘 달성 가능한 것을 보여주고, 최적화 로드맵은 다음에 무엇을 할지 보여줌. QLDPC 연구자에게 이것은 commodity 하드웨어에서 실시간 디코딩이 더 이상 blocker가 아니라는 존재 증명 — 이제 정확도와 통합이 병목입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // Langmuir probe measurements of a radio frequency induction plasma
+  // ====================================================================
+  {
+    id: "langmuir-rf-plasma",
+    date: "2026-05-12",
+    authors: "Hopwood, J., Guarnieri, C. R., Whitehair, S. J., Cuomo, J. J.",
+    venue: "J. Vac. Sci. Technol. A 11, 152-156 (1993)",
+    image: "images/langmuir-rf-plasma/thumbnail.png",
+    link: "https://doi.org/10.1116/1.578282",
+    domain: "physics",
+    tags: ["Plasma Physics", "Langmuir Probe", "RF Induction Plasma", "Semiconductor Processing", "Plasma Diagnostics"],
+    en: {
+      title: "Langmuir probe measurements of a radio frequency induction plasma",
+      summary: "Foundational 1993 paper characterizing a 27 cm planar RF induction plasma source with single Langmuir probe + microwave interferometry, demonstrating 10^11-10^12 cm^-3 ion densities at sub-mTorr pressures with 2.5% uniformity — the diagnostic template for modern high-density plasma processing sources.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>This is the early, definitive characterization of the <strong>planar RF induction (RFI) plasma source</strong> that would become a workhorse of semiconductor processing — establishing the baseline numbers (10<sup>11</sup>–10<sup>12</sup> cm<sup>-3</sup> ion density at 1 mTorr, 3–7 eV electron temperature, 100–250 W/A ion generation cost) that every subsequent inductive plasma paper benchmarks against, while quietly demonstrating that a single Langmuir probe — properly designed with an inline RF choke and validated against microwave interferometry — is sufficient to nail down all the operationally important quantities.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>Can a planar, square RF induction coil driven at 13.56 MHz produce ion densities, electron temperatures, plasma potentials, and uniformity profiles suitable for large-area wafer processing — and what are the actual measured values across argon, krypton, and oxygen discharges over the 0.3–26 mTorr / 0.1–1.5 kW operating envelope?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>By 1992 the semiconductor industry was moving to <em>single-wafer processing of large-area substrates</em> — meaning a plasma source had to produce <strong>uniform ion and radical fluxes over wafer-scale areas</strong>, not just hot plasma somewhere in a chamber. The high-density sources competing for this role included Electron Cyclotron Resonance (ECR) plasmas, helicon wave sources, helical resonators, and RF induction (RFI) plasmas. Each had different trade-offs: ECR needs strong magnets and microwave hardware; helicons need an axial B field; helical resonators are awkward to scale. RFI plasmas — a flat spiral coil above a quartz window inducing azimuthal electric fields in the plasma — promised a <strong>geometrically simple, scalable, magnet-free</strong> alternative.</p>
+
+        <p>What the field needed at this point was not a new source concept but <em>credible measured numbers</em> on a representative RFI source: how dense is the plasma, how hot are the electrons, how uniform is the ion flux at the wafer plane, what plasma potential will accelerate ions onto the substrate (and therefore damage it), and how efficiently does the source convert electrical input into useful ion current? This paper answers all of those questions for a 27 × 27 × 13 cm³ chamber with a 24 cm planar square coil driven from 0 to 2 kW at 13.56 MHz.</p>
+
+        <p>The methodological motivation is equally important. Langmuir probes are conceptually the simplest plasma diagnostic — a bare wire biased through a voltage sweep, with current measured — but in an RF discharge the plasma potential <em>oscillates at the drive frequency</em>, smearing the I-V characteristic and pulling the apparent electron temperature artificially low if the probe cannot follow the oscillation. The paper's probe design — a 10 µH inductor in series with the probe tip and shielded coaxial transmission line — is a textbook solution to this problem, and the explicit cross-check against microwave interferometry establishes that the resulting ion-density numbers are not artifacts.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>The experimental setup is a planar inductive plasma source with three integrated diagnostics: a swept single Langmuir probe (DC characteristics), a 35 GHz microwave interferometer (line-integrated electron density), and a capacitive RF potential probe (cross-check on RF plasma potential variations).</p>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: Cross-sectional view of the planar RF induction plasma source. RF power (13.56 MHz, 0–2 kW) enters a matching network and drives a 24 cm × 24 cm × 0.95 cm planar square coil grounded at the center. A 2.5 cm quartz plate separates the coil from the plasma and also serves as the vacuum window. The plasma forms in a 27 × 27 × 13 cm³ chamber with permanent magnets in a multipole bucket configuration around the walls for radial electron confinement. A movable substrate holder sits below the quartz window. The Langmuir probe enters either vertically through the substrate holder or horizontally through the chamber wall. A microwave horn pair (35 GHz) on opposite walls performs interferometric line-integrated electron density measurements across the diagonal — when the multipole magnets are removed (they obstruct the measurement).</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>RFI source.</strong> The 24 cm square coil is grounded at its <em>center</em>, with RF input applied to the outer end — so the coil is electrically a balanced loop with a peak-current point at the input and a near-zero-potential point at the center. The 2.5 cm quartz vacuum window between coil and plasma is thick enough to hold off 1 atm but thin enough that the azimuthal induction E-field reaches the plasma. The chamber is pumped to &lt;10<sup>-7</sup> Torr base; working pressures are 0.3–26 mTorr.</li>
+          <li><strong>Magnetic multipole confinement.</strong> Permanent magnets with <em>alternating polarities</em> around the chamber periphery create a "magnetic bucket" — electrons curve along the field lines near the wall and never reach the wall; ions are then electrostatically confined by the resulting ambipolar field. This is what flattens the ion-flux radial profile from a diffusion-dominated peak (no confinement) into a tabletop (confinement). Crucially the multipole field is essentially zero in the central plasma volume — so probe measurements there are unaffected.</li>
+          <li><strong>Langmuir probe.</strong> 7 mm long × 0.35 mm diameter tungsten tip sealed in a 6 mm Pyrex tube. Inside the Pyrex: a 10 µH inductor silver-brazed between the tungsten and a 50 Ω semirigid microcoax. The inductor is the key RF-compensation element — it acts as a <em>high-impedance choke</em> for the 13.56 MHz drive and its harmonics, so the probe tip electrically floats with the RF plasma potential rather than being clamped to a DC source through a low-impedance path. Shielding from the coax outer conductor extends over the inductor to prevent stray RF coupling. Probe sweeps from −60 V to +40 V under computer control; current measured as voltage drop across a 20 Ω series resistor.</li>
+          <li><strong>Probe theory used.</strong> The Debye length λ<sub>D</sub> is much smaller than the probe radius, so <em>planar (not cylindrical) probe theory</em> applies. Ion saturation current I<sub>s</sub> = 0.61 · e · A · n<sub>i</sub> · √(kT<sub>e</sub>/M), determined from the intersection of two tangent lines fit to the I-V curve in the ion-saturation and electron-collection regions. Ion current is fit to a √V<sub>p</sub> dependence and subtracted from total current to extract electron current I<sub>e</sub>; electron temperature T<sub>e</sub> from the slope of ln(I<sub>e</sub>) vs V<sub>p</sub>; plasma potential V<sub>s</sub> from the knee in that same curve.</li>
+          <li><strong>Microwave interferometer cross-check.</strong> A 35 GHz horn pair across the chamber diagonal measures the line-integrated electron density. Combining this with the radial profile of the normalized ion saturation current I<sub>s</sub>(x) measured by Langmuir probe, and assuming quasineutrality (n<sub>e</sub> ≈ n<sub>i</sub>), gives an <em>absolute</em> centerline electron density that does not depend on the probe theory. This is the methodological key — if probe and interferometer agree, the probe theory is validated.</li>
+          <li><strong>RF skin depth.</strong> Computed as δ = c/ω<sub>pe</sub> ≈ 1.7 cm at n<sub>e</sub> = 10<sup>11</sup> cm<sup>-3</sup>. Probe measurements are made at z = 5.7 cm below the quartz window — about 3 skin depths down, where the direct induction field is attenuated by ~e<sup>-3</sup> ≈ 20×. So measurements characterize the bulk plasma, not the RF skin region.</li>
+        </ul>
+
+        <p><strong>RF compensation caveat.</strong> The authors explicitly flag that even with the inductor choke, the probe cannot track the full RF oscillation if the RF plasma potential variation exceeds T<sub>e</sub>. Independent capacitive probe measurements show the RF V<sub>s</sub> swing is 5–10 V<sub>rms</sub> — same order as T<sub>e</sub>. The consequence: reported T<sub>e</sub> is an <em>upper bound</em> on the true electron temperature. This is a deeply honest disclosure that many later RFI papers omit.</p>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Baseline numerical characterization of a planar RFI source.</strong> Across Ar, Kr, O<sub>2</sub> over 0.3–26 mTorr and 0.1–1.5 kW, the paper measures ion density, electron temperature, plasma potential, ion-flux uniformity, and ion generation cost — establishing the reference values the field would cite for the next 30 years.</li>
+          <li><strong>Probe / interferometer cross-validation.</strong> Demonstrates that a properly RF-compensated Langmuir probe reads densities consistent with microwave interferometry to within ~10% at 5×10<sup>-3</sup> and 1×10<sup>-3</sup> Torr argon. This is the empirical justification for using Langmuir probes alone in subsequent RFI source characterization — the interferometer is heavy hardware and probes are not.</li>
+          <li><strong>Magnetic multipole flattens ion flux from diffusion peak to 2.5% uniformity over 20 cm.</strong> Quantitative demonstration that bucket confinement turns an unusable diffusion-dominated profile into a wafer-processable flat top.</li>
+          <li><strong>Inductive-to-capacitive mode transition threshold ≈ 100 W.</strong> Ion-density vs RF power lines extrapolate to ~100 W on the power axis — below which the discharge is sustained primarily by capacitive coupling between coil and plasma, and ionization efficiency collapses. This number is the entry point to the now-standard E-mode / H-mode discussion of inductive discharges.</li>
+          <li><strong>Krypton saturation as evidence of neutral depletion at high power, low pressure.</strong> Kr ion density saturates above ~1 kW at 0.5 mTorr but the saturation density <em>doubles</em> when neutral pressure doubles to 1 mTorr — strong empirical signature of neutral depletion (gas heating expanding the working gas out of the discharge region) rather than power-coupling inefficiency.</li>
+          <li><strong>Ion generation cost benchmark (100–250 W/A in Ar).</strong> A figure of merit that puts RFI sources within range of the most efficient ECR sources and helicons of the era, while requiring only a coil and a quartz window — no magnets, no microwave hardware.</li>
+        </ul>
+
+        <h2>Implementation Details</h2>
+        <table>
+          <thead><tr><th>Parameter</th><th>Value</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>RF drive</td><td>13.56 MHz, 0–2 kW</td><td>Standard industrial ISM band.</td></tr>
+            <tr><td>Coil</td><td>24 cm × 24 cm × 0.95 cm planar square, grounded at center</td><td>Outer end driven, center grounded → balanced loop.</td></tr>
+            <tr><td>Window</td><td>2.5 cm quartz plate</td><td>Vacuum window + electrical separator coil/plasma.</td></tr>
+            <tr><td>Chamber</td><td>27 × 27 × 13 cm³ magnetic multipole bucket</td><td>Permanent magnets, alternating polarity around walls.</td></tr>
+            <tr><td>Pumping</td><td>500 ℓ/s turbo + Roots blower + mechanical pump</td><td>Base &lt; 10<sup>-7</sup> Torr (ion + cold cathode gauge).</td></tr>
+            <tr><td>Working gases</td><td>Ar, Kr, O<sub>2</sub></td><td>Pressure 0.3–26 mTorr, controlled by variable conductance gate valve (high P) or mass flow (low P, down to 6 sccm).</td></tr>
+            <tr><td>Langmuir probe</td><td>7 mm × 0.35 mm tungsten in 6 mm Pyrex, 10 µH series choke, 50 Ω microcoax</td><td>−60 V to +40 V sweep, computer controlled; I measured as drop across 20 Ω.</td></tr>
+            <tr><td>Probe position</td><td>z = 5.7 cm below quartz (≈3 skin depths)</td><td>Bulk plasma, not RF skin region.</td></tr>
+            <tr><td>Interferometer</td><td>Plasma and Materials Technologies, 35 GHz</td><td>Horn pair across chamber diagonal; multipole magnets and substrate holder removed during measurement.</td></tr>
+            <tr><td>Capacitive RF probe</td><td>Independent measurement</td><td>Cross-check on RF plasma potential swing (5–10 V<sub>rms</sub>).</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: Normalized ion saturation current I<sub>s</sub> across the chamber diagonal at z = 5.7 cm in 5×10<sup>-3</sup> Torr oxygen. <strong>Without magnetic confinement</strong> (open circles): classic diffusion-dominated peaked profile, full width at half max ~15 cm — unusable for wafer processing. <strong>With magnetic multipole confinement</strong> (filled squares): flat tabletop with edges falling off only at ±15 cm radius. Standard deviation/average over the central 20 cm is 2.5%, meeting semiconductor processing uniformity targets.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: Centerline electron density vs RF power in argon at 5×10<sup>-3</sup> Torr and 1×10<sup>-3</sup> Torr, measured by Langmuir probe (open symbols) and by 35 GHz microwave interferometer (filled symbols). The two methods agree across the full 100–1500 W range — validating the RF-compensated probe technique. Densities reach 6×10<sup>11</sup> cm<sup>-3</sup> at 1.2 kW / 5 mTorr Ar.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: Plasma parameters in 500 W argon as a function of pressure. Ion density n<sub>i</sub> (triangles, ×10<sup>11</sup> cm<sup>-3</sup>) increases monotonically with pressure from ~1×10<sup>11</sup> at 0.3 mTorr to ~6×10<sup>11</sup> at 26 mTorr. Electron temperature T<sub>e</sub> (open circles, eV) decreases from 7 eV at 0.3 mTorr to 3 eV at 26 mTorr — the classic global-model behavior, where low pressure means longer electron mean free path and hotter electrons are needed to balance ionization against wall loss. Plasma potential V<sub>s</sub> (open squares, V) similarly drops from 30 V at low pressure to 12 V at high pressure, tracking T<sub>e</sub>. The low plasma potential (15–30 V) is desirable because it limits sputter-induced contamination of the wafer by reactor materials.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5: Argon ion density vs RF power at four pressures (0.5, 1.0, 5.0, 15 mTorr). Linear over a broad power range, with each line extrapolating to approximately the same ~100 W power-axis intercept — the threshold below which the discharge cannot sustain itself as a primarily inductive (H-mode) plasma and reverts to weak capacitive (E-mode) coupling. The slope (efficiency) increases with pressure, consistent with higher neutral density giving more electron-neutral collisions and therefore more efficient power deposition into the plasma.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6: Krypton ion density vs RF power at 0.5 mTorr (filled squares, 7 sccm) and 1.0 mTorr (open circles, 16 sccm). Both show the ~100 W threshold (capacitive→inductive transition) and linear scaling at moderate power. Crucially the 0.5 mTorr curve <strong>saturates</strong> above ~1 kW at n<sub>i</sub> ≈ 1×10<sup>12</sup> cm<sup>-3</sup>, while the 1.0 mTorr curve saturates at ~2×10<sup>12</sup> cm<sup>-3</sup> — exactly 2× as expected if the saturation is caused by neutral depletion (the available neutral inventory is doubled). This is one of the cleanest direct measurements of neutral depletion in an inductive discharge.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig7.png" alt="Figure 7">
+          <figcaption>Figure 7: Ion generation cost (W/A) for the RFI source as a function of Ar pressure. Cost decreases with increasing pressure from ~225 W/A at 0.5 mTorr to ~100 W/A at 15 mTorr, primarily because joule/collisional heating becomes effective when ν<sub>en</sub> ≈ ω. <strong>Inset:</strong> W/A as a function of RF power at 1 mTorr — high at low power (~350 W/A at 100 W, the inefficient capacitive-mode regime) then dropping to a nearly constant ~175 W/A above ~400 W in the established inductive mode. The "175 W/A at 1 mTorr" benchmark is what positions the RFI source as competitive with ECR and helicons.</figcaption>
+        </figure>
+
+        <p><strong>Reading the numbers.</strong> Three operational takeaways for plasma processing engineers in 1993 (and 2026): (1) An RFI source can deliver 10<sup>11</sup>–10<sup>12</sup> cm<sup>-3</sup> ions at the wafer plane with sub-3% uniformity, the regime needed for high-rate etch and deposition. (2) The plasma potential is 15–30 V, low enough to avoid sputter damage to the wafer from grounded chamber surfaces. (3) Energy cost is ~100–250 W/A — meaning a 1 kW source delivers 4–10 A of ion current, and the RFI source competes with more complex ECR/helicon hardware. The honest caveat: T<sub>e</sub> is an upper bound, and at low pressure / high power both Kr saturation and the deviation of ln(I<sub>e</sub>) vs V<sub>p</sub> from linear signal a non-Maxwellian high-energy tail that the simple model does not capture.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li><strong>Methodological honesty.</strong> The paper explicitly states that reported T<sub>e</sub> is an upper bound because the probe cannot follow RF V<sub>s</sub> fluctuations completely, and flags the non-Maxwellian electron energy distribution at low pressure / high power as visible in the nonlinearity of ln(I<sub>e</sub>) vs V<sub>p</sub>. This level of disclosure is unusual in instrumentation papers.</li>
+          <li><strong>Two independent density measurements.</strong> Langmuir probe and microwave interferometer agree across two pressures and over a wide power range — the cleanest validation in the RFI plasma literature.</li>
+          <li><strong>Direct evidence for neutral depletion via the Kr 2× factor.</strong> The 0.5 mTorr / 1.0 mTorr Kr saturation density ratio matching the pressure ratio is hard to explain by anything except depletion. Most papers infer neutral depletion indirectly; this one has a clean two-point comparison.</li>
+          <li><strong>Quantification of capacitive/inductive threshold.</strong> The 100 W power-axis intercept across multiple gases and pressures is a robust empirical anchor for E↔H mode transition — a phenomenon that would become a major topic in inductive plasma physics over the following two decades.</li>
+          <li><strong>Engineering-relevant metrics.</strong> Reporting ion generation cost in W/A (and equivalently eV/ion) gives operational engineers exactly what they need to size power supplies, and the comparison framework (ECR vs helicon vs RFI) is calibrated for industrial decision-making.</li>
+          <li><strong>Probe design template.</strong> The 10 µH choke + shielded coax + Pyrex sheath probe geometry became the standard RF-compensated Langmuir probe configuration for inductive plasmas.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>EEDF not measured.</strong> The paper assumes a Maxwellian electron energy distribution to interpret the I-V curve, but the visible nonlinearity at low pressure / high power says EEDF is non-Maxwellian. Without measuring f(ε) — e.g. via the second derivative d<sup>2</sup>I/dV<sup>2</sup> (Druyvesteyn method) — both the inferred T<sub>e</sub> and the inferred ionization rate are model-dependent. The conclusion section flags this as future work.</li>
+          <li><strong>Single position for most measurements.</strong> Most parameters are measured at one axial position (z = 5.7 cm) and at the centerline. Axial gradients in n, T<sub>e</sub>, V<sub>s</sub> — which directly affect ion flux at the wafer — are not mapped.</li>
+          <li><strong>Probe perturbation not quantified.</strong> A 7 mm long probe in a 13 cm tall chamber draws non-trivial current; ion collection area assumptions and probe-shadow effects on the plasma local density are not estimated.</li>
+          <li><strong>O<sub>2</sub> density assumes pure O<sup>+</sup>.</strong> Oxygen plasma ion density is computed assuming ion mass 16 a.m.u., but the paper notes the actual density could be up to 1.41× higher due to O<sub>2</sub><sup>+</sup>. Without mass-resolved ion diagnostics the O<sub>2</sub> numbers carry a factor-of-1.4 uncertainty.</li>
+          <li><strong>Magnetic multipole field not characterized.</strong> The bucket field strength, configuration, and resulting loss cone are not specified. Reproducing the 2.5% uniformity result requires more detail than the paper provides.</li>
+          <li><strong>Wafer-level chemistry untested.</strong> The paper reports plasma parameters at the substrate plane but no actual etch or deposition rate, selectivity, or damage data. The connection to process performance is implicit.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>The ~100 W power-axis intercept across multiple gases and pressures is interpreted as the inductive-mode threshold. But the intercept value is also coil-geometry dependent (it scales with stored magnetic energy and matching network losses). Would the same source with a different coil — say, a 3-turn helical instead of a flat square — give the same threshold? If not, the 100 W number is reactor-specific, not a fundamental plasma quantity. How should this be reported to be cross-comparable?</li>
+          <li>The RFI source achieves uniformity via the magnetic bucket. But buckets only confine in two dimensions and leave a strong axial gradient. If the wafer is moved to a different z, the radial uniformity changes too because the bucket's influence is largest near the walls. What is the right experimental protocol to characterize a processing source — fix z and sweep r, or sweep z at fixed r, or measure the full 2D n(r, z) field?</li>
+          <li>The probe T<sub>e</sub> is admittedly an upper bound. Is "upper bound on T<sub>e</sub>" actually useful for process modeling? Process rates depend on the high-energy tail of the EEDF, not on T<sub>e</sub>; if the EEDF is non-Maxwellian (as the nonlinearity in ln(I<sub>e</sub>) implies) then T<sub>e</sub> is a misleading single number anyway. Should the field have abandoned T<sub>e</sub> reporting and moved to direct EEDF measurement decades earlier?</li>
+          <li>The 35 GHz interferometer cross-check is performed with magnets removed and substrate holder lowered. But the magnetic bucket changes the plasma — radial confinement → flatter density profile → different absolute density at the centerline for the same RF power. Does the probe/interferometer agreement with no bucket actually validate probe measurements <em>with</em> the bucket? Strictly speaking it validates the probe technique but not the absolute density numbers in the wafer-processing configuration.</li>
+          <li>33 years later, planar RFI plasmas are everywhere in semiconductor fabs, but the 13.56 MHz drive is being replaced by 60 MHz, 100 MHz, and pulsed DC schemes. What does the global model in this paper get wrong as ω → ν<sub>en</sub>, ν<sub>iz</sub>? Specifically, the nondissipative skin depth δ = c/ω<sub>pe</sub> assumes ω &lt; ω<sub>pe</sub> and ν<sub>en</sub> ≪ ω; at lower pressures and modern frequencies the anomalous skin effect and pressure dependence of δ become important. Does the paper's qualitative framework survive into 100 MHz inductive sources?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>This paper is best read as a <strong>foundational diagnostics calibration</strong>, not as a methodological innovation. The RF-compensated Langmuir probe was not invented here — the inductor-in-series technique was already known — but this is one of the cleanest demonstrations that a single such probe, properly designed, gives results consistent with microwave interferometry across an industrially relevant operating range. For anyone learning how to characterize a high-density processing plasma, this paper is the right starting point because it shows what numbers to expect (and what their uncertainties are) for the planar RFI geometry that dominates etch and deposition tools.</p>
+
+        <p>The second reason to read it is the <strong>operational benchmarks themselves</strong>. The 10<sup>11</sup>–10<sup>12</sup> cm<sup>-3</sup> density window, the 3–7 eV T<sub>e</sub> range, the 15–30 V plasma potential, the 2.5% uniformity with multipole confinement, the 100 W inductive threshold, the 100–250 W/A energy cost — these have been the reference numbers cited in every subsequent RFI source paper. Even if you trust modern simulations (HPSim, CFD-ACE, COMSOL), this paper provides the experimental anchor that those simulations have to reproduce.</p>
+
+        <p>Read it twice. First pass: Section II (experimental method) — the probe construction, the choice of measurement position at 3 skin depths, the interferometer cross-check, the explicit T<sub>e</sub> upper-bound caveat. Each design decision has a stated reason and a measurement to back it up. Second pass: Figures 5 + 6 together — the 100 W intercept on multiple gases is the empirical statement that inductive discharges have a non-zero threshold, and the Kr 2× saturation ratio at 0.5 vs 1.0 mTorr is the clearest evidence for neutral depletion you'll find in the inductive-plasma literature of that decade. For experimentalists building RFI sources in 2026, the conclusion remains: <em>build a properly compensated Langmuir probe, cross-check against an independent density diagnostic, report your T<sub>e</sub> as an upper bound, and acknowledge when the EEDF is non-Maxwellian.</em> The standards Hopwood et al. set 33 years ago are still the right ones.</p>
+      `
+    },
+    ko: {
+      title: "RF 유도 플라즈마의 Langmuir 프로브 측정",
+      summary: "27 cm 평면 RF 유도 플라즈마 소스를 단일 Langmuir 프로브 + 마이크로파 간섭계로 특성화한 1993년의 기초 논문으로, sub-mTorr 압력에서 10^11-10^12 cm^-3 이온 밀도와 2.5% 균일도를 시연 — 현대 고밀도 플라즈마 처리 소스 진단의 템플릿이 된 논문입니다.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>이 논문은 반도체 처리의 주력 소스가 될 <strong>평면 RF 유도(RFI) 플라즈마 소스</strong>의 초기 결정적 특성화입니다 — 후속 모든 유도 플라즈마 논문이 벤치마크하는 기준 값들(1 mTorr에서 10<sup>11</sup>–10<sup>12</sup> cm<sup>-3</sup> 이온 밀도, 3–7 eV 전자 온도, 100–250 W/A 이온 생성 비용)을 확립하는 동시에, 적절히 설계된 (인라인 RF choke 포함) 단일 Langmuir 프로브를 마이크로파 간섭계로 검증하면 운영적으로 중요한 모든 양을 결정하기에 충분함을 조용히 시연합니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>13.56 MHz로 구동되는 평면 사각 RF 유도 코일이 대면적 웨이퍼 처리에 적합한 이온 밀도, 전자 온도, 플라즈마 전위, 균일도 프로파일을 만들 수 있는가 — 그리고 argon, krypton, oxygen 방전에서 0.3–26 mTorr / 0.1–1.5 kW 작동 영역에 걸친 실제 측정 값은 무엇인가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>1992년경 반도체 산업은 <em>대면적 기판의 단일 웨이퍼 처리</em>로 이동 중이었습니다 — 즉, 플라즈마 소스가 챔버 어딘가에 단지 뜨거운 플라즈마를 만드는 것이 아니라 <strong>웨이퍼 규모 면적에 걸쳐 균일한 이온과 라디칼 플럭스</strong>를 만들어야 함을 의미했습니다. 이 역할을 두고 경쟁하던 고밀도 소스들에는 전자 사이클로트론 공명(ECR) 플라즈마, helicon 파동 소스, helical resonator, RF 유도(RFI) 플라즈마가 있었습니다. 각각 다른 trade-off를 가짐: ECR은 강한 자석과 마이크로파 하드웨어 필요; helicon은 축 방향 B 필드 필요; helical resonator는 확장이 어색. RFI 플라즈마 — 석영창 위의 평면 나선 코일이 플라즈마 내에 방위각 전기장을 유도 — 는 <strong>기하학적으로 단순하고, 확장 가능하며, 자석이 없는</strong> 대안을 약속했습니다.</p>
+
+        <p>이 시점에 필요한 것은 새로운 소스 개념이 아니라 대표적 RFI 소스의 <em>신뢰할 만한 측정 숫자</em>였습니다: 플라즈마는 얼마나 조밀한가, 전자는 얼마나 뜨거운가, 웨이퍼 평면에서 이온 플럭스는 얼마나 균일한가, 어떤 플라즈마 전위가 이온을 기판으로 가속할 것인가 (따라서 손상시킬 것인가), 그리고 소스가 전기적 입력을 유용한 이온 전류로 얼마나 효율적으로 변환하는가? 이 논문은 27 × 27 × 13 cm³ 챔버, 13.56 MHz에서 0–2 kW로 구동되는 24 cm 평면 사각 코일에 대해 이 모든 질문에 답합니다.</p>
+
+        <p>방법론적 동기도 동등하게 중요합니다. Langmuir 프로브는 개념적으로 가장 단순한 플라즈마 진단 — 전압 sweep으로 바이어스된 맨 와이어, 전류 측정 — 이지만 RF 방전에서 플라즈마 전위가 <em>구동 주파수에서 진동</em>하여 I-V 특성을 흐리고 프로브가 진동을 따라가지 못하면 전자 온도가 인위적으로 낮게 측정됩니다. 이 논문의 프로브 설계 — 프로브 팁과 직렬인 10 µH 인덕터 + 차폐 동축 전송선 — 는 이 문제에 대한 교과서적 해결책이고, 마이크로파 간섭계와의 명시적 교차 검증은 결과적 이온 밀도 숫자가 가공이 아님을 확립합니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>실험 setup은 세 가지 통합 진단 장치를 가진 평면 유도 플라즈마 소스: sweep 단일 Langmuir 프로브 (DC 특성), 35 GHz 마이크로파 간섭계 (선적분 전자 밀도), capacitive RF 전위 프로브 (RF 플라즈마 전위 변동 교차 검증).</p>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: 평면 RF 유도 플라즈마 소스의 단면도. RF 전력 (13.56 MHz, 0–2 kW)이 matching network에 들어가서 중앙에서 접지된 24 cm × 24 cm × 0.95 cm 평면 사각 코일을 구동. 2.5 cm 석영판이 코일을 플라즈마에서 분리하고 진공창 역할도 함. 플라즈마는 27 × 27 × 13 cm³ 챔버에서 형성되고, 벽 주위에 방사형 전자 confinement을 위한 multipole bucket 구성의 영구 자석이 배치됨. 이동식 기판 홀더가 석영창 아래에 위치. Langmuir 프로브는 기판 홀더를 통해 수직으로 또는 챔버 벽을 통해 수평으로 진입. 마이크로파 horn 쌍 (35 GHz)이 대각선에 걸쳐 챔버 대각선을 통한 간섭계 선적분 전자 밀도 측정 수행 — multipole 자석이 제거될 때 (측정을 방해하기 때문).</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>RFI 소스.</strong> 24 cm 사각 코일은 <em>중앙</em>에서 접지되며, RF 입력은 외부 끝단에 가해짐 — 그래서 코일은 전기적으로 입력에서 피크 전류 지점과 중앙에서 거의 0-전위 지점을 가진 균형 루프. 코일과 플라즈마 사이의 2.5 cm 석영 진공창은 1 atm을 견디기에 충분히 두껍지만 방위각 induction E-필드가 플라즈마에 도달할 만큼 충분히 얇음. 챔버는 base &lt;10<sup>-7</sup> Torr로 펌핑; 작동 압력은 0.3–26 mTorr.</li>
+          <li><strong>자기 multipole confinement.</strong> 챔버 둘레에 <em>교대 극성</em>을 가진 영구 자석이 "magnetic bucket" 생성 — 전자는 벽 근처 자기력선을 따라 곡선을 그리고 절대 벽에 도달하지 못함; 이온은 그 결과로 생긴 ambipolar 필드에 의해 정전기적으로 confinement 됨. 이것이 이온-플럭스 방사형 프로파일을 diffusion-dominant peak (no confinement)에서 tabletop (confinement)으로 평탄화. 결정적으로 multipole 필드는 중앙 플라즈마 부피에서 본질적으로 0 — 따라서 거기서의 프로브 측정은 영향받지 않음.</li>
+          <li><strong>Langmuir 프로브.</strong> 6 mm Pyrex 튜브에 봉인된 7 mm 길이 × 0.35 mm 지름 텅스텐 팁. Pyrex 내부: 텅스텐과 50 Ω semirigid microcoax 사이에 silver-braze된 10 µH 인덕터. 인덕터는 핵심 RF-보상 요소 — 13.56 MHz 구동과 그 고조파에 대한 <em>고임피던스 choke</em>로 작동하여 프로브 팁이 저임피던스 경로를 통해 DC 소스에 클램프되지 않고 RF 플라즈마 전위와 함께 전기적으로 떠다님. coax 외부 도체에서의 차폐가 인덕터 위로 확장되어 부유 RF 결합을 방지. 컴퓨터 제어 하에 −60 V에서 +40 V까지 프로브 sweep; 전류는 20 Ω 직렬 저항기 양단의 전압 강하로 측정.</li>
+          <li><strong>사용된 프로브 이론.</strong> Debye 길이 λ<sub>D</sub>가 프로브 반경보다 훨씬 작으므로 <em>cylindrical이 아닌 planar 프로브 이론</em> 적용. 이온 saturation 전류 I<sub>s</sub> = 0.61 · e · A · n<sub>i</sub> · √(kT<sub>e</sub>/M), 이온 saturation과 전자 collection 영역의 I-V 곡선에 fit된 두 접선의 교차에서 결정. 이온 전류는 √V<sub>p</sub> 의존성으로 fit되고 총 전류에서 차감되어 전자 전류 I<sub>e</sub> 추출; 전자 온도 T<sub>e</sub>는 ln(I<sub>e</sub>) vs V<sub>p</sub>의 기울기에서; 플라즈마 전위 V<sub>s</sub>는 동일 곡선의 knee에서.</li>
+          <li><strong>마이크로파 간섭계 교차 검증.</strong> 챔버 대각선에 걸친 35 GHz horn 쌍이 선적분 전자 밀도 측정. 이를 Langmuir 프로브로 측정한 정규화된 이온 saturation 전류의 방사형 프로파일 I<sub>s</sub>(x)와 결합하고 quasineutrality (n<sub>e</sub> ≈ n<sub>i</sub>)를 가정하면 프로브 이론에 의존하지 않는 <em>절대</em> 중심선 전자 밀도가 나옴. 이것이 방법론적 핵심 — 프로브와 간섭계가 일치하면 프로브 이론이 검증됨.</li>
+          <li><strong>RF skin depth.</strong> δ = c/ω<sub>pe</sub> ≈ 1.7 cm at n<sub>e</sub> = 10<sup>11</sup> cm<sup>-3</sup>로 계산. 프로브 측정은 석영창 아래 z = 5.7 cm에서 — 약 3 skin depth 아래, 직접 induction 필드가 ~e<sup>-3</sup> ≈ 20×만큼 감쇠된 곳. 따라서 측정은 RF skin 영역이 아닌 bulk 플라즈마를 특성화.</li>
+        </ul>
+
+        <p><strong>RF 보상 단서.</strong> 저자들은 인덕터 choke가 있어도 RF 플라즈마 전위 변동이 T<sub>e</sub>를 초과하면 프로브가 전체 RF 진동을 추적할 수 없음을 명시적으로 표시. 독립적 capacitive 프로브 측정은 RF V<sub>s</sub> 스윙이 5–10 V<sub>rms</sub> — T<sub>e</sub>와 동일 자리수임을 보임. 결과: 보고된 T<sub>e</sub>는 실제 전자 온도의 <em>upper bound</em>. 많은 후속 RFI 논문이 생략하는 깊이 정직한 공개입니다.</p>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>평면 RFI 소스의 baseline 수치 특성화.</strong> 0.3–26 mTorr와 0.1–1.5 kW에 걸쳐 Ar, Kr, O<sub>2</sub>에서, 논문은 이온 밀도, 전자 온도, 플라즈마 전위, 이온-플럭스 균일도, 이온 생성 비용 측정 — 30년 동안 분야가 인용할 참조 값을 확립.</li>
+          <li><strong>프로브 / 간섭계 교차 검증.</strong> 적절히 RF-보상된 Langmuir 프로브가 5×10<sup>-3</sup>와 1×10<sup>-3</sup> Torr argon에서 ~10% 이내로 마이크로파 간섭계와 일관된 밀도를 읽음을 시연. 후속 RFI 소스 특성화에서 Langmuir 프로브만 사용하는 것에 대한 경험적 정당화 — 간섭계는 무거운 하드웨어, 프로브는 아님.</li>
+          <li><strong>자기 multipole이 이온 플럭스를 diffusion peak에서 20 cm에 걸쳐 2.5% 균일도로 평탄화.</strong> Bucket confinement가 사용 불가능한 diffusion-dominant 프로파일을 웨이퍼 처리 가능한 평평한 top으로 바꾼다는 정량적 시연.</li>
+          <li><strong>Inductive-to-capacitive 모드 전이 threshold ≈ 100 W.</strong> RF 전력 대 이온 밀도 라인이 전력축에서 ~100 W로 외삽됨 — 이 아래에서 방전은 코일과 플라즈마 간의 capacitive coupling에 의해 주로 유지되고 이온화 효율이 붕괴. 이 숫자는 유도 방전의 이제 표준이 된 E-mode / H-mode 논의의 진입점.</li>
+          <li><strong>고전력, 저압에서 중성 고갈의 증거로서 Krypton 포화.</strong> 0.5 mTorr에서 Kr 이온 밀도가 ~1 kW 위에서 포화되지만 중성 압력이 1 mTorr로 두 배로 증가하면 포화 밀도가 <em>두 배</em>가 됨 — 전력 결합 비효율보다는 중성 고갈 (가스 가열이 작동 가스를 방전 영역 밖으로 팽창)의 강력한 경험적 signature.</li>
+          <li><strong>이온 생성 비용 벤치마크 (Ar에서 100–250 W/A).</strong> RFI 소스를 그 시대의 가장 효율적인 ECR 소스와 helicon의 범위에 들도록 하는 figure of merit이며, 코일과 석영창만 필요 — 자석 없음, 마이크로파 하드웨어 없음.</li>
+        </ul>
+
+        <h2>구현 세부사항</h2>
+        <table>
+          <thead><tr><th>파라미터</th><th>값</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>RF 구동</td><td>13.56 MHz, 0–2 kW</td><td>표준 산업 ISM 대역.</td></tr>
+            <tr><td>코일</td><td>24 cm × 24 cm × 0.95 cm 평면 사각, 중앙 접지</td><td>외부 끝단 구동, 중앙 접지 → 균형 루프.</td></tr>
+            <tr><td>창</td><td>2.5 cm 석영판</td><td>진공창 + 전기적 분리 코일/플라즈마.</td></tr>
+            <tr><td>챔버</td><td>27 × 27 × 13 cm³ 자기 multipole bucket</td><td>영구 자석, 벽 주위 교대 극성.</td></tr>
+            <tr><td>펌핑</td><td>500 ℓ/s turbo + Roots blower + 기계식 펌프</td><td>Base &lt; 10<sup>-7</sup> Torr (ion + cold cathode gauge).</td></tr>
+            <tr><td>작동 가스</td><td>Ar, Kr, O<sub>2</sub></td><td>압력 0.3–26 mTorr, 가변 conductance gate valve (고 P)로 또는 mass flow (저 P, 최저 6 sccm)로 제어.</td></tr>
+            <tr><td>Langmuir 프로브</td><td>6 mm Pyrex 내 7 mm × 0.35 mm 텅스텐, 10 µH 직렬 choke, 50 Ω microcoax</td><td>−60 V에서 +40 V sweep, 컴퓨터 제어; I는 20 Ω 양단 강하로 측정.</td></tr>
+            <tr><td>프로브 위치</td><td>z = 5.7 cm 석영 아래 (≈3 skin depth)</td><td>Bulk 플라즈마, RF skin 영역 아님.</td></tr>
+            <tr><td>간섭계</td><td>Plasma and Materials Technologies, 35 GHz</td><td>챔버 대각선에 걸친 horn 쌍; 측정 중 multipole 자석과 기판 홀더 제거.</td></tr>
+            <tr><td>Capacitive RF 프로브</td><td>독립 측정</td><td>RF 플라즈마 전위 스윙 (5–10 V<sub>rms</sub>) 교차 검증.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: 5×10<sup>-3</sup> Torr oxygen에서 z = 5.7 cm 챔버 대각선에 걸친 정규화된 이온 saturation 전류 I<sub>s</sub>. <strong>자기 confinement 없음</strong> (open circles): 클래식 diffusion-dominant 봉우리 프로파일, FWHM ~15 cm — 웨이퍼 처리에 사용 불가. <strong>자기 multipole confinement 있음</strong> (filled squares): ±15 cm 반경에서만 edge가 떨어지는 평평한 tabletop. 중앙 20 cm에 걸친 표준 편차/평균은 2.5%, 반도체 처리 균일도 목표 충족.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3: 5×10<sup>-3</sup> Torr와 1×10<sup>-3</sup> Torr argon에서 RF 전력 대 중심선 전자 밀도, Langmuir 프로브 (open symbols)와 35 GHz 마이크로파 간섭계 (filled symbols)로 측정. 두 방법이 전체 100–1500 W 범위에 걸쳐 일치 — RF-보상 프로브 기법 검증. 밀도는 1.2 kW / 5 mTorr Ar에서 6×10<sup>11</sup> cm<sup>-3</sup>에 도달.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: 압력의 함수로서 500 W argon의 플라즈마 파라미터. 이온 밀도 n<sub>i</sub> (triangles, ×10<sup>11</sup> cm<sup>-3</sup>)는 0.3 mTorr에서 ~1×10<sup>11</sup>부터 26 mTorr에서 ~6×10<sup>11</sup>까지 압력에 따라 단조 증가. 전자 온도 T<sub>e</sub> (open circles, eV)는 0.3 mTorr에서 7 eV에서 26 mTorr에서 3 eV로 감소 — 클래식 global-model 거동, 저압이 더 긴 전자 mean free path를 의미하고 벽 손실에 대한 이온화의 균형을 맞추기 위해 더 뜨거운 전자가 필요. 플라즈마 전위 V<sub>s</sub> (open squares, V)도 유사하게 저압에서 30 V에서 고압에서 12 V로 떨어져 T<sub>e</sub>를 추적. 낮은 플라즈마 전위 (15–30 V)는 반응기 재료에 의한 웨이퍼 오염을 제한하므로 바람직.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig5.png" alt="Figure 5">
+          <figcaption>Figure 5: 네 가지 압력 (0.5, 1.0, 5.0, 15 mTorr)에서 RF 전력 대 argon 이온 밀도. 광범위한 전력 범위에 걸쳐 선형이고, 각 라인은 ~100 W의 거의 동일한 전력축 절편으로 외삽 — 방전이 주로 inductive (H-mode) 플라즈마로 자체 유지할 수 없고 약한 capacitive (E-mode) coupling으로 되돌아가는 threshold. 기울기 (효율)는 압력과 함께 증가, 더 높은 중성 밀도가 더 많은 전자-중성 충돌을 주고 따라서 플라즈마로의 더 효율적인 전력 deposition을 제공한다는 것과 일관.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig6.png" alt="Figure 6">
+          <figcaption>Figure 6: 0.5 mTorr (filled squares, 7 sccm)와 1.0 mTorr (open circles, 16 sccm)에서 RF 전력 대 Krypton 이온 밀도. 둘 다 ~100 W threshold (capacitive→inductive 전이)와 중간 전력에서 선형 scaling을 보임. 결정적으로 0.5 mTorr 곡선은 ~1 kW 위에서 n<sub>i</sub> ≈ 1×10<sup>12</sup> cm<sup>-3</sup>에서 <strong>포화</strong>하는 반면, 1.0 mTorr 곡선은 ~2×10<sup>12</sup> cm<sup>-3</sup>에서 포화 — 포화가 중성 고갈에 의해 야기되면 (가용 중성 inventory가 두 배) 예상되는 대로 정확히 2×. 유도 방전에서 중성 고갈의 가장 깨끗한 직접 측정 중 하나.</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/langmuir-rf-plasma/fig7.png" alt="Figure 7">
+          <figcaption>Figure 7: Ar 압력의 함수로서 RFI 소스의 이온 생성 비용 (W/A). 비용은 압력 증가와 함께 0.5 mTorr에서 ~225 W/A에서 15 mTorr에서 ~100 W/A로 감소, 주로 ν<sub>en</sub> ≈ ω일 때 joule/collisional 가열이 효과적이 되기 때문. <strong>Inset:</strong> 1 mTorr에서 RF 전력의 함수로서 W/A — 저전력에서 높음 (100 W에서 ~350 W/A, 비효율적 capacitive-mode 영역) 그 다음 ~400 W 위 확립된 inductive mode에서 거의 일정한 ~175 W/A로 떨어짐. "1 mTorr에서 175 W/A" 벤치마크가 RFI 소스를 ECR와 helicon과 경쟁력 있게 positioning.</figcaption>
+        </figure>
+
+        <p><strong>숫자 읽기.</strong> 1993년 (그리고 2026년)의 플라즈마 처리 엔지니어에 대한 세 가지 운영적 takeaway: (1) RFI 소스는 sub-3% 균일도로 웨이퍼 평면에서 10<sup>11</sup>–10<sup>12</sup> cm<sup>-3</sup> 이온을 전달 가능, 고속 etch와 deposition에 필요한 영역. (2) 플라즈마 전위는 15–30 V, 접지된 챔버 표면으로부터 웨이퍼에 대한 sputter 손상을 피하기에 충분히 낮음. (3) 에너지 비용은 ~100–250 W/A — 즉 1 kW 소스가 4–10 A의 이온 전류를 전달하고, RFI 소스가 더 복잡한 ECR/helicon 하드웨어와 경쟁. 정직한 단서: T<sub>e</sub>는 상한이고, 저압 / 고전력에서 Kr 포화와 ln(I<sub>e</sub>) vs V<sub>p</sub>의 선형 편차 모두 단순 모델이 포착하지 못하는 비-Maxwellian 고에너지 tail의 signal.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li><strong>방법론적 정직성.</strong> 논문은 프로브가 RF V<sub>s</sub> 변동을 완전히 따라갈 수 없기 때문에 보고된 T<sub>e</sub>가 상한임을 명시적으로 진술하고, 저압 / 고전력에서 비-Maxwellian 전자 에너지 분포가 ln(I<sub>e</sub>) vs V<sub>p</sub>의 비선형성에서 보임을 표시. 이런 수준의 공개는 계측기 논문에서 흔하지 않음.</li>
+          <li><strong>두 독립적 밀도 측정.</strong> Langmuir 프로브와 마이크로파 간섭계가 두 압력과 넓은 전력 범위에 걸쳐 일치 — RFI 플라즈마 문헌에서 가장 깨끗한 검증.</li>
+          <li><strong>Kr 2× 인자를 통한 중성 고갈의 직접 증거.</strong> 압력 비율에 일치하는 0.5 mTorr / 1.0 mTorr Kr 포화 밀도 비율은 고갈 외에 어떤 것으로도 설명하기 어려움. 대부분의 논문은 중성 고갈을 간접적으로 추론하지만, 이것은 깨끗한 두 점 비교를 가짐.</li>
+          <li><strong>Capacitive/inductive threshold의 정량화.</strong> 여러 가스와 압력에 걸친 100 W 전력축 절편은 E↔H 모드 전이에 대한 강건한 경험적 anchor — 이후 20년에 걸쳐 유도 플라즈마 물리학의 주요 주제가 될 현상.</li>
+          <li><strong>엔지니어링 관련 메트릭.</strong> W/A (또는 동등하게 eV/ion)로 이온 생성 비용을 보고하면 운영 엔지니어들에게 전원 공급을 사이징하는 데 필요한 것을 정확히 제공하며, 비교 프레임워크 (ECR vs helicon vs RFI)는 산업 의사 결정용으로 보정됨.</li>
+          <li><strong>프로브 설계 템플릿.</strong> 10 µH choke + 차폐 coax + Pyrex sheath 프로브 기하학은 유도 플라즈마용 표준 RF-보상 Langmuir 프로브 구성이 됨.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li><strong>EEDF 측정 안 됨.</strong> 논문은 I-V 곡선을 해석하기 위해 Maxwellian 전자 에너지 분포를 가정하지만, 저압 / 고전력에서 보이는 비선형성은 EEDF가 비-Maxwellian임을 말함. f(ε)를 측정하지 않고 — 예: d<sup>2</sup>I/dV<sup>2</sup> (Druyvesteyn 방법) 통해 — 추론된 T<sub>e</sub>와 추론된 이온화율 모두 모델 의존적. 결론 섹션은 이를 future work로 표시.</li>
+          <li><strong>대부분 측정에 대한 단일 위치.</strong> 대부분의 파라미터가 한 축 위치 (z = 5.7 cm)와 중심선에서 측정. 웨이퍼에서 이온 플럭스에 직접 영향 주는 n, T<sub>e</sub>, V<sub>s</sub>의 축 gradient는 mapping되지 않음.</li>
+          <li><strong>프로브 perturbation 정량화 안 됨.</strong> 13 cm 높이 챔버의 7 mm 길이 프로브는 사소하지 않은 전류를 끌어옴; 이온 collection 면적 가정과 플라즈마 국소 밀도에 대한 프로브-그림자 효과는 추정되지 않음.</li>
+          <li><strong>O<sub>2</sub> 밀도가 순수 O<sup>+</sup>를 가정.</strong> Oxygen 플라즈마 이온 밀도는 이온 질량 16 a.m.u.를 가정하여 계산되지만, 논문은 실제 밀도가 O<sub>2</sub><sup>+</sup>의 존재로 인해 최대 1.41× 더 높을 수 있다고 언급. 질량-분해 이온 진단 없이는 O<sub>2</sub> 숫자가 1.4 인자 불확실성을 가짐.</li>
+          <li><strong>자기 multipole 필드가 특성화되지 않음.</strong> Bucket 필드 강도, 구성, 결과적 loss cone이 명시되지 않음. 2.5% 균일도 결과를 재현하려면 논문이 제공하는 것보다 더 많은 세부 사항이 필요.</li>
+          <li><strong>웨이퍼 레벨 화학이 테스트되지 않음.</strong> 논문은 기판 평면에서 플라즈마 파라미터를 보고하지만 실제 etch 또는 deposition rate, 선택성, 손상 데이터는 없음. 프로세스 성능과의 연결은 암묵적.</li>
+        </ul>
+
+        <h2>토의 포인트</h2>
+        <ol>
+          <li>여러 가스와 압력에 걸친 ~100 W 전력축 절편이 inductive-mode threshold로 해석. 하지만 절편 값은 또한 코일 기하 의존적 (저장된 자기 에너지와 matching network 손실과 함께 scaling). 다른 코일을 가진 동일 소스 — 예: 평면 사각이 아닌 3-turn 나선형 — 이 동일 threshold를 줄까? 그렇지 않다면 100 W 숫자는 reactor-specific이지 fundamental 플라즈마 양이 아님. cross-comparable하도록 이를 어떻게 보고해야 할까?</li>
+          <li>RFI 소스는 자기 bucket을 통해 균일도를 달성. 하지만 bucket은 두 차원에서만 confine하고 강한 축 gradient를 남김. 웨이퍼가 다른 z로 이동되면, bucket의 영향이 벽 근처에서 가장 크기 때문에 방사형 균일도도 변함. 처리 소스를 특성화하는 올바른 실험 프로토콜은 무엇인가 — z를 고정하고 r을 sweep, 또는 고정 r에서 z를 sweep, 또는 전체 2D n(r, z) 필드를 측정?</li>
+          <li>프로브 T<sub>e</sub>는 인정된 대로 상한. "T<sub>e</sub>의 상한"이 실제로 프로세스 모델링에 유용한가? 프로세스 비율은 EEDF의 고에너지 tail에 의존, T<sub>e</sub>가 아님; EEDF가 비-Maxwellian이면 (ln(I<sub>e</sub>)의 비선형성이 함의하는 대로) T<sub>e</sub>는 어쨌든 오해 소지가 있는 단일 숫자. 분야가 T<sub>e</sub> 보고를 포기하고 수십 년 전에 직접 EEDF 측정으로 이동했어야 했나?</li>
+          <li>35 GHz 간섭계 교차 검증은 자석 제거와 기판 홀더 하강으로 수행. 하지만 자기 bucket이 플라즈마를 변화시킴 — 방사형 confinement → 더 평평한 밀도 프로파일 → 동일한 RF 전력에 대해 중심선에서 다른 절대 밀도. Bucket 없이 프로브/간섭계 일치가 실제로 bucket이 <em>있는</em> 프로브 측정을 검증하는가? 엄밀히 말하면 프로브 기법을 검증하지만 웨이퍼-처리 구성에서의 절대 밀도 숫자는 아님.</li>
+          <li>33년 후, 평면 RFI 플라즈마는 반도체 fab 곳곳에 있지만, 13.56 MHz 구동은 60 MHz, 100 MHz, pulsed DC 방식으로 대체되고 있음. 이 논문의 global model이 ω → ν<sub>en</sub>, ν<sub>iz</sub>가 됨에 따라 무엇을 잘못 알고 있는가? 구체적으로, 비-dissipative skin depth δ = c/ω<sub>pe</sub>는 ω &lt; ω<sub>pe</sub>와 ν<sub>en</sub> ≪ ω를 가정; 더 낮은 압력과 현대 주파수에서 anomalous skin effect와 δ의 압력 의존성이 중요해짐. 논문의 정성적 프레임워크가 100 MHz 유도 소스에서 살아남는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>이 논문은 방법론적 혁신이 아니라 <strong>기초 진단 보정</strong>으로 읽는 게 가장 좋습니다. RF-보상 Langmuir 프로브는 여기서 발명된 것이 아님 — 인덕터-직렬 기법은 이미 알려졌음 — 하지만 이것은 적절히 설계된 그런 단일 프로브가 산업적으로 관련된 작동 범위에 걸쳐 마이크로파 간섭계와 일관된 결과를 준다는 가장 깨끗한 시연 중 하나. 고밀도 처리 플라즈마를 특성화하는 법을 배우는 누구에게나, 이 논문은 etch와 deposition 도구를 지배하는 평면 RFI 기하에 대해 어떤 숫자를 예상해야 하는지 (그리고 그 불확실성이 무엇인지) 보여주기 때문에 올바른 출발점.</p>
+
+        <p>이를 읽는 두 번째 이유는 <strong>운영적 벤치마크 자체</strong>. 10<sup>11</sup>–10<sup>12</sup> cm<sup>-3</sup> 밀도 창, 3–7 eV T<sub>e</sub> 범위, 15–30 V 플라즈마 전위, multipole confinement로 2.5% 균일도, 100 W inductive threshold, 100–250 W/A 에너지 비용 — 이들은 모든 후속 RFI 소스 논문에서 인용된 참조 숫자. 현대 시뮬레이션 (HPSim, CFD-ACE, COMSOL)을 신뢰하더라도, 이 논문은 그 시뮬레이션이 재현해야 하는 실험적 anchor를 제공.</p>
+
+        <p>두 번 읽기를 권합니다. 첫 번째: Section II (실험 방법) — 프로브 구성, 3 skin depth에서의 측정 위치 선택, 간섭계 교차 검증, 명시적 T<sub>e</sub> 상한 단서. 각 설계 결정에는 명시된 이유와 이를 뒷받침하는 측정이 있음. 두 번째: Figures 5 + 6을 함께 — 여러 가스에서의 100 W 절편은 유도 방전이 0이 아닌 threshold를 가진다는 경험적 진술이고, 0.5 vs 1.0 mTorr에서의 Kr 2× 포화 비율은 그 10년의 유도-플라즈마 문헌에서 찾을 수 있는 중성 고갈에 대한 가장 명확한 증거. 2026년에 RFI 소스를 만드는 실험가들에게, 결론은 그대로 남음: <em>적절히 보상된 Langmuir 프로브를 만들고, 독립적 밀도 진단과 교차 검증하고, T<sub>e</sub>를 상한으로 보고하고, EEDF가 비-Maxwellian일 때 인정하라.</em> Hopwood et al.이 33년 전에 설정한 표준은 여전히 올바른 표준입니다.</p>
       `
     }
   }
