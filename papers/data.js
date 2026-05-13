@@ -20,7 +20,7 @@
 //   venue: "Conference/Journal Year",
 //   image: "images/unique-slug/thumbnail.png",
 //   link: "https://arxiv.org/abs/...",
-//   domain: "autonomous-driving",  // autonomous-driving | quantum-computing | ai-security | deep-learning | physics
+//   domain: "autonomous-driving",  // autonomous-driving | quantum-computing | quantum-ai | ai-security | deep-learning | physics
 //   tags: ["tag1", "tag2"],
 //   en: {
 //     title: "Paper Title",
@@ -15123,6 +15123,364 @@ const PAPERS = [
         <p>이를 읽는 두 번째 이유는 <strong>운영적 벤치마크 자체</strong>. 10<sup>11</sup>–10<sup>12</sup> cm<sup>-3</sup> 밀도 창, 3–7 eV T<sub>e</sub> 범위, 15–30 V 플라즈마 전위, multipole confinement로 2.5% 균일도, 100 W inductive threshold, 100–250 W/A 에너지 비용 — 이들은 모든 후속 RFI 소스 논문에서 인용된 참조 숫자. 현대 시뮬레이션 (HPSim, CFD-ACE, COMSOL)을 신뢰하더라도, 이 논문은 그 시뮬레이션이 재현해야 하는 실험적 anchor를 제공.</p>
 
         <p>두 번 읽기를 권합니다. 첫 번째: Section II (실험 방법) — 프로브 구성, 3 skin depth에서의 측정 위치 선택, 간섭계 교차 검증, 명시적 T<sub>e</sub> 상한 단서. 각 설계 결정에는 명시된 이유와 이를 뒷받침하는 측정이 있음. 두 번째: Figures 5 + 6을 함께 — 여러 가스에서의 100 W 절편은 유도 방전이 0이 아닌 threshold를 가진다는 경험적 진술이고, 0.5 vs 1.0 mTorr에서의 Kr 2× 포화 비율은 그 10년의 유도-플라즈마 문헌에서 찾을 수 있는 중성 고갈에 대한 가장 명확한 증거. 2026년에 RFI 소스를 만드는 실험가들에게, 결론은 그대로 남음: <em>적절히 보상된 Langmuir 프로브를 만들고, 독립적 밀도 진단과 교차 검증하고, T<sub>e</sub>를 상한으로 보고하고, EEDF가 비-Maxwellian일 때 인정하라.</em> Hopwood et al.이 33년 전에 설정한 표준은 여전히 올바른 표준입니다.</p>
+      `
+    }
+  },
+
+  // ====================================================================
+  // Quantum-Audit: Evaluating the Reasoning Limits of LLMs on Quantum Computing
+  // ====================================================================
+  {
+    id: "quantum-audit",
+    date: "2026-05-14",
+    authors: "Afane, M., Laufer, K., Wei, W., Mao, Y., Farooq, J., Wang, Y., Chen, J.",
+    venue: "arXiv 2026 (preprint, ACM submission)",
+    image: "images/quantum-audit/thumbnail.png",
+    link: "https://arxiv.org/abs/2602.10092",
+    domain: "quantum-ai",
+    tags: ["LLM Benchmark", "Quantum Computing", "Evaluation", "False Premise Detection", "Multilingual", "Human Baseline"],
+    en: {
+      title: "Quantum-Audit: Evaluating the Reasoning Limits of LLMs on Quantum Computing",
+      summary: "2,700-question benchmark evaluating 26 LLMs on quantum computing knowledge across 7 core topics, with 43-expert human baseline, multilingual subset, open-ended and false-premise question formats — showing Claude Opus 4.5 reaches 84% (exceeding expert average 74.6%) but all models drop to ~65% when required to reject faulty premises.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p>The contribution is not "LLMs are good/bad at quantum" but a <strong>fine-grained diagnosis of <em>where</em> they fail</strong>: top models match expert humans on basic concepts (&gt;90%) but degrade sharply on quantum security questions tied to recent attack research (~74%), drop another 15-20 points on false-premise questions (~65%), and lose 5-10 points when the same question is translated to Spanish or French — all on a benchmark deliberately constructed so that LLM-generated and expert-written questions can be compared apples-to-apples (a 10-15 point gap that the paper attributes to training-data alignment).</p>
+
+        <h2>Research Question</h2>
+        <blockquote>What is the actual depth and reliability of LLM quantum-computing knowledge when measured systematically — across difficulty levels (foundational → advanced), question formats (multiple choice, open-ended, false premise), languages (English, Spanish, French), and reasoning modes (vanilla, agentic, deep research) — and how does each axis interact with the well-documented LLM failure modes (hallucination, premise acceptance, training-data leakage)?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>LLMs are increasingly used as <em>secondary instructors</em> in quantum computing courses, as summarization assistants for the rapidly expanding QC literature, and as initial-draft producers for grant proposals, lecture notes, and code reviews in the field. None of these uses are properly justified without knowing how reliable the underlying knowledge is. Prior benchmarking work has focused either on <strong>code generation</strong> (QiskitHumanEval [Vishwakarma et al.], QuanBench [Guo et al.], QASMBench [Li et al.]) or <strong>narrow algorithmic simulation</strong> (GroverGPT [Wang et al.] approximating Grover's algorithm) — neither addresses general conceptual understanding.</p>
+
+        <p>The gap is sharper than it looks. Code-generation benchmarks measure whether a model can output a syntactically valid Qiskit program with correct API usage; they do not measure whether the model understands <em>why</em> the program works, what its computational complexity is, when it would fail under noise, or whether a stated premise about it is even true. The 2024 QuantumLLMInstruct dataset [Kashani] contains 500,000+ synthetic instruction-problem pairs but is built for fine-tuning, not for assessment, and its content is entirely LLM-generated. There is no human-expert-validated, format-diverse, multilingual benchmark for <em>conceptual</em> quantum computing knowledge — which is what Quantum-Audit fills.</p>
+
+        <p>The deeper motivation is the asymmetric risk of LLMs in technical pedagogy: when an LLM gives plausibly-worded but subtly wrong information about quantum mechanics, students lack the calibration to detect it. Hallucinations and confident wrong answers have been widely documented in adjacent specialized domains (medical, legal, mathematics) [Afane et al. 2024/2025, Bommasani et al.]. Quantum computing is particularly demanding because its core concepts (superposition, entanglement, measurement) are counterintuitive and its terminology evolves rapidly — exactly the conditions under which LLMs tend to fail invisibly.</p>
+
+        <h2>Architecture / Methodology</h2>
+        <p>Quantum-Audit is a dataset + evaluation framework. The dataset has three components and the evaluation has four axes.</p>
+
+        <figure>
+          <img src="images/quantum-audit/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: Distribution of the 2,700 benchmark questions by topic. Seven core domains — Distributed Computing, Gates &amp; Circuits, Algorithms (380 questions each); Security, Quantum ML, Error Correction, Basic Concepts (390 each). Each topic blends four question types: Expert: Multiple Choice (blue, ~140 per topic), Expert: Open Ended (magenta, ~50), Expert: False Premise (orange, ~50), and LLM-Assisted: Multiple Choice (green, ~140-150). The roughly even topic distribution prevents the headline accuracy number from being dominated by performance on any single area; the format mix tests recognition, generation, and critical reasoning separately.</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>QA1000-Expert.</strong> 1,000 multiple-choice questions written from scratch by quantum computing researchers, reformulated to avoid direct reproduction from any specific source paper (the authors explicitly try to prevent memorization shortcuts). Covers seven topics: Algorithms, Error Correction, Security, Distributed Computing, Quantum ML, Gates &amp; Circuits, Basic Concepts.</li>
+          <li><strong>QA1000-LLM-Extracted.</strong> 1,000 multiple-choice questions extracted from quantum computing research literature using Gemini 3 Flash, GPT-4.1, and Claude Sonnet 4 in a few-shot generation pipeline (five carefully selected examples from QA1000-Expert as in-context demonstrations). 8,000+ candidates were generated and then filtered down to 1,000 via expert validation. This is the dataset half that intentionally aligns with statistical patterns in published QC text.</li>
+          <li><strong>QA700-Extended.</strong> 350 open-ended questions (no answer choices — tests whether models can construct explanations rather than recognize correct answers) + 350 false-premise questions where the question stem embeds a deliberately incorrect assumption (e.g., "Given that Shor's algorithm provides exponential speedup for all NP-complete problems, ..."). The correct response is to <em>reject the premise</em>, not to answer the surface question.</li>
+          <li><strong>QA500 multilingual subset.</strong> 500 questions translated into Spanish and French for cross-lingual evaluation. Tests whether quantum knowledge "transfers" — or whether the technical vocabulary creates language-specific failure modes.</li>
+        </ul>
+
+        <p><strong>Evaluation pipeline.</strong> All 26 models accessed via official APIs (closed-source: GPT-5.2/5.2 Pro/5 mini/4.1/4.1 mini, Claude Opus 4.5/Sonnet 4.5/Sonnet 4/Haiku 4.5, Gemini 3 Pro/3 Flash/2.5 Pro/2.0 Flash-Lite) or Hugging Face Transformers on 2×V100 GPUs in FP16 + Groq API for open-source (Llama 1B-70B, Phi 2.7B-14.7B, Gemma 2B-9B). Questions are formatted as JSON; prompting templates are standardized per question type. Accuracy is the central metric — chosen because it applies uniformly to all four formats and provides direct interpretability for educational use.</p>
+
+        <p><strong>Human baseline study.</strong> 43 quantum computing researchers and practitioners answered a 30-question subset spanning all seven topics. Each respondent provided their highest education level, years of QC experience, and age group. Scores range 23%–86%; expert average 74.6%, all-participants average 57.2%. This is what Figure 4 compares LLMs against.</p>
+
+        <p><strong>Memorization controls.</strong> Three explicit protections: (1) expert-written questions are <em>reformulations</em> of core concepts, not direct text from papers; (2) LLM-extracted questions are filtered by experts for redundancy; (3) the multilingual subset measures whether high English performance is a "looked it up" artifact (multilingual degradation would suggest yes).</p>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>First comprehensive, expert-validated benchmark of conceptual QC knowledge in LLMs.</strong> 2,700 questions × 7 topics × 4 formats × 3 languages = the broadest QC-specific evaluation grid published to date, with both human-author and LLM-generation halves enabling apples-to-apples comparison of where models get easy points vs hard points.</li>
+          <li><strong>Quantification of the "expert-written vs LLM-extracted" gap.</strong> Top models score 77-78% on expert-written but 89-90% on LLM-extracted — a 10-15 point gap that is consistent across model families. This is direct evidence that LLM-generated benchmarks systematically overestimate model performance via training-data alignment (a methodology lesson that travels far beyond QC).</li>
+          <li><strong>Topic-level failure map.</strong> Basic Concepts &gt;90%, Quantum Algorithms 80-82%, Quantum Security ≈74% across top models. The Security drop is attributed specifically to recent attack research (phase mismatch, crosstalk, QubitHammer, quantum backdoors) — areas where training corpora are sparse and terminology has not yet stabilized.</li>
+          <li><strong>False-premise detection benchmark.</strong> The 350 false-premise questions reveal that even Claude Opus 4.5 and GPT-5.2 Pro only reach ~65% — a documented failure mode where models accept faulty user assumptions and "answer as if" the premise were true. Crucial for educational deployment where students don't know to flag the premise themselves.</li>
+          <li><strong>Multilingual degradation quantified.</strong> Top models (Claude Opus 4.5, GPT-5.2 Pro) hold &gt;72% in both Spanish and French, but smaller models (gemma2-9b-it, Phi-4-reasoning-plus) drop sharply — and the drop pattern is asymmetric (French often outperforms Spanish, which itself is a finding worth investigating).</li>
+          <li><strong>Agentic / Deep Research mode improvement.</strong> Quantifying that Claude Opus 4.5 Research Mode (+7.2 to 85.6%), Gemini 3 Deep Research (+8.6 to 84.8%), and GPT-5.2 Agent Mode (+6.6 to 83.4%) provide meaningful but bounded gains — average +6.7 points, no mode breaks 90%.</li>
+          <li><strong>Human baseline study with 43 experts.</strong> Anchoring the LLM numbers to a realistic human distribution (23%–86%, expert avg 74.6%) gives the headline result — Claude Opus 4.5 at 84% exceeds the expert average — its proper context.</li>
+        </ul>
+
+        <h2>Experimental Setup &amp; Implementation Details</h2>
+        <table>
+          <thead><tr><th>Component</th><th>Setting</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Models evaluated</td><td>26 total (5 GPT, 4 Claude, 4 Gemini + 13 open-source)</td><td>Latest generation as of Feb 2026: GPT-5.2/5.2 Pro, Claude Opus 4.5, Gemini 3 Pro.</td></tr>
+            <tr><td>Closed-source access</td><td>Official APIs (Anthropic, OpenAI, Google)</td><td>Standard temperature settings; no system prompt engineering disclosed.</td></tr>
+            <tr><td>Open-source inference</td><td>HuggingFace Transformers, FP16, 2×Tesla V100 32GB</td><td>+ Groq API for faster Llama/Mixtral access.</td></tr>
+            <tr><td>Topics covered</td><td>7: Basic Concepts, Algorithms, Error Correction, Gates &amp; Circuits, Quantum ML, Security, Distributed Computing</td><td>~380-390 questions per topic.</td></tr>
+            <tr><td>QA1000-Expert</td><td>1,000 multiple-choice, written by QC researchers</td><td>Reformulated from core concepts, not direct text reproduction.</td></tr>
+            <tr><td>QA1000-LLM-Extracted</td><td>1,000 multiple-choice, generated by Gemini 3 Flash + GPT-4.1 + Claude Sonnet 4</td><td>Few-shot with 5 expert examples; 8000 candidates → 1000 after expert filtering.</td></tr>
+            <tr><td>Open-ended</td><td>350 questions, no answer choices</td><td>Evaluated for presence of correct information + reasoning.</td></tr>
+            <tr><td>False premise</td><td>350 questions with embedded incorrect assumption</td><td>Correct response = reject premise, not answer surface question.</td></tr>
+            <tr><td>Multilingual subset</td><td>500 questions × Spanish + French</td><td>Tests cross-lingual transfer of technical vocabulary.</td></tr>
+            <tr><td>Reasoning modes tested</td><td>Vanilla + Agentic + Deep Research (subset of 500)</td><td>5 frontier models with agentic/research extensions.</td></tr>
+            <tr><td>Human baseline</td><td>43 participants, 30-question subset</td><td>Education, QC experience, age recorded per participant.</td></tr>
+            <tr><td>Metric</td><td>Accuracy (factual correctness)</td><td>Chosen for uniform applicability across formats and direct educational interpretability.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <table>
+          <thead><tr><th>Model</th><th>Provider</th><th>QA1000 Expert</th><th>QA1000 LLM-Extracted</th><th>QA2000 Combined</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Claude Opus 4.5</strong></td><td>Anthropic</td><td>78.40</td><td>89.60</td><td><strong>84.00</strong></td></tr>
+            <tr><td>GPT-5.2 Pro</td><td>OpenAI</td><td>77.70</td><td>89.80</td><td>83.75</td></tr>
+            <tr><td>Claude Sonnet 4.5</td><td>Anthropic</td><td>77.20</td><td>89.40</td><td>83.30</td></tr>
+            <tr><td>Gemini 3 Pro</td><td>Google</td><td>76.10</td><td>88.50</td><td>82.30</td></tr>
+            <tr><td>llama-3.3-70b-versatile</td><td>Meta</td><td>69.80</td><td>82.50</td><td>76.15</td></tr>
+            <tr><td>gemma-2-2b-it</td><td>Google</td><td>40.10</td><td>57.60</td><td>48.85</td></tr>
+            <tr><td colspan="5"><em>Top model Claude Opus 4.5 = 84.00% &gt; human expert average 74.6%</em></td></tr>
+          </tbody>
+        </table>
+
+        <figure>
+          <img src="images/quantum-audit/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 (paper Figure 4): Accuracy on QA2000 for 9 representative LLMs (Anthropic = orange, OpenAI = teal, Google = red, Microsoft = light blue, Meta = navy) compared against two human baselines — Human Expert Average (74.6%, green dashed line) and Average of All Participants (57.2%, dark red dashed line). The top five models (Claude Opus 4.5, GPT-5.2 Pro, Claude Sonnet 4.5, GPT-5.2, Gemini 3 Pro) all cluster above the expert average; Phi-4-reasoning-plus and llama-3.3-70b-versatile sit between the two human baselines; phi-2 and gemma-2-2b-it fall below the all-participants average. This is the headline visualization of the paper: top closed-source LLMs match or exceed human expert performance on this conceptual benchmark, but the spread across models (~35 percentage points) is wider than the spread across human participants.</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>Topic</th><th>Top model (Claude Opus 4.5 / GPT-5.2 Pro)</th><th>Mid-tier (Phi-4-reasoning-plus)</th><th>Small (gemma-2-2b-it)</th></tr></thead>
+          <tbody>
+            <tr><td>Basic Concepts</td><td>92-93%</td><td>78.6%</td><td>49.0%</td></tr>
+            <tr><td>Quantum Algorithms</td><td>80-82%</td><td>76.8%</td><td>48.9%</td></tr>
+            <tr><td>Quantum Security</td><td><strong>72-74%</strong></td><td>67.2%</td><td>41.4%</td></tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead><tr><th>Model</th><th>Open-Ended (%)</th><th>False Premise (%)</th></tr></thead>
+          <tbody>
+            <tr><td>GPT-5.2 Pro</td><td><strong>81.4</strong></td><td>64.9</td></tr>
+            <tr><td>Claude Opus 4.5</td><td>79.7</td><td><strong>65.7</strong></td></tr>
+            <tr><td>Claude Sonnet 4.5</td><td>78.3</td><td>63.4</td></tr>
+            <tr><td>Gemini 3 Pro</td><td>75.4</td><td>61.1</td></tr>
+            <tr><td colspan="3"><em>~15-point gap: open-ended is "construct from understanding," false-premise is "reject embedded assumption" — the latter is much harder.</em></td></tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead><tr><th>Model (Mode)</th><th>Before</th><th>After</th><th>Δ</th></tr></thead>
+          <tbody>
+            <tr><td>Gemini 3 (Deep Research)</td><td>76.2</td><td>84.8</td><td><strong>+8.6</strong></td></tr>
+            <tr><td>Claude Opus 4.5 (Research)</td><td>78.4</td><td><strong>85.6</strong></td><td>+7.2</td></tr>
+            <tr><td>GPT-5.2 (Agent Mode)</td><td>76.8</td><td>83.4</td><td>+6.6</td></tr>
+            <tr><td>Claude Sonnet 4.5 (Research)</td><td>77.2</td><td>83.0</td><td>+5.8</td></tr>
+            <tr><td>GPT-5.2 (Deep Research)</td><td>76.8</td><td>82.2</td><td>+5.4</td></tr>
+            <tr><td colspan="4"><em>Average +6.7 points; no mode breaks 90% — agentic gains are bounded.</em></td></tr>
+          </tbody>
+        </table>
+
+        <figure>
+          <img src="images/quantum-audit/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 (paper Figure 5): Bubble chart of Spanish accuracy (vertical) vs French accuracy (horizontal) on QA500. Bubble size = parameter count (~9B / ~70B / &gt;100B); color = provider. The diagonal dashed line marks equal performance. Top-right cluster (Claude Opus 4.5, GPT-5.2 Pro, Claude Sonnet 4.5, Gemini 3 Pro) all maintain &gt;70% in both languages with relatively symmetric performance. Lower-left: gemma2-9b-it, llama-3.3-70b-versatile, and Phi-4-reasoning-plus show larger asymmetric drops. Most points sit <em>below</em> the diagonal, indicating Spanish accuracy is slightly lower than French — a consistent pattern across providers worth investigating (training corpus composition? technical vocabulary stability in each language?).</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/quantum-audit/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: Screenshot of the live Quantum-Audit leaderboard at quantum-audit.github.io. The site exposes model-by-model accuracy split into Expert Written / LLM Extracted / Complete Dataset columns, with filtering by provider and sorting by dataset slice. Claude Opus 4.5 sits at #1 (84.00 complete), GPT-5.2 Pro at #2 (83.75), Claude Sonnet 4.5 at #3 (83.30). The leaderboard is intended to be updated as new models are released — turning the paper from a snapshot into a living benchmark.</figcaption>
+        </figure>
+
+        <p><strong>Reading the numbers.</strong> Three things matter operationally. (1) The Expert/LLM-Extracted gap is the most reusable finding — any future benchmark in any field that uses LLM generation for question creation will likely inherit the same 10-15 point inflation; the methodological correction is to <em>always</em> validate against expert-written questions. (2) The false-premise score (~65% for the best models) is the most concerning for educational deployment — a student asking "since X is true, what about Y?" where X is wrong will get an answer that compounds the error, not corrects it. (3) The agentic mode ceiling at ~85-86% suggests that the remaining errors are not about lack of retrieval (Deep Research can pull current papers) but about deeper conceptual reasoning that even multi-step retrieval-augmented inference doesn't solve.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li><strong>Methodological care on benchmark contamination.</strong> The expert-written questions are <em>reformulations</em> not reproductions, the LLM-extracted half is explicitly validated by experts, and the multilingual subset acts as a sanity check against pure-text memorization. This is a higher standard than most LLM benchmarks.</li>
+          <li><strong>The Expert/LLM-Extracted comparison is a clean ablation.</strong> By including both halves and showing the 10-15 point gap, the paper produces a methodological finding that generalizes: LLM-generated questions systematically inflate apparent model performance. This insight is more important than the QC-specific numbers.</li>
+          <li><strong>False-premise as a separate format.</strong> Most LLM benchmarks test "given correct setup, find correct answer." False-premise tests "given incorrect setup, recognize it" — a fundamentally different capability and the one most relevant for trustworthy deployment. The 65% ceiling is a useful safety-flavored result.</li>
+          <li><strong>Human baseline grounded in actual experts.</strong> 43 QC researchers/practitioners with recorded background information, not Mechanical Turk laymen. The 23%–86% spread shows what "human performance" actually looks like in this domain.</li>
+          <li><strong>Multilingual axis.</strong> Including Spanish and French costs little and provides one of the cleanest tests of whether high English accuracy reflects "knowledge" or "training-data text patterns" — and the asymmetric Spanish/French finding is itself unexpected and worth follow-up.</li>
+          <li><strong>26-model coverage including both proprietary frontier and small open-source.</strong> Spans 30+ percentage points of accuracy, which makes the topic-by-topic patterns interpretable as "what gets easier with scale" vs "what stays hard."</li>
+          <li><strong>Living leaderboard at quantum-audit.github.io.</strong> Public commitment to update as new models release — keeps the contribution from rotting in six months.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>Accuracy is the only metric.</strong> The paper acknowledges this and defends the choice, but for open-ended questions especially, accuracy alone misses whether the model's reasoning is correct or whether it arrived at the right answer for the wrong reasons. Calibration scores, citation accuracy, and step-by-step verification are absent — and would matter most for the educational use case the paper motivates.</li>
+          <li><strong>Open-ended grading methodology underspecified.</strong> "Responses are evaluated based on whether they contain the correct information and reasoning" — but is this human-graded, LLM-judged, or rubric-based? Without details, the open-ended scores are less reproducible than the multiple-choice ones.</li>
+          <li><strong>43 human participants is small.</strong> Especially since the 30-question subset is the same for all participants, the spread of 23%–86% could be partly explained by sample noise; the expert average 74.6% has unstated confidence intervals. For a baseline that anchors the central claim ("Claude Opus 4.5 exceeds expert performance"), the human study is thin.</li>
+          <li><strong>No analysis of <em>which</em> questions models miss.</strong> Topic-level aggregates exist, but item-level error analysis — do all models miss the same questions? are there "uniformly hard" vs "model-specific" failures? — is absent. This is the analysis that would let the field actually improve, not just rank.</li>
+          <li><strong>False-premise questions are author-constructed.</strong> The 350 false-premise stems are presumably written by the same expert pool as QA1000-Expert; there is no inter-annotator agreement reported, no calibration on what counts as "rejecting the premise" vs "answering the surface question while caveating the premise." The 65% ceiling depends on this grading.</li>
+          <li><strong>No code evaluation.</strong> The paper deliberately scopes itself to conceptual knowledge, leaving QiskitHumanEval / QuanBench to handle code. But a comprehensive "is this model useful in QC research" question needs both, and Quantum-Audit alone undersells the practical picture.</li>
+          <li><strong>Memorization defense is partial.</strong> Reformulation reduces but does not eliminate the risk that a question worded differently still triggers retrieval of the same training-data answer. The multilingual degradation pattern (top models hold &gt;70% in Spanish/French) might be evidence that training data is mostly English-mediated rather than evidence of conceptual robustness.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>The 10-15 point gap between QA1000-Expert and QA1000-LLM-Extracted is the most methodologically important finding. But the QA1000-LLM-Extracted set was generated by Gemini 3 Flash + GPT-4.1 + Claude Sonnet 4 — three of the same model families being evaluated. Is the gap evidence that LLMs cheat on benchmarks generated by sibling models, or evidence that "expert" questions are inherently harder regardless of who generates the LLM half? An ablation generating the LLM half with only out-of-family models (e.g., Llama + Mistral) would settle this.</li>
+          <li>False-premise accuracy at ~65% might actually be optimistic for real-world educational use. The benchmark questions embed clearly wrong premises ("Shor's algorithm solves all NP-complete problems"); in actual student-to-LLM interactions the wrong premises are subtler ("since Grover's algorithm gives quadratic speedup for unstructured search, the BQP class is..."). How would the same models do on a "subtle false premise" version where the premise is half-true or domain-mismatched?</li>
+          <li>The multilingual gap is consistently French &gt; Spanish for top models, even though both languages have substantial scientific corpora. Possible explanations: (a) French physics terminology is more standardized, (b) the translation pipeline introduced asymmetric ambiguity, (c) training data composition. The paper doesn't isolate which. For QC researchers in non-English-dominant institutions, this distinction matters operationally.</li>
+          <li>Agentic / Deep Research modes give +6.7 points on average but cap at ~85-86%, suggesting they help retrieval but don't fix reasoning. What is the reasoning ceiling — is the remaining 15% gap a knowledge problem (information not in training corpora or web), a reasoning problem (model can't combine pieces correctly), or a calibration problem (model is right on average but wrong on a specific subset)? An error-type taxonomy on the residual failures would clarify what next-generation systems need to improve.</li>
+          <li>The expert human baseline (74.6%) is below Claude Opus 4.5 (84.00%). On the surface this says "LLMs surpass experts on this benchmark." But the benchmark covers 7 topics; humans specialize. If the 43 participants each took only their specialty subset, the per-expert score would likely exceed 90% on familiar topics and drop below 60% on unfamiliar ones — i.e., individual humans are <em>more</em> reliable in their wheelhouse than averaged-across-7-topics suggests. Does the headline claim survive a stratified comparison (model vs experts on <em>their</em> topic, not aggregate)?</li>
+        </ol>
+
+        <h2>Final Takeaway</h2>
+        <p>The most reusable contribution here is the <strong>methodological finding</strong>, not the leaderboard. The 10-15 point Expert/LLM-Extracted gap is a generalizable lesson for any LLM benchmark in any technical field: generating questions with LLMs systematically inflates apparent performance via training-data alignment, and validating against an expert-written half is the cheap correction. Any future benchmark in physics, chemistry, biology, or law that uses LLM generation as a scaling technique should adopt this split design.</p>
+
+        <p>The second-most-reusable contribution is the false-premise format. Most LLM benchmarks measure "given correct input, produce correct output" — which is exactly the wrong evaluation for deployed assistants, where the failure mode of practical concern is "compounds incorrect user assumption." The 65% ceiling on false-premise even for frontier models is a hard upper bound on how much current-generation LLMs can be trusted as <em>autonomous</em> technical instructors without human oversight.</p>
+
+        <p>The QC-specific numbers — Claude Opus 4.5 at 84%, expert humans at 74.6%, Quantum Security drop to ~74%, agentic mode ceiling at ~86% — are interesting but will rot quickly as new models release. The leaderboard at quantum-audit.github.io is the right structural choice to keep the contribution alive past its arXiv submission date.</p>
+
+        <p>Read this paper in three passes. First: Section 3 + Figure 1 — understand the dataset construction (expert / LLM-extracted / extended / multilingual) and the seven-topic taxonomy. Second: Tables 1 + 3 + Figure 4 — the central empirical results, especially the Expert/LLM-Extracted gap, the false-premise scores, and the LLM-vs-expert-human comparison. Third: the Discussion + Limitations sections — the paper is honest about what its accuracy-only methodology misses. For QC researchers asking "can I trust an LLM with this domain?" the operational answer is: <em>top frontier models exceed average expert performance on foundational concepts and standard algorithms, but fall ~20 points behind on quantum security and ~20 points behind on detecting wrong premises — use them as research assistants, not as autonomous teachers, and especially not for security-sensitive QC topics where the literature is still evolving.</em></p>
+      `
+    },
+    ko: {
+      title: "Quantum-Audit: LLM의 양자컴퓨팅 추론 한계 평가",
+      summary: "26개 LLM을 양자컴퓨팅 지식에 대해 2,700개 질문(7개 핵심 주제)으로 평가하는 벤치마크. 43명 인간 전문가 baseline과 다국어 subset, open-ended 및 false-premise 질문 형식 포함 — Claude Opus 4.5가 84% 달성 (전문가 평균 74.6% 초과)하지만 모든 모델이 잘못된 전제를 거부해야 할 때 ~65%로 떨어지는 것을 보임.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p>핵심 기여는 "LLM이 양자에 능숙한가/부족한가"가 아니라 <strong><em>어디서</em> 실패하는지에 대한 세밀한 진단</strong>: 최상위 모델은 기초 개념에서 인간 전문가와 동등 (&gt;90%)이지만 최근 공격 연구와 관련된 양자 보안 질문에서는 급격히 떨어지고 (~74%), 잘못된 전제 질문에서 추가로 15-20점 감소 (~65%), 같은 질문이 스페인어나 프랑스어로 번역되면 5-10점 손실 — 모두 LLM 생성 vs 전문가 작성 질문을 사과 대 사과로 비교할 수 있도록 의도적으로 구성된 벤치마크에서 (이 10-15점 격차를 논문은 학습 데이터 정렬 효과로 설명).</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>난이도 수준 (기초 → 고급), 질문 형식 (객관식, 개방형, false premise), 언어 (영어, 스페인어, 프랑스어), 추론 모드 (vanilla, agentic, deep research)에 걸쳐 체계적으로 측정했을 때 LLM 양자컴퓨팅 지식의 실제 깊이와 신뢰성은 무엇이며, 각 축이 잘 알려진 LLM 실패 모드 (환각, 전제 수용, 학습 데이터 누출)와 어떻게 상호작용하는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>LLM은 양자컴퓨팅 강의에서 <em>보조 강사</em>로, 빠르게 확장되는 QC 문헌에 대한 요약 도구로, 그리고 그 분야의 grant proposal, 강의 노트, 코드 리뷰의 초안 작성자로 점점 더 많이 사용되고 있습니다. 이런 사용 사례 중 어느 것도 그 밑바탕의 지식이 얼마나 신뢰할 만한지 알지 못하면 정당화될 수 없습니다. 이전 벤치마킹 연구는 <strong>코드 생성</strong> (QiskitHumanEval [Vishwakarma et al.], QuanBench [Guo et al.], QASMBench [Li et al.]) 또는 <strong>좁은 알고리즘 시뮬레이션</strong> (GroverGPT [Wang et al.]이 Grover 알고리즘을 근사화)에 초점을 두어 왔습니다 — 어느 것도 일반적 개념 이해를 다루지 않습니다.</p>
+
+        <p>이 격차는 보이는 것보다 더 날카롭습니다. 코드 생성 벤치마크는 모델이 올바른 API 사용을 가진 구문적으로 유효한 Qiskit 프로그램을 출력할 수 있는지 측정합니다; 모델이 프로그램이 <em>왜</em> 작동하는지, 그 계산 복잡도가 무엇인지, 노이즈 하에서 언제 실패할지, 또는 프로그램에 대한 진술된 전제가 사실인지 여부를 이해하는지는 측정하지 않습니다. 2024년 QuantumLLMInstruct 데이터셋 [Kashani]은 500,000개 이상의 합성 instruction-problem 쌍을 포함하지만 파인튜닝용으로 만들어졌고 평가용이 아니며, 그 내용은 전적으로 LLM 생성. <em>개념적</em> 양자컴퓨팅 지식에 대한 인간 전문가 검증, 형식 다양한, 다국어 벤치마크는 없습니다 — 이것이 Quantum-Audit가 채우는 것.</p>
+
+        <p>더 깊은 동기는 기술 교육에서 LLM의 비대칭적 위험성: LLM이 양자역학에 대해 그럴듯하게 표현되었지만 미묘하게 잘못된 정보를 줄 때, 학생들은 그것을 감지할 보정 능력이 부족합니다. 환각과 자신감 있는 잘못된 답변은 인접한 전문 도메인 (의료, 법률, 수학)에서 광범위하게 문서화되어 있습니다 [Afane et al. 2024/2025, Bommasani et al.]. 양자컴퓨팅은 그 핵심 개념 (중첩, 얽힘, 측정)이 직관에 반하고 그 용어가 빠르게 진화하므로 특히 까다로움 — 정확히 LLM이 보이지 않게 실패하는 경향이 있는 조건입니다.</p>
+
+        <h2>전체 구조 / 방법론</h2>
+        <p>Quantum-Audit는 데이터셋 + 평가 프레임워크. 데이터셋은 세 가지 구성요소를 가지고 평가는 네 가지 축을 가짐.</p>
+
+        <figure>
+          <img src="images/quantum-audit/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: 토픽별 2,700개 벤치마크 질문 분포. 7개 핵심 도메인 — Distributed Computing, Gates &amp; Circuits, Algorithms (각 380개); Security, Quantum ML, Error Correction, Basic Concepts (각 390개). 각 토픽은 네 가지 질문 유형을 혼합: Expert: Multiple Choice (파랑, 토픽당 ~140개), Expert: Open Ended (마젠타, ~50), Expert: False Premise (주황, ~50), LLM-Assisted: Multiple Choice (녹색, ~140-150). 거의 균일한 토픽 분포가 헤드라인 정확도 숫자가 어떤 단일 영역의 성능에 의해 지배되는 것을 방지; 형식 혼합은 인식, 생성, 비판적 추론을 별도로 테스트.</figcaption>
+        </figure>
+
+        <ul>
+          <li><strong>QA1000-Expert.</strong> 양자컴퓨팅 연구자들이 처음부터 작성한 1,000개 객관식 질문, 어떤 특정 source paper에서도 직접 복제하지 않도록 재구성됨 (저자들은 메모리 shortcut을 명시적으로 방지하려 함). 7개 토픽 커버: Algorithms, Error Correction, Security, Distributed Computing, Quantum ML, Gates &amp; Circuits, Basic Concepts.</li>
+          <li><strong>QA1000-LLM-Extracted.</strong> Gemini 3 Flash, GPT-4.1, Claude Sonnet 4가 few-shot 생성 파이프라인 (in-context demonstration으로 QA1000-Expert에서 신중하게 선택된 5개 예시)을 사용해 양자컴퓨팅 연구 문헌에서 추출한 1,000개 객관식 질문. 8,000+ 후보가 생성되고 전문가 검증을 통해 1,000개로 필터링됨. 이것이 출판된 QC 텍스트의 통계적 패턴과 의도적으로 정렬된 데이터셋 절반.</li>
+          <li><strong>QA700-Extended.</strong> 350개 open-ended 질문 (정답 선택지 없음 — 모델이 정답을 인식하는 것이 아니라 설명을 구성할 수 있는지 테스트) + 350개 false-premise 질문, 질문 stem이 의도적으로 잘못된 가정 (예: "Shor 알고리즘이 모든 NP-complete 문제에 대해 지수 속도 향상을 제공하므로, ...")을 포함. 올바른 응답은 표면 질문에 답하는 것이 아니라 <em>전제를 거부</em>하는 것.</li>
+          <li><strong>QA500 다국어 subset.</strong> 500개 질문을 스페인어와 프랑스어로 번역해 cross-lingual 평가. 양자 지식이 "전이"되는지 — 또는 기술 어휘가 언어별 실패 모드를 만드는지 테스트.</li>
+        </ul>
+
+        <p><strong>평가 파이프라인.</strong> 26개 모델 모두 공식 API (closed-source: GPT-5.2/5.2 Pro/5 mini/4.1/4.1 mini, Claude Opus 4.5/Sonnet 4.5/Sonnet 4/Haiku 4.5, Gemini 3 Pro/3 Flash/2.5 Pro/2.0 Flash-Lite) 또는 2×V100 GPU의 FP16 + Groq API의 HuggingFace Transformers를 통해 open-source 액세스 (Llama 1B-70B, Phi 2.7B-14.7B, Gemma 2B-9B). 질문은 JSON 형식; 프롬프팅 템플릿은 질문 유형별로 표준화. 정확도가 중심 메트릭 — 4개 형식 모두에 균일하게 적용되고 교육적 사용에 직접적 해석 가능성을 제공하므로 선택.</p>
+
+        <p><strong>인간 baseline 연구.</strong> 43명의 양자컴퓨팅 연구자와 실무자가 7개 토픽에 걸친 30개 질문 subset에 답함. 각 응답자는 최고 교육 수준, QC 경험 연수, 연령 그룹 제공. 점수 23%–86% 범위; 전문가 평균 74.6%, 전체 참가자 평균 57.2%. 이것이 Figure 4가 LLM을 비교하는 대상.</p>
+
+        <p><strong>메모리 제어.</strong> 세 가지 명시적 보호: (1) 전문가 작성 질문은 논문에서 직접 텍스트가 아니라 핵심 개념의 <em>재구성</em>; (2) LLM 추출 질문은 중복성에 대해 전문가가 필터링; (3) 다국어 subset은 높은 영어 성능이 "찾아본" 가공인지 측정 (다국어 저하는 그렇다는 것을 시사).</p>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>LLM의 개념적 QC 지식에 대한 최초의 포괄적, 전문가 검증 벤치마크.</strong> 2,700 질문 × 7 토픽 × 4 형식 × 3 언어 = 출판된 QC 전용 평가 그리드 중 가장 광범위, 인간 저자와 LLM 생성 양쪽 절반이 모델이 어디서 쉬운 점수를 얻고 어디서 어려운 점수를 얻는지 사과 대 사과로 비교 가능하게 함.</li>
+          <li><strong>"전문가 작성 vs LLM 추출" 격차의 정량화.</strong> 최상위 모델이 전문가 작성에서 77-78%이지만 LLM 추출에서 89-90% — 모델 family에 걸쳐 일관된 10-15점 격차. 이것은 LLM 생성 벤치마크가 학습 데이터 정렬을 통해 모델 성능을 체계적으로 과대평가한다는 직접 증거 (QC를 훨씬 넘어 적용되는 방법론 교훈).</li>
+          <li><strong>토픽 수준 실패 map.</strong> Basic Concepts &gt;90%, Quantum Algorithms 80-82%, Quantum Security ≈74% 최상위 모델에서. Security 하락은 구체적으로 최근 공격 연구 (phase mismatch, crosstalk, QubitHammer, quantum backdoor) 때문 — 학습 corpus가 sparse하고 용어가 아직 안정화되지 않은 영역.</li>
+          <li><strong>False-premise detection 벤치마크.</strong> 350개 false-premise 질문은 Claude Opus 4.5와 GPT-5.2 Pro조차 ~65%에만 도달함을 보여줌 — 모델이 잘못된 user 가정을 수용하고 전제가 사실인 것처럼 "답변하는" 잘 문서화된 실패 모드. 학생들이 전제를 직접 표시할 줄 모르는 교육적 배포에 결정적.</li>
+          <li><strong>다국어 저하 정량화.</strong> 최상위 모델 (Claude Opus 4.5, GPT-5.2 Pro)은 스페인어와 프랑스어 모두에서 &gt;72%를 유지, 그러나 더 작은 모델 (gemma2-9b-it, Phi-4-reasoning-plus)은 급격히 감소 — 그리고 감소 패턴이 비대칭 (프랑스어가 스페인어보다 자주 우수, 그 자체가 조사할 가치가 있는 발견).</li>
+          <li><strong>Agentic / Deep Research 모드 향상.</strong> Claude Opus 4.5 Research Mode (+7.2 → 85.6%), Gemini 3 Deep Research (+8.6 → 84.8%), GPT-5.2 Agent Mode (+6.6 → 83.4%)가 의미 있지만 제한된 이득 제공 — 평균 +6.7점, 어떤 모드도 90%를 깨지 못함.</li>
+          <li><strong>43명 전문가가 있는 인간 baseline 연구.</strong> LLM 숫자를 현실적 인간 분포 (23%–86%, 전문가 평균 74.6%)에 anchor함으로써 헤드라인 결과 — Claude Opus 4.5가 84%로 전문가 평균을 초과 — 에 적절한 컨텍스트를 부여.</li>
+        </ul>
+
+        <h2>실험 설정 및 구현 세부사항</h2>
+        <table>
+          <thead><tr><th>구성요소</th><th>설정</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>평가된 모델</td><td>총 26개 (GPT 5개, Claude 4개, Gemini 4개 + open-source 13개)</td><td>2026년 2월 기준 최신 세대: GPT-5.2/5.2 Pro, Claude Opus 4.5, Gemini 3 Pro.</td></tr>
+            <tr><td>Closed-source 액세스</td><td>공식 API (Anthropic, OpenAI, Google)</td><td>표준 temperature 설정; system prompt 엔지니어링 공개 없음.</td></tr>
+            <tr><td>Open-source 추론</td><td>HuggingFace Transformers, FP16, 2×Tesla V100 32GB</td><td>+ 더 빠른 Llama/Mixtral 액세스를 위한 Groq API.</td></tr>
+            <tr><td>토픽 커버</td><td>7개: Basic Concepts, Algorithms, Error Correction, Gates &amp; Circuits, Quantum ML, Security, Distributed Computing</td><td>토픽당 ~380-390 질문.</td></tr>
+            <tr><td>QA1000-Expert</td><td>QC 연구자가 작성한 1,000개 객관식</td><td>직접 텍스트 복제가 아닌 핵심 개념의 재구성.</td></tr>
+            <tr><td>QA1000-LLM-Extracted</td><td>Gemini 3 Flash + GPT-4.1 + Claude Sonnet 4가 생성한 1,000개 객관식</td><td>5개 전문가 예시로 few-shot; 8000 후보 → 전문가 필터링 후 1000.</td></tr>
+            <tr><td>Open-ended</td><td>350 질문, 정답 선택지 없음</td><td>올바른 정보 + 추론의 존재로 평가.</td></tr>
+            <tr><td>False premise</td><td>잘못된 가정이 임베드된 350 질문</td><td>올바른 응답 = 표면 질문 답이 아닌 전제 거부.</td></tr>
+            <tr><td>다국어 subset</td><td>500 질문 × 스페인어 + 프랑스어</td><td>기술 어휘의 cross-lingual 전이 테스트.</td></tr>
+            <tr><td>테스트된 추론 모드</td><td>Vanilla + Agentic + Deep Research (500 subset)</td><td>agentic/research 확장이 있는 5개 frontier 모델.</td></tr>
+            <tr><td>인간 baseline</td><td>43명 참가자, 30 질문 subset</td><td>참가자별 교육, QC 경험, 연령 기록.</td></tr>
+            <tr><td>메트릭</td><td>정확도 (사실 정확성)</td><td>형식 전반에 균일한 적용성과 직접 교육적 해석 가능성을 위해 선택.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <table>
+          <thead><tr><th>모델</th><th>Provider</th><th>QA1000 Expert</th><th>QA1000 LLM-Extracted</th><th>QA2000 결합</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Claude Opus 4.5</strong></td><td>Anthropic</td><td>78.40</td><td>89.60</td><td><strong>84.00</strong></td></tr>
+            <tr><td>GPT-5.2 Pro</td><td>OpenAI</td><td>77.70</td><td>89.80</td><td>83.75</td></tr>
+            <tr><td>Claude Sonnet 4.5</td><td>Anthropic</td><td>77.20</td><td>89.40</td><td>83.30</td></tr>
+            <tr><td>Gemini 3 Pro</td><td>Google</td><td>76.10</td><td>88.50</td><td>82.30</td></tr>
+            <tr><td>llama-3.3-70b-versatile</td><td>Meta</td><td>69.80</td><td>82.50</td><td>76.15</td></tr>
+            <tr><td>gemma-2-2b-it</td><td>Google</td><td>40.10</td><td>57.60</td><td>48.85</td></tr>
+            <tr><td colspan="5"><em>최상위 모델 Claude Opus 4.5 = 84.00% &gt; 인간 전문가 평균 74.6%</em></td></tr>
+          </tbody>
+        </table>
+
+        <figure>
+          <img src="images/quantum-audit/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2 (논문 Figure 4): 9개 대표 LLM (Anthropic = 주황, OpenAI = 청록, Google = 빨강, Microsoft = 밝은 파랑, Meta = 남색)의 QA2000 정확도를 두 인간 baseline — Human Expert Average (74.6%, 녹색 점선)과 Average of All Participants (57.2%, 어두운 빨강 점선)와 비교. 상위 5개 모델 (Claude Opus 4.5, GPT-5.2 Pro, Claude Sonnet 4.5, GPT-5.2, Gemini 3 Pro) 모두 전문가 평균 위에 클러스터; Phi-4-reasoning-plus와 llama-3.3-70b-versatile는 두 인간 baseline 사이에; phi-2와 gemma-2-2b-it는 전체 참가자 평균 아래로 떨어짐. 이것이 논문의 헤드라인 시각화: 최상위 closed-source LLM이 이 개념적 벤치마크에서 인간 전문가 성능과 일치하거나 초과, 그러나 모델 전반의 스프레드 (~35 percentage points)가 인간 참가자 전반의 스프레드보다 더 넓음.</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>토픽</th><th>최상위 모델 (Claude Opus 4.5 / GPT-5.2 Pro)</th><th>중급 (Phi-4-reasoning-plus)</th><th>소형 (gemma-2-2b-it)</th></tr></thead>
+          <tbody>
+            <tr><td>Basic Concepts</td><td>92-93%</td><td>78.6%</td><td>49.0%</td></tr>
+            <tr><td>Quantum Algorithms</td><td>80-82%</td><td>76.8%</td><td>48.9%</td></tr>
+            <tr><td>Quantum Security</td><td><strong>72-74%</strong></td><td>67.2%</td><td>41.4%</td></tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead><tr><th>모델</th><th>Open-Ended (%)</th><th>False Premise (%)</th></tr></thead>
+          <tbody>
+            <tr><td>GPT-5.2 Pro</td><td><strong>81.4</strong></td><td>64.9</td></tr>
+            <tr><td>Claude Opus 4.5</td><td>79.7</td><td><strong>65.7</strong></td></tr>
+            <tr><td>Claude Sonnet 4.5</td><td>78.3</td><td>63.4</td></tr>
+            <tr><td>Gemini 3 Pro</td><td>75.4</td><td>61.1</td></tr>
+            <tr><td colspan="3"><em>~15점 격차: open-ended는 "이해로부터 구성", false-premise는 "임베드된 가정을 거부" — 후자가 훨씬 더 어려움.</em></td></tr>
+          </tbody>
+        </table>
+
+        <table>
+          <thead><tr><th>모델 (모드)</th><th>이전</th><th>이후</th><th>Δ</th></tr></thead>
+          <tbody>
+            <tr><td>Gemini 3 (Deep Research)</td><td>76.2</td><td>84.8</td><td><strong>+8.6</strong></td></tr>
+            <tr><td>Claude Opus 4.5 (Research)</td><td>78.4</td><td><strong>85.6</strong></td><td>+7.2</td></tr>
+            <tr><td>GPT-5.2 (Agent Mode)</td><td>76.8</td><td>83.4</td><td>+6.6</td></tr>
+            <tr><td>Claude Sonnet 4.5 (Research)</td><td>77.2</td><td>83.0</td><td>+5.8</td></tr>
+            <tr><td>GPT-5.2 (Deep Research)</td><td>76.8</td><td>82.2</td><td>+5.4</td></tr>
+            <tr><td colspan="4"><em>평균 +6.7점; 어떤 모드도 90%를 깨지 못함 — agentic 이득이 제한적.</em></td></tr>
+          </tbody>
+        </table>
+
+        <figure>
+          <img src="images/quantum-audit/fig3.png" alt="Figure 3">
+          <figcaption>Figure 3 (논문 Figure 5): QA500의 스페인어 정확도 (수직) vs 프랑스어 정확도 (수평) 버블 차트. 버블 크기 = 파라미터 수 (~9B / ~70B / &gt;100B); 색상 = provider. 대각선 점선이 동등 성능 표시. 우측 상단 클러스터 (Claude Opus 4.5, GPT-5.2 Pro, Claude Sonnet 4.5, Gemini 3 Pro) 모두 두 언어 모두에서 비교적 대칭적 성능으로 &gt;70% 유지. 좌측 하단: gemma2-9b-it, llama-3.3-70b-versatile, Phi-4-reasoning-plus가 더 큰 비대칭 하락 보임. 대부분 점이 대각선 <em>아래</em>에 위치, 스페인어 정확도가 프랑스어보다 약간 낮음 — provider 전반에 걸친 일관된 패턴, 조사할 가치가 있음 (학습 corpus 구성? 각 언어에서 기술 어휘의 안정성?).</figcaption>
+        </figure>
+
+        <figure>
+          <img src="images/quantum-audit/fig4.png" alt="Figure 4">
+          <figcaption>Figure 4: quantum-audit.github.io에서 라이브 Quantum-Audit 리더보드 스크린샷. 사이트는 provider별 필터링과 데이터셋 슬라이스별 정렬을 가진 Expert Written / LLM Extracted / Complete Dataset 컬럼으로 분할된 모델별 정확도 노출. Claude Opus 4.5가 #1 (84.00 complete), GPT-5.2 Pro가 #2 (83.75), Claude Sonnet 4.5가 #3 (83.30). 리더보드는 새 모델이 출시될 때 업데이트되도록 의도됨 — 논문을 스냅샷에서 살아있는 벤치마크로 전환.</figcaption>
+        </figure>
+
+        <p><strong>숫자 읽기.</strong> 세 가지가 운영적으로 중요. (1) Expert/LLM-Extracted 격차가 가장 재사용 가능한 발견 — 모든 분야의 모든 미래 벤치마크가 질문 생성에 LLM 사용 시 동일한 10-15점 인플레이션을 상속할 가능성; 방법론적 수정은 <em>항상</em> 전문가 작성 질문에 대해 검증하는 것. (2) False-premise 점수 (최상위 모델에서 ~65%)가 교육적 배포에 가장 우려스러움 — X가 잘못된 상황에서 "X가 사실이므로 Y는 어떨까?"라고 묻는 학생은 오류를 수정하는 답이 아니라 오류를 복합화하는 답을 받게 됨. (3) Agentic 모드 ceiling이 ~85-86%인 것은 남은 오류가 retrieval 부족 (Deep Research가 현재 논문을 가져올 수 있음)이 아니라 multi-step retrieval-augmented inference도 해결하지 못하는 더 깊은 개념적 추론 때문임을 시사.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li><strong>벤치마크 오염에 대한 방법론적 신중함.</strong> 전문가 작성 질문은 복제가 아닌 <em>재구성</em>, LLM 추출 절반은 전문가에 의해 명시적으로 검증, 다국어 subset이 순수 텍스트 메모리에 대한 sanity check 역할. 대부분의 LLM 벤치마크보다 더 높은 기준.</li>
+          <li><strong>Expert/LLM-Extracted 비교가 깨끗한 ablation.</strong> 양쪽 절반을 포함하고 10-15점 격차를 보임으로써 논문은 일반화되는 방법론적 발견을 생성: LLM 생성 질문이 명시적 모델 성능을 체계적으로 부풀림. 이 통찰이 QC 전용 숫자보다 더 중요.</li>
+          <li><strong>별도 형식으로서의 False-premise.</strong> 대부분의 LLM 벤치마크는 "올바른 설정 주어지면 올바른 답 찾기"를 테스트. False-premise는 "잘못된 설정 주어지면 인식하기"를 테스트 — 근본적으로 다른 능력이고 신뢰할 수 있는 배포에 가장 관련된 것. 65% ceiling은 유용한 safety-flavored 결과.</li>
+          <li><strong>실제 전문가에 grounded된 인간 baseline.</strong> Mechanical Turk 일반인이 아닌 기록된 배경 정보를 가진 43명 QC 연구자/실무자. 23%–86% 스프레드가 이 도메인에서 "인간 성능"이 실제로 어떻게 보이는지 보여줌.</li>
+          <li><strong>다국어 축.</strong> 스페인어와 프랑스어 포함이 비용이 적고 높은 영어 정확도가 "지식"인지 "학습 데이터 텍스트 패턴"인지에 대한 가장 깨끗한 테스트 중 하나 제공 — 비대칭 스페인/프랑스 발견 자체가 예상치 못하고 후속 연구할 가치가 있음.</li>
+          <li><strong>독점 frontier와 소형 open-source를 포함하는 26개 모델 커버.</strong> 30+ percentage points 정확도에 걸쳐, 토픽별 패턴이 "스케일과 함께 더 쉬워지는 것" vs "어려운 채로 남는 것"으로 해석 가능.</li>
+          <li><strong>quantum-audit.github.io의 living 리더보드.</strong> 새 모델 출시 시 업데이트하겠다는 공개 약속 — 기여가 6개월 안에 부패하는 것을 막음.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li><strong>정확도가 유일한 메트릭.</strong> 논문이 이를 인정하고 선택을 옹호하지만, 특히 open-ended 질문에서 정확도 단독은 모델의 추론이 올바른지 또는 잘못된 이유로 올바른 답에 도달했는지 놓침. Calibration 점수, 인용 정확도, 단계별 검증이 없음 — 그리고 논문이 동기를 부여한 교육적 사용 사례에 가장 중요.</li>
+          <li><strong>Open-ended 채점 방법론 명세 부족.</strong> "응답은 올바른 정보와 추론을 포함하는지 여부로 평가됨" — 그러나 이것은 인간 채점, LLM 심사, 또는 rubric 기반? 세부 사항 없이 open-ended 점수는 객관식보다 덜 재현 가능.</li>
+          <li><strong>43명 인간 참가자는 작음.</strong> 특히 30 질문 subset이 모든 참가자에게 동일하므로 23%–86%의 스프레드는 부분적으로 sample noise로 설명될 수 있음; 전문가 평균 74.6%는 unstated confidence interval. 중심 주장 ("Claude Opus 4.5가 전문가 성능 초과")을 anchor하는 baseline으로 인간 연구가 얇음.</li>
+          <li><strong>모델이 어떤 질문을 놓치는지 <em>분석 없음</em>.</strong> 토픽 수준 집계가 존재하지만 item-level 오류 분석 — 모든 모델이 같은 질문을 놓치는가? "균일하게 어려운" vs "모델 특정" 실패가 있는가? — 가 없음. 이것이 분야가 단순히 순위 매기는 것이 아니라 실제로 개선하게 할 분석.</li>
+          <li><strong>False-premise 질문이 저자 구성.</strong> 350개 false-premise stem은 QA1000-Expert와 같은 전문가 풀이 작성한 것으로 추정; inter-annotator agreement 보고 없음, "전제 거부" vs "전제를 단서로 표시하면서 표면 질문에 답"이 무엇을 의미하는지에 대한 보정 없음. 65% ceiling이 이 채점에 의존.</li>
+          <li><strong>코드 평가 없음.</strong> 논문은 의도적으로 개념적 지식으로 범위를 정함, QiskitHumanEval / QuanBench가 코드를 처리하도록 남김. 그러나 "이 모델이 QC 연구에 유용한가"라는 포괄적 질문은 둘 다 필요, Quantum-Audit 단독으로는 실용적 그림을 과소평가.</li>
+          <li><strong>메모리 방어가 부분적.</strong> 재구성은 다르게 표현된 질문이 여전히 동일한 학습 데이터 답변의 retrieval을 trigger할 위험을 감소시키지만 제거하지는 않음. 다국어 저하 패턴 (최상위 모델이 스페인어/프랑스어에서 &gt;70% 유지)은 학습 데이터가 주로 영어 매개임을 시사하는 증거이거나 개념적 강건성의 증거.</li>
+        </ul>
+
+        <h2>토의 포인트</h2>
+        <ol>
+          <li>QA1000-Expert와 QA1000-LLM-Extracted 간의 10-15점 격차가 가장 방법론적으로 중요한 발견. 그러나 QA1000-LLM-Extracted set은 Gemini 3 Flash + GPT-4.1 + Claude Sonnet 4가 생성 — 평가되는 모델 family와 같은 세 family. 격차가 sibling 모델이 생성한 벤치마크에서 LLM이 cheat한다는 증거인가, 아니면 LLM 절반을 누가 생성하든 "전문가" 질문이 본질적으로 더 어렵다는 증거인가? family 외부 모델 (예: Llama + Mistral)로만 LLM 절반을 생성하는 ablation이 이를 정착시킬 것.</li>
+          <li>~65%의 False-premise 정확도가 실제 교육적 사용에 실제로 낙관적일 수도 있음. 벤치마크 질문은 명확히 잘못된 전제를 임베드 ("Shor 알고리즘이 모든 NP-complete 문제를 해결"); 실제 student-to-LLM 상호작용에서 잘못된 전제는 더 미묘 ("Grover 알고리즘이 unstructured search에 대해 quadratic speedup을 주므로 BQP 클래스는..."). "subtle false premise" 버전에서 전제가 반-진실이거나 도메인 미스매치인 경우 같은 모델이 어떻게 할까?</li>
+          <li>다국어 격차는 두 언어 모두 상당한 과학 corpus를 가지고 있음에도 최상위 모델에 대해 일관되게 프랑스어 &gt; 스페인어. 가능한 설명: (a) 프랑스어 물리학 용어가 더 표준화, (b) 번역 파이프라인이 비대칭적 모호성 도입, (c) 학습 데이터 구성. 논문은 어느 것인지 격리하지 않음. 비영어 지배 기관의 QC 연구자에게 이 구별은 운영적으로 중요.</li>
+          <li>Agentic / Deep Research 모드는 평균 +6.7점을 주지만 ~85-86%에서 cap, retrieval에는 도움이 되지만 추론을 수정하지 않음을 시사. 추론 ceiling은 무엇인가 — 나머지 15% 격차가 지식 문제 (학습 corpus나 웹에 정보 없음), 추론 문제 (모델이 조각을 올바르게 결합할 수 없음), 또는 보정 문제 (모델이 평균적으로 맞지만 특정 subset에서 틀림)? 잔여 실패에 대한 오류 유형 분류가 다음 세대 시스템이 무엇을 개선해야 하는지 명확히 할 것.</li>
+          <li>전문가 인간 baseline (74.6%)이 Claude Opus 4.5 (84.00%) 아래. 표면적으로 이것은 "LLM이 이 벤치마크에서 전문가를 능가"라고 말함. 그러나 벤치마크는 7개 토픽 커버; 인간은 전문화. 만약 43명 참가자가 각자 자신의 전문 subset만 받았다면 expert별 점수는 친숙한 토픽에서 90%를 초과하고 친숙하지 않은 토픽에서 60% 아래로 떨어졌을 가능성 — 즉 개별 인간이 자신의 영역에서는 7-topic-평균이 시사하는 것보다 <em>더</em> 신뢰할 수 있음. 헤드라인 주장이 stratified 비교 (집계가 아닌 <em>각자의</em> 토픽에서 모델 vs 전문가)에서 살아남는가?</li>
+        </ol>
+
+        <h2>최종 정리</h2>
+        <p>여기서 가장 재사용 가능한 기여는 <strong>방법론적 발견</strong>이지 리더보드가 아닙니다. 10-15점 Expert/LLM-Extracted 격차는 모든 기술 분야의 모든 LLM 벤치마크에 대한 일반화 가능한 교훈입니다: LLM으로 질문을 생성하는 것은 학습 데이터 정렬을 통해 명시적 성능을 체계적으로 부풀리고, 전문가 작성 절반에 대한 검증이 저렴한 수정. 스케일링 기법으로 LLM 생성을 사용하는 물리학, 화학, 생물학, 또는 법학의 모든 미래 벤치마크는 이 분할 설계를 채택해야 합니다.</p>
+
+        <p>두 번째로 가장 재사용 가능한 기여는 false-premise 형식. 대부분의 LLM 벤치마크는 "올바른 입력 주어지면 올바른 출력 생성"을 측정 — 정확히 배포된 어시스턴트에 대한 잘못된 평가, 실용적 우려의 실패 모드는 "잘못된 user 가정을 복합화"하는 것. frontier 모델조차 false-premise에서 65% ceiling은 현재 세대 LLM이 인간 감독 없이 <em>자율적</em> 기술 강사로 얼마나 신뢰할 수 있는지에 대한 hard upper bound.</p>
+
+        <p>QC 전용 숫자 — Claude Opus 4.5 84%, 전문가 인간 74.6%, Quantum Security ~74%로 하락, agentic 모드 ceiling ~86% — 는 흥미롭지만 새 모델이 출시됨에 따라 빠르게 부패할 것. quantum-audit.github.io의 리더보드는 arXiv 제출일 이후에 기여를 살리는 올바른 구조적 선택.</p>
+
+        <p>이 논문을 세 번에 걸쳐 읽으세요. 첫 번째: Section 3 + Figure 1 — 데이터셋 구성 (expert / LLM-extracted / extended / multilingual)과 7-토픽 분류 이해. 두 번째: Tables 1 + 3 + Figure 4 — 중심 경험적 결과, 특히 Expert/LLM-Extracted 격차, false-premise 점수, LLM-vs-전문가-인간 비교. 세 번째: Discussion + Limitations 섹션 — 논문은 accuracy-only 방법론이 놓치는 것에 대해 정직. "이 도메인을 LLM에 맡길 수 있나?"를 묻는 QC 연구자에게 운영적 답: <em>최상위 frontier 모델은 기초 개념과 표준 알고리즘에서 평균 전문가 성능을 초과하지만, 양자 보안에서 ~20점, 잘못된 전제 감지에서 ~20점 뒤처짐 — 자율적 교사가 아닌 연구 보조로 사용, 특히 문헌이 여전히 진화 중인 보안 민감 QC 토픽에는 사용하지 말 것.</em></p>
       `
     }
   }
