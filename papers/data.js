@@ -15483,5 +15483,266 @@ const PAPERS = [
         <p>이 논문을 세 번에 걸쳐 읽으세요. 첫 번째: Section 3 + Figure 1 — 데이터셋 구성 (expert / LLM-extracted / extended / multilingual)과 7-토픽 분류 이해. 두 번째: Tables 1 + 3 + Figure 4 — 중심 경험적 결과, 특히 Expert/LLM-Extracted 격차, false-premise 점수, LLM-vs-전문가-인간 비교. 세 번째: Discussion + Limitations 섹션 — 논문은 accuracy-only 방법론이 놓치는 것에 대해 정직. "이 도메인을 LLM에 맡길 수 있나?"를 묻는 QC 연구자에게 운영적 답: <em>최상위 frontier 모델은 기초 개념과 표준 알고리즘에서 평균 전문가 성능을 초과하지만, 양자 보안에서 ~20점, 잘못된 전제 감지에서 ~20점 뒤처짐 — 자율적 교사가 아닌 연구 보조로 사용, 특히 문헌이 여전히 진화 중인 보안 민감 QC 토픽에는 사용하지 말 것.</em></p>
       `
     }
+  },
+
+  // ====================================================================
+  // Adversarial Robustness Analysis of Deep Learning-Based AMC in Wireless Communication
+  // (Author's own paper — first-person perspective included)
+  // ====================================================================
+  {
+    id: "amc-adversarial-robustness",
+    date: "2026-05-28",
+    authors: "Hwang, S., Choi, E., Hwang, D.",
+    venue: "ICAIIC 2026 (IEEE), pp. 1503-1506",
+    image: "images/amc-adversarial-robustness/thumbnail.png",
+    link: "https://doi.org/10.1109/ICAIIC65919.2026.11541498",
+    domain: "ai-security",
+    tags: ["Adversarial Attacks", "Automatic Modulation Classification", "Wireless Security", "VTCNN2", "Adversarial Training", "Denoising Autoencoder", "Author's Paper"],
+    en: {
+      title: "Adversarial Robustness Analysis of Deep Learning-Based Automatic Modulation Classification in Wireless Communication",
+      summary: "Our ICAIIC 2026 paper systematically evaluates adversarial vulnerability of a VTCNN2-based AMC model on RadioML2016.10A across FGSM/DeepFool/C&W attacks and tests two defenses — finding that FGSM-based adversarial training transfers across attack types while Denoising Autoencoder preprocessing fails on wireless IQ signals despite working in image domains.",
+      review: `
+        <h2>One-line Verdict</h2>
+        <p><em>(Author's perspective — this is my own first-author paper at ICAIIC 2026.)</em> The contribution is not a new attack or a new defense, but a <strong>controlled head-to-head comparison establishing that the image-domain "DAE preprocessing as a defense" recipe collapses on wireless IQ signals</strong> — DAE preserves clean accuracy (53.94%) but provides essentially zero FGSM robustness (17.59→17.48) and only modest gains against L<sub>2</sub> attacks — while FGSM-based adversarial training transfers across attack types (FGSM 17.59→33.47, DeepFool 10.80→15.36, C&amp;W 29.41→40.67) with a modest 2.5-point clean-accuracy cost. The headline number for me as the author is the DAE failure: it forces follow-up work to explicitly model modulation-pattern structure rather than rely on pixel-wise reconstruction loss.</p>
+
+        <h2>Research Question</h2>
+        <blockquote>How vulnerable is a representative deep learning AMC classifier (VTCNN2 on RadioML2016.10A) to standard adversarial attacks, and do the two most common defense recipes from the image-classification literature — adversarial training and Denoising Autoencoder preprocessing — transfer to the wireless IQ signal domain?</blockquote>
+
+        <h2>Background &amp; Motivation</h2>
+        <p>Automatic Modulation Classification (AMC) is a foundational task in cognitive radio: a receiver needs to identify the modulation scheme (BPSK, QPSK, QAM, etc.) of an incoming signal without prior coordination. Deep CNNs — starting from O'Shea et al.'s VTCNN2 architecture — have largely replaced classical feature-engineering approaches by learning directly from raw In-phase/Quadrature (IQ) samples, achieving ~80% accuracy at SNR ≥ 0 dB on the standard RadioML2016.10A benchmark.</p>
+
+        <p>The security blind spot is that these models inherit the adversarial vulnerability documented for image classifiers. In a wireless setting, the adversarial threat model is unusually realistic — an attacker can superimpose a carefully crafted perturbation onto the over-the-air signal to make a legitimate transmission misclassified, evading spectrum-sensing-based detection or disrupting cognitive radio resource allocation. Prior work (Sadeghi &amp; Larsson 2019, Flowers et al. 2020) established that adversarial perturbations <em>can</em> degrade AMC performance, but the field lacked a controlled comparison across multiple attack types <em>and</em> multiple defense strategies on the same model/dataset, with end-to-end accuracy-vs-perturbation budget numbers.</p>
+
+        <p>We chose this question because (1) the wireless adversarial-robustness literature is sparse compared to image adversarial-robustness, (2) most published defenses in the wireless domain are direct ports of image-domain recipes without verification that the underlying assumptions transfer, and (3) RadioML2016.10A + VTCNN2 is the closest thing the AMC field has to a "MNIST + LeNet" baseline — making controlled comparative experiments possible. Our intent was a comprehensive baseline paper that the wireless-security community could cite as the "what works, what doesn't" reference for adversarial AMC.</p>
+
+        <h2>Methodology</h2>
+        <p>Our setup deliberately holds everything constant except the attack and defense being evaluated — same VTCNN2 architecture, same RadioML2016.10A train/test split, same normalization, same training hyperparameters.</p>
+
+        <figure>
+          <img src="images/amc-adversarial-robustness/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: VTCNN2 baseline architecture used throughout. Input is a (1, 2, 128) tensor — one batch dimension, two channels (I and Q), 128 time samples. Two convolutional blocks (Conv2d 1→256, then Conv2d 256→80), each with BatchNorm + ReLU + MaxPool. Dropout (p=0.5) before fully-connected head (2560→256→11). ~500K parameters total. We picked VTCNN2 specifically because it is the de facto baseline in the AMC literature — making our adversarial-robustness numbers directly comparable to any future paper that uses the same architecture.</figcaption>
+        </figure>
+
+        <p><strong>Dataset.</strong> RadioML2016.10A: 220,000+ IQ samples of shape (2, 128), 11 modulation types (BPSK, QPSK, 8PSK, QAM16, QAM64, AM-SSB, AM-DSB, GFSK, CPFSK, PAM4, WBFM), 20 SNR levels from −20 dB to +18 dB in 2 dB increments. Standard 154,000 / 66,000 train/test split. Inputs normalized to [0, 1].</p>
+
+        <p><strong>Baseline training.</strong> Adam optimizer, lr 5×10<sup>-4</sup>, batch 256, 20 epochs. Achieves 54.02% overall accuracy across all SNRs, ~80% at SNR ≥ 0 dB (Fig. 2).</p>
+
+        <p><strong>Three attacks evaluated</strong> (all white-box, model gradients available):</p>
+        <ul>
+          <li><strong>FGSM</strong> (Goodfellow et al. 2015): single-step L<sub>∞</sub> attack, x<sub>adv</sub> = x + ε · sign(∇<sub>x</sub>J(θ, x, y)). We set ε = 0.005 on the normalized [0, 1] inputs. The cheapest of the three; useful as a baseline and also as the generator for adversarial training data.</li>
+          <li><strong>DeepFool</strong> (Moosavi-Dezfooli et al. 2016): iterative attack that approximates the classifier as locally linear and pushes inputs toward the closest decision boundary, minimizing L<sub>2</sub> perturbation. We use 50 iterations, overshoot 0.02. This turns out to be the strongest attack on VTCNN2 — exactly because modulation patterns in IQ space lie close to each other in some directions, and DeepFool finds those directions.</li>
+          <li><strong>C&amp;W (L<sub>2</sub>)</strong> (Carlini &amp; Wagner 2017): optimization-based attack solving min ||δ||<sub>2</sub><sup>2</sup> + c · f(x + δ) where f penalizes correct classification. Configured with c = 1e-4, κ = 0, 30 steps, lr 0.005. Considered the strongest gradient-based attack in image domains; we wanted to see whether that ranking holds in IQ space.</li>
+        </ul>
+
+        <p><strong>Two defenses evaluated:</strong></p>
+        <ul>
+          <li><strong>FGSM-based adversarial training</strong> (Madry et al. 2018-style, but with single-step FGSM instead of PGD): retrain VTCNN2 on a 50/50 mix of clean and FGSM-perturbed (ε = 0.005) samples for 5 epochs, Adam lr 5e-4. We chose single-step FGSM rather than PGD adversarial training for cost reasons — the question we wanted to answer was whether even cheap adversarial training generalizes to stronger attacks.</li>
+          <li><strong>Denoising Autoencoder (DAE) preprocessing</strong>: a small convolutional autoencoder trained on clean IQ signals (MSE reconstruction loss), applied at inference time to "clean" adversarial inputs before they reach the classifier. This is the standard image-domain preprocessing-defense recipe.</li>
+        </ul>
+
+        <h2>Key Contributions</h2>
+        <ul>
+          <li><strong>Head-to-head attack ranking on VTCNN2/RadioML.</strong> Under matched conditions, DeepFool (10.80%) &gt; FGSM (17.59%) &gt; C&amp;W L<sub>2</sub> (29.41%) in terms of damage to the baseline. This is opposite to the typical image-domain ranking where C&amp;W is the strongest — which means C&amp;W's optimization formulation does not align well with the IQ-signal geometry, and DeepFool's local-linearization approach is a better adversary in this domain.</li>
+          <li><strong>Transferable robustness from cheap adversarial training.</strong> FGSM-based adversarial training improves robustness <em>across</em> attack types — not just FGSM (+15.88 points to 33.47%), but also DeepFool (+4.56 to 15.36%) and C&amp;W (+11.26 to 40.67%). The clean-accuracy cost is only 2.54 points. This is operationally important because PGD adversarial training is expensive; the finding that single-step FGSM gets most of the benefit makes adversarial training tractable for wireless deployments.</li>
+          <li><strong>DAE preprocessing fails on wireless IQ.</strong> Despite preserving clean accuracy (53.94, essentially equal to baseline 54.02), DAE provides &lt;1 point FGSM robustness (17.48 vs 17.59 baseline — effectively zero) and only modest L<sub>2</sub> gains (DeepFool 10.80→21.16, C&amp;W 29.41→32.81). The mechanistic explanation: the MSE-trained DAE behaves close to an identity function on clean inputs (very small reconstruction error) while simultaneously compressing the input dynamic range, attenuating both modulation-discriminating features and adversarial perturbations symmetrically — and the modulation features are <em>finer</em> than the perturbations.</li>
+          <li><strong>SNR-stratified robustness analysis.</strong> The accuracy vs SNR curve (Fig. 2) shows the baseline reaches ~80% above 0 dB; under FGSM this drops to ~31% in the same regime; adversarial training restores it to ~51%. Robustness is SNR-dependent — low-SNR samples are nearly indistinguishable from noise anyway, so most of the adversarial damage occurs in the SNR range where the classifier was actually useful.</li>
+          <li><strong>Clean baseline numbers others can build on.</strong> Reported in a single table (clean / FGSM / DeepFool / C&amp;W × baseline / adv. train / DAE) so any future defense can be evaluated against the same numbers.</li>
+        </ul>
+
+        <h2>Implementation Details</h2>
+        <table>
+          <thead><tr><th>Component</th><th>Setting</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Dataset</td><td>RadioML2016.10A</td><td>11 modulations × 20 SNRs (−20 to +18 dB), shape (2, 128), 154k/66k split.</td></tr>
+            <tr><td>Baseline architecture</td><td>VTCNN2 (modified)</td><td>Conv2d(1→256) + BN + ReLU + MaxPool, Conv2d(256→80) + BN + ReLU + MaxPool, Dropout(0.5), FC(2560→256→11). ~500K params.</td></tr>
+            <tr><td>Baseline training</td><td>Adam, lr 5e-4, batch 256, 20 epochs</td><td>Inputs normalized to [0, 1].</td></tr>
+            <tr><td>FGSM attack</td><td>ε = 0.005 (L<sub>∞</sub>, normalized input)</td><td>Single step.</td></tr>
+            <tr><td>DeepFool attack</td><td>50 steps, overshoot 0.02</td><td>L<sub>2</sub> minimization.</td></tr>
+            <tr><td>C&amp;W attack</td><td>c = 1e-4, κ = 0, 30 steps, lr 0.005</td><td>L<sub>2</sub>.</td></tr>
+            <tr><td>Adversarial training</td><td>50% clean + 50% FGSM(ε=0.005), 5 epochs</td><td>Adam, lr 5e-4. Single-step FGSM (not PGD) for cost.</td></tr>
+            <tr><td>DAE preprocessing</td><td>Lightweight conv autoencoder, MSE loss on clean IQ</td><td>Applied at inference before classifier.</td></tr>
+            <tr><td>Evaluation</td><td>Overall accuracy across all SNRs + SNR-stratified accuracy</td><td>SNR ≥ 0 dB regime is where classifier is operationally useful.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Results</h2>
+        <figure>
+          <img src="images/amc-adversarial-robustness/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: Baseline VTCNN2 classification accuracy vs SNR on the RadioML2016.10A test set. Sigmoidal curve: near-random ~0.09–0.12 at −20 to −12 dB (signal indistinguishable from noise), steep rise from −10 dB (~0.19) through −2 dB (~0.70), plateau at ~0.80 for SNR ≥ 0 dB with peak ~0.82 at 10 dB. The 0 dB knee is where the classifier transitions from "guessing" to "useful" — this is the regime where adversarial robustness matters most operationally.</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>Model / Defense</th><th>Clean</th><th>FGSM (ε=0.005)</th><th>DeepFool</th><th>C&amp;W (L<sub>2</sub>)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Baseline (no defense)</strong></td><td>54.02</td><td>17.59</td><td><strong>10.80</strong></td><td>29.41</td></tr>
+            <tr><td>Adversarial Training (FGSM)</td><td>51.48 (-2.54)</td><td><strong>33.47</strong> (+15.88)</td><td>15.36 (+4.56)</td><td><strong>40.67</strong> (+11.26)</td></tr>
+            <tr><td>DAE (preprocessing)</td><td>53.94 (-0.08)</td><td>17.48 (-0.11)</td><td>21.16 (+10.36)</td><td>32.81 (+3.40)</td></tr>
+            <tr><td colspan="5"><em>All numbers are accuracy (%) across all 20 SNR levels. ε applies only to FGSM; DeepFool and C&amp;W use the L<sub>2</sub> configurations in the implementation details.</em></td></tr>
+          </tbody>
+        </table>
+
+        <p><strong>SNR ≥ 0 dB breakdown.</strong> In the operationally useful SNR regime, the baseline's ~0.79 clean accuracy drops to ~0.31 under FGSM, and adversarial training restores it to ~0.51. DeepFool remains the strongest attack at every SNR level we tested, and adversarial training only partially mitigates its impact — a finding that motivates explicit L<sub>2</sub>-aware defenses in follow-up work.</p>
+
+        <p><strong>Why DAE fails (mechanistic interpretation).</strong> The DAE trained with MSE on clean IQ signals converges to a near-identity function (small reconstruction error on clean inputs). At inference, this near-identity behavior means adversarial perturbations pass through largely unchanged for FGSM (which has high-frequency structure that the autoencoder cannot distinguish from valid signal content). For iterative L<sub>2</sub> attacks (DeepFool, C&amp;W), the perturbation is denser and slightly larger in magnitude, so the autoencoder's smoothing effect partially attenuates it — but this same smoothing also attenuates fine-grained modulation features (the discriminative content lives in subtle phase and amplitude patterns), which is why even the "successful" L<sub>2</sub> recovery is modest. The general lesson: <em>pixel-wise reconstruction loss assumes signal and perturbation occupy different spectral regimes; this assumption fails for wireless IQ signals where both live at high temporal frequency</em>.</p>
+
+        <h2>Strengths</h2>
+        <ul>
+          <li><strong>Controlled comparison.</strong> Same architecture, same dataset, same hyperparameters across the attack × defense matrix. Numbers are directly comparable — a property that's surprisingly rare in the wireless-adversarial-robustness literature where different papers use different VTCNN variants and different RadioML versions.</li>
+          <li><strong>Mechanistic explanation for DAE failure.</strong> Rather than just reporting that DAE doesn't work, we explain <em>why</em> — the MSE objective drives near-identity behavior, and the smoothing simultaneously attenuates discriminative features and adversarial perturbations. This gives follow-up work a target: replace MSE with a modulation-pattern-aware loss.</li>
+          <li><strong>Transferable robustness from FGSM-based adversarial training.</strong> The finding that single-step FGSM training improves robustness against the iterative L<sub>2</sub> attacks (DeepFool, C&amp;W) is operationally important — PGD training is expensive, and our result suggests cheap FGSM training captures most of the benefit in this domain.</li>
+          <li><strong>SNR-stratified analysis.</strong> Reporting both overall and SNR ≥ 0 dB accuracies makes the threat model explicit — adversarial damage at SNR = −15 dB is meaningless because the classifier is already random there.</li>
+          <li><strong>Reproducibility.</strong> All hyperparameters (attack ε, iteration counts, optimizer settings, training schedule) reported in the implementation table — enabling clean replication.</li>
+        </ul>
+
+        <h2>Limitations</h2>
+        <ul>
+          <li><strong>Single architecture (VTCNN2).</strong> Our adversarial vulnerability and defense-transfer claims are tied to VTCNN2's specific decision boundaries. Whether residual networks, attention-based AMC models, or recurrent architectures show the same DeepFool &gt; C&amp;W &gt; FGSM ranking — and the same DAE failure — is untested. The next paper in this line should run the same matrix on at least one other architecture.</li>
+          <li><strong>Single perturbation budget for FGSM.</strong> We only report ε = 0.005. A proper attack-vs-defense study should sweep ε and produce accuracy-vs-budget curves; we report a single point because of conference page limits. This limits the conclusions to one operating point.</li>
+          <li><strong>Single-step FGSM adversarial training, not PGD.</strong> We chose single-step FGSM training for cost reasons and because we wanted to test whether cheap adversarial training generalizes. But it's known in the image domain that FGSM-trained models can suffer "catastrophic overfitting" (gradient masking that creates apparent robustness without actual robustness). We did not run gradient obfuscation diagnostics — that's a real gap.</li>
+          <li><strong>White-box threat model only.</strong> All three attacks assume gradient access to the classifier. Realistic over-the-air attackers operate in a black-box or grey-box setting (no direct gradient access, but possibly query access to the spectrum sensor). Transferability of these attacks under transfer-based or score-based black-box settings is not measured.</li>
+          <li><strong>No physical-layer realism.</strong> The attacks are evaluated on stored IQ samples; over-the-air implementation introduces channel effects, synchronization issues, and finite radio-hardware precision that may attenuate adversarial perturbations. Flowers et al.'s 2020 work covers some of this; we did not.</li>
+          <li><strong>DAE is single-architecture, single-training-recipe.</strong> Our DAE failure result shows that a standard MSE-loss DAE fails. It does not show that <em>all</em> autoencoder-based defenses fail — a perceptual-loss variant, a signal-domain-aware loss, or a denoising-diffusion-based defense might work. The paper claims DAE preprocessing fails in this specific configuration, not autoencoder defenses categorically.</li>
+        </ul>
+
+        <h2>Discussion Questions</h2>
+        <ol>
+          <li>The DeepFool &gt; C&amp;W ranking on VTCNN2 inverts the image-domain expectation. Is this because VTCNN2's decision boundaries in IQ space are particularly close to each other (so DeepFool's local-linear approximation finds them easily), or because C&amp;W's optimization with κ = 0 is misconfigured for low-confidence transitions? An ablation with κ &gt; 0 and longer optimization horizons would settle this — and probably increase C&amp;W's relative damage.</li>
+          <li>FGSM-based adversarial training transfers to DeepFool and C&amp;W in our results, but only partially. Is the partial transfer because single-step FGSM samples don't cover the L<sub>2</sub> attack distribution, or because adversarial training's gradient masking against L<sub>∞</sub> attacks doesn't extend to L<sub>2</sub>? A direct PGD-L<sub>2</sub> adversarial training comparison would tell us — and is on the follow-up plan.</li>
+          <li>The DAE failure points at a generalizable wireless-defense design principle: reconstruction losses optimized for pixel fidelity fail when the discriminative signal and the adversarial perturbation occupy similar spectral regimes. What is the right loss function for a wireless-aware DAE — modulation-pattern-aware reconstruction (constellation distance), spectrum-density-aware (preserve PSD shape), or task-aware (reconstruction conditioned on the classifier's loss)? This is the next paper.</li>
+          <li>Robustness is strongly SNR-dependent in our experiments. Should adversarial training be SNR-stratified — train on adversarial examples generated at each SNR level separately, weighted by operational relevance — rather than mixing all SNRs together? Our current adversarial training mixes everything; the result is uniform across SNR but the practical concern is concentrated at SNR ≥ 0 dB where the classifier is useful.</li>
+          <li>The clean-accuracy / robust-accuracy trade-off in our results (54.02 → 51.48 = 2.54 points lost) is small but real. For cognitive radio deployments where the AMC decision drives downstream resource allocation, what is the acceptable trade-off — and is it the same across applications? Spectrum-sensing for opportunistic access can tolerate higher misclassification rates than military signal-intelligence applications. The right answer is application-conditional, and this paper doesn't address that.</li>
+        </ol>
+
+        <h2>Final Takeaway (Author's Note)</h2>
+        <p>This is my first-author work at ICAIIC 2026, and writing the review of it now — six months after submission, with the benefit of intervening conversations and reviewer feedback — clarifies what the paper does well and where the obvious next steps are. <strong>What it does well:</strong> the controlled attack × defense matrix is clean, the DAE failure has a mechanistic explanation that's reusable for follow-up work, and the SNR-stratified analysis grounds the claims in the operationally relevant regime (SNR ≥ 0 dB). <strong>What's missing:</strong> a perturbation-budget sweep, a second architecture for cross-model validation, gradient-obfuscation diagnostics, and any treatment of the black-box / over-the-air realism. These are the four things I would add for a journal-extension version.</p>
+
+        <p>The single most reusable finding is the DAE failure. The wireless-adversarial-robustness literature has been quietly assuming that image-domain preprocessing defenses transfer; our paper provides a specific counter-example with a mechanistic explanation. The implication is that <em>wireless defenses need to model modulation structure explicitly</em> — pixel-wise reconstruction is the wrong objective when the discriminative content and the adversarial perturbation both live at high temporal frequency. This shapes my own next work: a constellation-distance-aware reconstruction loss for IQ signal denoising, with the same VTCNN2 / RadioML benchmark to keep numbers comparable to this paper.</p>
+
+        <p>For readers new to wireless adversarial robustness, read the paper in this order: (1) Section IV.A (baseline numbers and the SNR curve in Fig. 2) — gives you the operating regime; (2) Table III (the attack × defense matrix) — the central empirical result, especially the FGSM column showing DAE's near-zero robustness; (3) Section V (Discussion) — the DAE failure mechanism is the most generalizable part of the paper. For practitioners deploying AMC in security-sensitive contexts, the recipe is: <em>adversarial training is the cheap and effective baseline, DAE preprocessing is not a defense in this domain, and you should expect 30-50% accuracy under attack rather than the clean 80%</em> — design downstream resource allocation accordingly.</p>
+      `
+    },
+    ko: {
+      title: "무선 통신에서 딥러닝 기반 자동 변조 분류의 적대적 강건성 분석",
+      summary: "ICAIIC 2026에 발표된 제 첫 번째 저자 논문으로, RadioML2016.10A에서 VTCNN2 기반 AMC 모델의 FGSM/DeepFool/C&W 공격에 대한 취약성을 체계적으로 평가하고 두 방어 기법을 테스트 — FGSM 기반 적대적 학습이 공격 유형 전반에 transfer되는 반면 Denoising Autoencoder 전처리는 이미지 도메인에서는 작동하지만 무선 IQ 신호에서는 실패함을 발견.",
+      review: `
+        <h2>한줄 평가</h2>
+        <p><em>(저자 관점 — 이 논문은 ICAIIC 2026에 발표된 제 첫 번째 저자 논문입니다.)</em> 기여는 새 공격이나 새 방어가 아니라, <strong>이미지 도메인의 "DAE 전처리를 방어로 사용" 레시피가 무선 IQ 신호에서 무너진다는 것을 입증하는 controlled head-to-head 비교</strong>입니다 — DAE는 clean 정확도(53.94%)는 유지하지만 FGSM 강건성은 본질적으로 0(17.59→17.48), L<sub>2</sub> 공격에 대해서도 modest한 이득만 제공. 반면 FGSM 기반 적대적 학습은 공격 유형 전반에 transfer (FGSM 17.59→33.47, DeepFool 10.80→15.36, C&amp;W 29.41→40.67)되며 clean 정확도 비용은 2.5점에 불과합니다. 저자로서 가장 중요한 헤드라인 숫자는 DAE 실패 — pixel-wise 재구성 손실에 의존하지 않고 변조 패턴 구조를 명시적으로 모델링하는 후속 연구를 강제하기 때문입니다.</p>
+
+        <h2>논문이 답하려는 질문</h2>
+        <blockquote>대표적인 딥러닝 AMC 분류기(RadioML2016.10A의 VTCNN2)는 표준 적대적 공격에 얼마나 취약한가, 그리고 이미지 분류 문헌에서 가장 흔한 두 방어 레시피 — 적대적 학습과 Denoising Autoencoder 전처리 — 가 무선 IQ 신호 도메인으로 전이되는가?</blockquote>
+
+        <h2>배경 및 동기</h2>
+        <p>자동 변조 분류(AMC)는 cognitive radio의 기초 작업: 수신기가 사전 협의 없이 들어오는 신호의 변조 방식(BPSK, QPSK, QAM 등)을 식별. O'Shea 등의 VTCNN2 아키텍처를 시작으로 깊은 CNN이 raw In-phase/Quadrature(IQ) 샘플로부터 직접 학습함으로써 고전적 feature engineering 접근법을 대체했고, 표준 RadioML2016.10A 벤치마크에서 SNR ≥ 0 dB일 때 ~80% 정확도 달성.</p>
+
+        <p>보안 사각지대는 이 모델들이 이미지 분류기에 대해 문서화된 적대적 취약성을 상속받는다는 점. 무선 환경에서 적대적 위협 모델은 비정상적으로 현실적 — 공격자가 신중하게 만든 perturbation을 over-the-air 신호에 중첩시켜 합법적 전송을 오분류시키고, 스펙트럼 센싱 기반 탐지를 회피하거나 cognitive radio 자원 할당을 방해 가능. 선행 연구(Sadeghi &amp; Larsson 2019, Flowers et al. 2020)는 적대적 perturbation이 AMC 성능을 저하시킬 <em>수</em> 있음을 확립했지만, 동일 모델/데이터셋에서 여러 공격 유형 <em>그리고</em> 여러 방어 전략에 걸친 controlled 비교가 end-to-end accuracy-vs-perturbation 예산 숫자와 함께 부족했음.</p>
+
+        <p>저희가 이 질문을 선택한 이유: (1) 무선 적대적 강건성 문헌은 이미지 적대적 강건성에 비해 sparse, (2) 무선 도메인의 대부분 published 방어는 기본 가정이 transfer되는지 검증 없이 이미지 도메인 레시피의 직접 포트, (3) RadioML2016.10A + VTCNN2는 AMC 분야에서 "MNIST + LeNet"에 가장 가까운 것 — controlled 비교 실험을 가능하게 함. 저희 의도는 무선 보안 커뮤니티가 적대적 AMC에 대한 "무엇이 작동하고 무엇이 안 되는지" 참조로 인용할 수 있는 포괄적 baseline 논문.</p>
+
+        <h2>방법론</h2>
+        <p>저희 설정은 평가되는 공격과 방어를 제외한 모든 것을 의도적으로 고정 — 동일 VTCNN2 아키텍처, 동일 RadioML2016.10A train/test 분할, 동일 정규화, 동일 학습 하이퍼파라미터.</p>
+
+        <figure>
+          <img src="images/amc-adversarial-robustness/fig1.png" alt="Figure 1">
+          <figcaption>Figure 1: 전반에 사용된 VTCNN2 baseline 아키텍처. 입력은 (1, 2, 128) 텐서 — 배치 차원 1, 채널 2 (I와 Q), 시간 샘플 128. 두 개의 convolutional 블록 (Conv2d 1→256, 그 다음 Conv2d 256→80), 각각 BatchNorm + ReLU + MaxPool 포함. Dropout (p=0.5) 후 fully-connected head (2560→256→11). 총 ~500K 파라미터. VTCNN2를 특별히 선택한 이유는 이것이 AMC 문헌의 사실상 baseline이기 때문 — 동일 아키텍처를 사용하는 모든 미래 논문과 저희 적대적 강건성 숫자를 직접 비교 가능하게 함.</figcaption>
+        </figure>
+
+        <p><strong>데이터셋.</strong> RadioML2016.10A: shape (2, 128)의 IQ 샘플 220,000+, 11개 변조 유형 (BPSK, QPSK, 8PSK, QAM16, QAM64, AM-SSB, AM-DSB, GFSK, CPFSK, PAM4, WBFM), 2 dB 증분으로 −20 dB에서 +18 dB까지 20개 SNR 레벨. 표준 154,000 / 66,000 train/test 분할. 입력을 [0, 1]로 정규화.</p>
+
+        <p><strong>Baseline 학습.</strong> Adam 옵티마이저, lr 5×10<sup>-4</sup>, batch 256, 20 epoch. 모든 SNR에 걸쳐 54.02% 전체 정확도 달성, SNR ≥ 0 dB에서 ~80% (Fig. 2).</p>
+
+        <p><strong>평가된 세 공격</strong> (모두 white-box, 모델 gradient 사용 가능):</p>
+        <ul>
+          <li><strong>FGSM</strong> (Goodfellow et al. 2015): single-step L<sub>∞</sub> 공격, x<sub>adv</sub> = x + ε · sign(∇<sub>x</sub>J(θ, x, y)). 정규화된 [0, 1] 입력에 ε = 0.005 설정. 세 가지 중 가장 저렴; baseline과 적대적 학습 데이터 생성기로 유용.</li>
+          <li><strong>DeepFool</strong> (Moosavi-Dezfooli et al. 2016): 분류기를 국소 선형으로 근사하고 입력을 가장 가까운 결정 경계로 밀어 L<sub>2</sub> perturbation을 최소화하는 반복 공격. 50 iteration, overshoot 0.02 사용. VTCNN2에서 가장 강력한 공격으로 판명 — 정확히 IQ 공간의 변조 패턴이 일부 방향에서 서로 가까이 위치하기 때문이며 DeepFool이 그 방향을 찾음.</li>
+          <li><strong>C&amp;W (L<sub>2</sub>)</strong> (Carlini &amp; Wagner 2017): min ||δ||<sub>2</sub><sup>2</sup> + c · f(x + δ)를 푸는 최적화 기반 공격, f가 올바른 분류에 패널티. c = 1e-4, κ = 0, 30 steps, lr 0.005 구성. 이미지 도메인에서 가장 강력한 gradient 기반 공격으로 간주; 그 순위가 IQ 공간에서 유지되는지 보고 싶었음.</li>
+        </ul>
+
+        <p><strong>평가된 두 방어:</strong></p>
+        <ul>
+          <li><strong>FGSM 기반 적대적 학습</strong> (Madry et al. 2018 스타일이지만 PGD 대신 single-step FGSM): VTCNN2를 50/50 clean + FGSM-perturbed (ε = 0.005) 샘플 혼합으로 5 epoch 재학습, Adam lr 5e-4. PGD 적대적 학습 대신 single-step FGSM을 선택한 이유는 비용 — 답하고 싶었던 질문은 저렴한 적대적 학습조차 더 강한 공격에 일반화되는지였음.</li>
+          <li><strong>Denoising Autoencoder (DAE) 전처리</strong>: clean IQ 신호로 학습된 (MSE 재구성 손실) 작은 convolutional autoencoder를 추론 시 적용해 분류기에 도달하기 전 적대적 입력을 "클리닝". 표준 이미지 도메인 전처리 방어 레시피.</li>
+        </ul>
+
+        <h2>핵심 기여</h2>
+        <ul>
+          <li><strong>VTCNN2/RadioML에서 head-to-head 공격 순위.</strong> 일치된 조건에서 baseline 손상 측면에서 DeepFool (10.80%) &gt; FGSM (17.59%) &gt; C&amp;W L<sub>2</sub> (29.41%). 이는 C&amp;W가 가장 강력한 일반적 이미지 도메인 순위와 반대 — C&amp;W의 최적화 공식화가 IQ-신호 기하학과 잘 정렬되지 않고, DeepFool의 국소 선형화 접근법이 이 도메인에서 더 나은 adversary임을 의미.</li>
+          <li><strong>저렴한 적대적 학습으로부터 transferable 강건성.</strong> FGSM 기반 적대적 학습이 공격 유형 <em>전반</em>에 강건성 향상 — FGSM뿐 아니라 (33.47%로 +15.88점), DeepFool (15.36%로 +4.56)과 C&amp;W (40.67%로 +11.26)도. clean 정확도 비용은 2.54점에 불과. PGD 적대적 학습이 비용이 높기 때문에 운영적으로 중요; single-step FGSM이 대부분의 이점을 얻는다는 발견이 무선 배포에 적대적 학습을 실용적이게 함.</li>
+          <li><strong>무선 IQ에서 DAE 전처리 실패.</strong> clean 정확도 유지(53.94, baseline 54.02와 본질적으로 동일)에도 불구하고 DAE는 FGSM 강건성을 &lt;1점 제공 (17.48 vs baseline 17.59 — 사실상 0)하고 modest한 L<sub>2</sub> 이득만 (DeepFool 10.80→21.16, C&amp;W 29.41→32.81). 기제적 설명: MSE-학습 DAE가 clean 입력에 가까운 항등 함수로 행동 (매우 작은 재구성 오차)하면서 동시에 입력 동적 범위를 압축, 변조 구분 feature와 적대적 perturbation 모두를 대칭적으로 감쇠 — 그리고 변조 feature가 perturbation보다 <em>더 미세</em>.</li>
+          <li><strong>SNR 계층화 강건성 분석.</strong> SNR 대 정확도 곡선 (Fig. 2)은 baseline이 0 dB 이상에서 ~80% 도달; FGSM 하에서 같은 영역에서 ~31%로 떨어짐; 적대적 학습이 ~51%로 복원. 강건성은 SNR 의존적 — 저-SNR 샘플은 어쨌든 노이즈와 구별 불가, 따라서 대부분의 적대적 손상은 분류기가 실제로 유용한 SNR 범위에서 발생.</li>
+          <li><strong>다른 사람들이 구축할 수 있는 깨끗한 baseline 숫자.</strong> 단일 표 (clean / FGSM / DeepFool / C&amp;W × baseline / adv. train / DAE)로 보고되어 어떤 미래 방어도 동일 숫자에 대해 평가 가능.</li>
+        </ul>
+
+        <h2>구현 세부사항</h2>
+        <table>
+          <thead><tr><th>구성요소</th><th>설정</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>데이터셋</td><td>RadioML2016.10A</td><td>11 변조 × 20 SNR (−20 ~ +18 dB), shape (2, 128), 154k/66k 분할.</td></tr>
+            <tr><td>Baseline 아키텍처</td><td>VTCNN2 (수정)</td><td>Conv2d(1→256) + BN + ReLU + MaxPool, Conv2d(256→80) + BN + ReLU + MaxPool, Dropout(0.5), FC(2560→256→11). ~500K params.</td></tr>
+            <tr><td>Baseline 학습</td><td>Adam, lr 5e-4, batch 256, 20 epoch</td><td>입력 [0, 1]로 정규화.</td></tr>
+            <tr><td>FGSM 공격</td><td>ε = 0.005 (L<sub>∞</sub>, 정규화된 입력)</td><td>단일 step.</td></tr>
+            <tr><td>DeepFool 공격</td><td>50 steps, overshoot 0.02</td><td>L<sub>2</sub> 최소화.</td></tr>
+            <tr><td>C&amp;W 공격</td><td>c = 1e-4, κ = 0, 30 steps, lr 0.005</td><td>L<sub>2</sub>.</td></tr>
+            <tr><td>적대적 학습</td><td>50% clean + 50% FGSM(ε=0.005), 5 epoch</td><td>Adam, lr 5e-4. 비용 위해 PGD 아닌 single-step FGSM.</td></tr>
+            <tr><td>DAE 전처리</td><td>경량 conv autoencoder, clean IQ에 MSE 손실</td><td>분류기 전 추론 시 적용.</td></tr>
+            <tr><td>평가</td><td>모든 SNR에 걸친 전체 정확도 + SNR 계층화 정확도</td><td>SNR ≥ 0 dB 영역이 분류기가 운영적으로 유용한 곳.</td></tr>
+          </tbody>
+        </table>
+
+        <h2>실험 결과</h2>
+        <figure>
+          <img src="images/amc-adversarial-robustness/fig2.png" alt="Figure 2">
+          <figcaption>Figure 2: RadioML2016.10A 테스트 세트에서 SNR 대 baseline VTCNN2 분류 정확도. Sigmoidal 곡선: −20에서 −12 dB에서 거의 무작위 ~0.09–0.12 (신호가 노이즈와 구별 불가), −10 dB (~0.19)에서 −2 dB (~0.70)까지 가파른 상승, SNR ≥ 0 dB에서 ~0.80 plateau, 10 dB에서 peak ~0.82. 0 dB knee는 분류기가 "추측"에서 "유용"으로 전환하는 곳 — 운영적으로 적대적 강건성이 가장 중요한 영역.</figcaption>
+        </figure>
+
+        <table>
+          <thead><tr><th>모델 / 방어</th><th>Clean</th><th>FGSM (ε=0.005)</th><th>DeepFool</th><th>C&amp;W (L<sub>2</sub>)</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Baseline (방어 없음)</strong></td><td>54.02</td><td>17.59</td><td><strong>10.80</strong></td><td>29.41</td></tr>
+            <tr><td>적대적 학습 (FGSM)</td><td>51.48 (-2.54)</td><td><strong>33.47</strong> (+15.88)</td><td>15.36 (+4.56)</td><td><strong>40.67</strong> (+11.26)</td></tr>
+            <tr><td>DAE (전처리)</td><td>53.94 (-0.08)</td><td>17.48 (-0.11)</td><td>21.16 (+10.36)</td><td>32.81 (+3.40)</td></tr>
+            <tr><td colspan="5"><em>모든 숫자는 20개 SNR 레벨 전반에 걸친 정확도 (%). ε은 FGSM에만 적용; DeepFool과 C&amp;W는 구현 세부사항의 L<sub>2</sub> 구성 사용.</em></td></tr>
+          </tbody>
+        </table>
+
+        <p><strong>SNR ≥ 0 dB 분해.</strong> 운영적으로 유용한 SNR 영역에서 baseline의 ~0.79 clean 정확도가 FGSM 하에서 ~0.31로 떨어지고, 적대적 학습이 ~0.51로 복원. DeepFool은 저희가 테스트한 모든 SNR 레벨에서 가장 강력한 공격으로 남으며, 적대적 학습은 그 영향을 부분적으로만 완화 — 후속 연구에서 명시적 L<sub>2</sub>-aware 방어를 motivate하는 발견.</p>
+
+        <p><strong>DAE가 실패하는 이유 (기제적 해석).</strong> clean IQ 신호에서 MSE로 학습된 DAE는 거의 항등 함수로 수렴 (clean 입력에서 작은 재구성 오차). 추론 시 이 거의 항등 행동은 FGSM (autoencoder가 유효한 신호 콘텐츠와 구별할 수 없는 고주파 구조를 가짐)에 대해 적대적 perturbation이 거의 변경되지 않고 통과한다는 의미. 반복적 L<sub>2</sub> 공격 (DeepFool, C&amp;W)에 대해서는 perturbation이 더 조밀하고 크기가 약간 더 크므로 autoencoder의 smoothing 효과가 그것을 부분적으로 감쇠 — 그러나 동일한 smoothing이 미세한 변조 feature도 감쇠 (구분 콘텐츠가 미묘한 위상과 진폭 패턴에 있음), 이것이 "성공적인" L<sub>2</sub> 복구조차 modest한 이유. 일반적 교훈: <em>pixel-wise 재구성 손실은 신호와 perturbation이 다른 스펙트럼 영역을 차지한다고 가정; 이 가정은 신호와 perturbation 모두 고주파 시간 영역에 있는 무선 IQ 신호에 대해 실패</em>.</p>
+
+        <h2>강점</h2>
+        <ul>
+          <li><strong>Controlled 비교.</strong> 공격 × 방어 매트릭스 전반에 같은 아키텍처, 같은 데이터셋, 같은 하이퍼파라미터. 숫자가 직접 비교 가능 — 서로 다른 논문이 서로 다른 VTCNN 변형과 다른 RadioML 버전을 사용하는 무선-적대적-강건성 문헌에서 놀랍게도 드문 속성.</li>
+          <li><strong>DAE 실패에 대한 기제적 설명.</strong> DAE가 작동하지 않는다고 단순히 보고하는 대신 <em>왜</em> 그런지 설명 — MSE 목적이 거의 항등 행동을 유발하고, smoothing이 구분 feature와 적대적 perturbation을 동시에 감쇠. 이것이 후속 연구에 타겟 제공: MSE를 변조 패턴 인식 손실로 대체.</li>
+          <li><strong>FGSM 기반 적대적 학습으로부터 transferable 강건성.</strong> single-step FGSM 학습이 반복적 L<sub>2</sub> 공격 (DeepFool, C&amp;W)에 대한 강건성을 향상시킨다는 발견은 운영적으로 중요 — PGD 학습은 비용이 높고, 저희 결과는 저렴한 FGSM 학습이 이 도메인에서 대부분의 이점을 포착함을 시사.</li>
+          <li><strong>SNR 계층화 분석.</strong> 전체와 SNR ≥ 0 dB 정확도를 모두 보고하면 위협 모델이 명시적이 됨 — SNR = −15 dB에서의 적대적 손상은 분류기가 이미 거기서 무작위이므로 무의미.</li>
+          <li><strong>재현성.</strong> 모든 하이퍼파라미터 (공격 ε, iteration 수, 옵티마이저 설정, 학습 스케줄)가 구현 표에 보고됨 — 깨끗한 복제 가능.</li>
+        </ul>
+
+        <h2>한계</h2>
+        <ul>
+          <li><strong>단일 아키텍처 (VTCNN2).</strong> 저희 적대적 취약성과 방어 transfer 주장은 VTCNN2의 특정 결정 경계에 묶임. residual network, attention 기반 AMC 모델, 또는 recurrent 아키텍처가 같은 DeepFool &gt; C&amp;W &gt; FGSM 순위 — 그리고 같은 DAE 실패 — 를 보이는지 테스트되지 않음. 이 라인의 다음 논문은 동일 매트릭스를 적어도 하나의 다른 아키텍처에서 실행해야 함.</li>
+          <li><strong>FGSM에 대한 단일 perturbation 예산.</strong> ε = 0.005만 보고. 적절한 공격-대-방어 연구는 ε을 sweep하고 accuracy-대-예산 곡선을 만들어야 함; 컨퍼런스 페이지 제한 때문에 단일 점을 보고. 이것이 결론을 한 운영점으로 제한.</li>
+          <li><strong>PGD가 아닌 single-step FGSM 적대적 학습.</strong> 비용 이유와 저렴한 적대적 학습이 일반화되는지 테스트하고 싶었기 때문에 single-step FGSM 학습 선택. 그러나 이미지 도메인에서 FGSM 학습 모델이 "catastrophic overfitting" (실제 강건성 없이 명시적 강건성을 만드는 gradient masking)을 겪을 수 있다는 것은 알려진 사실. 저희는 gradient obfuscation 진단을 실행하지 않음 — 진짜 격차.</li>
+          <li><strong>White-box 위협 모델만.</strong> 세 공격 모두 분류기에 대한 gradient 액세스 가정. 현실적인 over-the-air 공격자는 black-box 또는 grey-box 환경 (직접 gradient 액세스는 없지만 스펙트럼 센서에 대한 쿼리 액세스 가능)에서 작동. transfer 기반 또는 score 기반 black-box 설정 하에서 이러한 공격의 전이성은 측정되지 않음.</li>
+          <li><strong>물리 계층 현실성 없음.</strong> 공격은 저장된 IQ 샘플에서 평가; over-the-air 구현은 channel 효과, 동기화 문제, 유한한 무선 하드웨어 정밀도를 도입하여 적대적 perturbation을 감쇠시킬 수 있음. Flowers et al.의 2020년 작업이 이 일부를 다루지만 저희는 그렇지 않음.</li>
+          <li><strong>DAE는 단일 아키텍처, 단일 학습 레시피.</strong> 저희 DAE 실패 결과는 표준 MSE-손실 DAE가 실패함을 보여줌. <em>모든</em> autoencoder 기반 방어가 실패함을 보여주지는 않음 — perceptual loss 변형, 신호 도메인 인식 손실, 또는 denoising-diffusion 기반 방어가 작동할 수 있음. 논문은 이 특정 구성에서 DAE 전처리가 실패한다고 주장, autoencoder 방어가 범주적으로 실패한다고 주장하지 않음.</li>
+        </ul>
+
+        <h2>토의 포인트</h2>
+        <ol>
+          <li>VTCNN2에서 DeepFool &gt; C&amp;W 순위는 이미지 도메인 예상을 뒤집음. 이것이 VTCNN2의 IQ 공간 결정 경계가 특히 서로 가까워서 (DeepFool의 국소 선형 근사가 쉽게 찾음)인가, 또는 κ = 0인 C&amp;W의 최적화가 low-confidence 전환에 잘못 구성되어서인가? κ &gt; 0과 더 긴 최적화 horizon으로 ablation하면 settle될 것 — 그리고 C&amp;W의 상대적 손상이 증가할 가능성.</li>
+          <li>FGSM 기반 적대적 학습은 저희 결과에서 DeepFool과 C&amp;W로 transfer되지만 부분적으로만. 부분 전이가 single-step FGSM 샘플이 L<sub>2</sub> 공격 분포를 커버하지 않기 때문인가, 또는 적대적 학습의 L<sub>∞</sub> 공격에 대한 gradient masking이 L<sub>2</sub>로 확장되지 않기 때문인가? 직접 PGD-L<sub>2</sub> 적대적 학습 비교가 알려줄 것 — 그리고 후속 계획에 있음.</li>
+          <li>DAE 실패는 일반화 가능한 무선 방어 설계 원칙을 지적: 픽셀 fidelity에 대해 최적화된 재구성 손실은 구분 신호와 적대적 perturbation이 유사한 스펙트럼 영역을 차지할 때 실패. 무선 인식 DAE에 대한 올바른 손실 함수는 무엇인가 — 변조 패턴 인식 재구성 (constellation 거리), 스펙트럼 밀도 인식 (PSD 모양 보존), 또는 task 인식 (분류기 손실에 조건화된 재구성)? 이것이 다음 논문.</li>
+          <li>강건성은 저희 실험에서 강하게 SNR 의존적. 적대적 학습이 SNR 계층화되어야 하는가 — 운영 관련성으로 가중치 적용된 각 SNR 레벨에서 별도로 생성된 적대적 예제로 학습, 모든 SNR을 함께 혼합하는 대신? 저희 현재 적대적 학습은 모든 것을 혼합; 결과는 SNR 전반에 균일하지만 실용적 우려는 분류기가 유용한 SNR ≥ 0 dB에 집중.</li>
+          <li>저희 결과의 clean 정확도 / robust 정확도 trade-off (54.02 → 51.48 = 2.54점 손실)은 작지만 실제. AMC 결정이 downstream 자원 할당을 구동하는 cognitive radio 배포에서 허용 가능한 trade-off는 무엇이고 — 응용 전반에 같은가? 기회적 액세스를 위한 스펙트럼 센싱은 군사 신호 정보 응용보다 더 높은 오분류율을 허용 가능. 올바른 답은 응용 조건부, 그리고 이 논문은 이를 다루지 않음.</li>
+        </ol>
+
+        <h2>최종 정리 (저자 노트)</h2>
+        <p>이것은 ICAIIC 2026의 제 첫 번째 저자 작업이고, 지금 — 제출 6개월 후, 그동안의 대화와 reviewer 피드백의 이점과 함께 — 이 리뷰를 쓰는 것이 논문이 잘하는 것과 명백한 다음 단계가 어디인지 명확히 합니다. <strong>잘하는 것:</strong> controlled 공격 × 방어 매트릭스가 깨끗하고, DAE 실패가 후속 연구를 위해 재사용 가능한 기제적 설명을 가지며, SNR 계층화 분석이 주장을 운영적으로 관련된 영역 (SNR ≥ 0 dB)에 grounded함. <strong>빠진 것:</strong> perturbation 예산 sweep, 교차 모델 검증을 위한 두 번째 아키텍처, gradient obfuscation 진단, 그리고 black-box / over-the-air 현실성에 대한 어떤 처리. 이것이 저널 확장 버전에 추가할 네 가지.</p>
+
+        <p>가장 재사용 가능한 단일 발견은 DAE 실패. 무선 적대적 강건성 문헌은 이미지 도메인 전처리 방어가 transfer된다고 조용히 가정해 왔습니다; 저희 논문은 기제적 설명과 함께 구체적 반례를 제공. 함의는 <em>무선 방어가 변조 구조를 명시적으로 모델링해야 한다</em>는 것 — 구분 콘텐츠와 적대적 perturbation 모두 고주파 시간 영역에 있을 때 pixel-wise 재구성이 잘못된 목적. 이것이 제 자신의 다음 작업을 형성: IQ 신호 디노이징을 위한 constellation 거리 인식 재구성 손실, 이 논문과 숫자를 비교 가능하게 유지하기 위해 동일한 VTCNN2 / RadioML 벤치마크 사용.</p>
+
+        <p>무선 적대적 강건성에 새로운 독자에게 이 순서로 논문을 읽으세요: (1) Section IV.A (baseline 숫자와 Fig. 2의 SNR 곡선) — 운영 영역 제공; (2) Table III (공격 × 방어 매트릭스) — 중심 경험적 결과, 특히 DAE의 거의 0 강건성을 보여주는 FGSM 컬럼; (3) Section V (Discussion) — DAE 실패 기제가 논문의 가장 일반화 가능한 부분. 보안 민감 컨텍스트에서 AMC를 배포하는 실무자에게 레시피는: <em>적대적 학습이 저렴하고 효과적인 baseline, DAE 전처리는 이 도메인에서 방어가 아니며, 깨끗한 80% 대신 공격 하에서 30-50% 정확도를 예상해야 함</em> — 그에 따라 downstream 자원 할당 설계.</p>
+      `
+    }
   }
 ];
